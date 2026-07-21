@@ -13,11 +13,8 @@
             color: white;
             border-color: transparent;
         }
-        .template-card {
-            display: block;
-        }
         .template-card.hidden {
-            display: none;
+            display: none !important;
         }
         .badge {
             background: rgba(26, 115, 232, 0.2);
@@ -27,6 +24,10 @@
             font-size: 0.75rem;
             font-weight: bold;
             border: 1px solid rgba(26, 115, 232, 0.3);
+        }
+        /* Fix for animation conflict */
+        .template-card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
     </style>
 </head>
@@ -48,6 +49,7 @@
                     <li><a href="templates.html" class="nav-link text-blue-400 font-bold">قوالب</a></li>
                     <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
                     <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
                     <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
                 </ul>
             </div>
@@ -68,7 +70,6 @@
     </header>
 
     <main class="pt-32 pb-16">
-        <!-- Page Header -->
         <section class="container mx-auto px-6 text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-up">قوالب جاهزة لموقعك</h1>
             <p class="text-xl text-gray-400 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
@@ -76,7 +77,6 @@
             </p>
         </section>
 
-        <!-- Filter Tabs -->
         <section class="container mx-auto px-6 mb-12">
             <div class="flex flex-wrap justify-center gap-3 md:gap-4 overflow-x-auto pb-4 no-scrollbar">
                 <button class="filter-btn active px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="all">الكل</button>
@@ -92,16 +92,13 @@
             </div>
         </section>
 
-        <!-- Templates Grid -->
         <section class="container mx-auto px-6">
             <div id="templatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Template 1: E-commerce -->
+                <!-- Template 1 -->
                 <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="ecommerce">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=E-commerce+Template" alt="قالب متجر أزياء" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">متاجر إلكترونية</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">متاجر إلكترونية</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب متجر أزياء - أنيق</h3>
@@ -112,14 +109,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 2: Restaurant -->
-                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-100" data-category="restaurant">
+                <!-- Template 2 -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="restaurant">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Restaurant+Template" alt="قالب مطعم فاخر" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">مطاعم ومقاهي</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">مطاعم ومقاهي</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب مطعم فاخر</h3>
@@ -130,14 +124,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 3: Health -->
-                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-200" data-category="health">
+                <!-- Template 3 -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="health">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Medical+Template" alt="قالب عيادة طبية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">عيادات وخدمات صحية</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">عيادات وخدمات صحية</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب عيادة طبية حديثة</h3>
@@ -148,14 +139,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 4: B2B -->
+                <!-- Template 4 -->
                 <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="b2b">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Corporate+Template" alt="قالب شركة استشارات" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">شركات وخدمات B2B</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">شركات وخدمات B2B</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب شركة استشارات</h3>
@@ -166,14 +154,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 5: Education -->
-                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-100" data-category="education">
+                <!-- Template 5 -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="education">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Education+Template" alt="قالب أكاديمية تعليمية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">تعليم وتكوين</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">تعليم وتكوين</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب أكاديمية تعليمية</h3>
@@ -184,14 +169,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 6: Real Estate -->
-                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-200" data-category="realestate">
+                <!-- Template 6 -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="realestate">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Real+Estate+Template" alt="قالب وكالة عقارية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">عقار</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">عقار</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب وكالة عقارية</h3>
@@ -202,14 +184,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 7: Portfolio -->
+                <!-- Template 7 -->
                 <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="portfolio">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Portfolio+Template" alt="قالب بورتفوليو إبداعي" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">بورتفوليو شخصي</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">بورتفوليو شخصي</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب بورتفوليو إبداعي</h3>
@@ -220,14 +199,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 8: Fitness -->
-                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-100" data-category="fitness">
+                <!-- Template 8 -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="fitness">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Fitness+Template" alt="قالب نادي رياضي" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">رياضة ولياقة</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">رياضة ولياقة</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب نادي رياضي</h3>
@@ -238,14 +214,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Template 9: Travel -->
-                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-200" data-category="travel">
+                <!-- Template 9 -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="travel">
                     <div class="relative group">
                         <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Travel+Template" alt="قالب وكالة سفر" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">سياحة وسفر</span>
-                        </div>
+                        <div class="absolute top-4 right-4"><span class="badge">سياحة وسفر</span></div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2">قالب وكالة سفر وسياحة</h3>
@@ -259,7 +232,6 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
         <section class="container mx-auto px-6 py-20 text-center mt-12 bg-gray-900 rounded-3xl">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">ما لقيتيش القالب اللي كيناسبك؟</h2>
             <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">نحن هنا لمساعدتك في بناء تصميم مخصص بالكامل يلبي احتياجات مشروعك الفريدة.</p>
@@ -297,14 +269,19 @@
 
     <script src="script.js"></script>
     <script>
-        // Filtering Logic
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const templateCards = document.querySelectorAll('.template-card');
 
+            // Initial setup: ensure cards are visible if not hidden by JS
+            templateCards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.classList.remove('opacity-0', 'translate-y-10'); // Prevent script.js from hiding them initially
+            });
+
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Update active button
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
@@ -313,10 +290,14 @@
                     templateCards.forEach(card => {
                         if (filter === 'all' || card.getAttribute('data-category') === filter) {
                             card.classList.remove('hidden');
-                            card.classList.add('animate-scale-in');
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
                         } else {
                             card.classList.add('hidden');
-                            card.classList.remove('animate-scale-in');
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9)';
                         }
                     });
                 });
