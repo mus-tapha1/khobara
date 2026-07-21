@@ -3,114 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أعمالنا - خبراء الويب</title>
+    <meta name="description" content="أعمالنا - معرض مشاريع خبراء الويب">
+    <title>أعمالنا - خبراء الويب | Khobara Web</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-        }
-        .nav-link {
-            position: relative;
-            padding-bottom: 5px;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: #a855f7;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-        }
-        .language-switcher-dropdown {
-            display: none;
-            position: absolute;
-            background-color: #1a1a1a;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            right: 0;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .language-switcher:hover .language-switcher-dropdown {
-            display: block;
-        }
-        .language-switcher-dropdown a {
-            color: #e0e0e0;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: right;
-        }
-        .language-switcher-dropdown a:hover {
-            background-color: #2a2a2a;
-        }
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .portfolio-item img {
-            transition: transform 0.5s ease;
-        }
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        .portfolio-overlay h3 {
-            color: white;
-            font-size: 1.75rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .portfolio-overlay p {
-            color: #ccc;
-            font-size: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">
-    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg shadow-lg">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold text-white">خبراء الويب</a>
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
             <div class="flex items-center space-x-8">
-                <ul class="flex space-x-8 text-lg">
-                    <li><a href="index.html" class="nav-link text-white hover:text-purple-400">الرئيسية</a></li>
-                    <li><a href="about.html" class="nav-link text-white hover:text-purple-400">من نحن</a></li>
-                    <li><a href="services.html" class="nav-link text-white hover:text-purple-400">خدماتنا</a></li>
-                    <li><a href="portfolio.html" class="nav-link text-white hover:text-purple-400">أعمالنا</a></li>
-                    <li><a href="pricing.html" class="nav-link text-white hover:text-purple-400">الأسعار والباقات</a></li>
-                    <li><a href="blog.html" class="nav-link text-white hover:text-purple-400">المدونة</a></li>
-                    <li><a href="contact.html" class="nav-link text-white hover:text-purple-400">اتصل بنا</a></li>
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <button class="text-white text-lg font-semibold focus:outline-none">AR <span class="ml-1">▼</span></button>
+                    <button class="text-white text-sm font-semibold focus:outline-none">AR <span class="mr-1">▼</span></button>
                     <div class="language-switcher-dropdown">
                         <a href="#" onclick="setLanguage('en')">English</a>
                         <a href="#" onclick="setLanguage('ar')">العربية</a>
@@ -175,24 +91,42 @@
         </section>
     </main>
 
-    <footer class="bg-black py-10 text-center text-gray-400">
+    <footer class="bg-black py-12 text-center text-gray-400">
         <div class="container mx-auto px-6">
-            <p>&copy; 2025 خبراء الويب. جميع الحقوق محفوظة.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-blue-400 text-sm">المدونة</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسئلة الشائعة</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                        <li class="text-gray-400 text-sm">الهاتف: 0778878421</li>
+                        <li class="text-gray-400 text-sm">العنوان: طنجة، المغرب</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+                </div>
+                <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        function setLanguage(lang) {
-            if (lang === 'en') {
-                document.documentElement.lang = 'en';
-                document.documentElement.dir = 'ltr';
-                alert('Language switched to English (placeholder)');
-            } else {
-                document.documentElement.lang = 'ar';
-                document.documentElement.dir = 'rtl';
-                alert('Language switched to Arabic (placeholder)');
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

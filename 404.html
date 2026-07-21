@@ -8,19 +8,60 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased bg-gray-900 min-h-screen flex items-center justify-center">
-    <div class="text-center px-6">
-        <h1 class="text-9xl font-bold text-blue-500 mb-4">404</h1>
-        <h2 class="text-3xl font-bold text-white mb-4">الصفحة غير موجودة</h2>
-        <p class="text-gray-400 text-lg mb-8 max-w-md mx-auto">عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يرجى العودة إلى الصفحة الرئيسية.</p>
-        <div class="space-x-4">
-            <a href="index.html" class="btn-primary text-lg inline-block">العودة للرئيسية</a>
-            <a href="contact.html" class="btn-secondary text-lg inline-block text-white border border-blue-500 py-3 px-7 rounded-lg font-bold hover:bg-blue-600 transition-colors">تواصل معنا</a>
-        </div>
-        <div class="mt-12">
-            <img src="images/logo.png" alt="خبراء الويب" class="h-20 mx-auto opacity-50">
+<body class="antialiased">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
+            <div class="flex items-center space-x-8">
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="text-white text-sm font-semibold focus:outline-none">AR <span class="mr-1">▼</span></button>
+                    <div class="language-switcher-dropdown">
+                        <a href="#" onclick="setLanguage('en')">English</a>
+                        <a href="#" onclick="setLanguage('ar')">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="min-h-screen flex items-center justify-center bg-gray-900 pt-24">
+        <div class="text-center px-6">
+            <h1 class="text-9xl font-bold text-blue-500 mb-4">404</h1>
+            <h2 class="text-3xl font-bold text-white mb-4">الصفحة غير موجودة</h2>
+            <p class="text-gray-400 text-lg mb-8 max-w-md mx-auto">عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يرجى العودة إلى الصفحة الرئيسية.</p>
+            <div class="flex justify-center gap-4">
+                <a href="index.html" class="btn-primary text-lg inline-block">العودة للرئيسية</a>
+                <a href="contact.html" class="btn-secondary text-lg inline-block text-white border border-blue-500 py-3 px-7 rounded-lg font-bold hover:bg-blue-600 transition-colors">تواصل معنا</a>
+            </div>
+            <div class="mt-12">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-20 mx-auto opacity-50">
+            </div>
         </div>
     </div>
+
+    <footer class="bg-black py-8 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+                </div>
+                <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
