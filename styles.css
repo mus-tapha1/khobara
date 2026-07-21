@@ -874,3 +874,32 @@ header button {
 .language-switcher-dropdown a:hover {
     background-color: #2a2a2a;
 }
+
+/* Fix: Hide language switcher on mobile */
+@media (max-width: 768px) {
+    .language-switcher {
+        display: none !important;
+    }
+    
+    /* Ensure hero background covers properly on mobile */
+    .hero-section {
+        background-size: cover !important;
+        background-position: center !important;
+    }
+    
+    /* Fix pricing cards on mobile */
+    .pricing-card {
+        width: 100% !important;
+        margin: 0 auto 1.5rem !important;
+    }
+    
+    /* Fix stats text size on mobile */
+    .stats-section h3 {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Ensure mobile menu covers everything */
+    #mobileMenu {
+        top: 64px !important;
+    }
+}

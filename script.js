@@ -93,40 +93,51 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 });
 
-// Counter Animation for Statistics
+// Counter Animation for Statistics - Fixed
 function animateCounter(element, target, duration = 2000) {
     let current = 0;
-    const increment = target / (duration / 16);
+    const step = target / Math.ceil(duration / 16);
+    let startTime = null;
     
-    const counter = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(counter);
+    function update(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        current = Math.floor(progress * target);
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
         } else {
-            element.textContent = Math.floor(current);
+            element.textContent = target;
         }
-    }, 16);
+    }
+    
+    requestAnimationFrame(update);
 }
 
 // Trigger counter animation when section is visible
-const statsSection = document.querySelector('.stats-section');
-if (statsSection) {
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counters = entry.target.querySelectorAll('[data-count]');
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-count'));
-                    animateCounter(counter, target);
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    statsObserver.observe(statsSection);
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        if (target > 0) {
+                            animateCounter(counter, target);
+                        }
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        statsObserver.observe(statsSection);
+    }
+});
 
 // Form Validation and Submission
 const contactForm = document.querySelector('.contact-form');
