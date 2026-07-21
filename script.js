@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
 });
 
-// FAQ Toggle - FIXED: Add icon rotation
+// FAQ Toggle
 function toggleFaq(button) {
     const answer = button.nextElementSibling;
     const icon = button.querySelector('.faq-icon, span');
@@ -103,17 +103,15 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 });
 
-// Counter Animation for Statistics - FIXED
+// Counter Animation for Statistics
 function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const step = target / Math.ceil(duration / 16);
     let startTime = null;
     
     function update(timestamp) {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        current = Math.floor(progress * target);
+        const current = Math.floor(progress * target);
         element.textContent = current;
         
         if (progress < 1) {
@@ -126,7 +124,7 @@ function animateCounter(element, target, duration = 2000) {
     requestAnimationFrame(update);
 }
 
-// Trigger counter animation when section is visible - FIXED for all pages
+// Trigger counter animation when section is visible
 document.addEventListener('DOMContentLoaded', function() {
     const statsSections = document.querySelectorAll('.stats-section');
     statsSections.forEach(statsSection => {
@@ -151,58 +149,80 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Form Validation and Submission
+// Form Validation and AJAX Submission (stays on page, no redirect)
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        // If form has action set (like Formspree), let it submit naturally
-        if (contactForm.action && contactForm.action !== '') {
-            return;
-        }
-        
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const name = contactForm.querySelector('input[name="name"]');
-        const email = contactForm.querySelector('input[name="email"]');
-        const subject = contactForm.querySelector('input[name="subject"]');
-        const message = contactForm.querySelector('textarea[name="message"]');
-        
-        // Simple validation
-        if (!name || !email || !subject || !message) {
-            alert('يرجى ملء جميع الحقول');
-            return;
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn ? submitBtn.textContent : '';
+
+        // Show loading state
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جارٍ الإرسال...';
         }
-        
-        if (!name.value || !email.value || !subject.value || !message.value) {
-            alert('يرجى ملء جميع الحقول');
-            return;
+
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Show success message inside the form area
+                contactForm.innerHTML = `
+                    <div style="text-align:center; padding: 2rem;">
+                        <div style="font-size:3rem; margin-bottom:1rem;">✅</div>
+                        <h3 style="color:#4ade80; font-size:1.5rem; font-weight:bold; margin-bottom:0.5rem;">تم إرسال رسالتك بنجاح!</h3>
+                        <p style="color:#9ca3af;">شكراً لتواصلك معنا. سنرد عليك خلال 24 ساعة.</p>
+                    </div>`;
+            } else {
+                const data = await response.json();
+                const errorMsg = (data && data.errors)
+                    ? data.errors.map(e => e.message).join(', ')
+                    : 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو التواصل عبر البريد الإلكتروني.';
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+                showFormError(contactForm, errorMsg);
+            }
+        } catch (err) {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+            showFormError(contactForm, 'تعذّر الاتصال. يرجى التحقق من اتصالك بالإنترنت والمحاولة مجدداً.');
         }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email.value)) {
-            alert('يرجى إدخال بريد إلكتروني صحيح');
-            return;
-        }
-        
-        alert('شكراً لتواصلك معنا! سنرد عليك قريباً.');
-        contactForm.reset();
     });
 }
 
-// FIX: Removed hover transform conflict with Tailwind
-// Instead, only add hover effects if not already handled by CSS/Tailwind
+function showFormError(form, message) {
+    let errEl = form.querySelector('.form-error');
+    if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.className = 'form-error';
+        errEl.style.cssText = 'color:#f87171;margin-top:0.75rem;font-size:0.9rem;text-align:center;';
+        form.appendChild(errEl);
+    }
+    errEl.textContent = message;
+}
+
+// Testimonial card hover
 document.querySelectorAll('.testimonial-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-5px)';
     });
-    
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0)';
     });
 });
 
-// Portfolio Filter (if needed)
+// Portfolio Filter
 const portfolioFilters = document.querySelectorAll('[data-filter]');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
@@ -210,7 +230,6 @@ if (portfolioFilters.length > 0) {
     portfolioFilters.forEach(filter => {
         filter.addEventListener('click', () => {
             const filterValue = filter.getAttribute('data-filter');
-            
             portfolioItems.forEach(item => {
                 if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                     item.style.display = 'block';
@@ -223,40 +242,50 @@ if (portfolioFilters.length > 0) {
     });
 }
 
-// Mobile Menu Toggle
+// Mobile Menu Toggle — FIX: toggle open/close + change icon
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
 
+function openMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (mobileMenuBtn) mobileMenuBtn.innerHTML = '✕';
+}
+
+function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (mobileMenuBtn) mobileMenuBtn.innerHTML = '☰';
+}
+
 if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        if (mobileMenu.classList.contains('hidden')) {
+            openMobileMenu();
+        } else {
+            closeMobileMenu();
+        }
     });
 }
 
 if (closeMobileMenuBtn && mobileMenu) {
-    closeMobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = ''; // Restore scrolling
-    });
+    closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
 }
 
-// Close mobile menu when clicking a link
+// Close mobile menu when clicking a nav link
 if (mobileMenu) {
     mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = '';
-        });
+        link.addEventListener('click', closeMobileMenu);
     });
 }
 
 // Close mobile menu on Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = '';
+        closeMobileMenu();
     }
 });
 
@@ -278,10 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     backToTop.addEventListener('mouseenter', function() {
@@ -293,38 +319,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.transform = 'translateY(0)';
         this.style.boxShadow = '0 4px 15px rgba(33,150,243,0.4)';
     });
-});
-
-// Lazy Loading Images
-if ('IntersectionObserver' in window) {
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.getAttribute('data-src');
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    lazyImages.forEach(img => imageObserver.observe(img));
-}
-
-// Add animation delay classes dynamically
-document.querySelectorAll('[data-animation-delay]').forEach((el, index) => {
-    const delay = el.getAttribute('data-animation-delay');
-    el.style.animationDelay = delay;
-});
-
-// Keyboard Navigation for Accessibility
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const openMenus = document.querySelectorAll('[data-menu].open');
-        openMenus.forEach(menu => menu.classList.remove('open'));
-    }
 });
 
 // Performance: Debounce scroll events
@@ -340,20 +334,15 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debounce to scroll events
-const debouncedScroll = debounce(() => {
-    // Scroll event handling
-}, 100);
-
+const debouncedScroll = debounce(() => {}, 100);
 window.addEventListener('scroll', debouncedScroll);
 
-// Dynamic Content Loading (for future AJAX functionality)
+// Dynamic Content Loading (for future use)
 async function loadContent(url) {
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.text();
-        return data;
+        return await response.text();
     } catch (error) {
         console.error('Error loading content:', error);
     }
@@ -366,7 +355,14 @@ window.addEventListener('load', () => {
     });
 });
 
-// Prevent FOUC (Flash of Unstyled Content)
+// Prevent FOUC
 document.documentElement.style.visibility = 'visible';
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const openMenus = document.querySelectorAll('[data-menu].open');
+        openMenus.forEach(menu => menu.classList.remove('open'));
+    }
+});
 
 console.log('Khobara Web - Premium Digital Agency Website Loaded Successfully');
