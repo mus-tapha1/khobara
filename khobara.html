@@ -856,6 +856,293 @@ html[dir="ltr"] .whatsapp-float {
   border: 2px solid #25D366;
   animation: pulseRing 2s ease-out infinite;
 }
+
+/* ============ UI IMPROVEMENTS ============ */
+
+/* Alternating Section Backgrounds */
+.section-alt {
+  background: rgba(0, 123, 255, 0.03);
+}
+
+html.light .section-alt {
+  background: rgba(0, 123, 255, 0.05);
+}
+
+/* Enhanced Portfolio Cards */
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+}
+
+.portfolio-card .portfolio-img-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+}
+
+.portfolio-card .portfolio-img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .portfolio-img-container img {
+  transform: scale(1.08);
+}
+
+/* Design Concept Badge */
+.design-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 123, 255, 0.9);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.5px;
+}
+
+html[dir="ltr"] .design-badge {
+  right: auto;
+  left: 12px;
+}
+
+/* Hover CTA Button */
+.portfolio-hover-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: var(--gradient-1);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+html[dir="ltr"] .portfolio-hover-btn {
+  right: auto;
+  left: 16px;
+}
+
+.portfolio-card:hover .portfolio-hover-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Portfolio Overlay */
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,8,22,0.95) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Scroll Reveal Enhancements */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[dir="ltr"] .reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Enhanced Counter */
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+/* Section Padding Improvements */
+@media (max-width: 768px) {
+  h1.text-4xl {
+    font-size: 1.75rem;
+  }
+  h1.text-3xl {
+    font-size: 1.5rem;
+  }
+  .section-padding-mobile {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Smooth section transitions */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 0;
+}
+
+/* Enhanced stat cards */
+.stat-card {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Portfolio info section */
+.portfolio-info {
+  padding: 20px;
+}
+
+.portfolio-info .portfolio-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.portfolio-info .portfolio-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.portfolio-tags span {
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--primary);
+  background-color: rgba(0, 123, 255, 0.1);
+  color: var(--primary);
+  font-size: 12px;
+}
+
+/* Mobile phone mockup in portfolio */
+.phone-mockup {
+  position: relative;
+  width: 100%;
+  padding-top: 177.78%; /* 9:16 */
+  overflow: hidden;
+}
+
+.phone-mockup img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .phone-mockup img {
+  transform: scale(1.05);
+}
+
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+  /* Hero mobile */
+  .hero-mockup {
+    display: none;
+  }
+  
+  /* Portfolio mobile */
+  .portfolio-img-container {
+    padding-top: 56.25% !important;
+  }
+  
+  .phone-mockup {
+    padding-top: 100% !important;
+  }
+  
+  /* Section text on mobile */
+  h1.text-4xl {
+    font-size: 1.75rem !important;
+  }
+  
+  h2.text-3xl {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Buttons on mobile */
+  .btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  /* CTA section mobile */
+  .cta-section h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Stat cards mobile */
+  .stat-number {
+    font-size: 2rem !important;
+  }
+  
+  /* Design badge mobile */
+  .design-badge {
+    font-size: 9px;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1.text-4xl {
+    font-size: 1.5rem !important;
+  }
+  
+  .glass-card {
+    border-radius: 16px;
+  }
+}
+
 </style>
 </head>
 <body class="animated-gradient">
@@ -977,7 +1264,7 @@ html[dir="ltr"] .whatsapp-float {
             <span class="text-sm text-[var(--text-secondary)]" data-ar="متاحون لمشاريع جديدة" data-en="Available for new projects">متاحون لمشاريع جديدة</span>
           </div>
 
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 reveal reveal-delay-1" style="line-height: 1.3;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-snug mb-6 reveal reveal-delay-1" style="line-height: 1.25; letter-spacing: -0.5px; text-shadow: 0 2px 20px rgba(0,123,255,0.2);">
             <span data-ar="نحوّل أفكارك إلى" data-en="We Transform Your Ideas Into">نحوّل أفكارك إلى</span>
             <br>
             <span class="gradient-text" data-ar="مواقع وتطبيقات احترافية" data-en="Premium Websites & Apps">مواقع وتطبيقات احترافية</span>
@@ -985,7 +1272,7 @@ html[dir="ltr"] .whatsapp-float {
             <span data-ar="تنمو بأعمالك" data-en="That Grow Your Business">تنمو بأعمالك</span>
           </h1>
 
-          <p class="text-lg md:text-xl text-[var(--text-secondary)] mb-10 max-w-xl mx-auto lg:mx-0 lg:mr-0 reveal reveal-delay-2" data-ar="نصمم مواقع إلكترونية ومتاجر احترافية وتطبيقات Android و iPhone بسرعة، جودة، وأسعار تنافسية." data-en="We design professional websites, e-commerce stores, and Android & iPhone apps with speed, quality, and competitive prices.">
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] mb-10 max-w-xl mx-auto lg:mx-0 lg:mr-0 reveal reveal-delay-2" style="line-height: 1.8;" data-ar="نصمم مواقع إلكترونية ومتاجر احترافية وتطبيقات Android و iPhone بسرعة، جودة، وأسعار تنافسية." data-en="We design professional websites, e-commerce stores, and Android & iPhone apps with speed, quality, and competitive prices.">
             نصمم مواقع إلكترونية ومتاجر احترافية وتطبيقات Android و iPhone بسرعة، جودة، وأسعار تنافسية.
           </p>
 
@@ -1069,7 +1356,7 @@ html[dir="ltr"] .whatsapp-float {
             <!-- Stats Floating -->
             <div class="absolute top-1/2 -right-8 glass-card p-3 float-anim-slow" style="animation-delay: -4s;">
               <div class="text-center">
-                <div class="text-lg font-black gradient-text">99%</div>
+                <div class="text-lg font-black gradient-text"><span class="counter-value" data-target="99">0</span>%</div>
                 <div class="text-[10px] text-[var(--text-secondary)]" data-ar="رضا العملاء" data-en="Satisfaction">رضا العملاء</div>
               </div>
             </div>
@@ -1100,7 +1387,7 @@ html[dir="ltr"] .whatsapp-float {
   </section>
 
   <!-- Why Choose Us -->
-  <section class="py-24 relative">
+  <section class="py-24 relative section-alt">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal">
         <span class="inline-block px-4 py-2 rounded-full border border-[var(--border-color)] text-sm text-[var(--primary)] mb-4" data-ar="لماذا نحن" data-en="Why Us">لماذا نحن</span>
@@ -1235,47 +1522,56 @@ html[dir="ltr"] .whatsapp-float {
   </section>
 
   <!-- Portfolio Preview -->
-  <section class="py-24 relative">
+  <section class="py-24 relative section-alt">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal">
         <span class="inline-block px-4 py-2 rounded-full border border-[var(--border-color)] text-sm text-[var(--primary)] mb-4" data-ar="أعمالنا" data-en="Our Work">أعمالنا</span>
         <h2 class="text-3xl md:text-5xl font-black mb-4" data-ar="مشاريع نفخر بها" data-en="Projects We're Proud Of">مشاريع نفخر بها</h2>
-        <p class="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg" data-ar="نماذج من أعمالنا التي نفذناها لعملائنا الكرام" data-en="Samples of work we've delivered for our valued clients">نماذج من أعمالنا التي نفذناها لعملائنا الكرام</p>
+        <p class="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg" style="line-height: 1.8;" data-ar="نماذج من أعمالنا التي نفذناها لعملائنا الكرام" data-en="Samples of work we've delivered for our valued clients">نماذج من أعمالنا التي نفذناها لعملائنا الكرام</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="portfolio-card glass-card overflow-hidden reveal reveal-delay-1" onclick="showPage('portfolio')">
-          <div class="portfolio-img h-56 bg-gradient-to-br from-[#007BFF]/30 to-[#5B4BFF]/30 flex items-center justify-center">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        <div class="portfolio-card glass-card reveal reveal-delay-1" onclick="showPage('portfolio')">
+          <div class="portfolio-img-container">
+            <img src="mockup1.png" alt="مطعم الذواقة" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
           <div class="portfolio-overlay">
             <div>
               <span class="text-xs text-[var(--accent)]" data-ar="مطعم فاخر" data-en="Luxury Restaurant">مطعم فاخر</span>
-              <h3 class="text-lg font-bold text-white mt-1" data-ar="مطعم الذواقة" data-en="Gourmet Restaurant">مطعم الذواقة</h3>
+              <h3 class="text-lg font-bold text-white mt-1" data-ar="مطعم الذواقة الملكي" data-en="Royal Gourmet Restaurant">مطعم الذواقة الملكي</h3>
+              <p class="text-sm text-white/70 mt-1" data-ar="موقع حجز طاولات وقائمة طعام تفاعلية" data-en="Table booking with interactive menu">موقع حجز طاولات وقائمة طعام تفاعلية</p>
             </div>
           </div>
         </div>
 
-        <div class="portfolio-card glass-card overflow-hidden reveal reveal-delay-2" onclick="showPage('portfolio')">
-          <div class="portfolio-img h-56 bg-gradient-to-br from-[#5B4BFF]/30 to-[#00D1FF]/30 flex items-center justify-center">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <div class="portfolio-card glass-card reveal reveal-delay-2" onclick="showPage('portfolio')">
+          <div class="portfolio-img-container">
+            <img src="mockup2.png" alt="عيادة الشفاء" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
           <div class="portfolio-overlay">
             <div>
               <span class="text-xs text-[var(--accent)]" data-ar="عيادة طبية" data-en="Medical Clinic">عيادة طبية</span>
-              <h3 class="text-lg font-bold text-white mt-1" data-ar="عيادة الشفاء" data-en="Al-Shifa Clinic">عيادة الشفاء</h3>
+              <h3 class="text-lg font-bold text-white mt-1" data-ar="عيادة الشفاء الحديثة" data-en="Modern Al-Shifa Clinic">عيادة الشفاء الحديثة</h3>
+              <p class="text-sm text-white/70 mt-1" data-ar="نظام حجز مواعيد وإدارة مرضى متكامل" data-en="Appointment booking & patient management">نظام حجز مواعيد وإدارة مرضى متكامل</p>
             </div>
           </div>
         </div>
 
-        <div class="portfolio-card glass-card overflow-hidden reveal reveal-delay-3" onclick="showPage('portfolio')">
-          <div class="portfolio-img h-56 bg-gradient-to-br from-[#00D1FF]/30 to-[#007BFF]/30 flex items-center justify-center">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg>
+        <div class="portfolio-card glass-card reveal reveal-delay-3" onclick="showPage('portfolio')">
+          <div class="portfolio-img-container">
+            <img src="mockup3.png" alt="عقارات النخبة" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
           <div class="portfolio-overlay">
             <div>
-              <span class="text-xs text-[var(--accent)]" data-ar="تطبيق توصيل" data-en="Delivery App">تطبيق توصيل</span>
-              <h3 class="text-lg font-bold text-white mt-1" data-ar="تطبيق سريع" data-en="Fast Delivery App">تطبيق سريع</h3>
+              <span class="text-xs text-[var(--accent)]" data-ar="شركة عقارات" data-en="Real Estate">شركة عقارات</span>
+              <h3 class="text-lg font-bold text-white mt-1" data-ar="عقارات النخبة" data-en="Elite Real Estate">عقارات النخبة</h3>
+              <p class="text-sm text-white/70 mt-1" data-ar="منصة عرض وبيع العقارات مع خريطة تفاعلية" data-en="Property listing with interactive map">منصة عرض وبيع العقارات مع خريطة تفاعلية</p>
             </div>
           </div>
         </div>
@@ -1305,7 +1601,7 @@ html[dir="ltr"] .whatsapp-float {
 
 <!-- ==================== SERVICES PAGE ==================== -->
 <section class="page-section" id="page-services">
-  <div class="pt-32 pb-24 min-h-screen">
+  <div class="pt-32 pb-24 min-h-screen section-alt">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-20 reveal">
         <span class="inline-block px-4 py-2 rounded-full border border-[var(--border-color)] text-sm text-[var(--primary)] mb-4" data-ar="خدماتنا" data-en="Our Services">خدماتنا</span>
@@ -1415,136 +1711,154 @@ html[dir="ltr"] .whatsapp-float {
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Portfolio Items -->
         <div class="portfolio-card glass-card reveal reveal-delay-1">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-amber-500/30 to-orange-600/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup1.png" alt="مطعم الذواقة" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="مطعم فاخر" data-en="Luxury Restaurant">مطعم فاخر</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="مطعم الذواقة الملكي" data-en="Royal Gourmet Restaurant">مطعم الذواقة الملكي</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="موقع حجز طاولات وقائمة طعام تفاعلية" data-en="Table booking website with interactive menu">موقع حجز طاولات وقائمة طعام تفاعلية</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">React</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Node.js</span>
+            <h3 class="portfolio-title mt-2" data-ar="مطعم الذواقة الملكي" data-en="Royal Gourmet Restaurant">مطعم الذواقة الملكي</h3>
+            <p class="portfolio-desc" data-ar="موقع حجز طاولات وقائمة طعام تفاعلية" data-en="Table booking website with interactive menu">موقع حجز طاولات وقائمة طعام تفاعلية</p>
+            <div class="portfolio-tags">
+              <span>React</span>
+              <span>Node.js</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-2">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup2.png" alt="عيادة الشفاء" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="عيادة طبية" data-en="Medical Clinic">عيادة طبية</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="عيادة الشفاء الحديثة" data-en="Modern Al-Shifa Clinic">عيادة الشفاء الحديثة</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="نظام حجز مواعيد وإدارة مرضى متكامل" data-en="Appointment booking and patient management system">نظام حجز مواعيد وإدارة مرضى متكامل</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Vue.js</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Firebase</span>
+            <h3 class="portfolio-title mt-2" data-ar="عيادة الشفاء الحديثة" data-en="Modern Al-Shifa Clinic">عيادة الشفاء الحديثة</h3>
+            <p class="portfolio-desc" data-ar="نظام حجز مواعيد وإدارة مرضى متكامل" data-en="Appointment booking and patient management system">نظام حجز مواعيد وإدارة مرضى متكامل</p>
+            <div class="portfolio-tags">
+              <span>Vue.js</span>
+              <span>Firebase</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-3">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-purple-500/30 to-pink-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup3.png" alt="عقارات النخبة" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="شركة عقارات" data-en="Real Estate">شركة عقارات</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="عقارات النخبة" data-en="Elite Real Estate">عقارات النخبة</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="منصة عرض وبيع العقارات مع خريطة تفاعلية" data-en="Property listing platform with interactive map">منصة عرض وبيع العقارات مع خريطة تفاعلية</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Next.js</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">MapBox</span>
+            <h3 class="portfolio-title mt-2" data-ar="عقارات النخبة" data-en="Elite Real Estate">عقارات النخبة</h3>
+            <p class="portfolio-desc" data-ar="منصة عرض وبيع العقارات مع خريطة تفاعلية" data-en="Property listing platform with interactive map">منصة عرض وبيع العقارات مع خريطة تفاعلية</p>
+            <div class="portfolio-tags">
+              <span>Next.js</span>
+              <span>MapBox</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-1">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-green-500/30 to-emerald-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup4.png" alt="أكاديمية المستقبل" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="منصة تعليمية" data-en="E-learning">منصة تعليمية</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="أكاديمية المستقبل" data-en="Future Academy">أكاديمية المستقبل</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="منصة دورات أونلاين مع نظام شهادات" data-en="Online courses platform with certification system">منصة دورات أونلاين مع نظام شهادات</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">React</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Stripe</span>
+            <h3 class="portfolio-title mt-2" data-ar="أكاديمية المستقبل" data-en="Future Academy">أكاديمية المستقبل</h3>
+            <p class="portfolio-desc" data-ar="منصة دورات أونلاين مع نظام شهادات" data-en="Online courses platform with certification system">منصة دورات أونلاين مع نظام شهادات</p>
+            <div class="portfolio-tags">
+              <span>React</span>
+              <span>Stripe</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-2">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-red-500/30 to-rose-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          <div class="portfolio-img-container phone-mockup">
+            <img src="mockup5.png" alt="FitPro" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="تطبيق لياقة" data-en="Fitness App">تطبيق لياقة</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="FitPro - مدربك الشخصي" data-en="FitPro - Your Personal Trainer">FitPro - مدربك الشخصي</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="تطبيق تمارين رياضية مع خطط مخصصة" data-en="Workout app with customized plans">تطبيق تمارين رياضية مع خطط مخصصة</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Flutter</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Firebase</span>
+            <h3 class="portfolio-title mt-2" data-ar="FitPro - مدربك الشخصي" data-en="FitPro - Your Personal Trainer">FitPro - مدربك الشخصي</h3>
+            <p class="portfolio-desc" data-ar="تطبيق تمارين رياضية مع خطط مخصصة" data-en="Workout app with customized plans">تطبيق تمارين رياضية مع خطط مخصصة</p>
+            <div class="portfolio-tags">
+              <span>Flutter</span>
+              <span>Firebase</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-3">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-indigo-500/30 to-violet-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup6.png" alt="Dashboard Pro" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="لوحة تحكم" data-en="Dashboard">لوحة تحكم</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="Dashboard Pro" data-en="Dashboard Pro">Dashboard Pro</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="لوحة تحكم تحليلية متقدمة للشركات" data-en="Advanced analytics dashboard for businesses">لوحة تحكم تحليلية متقدمة للشركات</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">React</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">D3.js</span>
+            <h3 class="portfolio-title mt-2" data-ar="Dashboard Pro" data-en="Dashboard Pro">Dashboard Pro</h3>
+            <p class="portfolio-desc" data-ar="لوحة تحكم تحليلية متقدمة للشركات" data-en="Advanced analytics dashboard for businesses">لوحة تحكم تحليلية متقدمة للشركات</p>
+            <div class="portfolio-tags">
+              <span>React</span>
+              <span>D3.js</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-1">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-teal-500/30 to-cyan-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup7.png" alt="مقهى الأصيل" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="مقهى" data-en="Coffee Shop">مقهى</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="مقهى الأصيل" data-en="Al-Aseel Coffee">مقهى الأصيل</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="موقع طلبات أونلاين مع نظام ولاء" data-en="Online ordering website with loyalty system">موقع طلبات أونلاين مع نظام ولاء</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">WordPress</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">WooCommerce</span>
+            <h3 class="portfolio-title mt-2" data-ar="مقهى الأصيل" data-en="Al-Aseel Coffee">مقهى الأصيل</h3>
+            <p class="portfolio-desc" data-ar="موقع طلبات أونلاين مع نظام ولاء" data-en="Online ordering website with loyalty system">موقع طلبات أونلاين مع نظام ولاء</p>
+            <div class="portfolio-tags">
+              <span>WordPress</span>
+              <span>WooCommerce</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-2">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-yellow-500/30 to-amber-500/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          <div class="portfolio-img-container phone-mockup">
+            <img src="mockup8.png" alt="توصيل سريع" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="تطبيق توصيل" data-en="Delivery App">تطبيق توصيل</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="توصيل سريع" data-en="Fast Delivery">توصيل سريع</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="تطبيق توصيل مع تتبع مباشر للطلبات" data-en="Delivery app with live order tracking">تطبيق توصيل مع تتبع مباشر للطلبات</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">React Native</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Socket.io</span>
+            <h3 class="portfolio-title mt-2" data-ar="توصيل سريع" data-en="Fast Delivery">توصيل سريع</h3>
+            <p class="portfolio-desc" data-ar="تطبيق توصيل مع تتبع مباشر للطلبات" data-en="Delivery app with live order tracking">تطبيق توصيل مع تتبع مباشر للطلبات</p>
+            <div class="portfolio-tags">
+              <span>React Native</span>
+              <span>Socket.io</span>
             </div>
           </div>
         </div>
 
         <div class="portfolio-card glass-card reveal reveal-delay-3">
-          <div class="portfolio-img h-64 bg-gradient-to-br from-slate-500/30 to-gray-600/30 flex items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <div class="portfolio-img-container">
+            <img src="mockup9.png" alt="PaySmart" loading="lazy">
+            <span class="design-badge">Design Concept</span>
+            <div class="portfolio-hover-btn" data-ar="شاهد التفاصيل" data-en="View Details">شاهد التفاصيل</div>
           </div>
-          <div class="p-6">
+          <div class="portfolio-info">
             <span class="text-xs text-[var(--accent)] font-medium" data-ar="تقنية مالية" data-en="Fintech">تقنية مالية</span>
-            <h3 class="text-xl font-bold mt-2 mb-2" data-ar="PaySmart" data-en="PaySmart">PaySmart</h3>
-            <p class="text-sm text-[var(--text-secondary)] mb-4" data-ar="منصة دفع إلكتروني آمنة وسهلة" data-en="Secure and easy electronic payment platform">منصة دفع إلكتروني آمنة وسهلة</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Next.js</span>
-              <span class="px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs">Stripe</span>
+            <h3 class="portfolio-title mt-2" data-ar="PaySmart" data-en="PaySmart">PaySmart</h3>
+            <p class="portfolio-desc" data-ar="منصة دفع إلكتروني آمنة وسهلة" data-en="Secure and easy electronic payment platform">منصة دفع إلكتروني آمنة وسهلة</p>
+            <div class="portfolio-tags">
+              <span>Next.js</span>
+              <span>Stripe</span>
             </div>
           </div>
         </div>
@@ -2380,36 +2694,66 @@ function toggleFaq(el) {
   if (!wasActive) el.classList.add('active');
 }
 
-// ============ SCROLL REVEAL ============
+// ============ SCROLL REVEAL (Enhanced) ============
 function observeReveals() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { 
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// ============ COUNTER ANIMATION ============
+// ============ COUNTER ANIMATION (Enhanced) ============
 function animateCounters() {
   document.querySelectorAll('.counter-value').forEach(counter => {
+    if (counter.dataset.animated) return;
     const target = parseInt(counter.dataset.target);
     if (!target) return;
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        counter.textContent = target + '+';
-        clearInterval(timer);
+    counter.dataset.animated = 'true';
+    const duration = 2500;
+    const startTime = performance.now();
+    
+    function updateCounter(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(target * easedProgress);
+      
+      if (target === 24) {
+        // Special case for 24/7 support
+        counter.textContent = current;
+        if (current >= target) {
+          counter.textContent = target;
+        } else {
+          requestAnimationFrame(updateCounter);
+        }
+      } else if (target === 99) {
+        // Special case for 99% satisfaction
+        counter.textContent = current + '%';
+        if (current >= target) {
+          counter.textContent = target + '%';
+        } else {
+          requestAnimationFrame(updateCounter);
+        }
       } else {
-        counter.textContent = Math.floor(current) + '+';
+        counter.textContent = current + '+';
+        if (current >= target) {
+          counter.textContent = target + '+';
+        } else {
+          requestAnimationFrame(updateCounter);
+        }
       }
-    }, 16);
+    }
+    requestAnimationFrame(updateCounter);
   });
 }
 
@@ -2436,7 +2780,22 @@ function showToast(msg) {
 // ============ INIT ============
 function initAnimations() {
   observeReveals();
-  setTimeout(animateCounters, 500);
+  // Counter animation triggered by scroll
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  const statsSection = document.querySelector('.stat-card');
+  if (statsSection) {
+    counterObserver.observe(statsSection);
+  } else {
+    setTimeout(animateCounters, 500);
+  }
 }
 
 // ============ SMOOTH SCROLL FOR ANCHORS ============
