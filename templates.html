@@ -3,339 +3,879 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="قوالب جاهزة لموقعك - اختر من بين مجموعة متنوعة من القوالب الاحترافية لمختلف المجالات.">
-    <title>قوالب جاهزة لموقعك - خبراء الويب</title>
+    <meta name="description" content="قوالب مواقع احترافية جاهزة مع معاينة حية - خبراء الويب">
+    <title>قوالب جاهزة — خبراء الويب</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/logo.png">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="خبراء الويب | Khobara Web">
-    <meta property="og:title" content="قوالب جاهزة لموقعك - خبراء الويب">
-    <meta property="og:description" content="اختر من بين مجموعة متنوعة من القوالب الاحترافية لمختلف المجالات وابدأ مشروعك اليوم.">
-    <meta property="og:image" content="images/hero_bg_v2.png">
-    <meta property="og:locale" content="ar_MA">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="قوالب جاهزة لموقعك - خبراء الويب">
-    <meta name="twitter:description" content="اختر من بين مجموعة متنوعة من القوالب الاحترافية لمختلف المجالات وابدأ مشروعك اليوم.">
-    <meta name="twitter:image" content="images/hero_bg_v2.png">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* ===== FILTER BUTTONS ===== */
+        .filter-btn {
+            transition: all .3s;
+            white-space: nowrap;
+        }
         .filter-btn.active {
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-            color: white;
-            border-color: transparent;
+            background: linear-gradient(90deg, var(--secondary-color, #1a73e8), var(--primary-color, #1a73e8));
+            color: white !important;
+            border-color: transparent !important;
         }
-        .template-card.hidden {
-            display: none !important;
-        }
-        .badge {
-            background: rgba(26, 115, 232, 0.2);
-            color: var(--primary-color);
-            padding: 4px 12px;
+        .template-card.hidden { display: none !important; }
+
+        /* ===== CARD ===== */
+        .tpl-card {
+            background: #0f1421;
+            border: 1px solid rgba(255,255,255,.07);
             border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            border: 1px solid rgba(26, 115, 232, 0.3);
+            overflow: hidden;
+            transition: transform .4s, box-shadow .4s, border-color .4s;
+            cursor: pointer;
         }
-        /* Fix for animation conflict */
-        .template-card {
-            transition: opacity 0.3s ease, transform 0.3s ease;
+        .tpl-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,.6);
+            border-color: rgba(26,115,232,.35);
+        }
+
+        /* ===== BROWSER MOCKUP ===== */
+        .browser-wrap {
+            position: relative;
+            background: #1a1f2e;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+        }
+        .browser-bar {
+            height: 36px;
+            background: #1a1f2e;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            flex-shrink: 0;
+        }
+        .b-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .b-dot.red   { background: #ff5f57; }
+        .b-dot.yel   { background: #febc2e; }
+        .b-dot.grn   { background: #28c840; }
+        .b-url {
+            flex: 1;
+            height: 20px;
+            background: rgba(255,255,255,.06);
+            border-radius: 4px;
+            margin: 0 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 10px;
+            color: #6080a0;
+            font-family: monospace;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        /* ===== IFRAME PREVIEW ===== */
+        .iframe-shell {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+            background: #08090c;
+        }
+        .iframe-shell iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 1280px;
+            height: 800px;
+            border: none;
+            transform-origin: top left;
+            transform: scale(0.268);
+            pointer-events: none;
+        }
+        .iframe-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .preview-hover-btn {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,.55);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity .35s;
+        }
+        .tpl-card:hover .preview-hover-btn {
+            opacity: 1;
+        }
+        .hover-inner {
+            background: rgba(26,115,232,.9);
+            color: white;
+            padding: .7rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            box-shadow: 0 8px 30px rgba(26,115,232,.5);
+        }
+
+        /* ===== CARD BODY ===== */
+        .card-body { padding: 1.2rem 1.4rem 1.4rem; }
+        .card-body h3 { color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: .3rem; }
+        .card-body p { color: #7080a0; font-size: .82rem; line-height: 1.6; margin-bottom: 1rem; }
+        .card-actions { display: flex; gap: .7rem; }
+        .btn-preview {
+            flex: 1;
+            text-align: center;
+            padding: .6rem .5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(26,115,232,.35);
+            color: #1a73e8;
+            font-size: .82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .3s;
+            background: transparent;
+            font-family: inherit;
+        }
+        .btn-preview:hover { background: rgba(26,115,232,.12); border-color: #1a73e8; }
+        .btn-order {
+            flex: 1;
+            text-align: center;
+            padding: .6rem .5rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg,#1a73e8,#1058c4);
+            color: #fff;
+            font-size: .82rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all .3s;
+            text-decoration: none;
+            display: block;
+        }
+        .btn-order:hover { opacity: .9; transform: translateY(-1px); }
+        .badge-category {
+            display: inline-block;
+            background: rgba(26,115,232,.15);
+            color: #60a0ff;
+            border: 1px solid rgba(26,115,232,.2);
+            padding: .2rem .7rem;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 700;
+            margin-bottom: .7rem;
+        }
+
+        /* ===== MODAL ===== */
+        #previewModal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            background: rgba(0,0,0,.92);
+            backdrop-filter: blur(12px);
+        }
+        #previewModal.open { display: flex; }
+
+        .modal-bar {
+            height: 52px;
+            background: #0d1117;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            flex-shrink: 0;
+            gap: 1rem;
+        }
+        .modal-dots { display: flex; gap: 7px; }
+        .modal-url-bar {
+            flex: 1;
+            max-width: 500px;
+            height: 28px;
+            background: rgba(255,255,255,.06);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: .78rem;
+            color: #6080a0;
+            font-family: monospace;
+            border: 1px solid rgba(255,255,255,.06);
+            overflow: hidden;
+            white-space: nowrap;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+        .modal-title {
+            color: #c0cce0;
+            font-size: .85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .modal-actions { display: flex; align-items: center; gap: .8rem; flex-shrink: 0; }
+        .modal-close {
+            width: 34px; height: 34px;
+            background: rgba(255,80,80,.15);
+            border: 1px solid rgba(255,80,80,.2);
+            border-radius: 8px;
+            color: #ff6060;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all .3s;
+            font-family: inherit;
+        }
+        .modal-close:hover { background: rgba(255,80,80,.3); }
+        .modal-order-btn {
+            background: linear-gradient(135deg,#1a73e8,#1058c4);
+            color: white;
+            border: none;
+            padding: .5rem 1.4rem;
+            border-radius: 8px;
+            font-size: .85rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.5;
+        }
+        .modal-body {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+        }
+        #modalIframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ===== VIEWPORT TOGGLES ===== */
+        .vp-btn {
+            width: 32px; height: 32px;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 6px;
+            color: #6080a0;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: .9rem;
+            transition: all .3s;
+        }
+        .vp-btn.active { background: rgba(26,115,232,.2); border-color: rgba(26,115,232,.4); color: #60a0ff; }
+        .vp-btn:hover:not(.active) { background: rgba(255,255,255,.08); }
+
+        /* ===== HERO ===== */
+        .tpl-hero {
+            position: relative;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .tpl-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%,rgba(26,115,232,.12),transparent);
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        .hstat { text-align: center; }
+        .hstat-num { font-size: 1.8rem; font-weight: 900; color: #1a73e8; display: block; }
+        .hstat-lbl { font-size: .78rem; color: #6080a0; }
+
+        /* ===== LOADING SPINNER ===== */
+        .iframe-loader {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #08090c;
+            z-index: 3;
+            transition: opacity .5s;
+        }
+        .spinner {
+            width: 30px; height: 30px;
+            border: 3px solid rgba(26,115,232,.2);
+            border-top-color: #1a73e8;
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== MISC ===== */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .section-tag {
+            display: inline-block;
+            background: rgba(26,115,232,.12);
+            border: 1px solid rgba(26,115,232,.2);
+            color: #60a0ff;
+            padding: .3rem 1rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .cta-box {
+            background: linear-gradient(135deg,#0d1421,#0a1830);
+            border: 1px solid rgba(26,115,232,.15);
+            border-radius: 24px;
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 50%,rgba(26,115,232,.08),transparent);
         }
     </style>
 </head>
 <body class="antialiased">
-    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
-            </a>
-            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none" aria-label="القائمة">
-                ☰
-            </button>
-            <div class="hidden md:flex items-center space-x-8">
-                <ul class="flex space-x-6 text-base">
-                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
-                    <li><a href="templates.html" class="nav-link text-white hover:text-blue-400">القوالب</a></li>
-                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
-                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
-                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
-                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
-                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
-                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
-                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
+
+<!-- ===== NAVBAR ===== -->
+<header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+        </a>
+        <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none" aria-label="القائمة">☰</button>
+        <div class="hidden md:flex items-center space-x-8">
+            <ul class="flex space-x-6 text-base">
+                <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                <li><a href="templates.html" class="nav-link text-white hover:text-blue-400">القوالب</a></li>
+                <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
+            </ul>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 top-20 z-50 md:hidden hidden" style="background:linear-gradient(180deg,#0a1628 0%,#1a2744 50%,#0f1d35 100%);">
+            <div class="flex flex-col items-center justify-center h-full space-y-2 py-8">
+                <a href="index.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">🏠</span> الرئيسية</a>
+                <a href="templates.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">📁</span> القوالب</a>
+                <a href="about.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">👥</span> من نحن</a>
+                <a href="services.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">⚙️</span> خدماتنا</a>
+                <a href="portfolio.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">💼</span> أعمالنا</a>
+                <a href="pricing.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">💰</span> الأسعار</a>
+                <a href="blog.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">📝</span> المدونة</a>
+                <a href="faq.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width:220px;text-align:center;"><span class="mr-2">❓</span> الأسئلة الشائعة</a>
+                <a href="contact.html" class="mobile-nav-link text-blue-400 text-lg font-bold py-3 px-8 rounded-lg border-2 border-blue-500 transition-all duration-300" style="min-width:220px;text-align:center;background:rgba(59,130,246,.15);"><span class="mr-2">📞</span> اتصل بنا</a>
+                <button id="closeMobileMenu" class="absolute top-4 left-4 text-white text-3xl">✕</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="tpl-hero pt-32 pb-16">
+    <div class="container mx-auto px-6 relative z-10">
+        <span class="section-tag">🎨 قوالب مواقع احترافية</span>
+        <h1 class="text-4xl md:text-5xl font-black text-white mt-3 mb-4 leading-tight">
+            قوالب حقيقية ومعاينة <span style="background:linear-gradient(135deg,#1a73e8,#60a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">حية</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed mb-2">
+            كل قالب هو موقع كامل جاهز للعمل — اضغط على أي قالب وشاهده مباشرة في متصفحك كأنك تزور الموقع الحقيقي
+        </p>
+        <div class="hero-stats">
+            <div class="hstat"><span class="hstat-num">٩</span><div class="hstat-lbl">قالب احترافي</div></div>
+            <div class="hstat"><span class="hstat-num">١٠٠٪</span><div class="hstat-lbl">مخصص بالكامل</div></div>
+            <div class="hstat"><span class="hstat-num">٧</span><div class="hstat-lbl">مجالات متنوعة</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FILTERS ===== -->
+<section class="container mx-auto px-6 mb-10">
+    <div class="flex flex-wrap justify-center gap-2 md:gap-3 no-scrollbar">
+        <button class="filter-btn active px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="all">الكل</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="ecommerce">🛍️ متاجر إلكترونية</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="restaurant">🍽️ مطاعم ومقاهي</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="health">🏥 عيادات وصحة</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="b2b">💼 شركات وأعمال</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="education">🎓 تعليم وأكاديميات</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="realestate">🏠 عقارات</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="portfolio">✨ بورتفوليو</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="fitness">💪 رياضة ولياقة</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-gray-700 text-white text-sm hover:border-blue-500 transition-all" data-filter="travel">✈️ سياحة وسفر</button>
+    </div>
+</section>
+
+<!-- ===== TEMPLATES GRID ===== -->
+<section class="container mx-auto px-6 pb-24">
+    <div id="templatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Fashion Store -->
+        <div class="template-card tpl-card" data-category="ecommerce" data-src="templates/fashion-store.html" data-title="متجر أزياء — LUXE STORE" data-url="luxestore.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">luxestore.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/fashion-store.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">🛍️ متجر إلكتروني</span>
+                <h3>متجر أزياء فاخر — LUXE</h3>
+                <p>تصميم داكن راقٍ مع كتالوج منتجات، فئات، كوبونات وتجربة شراء متكاملة.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=fashion-store" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Restaurant -->
+        <div class="template-card tpl-card" data-category="restaurant" data-src="templates/restaurant.html" data-title="مطعم فاخر — LA MAISON" data-url="lamaison.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">lamaison.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/restaurant.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">🍽️ مطعم وكافيه</span>
+                <h3>مطعم فاخر — LA MAISON</h3>
+                <p>أجواء ذهبية دافئة مع قائمة طعام، حجز الطاولات ونبذة عن المطعم والشيف.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=restaurant" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Medical Clinic -->
+        <div class="template-card tpl-card" data-category="health" data-src="templates/medical-clinic.html" data-title="عيادة طبية — عيادة الشفاء" data-url="clinic.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">clinic.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/medical-clinic.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">🏥 عيادة وصحة</span>
+                <h3>مركز طبي متكامل — عيادة الشفاء</h3>
+                <p>تصميم أبيض/أزرق نظيف مع حجز مواعيد، نبذة عن الأطباء والخدمات الطبية.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=medical-clinic" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Consulting -->
+        <div class="template-card tpl-card" data-category="b2b" data-src="templates/consulting.html" data-title="شركة استشارات — PEAK CONSULTING" data-url="peakconsulting.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">peakconsulting.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/consulting.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">💼 شركات وأعمال</span>
+                <h3>شركة استشارات — PEAK</h3>
+                <p>تصميم داكن مؤسسي راقٍ مع صفحة الخدمات، الفريق، الأرقام وإرسال الطلبات.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=consulting" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Academy -->
+        <div class="template-card tpl-card" data-category="education" data-src="templates/academy.html" data-title="منصة تعليمية — أكاديمية رائد" data-url="raed.academy">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">raed.academy</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/academy.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">🎓 تعليم وأكاديمية</span>
+                <h3>منصة تعليمية — أكاديمية رائد</h3>
+                <p>تصميم بنفسجي حيوي مع كتالوج دورات، مدربون، تقدم التعلم وكارد حجز.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=academy" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Real Estate -->
+        <div class="template-card tpl-card" data-category="realestate" data-src="templates/real-estate.html" data-title="وكالة عقارية — DARIA" data-url="daria.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">daria.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/real-estate.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">🏠 عقارات</span>
+                <h3>وكالة عقارية — DARIA</h3>
+                <p>تصميم دافئ فاخر مع بحث العقارات، تصفية النتائج، خريطة وصفحات وكلاء.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=real-estate" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Portfolio -->
+        <div class="template-card tpl-card" data-category="portfolio" data-src="templates/portfolio.html" data-title="بورتفوليو إبداعي — ZAID.DEV" data-url="zaiddesign.dev">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">zaiddesign.dev</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/portfolio.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">✨ بورتفوليو شخصي</span>
+                <h3>بورتفوليو إبداعي — ZAID.DEV</h3>
+                <p>تصميم تقني داكن مع عرض الأعمال، الخدمات، آراء العملاء ونموذج تواصل.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=portfolio" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Fitness -->
+        <div class="template-card tpl-card" data-category="fitness" data-src="templates/fitness.html" data-title="نادي رياضي — XFIT" data-url="xfit.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">xfit.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/fitness.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">💪 رياضة ولياقة</span>
+                <h3>نادي رياضي — XFIT GYM</h3>
+                <p>تصميم أسود/أحمر ديناميكي مع الكلاسات، الجدول الأسبوعي وخطط الاشتراك.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=fitness" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Travel -->
+        <div class="template-card tpl-card" data-category="travel" data-src="templates/travel.html" data-title="وكالة سياحية — NOMADS" data-url="nomads.ma">
+            <div class="browser-wrap">
+                <div class="browser-bar">
+                    <div class="b-dot red"></div><div class="b-dot yel"></div><div class="b-dot grn"></div>
+                    <div class="b-url">nomads.ma</div>
+                </div>
+                <div class="iframe-shell">
+                    <div class="iframe-loader"><div class="spinner"></div></div>
+                    <iframe src="templates/travel.html" loading="lazy" onload="iframeLoaded(this)"></iframe>
+                    <div class="iframe-overlay">
+                        <div class="preview-hover-btn">
+                            <div class="hover-inner">🖥️ معاينة حية كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="badge-category">✈️ سياحة وسفر</span>
+                <h3>وكالة سياحية — NOMADS</h3>
+                <p>تصميم محيطي أزرق فاخر مع الوجهات، الباقات، بحث الرحلات والتسجيل.</p>
+                <div class="card-actions">
+                    <button class="btn-preview" onclick="openPreview(this.closest('.tpl-card'))">👁️ معاينة كاملة</button>
+                    <a href="contact.html?template=travel" class="btn-order">اطلب القالب</a>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /grid -->
+
+    <!-- CTA -->
+    <div class="cta-box mt-16 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">ما لقيتيش اللي كيناسبك؟</h2>
+        <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto">نصمم لك موقع مخصص ١٠٠٪ من الصفر يعكس هويتك ويلبي احتياجات مشروعك.</p>
+        <a href="contact.html" class="btn-primary text-base inline-block px-8 py-4 rounded-xl">اطلب تصميم مخصص →</a>
+    </div>
+</section>
+
+</main><!-- /main -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-black py-12 text-center text-gray-400">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                <ul class="space-y-2">
+                    <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
+                    <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
+                    <li><a href="portfolio.html" class="text-gray-400 hover:text-blue-400 text-sm">أعمالنا</a></li>
+                    <li><a href="blog.html" class="text-gray-400 hover:text-blue-400 text-sm">المدونة</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
                 </ul>
             </div>
-            <!-- Mobile Menu Overlay -->
-            <div id="mobileMenu" class="fixed inset-0 top-20 z-50 md:hidden hidden" style="background: linear-gradient(180deg, #0a1628 0%, #1a2744 50%, #0f1d35 100%);">
-                <div class="flex flex-col items-center justify-center h-full space-y-2 py-8">
-                    <a href="index.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">🏠</span> الرئيسية
-                    </a>
-                    <a href="templates.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">📁</span> القوالب
-                    </a>
-                    <a href="about.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">👥</span> من نحن
-                    </a>
-                    <a href="services.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">⚙️</span> خدماتنا
-                    </a>
-                    <a href="portfolio.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">💼</span> أعمالنا
-                    </a>
-                    <a href="pricing.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">💰</span> الأسعار
-                    </a>
-                    <a href="blog.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">📝</span> المدونة
-                    </a>
-                    <a href="faq.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
-                        <span class="mr-2">❓</span> الأسئلة الشائعة
-                    </a>
-                    <a href="contact.html" class="mobile-nav-link text-blue-400 text-lg font-bold py-3 px-8 rounded-lg border-2 border-blue-500 transition-all duration-300" style="min-width: 220px; text-align: center; background: rgba(59, 130, 246, 0.15);">
-                        <span class="mr-2">📞</span> اتصل بنا
-                    </a>
-                    <button id="closeMobileMenu" class="absolute top-4 left-4 text-white text-3xl">✕</button>
-                </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                <ul class="space-y-2">
+                    <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                    <li class="text-gray-400 text-sm">الهاتف: <a href="tel:+212778878421" class="hover:text-blue-400">+212 778 878 421</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
-
-    <main class="pt-32 pb-16">
-        <section class="container mx-auto px-6 text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">قوالب جاهزة لموقعك</h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                اختر القالب المناسب لنشاطك، ونخصصه ليك فوقت قياسي وبسعر مناسب
-            </p>
-        </section>
-
-        <section class="container mx-auto px-6 mb-12">
-            <div class="flex flex-wrap justify-center gap-3 md:gap-4 overflow-x-auto pb-4 no-scrollbar">
-                <button class="filter-btn active px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="all">الكل</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="ecommerce">متاجر إلكترونية</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="restaurant">مطاعم ومقاهي</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="health">عيادات وخدمات صحية</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="b2b">شركات وخدمات B2B</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="education">تعليم وتكوين</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="realestate">عقار</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="portfolio">بورتفوليو شخصي</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="fitness">رياضة ولياقة</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="travel">سياحة وسفر</button>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-6">
-            <div id="templatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Template 1 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="ecommerce">
-                    <div class="relative group">
-                        <img src="images/portfolio_web_design_1.png" alt="قالب متجر أزياء" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">متاجر إلكترونية</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب متجر أزياء - أنيق</h3>
-                        <p class="text-gray-400 text-sm mb-6">تصميم عصري متكامل لعرض وبيع المنتجات بسلاسة.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=fashion-store" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 2 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="restaurant">
-                    <div class="relative group">
-                        <img src="images/portfolio_web_design_2.png" alt="قالب مطعم فاخر" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">مطاعم ومقاهي</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب مطعم فاخر</h3>
-                        <p class="text-gray-400 text-sm mb-6">قالب يعرض قائمة الطعام والحجز الإلكتروني بأسلوب راقي.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=restaurant-luxury" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 3 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="health">
-                    <div class="relative group">
-                        <img src="images/portfolio_app_design_1.png" alt="قالب عيادة طبية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">عيادات وخدمات صحية</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب عيادة طبية حديثة</h3>
-                        <p class="text-gray-400 text-sm mb-6">حل مثالي للعيادات لتنظيم المواعيد والتعريف بالخدمات.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=medical-clinic" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 4 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="b2b">
-                    <div class="relative group">
-                        <img src="images/portfolio_app_design_2.png" alt="قالب شركة استشارات" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">شركات وخدمات B2B</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب شركة استشارات</h3>
-                        <p class="text-gray-400 text-sm mb-6">تصميم احترافي يعزز الثقة ويبرز خبرات شركتك.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=consulting-firm" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 5 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="education">
-                    <div class="relative group">
-                        <img src="images/portfolio_branding_1.png" alt="قالب أكاديمية تعليمية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">تعليم وتكوين</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب أكاديمية تعليمية</h3>
-                        <p class="text-gray-400 text-sm mb-6">منصة متكاملة لعرض الدورات والتدريبات التفاعلية.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=edu-academy" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 6 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="realestate">
-                    <div class="relative group">
-                        <img src="images/portfolio_branding_2.png" alt="قالب وكالة عقارية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">عقار</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب وكالة عقارية</h3>
-                        <p class="text-gray-400 text-sm mb-6">اعرض عقاراتك بصور جذابة وتفاصيل دقيقة لعملائك.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=real-estate" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 7 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="portfolio">
-                    <div class="relative group">
-                        <img src="images/blog_thumbnail_1.png" alt="قالب بورتفوليو إبداعي" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">بورتفوليو شخصي</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب بورتفوليو إبداعي</h3>
-                        <p class="text-gray-400 text-sm mb-6">أبرز أعمالك ومهاراتك الشخصية بتصميم فريد.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=creative-portfolio" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 8 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="fitness">
-                    <div class="relative group">
-                        <img src="images/blog_thumbnail_2.png" alt="قالب نادي رياضي" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">رياضة ولياقة</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب نادي رياضي</h3>
-                        <p class="text-gray-400 text-sm mb-6">شجع عملائك على التسجيل وعرض جداول التمارين.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=fitness-club" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Template 9 -->
-                <div class="template-card card p-0 overflow-hidden" data-category="travel">
-                    <div class="relative group">
-                        <img src="images/blog_thumbnail_3.png" alt="قالب وكالة سفر" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-4 right-4"><span class="badge">سياحة وسفر</span></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">قالب وكالة سفر وسياحة</h3>
-                        <p class="text-gray-400 text-sm mb-6">اعرض أجمل الوجهات والرحلات السياحية لعملائك.</p>
-                        <div class="flex gap-4">
-                            <span class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-500 text-sm font-bold cursor-not-allowed select-none" title="قريباً">معاينة حية — قريباً</span>
-                            <a href="contact.html?template=travel-agency" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-6 py-20 text-center mt-12 bg-gray-900 rounded-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">ما لقيتيش القالب اللي كيناسبك؟</h2>
-            <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">نحن هنا لمساعدتك في بناء تصميم مخصص بالكامل يلبي احتياجات مشروعك الفريدة.</p>
-            <a href="contact.html" class="btn-primary text-lg inline-block">اطلب تصميم مخصص</a>
-        </section>
-    </main>
-
-    <footer class="bg-black py-12 text-center text-gray-400">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
-                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
-                                        <ul class="space-y-2">
-                        <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
-                        <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
-                        <li><a href="portfolio.html" class="text-gray-400 hover:text-blue-400 text-sm">أعمالنا</a></li>
-                        <li><a href="blog.html" class="text-gray-400 hover:text-blue-400 text-sm">المدونة</a></li>
-                        <li><a href="faq.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسئلة الشائعة</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
-                    <ul class="space-y-2">
-                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
-                        <li class="text-gray-400 text-sm">الهاتف: <a href="tel:+212778878421" class="hover:text-blue-400">+212 778 878 421</a></li>
-                    </ul>
-                </div>
-            </div>
-            <p class="text-sm border-t border-gray-800 pt-6">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
         </div>
-    </footer>
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+            <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+        </div>
+        <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const templateCards = document.querySelectorAll('.template-card');
+<!-- ===== LIVE PREVIEW MODAL ===== -->
+<div id="previewModal" role="dialog" aria-modal="true" aria-label="معاينة القالب">
+    <div class="modal-bar">
+        <!-- Dots -->
+        <div class="modal-dots">
+            <button class="modal-close" onclick="closePreview()" title="إغلاق">✕</button>
+        </div>
 
-            // Initial setup: ensure cards are visible if not hidden by JS
-            templateCards.forEach(card => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-                card.classList.remove('opacity-0', 'translate-y-10'); // Prevent script.js from hiding them initially
-            });
+        <!-- Viewport toggles -->
+        <div style="display:flex;gap:6px">
+            <button class="vp-btn active" id="vpDesktop" onclick="setViewport('desktop')" title="سطح المكتب">🖥️</button>
+            <button class="vp-btn" id="vpTablet"  onclick="setViewport('tablet')"  title="لوحة">📱</button>
+            <button class="vp-btn" id="vpMobile"  onclick="setViewport('mobile')"  title="هاتف">📲</button>
+        </div>
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+        <!-- URL bar -->
+        <div class="modal-url-bar" id="modalUrlBar">loading...</div>
 
-                    const filter = button.getAttribute('data-filter');
+        <!-- Title & order -->
+        <div class="modal-actions">
+            <span class="modal-title" id="modalTitle"></span>
+            <a href="#" class="modal-order-btn" id="modalOrderBtn">اطلب هذا القالب →</a>
+        </div>
+    </div>
 
-                    templateCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.classList.remove('hidden');
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'scale(1)';
-                            }, 10);
-                        } else {
-                            card.classList.add('hidden');
-                            card.style.opacity = '0';
-                            card.style.transform = 'scale(0.9)';
-                        }
-                    });
-                });
+    <!-- iframe wrapper for viewport simulation -->
+    <div class="modal-body" id="modalBody">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#08090c;position:relative" id="vpWrapper">
+            <iframe id="modalIframe" src="" title="معاينة القالب"></iframe>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+/* ===== CARD FILTER ===== */
+document.addEventListener('DOMContentLoaded', function () {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.template-card');
+
+    /* Keep cards visible on load */
+    cards.forEach(c => { c.style.opacity = '1'; c.style.transform = 'none'; });
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            cards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
             });
         });
-    </script>
+    });
+
+    /* Clicking the overlay also opens preview */
+    document.querySelectorAll('.iframe-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function () {
+            openPreview(this.closest('.tpl-card'));
+        });
+    });
+});
+
+/* ===== IFRAME LOADER ===== */
+function iframeLoaded(iframe) {
+    const loader = iframe.closest('.iframe-shell').querySelector('.iframe-loader');
+    if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.remove(), 500); }
+}
+
+/* ===== MODAL OPEN/CLOSE ===== */
+let currentOrderUrl = '';
+
+function openPreview(card) {
+    const src   = card.dataset.src;
+    const title = card.dataset.title;
+    const url   = card.dataset.url;
+    const template = src.replace('templates/', '').replace('.html', '');
+
+    document.getElementById('modalIframe').src  = src;
+    document.getElementById('modalTitle').textContent  = title;
+    document.getElementById('modalUrlBar').textContent = 'https://' + url;
+    document.getElementById('modalOrderBtn').href = 'contact.html?template=' + template;
+
+    setViewport('desktop');
+    document.getElementById('previewModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePreview() {
+    document.getElementById('previewModal').classList.remove('open');
+    document.getElementById('modalIframe').src = '';
+    document.body.style.overflow = '';
+    setViewport('desktop');
+}
+
+/* ===== VIEWPORT ===== */
+function setViewport(mode) {
+    const iframe   = document.getElementById('modalIframe');
+    const wrapper  = document.getElementById('vpWrapper');
+    const desktop  = document.getElementById('vpDesktop');
+    const tablet   = document.getElementById('vpTablet');
+    const mobile   = document.getElementById('vpMobile');
+
+    [desktop, tablet, mobile].forEach(b => b.classList.remove('active'));
+
+    if (mode === 'desktop') {
+        iframe.style.width  = '100%';
+        iframe.style.height = '100%';
+        iframe.style.maxWidth  = '';
+        iframe.style.maxHeight = '';
+        iframe.style.margin = '';
+        iframe.style.boxShadow = '';
+        iframe.style.borderRadius = '';
+        wrapper.style.alignItems     = 'stretch';
+        wrapper.style.justifyContent = 'stretch';
+        wrapper.style.background     = '#fff';
+        desktop.classList.add('active');
+    } else if (mode === 'tablet') {
+        iframe.style.width  = '768px';
+        iframe.style.height = '1024px';
+        iframe.style.maxWidth  = '768px';
+        iframe.style.maxHeight = '1024px';
+        iframe.style.margin = 'auto';
+        iframe.style.boxShadow = '0 30px 80px rgba(0,0,0,.6)';
+        iframe.style.borderRadius = '12px';
+        wrapper.style.alignItems     = 'center';
+        wrapper.style.justifyContent = 'center';
+        wrapper.style.background     = '#0a0f18';
+        tablet.classList.add('active');
+    } else {
+        iframe.style.width  = '390px';
+        iframe.style.height = '844px';
+        iframe.style.maxWidth  = '390px';
+        iframe.style.maxHeight = '844px';
+        iframe.style.margin = 'auto';
+        iframe.style.boxShadow = '0 30px 80px rgba(0,0,0,.6)';
+        iframe.style.borderRadius = '40px';
+        wrapper.style.alignItems     = 'center';
+        wrapper.style.justifyContent = 'center';
+        wrapper.style.background     = '#0a0f18';
+        mobile.classList.add('active');
+    }
+}
+
+/* Close on Escape */
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePreview(); });
+</script>
 </body>
 </html>

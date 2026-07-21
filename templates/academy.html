@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>أكاديمية رائد — منصة تعليمية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#0d0b1a;color:#e8e0ff;overflow-x:hidden}
+:root{--purple:#6c3af5;--purple2:#8b5cf6;--pink:#ec4899;--dark:#0d0b1a;--card:#120f25}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(13,11,26,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,58,245,.2)}
+.logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--purple2),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{color:#9090b0;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:white}
+.nav-cta{display:flex;gap:.8rem;align-items:center}
+.btn-login{color:#9090b0;font-size:.9rem;cursor:pointer;font-family:'Cairo',sans-serif;background:none;border:none}
+.btn-signup{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;padding:.7rem 1.6rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.9rem}
+
+.hero{min-height:90vh;display:flex;align-items:center;padding:0 5%;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(108,58,245,.15),transparent),radial-gradient(ellipse 60% 60% at 80% 80%,rgba(236,72,153,.08),transparent)}
+.floating-orb{position:absolute;border-radius:50%}
+.orb1{width:400px;height:400px;background:radial-gradient(circle,rgba(108,58,245,.2),transparent);top:-10%;left:20%}
+.orb2{width:300px;height:300px;background:radial-gradient(circle,rgba(236,72,153,.1),transparent);bottom:10%;right:10%}
+.hero-content{position:relative;z-index:2;max-width:55%}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(108,58,245,.2);border:1px solid rgba(108,58,245,.3);color:var(--purple2);padding:.4rem 1.2rem;border-radius:30px;font-size:.8rem;font-weight:700;margin-bottom:2rem}
+.hero h1{font-size:3.5rem;font-weight:900;line-height:1.1;margin-bottom:1.5rem;color:white}
+.hero h1 .grad{background:linear-gradient(135deg,var(--purple2),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#9090b0;line-height:1.9;margin-bottom:2.5rem;font-size:1rem;max-width:480px}
+.hero-cta{display:flex;gap:1rem;margin-bottom:2.5rem}
+.btn-main{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 8px 30px rgba(108,58,245,.5);transition:all .3s;text-decoration:none;display:inline-block}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(108,58,245,.6)}
+.btn-play{display:flex;align-items:center;gap:.7rem;color:white;font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none}
+.play-icon{width:48px;height:48px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .3s;border:1px solid rgba(255,255,255,.15)}
+.hero-stats{display:flex;gap:2.5rem}
+.hstat{text-align:center}
+.hstat-num{font-size:1.8rem;font-weight:900;color:white;display:block}
+.hstat-label{font-size:.8rem;color:#6060a0}
+.hero-preview{position:absolute;left:3%;top:50%;transform:translateY(-50%);width:42%;max-width:480px;z-index:2}
+.preview-window{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.preview-bar{display:flex;gap:.4rem;margin-bottom:1rem}
+.preview-dot{width:10px;height:10px;border-radius:50%}
+.pd1{background:#ff5f57}
+.pd2{background:#febc2e}
+.pd3{background:#28c840}
+.course-list{display:flex;flex-direction:column;gap:.8rem}
+.course-item{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.04);border-radius:10px;padding:.8rem;border:1px solid rgba(255,255,255,.06)}
+.ci-thumb{width:50px;height:50px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.ct1{background:linear-gradient(135deg,#6c3af5,#8b5cf6)}
+.ct2{background:linear-gradient(135deg,#ec4899,#f472b6)}
+.ct3{background:linear-gradient(135deg,#0ea5e9,#38bdf8)}
+.ci-info{flex:1}
+.ci-info h4{font-size:.85rem;font-weight:700;color:white;margin-bottom:.2rem}
+.ci-info p{font-size:.75rem;color:#6060a0}
+.ci-progress{width:70px;text-align:right}
+.prog-bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-bottom:.3rem}
+.prog-fill{height:100%;border-radius:2px}
+.pf1{background:linear-gradient(90deg,var(--purple),var(--purple2));width:75%}
+.pf2{background:linear-gradient(90deg,var(--pink),#f472b6);width:45%}
+.pf3{background:linear-gradient(90deg,#0ea5e9,#38bdf8);width:90%}
+.prog-pct{font-size:.7rem;color:#6060a0}
+
+/* CATEGORIES */
+.categories{padding:5rem 5%;background:#0b0918}
+.categories-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+.cat-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;text-align:center;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
+.cat-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(108,58,245,.1),transparent);opacity:0;transition:opacity .4s}
+.cat-item:hover{border-color:rgba(108,58,245,.3);transform:translateY(-5px)}
+.cat-item:hover::before{opacity:1}
+.cat-icon{font-size:2.5rem;margin-bottom:1rem}
+.cat-name{font-size:.95rem;font-weight:700;color:white;margin-bottom:.3rem}
+.cat-count{font-size:.8rem;color:#6060a0}
+
+/* COURSES */
+.courses{padding:5rem 5%;background:#0d0b1a}
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.course-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;transition:all .4s;cursor:pointer}
+.course-card:hover{border-color:rgba(108,58,245,.3);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.course-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative}
+.cth1{background:linear-gradient(135deg,#1a0a40,#2d1060)}
+.cth2{background:linear-gradient(135deg,#1a0028,#3d0060)}
+.cth3{background:linear-gradient(135deg,#001a28,#003060)}
+.cth4{background:linear-gradient(135deg,#001a0a,#003020)}
+.cth5{background:linear-gradient(135deg,#1a1a00,#303000)}
+.cth6{background:linear-gradient(135deg,#1a0010,#400020)}
+.course-level{position:absolute;top:.8rem;right:.8rem;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);padding:.2rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;color:white}
+.course-info{padding:1.2rem}
+.course-info .tag{display:inline-block;background:rgba(108,58,245,.2);color:var(--purple2);padding:.2rem .8rem;border-radius:20px;font-size:.75rem;margin-bottom:.8rem}
+.course-info h3{font-size:.95rem;font-weight:700;color:white;margin-bottom:.5rem;line-height:1.4}
+.course-meta{display:flex;gap:1rem;font-size:.78rem;color:#6060a0;margin-bottom.8rem}
+.course-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.06)}
+.course-price{font-size:1.1rem;font-weight:700;color:var(--purple2)}
+.course-rating{font-size:.8rem;color:#9090b0}
+.enroll-btn{background:linear-gradient(135deg,var(--purple),var(--purple2));color:white;border:none;padding:.5rem 1.2rem;border-radius:20px;font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .3s}
+.enroll-btn:hover{opacity:.9}
+
+/* INSTRUCTORS */
+.instructors{padding:5rem 5%;background:#0b0918}
+.instructors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+.instructor-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;text-align:center;transition:all .4s}
+.instructor-card:hover{border-color:rgba(108,58,245,.3)}
+.instr-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.ia1{background:linear-gradient(135deg,#1a0a40,#2d1060)}
+.ia2{background:linear-gradient(135deg,#1a002d,#3d0060)}
+.ia3{background:linear-gradient(135deg,#001a28,#003060)}
+.ia4{background:linear-gradient(135deg,#001a0a,#003020)}
+.instr-name{font-weight:700;color:white;margin-bottom:.3rem}
+.instr-spec{font-size:.8rem;color:var(--purple2);margin-bottom:.5rem}
+.instr-stats{font-size:.75rem;color:#6060a0}
+
+/* CTA SECTION */
+.cta-section{padding:6rem 5%;background:linear-gradient(135deg,var(--purple),#5b21b6,var(--purple));position:relative;overflow:hidden;text-align:center}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.1),transparent)}
+.cta-section h2{font-size:2.8rem;font-weight:900;color:white;margin-bottom:1rem}
+.cta-section p{color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;justify-content:center;gap:1rem}
+.btn-white{background:white;color:var(--purple);border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-border-white{border:2px solid rgba(255,255,255,.5);color:white;background:transparent;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;display:inline-block}
+
+footer{background:#080614;padding:3rem 5% 1.5rem;border-top:1px solid rgba(108,58,245,.1)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;margin-top:2rem;text-align:center;color:#3a3060;font-size:.8rem}
+
+.section-header{margin-bottom:0;text-align:center}
+.s-tag{display:inline-block;background:rgba(108,58,245,.2);color:var(--purple2);padding:.3rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-bottom:.8rem}
+.section-header h2{font-size:2.2rem;font-weight:800;color:white;margin-bottom:.5rem}
+.section-header p{color:#6060a0;font-size:.95rem}
+</style>
+</head>
+<body>
+<nav>
+  <span class="logo">أكاديمية رائد</span>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">الدورات</a></li>
+    <li><a href="#">المدربون</a></li>
+    <li><a href="#">الأسعار</a></li>
+    <li><a href="#">تواصل</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn-login">تسجيل الدخول</button>
+    <button class="btn-signup">سجل مجاناً</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="floating-orb orb1"></div>
+  <div class="floating-orb orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🎓 +١٢٠,٠٠٠ طالب يتعلمون الآن</div>
+    <h1>تعلّم بلا<br>حدود وابنِ<br><span class="grad">مستقبلك</span></h1>
+    <p>منصة تعليمية عربية متخصصة تضم أفضل المدربين والدورات في مجالات التكنولوجيا، ريادة الأعمال، والفنون الإبداعية.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-main">ابدأ التعلم مجاناً</a>
+      <a href="#" class="btn-play"><div class="play-icon">▶</div> شاهد كيف يعمل</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-num">+٥٠٠</span><div class="hstat-label">دورة تعليمية</div></div>
+      <div class="hstat"><span class="hstat-num">+١٢٠ك</span><div class="hstat-label">طالب نشط</div></div>
+      <div class="hstat"><span class="hstat-num">٨٠+</span><div class="hstat-label">مدرب محترف</div></div>
+    </div>
+  </div>
+  <div class="hero-preview">
+    <div class="preview-window">
+      <div class="preview-bar"><div class="preview-dot pd1"></div><div class="preview-dot pd2"></div><div class="preview-dot pd3"></div></div>
+      <div style="font-size:.85rem;font-weight:700;color:white;margin-bottom:1rem">مساراتك التعليمية</div>
+      <div class="course-list">
+        <div class="course-item"><div class="ci-thumb ct1">⚡</div><div class="ci-info"><h4>تطوير الويب بـ React</h4><p>المرحلة ٥ من ١٠</p></div><div class="ci-progress"><div class="prog-bar"><div class="prog-fill pf1"></div></div><div class="prog-pct">٧٥٪</div></div></div>
+        <div class="course-item"><div class="ci-thumb ct2">🎨</div><div class="ci-info"><h4>تصميم UI/UX احترافي</h4><p>المرحلة ٣ من ٨</p></div><div class="ci-progress"><div class="prog-bar"><div class="prog-fill pf2"></div></div><div class="prog-pct">٤٥٪</div></div></div>
+        <div class="course-item"><div class="ci-thumb ct3">🤖</div><div class="ci-info"><h4>الذكاء الاصطناعي والـ ML</h4><p>المرحلة ٩ من ١٠</p></div><div class="ci-progress"><div class="prog-bar"><div class="prog-fill pf3"></div></div><div class="prog-pct">٩٠٪</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="section-header">
+    <span class="s-tag">تصفح المجالات</span>
+    <h2>ماذا تريد أن تتعلم؟</h2>
+    <p>نوفر تخصصات شاملة تناسب كل مستوى واهتمام</p>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-item"><div class="cat-icon">💻</div><div class="cat-name">البرمجة والتطوير</div><div class="cat-count">١٢٥ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">🎨</div><div class="cat-name">التصميم الجرافيكي</div><div class="cat-count">٨٤ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">📈</div><div class="cat-name">التسويق الرقمي</div><div class="cat-count">٦٣ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">🤖</div><div class="cat-name">الذكاء الاصطناعي</div><div class="cat-count">٤٧ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">💼</div><div class="cat-name">ريادة الأعمال</div><div class="cat-count">٥٨ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">📸</div><div class="cat-name">التصوير والفيديو</div><div class="cat-count">٣٩ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">🔐</div><div class="cat-name">الأمن السيبراني</div><div class="cat-count">٣٢ دورة</div></div>
+    <div class="cat-item"><div class="cat-icon">📊</div><div class="cat-name">تحليل البيانات</div><div class="cat-count">٤٤ دورة</div></div>
+  </div>
+</section>
+
+<section class="courses">
+  <div class="section-header">
+    <span class="s-tag">الدورات المميزة</span>
+    <h2>الأكثر تسجيلاً هذا الشهر</h2>
+    <p>دورات عملية تعلمك مهارات حقيقية تطلبها سوق العمل</p>
+  </div>
+  <div class="courses-grid">
+    <div class="course-card"><div class="course-thumb cth1">⚡<span class="course-level">متقدم</span></div><div class="course-info"><span class="tag">البرمجة</span><h3>React & Next.js من الصفر للاحتراف</h3><div class="course-meta"><span>⏱ ٤٢ ساعة</span><span>📹 ١٢٠ درس</span></div><div class="course-footer"><div><div class="course-price">٣٩٩ MAD</div><div class="course-rating">⭐ ٤.٩ (١,٢٤٠)</div></div><button class="enroll-btn">سجل الآن</button></div></div></div>
+    <div class="course-card"><div class="course-thumb cth2">🎨<span class="course-level">مبتدئ</span></div><div class="course-info"><span class="tag">التصميم</span><h3>UI/UX Design مع Figma: الدليل الشامل</h3><div class="course-meta"><span>⏱ ٣٥ ساعة</span><span>📹 ٩٨ درس</span></div><div class="course-footer"><div><div class="course-price">٢٩٩ MAD</div><div class="course-rating">⭐ ٤.٨ (٨٩٥)</div></div><button class="enroll-btn">سجل الآن</button></div></div></div>
+    <div class="course-card"><div class="course-thumb cth3">🤖<span class="course-level">متوسط</span></div><div class="course-info"><span class="tag">الذكاء الاصطناعي</span><h3>Python للذكاء الاصطناعي وتعلم الآلة</h3><div class="course-meta"><span>⏱ ٥٨ ساعة</span><span>📹 ١٥٠ درس</span></div><div class="course-footer"><div><div class="course-price">٤٩٩ MAD</div><div class="course-rating">⭐ ٤.٩ (٢,١٠٠)</div></div><button class="enroll-btn">سجل الآن</button></div></div></div>
+    <div class="course-card"><div class="course-thumb cth4">📈<span class="course-level">مبتدئ</span></div><div class="course-info"><span class="tag">التسويق</span><h3>التسويق الرقمي الشامل: SEO & Social</h3><div class="course-meta"><span>⏱ ٢٨ ساعة</span><span>📹 ٨٠ درس</span></div><div class="course-footer"><div><div class="course-price">٢٤٩ MAD</div><div class="course-rating">⭐ ٤.٧ (٦٤٠)</div></div><button class="enroll-btn">سجل الآن</button></div></div></div>
+    <div class="course-card"><div class="course-thumb cth5">💼<span class="course-level">متوسط</span></div><div class="course-info"><span class="tag">الأعمال</span><h3>ريادة الأعمال: من الفكرة إلى الشركة</h3><div class="course-meta"><span>⏱ ٢٠ ساعة</span><span>📹 ٦٠ درس</span></div><div class="course-footer"><div><div class="course-price">٣٤٩ MAD</div><div class="course-rating">⭐ ٤.٨ (٤٨٠)</div></div><button class="enroll-btn">سجل الآن</button></div></div></div>
+    <div class="course-card"><div class="course-thumb cth6">🔐<span class="course-level">متقدم</span></div><div class="course-info"><span class="tag">الأمن</span><h3>الأمن السيبراني واختبار الاختراق</h3><div class="course-meta"><span>⏱ ٥٠ ساعة</span><span>📹 ١٣٠ درس</span></div><div class="course-footer"><div><div class="course-price">٤٤٩ MAD</div><div class="course-rating">⭐ ٤.٩ (٩٢٠)</div></div><button class="enroll-btn">سجل الآن</button></div></div></div>
+  </div>
+</section>
+
+<section class="instructors">
+  <div class="section-header">
+    <span class="s-tag">مدربونا</span>
+    <h2>تعلم من أفضل الخبراء</h2>
+    <p>مدربون معتمدون بخبرة عملية حقيقية في كبرى الشركات</p>
+  </div>
+  <div class="instructors-grid">
+    <div class="instructor-card"><div class="instr-avatar ia1">👨‍💻</div><div class="instr-name">محمد أيت باها</div><div class="instr-spec">تطوير الويب — React & Node.js</div><div class="instr-stats">⭐ ٤.٩ | ١٢,٠٠٠ طالب | ٨ دورات</div></div>
+    <div class="instructor-card"><div class="instr-avatar ia2">👩‍🎨</div><div class="instr-name">سلمى الرميلي</div><div class="instr-spec">تصميم UI/UX — Figma & Adobe</div><div class="instr-stats">⭐ ٤.٨ | ٨,٥٠٠ طالب | ٦ دورات</div></div>
+    <div class="instructor-card"><div class="instr-avatar ia3">👨‍🔬</div><div class="instr-name">يونس العياشي</div><div class="instr-spec">الذكاء الاصطناعي — Python & ML</div><div class="instr-stats">⭐ ٤.٩ | ١٥,٠٠٠ طالب | ١٠ دورات</div></div>
+    <div class="instructor-card"><div class="instr-avatar ia4">👩‍💼</div><div class="instr-name">إيمان الزياني</div><div class="instr-spec">ريادة الأعمال والاستراتيجية</div><div class="instr-stats">⭐ ٤.٧ | ٦,٢٠٠ طالب | ٥ دورات</div></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>ابدأ رحلتك اليوم 🚀</h2>
+  <p>انضم لأكثر من ١٢٠,٠٠٠ طالب يبنون مستقبلهم معنا. أول ٣٠ يوم مجاناً!</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-white">ابدأ مجاناً الآن</a>
+    <a href="#" class="btn-border-white">تصفح الدورات</a>
+  </div>
+</section>
+
+<footer>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem">
+    <div>
+      <div style="font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">أكاديمية رائد</div>
+      <p style="color:#3a3060;font-size:.85rem;line-height:1.8">منصة تعليمية عربية شاملة تضم أفضل الدورات والمدربين في مجالات التكنولوجيا والأعمال والفنون.</p>
+    </div>
+    <div><h4 style="color:white;font-size:.9rem;margin-bottom:1rem">التعلم</h4><ul style="list-style:none"><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">جميع الدورات</a></li><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">المدربون</a></li><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">المسارات</a></li></ul></div>
+    <div><h4 style="color:white;font-size:.9rem;margin-bottom:1rem">الشركة</h4><ul style="list-style:none"><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">من نحن</a></li><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">درّس معنا</a></li><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">وظائف</a></li></ul></div>
+    <div><h4 style="color:white;font-size:.9rem;margin-bottom:1rem">الدعم</h4><ul style="list-style:none"><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">مركز المساعدة</a></li><li style="margin-bottom:.5rem"><a href="#" style="color:#3a3060;text-decoration:none;font-size:.85rem">تواصل معنا</a></li></ul></div>
+  </div>
+  <div class="f-bottom">© 2026 أكاديمية رائد — تصميم خبراء الويب</div>
+</footer>
+</body>
+</html>

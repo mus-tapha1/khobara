@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>عيادة الشفاء — مركز طبي متكامل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#f0f4f8;color:#1a2940;overflow-x:hidden}
+:root{--blue:#0066cc;--blue2:#0052a3;--teal:#00b8a0;--light:#f0f4f8;--white:#fff}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:#fff;box-shadow:0 2px 20px rgba(0,102,204,.08)}
+.logo{display:flex;align-items:center;gap:.8rem}
+.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem}
+.logo-text{font-size:1.2rem;font-weight:800;color:var(--blue2)}
+.logo-text span{display:block;font-size:.7rem;font-weight:400;color:#888}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#555;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{display:flex;gap:.8rem}
+.btn-outline-blue{border:2px solid var(--blue);color:var(--blue);background:transparent;padding:.6rem 1.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem;text-decoration:none;display:inline-block}
+.btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;padding:.6rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem;text-decoration:none;display:inline-block}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#e8f0fc 0%,#d0e8ff 50%,#e0f7f4 100%);padding:5rem 5%;display:flex;align-items:center;gap:4rem;position:relative;overflow:hidden;min-height:85vh}
+.hero::before{content:'';position:absolute;top:-50%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,204,.06),transparent);border-radius:50%}
+.hero-content{flex:1;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,102,204,.1);color:var(--blue);padding:.4rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem}
+.hero h1{font-size:3.2rem;font-weight:900;line-height:1.15;color:#0a1e40;margin-bottom:1.2rem}
+.hero h1 span{color:var(--blue)}
+.hero p{color:#5a7080;line-height:1.9;margin-bottom:2rem;font-size:1rem;max-width:480px}
+.hero-btns{display:flex;gap:1rem;margin-bottom:2.5rem}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 8px 25px rgba(0,102,204,.3);transition:all .3s;text-decoration:none;display:inline-block}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,102,204,.4)}
+.btn-sec{background:white;color:var(--blue);border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 4px 15px rgba(0,0,0,.1);text-decoration:none;display:inline-block}
+.hero-trust{display:flex;gap:2rem}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#5a7080}
+.trust-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;flex-shrink:0}
+.hero-visual{flex:1;position:relative;max-width:480px}
+.hero-card-main{background:white;border-radius:20px;padding:2rem;box-shadow:0 20px 60px rgba(0,102,204,.12);position:relative;z-index:2}
+.doctor-profile{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.doctor-avatar{width:70px;height:70px;background:linear-gradient(135deg,#cce0ff,#d0f5f0);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.doctor-name{font-weight:700;color:#0a1e40;margin-bottom:.2rem}
+.doctor-spec{font-size:.8rem;color:var(--blue);font-weight:600}
+.doctor-rating{font-size:.8rem;color:#888}
+.appt-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem}
+.slot{background:#f0f4f8;border:1px solid #e0e8f0;border-radius:8px;padding:.5rem;text-align:center;font-size:.8rem;cursor:pointer;transition:all .3s}
+.slot.available{color:#0066cc;font-weight:600}
+.slot.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
+.slot.booked{color:#ccc;background:#f8f8f8;cursor:not-allowed}
+.floating-badge{position:absolute;top:-15px;left:-15px;background:white;border-radius:12px;padding:.8rem 1rem;box-shadow:0 8px 25px rgba(0,0,0,.1);font-size:.8rem;font-weight:700;color:#0a1e40;z-index:3}
+.floating-badge span{color:var(--teal);font-size:1.2rem;display:block}
+
+/* STATS */
+.stats-bar{background:white;padding:2rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.stat-item{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;color:var(--blue);display:block}
+.stat-label{font-size:.8rem;color:#888}
+
+/* SERVICES */
+.services{padding:5rem 5%;background:var(--light)}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-tag{display:inline-block;background:rgba(0,102,204,.1);color:var(--blue);padding:.3rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-bottom:1rem}
+.section-header h2{font-size:2.2rem;font-weight:800;color:#0a1e40;margin-bottom:.5rem}
+.section-header p{color:#888;font-size:.95rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:white;border-radius:16px;padding:1.8rem;transition:all .4s;border:1px solid #e8edf5;cursor:pointer}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,102,204,.12);border-color:rgba(0,102,204,.2)}
+.service-icon{width:55px;height:55px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem}
+.si1{background:linear-gradient(135deg,#cce5ff,#b3d9ff)}
+.si2{background:linear-gradient(135deg,#d0f5f0,#b3ece6)}
+.si3{background:linear-gradient(135deg,#fce8ff,#f5d0ff)}
+.si4{background:linear-gradient(135deg,#fff3cc,#ffe8a0)}
+.si5{background:linear-gradient(135deg,#ffe5e5,#ffcccc)}
+.si6{background:linear-gradient(135deg,#e5f0ff,#ccdfff)}
+.service-card h3{font-size:1rem;font-weight:700;color:#0a1e40;margin-bottom:.5rem}
+.service-card p{font-size:.85rem;color:#888;line-height:1.7}
+.service-link{display:inline-flex;align-items:center;gap:.3rem;color:var(--blue);font-size:.8rem;font-weight:700;margin-top:.8rem;text-decoration:none}
+
+/* DOCTORS */
+.doctors{padding:5rem 5%;background:white}
+.doctors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.doctor-card{border:1px solid #e8edf5;border-radius:16px;overflow:hidden;transition:all .4s;cursor:pointer}
+.doctor-card:hover{box-shadow:0 15px 40px rgba(0,102,204,.12);border-color:rgba(0,102,204,.2)}
+.doctor-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.dimg1{background:linear-gradient(135deg,#cce5ff,#ddf0fd)}
+.dimg2{background:linear-gradient(135deg,#d0f5f0,#e0faf7)}
+.dimg3{background:linear-gradient(135deg,#fce8ff,#faeeff)}
+.dimg4{background:linear-gradient(135deg,#fff3cc,#fef7e0)}
+.doctor-info{padding:1.2rem}
+.doctor-info h3{font-size:.95rem;font-weight:700;color:#0a1e40;margin-bottom:.2rem}
+.doctor-info .spec{font-size:.8rem;color:var(--blue);margin-bottom:.5rem}
+.doctor-info .rating{font-size:.8rem;color:#888;display:flex;align-items:center;gap:.3rem}
+.stars{color:#f59e0b}
+.doctor-info .appt-btn{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue2));color:white;border-radius:8px;padding:.6rem;font-size:.8rem;font-weight:700;text-decoration:none;margin-top:.8rem;transition:opacity .3s}
+.doctor-info .appt-btn:hover{opacity:.9}
+
+/* BOOKING SECTION */
+.booking{padding:5rem 5%;background:linear-gradient(135deg,var(--blue),var(--blue2));position:relative;overflow:hidden}
+.booking::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(255,255,255,.1),transparent)}
+.booking-container{max-width:700px;margin:0 auto;text-align:center}
+.booking h2{font-size:2.2rem;font-weight:800;color:white;margin-bottom:.5rem}
+.booking p{color:rgba(255,255,255,.7);margin-bottom:2.5rem}
+.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:right}
+.booking-form input,.booking-form select{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:white;padding:1rem 1.2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.95rem;outline:none;transition:border .3s}
+.booking-form input::placeholder{color:rgba(255,255,255,.5)}
+.booking-form input:focus,.booking-form select:focus{border-color:rgba(255,255,255,.6)}
+.booking-form select option{background:var(--blue2);color:white}
+.full{grid-column:1/-1}
+.book-btn{grid-column:1/-1;background:white;color:var(--blue);border:none;padding:1.2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1.05rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.book-btn:hover{transform:translateY(-2px)}
+
+footer{background:#0a1e40;color:#8898aa;padding:3rem 5% 1.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.f-logo{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.f-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem}
+.f-logo-text{color:white;font-weight:800;font-size:1.1rem}
+.f-desc{font-size:.85rem;line-height:1.8;color:#6080a0}
+.f-col h4{color:white;font-weight:700;font-size:.9rem;margin-bottom:1rem}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:.5rem}
+.f-col a{color:#6080a0;text-decoration:none;font-size:.85rem;transition:color .3s}
+.f-col a:hover{color:var(--teal)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;text-align:center;font-size:.8rem;color:#3a5070}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🏥</div>
+    <div class="logo-text">عيادة الشفاء<span>مركز طبي متكامل</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">خدماتنا</a></li>
+    <li><a href="#">أطباؤنا</a></li>
+    <li><a href="#">المواعيد</a></li>
+    <li><a href="#">تواصل</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#" class="btn-outline-blue">تسجيل الدخول</a>
+    <a href="#" class="btn-blue">احجز موعد</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">🏆 أفضل مركز طبي 2025</div>
+    <h1>صحتك<br>أمانة عندنا<br><span>نهتم بكل تفصيلة</span></h1>
+    <p>نوفر لك رعاية طبية شاملة بأحدث التقنيات وأمهر الأطباء المتخصصين في بيئة مريحة وآمنة تضمن لك أفضل تجربة علاجية.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">احجز موعدك الآن</a>
+      <a href="#" class="btn-sec">تعرف على أطباءنا</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div class="trust-icon">✅</div><span>أطباء معتمدون دولياً</span></div>
+      <div class="trust-item"><div class="trust-icon">🕐</div><span>متاح ٢٤/٧</span></div>
+      <div class="trust-item"><div class="trust-icon">🔬</div><span>أحدث التقنيات</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="floating-badge"><span>⭐ ٤.٩</span>تقييم المرضى</div>
+    <div class="hero-card-main">
+      <div style="font-size:.9rem;font-weight:700;color:#0a1e40;margin-bottom:1rem">احجز موعدك</div>
+      <div class="doctor-profile">
+        <div class="doctor-avatar">👨‍⚕️</div>
+        <div>
+          <div class="doctor-name">د. أحمد الكريمي</div>
+          <div class="doctor-spec">طب القلب والشرايين</div>
+          <div class="doctor-rating">⭐ ٤.٩ — (٢٣٤ مريض)</div>
+        </div>
+      </div>
+      <div style="font-size:.8rem;color:#888;margin-bottom:.7rem">اختر وقت المتاح — الثلاثاء ١٥ يوليو</div>
+      <div class="appt-slots">
+        <div class="slot available">٩:٠٠ ص</div>
+        <div class="slot selected">١٠:٠٠ ص</div>
+        <div class="slot booked">١١:٠٠ ص</div>
+        <div class="slot available">١:٠٠ م</div>
+        <div class="slot booked">٢:٠٠ م</div>
+        <div class="slot available">٤:٠٠ م</div>
+      </div>
+      <button style="width:100%;background:linear-gradient(135deg,#0066cc,#0052a3);color:white;border:none;padding:.9rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer">تأكيد الموعد</button>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">+٢٠,٠٠٠</span><div class="stat-label">مريض راضٍ</div></div>
+  <div class="stat-item"><span class="stat-num">٤٥+</span><div class="stat-label">طبيب متخصص</div></div>
+  <div class="stat-item"><span class="stat-num">١٥+</span><div class="stat-label">تخصص طبي</div></div>
+  <div class="stat-item"><span class="stat-num">٩٨٪</span><div class="stat-label">رضا المرضى</div></div>
+</div>
+
+<section class="services">
+  <div class="section-header">
+    <span class="section-tag">خدماتنا الطبية</span>
+    <h2>رعاية شاملة لصحتك</h2>
+    <p>نوفر مجموعة متكاملة من التخصصات الطبية تحت سقف واحد</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon si1">❤️</div><h3>أمراض القلب والشرايين</h3><p>تشخيص وعلاج أمراض القلب بأحدث التقنيات والأجهزة الطبية المتطورة.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
+    <div class="service-card"><div class="service-icon si2">🦷</div><h3>طب الأسنان</h3><p>خدمات شاملة من التقويم والزراعة وتجميل الأسنان بمعايير دولية.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
+    <div class="service-card"><div class="service-icon si3">🧠</div><h3>الطب النفسي والنفسي</h3><p>دعم نفسي متخصص وعلاج اضطرابات القلق والاكتئاب بأساليب علمية حديثة.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
+    <div class="service-card"><div class="service-icon si4">🔬</div><h3>المختبر والتحاليل</h3><p>تحاليل دقيقة وفورية لأكثر من ٥٠٠ نوع تحليل طبي متخصص.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
+    <div class="service-card"><div class="service-icon si5">🩻</div><h3>الأشعة والتصوير</h3><p>أجهزة رنين مغناطيسي وأشعة مقطعية وسونار بأعلى دقة تشخيصية.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
+    <div class="service-card"><div class="service-icon si6">👶</div><h3>طب الأطفال</h3><p>رعاية شاملة للأطفال منذ الولادة مع فريق متخصص في طب الأطفال.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
+  </div>
+</section>
+
+<section class="doctors">
+  <div class="section-header">
+    <span class="section-tag">فريقنا الطبي</span>
+    <h2>أطباؤنا المتخصصون</h2>
+    <p>نخبة من أفضل الأطباء المعتمدين بخبرات دولية واسعة</p>
+  </div>
+  <div class="doctors-grid">
+    <div class="doctor-card"><div class="doctor-img dimg1">👨‍⚕️</div><div class="doctor-info"><h3>د. أحمد الكريمي</h3><div class="spec">أمراض القلب</div><div class="rating"><span class="stars">⭐</span> ٤.٩ (٢٣٤ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
+    <div class="doctor-card"><div class="doctor-img dimg2">👩‍⚕️</div><div class="doctor-info"><h3>د. سارة البنعلي</h3><div class="spec">طب الأطفال</div><div class="rating"><span class="stars">⭐</span> ٤.٨ (١٩٨ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
+    <div class="doctor-card"><div class="doctor-img dimg3">👨‍⚕️</div><div class="doctor-info"><h3>د. يوسف المنصوري</h3><div class="spec">جراحة العظام</div><div class="rating"><span class="stars">⭐</span> ٤.٧ (١٥٦ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
+    <div class="doctor-card"><div class="doctor-img dimg4">👩‍⚕️</div><div class="doctor-info"><h3>د. نادية العمراني</h3><div class="spec">الطب النفسي</div><div class="rating"><span class="stars">⭐</span> ٤.٩ (٣١٠ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
+  </div>
+</section>
+
+<section class="booking">
+  <div class="booking-container">
+    <h2>احجز موعدك الآن</h2>
+    <p>فريقنا متاح لمساعدتك على مدار الساعة</p>
+    <div class="booking-form">
+      <input type="text" placeholder="الاسم الكامل">
+      <input type="tel" placeholder="رقم الهاتف">
+      <select class=""><option>التخصص الطبي</option><option>أمراض القلب</option><option>طب الأسنان</option><option>الطب النفسي</option><option>طب الأطفال</option><option>جراحة العظام</option></select>
+      <input type="date">
+      <input type="text" placeholder="ملاحظات إضافية" class="full">
+      <button class="book-btn full">تأكيد الحجز 📅</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo"><div class="f-logo-icon">🏥</div><div class="f-logo-text">عيادة الشفاء</div></div>
+      <p class="f-desc">مركز طبي متكامل يقدم رعاية صحية شاملة بأحدث التقنيات وأمهر الأطباء المتخصصين في بيئة آمنة ومريحة.</p>
+    </div>
+    <div class="f-col"><h4>روابط سريعة</h4><ul><li><a href="#">الرئيسية</a></li><li><a href="#">خدماتنا</a></li><li><a href="#">أطباؤنا</a></li><li><a href="#">نتائج التحاليل</a></li></ul></div>
+    <div class="f-col"><h4>التخصصات</h4><ul><li><a href="#">أمراض القلب</a></li><li><a href="#">طب الأسنان</a></li><li><a href="#">طب الأطفال</a></li><li><a href="#">الجراحة</a></li></ul></div>
+    <div class="f-col"><h4>تواصل معنا</h4><ul><li><a href="#">المغرب، الرباط</a></li><li><a href="#">+212 500 000 000</a></li><li><a href="#">info@clinic.ma</a></li><li><a href="#">٢٤/٧ متاح</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 عيادة الشفاء — تصميم خبراء الويب</div>
+</footer>
+</body>
+</html>

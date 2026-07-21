@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إكس فيت — نادي رياضي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#080808;color:#f0f0f0;overflow-x:hidden}
+:root{--red:#e8171e;--red2:#ff3030;--dark:#080808;--card:#111}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(232,23,30,.15)}
+.logo{font-size:1.8rem;font-weight:900;letter-spacing:.05em;color:white}
+.logo span{color:var(--red);font-style:italic}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#888;text-decoration:none;font-size:.9rem;transition:color .3s;font-weight:600}
+.nav-links a:hover{color:var(--red)}
+.join-btn{background:var(--red);color:white;border:none;padding:.7rem 2rem;border-radius:4px;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;transition:all .3s}
+.join-btn:hover{background:var(--red2);transform:translateY(-2px)}
+
+/* HERO */
+.hero{min-height:90vh;position:relative;display:flex;align-items:center;overflow:hidden;padding:0 5%}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0000 0%,#1a0000 40%,#0a0000 100%)}
+.hero-lines{position:absolute;inset:0}
+.hero-lines::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(to left,rgba(232,23,30,.08),transparent)}
+.hero-lines::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(232,23,30,.03) 30px,rgba(232,23,30,.03) 31px)}
+.hero-content{position:relative;z-index:2;max-width:55%}
+.hero-subtitle{font-size:.8rem;color:var(--red);letter-spacing:.4em;text-transform:uppercase;font-weight:900;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+.hero-subtitle::before{content:'';flex:0 0 40px;height:2px;background:var(--red)}
+.hero h1{font-size:5rem;font-weight:900;line-height:.95;margin-bottom:1.5rem;text-transform:uppercase;color:white}
+.hero h1 em{color:var(--red);font-style:normal;display:block}
+.hero p{color:#888;line-height:1.8;margin-bottom:2.5rem;font-size:1rem;max-width:460px}
+.hero-btns{display:flex;gap:1rem;margin-bottom:3rem}
+.btn-red{background:var(--red);color:white;border:none;padding:1.1rem 2.8rem;border-radius:4px;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;transition:all .3s;text-decoration:none;display:inline-block;box-shadow:0 8px 30px rgba(232,23,30,.4)}
+.btn-red:hover{background:var(--red2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(232,23,30,.5)}
+.btn-outline{border:2px solid rgba(255,255,255,.2);color:white;background:transparent;padding:1.1rem 2.8rem;border-radius:4px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+.hero-stats{display:flex;gap:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)}
+.hstat-num{font-size:2.2rem;font-weight:900;color:var(--red);display:block;line-height:1}
+.hstat-label{font-size:.75rem;color:#555;text-transform:uppercase;letter-spacing:.1em}
+
+/* FEATURES */
+.features{padding:5rem 5%;background:#0a0a0a;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #1a1a1a}
+.feature-item{padding:2.5rem;border-left:1px solid #1a1a1a;transition:background .3s;cursor:pointer}
+.feature-item:first-child{border-left:none}
+.feature-item:hover{background:rgba(232,23,30,.05)}
+.fi-icon{font-size:2rem;margin-bottom:1rem}
+.fi-title{font-weight:700;color:white;margin-bottom:.5rem}
+.fi-desc{font-size:.8rem;color:#555;line-height:1.6}
+
+/* CLASSES */
+.classes{padding:6rem 5%;background:#080808}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
+.sec-head h2{font-size:2rem;font-weight:900;color:white;text-transform:uppercase}
+.sec-head h2 span{color:var(--red)}
+.sec-head a{color:var(--red);text-decoration:none;font-size:.9rem;font-weight:700;text-transform:uppercase}
+.classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.class-card{border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:all .4s;aspect-ratio:3/2}
+.class-card:hover{transform:scale(1.02)}
+.class-card:hover .class-overlay{opacity:1}
+.class-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.cb1{background:linear-gradient(160deg,#1a0000,#3a0000)}
+.cb2{background:linear-gradient(160deg,#001a00,#003a00)}
+.cb3{background:linear-gradient(160deg,#00001a,#00003a)}
+.cb4{background:linear-gradient(160deg,#1a1a00,#3a3a00)}
+.cb5{background:linear-gradient(160deg,#1a000a,#3a0018)}
+.cb6{background:linear-gradient(160deg,#001a1a,#003a3a)}
+.class-info{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:linear-gradient(to top,rgba(0,0,0,.9),transparent)}
+.class-name{font-weight:900;color:white;font-size:1rem;margin-bottom:.2rem}
+.class-meta{font-size:.75rem;color:#888}
+.class-overlay{position:absolute;inset:0;background:rgba(232,23,30,.15);backdrop-filter:blur(2px);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center}
+.class-btn{background:white;color:var(--red);border:none;padding:.7rem 1.5rem;border-radius:4px;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer;font-size:.9rem;text-transform:uppercase}
+
+/* PRICING */
+.pricing{padding:6rem 5%;background:#0a0000}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.price-card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:2.5rem;transition:all .4s;position:relative}
+.price-card.featured{border-color:var(--red);background:#150000}
+.price-card.featured::before{content:'الأكثر شعبية';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--red);color:white;padding:.3rem 1.2rem;border-radius:20px;font-size:.75rem;font-weight:900;white-space:nowrap;text-transform:uppercase}
+.price-card:hover{border-color:rgba(232,23,30,.4);transform:translateY(-5px)}
+.plan-name{font-size:1rem;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem}
+.plan-price{font-size:3rem;font-weight:900;color:white;margin-bottom:1.5rem}
+.plan-price span{font-size:1rem;color:#888;font-weight:400}
+.plan-features{list-style:none;margin-bottom:2rem}
+.plan-features li{padding:.6rem 0;border-bottom:1px solid #1a1a1a;font-size:.85rem;color:#888;display:flex;gap:.5rem}
+.plan-features li.active{color:white}
+.plan-features li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0}
+.plan-features li.inactive::before{content:'✗';color:#333}
+.plan-features li.inactive{color:#333}
+.plan-btn{display:block;text-align:center;background:var(--red);color:white;border:none;padding:1rem;border-radius:4px;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer;font-size:.95rem;text-transform:uppercase;letter-spacing:.05em;transition:all .3s;text-decoration:none}
+.plan-btn:hover{background:var(--red2)}
+.plan-btn.outline{background:transparent;border:2px solid #2a2a2a;color:#888}
+.plan-btn.outline:hover{border-color:var(--red);color:white;background:transparent}
+
+/* SCHEDULE */
+.schedule{padding:6rem 5%;background:#080808}
+.schedule-table{margin-top:2.5rem;overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{background:#111;color:#888;padding:1rem;text-align:center;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #1a1a1a}
+th:first-child{text-align:right;color:var(--red)}
+td{padding:.8rem 1rem;border-bottom:1px solid #1a1a1a;text-align:center;font-size:.85rem;color:#888}
+td:first-child{text-align:right;color:white;font-weight:700}
+.class-slot{background:rgba(232,23,30,.15);color:var(--red);border:1px solid rgba(232,23,30,.2);border-radius:6px;padding:.3rem .6rem;font-size:.75rem;font-weight:700;white-space:nowrap;cursor:pointer;display:inline-block;transition:all .3s}
+.class-slot:hover{background:var(--red);color:white}
+.class-slot.alt{background:rgba(255,255,255,.05);color:#888;border-color:rgba(255,255,255,.1)}
+tr:hover td{background:rgba(255,255,255,.02)}
+
+footer{background:#050505;border-top:1px solid #1a1a1a;padding:3rem 5% 1.5rem}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.f-logo{font-size:1.5rem;font-weight:900;color:white;margin-bottom:.8rem}
+.f-logo span{color:var(--red);font-style:italic}
+.f-desc{color:#444;font-size:.85rem;line-height:1.8}
+.f-col h4{color:white;font-size:.9rem;font-weight:700;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:.5rem}
+.f-col a{color:#444;text-decoration:none;font-size:.85rem;transition:color .3s}
+.f-col a:hover{color:var(--red)}
+.f-bottom{border-top:1px solid #1a1a1a;padding-top:1.5rem;text-align:center;color:#2a2a2a;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">X<span>FIT</span></div>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">الكلاسات</a></li>
+    <li><a href="#">الاشتراكات</a></li>
+    <li><a href="#">الجدول</a></li>
+    <li><a href="#">المدربون</a></li>
+    <li><a href="#">تواصل</a></li>
+  </ul>
+  <button class="join-btn">انضم الآن</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-subtitle">النادي الأول بالمغرب</div>
+    <h1>لا<br>قيود<br><em>الآن</em></h1>
+    <p>نادي رياضي من الدرجة الأولى مجهز بأحدث معدات اللياقة البدنية ومدربين محترفين لتحقيق أهدافك بأسرع وقت ممكن.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-red">انضم مجاناً ٧ أيام</a>
+      <a href="#" class="btn-outline">شاهد الجدول</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hstat-num">+٢٠٠٠</span><div class="hstat-label">عضو نشط</div></div>
+      <div><span class="hstat-num">٣٠+</span><div class="hstat-label">كلاس أسبوعي</div></div>
+      <div><span class="hstat-num">١٥+</span><div class="hstat-label">مدرب محترف</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="features">
+  <div class="feature-item"><div class="fi-icon">⏰</div><div class="fi-title">مفتوح ٢٤/٧</div><div class="fi-desc">النادي متاح على مدار الساعة ٧ أيام في الأسبوع</div></div>
+  <div class="feature-item"><div class="fi-icon">💪</div><div class="fi-title">معدات متطورة</div><div class="fi-desc">أحدث معدات اللياقة من كبرى العلامات العالمية</div></div>
+  <div class="feature-item"><div class="fi-icon">🏊</div><div class="fi-title">مسبح & سبا</div><div class="fi-desc">مسبح أولمبي وسبا متكامل لراحة جسمك بعد التمرين</div></div>
+  <div class="feature-item"><div class="fi-icon">🥗</div><div class="fi-title">تغذية رياضية</div><div class="fi-desc">برامج غذائية متخصصة من أخصائي التغذية الرياضية</div></div>
+</div>
+
+<section class="classes">
+  <div class="sec-head"><h2>كلاسات <span>متميزة</span></h2><a href="#">الجدول الكامل ←</a></div>
+  <div class="classes-grid">
+    <div class="class-card"><div class="class-bg cb1">🥊</div><div class="class-info"><div class="class-name">Boxing & Kickboxing</div><div class="class-meta">يومياً | ٦٠ دقيقة | مستوى متوسط</div></div><div class="class-overlay"><button class="class-btn">سجل الآن</button></div></div>
+    <div class="class-card"><div class="class-bg cb2">🧘</div><div class="class-info"><div class="class-name">Yoga & Meditation</div><div class="class-meta">٣ أيام/أسبوع | ٤٥ دقيقة | كل المستويات</div></div><div class="class-overlay"><button class="class-btn">سجل الآن</button></div></div>
+    <div class="class-card"><div class="class-bg cb3">🏋️</div><div class="class-info"><div class="class-name">CrossFit Extreme</div><div class="class-meta">يومياً | ٥٠ دقيقة | مستوى متقدم</div></div><div class="class-overlay"><button class="class-btn">سجل الآن</button></div></div>
+    <div class="class-card"><div class="class-bg cb4">💃</div><div class="class-info"><div class="class-name">Zumba Dance</div><div class="class-meta">٤ أيام/أسبوع | ٤٥ دقيقة | مبتدئ</div></div><div class="class-overlay"><button class="class-btn">سجل الآن</button></div></div>
+    <div class="class-card"><div class="class-bg cb5">🚴</div><div class="class-info"><div class="class-name">Spinning Cardio</div><div class="class-meta">يومياً | ٤٥ دقيقة | كل المستويات</div></div><div class="class-overlay"><button class="class-btn">سجل الآن</button></div></div>
+    <div class="class-card"><div class="class-bg cb6">🤸</div><div class="class-info"><div class="class-name">Pilates Core</div><div class="class-meta">٣ أيام/أسبوع | ٦٠ دقيقة | مبتدئ</div></div><div class="class-overlay"><button class="class-btn">سجل الآن</button></div></div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="sec-head"><h2>اشتراكات <span>مرنة</span></h2></div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="plan-name">بيسك</div>
+      <div class="plan-price">٢٥٠ <span>MAD/شهر</span></div>
+      <ul class="plan-features">
+        <li class="active">دخول غير محدود للصالة</li>
+        <li class="active">غرف التبديل</li>
+        <li class="active">واي فاي مجاني</li>
+        <li class="inactive">الكلاسات الجماعية</li>
+        <li class="inactive">جلسة مع مدرب</li>
+        <li class="inactive">المسبح والسبا</li>
+      </ul>
+      <a href="#" class="plan-btn outline">اشترك الآن</a>
+    </div>
+    <div class="price-card featured">
+      <div class="plan-name">بريميوم</div>
+      <div class="plan-price">٤٥٠ <span>MAD/شهر</span></div>
+      <ul class="plan-features">
+        <li class="active">دخول غير محدود للصالة</li>
+        <li class="active">غرف التبديل</li>
+        <li class="active">واي فاي مجاني</li>
+        <li class="active">جميع الكلاسات الجماعية</li>
+        <li class="active">٢ جلسة مدرب/شهر</li>
+        <li class="inactive">المسبح والسبا</li>
+      </ul>
+      <a href="#" class="plan-btn">اشترك الآن</a>
+    </div>
+    <div class="price-card">
+      <div class="plan-name">إيليت</div>
+      <div class="plan-price">٧٥٠ <span>MAD/شهر</span></div>
+      <ul class="plan-features">
+        <li class="active">دخول غير محدود للصالة</li>
+        <li class="active">غرف التبديل VIP</li>
+        <li class="active">واي فاي مجاني</li>
+        <li class="active">جميع الكلاسات الجماعية</li>
+        <li class="active">جلسات مدرب غير محدودة</li>
+        <li class="active">المسبح والسبا الكامل</li>
+      </ul>
+      <a href="#" class="plan-btn outline">اشترك الآن</a>
+    </div>
+  </div>
+</section>
+
+<section class="schedule">
+  <div class="sec-head"><h2>جدول <span>الكلاسات</span></h2></div>
+  <div class="schedule-table">
+    <table>
+      <tr><th>الوقت</th><th>الإثنين</th><th>الثلاثاء</th><th>الأربعاء</th><th>الخميس</th><th>الجمعة</th><th>السبت</th></tr>
+      <tr><td>٧:٠٠ ص</td><td><span class="class-slot">Yoga</span></td><td>—</td><td><span class="class-slot">Pilates</span></td><td>—</td><td><span class="class-slot">Yoga</span></td><td><span class="class-slot alt">CrossFit</span></td></tr>
+      <tr><td>٩:٠٠ ص</td><td><span class="class-slot">Zumba</span></td><td><span class="class-slot">Boxing</span></td><td><span class="class-slot">Zumba</span></td><td><span class="class-slot">Spinning</span></td><td><span class="class-slot">Boxing</span></td><td><span class="class-slot">Zumba</span></td></tr>
+      <tr><td>١٢:٠٠ م</td><td><span class="class-slot">Spinning</span></td><td><span class="class-slot">Yoga</span></td><td><span class="class-slot">CrossFit</span></td><td><span class="class-slot">Boxing</span></td><td><span class="class-slot">Spinning</span></td><td><span class="class-slot alt">Pilates</span></td></tr>
+      <tr><td>٥:٠٠ م</td><td><span class="class-slot alt">CrossFit</span></td><td><span class="class-slot">Pilates</span></td><td><span class="class-slot">Boxing</span></td><td><span class="class-slot">Yoga</span></td><td><span class="class-slot alt">CrossFit</span></td><td>—</td></tr>
+      <tr><td>٧:٠٠ م</td><td><span class="class-slot">Boxing</span></td><td><span class="class-slot">CrossFit</span></td><td><span class="class-slot">Spinning</span></td><td><span class="class-slot">Zumba</span></td><td><span class="class-slot">Boxing</span></td><td>—</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="f-grid">
+    <div><div class="f-logo">X<span>FIT</span></div><p class="f-desc">نادي رياضي متكامل يوفر أحدث المعدات وأفضل المدربين لمساعدتك على الوصول لأهدافك الرياضية بدون حدود.</p></div>
+    <div class="f-col"><h4>الكلاسات</h4><ul><li><a href="#">Boxing</a></li><li><a href="#">CrossFit</a></li><li><a href="#">Yoga</a></li><li><a href="#">Zumba</a></li><li><a href="#">Pilates</a></li></ul></div>
+    <div class="f-col"><h4>معلومات</h4><ul><li><a href="#">الرباط، المغرب</a></li><li><a href="#">+212 500 000 000</a></li><li><a href="#">info@xfit.ma</a></li><li><a href="#">٢٤/٧ مفتوح</a></li></ul></div>
+  </div>
+  <div class="f-bottom">© 2026 XFIT GYM — تصميم خبراء الويب</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لا ماسون — مطعم فاخر</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#0c0900;color:#f5e6c8;overflow-x:hidden}
+:root{--amber:#d4841a;--cream:#f5e6c8;--dark:#0c0900;--card:#140f04}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(12,9,0,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,132,26,.2)}
+.logo{font-size:1.7rem;font-weight:900;color:var(--amber);letter-spacing:.1em}
+.logo span{color:var(--cream);font-weight:300;font-size:1rem;display:block;letter-spacing:.3em;margin-top:-5px}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:#b8a070;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--amber)}
+.reserve-btn{background:var(--amber);color:#000;border:none;padding:.7rem 1.8rem;border-radius:5px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.9rem;letter-spacing:.05em}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0c0900 0%,#1a1000 30%,#0c0500 70%,#0c0900 100%)}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 60% 40%,rgba(212,132,26,.08),transparent)}
+.hero-decor{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:45%;aspect-ratio:1;border:1px solid rgba(212,132,26,.1);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hero-decor::before{content:'';position:absolute;inset:15%;border:1px solid rgba(212,132,26,.15);border-radius:50%}
+.hero-decor::after{content:'🍽️';font-size:5rem;opacity:.2}
+.hero-content{position:relative;z-index:2;padding:0 5%;max-width:55%}
+.hero-tag{font-size:.8rem;color:var(--amber);letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.5rem;display:block}
+.hero h1{font-size:4.5rem;font-weight:900;line-height:1.05;margin-bottom:1.5rem;color:var(--cream)}
+.hero h1 em{font-style:italic;color:var(--amber);font-weight:300}
+.hero p{color:#a08060;line-height:1.9;margin-bottom:2.5rem;font-size:1rem;max-width:450px}
+.hero-btns{display:flex;gap:1.2rem}
+.btn-amber{background:var(--amber);color:#000;border:none;padding:1rem 2.5rem;border-radius:5px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-amber:hover{background:#e8960a;box-shadow:0 8px 30px rgba(212,132,26,.4)}
+.btn-ghost{border:1px solid rgba(212,132,26,.4);color:var(--amber);background:transparent;padding:1rem 2.5rem;border-radius:5px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-ghost:hover{border-color:var(--amber);background:rgba(212,132,26,.1)}
+.hero-stats{display:flex;gap:3rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(212,132,26,.15)}
+.stat-item{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;color:var(--amber);display:block}
+.stat-label{font-size:.8rem;color:#806040}
+
+/* MENU */
+.menu-section{padding:6rem 5%;background:#0e0b02}
+.section-header{text-align:center;margin-bottom:4rem}
+.overline{font-size:.8rem;color:var(--amber);letter-spacing:.4em;text-transform:uppercase;margin-bottom:1rem}
+.section-header h2{font-size:2.8rem;font-weight:700;color:var(--cream)}
+.menu-tabs{display:flex;justify-content:center;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+.tab-btn{padding:.7rem 1.8rem;border:1px solid rgba(212,132,26,.3);background:transparent;color:#a08060;border-radius:30px;font-family:'Cairo',sans-serif;cursor:pointer;font-size:.9rem;transition:all .3s}
+.tab-btn.active{background:var(--amber);color:#000;border-color:var(--amber);font-weight:700}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.menu-item{display:flex;align-items:center;gap:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(212,132,26,.08);border-radius:12px;padding:1.5rem;transition:all .4s}
+.menu-item:hover{border-color:rgba(212,132,26,.25);background:rgba(212,132,26,.04)}
+.menu-icon{width:70px;height:70px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.mi1{background:linear-gradient(135deg,#2d1500,#3d2000)}
+.mi2{background:linear-gradient(135deg,#002d00,#003d10)}
+.mi3{background:linear-gradient(135deg,#2d002d,#3d003d)}
+.mi4{background:linear-gradient(135deg,#2d2d00,#3d3d00)}
+.mi5{background:linear-gradient(135deg,#00202d,#00303d)}
+.mi6{background:linear-gradient(135deg,#2d1010,#3d1515)}
+.menu-info{flex:1}
+.menu-info h3{font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.3rem}
+.menu-info p{font-size:.8rem;color:#806040;line-height:1.6}
+.menu-price{font-size:1.1rem;font-weight:700;color:var(--amber);white-space:nowrap}
+
+/* RESERVATION */
+.reservation{padding:6rem 5%;background:linear-gradient(135deg,#0a0700,#1a1200,#0a0700);position:relative;overflow:hidden}
+.reservation::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(212,132,26,.06),transparent)}
+.res-container{max-width:800px;margin:0 auto;text-align:center}
+.res-container h2{font-size:2.5rem;font-weight:700;color:var(--cream);margin-bottom:.5rem}
+.res-container p{color:#a08060;margin-bottom:2.5rem}
+.res-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.res-form input,.res-form select{background:rgba(255,255,255,.05);border:1px solid rgba(212,132,26,.2);color:var(--cream);padding:1rem 1.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.95rem;transition:border .3s;outline:none}
+.res-form input:focus,.res-form select:focus{border-color:var(--amber)}
+.res-form input::placeholder{color:#60503a}
+.res-form select option{background:#1a1200;color:var(--cream)}
+.res-form .full-width{grid-column:1/-1}
+.res-btn{grid-column:1/-1;background:var(--amber);color:#000;border:none;padding:1.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .3s}
+.res-btn:hover{background:#e8960a}
+
+/* ABOUT */
+.about{padding:6rem 5%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-visual{position:relative}
+.about-img{aspect-ratio:4/5;background:linear-gradient(160deg,#1a1000,#2d1e00,#1a0a00);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid rgba(212,132,26,.15)}
+.about-badge{position:absolute;bottom:-20px;left:-20px;background:var(--amber);color:#000;padding:1.2rem;border-radius:12px;text-align:center;font-weight:700}
+.about-badge .num{font-size:2rem;font-weight:900;display:block}
+.about-badge .txt{font-size:.75rem}
+.about-content h2{font-size:2.5rem;font-weight:700;color:var(--cream);margin-bottom:1.5rem;line-height:1.3}
+.about-content p{color:#a08060;line-height:1.9;margin-bottom:1.5rem}
+.feat-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:2rem}
+.feat-list li{display:flex;align-items:center;gap:.5rem;color:#c8a86a;font-size:.9rem}
+.feat-list li::before{content:'✦';color:var(--amber);font-size:.7rem}
+
+footer{background:#080600;border-top:1px solid rgba(212,132,26,.1);padding:3rem 5% 1.5rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.f-logo{font-size:1.5rem;font-weight:900;color:var(--amber);margin-bottom:.5rem}
+.f-logo span{color:var(--cream);font-size:.85rem;font-weight:300;display:block}
+.f-desc{color:#60503a;font-size:.85rem;line-height:1.8}
+.f-col h4{color:var(--cream);font-size:.9rem;font-weight:700;margin-bottom:1rem}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:.6rem}
+.f-col a{color:#60503a;text-decoration:none;font-size:.85rem;transition:color .3s}
+.f-col a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(212,132,26,.1);padding-top:1.5rem;text-align:center;color:#40300a;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav>
+  <div>
+    <div class="logo">LA MAISON<span>RESTAURANT & LOUNGE</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">القائمة</a></li>
+    <li><a href="#">عن المطعم</a></li>
+    <li><a href="#">المناسبات</a></li>
+    <li><a href="#">تواصل</a></li>
+  </ul>
+  <button class="reserve-btn">احجز طاولة</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-decor"></div>
+  <div class="hero-content">
+    <span class="hero-tag">تجربة طعام لا تُنسى</span>
+    <h1>فن الطهو<br><em>الفرنسي</em><br>بروح مغربية</h1>
+    <p>نقدم لك رحلة غذائية فريدة تمزج بين أرقى تقنيات المطبخ الفرنسي وعمق النكهات المغربية الأصيلة في أجواء تعكس الفخامة والدفء.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-amber">احجز طاولتك</a>
+      <a href="#" class="btn-ghost">شاهد القائمة</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">١٨</span><div class="stat-label">سنة خبرة</div></div>
+      <div class="stat-item"><span class="stat-num">+٢٠٠</span><div class="stat-label">طبق في القائمة</div></div>
+      <div class="stat-item"><span class="stat-num">٤.٩ ⭐</span><div class="stat-label">تقييم العملاء</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section">
+  <div class="section-header">
+    <div class="overline">قائمة الطعام</div>
+    <h2>أبرز أطباقنا</h2>
+  </div>
+  <div class="menu-tabs">
+    <button class="tab-btn active">المقبلات</button>
+    <button class="tab-btn">الأطباق الرئيسية</button>
+    <button class="tab-btn">الحلويات</button>
+    <button class="tab-btn">المشروبات</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item"><div class="menu-icon mi1">🥗</div><div class="menu-info"><h3>سلطة سيزر بالدجاج المشوي</h3><p>خس روماني، صوص سيزر محضر يدوياً، خبز محمص، جبن بارميزان</p></div><div class="menu-price">٦٥ MAD</div></div>
+    <div class="menu-item"><div class="menu-icon mi2">🍲</div><div class="menu-info"><h3>شوربة البصل الفرنسية</h3><p>بصل كراميل، مرق لحم، خبز محمص، جبن غرويير مذاب</p></div><div class="menu-price">٥٥ MAD</div></div>
+    <div class="menu-item"><div class="menu-icon mi3">🦐</div><div class="menu-info"><h3>روبيان بالثوم والزبدة</h3><p>روبيان طازج، ثوم محمص، زبدة عشبية، ليمون، خبز مقرمش</p></div><div class="menu-price">٨٥ MAD</div></div>
+    <div class="menu-item"><div class="menu-icon mi4">🧀</div><div class="menu-info"><h3>تارت الجبن الكريمي</h3><p>عجينة مقرمشة، ثلاثة أنواع جبن، توابل عطرية، صلصة عنب</p></div><div class="menu-price">٧٠ MAD</div></div>
+    <div class="menu-item"><div class="menu-icon mi5">🐟</div><div class="menu-info"><h3>كاربتشيو السمك</h3><p>سمك أبيض طازج، ليمون، زيت زيتون بكر، كبر، شبت</p></div><div class="menu-price">٩٠ MAD</div></div>
+    <div class="menu-item"><div class="menu-icon mi6">🥩</div><div class="menu-info"><h3>تتبيلة اللحم المغربي</h3><p>لحم بقري طازج، بهارات رأس الحانوت، زيتون، حامض مخلل</p></div><div class="menu-price">٧٥ MAD</div></div>
+  </div>
+</section>
+
+<section class="reservation">
+  <div class="res-container">
+    <div class="overline" style="margin-bottom:.5rem">احجز الآن</div>
+    <h2>احجز طاولتك</h2>
+    <p>نضمن لك تجربة لا تُنسى. الحجز المسبق يضمن أفضل مكان</p>
+    <div class="res-form">
+      <input type="text" placeholder="الاسم الكامل">
+      <input type="tel" placeholder="رقم الهاتف">
+      <input type="date">
+      <select><option>وقت الحجز</option><option>١٢:٠٠ ظهراً</option><option>١:٠٠ م</option><option>٢:٠٠ م</option><option>٧:٠٠ م</option><option>٨:٠٠ م</option><option>٩:٠٠ م</option></select>
+      <select><option>عدد الأشخاص</option><option>٢ أشخاص</option><option>٤ أشخاص</option><option>٦ أشخاص</option><option>٨+ أشخاص</option></select>
+      <select><option>المناسبة</option><option>عشاء رومانسي</option><option>عشاء عائلي</option><option>احتفال عيد ميلاد</option><option>اجتماع عمل</option></select>
+      <button class="res-btn full-width">تأكيد الحجز ✦</button>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-visual">
+    <div class="about-img">🍳</div>
+    <div class="about-badge"><span class="num">١٨</span><div class="txt">سنة تميز</div></div>
+  </div>
+  <div class="about-content">
+    <div class="overline">قصتنا</div>
+    <h2>حيث يلتقي الفن<br>بالمذاق الرفيع</h2>
+    <p>تأسس مطعم لا ماسون عام ٢٠٠٨ برؤية جريئة: تقديم تجربة طعام تجمع بين رقي المطبخ الفرنسي ودفء الضيافة المغربية الأصيلة.</p>
+    <p>يشرف على مطبخنا الشيف أنطوان دوبوا الحاصل على نجمة ميشلان، بمساندة فريق من الطهاة المتخصصين في الفنون الطهوية.</p>
+    <ul class="feat-list">
+      <li>مكونات طازجة يومياً</li>
+      <li>أجواء فاخرة وهادئة</li>
+      <li>خاصية العزل الخاص</li>
+      <li>موسيقى حية الأربعاء والجمعة</li>
+      <li>قائمة نبيذ ممتازة</li>
+      <li>خدمة توصيل فاخرة</li>
+    </ul>
+    <a href="#" class="btn-amber">اعرف أكثر عنا</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="f-logo">LA MAISON<span>Restaurant & Lounge</span></div>
+      <p class="f-desc">تجربة طهو استثنائية تجمع بين أرقى التقنيات الفرنسية وعمق النكهة المغربية في قلب الدار البيضاء.</p>
+    </div>
+    <div class="f-col"><h4>روابط</h4><ul><li><a href="#">الرئيسية</a></li><li><a href="#">القائمة</a></li><li><a href="#">حجز طاولة</a></li><li><a href="#">المناسبات</a></li></ul></div>
+    <div class="f-col"><h4>تواصل</h4><ul><li><a href="#">الدار البيضاء، المغرب</a></li><li><a href="#">+212 600 000 000</a></li><li><a href="#">info@lamaison.ma</a></li><li><a href="#">ي–س: ١٢م–١١م</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 LA MAISON — تصميم خبراء الويب</div>
+</footer>
+</body>
+</html>

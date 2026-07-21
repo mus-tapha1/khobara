@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>داريا — وكالة عقارية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#f8f5f0;color:#2d2416;overflow-x:hidden}
+:root{--brown:#8b5e3c;--brown2:#6b4226;--gold:#c9a84c;--light:#f8f5f0;--dark:#2d2416}
+
+nav{position:sticky;top:0;z-index:100;background:white;box-shadow:0 2px 20px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;padding:1rem 5%}
+.logo{font-size:1.6rem;font-weight:900;color:var(--dark);letter-spacing:.05em}
+.logo span{color:var(--brown)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#888;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--brown)}
+.nav-cta{display:flex;gap:.8rem}
+.btn-contact{border:1px solid var(--brown);color:var(--brown);background:transparent;padding:.6rem 1.2rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem}
+.btn-list{background:var(--brown);color:white;border:none;padding:.6rem 1.5rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem}
+
+/* HERO */
+.hero{min-height:88vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),linear-gradient(160deg,#2d1e0a,#4a3015,#2d1e0a);display:flex;align-items:center;padding:0 5%;position:relative;overflow:hidden}
+.hero-bg-art{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,.08),transparent)}
+.hero-content{position:relative;z-index:2;max-width:60%}
+.hero-tag{background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);color:var(--gold);padding:.4rem 1.2rem;border-radius:30px;font-size:.8rem;font-weight:700;display:inline-block;margin-bottom:1.5rem}
+.hero h1{font-size:3.8rem;font-weight:900;color:white;line-height:1.1;margin-bottom:1.5rem}
+.hero h1 span{color:var(--gold)}
+.hero p{color:rgba(255,255,255,.7);line-height:1.9;margin-bottom:2.5rem;max-width:500px}
+
+/* SEARCH BOX */
+.search-box{background:white;border-radius:12px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.3);max-width:800px}
+.search-tabs{display:flex;gap:.5rem;margin-bottom:1.2rem}
+.stab{padding:.5rem 1.2rem;border-radius:6px;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .3s;border:none;font-family:'Cairo',sans-serif}
+.stab.active{background:var(--brown);color:white}
+.stab:not(.active){background:#f5f0eb;color:#888}
+.search-fields{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:1rem;align-items:end}
+.search-field label{font-size:.8rem;color:#888;font-weight:600;display:block;margin-bottom:.4rem}
+.search-field select,.search-field input{width:100%;border:1px solid #e8e0d5;border-radius:8px;padding:.8rem 1rem;font-family:'Cairo',sans-serif;font-size:.9rem;color:var(--dark);outline:none;background:white;transition:border .3s}
+.search-field select:focus,.search-field input:focus{border-color:var(--brown)}
+.search-btn{background:var(--brown);color:white;border:none;padding:.9rem 2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.95rem;white-space:nowrap}
+
+/* STATS */
+.stats-bar{background:var(--brown);padding:2rem 5%}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.s-num{font-size:2rem;font-weight:900;color:white;display:block}
+.s-label{font-size:.8rem;color:rgba(255,255,255,.7)}
+
+/* LISTINGS */
+.listings{padding:5rem 5%;background:var(--light)}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem}
+.sec-header h2{font-size:2rem;font-weight:800;color:var(--dark)}
+.sec-header a{color:var(--brown);text-decoration:none;font-size:.9rem;font-weight:600}
+.listings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.property-card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .4s;cursor:pointer;border:1px solid #f0ebe4}
+.property-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.prop-img{height:200px;position:relative}
+.pimg1{background:linear-gradient(160deg,#c8a870,#a07840)}
+.pimg2{background:linear-gradient(160deg,#8090a8,#607088)}
+.pimg3{background:linear-gradient(160deg,#a0b890,#708068)}
+.pimg4{background:linear-gradient(160deg,#c8a0a0,#a07070)}
+.pimg5{background:linear-gradient(160deg,#90a8c8,#6080a0)}
+.pimg6{background:linear-gradient(160deg,#b8a8c8,#907898)}
+.prop-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.2),transparent)}
+.prop-type{position:absolute;top:1rem;right:1rem;background:white;color:var(--brown);padding:.3rem .8rem;border-radius:20px;font-size:.75rem;font-weight:700}
+.prop-fav{position:absolute;top:1rem;left:1rem;width:34px;height:34px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem}
+.prop-price{position:absolute;bottom:1rem;right:1rem;background:var(--brown);color:white;padding:.4rem .8rem;border-radius:8px;font-size:.9rem;font-weight:700}
+.prop-info{padding:1.2rem}
+.prop-info h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.3rem}
+.prop-location{font-size:.8rem;color:#888;margin-bottom:.8rem;display:flex;align-items:center;gap:.3rem}
+.prop-details{display:flex;gap:1rem;font-size:.8rem;color:#888;border-top:1px solid #f5f0eb;padding-top:.8rem;margin-top:.5rem}
+.prop-detail{display:flex;align-items:center;gap:.3rem}
+
+/* MAP SECTION */
+.map-section{padding:5rem 5%;background:white}
+.map-container{display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:start;margin-top:2.5rem}
+.filter-panel h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem}
+.filter-group{margin-bottom:1.2rem}
+.filter-group label{font-size:.8rem;font-weight:600;color:#888;display:block;margin-bottom:.5rem}
+.filter-group select,.filter-group input[type=range]{width:100%;border:1px solid #e8e0d5;border-radius:8px;padding:.7rem 1rem;font-family:'Cairo',sans-serif;font-size:.85rem;outline:none}
+.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:#888;margin-top:.3rem}
+.map-placeholder{background:linear-gradient(135deg,#e8e0d0,#d5cbb8);border-radius:16px;height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid #ddd5c5}
+.map-pins{position:absolute;inset:0;pointer-events:none}
+.map-pin{position:absolute;background:var(--brown);color:white;padding:.4rem .8rem;border-radius:8px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.map-pin::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid var(--brown)}
+.map-overlay{font-size:1rem;color:#a09070;font-weight:600}
+
+/* AGENTS */
+.agents{padding:5rem 5%;background:var(--light)}
+.agents-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem}
+.agent-card{background:white;border-radius:16px;padding:1.5rem;text-align:center;border:1px solid #f0ebe4;transition:all .4s}
+.agent-card:hover{box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.agent-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem;border:3px solid var(--gold)}
+.aa1{background:linear-gradient(135deg,#f5e8d5,#e8d0b0)}
+.aa2{background:linear-gradient(135deg,#d5e8f5,#b0d0e8)}
+.aa3{background:linear-gradient(135deg,#d5f5e8,#b0e8d0)}
+.aa4{background:linear-gradient(135deg,#f5d5e8,#e8b0d0)}
+.agent-name{font-weight:700;color:var(--dark);margin-bottom:.2rem}
+.agent-title{font-size:.8rem;color:var(--brown);margin-bottom:.5rem}
+.agent-stats{font-size:.75rem;color:#888;margin-bottom:.8rem}
+.agent-contact{display:flex;gap:.5rem;justify-content:center}
+.ac-btn{flex:1;background:var(--light);border:1px solid #e8e0d5;border-radius:8px;padding:.5rem;font-size:.78rem;font-weight:700;color:var(--brown);cursor:pointer;font-family:'Cairo',sans-serif;transition:all .3s}
+.ac-btn:hover{background:var(--brown);color:white;border-color:var(--brown)}
+
+footer{background:#2d2416;color:#8a7060;padding:3rem 5% 1.5rem}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.f-logo{font-size:1.3rem;font-weight:900;color:white;margin-bottom:.8rem}
+.f-logo span{color:var(--gold)}
+.f-desc{color:#6a5040;font-size:.85rem;line-height:1.8}
+.f-col h4{color:white;font-size:.9rem;font-weight:700;margin-bottom:1rem}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:.5rem}
+.f-col a{color:#6a5040;text-decoration:none;font-size:.85rem;transition:color .3s}
+.f-col a:hover{color:var(--gold)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;text-align:center;font-size:.8rem;color:#4a3020}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">DA<span>RIA</span></div>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">للبيع</a></li>
+    <li><a href="#">للإيجار</a></li>
+    <li><a href="#">مشاريع جديدة</a></li>
+    <li><a href="#">الوكلاء</a></li>
+    <li><a href="#">تواصل</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn-contact">تواصل معنا</button>
+    <button class="btn-list">سجّل عقارك</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-art"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🏆 الوكالة العقارية الأولى بالمغرب</div>
+    <h1>اعثر على<br><span>منزل أحلامك</span><br>بكل سهولة</h1>
+    <p>أكبر قاعدة بيانات للعقارات في المغرب، تضم آلاف الفرص العقارية من شقق ومنازل وفيلات بأسعار مناسبة في جميع المدن.</p>
+    <div class="search-box">
+      <div class="search-tabs">
+        <button class="stab active">للبيع</button>
+        <button class="stab">للإيجار</button>
+        <button class="stab">مشاريع</button>
+      </div>
+      <div class="search-fields">
+        <div class="search-field"><label>نوع العقار</label><select><option>جميع الأنواع</option><option>شقة</option><option>منزل</option><option>فيلا</option><option>محل تجاري</option></select></div>
+        <div class="search-field"><label>المدينة</label><select><option>جميع المدن</option><option>الدار البيضاء</option><option>الرباط</option><option>مراكش</option><option>طنجة</option><option>فاس</option></select></div>
+        <div class="search-field"><label>السعر الأقصى</label><select><option>أي سعر</option><option>حتى ٥٠٠,٠٠٠ MAD</option><option>حتى ١,٠٠٠,٠٠٠ MAD</option><option>حتى ٢,٠٠٠,٠٠٠ MAD</option></select></div>
+        <button class="search-btn">🔍 بحث</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div><span class="s-num">+٨,٥٠٠</span><div class="s-label">عقار متاح</div></div>
+    <div><span class="s-num">+٣,٢٠٠</span><div class="s-label">صفقة ناجحة</div></div>
+    <div><span class="s-num">+١٥٠</span><div class="s-label">وكيل معتمد</div></div>
+    <div><span class="s-num">١٥+</span><div class="s-label">سنة خبرة</div></div>
+  </div>
+</div>
+
+<section class="listings">
+  <div class="sec-header"><h2>أحدث العقارات 🏠</h2><a href="#">مشاهدة الكل ←</a></div>
+  <div class="listings-grid">
+    <div class="property-card"><div class="prop-img pimg1"><span class="prop-type">للبيع</span><span class="prop-fav">♡</span><span class="prop-price">٨٥٠,٠٠٠ MAD</span></div><div class="prop-info"><h3>شقة فاخرة في القلب الجديد</h3><div class="prop-location">📍 الدار البيضاء — الحي المحمدي</div><div class="prop-details"><div class="prop-detail">🛏 ٣ غرف</div><div class="prop-detail">🚿 ٢ حمام</div><div class="prop-detail">📐 ١٢٠ م²</div></div></div></div>
+    <div class="property-card"><div class="prop-img pimg2"><span class="prop-type">للإيجار</span><span class="prop-fav">♡</span><span class="prop-price">٦,٥٠٠ MAD/شهر</span></div><div class="prop-info"><h3>شقة مفروشة رياض الفتح</h3><div class="prop-location">📍 الرباط — رياض الفتح</div><div class="prop-details"><div class="prop-detail">🛏 ٢ غرف</div><div class="prop-detail">🚿 ١ حمام</div><div class="prop-detail">📐 ٨٥ م²</div></div></div></div>
+    <div class="property-card"><div class="prop-img pimg3"><span class="prop-type">للبيع</span><span class="prop-fav">♡</span><span class="prop-price">٢,٢٠٠,٠٠٠ MAD</span></div><div class="prop-info"><h3>فيلا فاخرة مع مسبح خاص</h3><div class="prop-location">📍 مراكش — المنارة</div><div class="prop-details"><div class="prop-detail">🛏 ٥ غرف</div><div class="prop-detail">🚿 ٣ حمام</div><div class="prop-detail">📐 ٣٥٠ م²</div></div></div></div>
+    <div class="property-card"><div class="prop-img pimg4"><span class="prop-type">للبيع</span><span class="prop-fav">♡</span><span class="prop-price">١,١٠٠,٠٠٠ MAD</span></div><div class="prop-info"><h3>منزل عائلي مع حديقة</h3><div class="prop-location">📍 طنجة — ساكنة المسيرة</div><div class="prop-details"><div class="prop-detail">🛏 ٤ غرف</div><div class="prop-detail">🚿 ٣ حمام</div><div class="prop-detail">📐 ٢٢٠ م²</div></div></div></div>
+    <div class="property-card"><div class="prop-img pimg5"><span class="prop-type">للإيجار</span><span class="prop-fav">♡</span><span class="prop-price">٩,٠٠٠ MAD/شهر</span></div><div class="prop-info"><h3>محل تجاري بموقع استراتيجي</h3><div class="prop-location">📍 الدار البيضاء — المعاريف</div><div class="prop-details"><div class="prop-detail">🏪 تجاري</div><div class="prop-detail">📐 ١٥٠ م²</div><div class="prop-detail">🔑 متاح فوراً</div></div></div></div>
+    <div class="property-card"><div class="prop-img pimg6"><span class="prop-type">مشروع جديد</span><span class="prop-fav">♡</span><span class="prop-price">من ٦٠٠,٠٠٠ MAD</span></div><div class="prop-info"><h3>مشروع بيت الحكمة — فاس</h3><div class="prop-location">📍 فاس — حي الأندلس</div><div class="prop-details"><div class="prop-detail">🛏 ٢-٤ غرف</div><div class="prop-detail">🏗 تسليم ٢٠٢٦</div><div class="prop-detail">✅ معتمد</div></div></div></div>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="sec-header"><h2>استكشف على الخريطة 🗺️</h2></div>
+  <div class="map-container">
+    <div class="filter-panel">
+      <h3>تصفية النتائج</h3>
+      <div class="filter-group"><label>نوع العقار</label><select><option>جميع الأنواع</option><option>شقة</option><option>فيلا</option><option>منزل</option></select></div>
+      <div class="filter-group"><label>عدد الغرف</label><select><option>أي عدد</option><option>استوديو</option><option>غرفة واحدة</option><option>٢ غرف</option><option>٣ غرف</option><option>٤+ غرف</option></select></div>
+      <div class="filter-group"><label>الحالة</label><select><option>جديد وقديم</option><option>جديد تماماً</option><option>قيد الإنشاء</option><option>بحاجة لتجديد</option></select></div>
+      <div class="filter-group"><label>المساحة (م²)</label><input type="range" min="30" max="500" value="200"><div class="range-labels"><span>٣٠ م²</span><span>٥٠٠ م²</span></div></div>
+      <button style="width:100%;background:var(--brown);color:white;border:none;padding:.9rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;margin-top:1rem">تطبيق الفلتر</button>
+    </div>
+    <div>
+      <div class="map-placeholder">
+        <div class="map-pins">
+          <div class="map-pin" style="top:30%;right:40%">٨٥٠,٠٠٠ MAD</div>
+          <div class="map-pin" style="top:50%;right:60%;background:#c9a84c">٢.٢M MAD</div>
+          <div class="map-pin" style="top:65%;right:25%">٦,٥٠٠/شهر</div>
+          <div class="map-pin" style="top:20%;right:70%">١.١M MAD</div>
+        </div>
+        <div class="map-overlay">🗺️ خريطة تفاعلية للعقارات</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="agents">
+  <div class="sec-header"><h2>وكلاؤنا المعتمدون 🤝</h2><a href="#">مشاهدة الكل ←</a></div>
+  <div class="agents-grid">
+    <div class="agent-card"><div class="agent-avatar aa1">👨‍💼</div><div class="agent-name">حسن العلوي</div><div class="agent-title">خبير عقاري — الدار البيضاء</div><div class="agent-stats">⭐ ٤.٩ | ١٤٨ صفقة | ١٢ سنة</div><div class="agent-contact"><button class="ac-btn">📞 اتصل</button><button class="ac-btn">💬 واتساب</button></div></div>
+    <div class="agent-card"><div class="agent-avatar aa2">👩‍💼</div><div class="agent-name">مريم الزروالي</div><div class="agent-title">خبيرة عقارية — الرباط</div><div class="agent-stats">⭐ ٤.٨ | ٩٦ صفقة | ٨ سنوات</div><div class="agent-contact"><button class="ac-btn">📞 اتصل</button><button class="ac-btn">💬 واتساب</button></div></div>
+    <div class="agent-card"><div class="agent-avatar aa3">👨‍💼</div><div class="agent-name">كمال بنسالم</div><div class="agent-title">خبير عقاري — مراكش</div><div class="agent-stats">⭐ ٤.٧ | ٢١٤ صفقة | ١٥ سنة</div><div class="agent-contact"><button class="ac-btn">📞 اتصل</button><button class="ac-btn">💬 واتساب</button></div></div>
+    <div class="agent-card"><div class="agent-avatar aa4">👩‍💼</div><div class="agent-name">فاطمة الشرقاوي</div><div class="agent-title">خبيرة عقارية — طنجة</div><div class="agent-stats">⭐ ٤.٩ | ٧٨ صفقة | ٦ سنوات</div><div class="agent-contact"><button class="ac-btn">📞 اتصل</button><button class="ac-btn">💬 واتساب</button></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-grid">
+    <div><div class="f-logo">DA<span>RIA</span></div><p class="f-desc">الوكالة العقارية الرقمية الأولى بالمغرب، تجمع بين الخبرة الإنسانية والتكنولوجيا لتجربة عقارية لا مثيل لها.</p></div>
+    <div class="f-col"><h4>العقارات</h4><ul><li><a href="#">للبيع</a></li><li><a href="#">للإيجار</a></li><li><a href="#">مشاريع جديدة</a></li><li><a href="#">الاستثمار</a></li></ul></div>
+    <div class="f-col"><h4>الخدمات</h4><ul><li><a href="#">تقييم العقارات</a></li><li><a href="#">استشارة مجانية</a></li><li><a href="#">تمويل عقاري</a></li><li><a href="#">نقل الملكية</a></li></ul></div>
+    <div class="f-col"><h4>تواصل</h4><ul><li><a href="#">الدار البيضاء، المغرب</a></li><li><a href="#">+212 522 000 000</a></li><li><a href="#">info@daria.ma</a></li></ul></div>
+  </div>
+  <div class="f-bottom">© 2026 DARIA — تصميم خبراء الويب</div>
+</footer>
+</body>
+</html>
