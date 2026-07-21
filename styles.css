@@ -986,10 +986,6 @@ header button {
     visibility: visible;
 }
 
-/* Hidden utility (important for Tailwind compatibility) */
-.hidden {
-    display: none !important;
-}
 
 /* Privacy & Terms Pages */
 .legal-page h2 {
