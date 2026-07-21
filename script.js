@@ -52,17 +52,27 @@ window.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
 });
 
-// FAQ Toggle
+// FAQ Toggle - FIXED: Add icon rotation
 function toggleFaq(button) {
     const answer = button.nextElementSibling;
-    const icon = button.querySelector('span');
+    const icon = button.querySelector('.faq-icon, span');
     
     if (answer.classList.contains('hidden')) {
         answer.classList.remove('hidden');
-        icon.textContent = '−';
+        if (icon) {
+            icon.textContent = '−';
+            icon.classList.add('rotate');
+            icon.style.transform = 'rotate(45deg)';
+        }
+        button.classList.add('active');
     } else {
         answer.classList.add('hidden');
-        icon.textContent = '+';
+        if (icon) {
+            icon.textContent = '+';
+            icon.classList.remove('rotate');
+            icon.style.transform = 'rotate(0deg)';
+        }
+        button.classList.remove('active');
     }
 }
 
@@ -93,7 +103,7 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 });
 
-// Counter Animation for Statistics - Fixed
+// Counter Animation for Statistics - FIXED
 function animateCounter(element, target, duration = 2000) {
     let current = 0;
     const step = target / Math.ceil(duration / 16);
@@ -116,14 +126,16 @@ function animateCounter(element, target, duration = 2000) {
     requestAnimationFrame(update);
 }
 
-// Trigger counter animation when section is visible
+// Trigger counter animation when section is visible - FIXED for all pages
 document.addEventListener('DOMContentLoaded', function() {
-    const statsSection = document.querySelector('.stats-section');
-    if (statsSection) {
+    const statsSections = document.querySelectorAll('.stats-section');
+    statsSections.forEach(statsSection => {
+        const counters = statsSection.querySelectorAll('[data-count]');
+        if (counters.length === 0) return;
+        
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('[data-count]');
                     counters.forEach(counter => {
                         const target = parseInt(counter.getAttribute('data-count'));
                         if (target > 0) {
@@ -136,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { threshold: 0.3 });
         
         statsObserver.observe(statsSection);
-    }
+    });
 });
 
 // Form Validation and Submission
@@ -150,10 +162,10 @@ if (contactForm) {
         
         e.preventDefault();
         
-        const name = contactForm.querySelector('input[name="name"]').value;
-        const email = contactForm.querySelector('input[name="email"]').value;
-        const subject = contactForm.querySelector('input[name="subject"]').value;
-        const message = contactForm.querySelector('textarea[name="message"]').value;
+        const name = contactForm.querySelector('input[name="name"]');
+        const email = contactForm.querySelector('input[name="email"]');
+        const subject = contactForm.querySelector('input[name="subject"]');
+        const message = contactForm.querySelector('textarea[name="message"]');
         
         // Simple validation
         if (!name || !email || !subject || !message) {
@@ -161,9 +173,14 @@ if (contactForm) {
             return;
         }
         
+        if (!name.value || !email.value || !subject.value || !message.value) {
+            alert('يرجى ملء جميع الحقول');
+            return;
+        }
+        
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.test(email.value)) {
             alert('يرجى إدخال بريد إلكتروني صحيح');
             return;
         }
@@ -173,10 +190,11 @@ if (contactForm) {
     });
 }
 
-// Hover Effects for Cards
-document.querySelectorAll('.card, .service-card, .testimonial-card, .pricing-card').forEach(card => {
+// FIX: Removed hover transform conflict with Tailwind
+// Instead, only add hover effects if not already handled by CSS/Tailwind
+document.querySelectorAll('.testimonial-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px)';
+        this.style.transform = 'translateY(-5px)';
     });
     
     card.addEventListener('mouseleave', function() {

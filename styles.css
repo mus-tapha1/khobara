@@ -344,6 +344,26 @@ header img:hover {
     font-size: 1rem;
 }
 
+/* Portfolio caption visible on mobile (always visible) */
+.portfolio-caption {
+    display: none;
+    padding: 1rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.portfolio-caption h3 {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.portfolio-caption p {
+    color: #999;
+    font-size: 0.85rem;
+}
+
 /* Testimonial Card */
 .testimonial-card {
     background: var(--card-bg);
@@ -434,6 +454,13 @@ section p {
 /* Pricing Card */
 .pricing-card {
     position: relative;
+    transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(33, 150, 243, 0.2);
+    border-color: var(--primary-color);
 }
 
 .pricing-card .price {
@@ -459,6 +486,19 @@ section p {
     background-color: rgba(26, 115, 232, 0.05);
 }
 
+.faq-question.active {
+    background-color: rgba(26, 115, 232, 0.1);
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.faq-icon.rotate {
+    transform: rotate(45deg);
+}
+
 .faq-answer {
     transition: all 0.3s ease;
 }
@@ -480,7 +520,8 @@ section p {
 /* Form Styles */
 input[type="text"],
 input[type="email"],
-textarea {
+textarea,
+select {
     background-color: var(--card-bg);
     border: 1px solid #333;
     color: var(--text-light);
@@ -490,11 +531,13 @@ textarea {
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
     font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
@@ -548,6 +591,39 @@ footer {
     z-index: 60;
     padding: 0.5rem;
     font-size: 1.5rem;
+    color: white;
+}
+
+/* FIX: Tailwind v2 doesn't support backdrop-blur-lg */
+.backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* FIX: Tailwind v2 doesn't support backdrop-filter class */
+.backdrop-filter {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* FIX: Tailwind v2 doesn't support space-x-reverse */
+.space-x-reverse > * + * {
+    margin-right: 0;
+    margin-left: calc(-1 * var(--tw-space-x-reverse, 0rem));
+}
+
+.space-x-reverse > * {
+    --tw-space-x-reverse: 1;
+}
+
+.space-x-3.space-x-reverse > * + * {
+    margin-left: calc(0.75rem * 1);
+    margin-right: 0;
+}
+
+.space-x-4.space-x-reverse > * + * {
+    margin-left: calc(1rem * 1);
+    margin-right: 0;
 }
 
 /* Responsive Design */
@@ -576,7 +652,7 @@ footer {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 
-    /* Hide desktop nav on mobile - STRONG FIX */
+    /* Hide desktop nav on mobile */
     .hidden.md\:flex {
         display: none !important;
     }
@@ -599,6 +675,92 @@ footer {
     .hero-section .space-x-4 > * {
         display: block;
         margin: 0.5rem auto;
+        text-align: center;
+    }
+
+    /* Portfolio: show caption on mobile */
+    .portfolio-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+    }
+
+    .portfolio-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .portfolio-overlay h3 {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-overlay p {
+        font-size: 0.85rem;
+    }
+
+    /* Stats text size on mobile */
+    .stats-section h3 {
+        font-size: 2rem !important;
+    }
+
+    .stats-section .p-6 {
+        padding: 1rem;
+    }
+
+    .stats-section h3.text-4xl,
+    .stats-section h3.text-5xl {
+        font-size: 2rem !important;
+    }
+
+    /* Pricing cards on mobile */
+    .pricing-card {
+        width: 100% !important;
+        margin: 0 auto 1.5rem !important;
+    }
+
+    .pricing-card.md\:col-span-2,
+    .pricing-card.lg\:col-span-2 {
+        grid-column: span 1 !important;
+    }
+
+    /* Fix CTA buttons stacking on mobile */
+    .services-cta,
+    .error-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    /* Form inputs sizing on mobile */
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 0.85rem;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Buttons sizing on mobile */
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.85rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    /* Fix hero buttons on mobile */
+    .hero-cta-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .hero-cta-buttons a {
+        display: block;
+        margin: 0 auto;
+        width: 85%;
+        max-width: 300px;
         text-align: center;
     }
 }
@@ -773,6 +935,31 @@ header button {
     opacity: 0.9;
 }
 
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+/* Transform Utilities */
+.translate-y-0 {
+    transform: translateY(0);
+}
+
+.translate-y-10 {
+    transform: translateY(2.5rem);
+}
+
+.scale-105 {
+    transform: scale(1.05);
+}
+
 /* Transition Utilities */
 .transition-all {
     transition: all 0.3s ease;
@@ -786,6 +973,10 @@ header button {
     transition: transform 0.3s ease;
 }
 
+.transition-opacity {
+    transition: opacity 0.3s ease;
+}
+
 /* Visibility Utilities */
 .invisible {
     visibility: hidden;
@@ -793,6 +984,11 @@ header button {
 
 .visible {
     visibility: visible;
+}
+
+/* Hidden utility (important for Tailwind compatibility) */
+.hidden {
+    display: none !important;
 }
 
 /* Privacy & Terms Pages */
@@ -909,11 +1105,29 @@ header button {
     
     /* Fix stats text size on mobile */
     .stats-section h3 {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important;
     }
     
     /* Ensure mobile menu covers everything */
     #mobileMenu {
         top: 64px !important;
     }
+
+    /* Fix 404 page buttons on mobile */
+    .error-actions a {
+        width: 80%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+
+/* Loading optimization */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+    -webkit-tap-highlight-color: transparent;
 }
