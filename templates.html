@@ -799,7 +799,20 @@ function iframeLoaded(iframe) {
     if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.remove(), 500); }
 }
 
-/* ===== MODAL OPEN/CLOSE ===== */
+/* ===== DEVICE DETECTION ===== */
+    function detectDeviceViewport() {
+      const w  = window.innerWidth;
+      const ua = navigator.userAgent || '';
+      const isMobileUA = /Mobi|Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+      const isTabletUA  = /iPad|Tablet|playbook|silk/i.test(ua);
+      if (isMobileUA && !isTabletUA) return 'mobile';
+      if (isTabletUA || (w >= 600 && w < 1024)) return 'tablet';
+      if (w < 600)  return 'mobile';
+      if (w < 1024) return 'tablet';
+      return 'desktop';
+    }
+
+    /* ===== MODAL OPEN/CLOSE ===== */
 let currentOrderUrl = '';
 
 function openPreview(card) {
@@ -813,7 +826,7 @@ function openPreview(card) {
     document.getElementById('modalUrlBar').textContent = 'https://' + url;
     document.getElementById('modalOrderBtn').href = 'contact.html?template=' + template;
 
-    setViewport('desktop');
+    setViewport(detectDeviceViewport());
     document.getElementById('previewModal').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
