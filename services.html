@@ -3,99 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا - خبراء الويب</title>
+    <meta name="description" content="خدمات خبراء الويب - تصميم مواقع الويب، صفحات الهبوط، المتاجر الإلكترونية، وتطبيقات الهواتف.">
+    <title>خدماتنا - خبراء الويب | Khobara Web</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-        }
-        .nav-link {
-            position: relative;
-            padding-bottom: 5px;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: #a855f7;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-        }
-        .language-switcher-dropdown {
-            display: none;
-            position: absolute;
-            background-color: #1a1a1a;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            right: 0;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .language-switcher:hover .language-switcher-dropdown {
-            display: block;
-        }
-        .language-switcher-dropdown a {
-            color: #e0e0e0;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: right;
-        }
-        .language-switcher-dropdown a:hover {
-            background-color: #2a2a2a;
-        }
-        .service-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        .service-card h3 {
-            color: #a855f7;
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-        .service-card p {
-            color: #ccc;
-            font-size: 1.1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">
-    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg shadow-lg">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold text-white">خبراء الويب</a>
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
             <div class="flex items-center space-x-8">
-                <ul class="flex space-x-8 text-lg">
-                    <li><a href="index.html" class="nav-link text-white hover:text-purple-400">الرئيسية</a></li>
-                    <li><a href="about.html" class="nav-link text-white hover:text-purple-400">من نحن</a></li>
-                    <li><a href="services.html" class="nav-link text-white hover:text-purple-400">خدماتنا</a></li>
-                    <li><a href="portfolio.html" class="nav-link text-white hover:text-purple-400">أعمالنا</a></li>
-                    <li><a href="pricing.html" class="nav-link text-white hover:text-purple-400">الأسعار والباقات</a></li>
-                    <li><a href="blog.html" class="nav-link text-white hover:text-purple-400">المدونة</a></li>
-                    <li><a href="contact.html" class="nav-link text-white hover:text-purple-400">اتصل بنا</a></li>
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <button class="text-white text-lg font-semibold focus:outline-none">AR <span class="ml-1">▼</span></button>
+                    <button class="text-white text-sm font-semibold focus:outline-none">AR <span class="mr-1">▼</span></button>
                     <div class="language-switcher-dropdown">
                         <a href="#" onclick="setLanguage('en')">English</a>
                         <a href="#" onclick="setLanguage('ar')">العربية</a>
@@ -106,65 +37,132 @@
     </header>
 
     <main class="pt-24">
-        <section class="py-20 bg-gray-900 text-center">
+        <section class="py-16 bg-gray-900 text-center">
             <div class="container mx-auto px-6">
-                <h1 class="text-5xl font-bold mb-16 text-white">خدماتنا المتكاملة</h1>
-                <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
-                    في خبراء الويب، نقدم مجموعة شاملة من الخدمات الرقمية المصممة لتعزيز حضورك على الإنترنت وتحقيق أهدافك التجارية.
-                    نحن نجمع بين الإبداع والتقنية لتقديم حلول مبتكرة وفعالة.
+                <h1 class="text-4xl font-bold mb-6 text-white">خدماتنا المتكاملة</h1>
+                <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
+                    نقدم حلولاً رقمية احترافية تناسب الأفراد والشركات مع تصميم عصري، سرعة في التنفيذ، ودعم فني مجاني لمدة شهر بعد التسليم.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="service-card">
-                        <h3>تصميم المواقع</h3>
-                        <p>نصمم مواقع ويب فريدة وجذابة بصريًا، مع التركيز على تجربة المستخدم وسهولة التصفح.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <!-- خدمة 1 -->
+                    <div class="service-card p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 text-right transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-blue-400 text-4xl mb-4">🌐</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">تصميم مواقع الويب</h3>
+                        <p class="text-gray-300 mb-4">نصمم مواقع ويب عصرية وجذابة بصريًا، متجاوبة مع جميع الأجهزة، مع التركيز على تجربة المستخدم وسهولة التصفح. نستخدم أحدث التقنيات لضمان سرعة وأداء الموقع.</p>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li>• تصميم متجاوب مع جميع الأجهزة</li>
+                            <li>• لوحة تحكم سهلة الاستخدام</li>
+                            <li>• تحسين محركات البحث (SEO)</li>
+                            <li>• وضع داكن وفاتح</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <h3>تطوير الويب</h3>
-                        <p>نحول الأفكار إلى تطبيقات ويب قوية وعملية باستخدام أحدث التقنيات والمعايير العالمية.</p>
+
+                    <!-- خدمة 2 -->
+                    <div class="service-card p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 text-right transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-blue-400 text-4xl mb-4">🚀</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">تصميم صفحات الهبوط</h3>
+                        <p class="text-gray-300 mb-4">نبني صفحات هبوط احترافية مصممة خصيصًا لتحقيق أهدافك التسويقية وزيادة معدلات التحويل. تصميمات جذابة تحفز الزوار على اتخاذ الإجراء المطلوب.</p>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li>• تصميم مخصص لحملتك</li>
+                            <li>• تحسين معدلات التحويل</li>
+                            <li>• توافق مع جميع الأجهزة</li>
+                            <li>• تحميل سريع</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <h3>بناء العلامة التجارية</h3>
-                        <p>نساعدك في بناء هوية بصرية قوية ومميزة تعكس قيم علامتك التجارية وتترك انطباعًا دائمًا.</p>
+
+                    <!-- خدمة 3 -->
+                    <div class="service-card p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 text-right transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-blue-400 text-4xl mb-4">🛒</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">تطوير المتاجر الإلكترونية</h3>
+                        <p class="text-gray-300 mb-4">نبني متاجر إلكترونية متكاملة مع بوابات دفع آمنة، نظام إدارة المنتجات، وتجربة تسوق سلسة. نساعدك في بدء تجارتك الإلكترونية باحترافية.</p>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li>• نظام إدارة المنتجات</li>
+                            <li>• بوابات دفع آمنة</li>
+                            <li>• سلة مشتريات متكاملة</li>
+                            <li>• تقارير المبيعات</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <h3>تصميم UI/UX</h3>
-                        <p>نبتكر واجهات مستخدم بديهية وتجارب مستخدم سلسة تضمن تفاعلًا ممتعًا وفعالًا.</p>
+
+                    <!-- خدمة 4 -->
+                    <div class="service-card p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700 text-right transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-blue-400 text-4xl mb-4">📱</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">تطوير تطبيقات الهواتف</h3>
+                        <p class="text-gray-300 mb-4">نطور تطبيقات Android و iPhone بأحدث التقنيات وتصاميم عصرية. تطبيقات سريعة وسلسة تناسب احتياجات عملك وتوفر تجربة مستخدم مميزة.</p>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li>• تطبيقات Android و iPhone</li>
+                            <li>• تصميم واجهة مستخدم احترافي</li>
+                            <li>• أداء عالي وسرعة</li>
+                            <li>• دعم فني مستمر</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <h3>تصميم الحركة</h3>
-                        <p>نضيف لمسة من الحيوية والإبداع لمشاريعك من خلال تصاميم الحركة الجذابة والرسوم المتحركة.</p>
+                </div>
+
+                <!-- Why choose us -->
+                <div class="mt-16 max-w-5xl mx-auto">
+                    <h2 class="text-3xl font-bold text-white mb-8">لماذا تختار خبراء الويب؟</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-6 bg-gray-800 rounded-xl border border-gray-700 text-center">
+                            <div class="text-blue-400 text-3xl mb-3">💰</div>
+                            <h4 class="text-lg font-bold text-white mb-2">أسعار مناسبة</h4>
+                            <p class="text-gray-400 text-sm">نقدم خدمات احترافية بأسعار تنافسية تناسب الجميع.</p>
+                        </div>
+                        <div class="p-6 bg-gray-800 rounded-xl border border-gray-700 text-center">
+                            <div class="text-blue-400 text-3xl mb-3">⚡</div>
+                            <h4 class="text-lg font-bold text-white mb-2">سرعة في التنفيذ</h4>
+                            <p class="text-gray-400 text-sm">ننجز مشاريعك بأسرع وقت ممكن مع الحفاظ على الجودة.</p>
+                        </div>
+                        <div class="p-6 bg-gray-800 rounded-xl border border-gray-700 text-center">
+                            <div class="text-blue-400 text-3xl mb-3">🛠️</div>
+                            <h4 class="text-lg font-bold text-white mb-2">دعم فني مجاني</h4>
+                            <p class="text-gray-400 text-sm">دعم فني مجاني لمدة شهر بعد تسليم المشروع.</p>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <h3>استراتيجيات SEO</h3>
-                        <p>نعمل على تحسين ظهور موقعك في محركات البحث لزيادة الزيارات العضوية وتحقيق أقصى قدر من الوصول.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>النمو الرقمي</h3>
-                        <p>نضع استراتيجيات نمو رقمي شاملة تشمل التسويق بالمحتوى، وسائل التواصل الاجتماعي، والإعلانات المدفوعة.</p>
-                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="mt-16">
+                    <a href="pricing.html" class="btn-primary text-lg inline-block mb-4 ml-4">شاهد أسعارنا</a>
+                    <a href="contact.html" class="btn-secondary text-lg inline-block text-white border border-blue-500 py-3 px-7 rounded-lg font-bold hover:bg-blue-600">اطلب عرض سعر</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-black py-10 text-center text-gray-400">
+    <footer class="bg-black py-12 text-center text-gray-400">
         <div class="container mx-auto px-6">
-            <p>&copy; 2025 خبراء الويب. جميع الحقوق محفوظة.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسئلة الشائعة</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                        <li class="text-gray-400 text-sm">الهاتف: 0778878421</li>
+                        <li class="text-gray-400 text-sm">العنوان: طنجة، المغرب</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+                </div>
+                <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        function setLanguage(lang) {
-            if (lang === 'en') {
-                document.documentElement.lang = 'en';
-                document.documentElement.dir = 'ltr';
-                alert('Language switched to English (placeholder)');
-            } else {
-                document.documentElement.lang = 'ar';
-                document.documentElement.dir = 'rtl';
-                alert('Language switched to Arabic (placeholder)');
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

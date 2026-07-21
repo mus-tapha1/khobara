@@ -3,136 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأسعار والباقات - خبراء الويب</title>
+    <meta name="description" content="أسعار خدمات خبراء الويب - باقات تصميم المواقع والمتاجر الإلكترونية والتطبيقات بأسعار مناسبة.">
+    <title>الأسعار والباقات - خبراء الويب | Khobara Web</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-        }
-        .nav-link {
-            position: relative;
-            padding-bottom: 5px;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: #a855f7;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-        }
-        .language-switcher-dropdown {
-            display: none;
-            position: absolute;
-            background-color: #1a1a1a;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            right: 0;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .language-switcher:hover .language-switcher-dropdown {
-            display: block;
-        }
-        .language-switcher-dropdown a {
-            color: #e0e0e0;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: right;
-        }
-        .language-switcher-dropdown a:hover {
-            background-color: #2a2a2a;
-        }
-        .pricing-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-        .pricing-card h3 {
-            color: #a855f7;
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .pricing-card .price {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        .pricing-card .price span {
-            font-size: 1.5rem;
-            color: #ccc;
-        }
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-        .pricing-card ul li {
-            margin-bottom: 0.75rem;
-            color: #ccc;
-            font-size: 1.1rem;
-        }
-        .pricing-card .btn-select {
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-            display: inline-block;
-            width: 100%;
-        }
-        .pricing-card .btn-select:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">
-    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg shadow-lg">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold text-white">خبراء الويب</a>
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
             <div class="flex items-center space-x-8">
-                <ul class="flex space-x-8 text-lg">
-                    <li><a href="index.html" class="nav-link text-white hover:text-purple-400">الرئيسية</a></li>
-                    <li><a href="about.html" class="nav-link text-white hover:text-purple-400">من نحن</a></li>
-                    <li><a href="services.html" class="nav-link text-white hover:text-purple-400">خدماتنا</a></li>
-                    <li><a href="portfolio.html" class="nav-link text-white hover:text-purple-400">أعمالنا</a></li>
-                    <li><a href="pricing.html" class="nav-link text-white hover:text-purple-400">الأسعار والباقات</a></li>
-                    <li><a href="blog.html" class="nav-link text-white hover:text-purple-400">المدونة</a></li>
-                    <li><a href="contact.html" class="nav-link text-white hover:text-purple-400">اتصل بنا</a></li>
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <button class="text-white text-lg font-semibold focus:outline-none">AR <span class="ml-1">▼</span></button>
+                    <button class="text-white text-sm font-semibold focus:outline-none">AR <span class="mr-1">▼</span></button>
                     <div class="language-switcher-dropdown">
                         <a href="#" onclick="setLanguage('en')">English</a>
                         <a href="#" onclick="setLanguage('ar')">العربية</a>
@@ -143,81 +37,231 @@
     </header>
 
     <main class="pt-24">
-        <section class="py-20 bg-gray-900 text-center">
+        <section class="py-16 bg-gray-900 text-center">
             <div class="container mx-auto px-6">
-                <h1 class="text-5xl font-bold mb-16 text-white">خطط أسعار مرنة تناسب احتياجاتك</h1>
-                <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
-                    نقدم مجموعة متنوعة من الباقات المصممة لتلبية متطلبات الشركات المختلفة، من الشركات الناشئة إلى المؤسسات الكبيرة. اختر الباقة التي تناسب أهدافك.
+                <h1 class="text-4xl font-bold mb-6 text-white">أسعارنا وباقاتنا</h1>
+                <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-4">
+                    نقدم باقات مصممة لتناسب احتياجاتك بمختلف ميزانياتك. جميع الأسعار بالدرهم المغربي (MAD).
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="pricing-card">
-                        <div>
-                            <h3>الباقة الأساسية</h3>
-                            <p class="text-gray-400 mb-4">مثالية للشركات الناشئة والمشاريع الصغيرة.</p>
-                            <div class="price">$999<span>/مرة واحدة</span></div>
-                            <ul>
-                                <li>تصميم موقع من صفحة واحدة</li>
-                                <li>تصميم متجاوب</li>
-                                <li>دعم فني لمدة شهر</li>
-                                <li>تحسين SEO أساسي</li>
-                            </ul>
-                        </div>
-                        <a href="contact.html" class="btn-select">اختر هذه الباقة</a>
+                <p class="text-blue-400 mb-12">💳 طرق الدفع: PayPal | التحويل البنكي</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- موقع إلكتروني عادي -->
+                    <div class="pricing-card bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-8 text-right transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold text-white mb-2">موقع إلكتروني عادي</h3>
+                        <p class="text-gray-400 mb-4">مثالي للمشاريع الشخصية والأعمال الصغيرة.</p>
+                        <div class="price text-4xl font-bold text-blue-400 mb-6">250 <span class="text-lg text-gray-400">MAD</span></div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تصميم موقع بسيط وعصري
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تصميم متجاوب مع الهواتف
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تحسين SEO أساسي
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                دعم فني مجاني لمدة شهر
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary block text-center text-lg">اطلب الآن</a>
                     </div>
-                    <div class="pricing-card">
-                        <div>
-                            <h3>الباقة الاحترافية</h3>
-                            <p class="text-gray-400 mb-4">للمشاريع المتوسطة التي تتطلب حضورًا قويًا.</p>
-                            <div class="price">$2499<span>/مرة واحدة</span></div>
-                            <ul>
-                                <li>تصميم موقع متعدد الصفحات (حتى 5 صفحات)</li>
-                                <li>تصميم متجاوب ومخصص</li>
-                                <li>دعم فني لمدة 3 أشهر</li>
-                                <li>تحسين SEO متقدم</li>
-                                <li>ربط بوسائل التواصل الاجتماعي</li>
-                            </ul>
-                        </div>
-                        <a href="contact.html" class="btn-select">اختر هذه الباقة</a>
+
+                    <!-- صفحة هبوط -->
+                    <div class="pricing-card bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-8 text-right transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold text-white mb-2">صفحة هبوط</h3>
+                        <p class="text-gray-400 mb-4">مثالية للحملات التسويقية والعروض الخاصة.</p>
+                        <div class="price text-4xl font-bold text-blue-400 mb-6">250 <span class="text-lg text-gray-400">MAD</span></div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تصميم جذاب عالي التحويل
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                متوافقة مع جميع الأجهزة
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تحميل سريع
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                دعم فني مجاني لمدة شهر
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary block text-center text-lg">اطلب الآن</a>
                     </div>
-                    <div class="pricing-card">
-                        <div>
-                            <h3>الباقة الماسية</h3>
-                            <p class="text-gray-400 mb-4">للمؤسسات الكبيرة التي تبحث عن حلول متكاملة.</p>
-                            <div class="price">$4999<span>/مرة واحدة</span></div>
-                            <ul>
-                                <li>تصميم موقع مخصص بالكامل</li>
-                                <li>عدد غير محدود من الصفحات</li>
-                                <li>دعم فني لمدة 6 أشهر</li>
-                                <li>تحسين SEO شامل</li>
-                                <li>تكامل التجارة الإلكترونية</li>
-                                <li>تحليلات وتقارير أداء</li>
-                            </ul>
-                        </div>
-                        <a href="contact.html" class="btn-select">اختر هذه الباقة</a>
+
+                    <!-- موقع إلكتروني احترافي -->
+                    <div class="pricing-card bg-gray-800 rounded-xl shadow-lg border-2 border-blue-500 p-8 text-right transform hover:scale-105 transition-transform duration-300 relative">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-bold">الأكثر طلباً</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">موقع إلكتروني احترافي</h3>
+                        <p class="text-gray-400 mb-4">للمشروع التي تحتاج حضوراً رقمياً قوياً.</p>
+                        <div class="price text-4xl font-bold text-blue-400 mb-6">350 <span class="text-lg text-gray-400">MAD</span></div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تصميم احترافي متقدم
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                لوحة تحكم متكاملة
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تحسين SEO شامل
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                وضع داكن وفاتح
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                دعم فني مجاني لمدة شهر
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary block text-center text-lg">اطلب الآن</a>
                     </div>
+
+                    <!-- متجر إلكتروني -->
+                    <div class="pricing-card bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-8 text-right transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold text-white mb-2">متجر إلكتروني احترافي</h3>
+                        <p class="text-gray-400 mb-4">متجر متكامل لبدء تجارتك الإلكترونية.</p>
+                        <div class="price text-4xl font-bold text-blue-400 mb-6">400 <span class="text-lg text-gray-400">MAD</span></div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                متجر إلكتروني متكامل
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                نظام إدارة المنتجات
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                بوابات دفع آمنة
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                تقارير المبيعات
+                            </li>
+                            <li class="text-gray-300 flex items-center">
+                                <span class="text-blue-400 ml-2">✓</span>
+                                دعم فني مجاني لمدة شهر
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary block text-center text-lg">اطلب الآن</a>
+                    </div>
+
+                    <!-- تطبيق Android و iPhone -->
+                    <div class="pricing-card bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-8 text-right transform hover:scale-105 transition-transform duration-300 md:col-span-2 lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-white mb-2">تطبيق Android و iPhone</h3>
+                        <p class="text-gray-400 mb-4">تطبيقات هواتف ذكية بأحدث التقنيات وأفضل التصاميم.</p>
+                        <div class="price text-4xl font-bold text-blue-400 mb-6">ابتداءً من 800 <span class="text-lg text-gray-400">MAD</span></div>
+                        <p class="text-gray-400 mb-6 text-sm">السعر يتحدد حسب حجم المشروع ومتطلباته.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                            <div>
+                                <ul class="space-y-2">
+                                    <li class="text-gray-300 flex items-center text-sm">
+                                        <span class="text-blue-400 ml-2">✓</span>
+                                        تصميم واجهة مستخدم احترافي
+                                    </li>
+                                    <li class="text-gray-300 flex items-center text-sm">
+                                        <span class="text-blue-400 ml-2">✓</span>
+                                        تطبيق Android
+                                    </li>
+                                    <li class="text-gray-300 flex items-center text-sm">
+                                        <span class="text-blue-400 ml-2">✓</span>
+                                        تطبيق iPhone (iOS)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="space-y-2">
+                                    <li class="text-gray-300 flex items-center text-sm">
+                                        <span class="text-blue-400 ml-2">✓</span>
+                                        أداء عالي وسرعة
+                                    </li>
+                                    <li class="text-gray-300 flex items-center text-sm">
+                                        <span class="text-blue-400 ml-2">✓</span>
+                                        إشعارات فورية
+                                    </li>
+                                    <li class="text-gray-300 flex items-center text-sm">
+                                        <span class="text-blue-400 ml-2">✓</span>
+                                        دعم فني مجاني لمدة شهر
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn-primary inline-block text-lg">اطلب عرض سعر</a>
+                    </div>
+                </div>
+
+                <!-- Payment methods -->
+                <div class="mt-16 p-8 bg-gray-800 rounded-xl max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white mb-6">طرق الدفع المتاحة</h3>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <div class="flex items-center bg-gray-700 px-6 py-3 rounded-lg">
+                            <span class="text-blue-400 font-bold text-lg ml-2">PayPal</span>
+                            <p class="text-gray-300 text-sm">الدفع الآمن عبر الإنترنت</p>
+                        </div>
+                        <div class="flex items-center bg-gray-700 px-6 py-3 rounded-lg">
+                            <span class="text-blue-400 font-bold text-lg ml-2">التحويل البنكي</span>
+                            <p class="text-gray-300 text-sm">تحويل مباشر عبر البنك</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional info -->
+                <div class="mt-12 max-w-3xl mx-auto text-center">
+                    <p class="text-gray-300 mb-4">⚡ مدة التنفيذ تبدأ من 24 ساعة حسب حجم المشروع</p>
+                    <p class="text-gray-300 mb-4">🛠️ دعم فني مجاني لمدة شهر بعد التسليم</p>
+                    <p class="text-gray-300">🌍 نخدم جميع دول العالم</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-black py-10 text-center text-gray-400">
+    <footer class="bg-black py-12 text-center text-gray-400">
         <div class="container mx-auto px-6">
-            <p>&copy; 2025 خبراء الويب. جميع الحقوق محفوظة.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسئلة الشائعة</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                        <li class="text-gray-400 text-sm">الهاتف: 0778878421</li>
+                        <li class="text-gray-400 text-sm">العنوان: طنجة، المغرب</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+                </div>
+                <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        function setLanguage(lang) {
-            if (lang === 'en') {
-                document.documentElement.lang = 'en';
-                document.documentElement.dir = 'ltr';
-                alert('Language switched to English (placeholder)');
-            } else {
-                document.documentElement.lang = 'ar';
-                document.documentElement.dir = 'rtl';
-                alert('Language switched to Arabic (placeholder)');
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

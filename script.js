@@ -52,6 +52,20 @@ window.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
 });
 
+// FAQ Toggle
+function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector('span');
+    
+    if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.textContent = '−';
+    } else {
+        answer.classList.add('hidden');
+        icon.textContent = '+';
+    }
+}
+
 // Parallax Effect on Scroll
 window.addEventListener('scroll', () => {
     const parallaxElements = document.querySelectorAll('.parallax');
@@ -68,10 +82,12 @@ let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    if (scrollTop > 100) {
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
-    } else {
-        header.style.boxShadow = 'none';
+    if (header) {
+        if (scrollTop > 100) {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
     }
     
     lastScrollTop = scrollTop;
@@ -116,6 +132,11 @@ if (statsSection) {
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
+        // If form has action set (like Formspree), let it submit naturally
+        if (contactForm.action && contactForm.action !== '') {
+            return;
+        }
+        
         e.preventDefault();
         
         const name = contactForm.querySelector('input[name="name"]').value;
@@ -136,7 +157,6 @@ if (contactForm) {
             return;
         }
         
-        // Simulate form submission
         alert('شكراً لتواصلك معنا! سنرد عليك قريباً.');
         contactForm.reset();
     });
@@ -157,20 +177,22 @@ document.querySelectorAll('.card, .service-card, .testimonial-card, .pricing-car
 const portfolioFilters = document.querySelectorAll('[data-filter]');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-portfolioFilters.forEach(filter => {
-    filter.addEventListener('click', () => {
-        const filterValue = filter.getAttribute('data-filter');
-        
-        portfolioItems.forEach(item => {
-            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                item.style.display = 'block';
-                item.classList.add('animate-scale-in');
-            } else {
-                item.style.display = 'none';
-            }
+if (portfolioFilters.length > 0) {
+    portfolioFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            const filterValue = filter.getAttribute('data-filter');
+            
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    item.classList.add('animate-scale-in');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
     });
-});
+}
 
 // Mobile Menu Toggle (if needed)
 const mobileMenuButton = document.querySelector('[data-mobile-menu-toggle]');
@@ -181,6 +203,41 @@ if (mobileMenuButton && mobileMenu) {
         mobileMenu.classList.toggle('hidden');
     });
 }
+
+// Back to Top Button
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTop = document.createElement('button');
+    backToTop.id = 'backToTop';
+    backToTop.innerHTML = '↑';
+    backToTop.setAttribute('aria-label', 'العودة لأعلى الصفحة');
+    backToTop.style.cssText = 'position:fixed;bottom:30px;left:30px;width:50px;height:50px;border-radius:50%;background:#1a73e8;color:white;border:none;cursor:pointer;font-size:1.5rem;display:none;align-items:center;justify-content:center;z-index:1000;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(33,150,243,0.4);';
+    document.body.appendChild(backToTop);
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    backToTop.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 6px 20px rgba(33,150,243,0.6)';
+    });
+
+    backToTop.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 4px 15px rgba(33,150,243,0.4)';
+    });
+});
 
 // Lazy Loading Images
 if ('IntersectionObserver' in window) {
@@ -200,22 +257,6 @@ if ('IntersectionObserver' in window) {
     lazyImages.forEach(img => imageObserver.observe(img));
 }
 
-// Scroll to Top Button
-const scrollToTopBtn = document.querySelector('[data-scroll-to-top]');
-if (scrollToTopBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.style.display = 'block';
-        } else {
-            scrollToTopBtn.style.display = 'none';
-        }
-    });
-    
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
 // Add animation delay classes dynamically
 document.querySelectorAll('[data-animation-delay]').forEach((el, index) => {
     const delay = el.getAttribute('data-animation-delay');
@@ -225,7 +266,6 @@ document.querySelectorAll('[data-animation-delay]').forEach((el, index) => {
 // Keyboard Navigation for Accessibility
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Close any open modals or menus
         const openMenus = document.querySelectorAll('[data-menu].open');
         openMenus.forEach(menu => menu.classList.remove('open'));
     }
@@ -265,7 +305,6 @@ async function loadContent(url) {
 
 // Initialize animations on page load
 window.addEventListener('load', () => {
-    // Trigger animations for visible elements
     document.querySelectorAll('[data-animate]').forEach(el => {
         el.classList.add('animate-fade-in-up');
     });

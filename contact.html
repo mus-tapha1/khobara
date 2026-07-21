@@ -3,112 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اتصل بنا - خبراء الويب</title>
+    <meta name="description" content="تواصل مع خبراء الويب - أرسل لنا رسالتك وسنرد عليك في أقرب وقت.">
+    <title>اتصل بنا - خبراء الويب | Khobara Web</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap");
-        body {
-            font-family: "Cairo", sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-        }
-        .nav-link {
-            position: relative;
-            padding-bottom: 5px;
-        }
-        .nav-link::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: #a855f7;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-        }
-        .language-switcher-dropdown {
-            display: none;
-            position: absolute;
-            background-color: #1a1a1a;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            right: 0;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .language-switcher:hover .language-switcher-dropdown {
-            display: block;
-        }
-        .language-switcher-dropdown a {
-            color: #e0e0e0;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: right;
-        }
-        .language-switcher-dropdown a:hover {
-            background-color: #2a2a2a;
-        }
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            color: #e0e0e0;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-        .contact-form input[type="text"]:focus,
-        .contact-form input[type="email"]:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #a855f7;
-            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3);
-        }
-        .btn-submit {
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-        }
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">
-    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg shadow-lg">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold text-white">خبراء الويب</a>
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
             <div class="flex items-center space-x-8">
-                <ul class="flex space-x-8 text-lg">
-                    <li><a href="index.html" class="nav-link text-white hover:text-purple-400">الرئيسية</a></li>
-                    <li><a href="about.html" class="nav-link text-white hover:text-purple-400">من نحن</a></li>
-                    <li><a href="services.html" class="nav-link text-white hover:text-purple-400">خدماتنا</a></li>
-                    <li><a href="portfolio.html" class="nav-link text-white hover:text-purple-400">أعمالنا</a></li>
-                    <li><a href="pricing.html" class="nav-link text-white hover:text-purple-400">الأسعار والباقات</a></li>
-                    <li><a href="blog.html" class="nav-link text-white hover:text-purple-400">المدونة</a></li>
-                    <li><a href="contact.html" class="nav-link text-white hover:text-purple-400">اتصل بنا</a></li>
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
                 </ul>
                 <div class="language-switcher">
-                    <button class="text-white text-lg font-semibold focus:outline-none">AR <span class="ml-1">▼</span></button>
+                    <button class="text-white text-sm font-semibold focus:outline-none">AR <span class="mr-1">▼</span></button>
                     <div class="language-switcher-dropdown">
-                        <a href="#" onclick="setLanguage(\'en\')">English</a>
-                        <a href="#" onclick="setLanguage(\'ar\')">العربية</a>
+                        <a href="#" onclick="setLanguage('en')">English</a>
+                        <a href="#" onclick="setLanguage('ar')">العربية</a>
                     </div>
                 </div>
             </div>
@@ -116,57 +37,133 @@
     </header>
 
     <main class="pt-24">
-        <section class="py-20 bg-gray-900 text-center">
+        <section class="py-16 bg-gray-900 text-center">
             <div class="container mx-auto px-6">
-                <h1 class="text-5xl font-bold mb-8 text-white">تواصل معنا</h1>
-                <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
-                    سواء كان لديك استفسار، أو ترغب في بدء مشروع جديد، أو تحتاج إلى استشارة، نحن هنا لمساعدتك. املأ النموذج أدناه وسنتواصل معك قريبًا.
+                <h1 class="text-4xl font-bold mb-6 text-white">تواصل معنا</h1>
+                <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
+                    سواء كان لديك استفسار، أو ترغب في بدء مشروع جديد، أو تحتاج إلى استشارة مجانية، نحن هنا لمساعدتك. املأ النموذج أدناه وسنتواصل معك في أقرب وقت.
                 </p>
-                <div class="max-w-2xl mx-auto bg-black p-10 rounded-xl shadow-lg border border-gray-800 text-right">
-                    <form action="#" method="POST" class="contact-form">
-                        <input type="text" name="name" placeholder="اسمك الكامل" required>
-                        <input type="email" name="email" placeholder="بريدك الإلكتروني" required>
-                        <input type="text" name="subject" placeholder="الموضوع" required>
-                        <textarea name="message" rows="6" placeholder="رسالتك" required></textarea>
-                        <button type="submit" class="btn-submit">أرسل الرسالة</button>
-                    </form>
-                </div>
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                    <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700">
-                        <h3 class="text-3xl font-bold text-purple-400 mb-4">البريد الإلكتروني</h3>
-                        <p class="text-gray-300 text-lg">info@khobaraweb.com</p>
+
+                <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Form -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 text-right">
+                        <h3 class="text-2xl font-bold text-white mb-6">أرسل لنا رسالة</h3>
+                        <form class="contact-form" action="https://formspree.io/f/xpwdkqay" method="POST">
+                            <div class="mb-4">
+                                <input type="text" name="name" placeholder="اسمك الكامل" required class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none">
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" name="email" placeholder="بريدك الإلكتروني" required class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none">
+                            </div>
+                            <div class="mb-4">
+                                <input type="text" name="subject" placeholder="الموضوع" required class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none">
+                            </div>
+                            <div class="mb-4">
+                                <select name="service" class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    <option value="">اختر الخدمة المطلوبة</option>
+                                    <option value="website">موقع إلكتروني</option>
+                                    <option value="landing">صفحة هبوط</option>
+                                    <option value="store">متجر إلكتروني</option>
+                                    <option value="app">تطبيق هاتف</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <textarea name="message" rows="5" placeholder="رسالتك أو وصف المشروع..." required class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors duration-300">إرسال الرسالة</button>
+                        </form>
                     </div>
-                    <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700">
-                        <h3 class="text-3xl font-bold text-purple-400 mb-4">الهاتف</h3>
-                        <p class="text-gray-300 text-lg">+971 50 123 4567</p>
-                    </div>
-                    <div class="p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700">
-                        <h3 class="text-3xl font-bold text-purple-400 mb-4">الموقع</h3>
-                        <p class="text-gray-300 text-lg">دبي، الإمارات العربية المتحدة</p>
+
+                    <!-- Contact Info -->
+                    <div class="text-right">
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-6">معلومات التواصل</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4 space-x-reverse">
+                                    <div class="text-blue-400 text-2xl">✉️</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-1">البريد الإلكتروني</h4>
+                                        <p class="text-gray-300">khobaraweb@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4 space-x-reverse">
+                                    <div class="text-blue-400 text-2xl">📞</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-1">الهاتف</h4>
+                                        <p class="text-gray-300">0778878421</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4 space-x-reverse">
+                                    <div class="text-blue-400 text-2xl">📍</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-1">العنوان</h4>
+                                        <p class="text-gray-300">طنجة، المغرب</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                            <h3 class="text-2xl font-bold text-white mb-4">أوقات العمل</h3>
+                            <div class="space-y-3 text-gray-300">
+                                <div class="flex justify-between">
+                                    <span>الأحد - الخميس</span>
+                                    <span>9:00 - 18:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>الجمعة</span>
+                                    <span>9:00 - 12:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>السبت</span>
+                                    <span>مغلق</span>
+                                </div>
+                            </div>
+                            <div class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded-lg border border-blue-800">
+                                <p class="text-blue-300 text-sm">⚡ مدة الرد: خلال 24 ساعة</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-black py-10 text-center text-gray-400">
+    <footer class="bg-black py-12 text-center text-gray-400">
         <div class="container mx-auto px-6">
-            <p>&copy; 2025 خبراء الويب. جميع الحقوق محفوظة.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                        <li class="text-gray-400 text-sm">الهاتف: 0778878421</li>
+                        <li class="text-gray-400 text-sm">العنوان: طنجة، المغرب</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+                </div>
+                <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        function setLanguage(lang) {
-            if (lang === 'en') {
-                document.documentElement.lang = 'en';
-                document.documentElement.dir = 'ltr';
-                alert('Language switched to English (placeholder)');
-            } else {
-                document.documentElement.lang = 'ar';
-                document.documentElement.dir = 'rtl';
-                alert('Language switched to Arabic (placeholder)');
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

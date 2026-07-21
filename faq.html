@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الأسئلة الشائعة - إجابات على أكثر الأسئلة شيوعاً حول خدمات خبراء الويب.">
+    <title>الأسئلة الشائعة - خبراء الويب | Khobara Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
+            <div class="flex items-center space-x-8">
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="faq.html" class="nav-link text-white hover:text-blue-400">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="text-white text-sm font-semibold focus:outline-none">AR <span class="mr-1">▼</span></button>
+                    <div class="language-switcher-dropdown">
+                        <a href="#" onclick="setLanguage('en')">English</a>
+                        <a href="#" onclick="setLanguage('ar')">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-24">
+        <section class="py-16 bg-gray-900 text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl font-bold mb-6 text-white">الأسئلة الشائعة</h1>
+                <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
+                    إليك إجابات على أكثر الأسئلة شيوعاً حول خدماتنا وطريقة العمل معنا.
+                </p>
+
+                <div class="max-w-3xl mx-auto text-right space-y-4">
+                    <!-- سؤال 1 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">ما هي خدماتكم التي تقدمونها؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">نقدم خدمات تصميم مواقع الويب، تصميم صفحات الهبوط، تطوير المتاجر الإلكترونية، وتطوير تطبيقات الهواتف الذكية (Android و iPhone).</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 2 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">كم تستغرق مدة تنفيذ المشروع؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">تعتمد مدة التنفيذ على حجم المشروع وتعقيده. المشاريع البسيطة تبدأ من 24 ساعة، بينما المشاريع الأكبر قد تستغرق عدة أسابيع. يتم تحديد المدة بناءً على متطلباتك بعد استشارة مجانية.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 3 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">ما هي طرق الدفع المتاحة؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">نقبل الدفع عبر PayPal والتحويل البنكي. الأسعار بالدرهم المغربي (MAD).</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 4 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">هل تقدمون دعماً فنياً بعد التسليم؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">نعم، نقدم دعماً فنياً مجانياً لمدة شهر بعد تسليم المشروع لضمان رضاك التام عن العمل.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 5 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">هل يمكنكم العمل مع عملاء من خارج المغرب؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">نعم، نخدم جميع دول العالم. التواصل يتم عبر البريد الإلكتروني والهاتف بغض النظر عن موقعك الجغرافي.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 6 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">هل يمكنني رؤية نموذج من أعمالكم قبل التعاقد؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">بالتأكيد! يمكنك تصفح صفحة "أعمالنا" للاطلاع على نماذج من مشاريعنا السابقة. يمكنك أيضاً طلب استشارة مجانية لمناقشة مشروعك.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 7 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">هل يمكن تعديل المشروع بعد التسليم؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">نعم، يتم تضمين عدد من التعديلات المجانية ضمن كل مشروع. بعد انتهاء فترة الدعم المجاني، يمكن مناقشة التعديلات الإضافية بأسعار مناسبة.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 8 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">ما هي أسعاركم؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">تبدأ الأسعار من 250 درهم مغربي للمواقع البسيطة و 250 درهم لصفحات الهبوط، و 400 درهم للمتاجر الإلكترونية، و 800 درهم لتطبيقات الهواتف. يرجى زيارة صفحة الأسعار للحصول على تفاصيل أكثر.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 9 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">هل توفرون لوحة تحكم للموقع؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">نعم، نوفر لوحة تحكم سهلة الاستخدام تمكنك من إدارة محتوى موقعك بدون الحاجة إلى خبرة برمجية.</p>
+                        </div>
+                    </div>
+
+                    <!-- سؤال 10 -->
+                    <div class="faq-item bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <button class="faq-question w-full p-6 text-right flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <h3 class="text-lg font-bold text-white">كيف يمكنني طلب استشارة مجانية؟</h3>
+                            <span class="text-blue-400 text-2xl transform transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6">
+                            <p class="text-gray-300">يمكنك التواصل معنا عبر البريد الإلكتروني khobaraweb@gmail.com أو الاتصال على 0778878421، أو ملء نموذج الاتصال في صفحة "اتصل بنا" وسنرد عليك خلال 24 ساعة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-12 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                        <li class="text-gray-400 text-sm">الهاتف: 0778878421</li>
+                        <li class="text-gray-400 text-sm">العنوان: طنجة، المغرب</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="privacy.html" class="text-gray-400 hover:text-blue-400 text-sm">سياسة الخصوصية</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-blue-400 text-sm">شروط الاستخدام</a>
+                </div>
+                <p class="text-sm">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
