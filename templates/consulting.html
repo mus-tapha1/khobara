@@ -1,224 +1,953 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>بيك كونسلتينغ — شركة استشارات أعمال</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PEAK — شركة استشارات أعمال</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Cairo',sans-serif;background:#05080f;color:#e8edf5;overflow-x:hidden}
-:root{--navy:#0a1628;--blue:#1a4fd8;--gold:#c9a84c;--light:#e8edf5}
+:root{
+  --navy:#05101f;
+  --navy2:#091828;
+  --navy3:#0d2038;
+  --blue:#1a56e8;
+  --blue2:#2d6aff;
+  --blue-dim:rgba(26,86,232,.1);
+  --gold:#c9a14a;
+  --gold2:#e8c97e;
+  --gold-dim:rgba(201,161,74,.1);
+  --white:#fff;
+  --off-white:#f8f9fc;
+  --text-dim:rgba(255,255,255,.38);
+  --text-mid:rgba(255,255,255,.65);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--navy);color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--navy2)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
 
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(5,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(26,79,216,.15)}
-.logo{font-size:1.4rem;font-weight:900;color:white;letter-spacing:.05em}
-.logo span{color:var(--blue)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#8898aa;text-decoration:none;font-size:.9rem;transition:color .3s}
-.nav-links a:hover{color:white}
-.nav-cta{display:flex;gap:.8rem}
-.btn-nav{background:linear-gradient(135deg,var(--blue),#1240b0);color:#fff;border:none;padding:.7rem 1.8rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem;text-decoration:none;display:inline-block}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;z-index:900;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 5%;
+  transition:all .5s;
+}
+nav.scrolled{
+  background:rgba(5,16,31,.97);
+  backdrop-filter:blur(30px);
+  border-bottom:1px solid rgba(26,86,232,.12);
+  padding:1rem 5%;
+}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo-main{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:600;color:#fff;letter-spacing:.15em;
+}
+.logo-main span{color:var(--blue2)}
+.logo-sub{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--text-dim);font-weight:400;margin-top:2px}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:var(--text-dim);text-decoration:none;font-size:.8rem;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .3s;
+}
+.nav-links a:hover{color:#fff}
+.nav-actions{display:flex;gap:.8rem;align-items:center}
+.nav-consult{
+  color:var(--text-mid);font-size:.8rem;font-weight:600;
+  letter-spacing:.05em;cursor:pointer;background:none;border:none;
+  font-family:'Cairo',sans-serif;transition:color .3s;
+}
+.nav-consult:hover{color:#fff}
+.nav-cta{
+  background:linear-gradient(135deg,var(--blue),#1240c0);
+  color:#fff;border:none;padding:.7rem 1.8rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;cursor:pointer;transition:all .35s;
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
+}
+.nav-cta:hover{box-shadow:0 8px 30px rgba(26,86,232,.5)}
 
-.hero{min-height:90vh;display:flex;align-items:center;padding:0 5%;position:relative;overflow:hidden;background:linear-gradient(135deg,#05080f 0%,#0a1628 60%,#05080f 100%)}
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(26,79,216,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,79,216,.06) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow{position:absolute;top:20%;right:15%;width:500px;height:500px;background:radial-gradient(circle,rgba(26,79,216,.15),transparent);border-radius:50%}
-.hero-content{position:relative;z-index:2;max-width:55%}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(26,79,216,.4);background:rgba(26,79,216,.1);color:#6090ff;padding:.4rem 1.2rem;border-radius:30px;font-size:.8rem;font-weight:700;margin-bottom:2rem}
-.hero h1{font-size:3.8rem;font-weight:900;line-height:1.08;margin-bottom:1.5rem;color:white}
-.hero h1 .highlight{background:linear-gradient(90deg,var(--blue),#60a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:#8898aa;line-height:1.9;margin-bottom:2.5rem;font-size:1rem;max-width:500px}
-.hero-btns{display:flex;gap:1rem;margin-bottom:3rem}
-.btn-primary{background:linear-gradient(135deg,var(--blue),#1240b0);color:#fff;border:none;padding:1rem 2.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 8px 30px rgba(26,79,216,.4);transition:all .3s;text-decoration:none;display:inline-block}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(26,79,216,.5)}
-.btn-ghost{border:1px solid rgba(255,255,255,.15);color:white;background:transparent;padding:1rem 2.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
-.btn-ghost:hover{background:rgba(255,255,255,.08)}
-.clients-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.client-label{font-size:.8rem;color:#556};
-.client-logos{display:flex;gap:1.5rem}
-.client-logo{height:28px;background:rgba(255,255,255,.06);border-radius:6px;padding:0 1rem;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#556;white-space:nowrap}
+/* ── HERO ── */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#030810 0%,#05101f 40%,#080a18 100%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(26,86,232,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,86,232,.04) 1px,transparent 1px);
+  background-size:70px 70px;
+}
+.hero-glow-1{
+  position:absolute;top:10%;right:10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(26,86,232,.1),transparent 70%);
+  border-radius:50%;
+}
+.hero-glow-2{
+  position:absolute;bottom:-10%;left:20%;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(201,161,74,.05),transparent 70%);
+  border-radius:50%;
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 5%;max-width:65%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:1rem;
+  margin-bottom:2.5rem;
+}
+.ht-line{width:50px;height:2px;background:var(--blue2)}
+.ht-text{
+  font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--blue2);font-weight:700;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7vw,5.5rem);font-weight:400;
+  color:#fff;line-height:1.08;margin-bottom:1.8rem;
+}
+.hero h1 em{
+  font-style:italic;color:var(--gold2);display:block;
+}
+.hero h1 strong{
+  font-weight:600;
+  -webkit-text-stroke:1px rgba(255,255,255,.3);color:transparent;
+}
+.hero p{
+  color:var(--text-mid);line-height:2;font-size:.95rem;
+  max-width:520px;margin-bottom:3rem;font-weight:300;
+}
+.hero-actions{display:flex;gap:1.2rem;margin-bottom:4rem;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),#1240c0);
+  color:#fff;border:none;padding:1.1rem 2.8rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  transition:all .35s;box-shadow:0 10px 40px rgba(26,86,232,.3);
+}
+.btn-primary:hover{box-shadow:0 15px 50px rgba(26,86,232,.55);transform:translateY(-2px)}
+.btn-ghost{
+  background:transparent;border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.7);padding:1.1rem 2.8rem;
+  font-family:'Cairo',sans-serif;font-weight:600;font-size:.9rem;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  transition:all .35s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.4);color:#fff}
 
-/* SERVICES */
-.services{padding:6rem 5%;background:#07090f}
-.section-header{margin-bottom:3.5rem}
-.section-header .tag{font-size:.8rem;color:var(--blue);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem}
-.section-header h2{font-size:2.4rem;font-weight:800;color:white;max-width:500px;line-height:1.3}
-.section-header p{color:#8898aa;font-size:.95rem;margin-top:.5rem}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.service-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;transition:all .4s;cursor:pointer;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,79,216,.05),transparent);opacity:0;transition:opacity .4s}
-.service-card:hover{border-color:rgba(26,79,216,.3);transform:translateY(-6px)}
-.service-card:hover::before{opacity:1}
-.service-num{font-size:3rem;font-weight:900;color:rgba(26,79,216,.2);margin-bottom:1rem;line-height:1}
-.service-card h3{font-size:1.05rem;font-weight:700;color:white;margin-bottom:.8rem}
-.service-card p{font-size:.85rem;color:#8898aa;line-height:1.7}
-.service-arrow{color:var(--blue);font-size:1.2rem;margin-top:1rem;display:block}
+/* TRUST ROW */
+.trust-row{
+  display:flex;align-items:center;gap:2.5rem;
+  padding-top:3rem;border-top:1px solid rgba(255,255,255,.07);
+  flex-wrap:wrap;
+}
+.trust-label{font-size:.72rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase}
+.trust-logos{display:flex;gap:1.5rem;flex-wrap:wrap}
+.trust-logo{
+  height:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);
+  padding:0 1.2rem;display:flex;align-items:center;
+  font-size:.72rem;color:rgba(255,255,255,.25);letter-spacing:.1em;white-space:nowrap;
+  border-radius:2px;
+}
 
-/* STATS */
-.stats{padding:4rem 5%;background:linear-gradient(135deg,#0a1628,#071020)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.stat-item{padding:2rem;border:1px solid rgba(26,79,216,.15);border-radius:12px;background:rgba(26,79,216,.05)}
-.stat-num{font-size:2.5rem;font-weight:900;background:linear-gradient(90deg,var(--blue),#60a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
-.stat-label{font-size:.85rem;color:#8898aa;margin-top:.3rem}
+/* METRICS STRIP */
+.metrics{background:var(--navy3);padding:3rem 5%}
+.metrics-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.metric{
+  padding:2rem 3rem;border-left:1px solid rgba(255,255,255,.05);
+  text-align:center;
+}
+.metric:last-child{border-left:none}
+.metric-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.2rem;color:#fff;display:block;line-height:1;margin-bottom:.4rem;
+}
+.metric-num span{color:var(--blue2)}
+.metric-label{font-size:.7rem;color:var(--text-dim);letter-spacing:.15em;text-transform:uppercase}
 
-/* TEAM */
-.team{padding:6rem 5%;background:#05080f}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
-.team-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;transition:all .4s}
-.team-card:hover{border-color:rgba(26,79,216,.3);transform:translateY(-5px)}
-.team-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
-.ti1{background:linear-gradient(135deg,#0a1628,#1a2d50)}
-.ti2{background:linear-gradient(135deg,#0a1a28,#1a3050)}
-.ti3{background:linear-gradient(135deg,#0a1020,#1a2040)}
-.ti4{background:linear-gradient(135deg,#0a0a28,#1a1a50)}
-.team-info{padding:1.2rem}
-.team-info h3{font-size:.95rem;font-weight:700;color:white;margin-bottom:.2rem}
-.team-info .role{font-size:.8rem;color:var(--blue);margin-bottom:.5rem}
-.team-info p{font-size:.8rem;color:#8898aa;line-height:1.6}
+/* ── SERVICES ── */
+.services-section{background:var(--navy2)}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.04);
+  margin-top:3.5rem;
+}
+.svc-card{
+  background:var(--navy2);padding:3rem 2.5rem;
+  position:relative;overflow:hidden;cursor:pointer;transition:all .4s;
+}
+.svc-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(26,86,232,.06),transparent);
+  opacity:0;transition:opacity .4s;
+}
+.svc-card:hover{background:var(--navy3)}
+.svc-card:hover::after{opacity:1}
+.svc-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5.5rem;color:rgba(26,86,232,.06);
+  position:absolute;top:.5rem;left:1.5rem;line-height:1;font-weight:600;
+}
+.svc-icon{
+  width:56px;height:56px;
+  border:1px solid rgba(26,86,232,.25);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  margin-bottom:1.8rem;position:relative;z-index:1;
+  transition:all .4s;
+}
+.svc-card:hover .svc-icon{border-color:var(--blue2);background:var(--blue-dim)}
+.svc-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;color:#fff;margin-bottom:.8rem;
+  position:relative;z-index:1;font-weight:600;
+}
+.svc-desc{
+  font-size:.83rem;color:var(--text-dim);line-height:1.9;
+  position:relative;z-index:1;margin-bottom:1.8rem;
+}
+.svc-link{
+  font-size:.75rem;color:var(--blue2);font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;gap:.5rem;
+  text-decoration:none;position:relative;z-index:1;transition:gap .3s;
+}
+.svc-card:hover .svc-link{gap:.9rem}
 
-/* CONTACT */
-.contact{padding:6rem 5%;background:linear-gradient(135deg,var(--blue),#0f30a0);position:relative;overflow:hidden}
-.contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,255,255,.08),transparent)}
-.contact-container{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.contact-info h2{font-size:2.5rem;font-weight:800;color:white;margin-bottom:1rem;line-height:1.3}
-.contact-info p{color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:2rem}
-.contact-details{display:flex;flex-direction:column;gap:1rem}
-.detail-item{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,.8);font-size:.9rem}
-.detail-icon{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.contact-form-box{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:2rem}
-.contact-form-box h3{color:white;font-weight:700;margin-bottom:1.5rem}
-.cform{display:flex;flex-direction:column;gap:1rem}
-.cform input,.cform select,.cform textarea{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:1rem;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.9rem;outline:none;transition:border .3s}
-.cform input::placeholder,.cform textarea::placeholder{color:rgba(255,255,255,.4)}
-.cform input:focus,.cform select:focus,.cform textarea:focus{border-color:rgba(255,255,255,.5)}
-.cform select option{background:#0a1628;color:white}
-.cform textarea{resize:vertical;min-height:100px}
-.cform-btn{background:white;color:var(--blue);border:none;padding:1.1rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:all .3s}
-.cform-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+/* ── APPROACH ── */
+.approach-section{background:var(--navy);position:relative;overflow:hidden}
+.approach-section::before{
+  content:'';position:absolute;top:-20%;right:-5%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(26,86,232,.06),transparent 70%);
+  border-radius:50%;
+}
+.approach-grid{
+  display:grid;grid-template-columns:1fr 1.5fr;
+  gap:8rem;align-items:center;position:relative;z-index:1;
+}
+.approach-left{}
+.approach-steps{display:flex;flex-direction:column;gap:0;margin-top:3rem}
+.step{
+  display:flex;gap:1.5rem;padding:2rem 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:relative;cursor:pointer;transition:all .3s;
+}
+.step:last-child{border-bottom:none}
+.step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;color:rgba(26,86,232,.2);line-height:1;
+  flex-shrink:0;transition:color .4s;font-weight:600;
+  min-width:50px;
+}
+.step:hover .step-num{color:rgba(26,86,232,.6)}
+.step-body{}
+.step-title{font-weight:700;font-size:1rem;color:#fff;margin-bottom:.4rem;transition:color .3s}
+.step:hover .step-title{color:var(--blue2)}
+.step-desc{font-size:.82rem;color:var(--text-dim);line-height:1.8}
+.approach-right{}
+.approach-visual{
+  background:var(--navy2);border:1px solid rgba(255,255,255,.06);
+  padding:3rem;position:relative;overflow:hidden;
+}
+.av-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:2.5rem;padding-bottom:1.5rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.av-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;
+}
+.av-badge{
+  background:rgba(26,86,232,.15);border:1px solid rgba(26,86,232,.2);
+  color:var(--blue2);font-size:.7rem;font-weight:700;
+  padding:.3rem .8rem;letter-spacing:.05em;
+}
+.av-metrics{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem}
+.avm-item{}
+.avm-header{display:flex;justify-content:space-between;margin-bottom:.5rem}
+.avm-label{font-size:.8rem;color:var(--text-mid);font-weight:600}
+.avm-value{font-size:.8rem;color:var(--blue2);font-weight:700}
+.avm-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.avm-fill{height:100%;border-radius:2px;background:linear-gradient(to left,var(--blue),var(--blue2));transition:width 1s ease}
+.av-insight{
+  background:rgba(201,161,74,.06);border:1px solid rgba(201,161,74,.12);
+  padding:1.2rem;display:flex;align-items:flex-start;gap:.8rem;
+}
+.insight-icon{color:var(--gold2);font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.insight-text{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.7}
+.insight-text strong{color:var(--gold2);font-weight:700}
 
-footer{background:#030508;border-top:1px solid rgba(255,255,255,.05);padding:3rem 5% 1.5rem}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
-.f-logo{font-size:1.3rem;font-weight:900;color:white;margin-bottom:.8rem}
-.f-logo span{color:var(--blue)}
-.f-desc{color:#556;font-size:.85rem;line-height:1.8}
-.f-col h4{color:white;font-size:.9rem;font-weight:700;margin-bottom:1rem}
-.f-col ul{list-style:none}
-.f-col li{margin-bottom:.5rem}
-.f-col a{color:#556;text-decoration:none;font-size:.85rem;transition:color .3s}
-.f-col a:hover{color:var(--blue)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;text-align:center;color:#334;font-size:.8rem}
+/* ── TEAM ── */
+.team-section{background:var(--navy2)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3.5rem}
+.team-card{
+  border:1px solid rgba(255,255,255,.06);transition:all .4s;
+  position:relative;overflow:hidden;
+}
+.team-card::before{
+  content:'';position:absolute;top:0;right:0;left:0;height:2px;
+  background:linear-gradient(to left,var(--blue),transparent);
+  transform:scaleX(0);transform-origin:right;transition:transform .4s;
+}
+.team-card:hover{border-color:rgba(26,86,232,.2);transform:translateY(-4px)}
+.team-card:hover::before{transform:scaleX(1)}
+.team-img{
+  height:180px;position:relative;
+  background:linear-gradient(160deg,#040d1e,#081828,#040d1e);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.team-avatar{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;color:rgba(26,86,232,.15);font-weight:600;
+}
+.team-info{padding:1.5rem}
+.team-name{font-weight:800;font-size:.98rem;color:#fff;margin-bottom:.2rem}
+.team-role{font-size:.75rem;color:var(--blue2);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.7rem}
+.team-bio{font-size:.78rem;color:var(--text-dim);line-height:1.7;margin-bottom:1rem}
+.team-links{display:flex;gap:.5rem}
+.tlink{
+  font-size:.7rem;color:var(--text-dim);font-weight:700;letter-spacing:.05em;
+  padding:.3rem .7rem;border:1px solid rgba(255,255,255,.07);
+  cursor:pointer;transition:all .3s;background:none;font-family:'Cairo',sans-serif;
+}
+.tlink:hover{border-color:var(--blue2);color:var(--blue2)}
+
+/* ── RESULTS SECTION ── */
+.results-section{
+  background:var(--navy);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.results-left{
+  padding:7rem 5%;
+  background:linear-gradient(135deg,var(--blue),#0f30b0);
+  position:relative;overflow:hidden;
+}
+.results-left::before{
+  content:'';position:absolute;top:-20%;right:-10%;
+  width:400px;height:400px;background:rgba(255,255,255,.04);border-radius:50%;
+}
+.results-left h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.5rem,4vw,3.8rem);color:#fff;
+  line-height:1.1;margin-bottom:1.5rem;font-weight:400;
+  position:relative;z-index:1;
+}
+.results-left p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:2;position:relative;z-index:1;max-width:420px;margin-bottom:2.5rem}
+.results-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+  position:relative;z-index:1;
+}
+.rs-item{padding:1.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
+.rs-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;color:#fff;display:block;line-height:1;margin-bottom:.3rem;
+}
+.rs-label{font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.1em}
+.results-right{
+  padding:7rem 5%;display:flex;flex-direction:column;justify-content:center;
+}
+.testimonial-big{
+  padding:3rem;border:1px solid rgba(255,255,255,.07);
+  position:relative;margin-bottom:2rem;
+}
+.tb-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;line-height:.7;color:var(--blue2);opacity:.2;margin-bottom:1.5rem;
+}
+.tb-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;color:rgba(255,255,255,.65);
+  line-height:1.8;font-style:italic;margin-bottom:2rem;
+}
+.tb-author{display:flex;align-items:center;gap:1rem}
+.tb-avatar{
+  width:50px;height:50px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:1.2rem;
+  font-family:'Cormorant Garamond',serif;
+}
+.tb-name{font-weight:700;font-size:.95rem;color:#fff;margin-bottom:.1rem}
+.tb-company{font-size:.75rem;color:var(--text-dim)}
+.results-cta{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--navy3)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:6rem;align-items:start}
+.contact-info{padding-top:1rem}
+.contact-items{display:flex;flex-direction:column;gap:1.5rem;margin-top:3rem}
+.contact-item{
+  display:flex;gap:1.2rem;align-items:flex-start;
+  padding:1.5rem;border:1px solid rgba(255,255,255,.06);
+  transition:all .4s;
+}
+.contact-item:hover{border-color:rgba(26,86,232,.2);background:rgba(26,86,232,.04)}
+.ci-icon{
+  width:46px;height:46px;flex-shrink:0;
+  border:1px solid rgba(26,86,232,.2);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.ci-text{}
+.ci-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue2);font-weight:700;margin-bottom:.3rem}
+.ci-value{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.6}
+.contact-form{
+  background:var(--navy2);padding:3rem;
+  border:1px solid rgba(255,255,255,.06);
+}
+.form-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;color:#fff;margin-bottom:.5rem;
+}
+.form-sub{font-size:.82rem;color:var(--text-dim);margin-bottom:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg{display:flex;flex-direction:column;gap:.5rem}
+.fg label{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);font-weight:600}
+.fg input,.fg select,.fg textarea{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  color:#fff;padding:.9rem 1.1rem;
+  font-family:'Cairo',sans-serif;font-size:.88rem;
+  outline:none;transition:all .3s;-webkit-appearance:none;resize:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:rgba(26,86,232,.4);background:rgba(26,86,232,.05);
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--text-dim)}
+.fg select option{background:var(--navy2);color:#fff}
+.fg.full{grid-column:1/-1}
+.form-submit{
+  width:100%;margin-top:1rem;
+  background:linear-gradient(135deg,var(--blue),#1240c0);
+  color:#fff;border:none;padding:1.1rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  transition:all .35s;box-shadow:0 8px 30px rgba(26,86,232,.2);
+}
+.form-submit:hover{box-shadow:0 12px 40px rgba(26,86,232,.4);transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+footer{background:#020810;border-top:1px solid rgba(26,86,232,.08);padding:5rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:4rem;margin-bottom:4rem}
+.f-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:600;color:#fff;letter-spacing:.12em;margin-bottom:.3rem;
+}
+.f-logo span{color:var(--blue2)}
+.f-sub{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.12);margin-bottom:1.5rem}
+.f-desc{font-size:.82rem;color:rgba(255,255,255,.22);line-height:1.9;max-width:250px}
+.footer-col h4{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue2);margin-bottom:1.5rem;font-weight:600}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.8rem}
+.footer-col a{color:rgba(255,255,255,.22);text-decoration:none;font-size:.82rem;transition:color .3s}
+.footer-col a:hover{color:rgba(255,255,255,.6)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.05);padding-top:2rem;
+  display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.12);align-items:center;
+}
+.f-socials{display:flex;gap:.6rem}
+.fsoc{
+  width:36px;height:36px;border:1px solid rgba(26,86,232,.12);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.18);font-size:.75rem;font-weight:700;
+  cursor:pointer;transition:all .3s;text-decoration:none;
+}
+.fsoc:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ── SECTION BASE ── */
+.section{padding:7rem 5%}
+.sec-ey{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.sl{flex:0 0 40px;height:2px;background:var(--blue2)}
+.st{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--blue2);font-weight:700}
+h2.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:#fff;
+}
+h2.sec-title em{color:var(--gold2);font-style:italic}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+@media(max-width:1100px){
+  .approach-grid{grid-template-columns:1fr;gap:4rem}
+  .results-section{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .hero-content{max-width:100%}
+  .metrics-inner{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<nav>
-  <div class="logo">PEAK<span>CONSULTING</span></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="logo">
+    <span class="logo-main">PEA<span>K</span></span>
+    <span class="logo-sub">Business Consulting — Strategy & Growth</span>
+  </div>
   <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
-    <li><a href="#">خدماتنا</a></li>
-    <li><a href="#">من نحن</a></li>
-    <li><a href="#">الفريق</a></li>
-    <li><a href="#">الحالات</a></li>
-    <li><a href="#">تواصل</a></li>
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#">منهجيتنا</a></li>
+    <li><a href="#">دراسات الحالة</a></li>
+    <li><a href="#">فريقنا</a></li>
+    <li><a href="#contact">تواصل</a></li>
   </ul>
-  <a href="#" class="btn-nav">احجز استشارة</a>
+  <div class="nav-actions">
+    <button class="nav-consult">استشارة مجانية</button>
+    <button class="nav-cta">ابدأ الآن</button>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="grid-bg"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
   <div class="hero-content">
-    <div class="hero-tag">🚀 شريكك الاستراتيجي للنمو</div>
-    <h1>نحول<br><span class="highlight">رؤيتك</span><br>إلى نجاح حقيقي</h1>
-    <p>خدمات استشارية متخصصة في الاستراتيجية والتحول الرقمي وإدارة الأعمال. نساعد الشركات على تجاوز التحديات وتحقيق النمو المستدام.</p>
-    <div class="hero-btns">
-      <a href="#" class="btn-primary">ابدأ رحلتك معنا</a>
-      <a href="#" class="btn-ghost">شاهد حالاتنا</a>
+    <div class="hero-tag">
+      <span class="ht-line"></span>
+      <span class="ht-text">شركة استشارات الأعمال الرائدة في المغرب</span>
     </div>
-    <div class="clients-row">
-      <span class="client-label">يثق بنا:</span>
-      <div class="client-logos">
-        <div class="client-logo">Tech Corp</div>
-        <div class="client-logo">Global Trade</div>
-        <div class="client-logo">Invest MA</div>
-        <div class="client-logo">RetailPro</div>
+    <h1>
+      نحوّل <em>الرؤى</em><br>إلى <strong>نتائج</strong>
+    </h1>
+    <p>نعمل مع الشركات الطموحة التي تريد أن تتخطى حدودها. استراتيجية واضحة، تنفيذ دقيق، ونتائج قابلة للقياس — هذا ما نضمنه لك.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">ابدأ مشروعك معنا</a>
+      <a href="#services" class="btn-ghost">تعرف على خدماتنا</a>
+    </div>
+    <div class="trust-row">
+      <span class="trust-label">يثقون بنا</span>
+      <div class="trust-logos">
+        <div class="trust-logo">OCP GROUP</div>
+        <div class="trust-logo">ATTIJARIWAFA</div>
+        <div class="trust-logo">MAROC TELECOM</div>
+        <div class="trust-logo">CDG INVEST</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="services">
-  <div class="section-header">
-    <div class="tag">خدماتنا الاستشارية</div>
-    <h2>حلول متكاملة لكل تحدياتك التجارية</h2>
-    <p>نقدم مجموعة شاملة من الخدمات المصممة لتحقيق نتائج ملموسة وقابلة للقياس.</p>
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metrics-inner">
+    <div class="metric reveal reveal-delay-1">
+      <span class="metric-num">٢٤٠<span>+</span></span>
+      <span class="metric-label">مشروع منجز</span>
+    </div>
+    <div class="metric reveal reveal-delay-2">
+      <span class="metric-num">١٨</span>
+      <span class="metric-label">سنة خبرة</span>
+    </div>
+    <div class="metric reveal reveal-delay-3">
+      <span class="metric-num">٩٤<span>٪</span></span>
+      <span class="metric-label">نمو متوسط العملاء</span>
+    </div>
+    <div class="metric reveal reveal-delay-4">
+      <span class="metric-num">٤٢</span>
+      <span class="metric-label">خبير متخصص</span>
+    </div>
   </div>
-  <div class="services-grid">
-    <div class="service-card"><div class="service-num">01</div><h3>الاستراتيجية والتخطيط</h3><p>نضع معك خارطة طريق واضحة لتحقيق أهدافك البعيدة المدى بخطوات قابلة للتنفيذ.</p><span class="service-arrow">→</span></div>
-    <div class="service-card"><div class="service-num">02</div><h3>التحول الرقمي</h3><p>نقود رحلة التحول الرقمي لمؤسستك من التقييم إلى التطبيق الكامل بأقل المخاطر.</p><span class="service-arrow">→</span></div>
-    <div class="service-card"><div class="service-num">03</div><h3>إدارة التغيير</h3><p>نساعدك على إدارة التغييرات المؤسسية بسلاسة والتأكد من تبني الفريق للحلول الجديدة.</p><span class="service-arrow">→</span></div>
-    <div class="service-card"><div class="service-num">04</div><h3>تحسين العمليات</h3><p>نحلل عملياتك الحالية ونصمم نماذج عمل أكثر كفاءة لتخفيض التكاليف وزيادة الإنتاجية.</p><span class="service-arrow">→</span></div>
-    <div class="service-card"><div class="service-num">05</div><h3>الاستشارات المالية</h3><p>تحليل مالي شامل وحلول للتمويل وإعادة الهيكلة المالية لتحقيق الاستدامة والنمو.</p><span class="service-arrow">→</span></div>
-    <div class="service-card"><div class="service-num">06</div><h3>توسع الأسواق</h3><p>استراتيجيات دخول الأسواق الجديدة وبناء الشراكات الاستراتيجية محلياً ودولياً.</p><span class="service-arrow">→</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section section" id="services">
+  <div class="reveal">
+    <div class="sec-ey"><span class="sl"></span><span class="st">خدماتنا</span></div>
+    <h2 class="sec-title">حلول متكاملة<br><em>لنمو أعمالك</em></h2>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc-card">
+      <span class="svc-num">01</span>
+      <div class="svc-icon">📊</div>
+      <div class="svc-title">الاستراتيجية والتخطيط</div>
+      <p class="svc-desc">نبني معك خارطة طريق واضحة تحدد أولوياتك وتوجه قراراتك نحو الأهداف بشكل منهجي ومُثبَت.</p>
+      <a href="#" class="svc-link">اكتشف الخدمة &#8592;</a>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">02</span>
+      <div class="svc-icon">🔄</div>
+      <div class="svc-title">التحول الرقمي</div>
+      <p class="svc-desc">نقود مسيرة تحويلك الرقمي من التشخيص إلى التنفيذ. تقنيات حديثة، عمليات ذكية، كفاءة أعلى.</p>
+      <a href="#" class="svc-link">اكتشف الخدمة &#8592;</a>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">03</span>
+      <div class="svc-icon">📈</div>
+      <div class="svc-title">تحسين الأداء المؤسسي</div>
+      <p class="svc-desc">تحليل دقيق للهياكل التنظيمية والعمليات. نرصد الفجوات ونصمم حلولاً ترفع كفاءتك وتخفض تكاليفك.</p>
+      <a href="#" class="svc-link">اكتشف الخدمة &#8592;</a>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">04</span>
+      <div class="svc-icon">🌍</div>
+      <div class="svc-title">التوسع والنمو الدولي</div>
+      <p class="svc-desc">ندلك على طريق التوسع في أسواق جديدة. دراسات السوق، الشراكات الاستراتيجية، والتمركز المثالي.</p>
+      <a href="#" class="svc-link">اكتشف الخدمة &#8592;</a>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">05</span>
+      <div class="svc-icon">💼</div>
+      <div class="svc-title">إعادة الهيكلة المالية</div>
+      <p class="svc-desc">تحليل مالي معمّق وخطط إعادة هيكلة مُثبَتة. تحسين التدفق النقدي وتعزيز استدامة الأعمال على المدى البعيد.</p>
+      <a href="#" class="svc-link">اكتشف الخدمة &#8592;</a>
+    </div>
+    <div class="svc-card">
+      <span class="svc-num">06</span>
+      <div class="svc-icon">🎯</div>
+      <div class="svc-title">بناء الفِرَق والقيادة</div>
+      <p class="svc-desc">برامج تطوير قيادي مُصممة خصيصاً لمؤسستك. نبني فِرَقاً عالية الأداء قادرة على تحقيق الرؤية بكفاءة.</p>
+      <a href="#" class="svc-link">اكتشف الخدمة &#8592;</a>
+    </div>
   </div>
 </section>
 
-<section class="stats">
-  <div class="stats-grid">
-    <div class="stat-item"><span class="stat-num">٢٠+</span><div class="stat-label">سنة خبرة</div></div>
-    <div class="stat-item"><span class="stat-num">+٥٠٠</span><div class="stat-label">مشروع ناجح</div></div>
-    <div class="stat-item"><span class="stat-num">+١٢٠</span><div class="stat-label">عميل وفي</div></div>
-    <div class="stat-item"><span class="stat-num">٩٤٪</span><div class="stat-label">نسبة الرضا</div></div>
+<!-- APPROACH -->
+<section class="approach-section section">
+  <div class="approach-grid">
+    <div class="approach-left reveal">
+      <div class="sec-ey"><span class="sl"></span><span class="st">منهجيتنا</span></div>
+      <h2 class="sec-title">أربع خطوات<br><em>إلى القمة</em></h2>
+      <div class="approach-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">التشخيص الشامل</div>
+            <p class="step-desc">نحلل وضعك الحالي بعمق — العمليات، الأداء المالي، الفِرَق، والسوق. صورة واضحة بلا مجاملة.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">تصميم الاستراتيجية</div>
+            <p class="step-desc">نبني خارطة طريق مُخصصة لك. أهداف قابلة للقياس، أولويات واضحة، وجداول زمنية واقعية.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">التنفيذ الميداني</div>
+            <p class="step-desc">لسنا مستشارين يكتبون التقارير فقط. فريقنا يعمل معك داخل المؤسسة لضمان التطبيق الفعلي.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">القياس والتحسين</div>
+            <p class="step-desc">نتابع النتائج بمؤشرات دقيقة ونعدّل المسار باستمرار. نجاحك يُقاس بالأرقام لا بالتقارير.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="approach-right reveal">
+      <div class="approach-visual">
+        <div class="av-header">
+          <span class="av-title">لوحة النتائج — Q2 2026</span>
+          <span class="av-badge">مباشر</span>
+        </div>
+        <div class="av-metrics">
+          <div class="avm-item">
+            <div class="avm-header">
+              <span class="avm-label">نمو الإيرادات</span>
+              <span class="avm-value">+٤٧٪</span>
+            </div>
+            <div class="avm-bar"><div class="avm-fill" style="width:88%"></div></div>
+          </div>
+          <div class="avm-item">
+            <div class="avm-header">
+              <span class="avm-label">كفاءة العمليات</span>
+              <span class="avm-value">+٦٣٪</span>
+            </div>
+            <div class="avm-bar"><div class="avm-fill" style="width:75%"></div></div>
+          </div>
+          <div class="avm-item">
+            <div class="avm-header">
+              <span class="avm-label">رضا الزبائن</span>
+              <span class="avm-value">٩٤٪</span>
+            </div>
+            <div class="avm-bar"><div class="avm-fill" style="width:94%"></div></div>
+          </div>
+          <div class="avm-item">
+            <div class="avm-header">
+              <span class="avm-label">تقليص التكاليف</span>
+              <span class="avm-value">-٢٨٪</span>
+            </div>
+            <div class="avm-bar"><div class="avm-fill" style="width:65%"></div></div>
+          </div>
+        </div>
+        <div class="av-insight">
+          <span class="insight-icon">★</span>
+          <p class="insight-text"><strong>متوسط العائد على الاستثمار:</strong> عملاؤنا يحققون ROI يتجاوز ٣٠٠٪ خلال ١٢ شهراً من بدء التعاون.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="team">
-  <div class="section-header">
-    <div class="tag">فريق الخبراء</div>
-    <h2>وراء كل نجاح فريق استثنائي</h2>
-    <p>خبراء متخصصون في مختلف قطاعات الأعمال بخبرة دولية واسعة.</p>
+<!-- TEAM -->
+<section class="team-section section">
+  <div class="reveal">
+    <div class="sec-ey"><span class="sl"></span><span class="st">فريقنا</span></div>
+    <h2 class="sec-title">خبراء <em>في خدمتك</em></h2>
   </div>
   <div class="team-grid">
-    <div class="team-card"><div class="team-img ti1">👨‍💼</div><div class="team-info"><h3>كريم البوهالي</h3><div class="role">مدير عام وشريك مؤسس</div><p>١٥+ سنة في الاستشارات الاستراتيجية، خبير معتمد من هارفارد</p></div></div>
-    <div class="team-card"><div class="team-img ti2">👩‍💼</div><div class="team-info"><h3>لمياء الحسني</h3><div class="role">رئيسة التحول الرقمي</div><p>متخصصة في التحول التقني وبناء منظومات البيانات للمؤسسات</p></div></div>
-    <div class="team-card"><div class="team-img ti3">👨‍💼</div><div class="team-info"><h3>رضا بنعلي</h3><div class="role">مدير الاستشارات المالية</div><p>خبير مالي حاصل على CFA مع خبرة ١٢ سنة في الاستثمار</p></div></div>
-    <div class="team-card"><div class="team-img ti4">👩‍💼</div><div class="team-info"><h3>سمية التازي</h3><div class="role">مديرة الموارد البشرية</div><p>متخصصة في إدارة التغيير وتطوير الكفاءات المؤسسية</p></div></div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-img"><div class="team-avatar">K</div></div>
+      <div class="team-info">
+        <div class="team-name">كريم الإدريسي</div>
+        <div class="team-role">الشريك المؤسس والرئيس التنفيذي</div>
+        <p class="team-bio">٢٢ سنة في الاستشارات الاستراتيجية. سبق له العمل مع McKinsey وBoston Consulting Group.</p>
+        <div class="team-links">
+          <button class="tlink">LinkedIn</button>
+          <button class="tlink">تواصل</button>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-img" style="background:linear-gradient(160deg,#0d1530,#1a2545)"><div class="team-avatar" style="color:rgba(201,161,74,.12)">S</div></div>
+      <div class="team-info">
+        <div class="team-name">سلمى بنعلي</div>
+        <div class="team-role">مديرة التحول الرقمي</div>
+        <p class="team-bio">خبيرة في تحويل الشركات التقليدية رقمياً. شريكة في ٦٠+ مشروع تحول ناجح بالمغرب وفرنسا.</p>
+        <div class="team-links">
+          <button class="tlink">LinkedIn</button>
+          <button class="tlink">تواصل</button>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-img" style="background:linear-gradient(160deg,#051510,#0a2820)"><div class="team-avatar" style="color:rgba(0,184,169,.1)">Y</div></div>
+      <div class="team-info">
+        <div class="team-name">يوسف المنصوري</div>
+        <div class="team-role">رئيس الاستراتيجية المالية</div>
+        <p class="team-bio">خبير في إعادة الهيكلة المالية والاستثمار. ساعد أكثر من ٤٥ شركة على تحقيق استدامة مالية طويلة الأمد.</p>
+        <div class="team-links">
+          <button class="tlink">LinkedIn</button>
+          <button class="tlink">تواصل</button>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
+      <div class="team-img" style="background:linear-gradient(160deg,#150510,#280a20)"><div class="team-avatar" style="color:rgba(236,72,153,.1)">N</div></div>
+      <div class="team-info">
+        <div class="team-name">نبيلة الشاوي</div>
+        <div class="team-role">مديرة تطوير القيادة</div>
+        <p class="team-bio">متخصصة في بناء الفِرَق وتطوير الكفاءات القيادية. مدربة معتمدة دولياً بخبرة ١٤ سنة في التدريب التنفيذي.</p>
+        <div class="team-links">
+          <button class="tlink">LinkedIn</button>
+          <button class="tlink">تواصل</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="contact">
-  <div class="contact-container">
-    <div class="contact-info">
-      <h2>لنتحدث عن<br>مشروعك</h2>
-      <p>نقدم استشارة أولى مجانية لفهم تحدياتك ووضع خطة عمل مناسبة لاحتياجاتك.</p>
-      <div class="contact-details">
-        <div class="detail-item"><div class="detail-icon">📍</div><span>الدار البيضاء، المغرب — مبنى التوأمين، الطابق ١٢</span></div>
-        <div class="detail-item"><div class="detail-icon">📞</div><span>+212 522 000 000</span></div>
-        <div class="detail-item"><div class="detail-icon">✉️</div><span>hello@peakconsulting.ma</span></div>
-        <div class="detail-item"><div class="detail-icon">🕐</div><span>الاثنين — الجمعة: ٨ص — ٦م</span></div>
+<!-- RESULTS -->
+<div class="results-section">
+  <div class="results-left reveal">
+    <h2>نتائج حقيقية<br>قابلة للقياس</h2>
+    <p>لا وعود فارغة. أرقامنا تتكلم — كل عميل، كل مشروع، كل نتيجة موثقة ومقيسة بدقة.</p>
+    <div class="results-stats">
+      <div class="rs-item reveal reveal-delay-1">
+        <span class="rs-num">٣×</span>
+        <span class="rs-label">متوسط مضاعفة الإيرادات</span>
+      </div>
+      <div class="rs-item reveal reveal-delay-2">
+        <span class="rs-num">٩١٪</span>
+        <span class="rs-label">عملاء يجددون التعاون</span>
+      </div>
+      <div class="rs-item reveal reveal-delay-3">
+        <span class="rs-num">٦ أشهر</span>
+        <span class="rs-label">متوسط وقت ظهور النتائج</span>
+      </div>
+      <div class="rs-item reveal reveal-delay-4">
+        <span class="rs-num">٤٠ شركة</span>
+        <span class="rs-label">دخلت أسواقاً دولية جديدة</span>
       </div>
     </div>
-    <div class="contact-form-box">
-      <h3>احجز استشارة مجانية</h3>
-      <div class="cform">
-        <input type="text" placeholder="الاسم الكامل">
-        <input type="email" placeholder="البريد الإلكتروني">
-        <input type="tel" placeholder="رقم الهاتف">
-        <select><option>حجم الشركة</option><option>شركة ناشئة (أقل من ١٠)</option><option>متوسطة (١٠-٥٠)</option><option>كبيرة (٥٠-٢٠٠)</option><option>كبرى (+٢٠٠)</option></select>
-        <textarea placeholder="اشرح لنا مختصراً ما تحتاجه..."></textarea>
-        <button class="cform-btn">أرسل طلبك ←</button>
+  </div>
+  <div class="results-right reveal">
+    <div class="testimonial-big">
+      <div class="tb-quote">"</div>
+      <p class="tb-text">PEAK غيّرت نظرتنا للعمل بالكامل. في ١٨ شهراً، حققنا نمواً بـ ٢٤٠٪ وفتحنا أسواقاً في ثلاث دول أفريقية لم نكن نجرؤ على التفكير فيها من قبل.</p>
+      <div class="tb-author">
+        <div class="tb-avatar">ر</div>
+        <div>
+          <div class="tb-name">رشيد الطاهر</div>
+          <div class="tb-company">الرئيس التنفيذي — Maroc Pharma Group</div>
+        </div>
       </div>
+    </div>
+    <div class="results-cta">
+      <a href="#contact" class="btn-primary">احجز استشارتك المجانية</a>
+      <a href="#" class="btn-ghost">اقرأ دراسات الحالة</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section section" id="contact">
+  <div style="text-align:center;margin-bottom:4rem" class="reveal">
+    <div class="sec-ey" style="justify-content:center"><span class="sl"></span><span class="st">تواصل معنا</span><span class="sl"></span></div>
+    <h2 class="sec-title" style="text-align:center">لنبدأ <em>معاً</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="sec-ey"><span class="sl"></span><span class="st">معلومات التواصل</span></div>
+      <h2 class="sec-title" style="font-size:2rem;margin-bottom:1rem">نحن هنا<br><em>لأسئلتك</em></h2>
+      <p style="color:var(--text-dim);font-size:.85rem;line-height:2;margin-bottom:1rem">استشارتك الأولى مجانية وبدون التزام. فريقنا يرد خلال ٢٤ ساعة.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div class="ci-text">
+            <div class="ci-label">العنوان</div>
+            <div class="ci-value">شارع محمد الخامس، الدار البيضاء<br>المغرب ٢٠٠٠٠</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div class="ci-text">
+            <div class="ci-label">هاتف</div>
+            <div class="ci-value">+212 522 000 000<br>متاح من ٨ص إلى ٦م</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div class="ci-text">
+            <div class="ci-label">البريد الإلكتروني</div>
+            <div class="ci-value">hello@peak.ma<br>نرد خلال ٢٤ ساعة</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-title">أخبرنا عن مشروعك</div>
+      <p class="form-sub">كلما شاركت تفاصيل أكثر، كلما استطعنا تقديم قيمة أفضل في استشارتك الأولى</p>
+      <div class="form-row">
+        <div class="fg">
+          <label>الاسم الكامل</label>
+          <input type="text" placeholder="اسمك الكريم">
+        </div>
+        <div class="fg">
+          <label>رقم الهاتف</label>
+          <input type="tel" placeholder="+212 6XX XXX XXX">
+        </div>
+        <div class="fg">
+          <label>البريد الإلكتروني</label>
+          <input type="email" placeholder="email@company.ma">
+        </div>
+        <div class="fg">
+          <label>اسم الشركة</label>
+          <input type="text" placeholder="اسم شركتك">
+        </div>
+        <div class="fg full">
+          <label>الخدمة التي تحتاجها</label>
+          <select>
+            <option>اختر الخدمة</option>
+            <option>الاستراتيجية والتخطيط</option>
+            <option>التحول الرقمي</option>
+            <option>تحسين الأداء</option>
+            <option>التوسع الدولي</option>
+            <option>إعادة الهيكلة المالية</option>
+            <option>تطوير القيادة</option>
+          </select>
+        </div>
+        <div class="fg full">
+          <label>اشرح لنا وضعك وأهدافك</label>
+          <textarea rows="4" placeholder="أخبرنا عن تحدياتك وما تريد تحقيقه..."></textarea>
+        </div>
+      </div>
+      <button class="form-submit">أرسل رسالتك — سنتواصل خلال ٢٤ ساعة</button>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="f-logo">PEAK<span>CONSULTING</span></div>
-      <p class="f-desc">شركة استشارات أعمال متخصصة تساعد المؤسسات على تحقيق النمو والتميز عبر حلول استراتيجية مبتكرة.</p>
+      <div class="f-logo">PEA<span>K</span></div>
+      <div class="f-sub">Business Consulting — Strategy & Growth</div>
+      <p class="f-desc">نحوّل الشركات الطموحة إلى قادة في أسواقهم. استراتيجية، تنفيذ، ونتائج قابلة للقياس منذ ٢٠٠٦.</p>
     </div>
-    <div class="f-col"><h4>الخدمات</h4><ul><li><a href="#">الاستراتيجية</a></li><li><a href="#">التحول الرقمي</a></li><li><a href="#">الاستشارات المالية</a></li><li><a href="#">إدارة التغيير</a></li></ul></div>
-    <div class="f-col"><h4>الشركة</h4><ul><li><a href="#">من نحن</a></li><li><a href="#">الفريق</a></li><li><a href="#">حالاتنا</a></li><li><a href="#">الوظائف</a></li></ul></div>
+    <div class="footer-col">
+      <h4>خدماتنا</h4>
+      <ul>
+        <li><a href="#">الاستراتيجية</a></li>
+        <li><a href="#">التحول الرقمي</a></li>
+        <li><a href="#">تحسين الأداء</a></li>
+        <li><a href="#">التوسع الدولي</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>الشركة</h4>
+      <ul>
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">فريقنا</a></li>
+        <li><a href="#">دراسات الحالة</a></li>
+        <li><a href="#">المدونة</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="#">الدار البيضاء، المغرب</a></li>
+        <li><a href="#">+212 522 000 000</a></li>
+        <li><a href="#">hello@peak.ma</a></li>
+        <li><a href="#">الإثنين – الجمعة</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 PEAK CONSULTING — تصميم خبراء الويب</div>
+  <div class="footer-bottom">
+    <span>© 2026 PEAK Consulting — جميع الحقوق محفوظة</span>
+    <div class="f-socials">
+      <a class="fsoc" href="#">f</a>
+      <a class="fsoc" href="#">in</a>
+      <a class="fsoc" href="#">ig</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => entries.forEach(e => {
+  if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+}), {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(r => obs.observe(r));
+</script>
 </body>
 </html>
