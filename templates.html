@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="قوالب جاهزة لموقعك - اختر من بين مجموعة متنوعة من القوالب الاحترافية لمختلف المجالات.">
+    <title>قوالب جاهزة لموقعك - خبراء الويب</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .filter-btn.active {
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            border-color: transparent;
+        }
+        .template-card {
+            display: block;
+        }
+        .template-card.hidden {
+            display: none;
+        }
+        .badge {
+            background: rgba(26, 115, 232, 0.2);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid rgba(26, 115, 232, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
+            </a>
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none" aria-label="القائمة">
+                ☰
+            </button>
+            <div class="hidden md:flex items-center space-x-8">
+                <ul class="flex space-x-6 text-base">
+                    <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-blue-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-blue-400">أعمالنا</a></li>
+                    <li><a href="templates.html" class="nav-link text-blue-400 font-bold">قوالب</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-blue-400">الأسعار</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-blue-400">المدونة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-blue-400">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <!-- Mobile Menu Overlay -->
+            <div id="mobileMenu" class="fixed inset-0 top-16 z-50 md:hidden hidden" style="background: linear-gradient(180deg, #0a1628 0%, #1a2744 50%, #0f1d35 100%);">
+                <div class="flex flex-col items-center justify-center h-full space-y-2 py-8">
+                    <a href="index.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg">الرئيسية</a>
+                    <a href="about.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg">من نحن</a>
+                    <a href="services.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg">خدماتنا</a>
+                    <a href="portfolio.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg">أعمالنا</a>
+                    <a href="templates.html" class="mobile-nav-link text-blue-400 text-lg font-bold py-3 px-8 rounded-lg bg-blue-900 bg-opacity-30">قوالب</a>
+                    <a href="pricing.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg">الأسعار</a>
+                    <a href="contact.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg">اتصل بنا</a>
+                    <button id="closeMobileMenu" class="absolute top-4 left-4 text-white text-3xl">✕</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-16">
+        <!-- Page Header -->
+        <section class="container mx-auto px-6 text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-up">قوالب جاهزة لموقعك</h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
+                اختر القالب المناسب لنشاطك، ونخصصه ليك فوقت قياسي وبسعر مناسب
+            </p>
+        </section>
+
+        <!-- Filter Tabs -->
+        <section class="container mx-auto px-6 mb-12">
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4 overflow-x-auto pb-4 no-scrollbar">
+                <button class="filter-btn active px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="all">الكل</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="ecommerce">متاجر إلكترونية</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="restaurant">مطاعم ومقاهي</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="health">عيادات وخدمات صحية</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="b2b">شركات وخدمات B2B</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="education">تعليم وتكوين</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="realestate">عقار</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="portfolio">بورتفوليو شخصي</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="fitness">رياضة ولياقة</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-700 text-white hover:border-blue-500 transition-all" data-filter="travel">سياحة وسفر</button>
+            </div>
+        </section>
+
+        <!-- Templates Grid -->
+        <section class="container mx-auto px-6">
+            <div id="templatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Template 1: E-commerce -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="ecommerce">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=E-commerce+Template" alt="قالب متجر أزياء" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">متاجر إلكترونية</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب متجر أزياء - أنيق</h3>
+                        <p class="text-gray-400 text-sm mb-6">تصميم عصري متكامل لعرض وبيع المنتجات بسلاسة.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=fashion-store" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 2: Restaurant -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-100" data-category="restaurant">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Restaurant+Template" alt="قالب مطعم فاخر" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">مطاعم ومقاهي</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب مطعم فاخر</h3>
+                        <p class="text-gray-400 text-sm mb-6">قالب يعرض قائمة الطعام والحجز الإلكتروني بأسلوب راقي.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=restaurant-luxury" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 3: Health -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-200" data-category="health">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Medical+Template" alt="قالب عيادة طبية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">عيادات وخدمات صحية</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب عيادة طبية حديثة</h3>
+                        <p class="text-gray-400 text-sm mb-6">حل مثالي للعيادات لتنظيم المواعيد والتعريف بالخدمات.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=medical-clinic" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 4: B2B -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="b2b">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Corporate+Template" alt="قالب شركة استشارات" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">شركات وخدمات B2B</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب شركة استشارات</h3>
+                        <p class="text-gray-400 text-sm mb-6">تصميم احترافي يعزز الثقة ويبرز خبرات شركتك.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=consulting-firm" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 5: Education -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-100" data-category="education">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Education+Template" alt="قالب أكاديمية تعليمية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">تعليم وتكوين</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب أكاديمية تعليمية</h3>
+                        <p class="text-gray-400 text-sm mb-6">منصة متكاملة لعرض الدورات والتدريبات التفاعلية.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=edu-academy" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 6: Real Estate -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-200" data-category="realestate">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Real+Estate+Template" alt="قالب وكالة عقارية" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">عقار</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب وكالة عقارية</h3>
+                        <p class="text-gray-400 text-sm mb-6">اعرض عقاراتك بصور جذابة وتفاصيل دقيقة لعملائك.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=real-estate" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 7: Portfolio -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in" data-category="portfolio">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Portfolio+Template" alt="قالب بورتفوليو إبداعي" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">بورتفوليو شخصي</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب بورتفوليو إبداعي</h3>
+                        <p class="text-gray-400 text-sm mb-6">أبرز أعمالك ومهاراتك الشخصية بتصميم فريد.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=creative-portfolio" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 8: Fitness -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-100" data-category="fitness">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Fitness+Template" alt="قالب نادي رياضي" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">رياضة ولياقة</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب نادي رياضي</h3>
+                        <p class="text-gray-400 text-sm mb-6">شجع عملائك على التسجيل وعرض جداول التمارين.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=fitness-club" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 9: Travel -->
+                <div class="template-card card p-0 overflow-hidden animate-scale-in animation-delay-200" data-category="travel">
+                    <div class="relative group">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Travel+Template" alt="قالب وكالة سفر" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="badge">سياحة وسفر</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">قالب وكالة سفر وسياحة</h3>
+                        <p class="text-gray-400 text-sm mb-6">اعرض أجمل الوجهات والرحلات السياحية لعملائك.</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 text-center py-2 rounded border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all text-sm font-bold" target="_blank">معاينة حية</a>
+                            <a href="contact.html?template=travel-agency" class="flex-1 text-center py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-all text-sm font-bold">اطلب القالب</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container mx-auto px-6 py-20 text-center mt-12 bg-gray-900 rounded-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">ما لقيتيش القالب اللي كيناسبك؟</h2>
+            <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">نحن هنا لمساعدتك في بناء تصميم مخصص بالكامل يلبي احتياجات مشروعك الفريدة.</p>
+            <a href="contact.html" class="btn-primary text-lg inline-block">اطلب تصميم مخصص</a>
+        </section>
+    </main>
+
+    <footer class="bg-black py-12 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-right">
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">خبراء الويب</h4>
+                    <p class="text-gray-400 text-sm">وكالة رقمية متخصصة في تصميم وتطوير الحلول الرقمية بأسعار مناسبة وجودة عالية.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-400 hover:text-blue-400 text-sm">خدماتنا</a></li>
+                        <li><a href="templates.html" class="text-gray-400 hover:text-blue-400 text-sm">القوالب</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-blue-400 text-sm">الأسعار</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-blue-400 text-sm">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 text-sm">البريد: khobaraweb@gmail.com</li>
+                        <li class="text-gray-400 text-sm">الهاتف: 0778878421</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-sm border-t border-gray-800 pt-6">&copy; 2024 - 2026 خبراء الويب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Filtering Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const templateCards = document.querySelectorAll('.template-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    templateCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.classList.remove('hidden');
+                            card.classList.add('animate-scale-in');
+                        } else {
+                            card.classList.add('hidden');
+                            card.classList.remove('animate-scale-in');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
