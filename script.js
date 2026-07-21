@@ -194,15 +194,42 @@ if (portfolioFilters.length > 0) {
     });
 }
 
-// Mobile Menu Toggle (if needed)
-const mobileMenuButton = document.querySelector('[data-mobile-menu-toggle]');
-const mobileMenu = document.querySelector('[data-mobile-menu]');
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
 
-if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
     });
 }
+
+if (closeMobileMenuBtn && mobileMenu) {
+    closeMobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+}
+
+// Close mobile menu when clicking a link
+if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
+// Close mobile menu on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+});
 
 // Back to Top Button
 document.addEventListener('DOMContentLoaded', function() {

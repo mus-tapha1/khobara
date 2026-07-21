@@ -14,7 +14,12 @@
             <a href="index.html" class="flex items-center">
                 <img src="images/logo.png" alt="خبراء الويب" class="h-14 md:h-16">
             </a>
-            <div class="flex items-center space-x-8">
+            <!-- Hamburger Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none" aria-label="القائمة">
+                ☰
+            </button>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center space-x-8">
                 <ul class="flex space-x-6 text-base">
                     <li><a href="index.html" class="nav-link text-white hover:text-blue-400">الرئيسية</a></li>
                     <li><a href="about.html" class="nav-link text-white hover:text-blue-400">من نحن</a></li>
@@ -31,6 +36,28 @@
                         <a href="#" onclick="setLanguage('en')">English</a>
                         <a href="#" onclick="setLanguage('ar')">العربية</a>
                     </div>
+                </div>
+            </div>
+            <!-- Mobile Menu Overlay -->
+            <div id="mobileMenu" class="fixed inset-0 top-16 bg-black bg-opacity-95 z-50 md:hidden hidden">
+                <div class="flex flex-col items-center justify-center h-full space-y-6">
+                    <a href="index.html" class="text-white text-xl hover:text-blue-400">الرئيسية</a>
+                    <a href="about.html" class="text-white text-xl hover:text-blue-400">من نحن</a>
+                    <a href="services.html" class="text-white text-xl hover:text-blue-400">خدماتنا</a>
+                    <a href="portfolio.html" class="text-white text-xl hover:text-blue-400">أعمالنا</a>
+                    <a href="pricing.html" class="text-white text-xl hover:text-blue-400">الأسعار</a>
+                    <a href="blog.html" class="text-white text-xl hover:text-blue-400">المدونة</a>
+                    <a href="faq.html" class="text-white text-xl hover:text-blue-400">الأسئلة الشائعة</a>
+                    <a href="contact.html" class="text-white text-xl hover:text-blue-400">اتصل بنا</a>
+                    <div class="pt-4">
+                        <button class="text-blue-400 text-sm font-semibold" onclick="setLanguage('en')">English</button>
+                        <span class="text-gray-500 mx-2">|</span>
+                        <button class="text-blue-400 text-sm font-semibold" onclick="setLanguage('ar')">العربية</button>
+                    </div>
+                    <!-- Close Button -->
+                    <button id="closeMobileMenu" class="absolute top-4 left-4 text-white text-3xl" aria-label="إغلاق القائمة">
+                        ✕
+                    </button>
                 </div>
             </div>
         </nav>

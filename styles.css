@@ -539,29 +539,95 @@ footer {
     display: flex;
 }
 
+/* Hamburger Menu Button */
+#mobileMenuBtn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 60;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    #mobileMenuBtn {
+        display: block;
+    }
+
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     section h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 
-    header nav {
-        flex-direction: column;
-        gap: 1rem;
+    section {
+        padding: 3rem 0;
     }
 
-    header ul {
-        flex-direction: column;
-        gap: 0.5rem;
+    .stats-section .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
+
+    /* Hide desktop nav on mobile */
+    .hidden.md\:flex {
+        display: none !important;
+    }
+
+    /* Make hero buttons stack */
+    .hero-section .space-x-4 > * {
+        display: block;
+        margin: 0.5rem auto;
+        text-align: center;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header nav ul li a {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile overlay menu */
+#mobileMenu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.95);
+}
+
+#mobileMenu a {
+    display: block;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+#mobileMenu a:hover {
+    color: var(--primary-color) !important;
+}
+
+#closeMobileMenu {
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+    z-index: 60;
 }
 
 /* Scrollbar Styling */
