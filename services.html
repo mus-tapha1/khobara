@@ -39,23 +39,45 @@
                 </div>
             </div>
             <!-- Mobile Menu Overlay -->
-            <div id="mobileMenu" class="fixed inset-0 top-16 bg-black bg-opacity-95 z-50 md:hidden hidden">
-                <div class="flex flex-col items-center justify-center h-full space-y-6">
-                    <a href="index.html" class="text-white text-xl hover:text-blue-400">الرئيسية</a>
-                    <a href="about.html" class="text-white text-xl hover:text-blue-400">من نحن</a>
-                    <a href="services.html" class="text-white text-xl hover:text-blue-400">خدماتنا</a>
-                    <a href="portfolio.html" class="text-white text-xl hover:text-blue-400">أعمالنا</a>
-                    <a href="pricing.html" class="text-white text-xl hover:text-blue-400">الأسعار</a>
-                    <a href="blog.html" class="text-white text-xl hover:text-blue-400">المدونة</a>
-                    <a href="faq.html" class="text-white text-xl hover:text-blue-400">الأسئلة الشائعة</a>
-                    <a href="contact.html" class="text-white text-xl hover:text-blue-400">اتصل بنا</a>
-                    <div class="pt-4">
-                        <button class="text-blue-400 text-sm font-semibold" onclick="setLanguage('en')">English</button>
-                        <span class="text-gray-500 mx-2">|</span>
-                        <button class="text-blue-400 text-sm font-semibold" onclick="setLanguage('ar')">العربية</button>
+            <div id="mobileMenu" class="fixed inset-0 top-16 z-50 md:hidden hidden" style="background: linear-gradient(180deg, #0a1628 0%, #1a2744 50%, #0f1d35 100%);">
+                <div class="flex flex-col items-center justify-center h-full space-y-2 py-8">
+                    <!-- Logo in mobile menu -->
+                    <div class="mb-8">
+                        <img src="images/logo.png" alt="خبراء الويب" class="h-16 opacity-90">
+                    </div>
+                    <!-- Navigation Links with professional styling -->
+                    <a href="index.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">🏠</span> الرئيسية
+                    </a>
+                    <a href="about.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">👥</span> من نحن
+                    </a>
+                    <a href="services.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">⚙️</span> خدماتنا
+                    </a>
+                    <a href="portfolio.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">💼</span> أعمالنا
+                    </a>
+                    <a href="pricing.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">💰</span> الأسعار
+                    </a>
+                    <a href="blog.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">📝</span> المدونة
+                    </a>
+                    <a href="faq.html" class="mobile-nav-link text-white text-lg font-semibold py-3 px-8 rounded-lg transition-all duration-300" style="min-width: 220px; text-align: center;">
+                        <span class="mr-2">❓</span> الأسئلة الشائعة
+                    </a>
+                    <a href="contact.html" class="mobile-nav-link text-blue-400 text-lg font-bold py-3 px-8 rounded-lg border-2 border-blue-500 transition-all duration-300" style="min-width: 220px; text-align: center; background: rgba(59, 130, 246, 0.15);">
+                        <span class="mr-2">📞</span> اتصل بنا
+                    </a>
+                    <!-- Language Switcher -->
+                    <div class="pt-6 flex items-center space-x-4">
+                        <button class="text-blue-300 text-sm font-semibold hover:text-white transition-colors" onclick="setLanguage('en')">English</button>
+                        <span class="text-gray-500">|</span>
+                        <button class="text-blue-300 text-sm font-semibold hover:text-white transition-colors" onclick="setLanguage('ar')">العربية</button>
                     </div>
                     <!-- Close Button -->
-                    <button id="closeMobileMenu" class="absolute top-4 left-4 text-white text-3xl" aria-label="إغلاق القائمة">
+                    <button id="closeMobileMenu" class="absolute top-4 left-4 text-white text-3xl opacity-70 hover:opacity-100 transition-opacity" aria-label="إغلاق القائمة">
                         ✕
                     </button>
                 </div>

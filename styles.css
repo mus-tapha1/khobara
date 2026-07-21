@@ -596,7 +596,7 @@ footer {
     }
 }
 
-/* Mobile overlay menu */
+/* Mobile overlay menu - Professional Design */
 #mobileMenu {
     position: fixed;
     top: 64px;
@@ -604,19 +604,33 @@ footer {
     right: 0;
     bottom: 0;
     z-index: 50;
-    background: rgba(0, 0, 0, 0.95);
+    background: linear-gradient(180deg, #0a1628 0%, #1a2744 50%, #0f1d35 100%);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-#mobileMenu a {
+.mobile-nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 1.125rem;
     display: block;
-    padding: 1rem 2rem;
+    padding: 0.75rem 2rem;
     text-align: center;
-    font-size: 1.25rem;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    min-width: 220px;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-#mobileMenu a:hover {
-    color: var(--primary-color) !important;
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+    background: rgba(59, 130, 246, 0.15) !important;
+    color: #60a5fa !important;
+    transform: scale(1.02);
+}
+
+.mobile-nav-link:visited {
+    color: #ffffff !important;
 }
 
 #closeMobileMenu {
@@ -628,6 +642,18 @@ footer {
     color: white;
     font-size: 2rem;
     z-index: 60;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#closeMobileMenu:hover {
+    opacity: 1;
+}
+
+/* Fix header button visibility */
+header button {
+    color: white !important;
+    background: none !important;
 }
 
 /* Scrollbar Styling */
