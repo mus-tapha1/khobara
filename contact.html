@@ -51,7 +51,7 @@
                 </div>
             </div>
             <!-- Mobile Menu Overlay -->
-            <div id="mobileMenu" class="fixed inset-0 top-16 z-50 md:hidden hidden" style="background: linear-gradient(180deg, #0a1628 0%, #1a2744 50%, #0f1d35 100%);">
+            <div id="mobileMenu" class="fixed inset-0 top-20 z-50 md:hidden hidden" style="background: linear-gradient(180deg, #0a1628 0%, #1a2744 50%, #0f1d35 100%);">
                 <div class="flex flex-col items-center justify-center h-full space-y-2 py-8">
                     <!-- Logo in mobile menu -->
                     <div class="mb-8">
@@ -112,7 +112,7 @@
                     <!-- Form -->
                     <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 text-right">
                         <h3 class="text-2xl font-bold text-white mb-6">أرسل لنا رسالة</h3>
-                        <form class="contact-form" action="https://formspree.io/f/xpwdkqay" method="POST">
+                        <form class="contact-form" action="https://formsubmit.co/ajax/khobaraweb@gmail.com" method="POST">
                             <div class="mb-4">
                                 <input type="text" name="name" placeholder="اسمك الكامل" required class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none">
                             </div>
@@ -135,6 +135,9 @@
                             <div class="mb-6">
                                 <textarea name="message" rows="5" placeholder="رسالتك أو وصف المشروع..." required class="w-full bg-gray-900 border border-gray-700 text-white p-3 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
                             </div>
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="رسالة جديدة من موقع خبراء الويب">
+                            <input type="hidden" name="_template" value="table">
                             <button type="submit" class="btn-submit w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors duration-300">إرسال الرسالة</button>
                         </form>
                     </div>

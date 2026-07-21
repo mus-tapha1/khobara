@@ -773,9 +773,10 @@ footer {
 }
 
 /* Mobile overlay menu - Professional Design */
+
 #mobileMenu {
     position: fixed;
-    top: 64px;
+    top: 80px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -1105,8 +1106,9 @@ header button {
     }
     
     /* Ensure mobile menu covers everything */
-    #mobileMenu {
-        top: 64px !important;
+    
+#mobileMenu {
+        top: 80px !important;
     }
 
     /* Fix 404 page buttons on mobile */
