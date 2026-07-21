@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسعار والباقات - خبراء الويب</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #a855f7;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        .language-switcher-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .language-switcher:hover .language-switcher-dropdown {
+            display: block;
+        }
+        .language-switcher-dropdown a {
+            color: #e0e0e0;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: right;
+        }
+        .language-switcher-dropdown a:hover {
+            background-color: #2a2a2a;
+        }
+        .pricing-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+        .pricing-card h3 {
+            color: #a855f7;
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .pricing-card .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .pricing-card .price span {
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        .pricing-card ul li {
+            margin-bottom: 0.75rem;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        .pricing-card .btn-select {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            display: inline-block;
+            width: 100%;
+        }
+        .pricing-card .btn-select:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold text-white">خبراء الويب</a>
+            <div class="flex items-center space-x-8">
+                <ul class="flex space-x-8 text-lg">
+                    <li><a href="index.html" class="nav-link text-white hover:text-purple-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-purple-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-purple-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-purple-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-purple-400">الأسعار والباقات</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-purple-400">المدونة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-purple-400">اتصل بنا</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="text-white text-lg font-semibold focus:outline-none">AR <span class="ml-1">▼</span></button>
+                    <div class="language-switcher-dropdown">
+                        <a href="#" onclick="setLanguage('en')">English</a>
+                        <a href="#" onclick="setLanguage('ar')">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-24">
+        <section class="py-20 bg-gray-900 text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-5xl font-bold mb-16 text-white">خطط أسعار مرنة تناسب احتياجاتك</h1>
+                <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
+                    نقدم مجموعة متنوعة من الباقات المصممة لتلبية متطلبات الشركات المختلفة، من الشركات الناشئة إلى المؤسسات الكبيرة. اختر الباقة التي تناسب أهدافك.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="pricing-card">
+                        <div>
+                            <h3>الباقة الأساسية</h3>
+                            <p class="text-gray-400 mb-4">مثالية للشركات الناشئة والمشاريع الصغيرة.</p>
+                            <div class="price">$999<span>/مرة واحدة</span></div>
+                            <ul>
+                                <li>تصميم موقع من صفحة واحدة</li>
+                                <li>تصميم متجاوب</li>
+                                <li>دعم فني لمدة شهر</li>
+                                <li>تحسين SEO أساسي</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-select">اختر هذه الباقة</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div>
+                            <h3>الباقة الاحترافية</h3>
+                            <p class="text-gray-400 mb-4">للمشاريع المتوسطة التي تتطلب حضورًا قويًا.</p>
+                            <div class="price">$2499<span>/مرة واحدة</span></div>
+                            <ul>
+                                <li>تصميم موقع متعدد الصفحات (حتى 5 صفحات)</li>
+                                <li>تصميم متجاوب ومخصص</li>
+                                <li>دعم فني لمدة 3 أشهر</li>
+                                <li>تحسين SEO متقدم</li>
+                                <li>ربط بوسائل التواصل الاجتماعي</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-select">اختر هذه الباقة</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div>
+                            <h3>الباقة الماسية</h3>
+                            <p class="text-gray-400 mb-4">للمؤسسات الكبيرة التي تبحث عن حلول متكاملة.</p>
+                            <div class="price">$4999<span>/مرة واحدة</span></div>
+                            <ul>
+                                <li>تصميم موقع مخصص بالكامل</li>
+                                <li>عدد غير محدود من الصفحات</li>
+                                <li>دعم فني لمدة 6 أشهر</li>
+                                <li>تحسين SEO شامل</li>
+                                <li>تكامل التجارة الإلكترونية</li>
+                                <li>تحليلات وتقارير أداء</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-select">اختر هذه الباقة</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-10 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2024 خبراء الويب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            if (lang === 'en') {
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                alert('Language switched to English (placeholder)');
+            } else {
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+                alert('Language switched to Arabic (placeholder)');
+            }
+        }
+    </script>
+</body>
+</html>

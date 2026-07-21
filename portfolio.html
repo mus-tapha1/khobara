@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أعمالنا - خبراء الويب</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #a855f7;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        .language-switcher-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .language-switcher:hover .language-switcher-dropdown {
+            display: block;
+        }
+        .language-switcher-dropdown a {
+            color: #e0e0e0;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: right;
+        }
+        .language-switcher-dropdown a:hover {
+            background-color: #2a2a2a;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .portfolio-item img {
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-overlay p {
+            color: #ccc;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-lg shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold text-white">خبراء الويب</a>
+            <div class="flex items-center space-x-8">
+                <ul class="flex space-x-8 text-lg">
+                    <li><a href="index.html" class="nav-link text-white hover:text-purple-400">الرئيسية</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:text-purple-400">من نحن</a></li>
+                    <li><a href="services.html" class="nav-link text-white hover:text-purple-400">خدماتنا</a></li>
+                    <li><a href="portfolio.html" class="nav-link text-white hover:text-purple-400">أعمالنا</a></li>
+                    <li><a href="pricing.html" class="nav-link text-white hover:text-purple-400">الأسعار والباقات</a></li>
+                    <li><a href="blog.html" class="nav-link text-white hover:text-purple-400">المدونة</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:text-purple-400">اتصل بنا</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="text-white text-lg font-semibold focus:outline-none">AR <span class="ml-1">▼</span></button>
+                    <div class="language-switcher-dropdown">
+                        <a href="#" onclick="setLanguage('en')">English</a>
+                        <a href="#" onclick="setLanguage('ar')">العربية</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-24">
+        <section class="py-20 bg-gray-900 text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-5xl font-bold mb-16 text-white">أعمالنا التي تتحدث عن نفسها</h1>
+                <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
+                    نحن نفخر بمشاريعنا التي تعكس شغفنا بالابتكار والتميز. استكشف معرض أعمالنا لتشاهد كيف نحول الرؤى إلى واقع رقمي مبهر.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/e0e0e0?text=Project+A" alt="Project A" class="w-full h-auto object-cover">
+                        <div class="portfolio-overlay">
+                            <h3>مشروع تصميم موقع فاخر</h3>
+                            <p>تصميم وتطوير موقع إلكتروني لعلامة تجارية فاخرة في قطاع الأزياء.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/e0e0e0?text=Project+B" alt="Project B" class="w-full h-auto object-cover">
+                        <div class="portfolio-overlay">
+                            <h3>تطبيق ويب مخصص للخدمات</h3>
+                            <p>بناء تطبيق ويب متكامل لإدارة الخدمات اللوجستية لشركة كبرى.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/e0e0e0?text=Project+C" alt="Project C" class="w-full h-auto object-cover">
+                        <div class="portfolio-overlay">
+                            <h3>حملة تسويق رقمي متكاملة</h3>
+                            <p>تصميم وتنفيذ حملة تسويق رقمي ناجحة لزيادة الوعي بالعلامة التجارية.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/e0e0e0?text=Project+D" alt="Project D" class="w-full h-auto object-cover">
+                        <div class="portfolio-overlay">
+                            <h3>إعادة تصميم هوية بصرية</h3>
+                            <p>تجديد الهوية البصرية لشركة تقنية رائدة مع التركيز على الحداثة.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/e0e0e0?text=Project+E" alt="Project E" class="w-full h-auto object-cover">
+                        <div class="portfolio-overlay">
+                            <h3>تطوير متجر إلكتروني احترافي</h3>
+                            <p>إنشاء متجر إلكتروني متكامل مع بوابات دفع متعددة وتجربة تسوق سلسة.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/e0e0e0?text=Project+F" alt="Project F" class="w-full h-auto object-cover">
+                        <div class="portfolio-overlay">
+                            <h3>استشارات SEO وتحسين محركات البحث</h3>
+                            <p>تقديم استشارات متخصصة وتحسين محركات البحث لموقع إخباري كبير.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-10 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2024 خبراء الويب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            if (lang === 'en') {
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                alert('Language switched to English (placeholder)');
+            } else {
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+                alert('Language switched to Arabic (placeholder)');
+            }
+        }
+    </script>
+</body>
+</html>
