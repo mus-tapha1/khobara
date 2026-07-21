@@ -1,276 +1,742 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>لوكس ستور — متجر أزياء</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUXE — متجر أزياء فاخر</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Cairo',sans-serif;background:#0a0a0a;color:#fff;overflow-x:hidden}
-:root{--gold:#c9a84c;--gold2:#e8c97e;--dark:#0a0a0a;--card:#111}
+:root{
+  --black:#080808;
+  --black2:#111;
+  --black3:#181818;
+  --gold:#c9a84c;
+  --gold2:#e8c97e;
+  --gold-dim:rgba(201,168,76,.12);
+  --white:#fff;
+  --off-white:#f5f2ee;
+  --text-dim:rgba(255,255,255,.45);
+  --text-mid:rgba(255,255,255,.75);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--black2)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4%;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15)}
-.logo{font-size:1.6rem;font-weight:900;letter-spacing:.05em;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#ccc;text-decoration:none;font-size:.9rem;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
-.nav-actions{display:flex;gap:1rem;align-items:center}
-.cart-btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;padding:.6rem 1.4rem;border-radius:30px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem}
+/* ── TOP BAR ── */
+.top-bar{
+  background:var(--gold);color:var(--black);
+  text-align:center;padding:.55rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.1em;
+}
 
-/* HERO */
-.hero{min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0a0a 0%,#1a1008 50%,#0a0a0a 100%)}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(201,168,76,.12),transparent)}
-.hero-content{position:relative;z-index:2;padding:0 6%;max-width:55%}
-.hero-tag{display:inline-block;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);padding:.3rem 1rem;border-radius:20px;font-size:.8rem;margin-bottom:1.5rem;letter-spacing:.1em}
-.hero h1{font-size:4rem;font-weight:900;line-height:1.1;margin-bottom:1.5rem}
-.hero h1 span{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:#aaa;font-size:1.1rem;line-height:1.8;margin-bottom:2.5rem;max-width:480px}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;transition:transform .3s,box-shadow .3s;text-decoration:none;display:inline-block}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,168,76,.4)}
-.btn-outline{background:transparent;color:var(--gold);border:2px solid var(--gold);padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
-.btn-outline:hover{background:var(--gold);color:#000}
-.hero-visual{position:absolute;left:0;top:0;width:42%;height:100%;overflow:hidden}
-.hero-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,#0a0a0a 0%,transparent 60%)}
-.hero-img-bg{width:100%;height:100%;background:linear-gradient(160deg,#1a0e00,#2d1a00,#1a0e00);display:flex;align-items:center;justify-content:center}
-.mannequin{width:260px;height:480px;background:linear-gradient(180deg,#c9a84c22,#c9a84c44);border-radius:50% 50% 30% 30%/60% 60% 40% 40%;position:relative;margin-top:60px}
-.mannequin::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:80px;height:80px;background:linear-gradient(135deg,#c9a84c33,#c9a84c55);border-radius:50%;border:1px solid rgba(201,168,76,.3)}
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 5%;
+  background:rgba(8,8,8,.97);
+  backdrop-filter:blur(30px);
+  border-bottom:1px solid rgba(201,168,76,.12);
+  transition:all .4s;
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;font-weight:300;letter-spacing:.25em;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,.55);text-decoration:none;
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-icons{display:flex;gap:1.2rem;align-items:center}
+.nav-icon{
+  background:none;border:none;color:rgba(255,255,255,.55);
+  cursor:pointer;font-size:.85rem;transition:color .3s;
+  display:flex;align-items:center;gap:.35rem;
+  font-family:'Cairo',sans-serif;font-weight:600;
+}
+.nav-icon:hover{color:var(--gold)}
+.cart-count{
+  background:var(--gold);color:var(--black);
+  font-size:.65rem;font-weight:700;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
 
-/* CATEGORIES */
-.categories{padding:4rem 6%;background:#0d0d0d}
-.section-title{text-align:center;margin-bottom:3rem}
-.section-title h2{font-size:2.2rem;font-weight:700;margin-bottom:.5rem}
-.section-title h2 span{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.section-title p{color:#888;font-size:.95rem}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.cat-item{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;transition:transform .4s}
-.cat-item:hover{transform:scale(1.03)}
-.cat-bg{width:100%;height:100%;display:flex;align-items:flex-end;padding:1.5rem}
-.cat-bg.c1{background:linear-gradient(160deg,#1a0a1a,#2d1a2d,#4a1a3a)}
-.cat-bg.c2{background:linear-gradient(160deg,#0a1a0a,#1a2d1a,#1a4a1a)}
-.cat-bg.c3{background:linear-gradient(160deg,#0a0a1a,#1a1a2d,#1a1a4a)}
-.cat-bg.c4{background:linear-gradient(160deg,#1a1a0a,#2d2d1a,#3a3a0a)}
-.cat-label{background:rgba(201,168,76,.15);backdrop-filter:blur(10px);border:1px solid rgba(201,168,76,.2);padding:.8rem 1.2rem;border-radius:10px;width:100%}
-.cat-label h3{font-size:1.1rem;font-weight:700;color:#fff}
-.cat-label p{font-size:.8rem;color:var(--gold)}
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero-left{
+  background:var(--off-white);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  min-height:600px;
+}
+.hero-left-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#e8e0d0,#d8cfc0,#e0d8c8);
+}
+.hero-product-display{
+  position:relative;z-index:2;text-align:center;
+  padding:4rem;
+}
+.product-silhouette{
+  width:280px;height:420px;
+  background:linear-gradient(180deg,#c8b89a 0%,#b8a888 50%,#a89878 100%);
+  margin:0 auto 2rem;
+  clip-path:polygon(20% 0,80% 0,90% 5%,95% 10%,95% 95%,5% 95%,5% 10%,10% 5%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;box-shadow:0 40px 80px rgba(0,0,0,.2);
+}
+.product-silhouette::before{
+  content:'';position:absolute;inset:12px;
+  border:1px solid rgba(255,255,255,.3);
+}
+.silhouette-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5rem;opacity:.15;color:#5a4838;
+  font-style:italic;
+}
+.hero-label{
+  display:inline-block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;color:#5a4838;font-style:italic;
+  border-bottom:1px solid rgba(90,72,56,.2);padding-bottom:.5rem;
+  letter-spacing:.05em;
+}
+.hero-right{
+  padding:8rem 6rem;display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+}
+.hero-right::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(201,168,76,.05),transparent);
+}
+.hero-season{
+  font-size:.7rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-season::before{content:'';flex:0 0 40px;height:1px;background:var(--gold);opacity:.6}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,6vw,5.5rem);font-weight:300;
+  line-height:1.05;margin-bottom:1.8rem;
+}
+.hero h1 em{color:var(--gold2);font-style:italic;display:block}
+.hero-desc{
+  color:var(--text-dim);line-height:2;font-size:.9rem;
+  max-width:420px;margin-bottom:3rem;font-weight:300;
+}
+.hero-price-row{
+  display:flex;align-items:baseline;gap:1rem;margin-bottom:2.5rem;
+}
+.hero-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;color:var(--gold2);font-weight:300;
+}
+.hero-price-label{font-size:.75rem;color:var(--text-dim);letter-spacing:.1em}
+.hero-actions{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold),#a87e30);
+  color:#fff;border:none;padding:1.1rem 2.8rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  transition:all .35s;text-decoration:none;display:inline-block;
+  box-shadow:0 8px 30px rgba(201,168,76,.25);
+}
+.btn-gold:hover{box-shadow:0 15px 45px rgba(201,168,76,.45);transform:translateY(-2px)}
+.btn-ghost{
+  background:transparent;border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.7);padding:1.1rem 2.8rem;
+  font-family:'Cairo',sans-serif;font-weight:600;font-size:.88rem;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  transition:all .35s;text-decoration:none;display:inline-block;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.hero-trust{display:flex;gap:2rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--text-dim)}
+.trust-icon{color:var(--gold);font-size:.9rem}
 
-/* PRODUCTS */
-.products{padding:5rem 6%;background:#0a0a0a}
-.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.product-card{background:#111;border-radius:16px;overflow:hidden;transition:transform .4s,box-shadow .4s;cursor:pointer;border:1px solid #1a1a1a}
-.product-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(201,168,76,.15);border-color:rgba(201,168,76,.2)}
-.product-img{height:280px;position:relative;overflow:hidden}
-.product-img.p1{background:linear-gradient(160deg,#1a0a0a,#3d1515,#1a0a0a)}
-.product-img.p2{background:linear-gradient(160deg,#0a0a1a,#151540,#0a0a1a)}
-.product-img.p3{background:linear-gradient(160deg,#0a1a0a,#154015,#0a1a0a)}
-.product-img.p4{background:linear-gradient(160deg,#1a1a0a,#40401a,#1a1a0a)}
-.product-img.p5{background:linear-gradient(160deg,#1a0a1a,#401540,#1a0a1a)}
-.product-img.p6{background:linear-gradient(160deg,#0a1a1a,#154040,#0a1a1a)}
-.product-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(201,168,76,.08),transparent 70%)}
-.product-badge{position:absolute;top:1rem;right:1rem;background:var(--gold);color:#000;padding:.3rem .8rem;border-radius:20px;font-size:.75rem;font-weight:700}
-.product-wishlist{position:absolute;top:1rem;left:1rem;width:36px;height:36px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem}
+/* ── MARQUEE STRIP ── */
+.marquee-strip{
+  background:var(--gold);padding:.8rem 0;
+  overflow:hidden;white-space:nowrap;
+}
+.marquee-inner{
+  display:inline-flex;gap:3rem;
+  animation:marquee 20s linear infinite;
+}
+.marquee-item{
+  font-size:.75rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--black);
+  display:flex;align-items:center;gap:.5rem;
+}
+.marquee-sep{color:rgba(0,0,0,.3);font-size:.6rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SECTION BASE ── */
+.section{padding:7rem 5%}
+.sec-eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.sey-line{flex:0 0 35px;height:1px;background:var(--gold);opacity:.6}
+.sey-text{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h2.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);
+}
+h2.sec-title em{color:var(--gold2);font-style:italic}
+h2.sec-title.dark{color:var(--black)}
+
+/* ── CATEGORIES ── */
+.cats-section{background:var(--black2)}
+.cats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(201,168,76,.08);
+}
+.cat-item{
+  background:var(--black2);padding:3rem 2rem;text-align:center;
+  cursor:pointer;transition:all .4s;position:relative;overflow:hidden;
+}
+.cat-item::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,168,76,.06),transparent);
+  opacity:0;transition:opacity .4s;
+}
+.cat-item:hover{background:var(--black3)}
+.cat-item:hover::after{opacity:1}
+.cat-visual{
+  width:100px;height:130px;margin:0 auto 1.5rem;
+  background:linear-gradient(180deg,rgba(201,168,76,.15),rgba(201,168,76,.05));
+  border:1px solid rgba(201,168,76,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;transition:all .4s;
+  position:relative;
+}
+.cat-item:hover .cat-visual{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.12)}
+.cat-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;color:var(--white);margin-bottom:.4rem;font-weight:300;letter-spacing:.05em;
+}
+.cat-count{font-size:.72rem;color:var(--text-dim);letter-spacing:.1em}
+
+/* ── PRODUCTS ── */
+.products-section{background:var(--off-white)}
+.products-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem}
+.see-all{color:var(--gold);text-decoration:none;font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:.4rem;transition:gap .3s}
+.see-all:hover{gap:.8rem}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.product-card{background:#fff;position:relative;overflow:hidden;transition:all .4s;group:true}
+.product-card:hover{box-shadow:0 25px 60px rgba(0,0,0,.12)}
+.product-img{
+  aspect-ratio:3/4;background:linear-gradient(160deg,#e8e0d0,#d8cfc0);
+  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.product-img-inner{
+  font-size:5rem;opacity:.1;color:#5a4838;transition:transform .6s;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+}
+.product-card:hover .product-img-inner{transform:scale(1.05)}
+.product-overlay{
+  position:absolute;inset:0;background:rgba(8,8,8,.5);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .4s;
+}
+.product-card:hover .product-overlay{opacity:1}
+.overlay-btn{
+  background:var(--white);color:var(--black);border:none;
+  padding:.8rem 2rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.82rem;letter-spacing:.08em;cursor:pointer;
+  transform:translateY(10px);transition:all .4s;
+}
+.product-card:hover .overlay-btn{transform:translateY(0)}
+.overlay-btn:hover{background:var(--gold);color:#fff}
+.prod-badge{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--black);color:#fff;
+  font-size:.65rem;font-weight:700;letter-spacing:.1em;padding:.3rem .8rem;
+}
+.prod-badge.new{background:var(--gold);color:var(--black)}
+.prod-wishlist{
+  position:absolute;top:1rem;left:1rem;
+  width:34px;height:34px;background:rgba(255,255,255,.85);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1rem;transition:all .3s;
+}
+.prod-wishlist:hover{background:#fff}
 .product-info{padding:1.2rem}
-.product-info h3{font-size:1rem;font-weight:600;margin-bottom:.4rem}
-.product-info .category{font-size:.8rem;color:#888;margin-bottom:.8rem}
-.product-price{display:flex;align-items:center;justify-content:space-between}
-.price{font-size:1.2rem;font-weight:700;color:var(--gold)}
-.old-price{font-size:.85rem;color:#555;text-decoration:line-through}
-.add-cart{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.5rem 1rem;border-radius:20px;font-family:'Cairo',sans-serif;font-size:.8rem;cursor:pointer;transition:all .3s}
-.add-cart:hover{background:var(--gold);color:#000}
+.prod-category{
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:#9ca3af;margin-bottom:.4rem;
+}
+.prod-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;color:var(--black);margin-bottom:.6rem;font-weight:600;
+}
+.prod-footer{display:flex;justify-content:space-between;align-items:center}
+.prod-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;color:var(--black);font-weight:600;
+}
+.prod-old{font-size:.8rem;text-decoration:line-through;color:#9ca3af;margin-right:.4rem}
+.prod-add{
+  width:34px;height:34px;background:var(--black);
+  color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;transition:all .3s;
+}
+.prod-add:hover{background:var(--gold)}
 
-/* BANNER */
-.promo-banner{margin:0 6% 5rem;background:linear-gradient(135deg,#1a1000,#2d1e00);border:1px solid rgba(201,168,76,.2);border-radius:24px;padding:3rem;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
-.promo-banner::before{content:'';position:absolute;top:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,.1),transparent);border-radius:50%}
-.promo-text h2{font-size:2rem;font-weight:700;margin-bottom:.5rem}
-.promo-text p{color:#aaa;margin-bottom:1.5rem}
-.promo-code{background:rgba(201,168,76,.15);border:1px dashed var(--gold);padding:.5rem 1.5rem;border-radius:8px;display:inline-block;font-weight:700;color:var(--gold);letter-spacing:.2em;margin-bottom:1.5rem}
+/* ── LOOKBOOK ── */
+.lookbook{background:var(--black);position:relative;overflow:hidden}
+.lookbook-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,76,.06)}
+.look-item{
+  aspect-ratio:4/5;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2.5rem;position:relative;overflow:hidden;
+  cursor:pointer;
+}
+.look-bg{
+  position:absolute;inset:0;transition:transform .6s ease;
+}
+.look-item:hover .look-bg{transform:scale(1.04)}
+.look-bg-1{background:linear-gradient(160deg,#1e1800,#2d2510,#1e1800)}
+.look-bg-2{background:linear-gradient(160deg,#181820,#282838,#181820)}
+.look-bg-3{background:linear-gradient(160deg,#200818,#381028,#200818)}
+.look-bg-4{background:linear-gradient(160deg,#081818,#102828,#081818)}
+.look-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.7) 30%,transparent);
+}
+.look-content{position:relative;z-index:2}
+.look-tag{
+  font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.5rem;
+}
+.look-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:300;color:#fff;margin-bottom:.8rem;
+  line-height:1.2;
+}
+.look-link{
+  font-size:.78rem;color:rgba(255,255,255,.6);
+  letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;gap:.5rem;
+  transition:all .3s;
+}
+.look-item:hover .look-link{color:var(--gold);gap:.9rem}
+.look-icon{
+  position:absolute;top:50%;right:50%;
+  transform:translate(50%,-50%);
+  font-size:6rem;opacity:.04;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  pointer-events:none;
+}
 
-/* FOOTER */
-footer{background:#070707;border-top:1px solid #1a1a1a;padding:3rem 6% 1.5rem}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
-.footer-logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
-.footer-desc{color:#666;font-size:.85rem;line-height:1.8}
-.footer-col h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:1rem}
+/* ── PROMO BANNER ── */
+.promo-banner{
+  background:linear-gradient(135deg,var(--black2),var(--black3));
+  border:1px solid rgba(201,168,76,.15);
+  margin:4rem 5%;padding:4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:3rem;
+  flex-wrap:wrap;position:relative;overflow:hidden;
+}
+.promo-banner::before{
+  content:'';position:absolute;
+  top:-50%;right:-10%;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(201,168,76,.05),transparent 70%);
+  border-radius:50%;
+}
+.promo-text{}
+.promo-eyebrow{
+  font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.8rem;font-weight:600;
+}
+.promo-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:.6rem;font-weight:300;
+}
+.promo-title span{color:var(--gold2);font-style:italic}
+.promo-desc{color:var(--text-dim);font-size:.9rem}
+.promo-actions{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.promo-code{
+  border:1px solid rgba(201,168,76,.3);
+  padding:.7rem 1.8rem;color:var(--gold);
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.2em;
+  font-weight:300;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:#050505;border-top:1px solid rgba(201,168,76,.08);
+  padding:5rem 5% 2rem;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:4rem;margin-bottom:4rem}
+.f-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:300;letter-spacing:.2em;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:.4rem;
+}
+.f-sub{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1.5rem}
+.f-desc{font-size:.83rem;color:rgba(255,255,255,.3);line-height:1.9;max-width:260px}
+.footer-col h4{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.5rem;font-weight:600;
+}
 .footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:.6rem}
-.footer-col ul li a{color:#666;text-decoration:none;font-size:.85rem;transition:color .3s}
-.footer-col ul li a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid #1a1a1a;padding-top:1.5rem;text-align:center;color:#444;font-size:.8rem}
+.footer-col li{margin-bottom:.8rem}
+.footer-col a{color:rgba(255,255,255,.3);text-decoration:none;font-size:.83rem;transition:color .3s}
+.footer-col a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.05);padding-top:2rem;
+  display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.15);
+}
+.f-socials{display:flex;gap:.6rem}
+.fsoc{
+  width:36px;height:36px;border:1px solid rgba(201,168,76,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.25);font-size:.75rem;font-weight:700;
+  cursor:pointer;transition:all .3s;text-decoration:none;
+}
+.fsoc:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{min-height:400px}
+  .hero-right{padding:4rem 5%}
+  .products-grid{grid-template-columns:1fr 1fr}
+  .cats-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .products-grid{grid-template-columns:1fr}
+  .lookbook-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
+<!-- TOP BAR -->
+<div class="top-bar">شحن مجاني عند الطلب فوق ٥٠٠ درهم &nbsp;|&nbsp; عرض محدود: خصم ٢٥٪ بكود LUXE25</div>
+
+<!-- NAV -->
 <nav>
-  <span class="logo">LUXE STORE</span>
+  <div class="logo">LUXE</div>
   <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">مرأة</a></li>
+    <li><a href="#">رجل</a></li>
+    <li><a href="#">العطور</a></li>
+    <li><a href="#">الإكسسوار</a></li>
     <li><a href="#">المجموعات</a></li>
-    <li><a href="#">التخفيضات</a></li>
-    <li><a href="#">من نحن</a></li>
-    <li><a href="#">اتصل بنا</a></li>
+    <li><a href="#" style="color:var(--gold)">تخفيضات</a></li>
   </ul>
-  <div class="nav-actions">
-    <span style="color:#888;font-size:.9rem;cursor:pointer">🔍</span>
-    <span style="color:#888;font-size:.9rem;cursor:pointer">👤</span>
-    <button class="cart-btn">🛒 السلة (3)</button>
+  <div class="nav-icons">
+    <button class="nav-icon">بحث</button>
+    <button class="nav-icon">المفضلة</button>
+    <button class="nav-icon">
+      السلة <span class="cart-count">٣</span>
+    </button>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-visual">
-    <div class="hero-img-bg">
-      <div style="text-align:center">
-        <div class="mannequin"></div>
-        <div style="display:flex;gap:8px;justify-content:center;margin-top:20px">
-          <span style="width:12px;height:12px;background:#c9a84c;border-radius:50%;display:inline-block"></span>
-          <span style="width:12px;height:12px;background:#fff;border-radius:50%;display:inline-block;opacity:.4"></span>
-          <span style="width:12px;height:12px;background:#fff;border-radius:50%;display:inline-block;opacity:.4"></span>
-        </div>
+  <div class="hero-left">
+    <div class="hero-left-bg"></div>
+    <div class="hero-product-display">
+      <div class="product-silhouette">
+        <span class="silhouette-text">L</span>
       </div>
+      <span class="hero-label">مجموعة Printemps 2026</span>
     </div>
   </div>
-  <div class="hero-content" style="margin-right:0;margin-left:auto">
-    <span class="hero-tag">✨ مجموعة صيف 2026</span>
-    <h1>ارتدِ<br><span>أناقتك</span><br>باحتراف</h1>
-    <p>قطع حصرية مصممة بعناية فائقة من أرقى الأقمشة العالمية، لتمنحك إطلالة استثنائية في كل مناسبة.</p>
-    <div class="hero-btns">
-      <a href="#" class="btn-gold">تسوق الآن</a>
-      <a href="#" class="btn-outline">شاهد المجموعة</a>
+  <div class="hero-right">
+    <div class="hero-season">مجموعة الربيع والصيف ٢٠٢٦</div>
+    <h1>الأناقة<br><em>تُعيد تعريف نفسها</em></h1>
+    <p class="hero-desc">قطع حصرية مصممة لمن يعيش الفخامة بتلقائية. كل خيط قصة، كل لون موقف.</p>
+    <div class="hero-price-row">
+      <span class="hero-price">٨٩٥ MAD</span>
+      <span class="hero-price-label">ابتداءً من — التوصيل مجاناً</span>
     </div>
-  </div>
-</section>
-
-<section class="categories">
-  <div class="section-title">
-    <h2>تسوق حسب <span>الفئة</span></h2>
-    <p>اكتشف مجموعتنا الواسعة من الأزياء لجميع المناسبات</p>
-  </div>
-  <div class="cat-grid">
-    <div class="cat-item"><div class="cat-bg c1"><div class="cat-label"><h3>عباءات فاخرة</h3><p>+48 تصميم</p></div></div></div>
-    <div class="cat-item"><div class="cat-bg c2"><div class="cat-label"><h3>ملابس رجالية</h3><p>+62 تصميم</p></div></div></div>
-    <div class="cat-item"><div class="cat-bg c3"><div class="cat-label"><h3>أزياء سهرة</h3><p>+35 تصميم</p></div></div></div>
-    <div class="cat-item"><div class="cat-bg c4"><div class="cat-label"><h3>إكسسوارات</h3><p>+90 تصميم</p></div></div></div>
-  </div>
-</section>
-
-<section class="products">
-  <div class="section-title">
-    <h2>أبرز <span>المنتجات</span></h2>
-    <p>القطع الأكثر طلباً هذا الموسم</p>
-  </div>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-img p1">
-        <span class="product-badge">جديد</span>
-        <span class="product-wishlist">♡</span>
-      </div>
-      <div class="product-info">
-        <div class="category">عباءات</div>
-        <h3>عباءة كلاسيكية فاخرة</h3>
-        <div class="product-price">
-          <div><span class="price">١٢٠ درهم</span> <span class="old-price">١٨٠ درهم</span></div>
-          <button class="add-cart">+ أضف</button>
-        </div>
-      </div>
+    <div class="hero-actions">
+      <a href="#products" class="btn-gold">تسوق الآن</a>
+      <a href="#lookbook" class="btn-ghost">اكتشف اللوك بوك</a>
     </div>
-    <div class="product-card">
-      <div class="product-img p2">
-        <span class="product-badge">خصم ٣٠٪</span>
-        <span class="product-wishlist">♡</span>
-      </div>
-      <div class="product-info">
-        <div class="category">ملابس رجالية</div>
-        <h3>بدلة رسمية إيطالية</h3>
-        <div class="product-price">
-          <div><span class="price">٣٥٠ درهم</span> <span class="old-price">٥٠٠ درهم</span></div>
-          <button class="add-cart">+ أضف</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img p3">
-        <span class="product-badge">الأكثر مبيعاً</span>
-        <span class="product-wishlist">♡</span>
-      </div>
-      <div class="product-info">
-        <div class="category">فساتين سهرة</div>
-        <h3>فستان سهرة مطرز</h3>
-        <div class="product-price">
-          <div><span class="price">٢٨٠ درهم</span></div>
-          <button class="add-cart">+ أضف</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img p4">
-        <span class="product-badge">محدود</span>
-        <span class="product-wishlist">♡</span>
-      </div>
-      <div class="product-info">
-        <div class="category">إكسسوارات</div>
-        <h3>حقيبة يد جلدية فاخرة</h3>
-        <div class="product-price">
-          <div><span class="price">١٩٠ درهم</span> <span class="old-price">٢٥٠ درهم</span></div>
-          <button class="add-cart">+ أضف</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img p5">
-        <span class="product-wishlist">♡</span>
-      </div>
-      <div class="product-info">
-        <div class="category">أحذية</div>
-        <h3>حذاء رسمي جلدي</h3>
-        <div class="product-price">
-          <div><span class="price">٢٢٠ درهم</span></div>
-          <button class="add-cart">+ أضف</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img p6">
-        <span class="product-badge">جديد</span>
-        <span class="product-wishlist">♡</span>
-      </div>
-      <div class="product-info">
-        <div class="category">ساعات</div>
-        <h3>ساعة ذهبية كلاسيكية</h3>
-        <div class="product-price">
-          <div><span class="price">٤٥٠ درهم</span></div>
-          <button class="add-cart">+ أضف</button>
-        </div>
-      </div>
+    <div class="hero-trust">
+      <span class="trust-item"><span class="trust-icon">✓</span> شحن آمن</span>
+      <span class="trust-item"><span class="trust-icon">✓</span> إرجاع مجاني ٣٠ يوم</span>
+      <span class="trust-item"><span class="trust-icon">✓</span> ضمان الأصالة</span>
     </div>
   </div>
 </section>
 
-<div class="promo-banner">
-  <div class="promo-text">
-    <h2>خصم ٢٥٪ على أول طلب 🎁</h2>
-    <p>سجل الآن واستفد من عروضنا الحصرية لأعضاء المتجر</p>
-    <div class="promo-code">LUXE25</div><br>
-    <a href="#" class="btn-gold">استخدم الكود الآن</a>
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">مجموعة صيف ٢٠٢٦ <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">الشحن مجاني عند ٥٠٠ درهم <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">خصم ٢٥٪ بكود LUXE25 <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">قطع حصرية معدودة <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">إرجاع مجاني ٣٠ يوماً <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">مجموعة صيف ٢٠٢٦ <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">الشحن مجاني عند ٥٠٠ درهم <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">خصم ٢٥٪ بكود LUXE25 <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">قطع حصرية معدودة <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">إرجاع مجاني ٣٠ يوماً <span class="marquee-sep">◆</span></span>
   </div>
-  <div style="font-size:8rem;opacity:.15">🛍️</div>
 </div>
 
+<!-- CATEGORIES -->
+<section class="cats-section section">
+  <div style="text-align:center;margin-bottom:4rem" class="reveal">
+    <div class="sec-eyebrow" style="justify-content:center">
+      <span class="sey-line"></span>
+      <span class="sey-text">تسوق حسب الفئة</span>
+      <span class="sey-line"></span>
+    </div>
+    <h2 class="sec-title">اكتشف <em>مجموعاتنا</em></h2>
+  </div>
+  <div class="cats-grid reveal">
+    <div class="cat-item">
+      <div class="cat-visual">👗</div>
+      <div class="cat-name">الفساتين</div>
+      <div class="cat-count">٢٤٨ قطعة</div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-visual">👔</div>
+      <div class="cat-name">الأطقم الرسمية</div>
+      <div class="cat-count">١٨٦ قطعة</div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-visual">👜</div>
+      <div class="cat-name">الحقائب والإكسسوار</div>
+      <div class="cat-count">٣٢٠ قطعة</div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-visual">👠</div>
+      <div class="cat-name">الأحذية الفاخرة</div>
+      <div class="cat-count">١٤٢ قطعة</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section section" id="products">
+  <div class="products-header reveal">
+    <div>
+      <div class="sec-eyebrow">
+        <span class="sey-line" style="background:#1a1a1a"></span>
+        <span class="sey-text" style="color:#c9a84c">الأكثر مبيعاً</span>
+      </div>
+      <h2 class="sec-title dark">قطع <em>مختارة</em></h2>
+    </div>
+    <a href="#" class="see-all">تصفح الكل &#8592;</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img">
+        <div class="product-img-inner">A</div>
+        <div class="product-overlay"><button class="overlay-btn">أضف للسلة</button></div>
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="product-info">
+        <div class="prod-category">فساتين — مرأة</div>
+        <div class="prod-name">فستان الحرير الإمبراطوري</div>
+        <div class="prod-footer">
+          <span class="prod-price">١,٢٨٠ MAD</span>
+          <button class="prod-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img" style="background:linear-gradient(160deg,#d0d8e0,#c0c8d0)">
+        <div class="product-img-inner">B</div>
+        <div class="product-overlay"><button class="overlay-btn">أضف للسلة</button></div>
+        <span class="prod-badge">الأكثر طلباً</span>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="product-info">
+        <div class="prod-category">أطقم رسمية — رجل</div>
+        <div class="prod-name">بدلة وول ستريت الكلاسيكية</div>
+        <div class="prod-footer">
+          <span class="prod-price"><span class="prod-old">٢,٨٠٠</span> ٢,١٠٠ MAD</span>
+          <button class="prod-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img" style="background:linear-gradient(160deg,#e0d0c8,#d0c0b8)">
+        <div class="product-img-inner">C</div>
+        <div class="product-overlay"><button class="overlay-btn">أضف للسلة</button></div>
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="product-info">
+        <div class="prod-category">حقائب — نساء</div>
+        <div class="prod-name">حقيبة المساء الكروشيه</div>
+        <div class="prod-footer">
+          <span class="prod-price">٨٩٠ MAD</span>
+          <button class="prod-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-4">
+      <div class="product-img" style="background:linear-gradient(160deg,#c8d0c8,#b8c0b8)">
+        <div class="product-img-inner">D</div>
+        <div class="product-overlay"><button class="overlay-btn">أضف للسلة</button></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="product-info">
+        <div class="prod-category">ساعات — رجل</div>
+        <div class="prod-name">ساعة ذهبية كلاسيكية</div>
+        <div class="prod-footer">
+          <span class="prod-price">٤,٥٠٠ MAD</span>
+          <button class="prod-add">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="lookbook section" id="lookbook" style="padding:0">
+  <div style="padding:5rem 5% 3rem" class="reveal">
+    <div class="sec-eyebrow">
+      <span class="sey-line"></span>
+      <span class="sey-text">لوك بوك ٢٠٢٦</span>
+    </div>
+    <h2 class="sec-title">استوحِ <em>أسلوبك</em></h2>
+  </div>
+  <div class="lookbook-grid reveal">
+    <div class="look-item">
+      <div class="look-bg look-bg-1"></div>
+      <div class="look-overlay"></div>
+      <span class="look-icon">I</span>
+      <div class="look-content">
+        <div class="look-tag">مجموعة النهار</div>
+        <div class="look-title">الأناقة الكاجوال<br>المعاصرة</div>
+        <span class="look-link">اكتشف اللوك &#8592;</span>
+      </div>
+    </div>
+    <div class="look-item">
+      <div class="look-bg look-bg-2"></div>
+      <div class="look-overlay"></div>
+      <span class="look-icon">II</span>
+      <div class="look-content">
+        <div class="look-tag">مجموعة المساء</div>
+        <div class="look-title">الليل يُلهم<br>التصميم</div>
+        <span class="look-link">اكتشف اللوك &#8592;</span>
+      </div>
+    </div>
+    <div class="look-item">
+      <div class="look-bg look-bg-3"></div>
+      <div class="look-overlay"></div>
+      <span class="look-icon">III</span>
+      <div class="look-content">
+        <div class="look-tag">لوك الرجل</div>
+        <div class="look-title">القيادة بثقة<br>واتزان</div>
+        <span class="look-link">اكتشف اللوك &#8592;</span>
+      </div>
+    </div>
+    <div class="look-item">
+      <div class="look-bg look-bg-4"></div>
+      <div class="look-overlay"></div>
+      <span class="look-icon">IV</span>
+      <div class="look-content">
+        <div class="look-tag">الإكسسوار</div>
+        <div class="look-title">التفاصيل تصنع<br>الفارق</div>
+        <span class="look-link">اكتشف اللوك &#8592;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<div class="promo-banner reveal">
+  <div class="promo-text">
+    <div class="promo-eyebrow">عرض حصري — محدود الوقت</div>
+    <div class="promo-title">خصم <span>٢٥٪</span> على أول طلب</div>
+    <p class="promo-desc">سجل وكن من أوائل المستفيدين من عروضنا الحصرية المستمرة</p>
+  </div>
+  <div class="promo-actions">
+    <div class="promo-code">LUXE25</div>
+    <a href="#" class="btn-gold">استخدم الكود الآن</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">LUXE STORE</div>
-      <p class="footer-desc">متجرك المفضل للأزياء الفاخرة والقطع الحصرية من أرقى العلامات التجارية العالمية والمحلية.</p>
-      <div style="display:flex;gap:.8rem;margin-top:1.2rem">
-        <span style="width:36px;height:36px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer">📘</span>
-        <span style="width:36px;height:36px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer">📸</span>
-        <span style="width:36px;height:36px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer">🐦</span>
-      </div>
+      <div class="f-logo">LUXE</div>
+      <div class="f-sub">Fashion — Accessories — Luxury</div>
+      <p class="f-desc">متجرك المفضل للأزياء الفاخرة والقطع الحصرية. نجمع بين الذوق المغربي والأسلوب العالمي.</p>
     </div>
-    <div class="footer-col"><h4>روابط سريعة</h4><ul><li><a href="#">الصفحة الرئيسية</a></li><li><a href="#">المجموعات</a></li><li><a href="#">العروض</a></li><li><a href="#">المفضلة</a></li></ul></div>
-    <div class="footer-col"><h4>خدمة العملاء</h4><ul><li><a href="#">تتبع الطلب</a></li><li><a href="#">سياسة الإرجاع</a></li><li><a href="#">الأسئلة الشائعة</a></li><li><a href="#">تواصل معنا</a></li></ul></div>
-    <div class="footer-col"><h4>تواصل معنا</h4><ul><li><a href="#">info@luxestore.ma</a></li><li><a href="#">+212 600 000 000</a></li><li><a href="#">المغرب، الدار البيضاء</a></li></ul></div>
+    <div class="footer-col">
+      <h4>تسوق</h4>
+      <ul>
+        <li><a href="#">مرأة</a></li>
+        <li><a href="#">رجل</a></li>
+        <li><a href="#">الإكسسوار</a></li>
+        <li><a href="#">التخفيضات</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>خدمة العملاء</h4>
+      <ul>
+        <li><a href="#">تتبع الطلب</a></li>
+        <li><a href="#">سياسة الإرجاع</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">تواصل معنا</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="#">info@luxe.ma</a></li>
+        <li><a href="#">+212 600 000 000</a></li>
+        <li><a href="#">الدار البيضاء، المغرب</a></li>
+        <li><a href="#">الواتساب المباشر</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 LUXE STORE — جميع الحقوق محفوظة | تصميم خبراء الويب</div>
+  <div class="footer-bottom">
+    <span>© 2026 LUXE — جميع الحقوق محفوظة</span>
+    <div class="f-socials">
+      <a class="fsoc" href="#">f</a>
+      <a class="fsoc" href="#">in</a>
+      <a class="fsoc" href="#">ig</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+}, { threshold: 0.08, rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(r => obs.observe(r));
+</script>
 </body>
 </html>

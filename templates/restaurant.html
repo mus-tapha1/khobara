@@ -1,211 +1,981 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>لا ماسون — مطعم فاخر</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Cairo',sans-serif;background:#0c0900;color:#f5e6c8;overflow-x:hidden}
-:root{--amber:#d4841a;--cream:#f5e6c8;--dark:#0c0900;--card:#140f04}
+:root{
+  --amber:#c8922a;
+  --amber-light:#e8b84b;
+  --amber-dark:#9a6b1a;
+  --cream:#f5e8d0;
+  --cream-light:#fdf7ee;
+  --dark:#0a0800;
+  --dark2:#130f03;
+  --dark3:#1c1609;
+  --charcoal:#2a2010;
+  --text-muted:#8a7050;
+  --text-mid:#c4aa80;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden}
 
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(12,9,0,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,132,26,.2)}
-.logo{font-size:1.7rem;font-weight:900;color:var(--amber);letter-spacing:.1em}
-.logo span{color:var(--cream);font-weight:300;font-size:1rem;display:block;letter-spacing:.3em;margin-top:-5px}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{color:#b8a070;text-decoration:none;font-size:.9rem;transition:color .3s}
-.nav-links a:hover{color:var(--amber)}
-.reserve-btn{background:var(--amber);color:#000;border:none;padding:.7rem 1.8rem;border-radius:5px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.9rem;letter-spacing:.05em}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--dark2)}
+::-webkit-scrollbar-thumb{background:var(--amber-dark);border-radius:2px}
 
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0c0900 0%,#1a1000 30%,#0c0500 70%,#0c0900 100%)}
-.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 60% 40%,rgba(212,132,26,.08),transparent)}
-.hero-decor{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:45%;aspect-ratio:1;border:1px solid rgba(212,132,26,.1);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.hero-decor::before{content:'';position:absolute;inset:15%;border:1px solid rgba(212,132,26,.15);border-radius:50%}
-.hero-decor::after{content:'🍽️';font-size:5rem;opacity:.2}
-.hero-content{position:relative;z-index:2;padding:0 5%;max-width:55%}
-.hero-tag{font-size:.8rem;color:var(--amber);letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.5rem;display:block}
-.hero h1{font-size:4.5rem;font-weight:900;line-height:1.05;margin-bottom:1.5rem;color:var(--cream)}
-.hero h1 em{font-style:italic;color:var(--amber);font-weight:300}
-.hero p{color:#a08060;line-height:1.9;margin-bottom:2.5rem;font-size:1rem;max-width:450px}
-.hero-btns{display:flex;gap:1.2rem}
-.btn-amber{background:var(--amber);color:#000;border:none;padding:1rem 2.5rem;border-radius:5px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
-.btn-amber:hover{background:#e8960a;box-shadow:0 8px 30px rgba(212,132,26,.4)}
-.btn-ghost{border:1px solid rgba(212,132,26,.4);color:var(--amber);background:transparent;padding:1rem 2.5rem;border-radius:5px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;text-decoration:none;display:inline-block;transition:all .3s}
-.btn-ghost:hover{border-color:var(--amber);background:rgba(212,132,26,.1)}
-.hero-stats{display:flex;gap:3rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(212,132,26,.15)}
-.stat-item{text-align:center}
-.stat-num{font-size:2rem;font-weight:900;color:var(--amber);display:block}
-.stat-label{font-size:.8rem;color:#806040}
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
 
-/* MENU */
-.menu-section{padding:6rem 5%;background:#0e0b02}
-.section-header{text-align:center;margin-bottom:4rem}
-.overline{font-size:.8rem;color:var(--amber);letter-spacing:.4em;text-transform:uppercase;margin-bottom:1rem}
-.section-header h2{font-size:2.8rem;font-weight:700;color:var(--cream)}
-.menu-tabs{display:flex;justify-content:center;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
-.tab-btn{padding:.7rem 1.8rem;border:1px solid rgba(212,132,26,.3);background:transparent;color:#a08060;border-radius:30px;font-family:'Cairo',sans-serif;cursor:pointer;font-size:.9rem;transition:all .3s}
-.tab-btn.active{background:var(--amber);color:#000;border-color:var(--amber);font-weight:700}
-.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
-.menu-item{display:flex;align-items:center;gap:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(212,132,26,.08);border-radius:12px;padding:1.5rem;transition:all .4s}
-.menu-item:hover{border-color:rgba(212,132,26,.25);background:rgba(212,132,26,.04)}
-.menu-icon{width:70px;height:70px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
-.mi1{background:linear-gradient(135deg,#2d1500,#3d2000)}
-.mi2{background:linear-gradient(135deg,#002d00,#003d10)}
-.mi3{background:linear-gradient(135deg,#2d002d,#3d003d)}
-.mi4{background:linear-gradient(135deg,#2d2d00,#3d3d00)}
-.mi5{background:linear-gradient(135deg,#00202d,#00303d)}
-.mi6{background:linear-gradient(135deg,#2d1010,#3d1515)}
+/* ── NAVIGATION ── */
+nav{
+  position:fixed;top:0;z-index:900;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 6%;
+  transition:all .5s ease;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(10,8,0,.95);
+  backdrop-filter:blur(30px) saturate(180%);
+  border-bottom-color:rgba(200,146,42,.15);
+  padding:1rem 6%;
+}
+.logo{
+  display:flex;flex-direction:column;
+  line-height:1;
+}
+.logo-main{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--amber-light);
+  letter-spacing:.05em;
+}
+.logo-sub{
+  font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--text-muted);margin-top:2px;font-weight:300;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{
+  color:var(--text-mid);text-decoration:none;
+  font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:600;transition:color .3s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;right:0;left:0;
+  height:1px;background:var(--amber);
+  transform:scaleX(0);transform-origin:right;transition:transform .3s;
+}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-reserve{
+  background:transparent;border:1px solid var(--amber);
+  color:var(--amber);padding:.65rem 1.8rem;
+  font-family:'Cairo',sans-serif;font-size:.8rem;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;transition:all .35s;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+}
+.nav-reserve:hover{background:var(--amber);color:var(--dark)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 120% 100% at 50% 0%,#1e1600 0%,var(--dark) 60%);
+}
+.hero-glow{
+  position:absolute;
+  width:60vw;height:60vw;max-width:700px;max-height:700px;
+  top:50%;left:50%;transform:translate(-50%,-55%);
+  background:radial-gradient(circle,rgba(200,146,42,.06) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-ornament{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(70vw,650px);height:min(70vw,650px);
+  border:1px solid rgba(200,146,42,.08);border-radius:50%;
+  animation:rotate 40s linear infinite;
+}
+.hero-ornament::before{
+  content:'';position:absolute;inset:18%;
+  border:1px solid rgba(200,146,42,.06);border-radius:50%;
+}
+.hero-ornament::after{
+  content:'';position:absolute;inset:36%;
+  border:1px solid rgba(200,146,42,.05);border-radius:50%;
+}
+@keyframes rotate{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+.hero-content{
+  position:relative;z-index:2;text-align:center;
+  max-width:800px;padding:0 5%;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:1rem;
+  margin-bottom:2rem;
+}
+.eyebrow-line{width:50px;height:1px;background:var(--amber);opacity:.6}
+.eyebrow-text{
+  font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--amber);font-weight:600;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,8vw,6rem);
+  font-weight:400;line-height:1.05;
+  color:var(--cream);margin-bottom:1.5rem;
+}
+.hero h1 em{
+  font-style:italic;color:var(--amber-light);
+  display:block;
+}
+.hero-divider{
+  display:flex;align-items:center;justify-content:center;
+  gap:1rem;margin:2rem auto;
+}
+.hero-divider-line{width:80px;height:1px;background:linear-gradient(to left,var(--amber),transparent)}
+.hero-divider-line:first-child{background:linear-gradient(to right,var(--amber),transparent)}
+.hero-divider-gem{
+  width:8px;height:8px;background:var(--amber);
+  transform:rotate(45deg);
+}
+.hero p{
+  color:var(--text-muted);line-height:2;font-size:.98rem;
+  max-width:500px;margin:0 auto 3rem;font-weight:300;
+}
+.hero-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,var(--amber),var(--amber-dark));
+  color:var(--dark);border:none;
+  padding:1.1rem 2.8rem;
+  font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  transition:all .35s;box-shadow:0 10px 40px rgba(200,146,42,.25);
+}
+.btn-primary:hover{
+  background:linear-gradient(135deg,var(--amber-light),var(--amber));
+  box-shadow:0 15px 50px rgba(200,146,42,.4);
+  transform:translateY(-2px);
+}
+.btn-ghost{
+  background:transparent;
+  border:1px solid rgba(200,146,42,.4);
+  color:var(--amber);
+  padding:1.1rem 2.8rem;
+  font-family:'Cairo',sans-serif;font-weight:600;
+  font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  transition:all .35s;
+}
+.btn-ghost:hover{
+  background:rgba(200,146,42,.1);border-color:var(--amber);
+}
+
+.hero-stats{
+  display:flex;gap:4rem;justify-content:center;
+  margin-top:4rem;padding-top:3rem;
+  border-top:1px solid rgba(200,146,42,.1);
+}
+.hstat{text-align:center}
+.hstat-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;color:var(--amber-light);
+  display:block;line-height:1;margin-bottom:.4rem;
+}
+.hstat-label{
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text-muted);
+}
+
+.scroll-indicator{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  z-index:2;opacity:.5;
+}
+.scroll-line{
+  width:1px;height:50px;
+  background:linear-gradient(to bottom,transparent,var(--amber),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+.scroll-text{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--amber)}
+
+/* ── SECTION BASE ── */
+.section{padding:8rem 6%}
+.section-eyebrow{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;
+}
+.section-eyebrow-text{
+  font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--amber);font-weight:600;
+}
+.section-eyebrow-line{flex:0 0 40px;height:1px;background:var(--amber);opacity:.6}
+h2.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:400;
+  color:var(--cream);line-height:1.2;
+}
+h2.section-title em{font-style:italic;color:var(--amber-light)}
+
+/* ── STORY SECTION ── */
+.story{background:var(--dark2);display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.story-visual{
+  position:relative;overflow:hidden;min-height:600px;
+  background:linear-gradient(160deg,#1e1400,#2d2000,#1a1200);
+}
+.story-pattern{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 30% 30%,rgba(200,146,42,.08) 0%,transparent 50%),
+    radial-gradient(circle at 70% 70%,rgba(200,146,42,.05) 0%,transparent 50%);
+}
+.story-frame{
+  position:absolute;inset:2.5rem;
+  border:1px solid rgba(200,146,42,.12);
+  display:flex;align-items:center;justify-content:center;
+}
+.story-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:160px;height:160px;
+  border-radius:50%;
+  border:2px solid rgba(200,146,42,.2);
+  background:rgba(200,146,42,.04);
+}
+.story-icon svg{width:70px;height:70px;opacity:.4;fill:var(--amber)}
+.story-badge{
+  position:absolute;bottom:3rem;left:3rem;
+  background:linear-gradient(135deg,var(--amber),var(--amber-dark));
+  color:var(--dark);padding:1.2rem 1.8rem;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  text-align:center;
+}
+.story-badge-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:700;line-height:1;display:block;
+}
+.story-badge-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.story-content{padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.story-content p{
+  color:var(--text-muted);line-height:2;margin-bottom:1.5rem;
+  font-size:.95rem;font-weight:300;
+}
+.story-highlights{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;
+}
+.highlight-item{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.8rem;border-right:2px solid rgba(200,146,42,.2);
+}
+.highlight-dot{
+  width:6px;height:6px;background:var(--amber);border-radius:50%;flex-shrink:0;
+}
+.highlight-text{font-size:.85rem;color:var(--text-mid);font-weight:600}
+
+/* ── MENU SECTION ── */
+.menu-section{background:var(--dark3)}
+.menu-tabs{
+  display:flex;gap:.8rem;margin-bottom:3.5rem;
+  flex-wrap:wrap;
+}
+.menu-tab{
+  background:transparent;
+  border:1px solid rgba(200,146,42,.2);
+  color:var(--text-muted);
+  padding:.7rem 1.8rem;
+  font-family:'Cairo',sans-serif;font-size:.82rem;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;transition:all .3s;
+}
+.menu-tab.active,.menu-tab:hover{
+  background:rgba(200,146,42,.12);border-color:var(--amber);color:var(--amber);
+}
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1px;background:rgba(200,146,42,.08);
+}
+.menu-item{
+  background:var(--dark3);padding:2rem 2.5rem;
+  display:flex;gap:1.5rem;align-items:flex-start;
+  transition:background .3s;position:relative;overflow:hidden;
+}
+.menu-item::before{
+  content:'';position:absolute;top:0;right:0;
+  width:3px;height:0;background:var(--amber);
+  transition:height .4s ease;
+}
+.menu-item:hover{background:rgba(200,146,42,.04)}
+.menu-item:hover::before{height:100%}
+.menu-img{
+  flex-shrink:0;width:70px;height:70px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(200,146,42,.15),rgba(200,146,42,.05));
+  border:1px solid rgba(200,146,42,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;
+}
 .menu-info{flex:1}
-.menu-info h3{font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.3rem}
-.menu-info p{font-size:.8rem;color:#806040;line-height:1.6}
-.menu-price{font-size:1.1rem;font-weight:700;color:var(--amber);white-space:nowrap}
+.menu-name{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--cream);margin-bottom:.4rem;
+}
+.menu-desc{font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-bottom:.8rem}
+.menu-footer{display:flex;align-items:center;justify-content:space-between}
+.menu-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--amber-light);
+}
+.menu-tag{
+  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(200,146,42,.1);color:var(--amber);
+  padding:.25rem .7rem;border:1px solid rgba(200,146,42,.2);
+}
 
-/* RESERVATION */
-.reservation{padding:6rem 5%;background:linear-gradient(135deg,#0a0700,#1a1200,#0a0700);position:relative;overflow:hidden}
-.reservation::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(212,132,26,.06),transparent)}
-.res-container{max-width:800px;margin:0 auto;text-align:center}
-.res-container h2{font-size:2.5rem;font-weight:700;color:var(--cream);margin-bottom:.5rem}
-.res-container p{color:#a08060;margin-bottom:2.5rem}
-.res-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.res-form input,.res-form select{background:rgba(255,255,255,.05);border:1px solid rgba(212,132,26,.2);color:var(--cream);padding:1rem 1.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.95rem;transition:border .3s;outline:none}
-.res-form input:focus,.res-form select:focus{border-color:var(--amber)}
-.res-form input::placeholder{color:#60503a}
-.res-form select option{background:#1a1200;color:var(--cream)}
-.res-form .full-width{grid-column:1/-1}
-.res-btn{grid-column:1/-1;background:var(--amber);color:#000;border:none;padding:1.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .3s}
-.res-btn:hover{background:#e8960a}
+/* ── EXPERIENCE SECTION ── */
+.experience{
+  background:var(--dark2);
+  position:relative;overflow:hidden;
+}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative;z-index:2}
+.exp-card{
+  padding:3rem 2.5rem;
+  background:rgba(200,146,42,.03);
+  border:1px solid rgba(200,146,42,.1);
+  position:relative;overflow:hidden;
+  transition:all .4s;
+}
+.exp-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,146,42,.06),transparent);
+  opacity:0;transition:opacity .4s;
+}
+.exp-card:hover{
+  border-color:rgba(200,146,42,.3);
+  transform:translateY(-6px);
+  box-shadow:0 30px 60px rgba(0,0,0,.4);
+}
+.exp-card:hover::after{opacity:1}
+.exp-number{
+  font-family:'Playfair Display',serif;
+  font-size:5rem;color:rgba(200,146,42,.06);
+  line-height:1;position:absolute;top:1rem;left:1.5rem;
+  font-weight:700;
+}
+.exp-icon{
+  width:56px;height:56px;
+  border:1px solid rgba(200,146,42,.3);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.8rem;position:relative;z-index:1;
+}
+.exp-icon svg{width:24px;height:24px;fill:var(--amber);opacity:.8}
+.exp-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;color:var(--cream);
+  margin-bottom:.8rem;position:relative;z-index:1;
+}
+.exp-desc{font-size:.85rem;color:var(--text-muted);line-height:1.9;position:relative;z-index:1}
 
-/* ABOUT */
-.about{padding:6rem 5%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.about-visual{position:relative}
-.about-img{aspect-ratio:4/5;background:linear-gradient(160deg,#1a1000,#2d1e00,#1a0a00);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid rgba(212,132,26,.15)}
-.about-badge{position:absolute;bottom:-20px;left:-20px;background:var(--amber);color:#000;padding:1.2rem;border-radius:12px;text-align:center;font-weight:700}
-.about-badge .num{font-size:2rem;font-weight:900;display:block}
-.about-badge .txt{font-size:.75rem}
-.about-content h2{font-size:2.5rem;font-weight:700;color:var(--cream);margin-bottom:1.5rem;line-height:1.3}
-.about-content p{color:#a08060;line-height:1.9;margin-bottom:1.5rem}
-.feat-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:2rem}
-.feat-list li{display:flex;align-items:center;gap:.5rem;color:#c8a86a;font-size:.9rem}
-.feat-list li::before{content:'✦';color:var(--amber);font-size:.7rem}
+/* ── RESERVATION SECTION ── */
+.reservation{background:var(--dark);position:relative;overflow:hidden}
+.reservation::before{
+  content:'';position:absolute;
+  top:-30%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(200,146,42,.04),transparent 70%);
+  border-radius:50%;
+}
+.res-container{
+  max-width:900px;margin:0 auto;
+  position:relative;z-index:2;
+}
+.res-header{text-align:center;margin-bottom:4rem}
+.res-form{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+}
+.form-group{display:flex;flex-direction:column;gap:.6rem}
+.form-group label{
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);font-weight:600;
+}
+.form-group input,
+.form-group select{
+  background:rgba(200,146,42,.04);
+  border:1px solid rgba(200,146,42,.15);
+  color:var(--cream);
+  padding:1rem 1.2rem;
+  font-family:'Cairo',sans-serif;font-size:.9rem;
+  outline:none;transition:all .3s;
+  -webkit-appearance:none;
+}
+.form-group input:focus,
+.form-group select:focus{
+  border-color:rgba(200,146,42,.5);
+  background:rgba(200,146,42,.07);
+  box-shadow:0 0 0 3px rgba(200,146,42,.05);
+}
+.form-group input::placeholder{color:var(--text-muted)}
+.form-group select option{background:var(--dark3);color:var(--cream)}
+.form-group.full{grid-column:1/-1}
+.res-submit{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,var(--amber),var(--amber-dark));
+  color:var(--dark);border:none;
+  padding:1.3rem;
+  font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.95rem;letter-spacing:.15em;text-transform:uppercase;
+  cursor:pointer;transition:all .35s;
+  box-shadow:0 10px 40px rgba(200,146,42,.2);
+}
+.res-submit:hover{
+  box-shadow:0 15px 50px rgba(200,146,42,.4);
+  transform:translateY(-2px);
+}
 
-footer{background:#080600;border-top:1px solid rgba(212,132,26,.1);padding:3rem 5% 1.5rem}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
-.f-logo{font-size:1.5rem;font-weight:900;color:var(--amber);margin-bottom:.5rem}
-.f-logo span{color:var(--cream);font-size:.85rem;font-weight:300;display:block}
-.f-desc{color:#60503a;font-size:.85rem;line-height:1.8}
-.f-col h4{color:var(--cream);font-size:.9rem;font-weight:700;margin-bottom:1rem}
-.f-col ul{list-style:none}
-.f-col li{margin-bottom:.6rem}
-.f-col a{color:#60503a;text-decoration:none;font-size:.85rem;transition:color .3s}
-.f-col a:hover{color:var(--amber)}
-.footer-bottom{border-top:1px solid rgba(212,132,26,.1);padding-top:1.5rem;text-align:center;color:#40300a;font-size:.8rem}
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--dark3)}
+.testimonials-track{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+}
+.testi-card{
+  padding:2.5rem;
+  border:1px solid rgba(200,146,42,.1);
+  position:relative;
+  transition:all .4s;
+}
+.testi-card:hover{
+  border-color:rgba(200,146,42,.25);
+  background:rgba(200,146,42,.03);
+}
+.testi-quote{
+  font-size:3rem;line-height:.8;
+  color:var(--amber);opacity:.2;
+  font-family:'Playfair Display',serif;
+  margin-bottom:1.2rem;
+}
+.testi-text{
+  font-size:.9rem;color:var(--text-mid);
+  line-height:1.9;margin-bottom:1.8rem;
+  font-style:italic;font-family:'Playfair Display',serif;
+}
+.testi-author{display:flex;align-items:center;gap:1rem}
+.testi-avatar{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(200,146,42,.3),rgba(200,146,42,.1));
+  border:1px solid rgba(200,146,42,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.testi-name{font-weight:700;font-size:.9rem;color:var(--cream)}
+.testi-role{font-size:.75rem;color:var(--text-muted)}
+.testi-stars{color:var(--amber);font-size:.8rem;margin-bottom:.2rem;letter-spacing:.1em}
+
+/* ── FOOTER ── */
+footer{
+  background:#050400;
+  border-top:1px solid rgba(200,146,42,.1);
+  padding:5rem 6% 2rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;
+  gap:4rem;margin-bottom:4rem;
+}
+.footer-brand{}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;color:var(--amber-light);
+  margin-bottom:.4rem;
+}
+.footer-tagline{
+  font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:1.5rem;
+}
+.footer-desc{font-size:.85rem;color:var(--text-muted);line-height:1.9;max-width:280px}
+.footer-col h4{
+  font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:1.5rem;font-weight:600;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.8rem}
+.footer-col a{
+  color:var(--text-muted);text-decoration:none;font-size:.85rem;
+  transition:color .3s;
+}
+.footer-col a:hover{color:var(--cream)}
+.footer-bottom{
+  border-top:1px solid rgba(200,146,42,.08);
+  padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.78rem;color:var(--text-muted);
+}
+.footer-socials{display:flex;gap:.8rem}
+.social-btn{
+  width:38px;height:38px;
+  border:1px solid rgba(200,146,42,.2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s;font-size:.9rem;
+  color:var(--text-muted);
+  text-decoration:none;
+}
+.social-btn:hover{
+  border-color:var(--amber);color:var(--amber);
+  background:rgba(200,146,42,.08);
+}
+
+/* ── ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .story{grid-template-columns:1fr}
+  .story-visual{min-height:350px}
+  .story-content{padding:4rem 2rem}
+  .exp-grid{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .res-form{grid-template-columns:1fr}
+  .testimonials-track{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:2rem}
+}
+@media(max-width:600px){
+  nav{padding:1rem 4%}
+  .nav-links{display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:1.5rem}
+}
 </style>
 </head>
 <body>
-<nav>
-  <div>
-    <div class="logo">LA MAISON<span>RESTAURANT & LOUNGE</span></div>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <div class="logo">
+    <span class="logo-main">LA MAISON</span>
+    <span class="logo-sub">Restaurant & Lounge</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
     <li><a href="#">القائمة</a></li>
-    <li><a href="#">عن المطعم</a></li>
+    <li><a href="#">تجربتنا</a></li>
+    <li><a href="#">قصتنا</a></li>
     <li><a href="#">المناسبات</a></li>
-    <li><a href="#">تواصل</a></li>
   </ul>
-  <button class="reserve-btn">احجز طاولة</button>
+  <button class="nav-reserve">احجز طاولة</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-decor"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-ornament"></div>
   <div class="hero-content">
-    <span class="hero-tag">تجربة طعام لا تُنسى</span>
-    <h1>فن الطهو<br><em>الفرنسي</em><br>بروح مغربية</h1>
-    <p>نقدم لك رحلة غذائية فريدة تمزج بين أرقى تقنيات المطبخ الفرنسي وعمق النكهات المغربية الأصيلة في أجواء تعكس الفخامة والدفء.</p>
-    <div class="hero-btns">
-      <a href="#" class="btn-amber">احجز طاولتك</a>
-      <a href="#" class="btn-ghost">شاهد القائمة</a>
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">تجربة طهو استثنائية منذ ٢٠٠٨</span>
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1>حيث يُصبح<br><em>الطعام فناً</em></h1>
+    <div class="hero-divider">
+      <span class="hero-divider-line"></span>
+      <span class="hero-divider-gem"></span>
+      <span class="hero-divider-line"></span>
+    </div>
+    <p>مطعم لا ماسون — ملتقى المذاق الفرنسي الرفيع والضيافة المغربية الأصيلة. كل طبق قصيدة، وكل لحظة ذكرى.</p>
+    <div class="hero-actions">
+      <a href="#reservation" class="btn-primary">احجز طاولتك</a>
+      <a href="#menu" class="btn-ghost">استكشف القائمة</a>
     </div>
     <div class="hero-stats">
-      <div class="stat-item"><span class="stat-num">١٨</span><div class="stat-label">سنة خبرة</div></div>
-      <div class="stat-item"><span class="stat-num">+٢٠٠</span><div class="stat-label">طبق في القائمة</div></div>
-      <div class="stat-item"><span class="stat-num">٤.٩ ⭐</span><div class="stat-label">تقييم العملاء</div></div>
+      <div class="hstat">
+        <span class="hstat-num">١٨</span>
+        <span class="hstat-label">سنة تميز</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">★</span>
+        <span class="hstat-label">نجمة ميشلان</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">٤٨</span>
+        <span class="hstat-label">طبق حصري</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">٩٨٪</span>
+        <span class="hstat-label">رضا الزبائن</span>
+      </div>
     </div>
   </div>
-</section>
-
-<section class="menu-section">
-  <div class="section-header">
-    <div class="overline">قائمة الطعام</div>
-    <h2>أبرز أطباقنا</h2>
-  </div>
-  <div class="menu-tabs">
-    <button class="tab-btn active">المقبلات</button>
-    <button class="tab-btn">الأطباق الرئيسية</button>
-    <button class="tab-btn">الحلويات</button>
-    <button class="tab-btn">المشروبات</button>
-  </div>
-  <div class="menu-grid">
-    <div class="menu-item"><div class="menu-icon mi1">🥗</div><div class="menu-info"><h3>سلطة سيزر بالدجاج المشوي</h3><p>خس روماني، صوص سيزر محضر يدوياً، خبز محمص، جبن بارميزان</p></div><div class="menu-price">٦٥ MAD</div></div>
-    <div class="menu-item"><div class="menu-icon mi2">🍲</div><div class="menu-info"><h3>شوربة البصل الفرنسية</h3><p>بصل كراميل، مرق لحم، خبز محمص، جبن غرويير مذاب</p></div><div class="menu-price">٥٥ MAD</div></div>
-    <div class="menu-item"><div class="menu-icon mi3">🦐</div><div class="menu-info"><h3>روبيان بالثوم والزبدة</h3><p>روبيان طازج، ثوم محمص، زبدة عشبية، ليمون، خبز مقرمش</p></div><div class="menu-price">٨٥ MAD</div></div>
-    <div class="menu-item"><div class="menu-icon mi4">🧀</div><div class="menu-info"><h3>تارت الجبن الكريمي</h3><p>عجينة مقرمشة، ثلاثة أنواع جبن، توابل عطرية، صلصة عنب</p></div><div class="menu-price">٧٠ MAD</div></div>
-    <div class="menu-item"><div class="menu-icon mi5">🐟</div><div class="menu-info"><h3>كاربتشيو السمك</h3><p>سمك أبيض طازج، ليمون، زيت زيتون بكر، كبر، شبت</p></div><div class="menu-price">٩٠ MAD</div></div>
-    <div class="menu-item"><div class="menu-icon mi6">🥩</div><div class="menu-info"><h3>تتبيلة اللحم المغربي</h3><p>لحم بقري طازج، بهارات رأس الحانوت، زيتون، حامض مخلل</p></div><div class="menu-price">٧٥ MAD</div></div>
+  <div class="scroll-indicator">
+    <span class="scroll-text">اكتشف</span>
+    <span class="scroll-line"></span>
   </div>
 </section>
 
-<section class="reservation">
-  <div class="res-container">
-    <div class="overline" style="margin-bottom:.5rem">احجز الآن</div>
-    <h2>احجز طاولتك</h2>
-    <p>نضمن لك تجربة لا تُنسى. الحجز المسبق يضمن أفضل مكان</p>
-    <div class="res-form">
-      <input type="text" placeholder="الاسم الكامل">
-      <input type="tel" placeholder="رقم الهاتف">
-      <input type="date">
-      <select><option>وقت الحجز</option><option>١٢:٠٠ ظهراً</option><option>١:٠٠ م</option><option>٢:٠٠ م</option><option>٧:٠٠ م</option><option>٨:٠٠ م</option><option>٩:٠٠ م</option></select>
-      <select><option>عدد الأشخاص</option><option>٢ أشخاص</option><option>٤ أشخاص</option><option>٦ أشخاص</option><option>٨+ أشخاص</option></select>
-      <select><option>المناسبة</option><option>عشاء رومانسي</option><option>عشاء عائلي</option><option>احتفال عيد ميلاد</option><option>اجتماع عمل</option></select>
-      <button class="res-btn full-width">تأكيد الحجز ✦</button>
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-visual">
+    <div class="story-pattern"></div>
+    <div class="story-frame">
+      <div class="story-icon">
+        <svg viewBox="0 0 64 64"><path d="M32 4C20 4 10 14 10 26c0 8 4 15 10 20l-2 8h28l-2-8c6-5 10-12 10-20C56 14 44 4 32 4zm0 8c8 0 14 6 14 14s-6 14-14 14-14-6-14-14 6-14 14-14z"/></svg>
+      </div>
+    </div>
+    <div class="story-badge">
+      <span class="story-badge-num">١٨</span>
+      <span class="story-badge-label">سنة من التميز</span>
     </div>
   </div>
-</section>
-
-<section class="about">
-  <div class="about-visual">
-    <div class="about-img">🍳</div>
-    <div class="about-badge"><span class="num">١٨</span><div class="txt">سنة تميز</div></div>
-  </div>
-  <div class="about-content">
-    <div class="overline">قصتنا</div>
-    <h2>حيث يلتقي الفن<br>بالمذاق الرفيع</h2>
+  <div class="story-content">
+    <div class="section-eyebrow">
+      <span class="section-eyebrow-line"></span>
+      <span class="section-eyebrow-text">قصتنا</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom:1.8rem">حيث يلتقي الفن<br><em>بالمذاق الرفيع</em></h2>
     <p>تأسس مطعم لا ماسون عام ٢٠٠٨ برؤية جريئة: تقديم تجربة طعام تجمع بين رقي المطبخ الفرنسي ودفء الضيافة المغربية الأصيلة.</p>
-    <p>يشرف على مطبخنا الشيف أنطوان دوبوا الحاصل على نجمة ميشلان، بمساندة فريق من الطهاة المتخصصين في الفنون الطهوية.</p>
-    <ul class="feat-list">
-      <li>مكونات طازجة يومياً</li>
-      <li>أجواء فاخرة وهادئة</li>
-      <li>خاصية العزل الخاص</li>
-      <li>موسيقى حية الأربعاء والجمعة</li>
-      <li>قائمة نبيذ ممتازة</li>
-      <li>خدمة توصيل فاخرة</li>
-    </ul>
-    <a href="#" class="btn-amber">اعرف أكثر عنا</a>
+    <p>يشرف على مطبخنا الشيف أنطوان دوبوا الحاصل على نجمة ميشلان، بمساندة فريق من الطهاة المتخصصين في الفنون الطهوية. كل طبق يُروي قصة، كل نكهة تحمل إرثاً.</p>
+    <div class="story-highlights">
+      <div class="highlight-item">
+        <span class="highlight-dot"></span>
+        <span class="highlight-text">مكونات طازجة يومياً</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-dot"></span>
+        <span class="highlight-text">أجواء فاخرة وهادئة</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-dot"></span>
+        <span class="highlight-text">قاعات خاصة للمناسبات</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-dot"></span>
+        <span class="highlight-text">موسيقى حية أسبوعياً</span>
+      </div>
+    </div>
+    <a href="#" class="btn-primary" style="margin-top:1rem">تعرف علينا أكثر</a>
   </div>
 </section>
 
-<footer>
-  <div class="footer-top">
-    <div>
-      <div class="f-logo">LA MAISON<span>Restaurant & Lounge</span></div>
-      <p class="f-desc">تجربة طهو استثنائية تجمع بين أرقى التقنيات الفرنسية وعمق النكهة المغربية في قلب الدار البيضاء.</p>
+<!-- MENU -->
+<section class="menu-section section" id="menu">
+  <div class="reveal" style="margin-bottom:3rem">
+    <div class="section-eyebrow">
+      <span class="section-eyebrow-line"></span>
+      <span class="section-eyebrow-text">قائمة الأطباق</span>
     </div>
-    <div class="f-col"><h4>روابط</h4><ul><li><a href="#">الرئيسية</a></li><li><a href="#">القائمة</a></li><li><a href="#">حجز طاولة</a></li><li><a href="#">المناسبات</a></li></ul></div>
-    <div class="f-col"><h4>تواصل</h4><ul><li><a href="#">الدار البيضاء، المغرب</a></li><li><a href="#">+212 600 000 000</a></li><li><a href="#">info@lamaison.ma</a></li><li><a href="#">ي–س: ١٢م–١١م</a></li></ul></div>
+    <h2 class="section-title">اكتشف <em>تحفنا الطهوية</em></h2>
   </div>
-  <div class="footer-bottom">© 2026 LA MAISON — تصميم خبراء الويب</div>
+  <div class="menu-tabs reveal">
+    <button class="menu-tab active">المقبلات</button>
+    <button class="menu-tab">الأطباق الرئيسية</button>
+    <button class="menu-tab">المشويات</button>
+    <button class="menu-tab">الحلويات</button>
+    <button class="menu-tab">المشروبات</button>
+  </div>
+  <div class="menu-grid reveal">
+    <div class="menu-item">
+      <div class="menu-img">🥗</div>
+      <div class="menu-info">
+        <div class="menu-name">سلطة الترافل الأسود</div>
+        <div class="menu-desc">خس روماني، كمأة سوداء مع صلصة الليمون والزيت المعتق وبذور الرمان</div>
+        <div class="menu-footer">
+          <span class="menu-price">٢٨٠ MAD</span>
+          <span class="menu-tag">موسمي</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-img">🍤</div>
+      <div class="menu-info">
+        <div class="menu-name">روبيان الفويل الذهبي</div>
+        <div class="menu-desc">روبيان ملكي محشو بزبدة الأعشاب الفرنسية مع صلصة الكاري الخفيفة</div>
+        <div class="menu-footer">
+          <span class="menu-price">٣٢٠ MAD</span>
+          <span class="menu-tag">الأكثر طلباً</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-img">🥩</div>
+      <div class="menu-info">
+        <div class="menu-name">فيليه بوف واغيو</div>
+        <div class="menu-desc">لحم بقري ياباني الأصل مع بطاطا داوفينوا وصلصة البورديليز الكلاسيكية</div>
+        <div class="menu-footer">
+          <span class="menu-price">٦٥٠ MAD</span>
+          <span class="menu-tag">حصري</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-img">🐟</div>
+      <div class="menu-info">
+        <div class="menu-name">سمك القاروص المشوي</div>
+        <div class="menu-desc">قاروص البحر الأبيض مع الخضار المشوية وصلصة الزعفران والأعشاب الطازجة</div>
+        <div class="menu-footer">
+          <span class="menu-price">٤٨٠ MAD</span>
+          <span class="menu-tag">طازج يومياً</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-img">🍮</div>
+      <div class="menu-info">
+        <div class="menu-name">كريم برولي الفانيليا</div>
+        <div class="menu-desc">حلى فرنسي كلاسيكي بالفانيليا تاهيتي مع قرميط السكر المكرمل المقرمش</div>
+        <div class="menu-footer">
+          <span class="menu-price">١٨٠ MAD</span>
+          <span class="menu-tag">حلويات</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-img">🫖</div>
+      <div class="menu-info">
+        <div class="menu-name">شاي الأعشاب المغربي</div>
+        <div class="menu-desc">مزيج حصري من الأعشاب المغربية النادرة مع الزعفران والعنبر والنعناع الجبلي</div>
+        <div class="menu-footer">
+          <span class="menu-price">٩٥ MAD</span>
+          <span class="menu-tag">تقليدي</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience section">
+  <div style="text-align:center;margin-bottom:5rem" class="reveal">
+    <div class="section-eyebrow" style="justify-content:center">
+      <span class="section-eyebrow-line"></span>
+      <span class="section-eyebrow-text">تجربتنا الفريدة</span>
+      <span class="section-eyebrow-line"></span>
+    </div>
+    <h2 class="section-title">ما يجعلنا <em>استثنائيين</em></h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal reveal-delay-1">
+      <span class="exp-number">01</span>
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      </div>
+      <h3 class="exp-title">نجمة ميشلان</h3>
+      <p class="exp-desc">تكريم عالمي لمطبخنا بنجمة ميشلان، اعتراف بالجودة الاستثنائية لأطباقنا وتجربتنا الفريدة.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <span class="exp-number">02</span>
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"/></svg>
+      </div>
+      <h3 class="exp-title">مكونات نخبة</h3>
+      <p class="exp-desc">نستورد أجود المكونات من فرنسا وإيطاليا واليابان، ونختار الطازج المحلي من أفضل المزارع يومياً.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-3">
+      <span class="exp-number">03</span>
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 6.5A4.5 4.5 0 0016.5 2h-9A4.5 4.5 0 003 6.5v9A4.5 4.5 0 007.5 20h9a4.5 4.5 0 004.5-4.5v-9zM12 17a5 5 0 110-10 5 5 0 010 10zm6.5-10a1 1 0 110-2 1 1 0 010 2z"/></svg>
+      </div>
+      <h3 class="exp-title">أجواء ساحرة</h3>
+      <p class="exp-desc">ديكور مصمم بعناية فائقة يجمع بين الأناقة المعاصرة والدفء المغربي الأصيل. موسيقى حية في الكواليس.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation section" id="reservation">
+  <div class="res-container">
+    <div class="res-header reveal">
+      <div class="section-eyebrow" style="justify-content:center">
+        <span class="section-eyebrow-line"></span>
+        <span class="section-eyebrow-text">الحجز المسبق</span>
+        <span class="section-eyebrow-line"></span>
+      </div>
+      <h2 class="section-title" style="text-align:center;margin-bottom:.8rem">احجز <em>طاولتك</em></h2>
+      <p style="text-align:center;color:var(--text-muted);font-size:.9rem;margin-bottom:3rem">نضمن لك تجربة لا تُنسى. الحجز المسبق يضمن أفضل مكان وأكمل تجربة</p>
+    </div>
+    <div class="res-form reveal">
+      <div class="form-group">
+        <label>الاسم الكامل</label>
+        <input type="text" placeholder="أدخل اسمك">
+      </div>
+      <div class="form-group">
+        <label>رقم الهاتف</label>
+        <input type="tel" placeholder="+212 6XX XXX XXX">
+      </div>
+      <div class="form-group">
+        <label>تاريخ الحجز</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>وقت الحجز</label>
+        <select>
+          <option>١٢:٠٠ ظهراً</option>
+          <option>١:٠٠ م</option>
+          <option>٧:٠٠ م</option>
+          <option>٨:٠٠ م</option>
+          <option>٩:٠٠ م</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>عدد الأشخاص</label>
+        <select>
+          <option>٢ أشخاص</option>
+          <option>٤ أشخاص</option>
+          <option>٦ أشخاص</option>
+          <option>٨+ أشخاص</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>المناسبة</label>
+        <select>
+          <option>عشاء رومانسي</option>
+          <option>عشاء عائلي</option>
+          <option>احتفال عيد ميلاد</option>
+          <option>اجتماع عمل</option>
+          <option>مناسبة خاصة</option>
+        </select>
+      </div>
+      <button class="res-submit">تأكيد الحجز — نتشرف بضيافتكم</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials section">
+  <div style="text-align:center;margin-bottom:4rem" class="reveal">
+    <div class="section-eyebrow" style="justify-content:center">
+      <span class="section-eyebrow-line"></span>
+      <span class="section-eyebrow-text">شهادات الزبائن</span>
+      <span class="section-eyebrow-line"></span>
+    </div>
+    <h2 class="section-title">ما يقوله <em>ضيوفنا</em></h2>
+  </div>
+  <div class="testimonials-track">
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">تجربة لا توصف. الشيف أنطوان خلق سيمفونية من النكهات في كل طبق. أجمل عشاء في حياتي بكل تأكيد.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ك</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">كريم المنصوري</div>
+          <div class="testi-role">رجل أعمال — الدار البيضاء</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">قضيت عيد ميلاد زوجي هنا وكان مذهلاً. الخدمة استثنائية، الديكور فاتن، والطعام يستحق كل لحظة وكل درهم.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ن</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">نجلاء الطاهري</div>
+          <div class="testi-role">محامية — الرباط</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">جئت بعملاء أجانب وتركوا الطاولة مذهولين. لا ماسون هو الوجه الفاخر للمغرب. نستحق نجوماً أكثر من ميشلان.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ي</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">يوسف الحسني</div>
+          <div class="testi-role">مدير تنفيذي — مجموعة حسن</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">LA MAISON</div>
+      <div class="footer-tagline">Restaurant & Lounge — Casablanca</div>
+      <p class="footer-desc">تجربة طهو استثنائية تجمع بين أرقى التقنيات الفرنسية وعمق النكهة المغربية في قلب الدار البيضاء.</p>
+    </div>
+    <div class="footer-col">
+      <h4>روابط</h4>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">القائمة</a></li>
+        <li><a href="#">حجز طاولة</a></li>
+        <li><a href="#">المناسبات</a></li>
+        <li><a href="#">قصتنا</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>خدماتنا</h4>
+      <ul>
+        <li><a href="#">عشاء فاخر</a></li>
+        <li><a href="#">خدمة التوصيل</a></li>
+        <li><a href="#">حفلات خاصة</a></li>
+        <li><a href="#">اجتماعات الأعمال</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><a href="#">الدار البيضاء، المغرب</a></li>
+        <li><a href="#">+212 600 000 000</a></li>
+        <li><a href="#">info@lamaison.ma</a></li>
+        <li><a href="#">يومياً: ١٢م — ١١م</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 LA MAISON — جميع الحقوق محفوظة</span>
+    <div class="footer-socials">
+      <a class="social-btn" href="#">f</a>
+      <a class="social-btn" href="#">in</a>
+      <a class="social-btn" href="#">ig</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+// Sticky nav
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(r => observer.observe(r));
+
+// Menu tabs
+document.querySelectorAll('.menu-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>

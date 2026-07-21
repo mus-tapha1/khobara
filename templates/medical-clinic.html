@@ -1,252 +1,842 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>عيادة الشفاء — مركز طبي متكامل</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Cairo',sans-serif;background:#f0f4f8;color:#1a2940;overflow-x:hidden}
-:root{--blue:#0066cc;--blue2:#0052a3;--teal:#00b8a0;--light:#f0f4f8;--white:#fff}
+:root{
+  --blue:#0052cc;
+  --blue2:#0066ff;
+  --blue-light:#e8f0fe;
+  --blue-mid:rgba(0,82,204,.12);
+  --teal:#00a896;
+  --teal-light:#e0f7f4;
+  --teal-mid:rgba(0,168,150,.1);
+  --white:#fff;
+  --off-white:#f8fafc;
+  --text:#0f1c2e;
+  --text-light:#4a6080;
+  --text-lighter:#8a9ab0;
+  --border:#e2e8f0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--off-white);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--off-white)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
 
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:#fff;box-shadow:0 2px 20px rgba(0,102,204,.08)}
-.logo{display:flex;align-items:center;gap:.8rem}
-.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem}
-.logo-text{font-size:1.2rem;font-weight:800;color:var(--blue2)}
-.logo-text span{display:block;font-size:.7rem;font-weight:400;color:#888}
+/* ── TOP STRIP ── */
+.top-strip{
+  background:var(--blue);padding:.6rem 5%;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.75rem;color:rgba(255,255,255,.8);
+}
+.top-strip-right{display:flex;gap:2rem}
+.top-contact{display:flex;align-items:center;gap:.4rem}
+.emergency{
+  background:rgba(255,255,255,.15);padding:.3rem .9rem;
+  border-radius:30px;font-weight:700;letter-spacing:.05em;
+  display:flex;align-items:center;gap:.5rem;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 5%;background:#fff;
+  box-shadow:0 2px 20px rgba(0,82,204,.08);
+  transition:all .4s;
+}
+.logo{display:flex;align-items:center;gap:.9rem}
+.logo-icon{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-icon svg{width:22px;height:22px;fill:#fff}
+.logo-text{line-height:1.2}
+.logo-name{font-size:1.1rem;font-weight:800;color:var(--text)}
+.logo-sub{font-size:.65rem;color:var(--text-lighter);letter-spacing:.05em}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#555;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a{
+  color:var(--text-light);text-decoration:none;font-size:.83rem;font-weight:600;
+  transition:color .3s;letter-spacing:.02em;
+}
 .nav-links a:hover{color:var(--blue)}
 .nav-cta{display:flex;gap:.8rem}
-.btn-outline-blue{border:2px solid var(--blue);color:var(--blue);background:transparent;padding:.6rem 1.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem;text-decoration:none;display:inline-block}
-.btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;padding:.6rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.85rem;text-decoration:none;display:inline-block}
+.btn-outline-blue{
+  border:1.5px solid var(--blue);color:var(--blue);background:transparent;
+  padding:.65rem 1.4rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.8rem;border-radius:8px;cursor:pointer;transition:all .3s;
+  text-decoration:none;display:inline-block;
+}
+.btn-outline-blue:hover{background:var(--blue);color:#fff}
+.btn-blue{
+  background:linear-gradient(135deg,var(--blue),#0041aa);
+  color:#fff;border:none;padding:.7rem 1.8rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;border-radius:8px;
+  cursor:pointer;transition:all .35s;text-decoration:none;display:inline-block;
+  box-shadow:0 4px 15px rgba(0,82,204,.25);
+}
+.btn-blue:hover{box-shadow:0 8px 25px rgba(0,82,204,.4);transform:translateY(-1px)}
 
-/* HERO */
-.hero{background:linear-gradient(135deg,#e8f0fc 0%,#d0e8ff 50%,#e0f7f4 100%);padding:5rem 5%;display:flex;align-items:center;gap:4rem;position:relative;overflow:hidden;min-height:85vh}
-.hero::before{content:'';position:absolute;top:-50%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,204,.06),transparent);border-radius:50%}
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,var(--blue-light) 0%,#dceeff 50%,var(--teal-light) 100%);
+  padding:5rem 5%;min-height:88vh;
+  display:flex;align-items:center;gap:5rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-30%;right:-5%;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(0,82,204,.06),transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;
+  bottom:-20%;left:30%;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,168,150,.06),transparent 70%);
+  border-radius:50%;
+}
 .hero-content{flex:1;position:relative;z-index:2}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,102,204,.1);color:var(--blue);padding:.4rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem}
-.hero h1{font-size:3.2rem;font-weight:900;line-height:1.15;color:#0a1e40;margin-bottom:1.2rem}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(0,82,204,.08);border:1px solid rgba(0,82,204,.15);
+  color:var(--blue);padding:.45rem 1.2rem;border-radius:30px;
+  font-size:.78rem;font-weight:700;margin-bottom:2rem;
+}
+.badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%}
+.hero h1{
+  font-family:'Merriweather',serif;
+  font-size:clamp(2rem,4.5vw,3.5rem);font-weight:700;
+  color:var(--text);line-height:1.2;margin-bottom:1.2rem;
+}
 .hero h1 span{color:var(--blue)}
-.hero p{color:#5a7080;line-height:1.9;margin-bottom:2rem;font-size:1rem;max-width:480px}
-.hero-btns{display:flex;gap:1rem;margin-bottom:2.5rem}
-.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 8px 25px rgba(0,102,204,.3);transition:all .3s;text-decoration:none;display:inline-block}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,102,204,.4)}
-.btn-sec{background:white;color:var(--blue);border:none;padding:1rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 4px 15px rgba(0,0,0,.1);text-decoration:none;display:inline-block}
-.hero-trust{display:flex;gap:2rem}
-.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#5a7080}
-.trust-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;flex-shrink:0}
-.hero-visual{flex:1;position:relative;max-width:480px}
-.hero-card-main{background:white;border-radius:20px;padding:2rem;box-shadow:0 20px 60px rgba(0,102,204,.12);position:relative;z-index:2}
-.doctor-profile{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.doctor-avatar{width:70px;height:70px;background:linear-gradient(135deg,#cce0ff,#d0f5f0);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem}
-.doctor-name{font-weight:700;color:#0a1e40;margin-bottom:.2rem}
-.doctor-spec{font-size:.8rem;color:var(--blue);font-weight:600}
-.doctor-rating{font-size:.8rem;color:#888}
-.appt-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem}
-.slot{background:#f0f4f8;border:1px solid #e0e8f0;border-radius:8px;padding:.5rem;text-align:center;font-size:.8rem;cursor:pointer;transition:all .3s}
-.slot.available{color:#0066cc;font-weight:600}
-.slot.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
-.slot.booked{color:#ccc;background:#f8f8f8;cursor:not-allowed}
-.floating-badge{position:absolute;top:-15px;left:-15px;background:white;border-radius:12px;padding:.8rem 1rem;box-shadow:0 8px 25px rgba(0,0,0,.1);font-size:.8rem;font-weight:700;color:#0a1e40;z-index:3}
-.floating-badge span{color:var(--teal);font-size:1.2rem;display:block}
+.hero p{
+  color:var(--text-light);line-height:2;font-size:.95rem;
+  max-width:500px;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+.btn-lg{padding:1.1rem 2.8rem;font-size:.95rem;border-radius:50px}
+.hero-trust{display:flex;gap:1.5rem;flex-wrap:wrap}
+.trust-badge{
+  display:flex;align-items:center;gap:.6rem;
+  background:#fff;padding:.6rem 1rem;border-radius:8px;
+  box-shadow:0 2px 12px rgba(0,82,204,.08);
+  font-size:.78rem;font-weight:600;color:var(--text-light);
+}
+.trust-icon{
+  width:30px;height:30px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.85rem;flex-shrink:0;
+}
 
-/* STATS */
-.stats-bar{background:white;padding:2rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;box-shadow:0 4px 20px rgba(0,0,0,.05)}
-.stat-item{text-align:center}
-.stat-num{font-size:2rem;font-weight:900;color:var(--blue);display:block}
-.stat-label{font-size:.8rem;color:#888}
+.hero-visual{flex:1;max-width:480px;position:relative;z-index:2}
+.hero-card{
+  background:#fff;border-radius:20px;
+  box-shadow:0 25px 70px rgba(0,82,204,.12);
+  overflow:hidden;
+}
+.card-header{
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  padding:1.5rem;display:flex;align-items:center;gap:1rem;
+}
+.card-header-icon{
+  width:52px;height:52px;background:rgba(255,255,255,.2);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.card-header-text{}
+.card-title{color:#fff;font-weight:800;font-size:1rem}
+.card-sub{color:rgba(255,255,255,.7);font-size:.78rem}
+.card-body{padding:1.5rem}
+.appointment-steps{display:flex;flex-direction:column;gap:1rem}
+.appt-step{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem;border-radius:10px;border:1.5px solid var(--border);
+  transition:all .3s;cursor:pointer;
+}
+.appt-step:hover{border-color:var(--blue);background:var(--blue-light)}
+.step-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--blue-light),var(--teal-light));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  flex-shrink:0;
+}
+.step-text{line-height:1.3}
+.step-name{font-weight:700;font-size:.88rem;color:var(--text)}
+.step-detail{font-size:.75rem;color:var(--text-lighter)}
+.step-arrow{margin-right:auto;color:var(--text-lighter);font-size:.9rem;transition:color .3s}
+.appt-step:hover .step-arrow{color:var(--blue)}
+.card-footer{
+  padding:1rem 1.5rem;background:var(--off-white);
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cf-text{font-size:.78rem;color:var(--text-lighter)}
+.cf-btn{
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  color:#fff;border:none;padding:.65rem 1.5rem;
+  border-radius:20px;font-family:'Cairo',sans-serif;
+  font-weight:700;font-size:.8rem;cursor:pointer;transition:all .3s;
+}
+.cf-btn:hover{box-shadow:0 5px 20px rgba(0,82,204,.3)}
 
-/* SERVICES */
-.services{padding:5rem 5%;background:var(--light)}
-.section-header{text-align:center;margin-bottom:3.5rem}
-.section-tag{display:inline-block;background:rgba(0,102,204,.1);color:var(--blue);padding:.3rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-bottom:1rem}
-.section-header h2{font-size:2.2rem;font-weight:800;color:#0a1e40;margin-bottom:.5rem}
-.section-header p{color:#888;font-size:.95rem}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.service-card{background:white;border-radius:16px;padding:1.8rem;transition:all .4s;border:1px solid #e8edf5;cursor:pointer}
-.service-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,102,204,.12);border-color:rgba(0,102,204,.2)}
-.service-icon{width:55px;height:55px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem}
-.si1{background:linear-gradient(135deg,#cce5ff,#b3d9ff)}
-.si2{background:linear-gradient(135deg,#d0f5f0,#b3ece6)}
-.si3{background:linear-gradient(135deg,#fce8ff,#f5d0ff)}
-.si4{background:linear-gradient(135deg,#fff3cc,#ffe8a0)}
-.si5{background:linear-gradient(135deg,#ffe5e5,#ffcccc)}
-.si6{background:linear-gradient(135deg,#e5f0ff,#ccdfff)}
-.service-card h3{font-size:1rem;font-weight:700;color:#0a1e40;margin-bottom:.5rem}
-.service-card p{font-size:.85rem;color:#888;line-height:1.7}
-.service-link{display:inline-flex;align-items:center;gap:.3rem;color:var(--blue);font-size:.8rem;font-weight:700;margin-top:.8rem;text-decoration:none}
+/* ── STATS BAR ── */
+.stats-bar{background:var(--blue);padding:2.5rem 5%}
+.stats-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem;text-align:center;
+}
+.sb-num{
+  font-family:'Merriweather',serif;
+  font-size:2.5rem;color:#fff;display:block;line-height:1;margin-bottom:.4rem;
+}
+.sb-num span{color:rgba(255,255,255,.6);font-size:1.2rem}
+.sb-label{font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.12em}
 
-/* DOCTORS */
-.doctors{padding:5rem 5%;background:white}
-.doctors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.doctor-card{border:1px solid #e8edf5;border-radius:16px;overflow:hidden;transition:all .4s;cursor:pointer}
-.doctor-card:hover{box-shadow:0 15px 40px rgba(0,102,204,.12);border-color:rgba(0,102,204,.2)}
-.doctor-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:4rem}
-.dimg1{background:linear-gradient(135deg,#cce5ff,#ddf0fd)}
-.dimg2{background:linear-gradient(135deg,#d0f5f0,#e0faf7)}
-.dimg3{background:linear-gradient(135deg,#fce8ff,#faeeff)}
-.dimg4{background:linear-gradient(135deg,#fff3cc,#fef7e0)}
-.doctor-info{padding:1.2rem}
-.doctor-info h3{font-size:.95rem;font-weight:700;color:#0a1e40;margin-bottom:.2rem}
-.doctor-info .spec{font-size:.8rem;color:var(--blue);margin-bottom:.5rem}
-.doctor-info .rating{font-size:.8rem;color:#888;display:flex;align-items:center;gap:.3rem}
-.stars{color:#f59e0b}
-.doctor-info .appt-btn{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue2));color:white;border-radius:8px;padding:.6rem;font-size:.8rem;font-weight:700;text-decoration:none;margin-top:.8rem;transition:opacity .3s}
-.doctor-info .appt-btn:hover{opacity:.9}
+/* ── SECTION BASE ── */
+.section{padding:6rem 5%}
+.sec-tag{
+  display:inline-block;
+  background:var(--blue-mid);color:var(--blue);
+  padding:.35rem 1rem;border-radius:20px;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+h2.sec-title{
+  font-family:'Merriweather',serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--text);
+  line-height:1.25;
+}
+h2.sec-title span{color:var(--blue)}
+.sec-desc{
+  color:var(--text-light);font-size:.9rem;line-height:1.9;
+  max-width:560px;margin-top:.8rem;
+}
 
-/* BOOKING SECTION */
-.booking{padding:5rem 5%;background:linear-gradient(135deg,var(--blue),var(--blue2));position:relative;overflow:hidden}
-.booking::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(255,255,255,.1),transparent)}
-.booking-container{max-width:700px;margin:0 auto;text-align:center}
-.booking h2{font-size:2.2rem;font-weight:800;color:white;margin-bottom:.5rem}
-.booking p{color:rgba(255,255,255,.7);margin-bottom:2.5rem}
-.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:right}
-.booking-form input,.booking-form select{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:white;padding:1rem 1.2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.95rem;outline:none;transition:border .3s}
-.booking-form input::placeholder{color:rgba(255,255,255,.5)}
-.booking-form input:focus,.booking-form select:focus{border-color:rgba(255,255,255,.6)}
-.booking-form select option{background:var(--blue2);color:white}
-.full{grid-column:1/-1}
-.book-btn{grid-column:1/-1;background:white;color:var(--blue);border:none;padding:1.2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1.05rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.book-btn:hover{transform:translateY(-2px)}
+/* ── SERVICES ── */
+.services-section{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.service-card{
+  padding:2.5rem;border-radius:16px;border:1.5px solid var(--border);
+  transition:all .4s;cursor:pointer;position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;right:0;left:0;
+  height:3px;
+  background:linear-gradient(to left,var(--blue),var(--teal));
+  transform:scaleX(0);transform-origin:right;transition:transform .4s;
+}
+.service-card:hover{
+  border-color:rgba(0,82,204,.2);
+  box-shadow:0 15px 50px rgba(0,82,204,.1);
+  transform:translateY(-4px);
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{
+  width:60px;height:60px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+  margin-bottom:1.5rem;transition:all .4s;
+}
+.si-blue{background:var(--blue-mid);color:var(--blue)}
+.si-teal{background:var(--teal-mid);color:var(--teal)}
+.si-purple{background:rgba(139,92,246,.08);color:#7c3aed}
+.service-card:hover .service-icon{transform:scale(1.1)}
+.service-title{font-weight:800;font-size:1rem;color:var(--text);margin-bottom:.6rem}
+.service-desc{font-size:.83rem;color:var(--text-light);line-height:1.8;margin-bottom:1.2rem}
+.service-link{
+  font-size:.78rem;color:var(--blue);font-weight:700;
+  display:flex;align-items:center;gap:.4rem;text-decoration:none;transition:gap .3s;
+}
+.service-card:hover .service-link{gap:.8rem}
 
-footer{background:#0a1e40;color:#8898aa;padding:3rem 5% 1.5rem}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+/* ── DOCTORS ── */
+.doctors-section{background:var(--off-white)}
+.doctors-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3.5rem;
+}
+.doctor-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:0 2px 20px rgba(0,82,204,.06);transition:all .4s;
+}
+.doctor-card:hover{
+  box-shadow:0 20px 60px rgba(0,82,204,.12);
+  transform:translateY(-5px);
+}
+.doctor-img{
+  height:200px;
+  background:linear-gradient(160deg,var(--blue-light),var(--teal-light));
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.doctor-avatar{
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Merriweather',serif;font-size:2rem;font-weight:700;color:#fff;
+  box-shadow:0 10px 30px rgba(0,82,204,.25);
+}
+.doctor-info{padding:1.5rem}
+.doctor-name{font-weight:800;font-size:1rem;color:var(--text);margin-bottom:.2rem}
+.doctor-spec{
+  font-size:.75rem;color:var(--blue);font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;margin-bottom:.8rem;
+}
+.doctor-rating{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.78rem;color:var(--text-lighter);margin-bottom:1.2rem;
+}
+.stars{color:#f59e0b;letter-spacing:.05em;font-size:.8rem}
+.appt-btn{
+  width:100%;background:linear-gradient(135deg,var(--blue),var(--teal));
+  color:#fff;border:none;padding:.75rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.82rem;
+  border-radius:8px;cursor:pointer;transition:all .35s;
+}
+.appt-btn:hover{opacity:.9;box-shadow:0 5px 20px rgba(0,82,204,.3)}
+
+/* ── BOOKING SECTION ── */
+.booking-section{
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  padding:6rem 5%;position:relative;overflow:hidden;
+}
+.booking-section::before{
+  content:'';position:absolute;
+  top:-30%;right:-10%;width:500px;height:500px;
+  background:rgba(255,255,255,.04);border-radius:50%;
+}
+.booking-inner{
+  max-width:800px;margin:0 auto;position:relative;z-index:2;
+}
+.booking-header{text-align:center;margin-bottom:3rem}
+.booking-header h2{
+  font-family:'Merriweather',serif;
+  font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-bottom:.8rem;
+}
+.booking-header p{color:rgba(255,255,255,.7);font-size:.9rem}
+.booking-form{
+  background:#fff;border-radius:20px;padding:2.5rem;
+  box-shadow:0 30px 80px rgba(0,0,0,.2);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.form-group{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
+.form-group label{
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-light);
+}
+.form-group input,
+.form-group select{
+  border:1.5px solid var(--border);
+  padding:1rem 1.2rem;border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:.9rem;
+  color:var(--text);outline:none;transition:all .3s;
+  background:#fff;-webkit-appearance:none;
+}
+.form-group input:focus,
+.form-group select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(0,82,204,.08);
+}
+.form-group input::placeholder{color:var(--text-lighter)}
+.form-group.full{grid-column:1/-1}
+.form-group select option{background:#fff}
+.form-submit{
+  width:100%;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  color:#fff;border:none;padding:1.2rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;
+  border-radius:10px;cursor:pointer;transition:all .35s;
+  box-shadow:0 8px 30px rgba(0,82,204,.25);margin-top:.5rem;
+}
+.form-submit:hover{
+  box-shadow:0 12px 40px rgba(0,82,204,.4);transform:translateY(-2px);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:#fff;padding:6rem 5%}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.testi-card{
+  padding:2.5rem;border-radius:16px;border:1.5px solid var(--border);transition:all .4s;
+}
+.testi-card:hover{
+  border-color:rgba(0,82,204,.2);
+  box-shadow:0 15px 50px rgba(0,82,204,.08);
+}
+.testi-stars{color:#f59e0b;font-size:.85rem;letter-spacing:.1em;margin-bottom:1rem}
+.testi-text{
+  font-family:'Merriweather',serif;
+  font-size:.88rem;color:var(--text-light);
+  line-height:2;font-style:italic;margin-bottom:1.5rem;
+}
+.testi-author{display:flex;align-items:center;gap:.9rem}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:1rem;flex-shrink:0;
+}
+.testi-name{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.1rem}
+.testi-role{font-size:.75rem;color:var(--text-lighter)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--text);padding:5rem 5% 2rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;
+  gap:4rem;margin-bottom:4rem;
+}
 .f-logo{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
-.f-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem}
-.f-logo-text{color:white;font-weight:800;font-size:1.1rem}
-.f-desc{font-size:.85rem;line-height:1.8;color:#6080a0}
-.f-col h4{color:white;font-weight:700;font-size:.9rem;margin-bottom:1rem}
-.f-col ul{list-style:none}
-.f-col li{margin-bottom:.5rem}
-.f-col a{color:#6080a0;text-decoration:none;font-size:.85rem;transition:color .3s}
-.f-col a:hover{color:var(--teal)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;text-align:center;font-size:.8rem;color:#3a5070}
+.f-logo-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+}
+.f-logo-icon svg{width:18px;height:18px;fill:#fff}
+.f-logo-name{font-weight:800;font-size:1.1rem;color:#fff}
+.f-desc{font-size:.82rem;color:rgba(255,255,255,.3);line-height:1.9;max-width:270px}
+.footer-col h4{
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.5rem;font-weight:600;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.8rem}
+.footer-col a{color:rgba(255,255,255,.3);text-decoration:none;font-size:.82rem;transition:color .3s}
+.footer-col a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;
+  display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.15);
+}
+.f-socials{display:flex;gap:.6rem}
+.fsoc{
+  width:36px;height:36px;
+  border:1px solid rgba(0,168,150,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.25);font-size:.75rem;font-weight:700;
+  cursor:pointer;transition:all .3s;text-decoration:none;
+}
+.fsoc:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+@media(max-width:1024px){
+  .hero{flex-direction:column;gap:3rem}
+  .hero-visual{max-width:100%;width:100%}
+  .doctors-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .doctors-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
+<!-- TOP STRIP -->
+<div class="top-strip">
+  <div class="top-strip-right">
+    <span class="top-contact">هاتف: +212 500 000 000</span>
+    <span class="top-contact">info@clinic.ma</span>
+  </div>
+  <div class="emergency">طوارئ ٢٤/٧ — ٠٨٠١٩٩٩٩٩٩</div>
+</div>
+
+<!-- NAV -->
 <nav>
   <div class="logo">
-    <div class="logo-icon">🏥</div>
-    <div class="logo-text">عيادة الشفاء<span>مركز طبي متكامل</span></div>
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" opacity=".5"/><path d="M11 8h2v3h3v2h-3v3h-2v-3H8v-2h3z"/></svg>
+    </div>
+    <div class="logo-text">
+      <div class="logo-name">عيادة الشفاء</div>
+      <div class="logo-sub">مركز طبي متكامل — المغرب</div>
+    </div>
   </div>
   <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
     <li><a href="#">خدماتنا</a></li>
     <li><a href="#">أطباؤنا</a></li>
-    <li><a href="#">المواعيد</a></li>
-    <li><a href="#">تواصل</a></li>
+    <li><a href="#">التخصصات</a></li>
+    <li><a href="#">نتائج التحاليل</a></li>
+    <li><a href="#">عن المركز</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="#" class="btn-outline-blue">تسجيل الدخول</a>
-    <a href="#" class="btn-blue">احجز موعد</a>
+    <a href="#" class="btn-outline-blue">اتصل بنا</a>
+    <a href="#booking" class="btn-blue">احجز موعد</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-tag">🏆 أفضل مركز طبي 2025</div>
-    <h1>صحتك<br>أمانة عندنا<br><span>نهتم بكل تفصيلة</span></h1>
-    <p>نوفر لك رعاية طبية شاملة بأحدث التقنيات وأمهر الأطباء المتخصصين في بيئة مريحة وآمنة تضمن لك أفضل تجربة علاجية.</p>
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      مركز طبي معتمد وطنياً
+    </div>
+    <h1>رعاية صحية<br><span>استثنائية</span><br>لكل عائلة</h1>
+    <p>أكثر من ٢٠ تخصصاً طبياً تحت سقف واحد. أطباء معتمدون، تكنولوجيا متقدمة، ورعاية شاملة تضع صحتك ورفاهيتك في المقام الأول دائماً.</p>
     <div class="hero-btns">
-      <a href="#" class="btn-primary">احجز موعدك الآن</a>
-      <a href="#" class="btn-sec">تعرف على أطباءنا</a>
+      <a href="#booking" class="btn-blue btn-lg">احجز موعدك الآن</a>
+      <a href="#services" class="btn-outline-blue btn-lg">تصفح الخدمات</a>
     </div>
     <div class="hero-trust">
-      <div class="trust-item"><div class="trust-icon">✅</div><span>أطباء معتمدون دولياً</span></div>
-      <div class="trust-item"><div class="trust-icon">🕐</div><span>متاح ٢٤/٧</span></div>
-      <div class="trust-item"><div class="trust-icon">🔬</div><span>أحدث التقنيات</span></div>
+      <div class="trust-badge">
+        <div class="trust-icon">✓</div>
+        معتمد دولياً
+      </div>
+      <div class="trust-badge">
+        <div class="trust-icon">⏱</div>
+        انتظار أقل من ٣٠ دقيقة
+      </div>
+      <div class="trust-badge">
+        <div class="trust-icon">💳</div>
+        جميع التأمينات
+      </div>
     </div>
   </div>
   <div class="hero-visual">
-    <div class="floating-badge"><span>⭐ ٤.٩</span>تقييم المرضى</div>
-    <div class="hero-card-main">
-      <div style="font-size:.9rem;font-weight:700;color:#0a1e40;margin-bottom:1rem">احجز موعدك</div>
-      <div class="doctor-profile">
-        <div class="doctor-avatar">👨‍⚕️</div>
-        <div>
-          <div class="doctor-name">د. أحمد الكريمي</div>
-          <div class="doctor-spec">طب القلب والشرايين</div>
-          <div class="doctor-rating">⭐ ٤.٩ — (٢٣٤ مريض)</div>
+    <div class="hero-card">
+      <div class="card-header">
+        <div class="card-header-icon">🗓</div>
+        <div class="card-header-text">
+          <div class="card-title">احجز موعدك</div>
+          <div class="card-sub">حجز سريع في دقيقتين</div>
         </div>
       </div>
-      <div style="font-size:.8rem;color:#888;margin-bottom:.7rem">اختر وقت المتاح — الثلاثاء ١٥ يوليو</div>
-      <div class="appt-slots">
-        <div class="slot available">٩:٠٠ ص</div>
-        <div class="slot selected">١٠:٠٠ ص</div>
-        <div class="slot booked">١١:٠٠ ص</div>
-        <div class="slot available">١:٠٠ م</div>
-        <div class="slot booked">٢:٠٠ م</div>
-        <div class="slot available">٤:٠٠ م</div>
+      <div class="card-body">
+        <div class="appointment-steps">
+          <div class="appt-step">
+            <div class="step-icon">👨‍⚕️</div>
+            <div class="step-text">
+              <div class="step-name">اختر التخصص</div>
+              <div class="step-detail">٢٠+ تخصص متاح</div>
+            </div>
+            <span class="step-arrow">&#8592;</span>
+          </div>
+          <div class="appt-step">
+            <div class="step-icon">📅</div>
+            <div class="step-text">
+              <div class="step-name">حدد الموعد</div>
+              <div class="step-detail">مواعيد مرنة ٧ أيام</div>
+            </div>
+            <span class="step-arrow">&#8592;</span>
+          </div>
+          <div class="appt-step">
+            <div class="step-icon">✅</div>
+            <div class="step-text">
+              <div class="step-name">تأكيد فوري</div>
+              <div class="step-detail">رسالة تأكيد نصية</div>
+            </div>
+            <span class="step-arrow">&#8592;</span>
+          </div>
+        </div>
       </div>
-      <button style="width:100%;background:linear-gradient(135deg,#0066cc,#0052a3);color:white;border:none;padding:.9rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer">تأكيد الموعد</button>
+      <div class="card-footer">
+        <span class="cf-text">متاح ٢٤/٧ عبر الإنترنت</span>
+        <button class="cf-btn">ابدأ الحجز</button>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-num">+٢٠,٠٠٠</span><div class="stat-label">مريض راضٍ</div></div>
-  <div class="stat-item"><span class="stat-num">٤٥+</span><div class="stat-label">طبيب متخصص</div></div>
-  <div class="stat-item"><span class="stat-num">١٥+</span><div class="stat-label">تخصص طبي</div></div>
-  <div class="stat-item"><span class="stat-num">٩٨٪</span><div class="stat-label">رضا المرضى</div></div>
+  <div class="stats-inner">
+    <div class="reveal reveal-delay-1">
+      <span class="sb-num">٢٠<span>+</span></span>
+      <span class="sb-label">تخصص طبي</span>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <span class="sb-num">٨٥<span>K+</span></span>
+      <span class="sb-label">مريض سنوياً</span>
+    </div>
+    <div class="reveal reveal-delay-3">
+      <span class="sb-num">١٨</span>
+      <span class="sb-label">سنة خبرة</span>
+    </div>
+    <div class="reveal reveal-delay-4">
+      <span class="sb-num">٩٨<span>٪</span></span>
+      <span class="sb-label">رضا المرضى</span>
+    </div>
+  </div>
 </div>
 
-<section class="services">
-  <div class="section-header">
-    <span class="section-tag">خدماتنا الطبية</span>
-    <h2>رعاية شاملة لصحتك</h2>
-    <p>نوفر مجموعة متكاملة من التخصصات الطبية تحت سقف واحد</p>
+<!-- SERVICES -->
+<section class="services-section section" id="services">
+  <div class="reveal">
+    <span class="sec-tag">خدماتنا الطبية</span>
+    <h2 class="sec-title">رعاية شاملة<br><span>في كل تخصص</span></h2>
+    <p class="sec-desc">من الرعاية الأولية إلى التدخلات الجراحية المتقدمة، نوفر كامل الرعاية الصحية لكل أفراد عائلتك.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon si1">❤️</div><h3>أمراض القلب والشرايين</h3><p>تشخيص وعلاج أمراض القلب بأحدث التقنيات والأجهزة الطبية المتطورة.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
-    <div class="service-card"><div class="service-icon si2">🦷</div><h3>طب الأسنان</h3><p>خدمات شاملة من التقويم والزراعة وتجميل الأسنان بمعايير دولية.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
-    <div class="service-card"><div class="service-icon si3">🧠</div><h3>الطب النفسي والنفسي</h3><p>دعم نفسي متخصص وعلاج اضطرابات القلق والاكتئاب بأساليب علمية حديثة.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
-    <div class="service-card"><div class="service-icon si4">🔬</div><h3>المختبر والتحاليل</h3><p>تحاليل دقيقة وفورية لأكثر من ٥٠٠ نوع تحليل طبي متخصص.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
-    <div class="service-card"><div class="service-icon si5">🩻</div><h3>الأشعة والتصوير</h3><p>أجهزة رنين مغناطيسي وأشعة مقطعية وسونار بأعلى دقة تشخيصية.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
-    <div class="service-card"><div class="service-icon si6">👶</div><h3>طب الأطفال</h3><p>رعاية شاملة للأطفال منذ الولادة مع فريق متخصص في طب الأطفال.</p><a href="#" class="service-link">اعرف أكثر ←</a></div>
-  </div>
-</section>
-
-<section class="doctors">
-  <div class="section-header">
-    <span class="section-tag">فريقنا الطبي</span>
-    <h2>أطباؤنا المتخصصون</h2>
-    <p>نخبة من أفضل الأطباء المعتمدين بخبرات دولية واسعة</p>
-  </div>
-  <div class="doctors-grid">
-    <div class="doctor-card"><div class="doctor-img dimg1">👨‍⚕️</div><div class="doctor-info"><h3>د. أحمد الكريمي</h3><div class="spec">أمراض القلب</div><div class="rating"><span class="stars">⭐</span> ٤.٩ (٢٣٤ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
-    <div class="doctor-card"><div class="doctor-img dimg2">👩‍⚕️</div><div class="doctor-info"><h3>د. سارة البنعلي</h3><div class="spec">طب الأطفال</div><div class="rating"><span class="stars">⭐</span> ٤.٨ (١٩٨ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
-    <div class="doctor-card"><div class="doctor-img dimg3">👨‍⚕️</div><div class="doctor-info"><h3>د. يوسف المنصوري</h3><div class="spec">جراحة العظام</div><div class="rating"><span class="stars">⭐</span> ٤.٧ (١٥٦ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
-    <div class="doctor-card"><div class="doctor-img dimg4">👩‍⚕️</div><div class="doctor-info"><h3>د. نادية العمراني</h3><div class="spec">الطب النفسي</div><div class="rating"><span class="stars">⭐</span> ٤.٩ (٣١٠ مريض)</div><a href="#" class="appt-btn">احجز موعد</a></div></div>
-  </div>
-</section>
-
-<section class="booking">
-  <div class="booking-container">
-    <h2>احجز موعدك الآن</h2>
-    <p>فريقنا متاح لمساعدتك على مدار الساعة</p>
-    <div class="booking-form">
-      <input type="text" placeholder="الاسم الكامل">
-      <input type="tel" placeholder="رقم الهاتف">
-      <select class=""><option>التخصص الطبي</option><option>أمراض القلب</option><option>طب الأسنان</option><option>الطب النفسي</option><option>طب الأطفال</option><option>جراحة العظام</option></select>
-      <input type="date">
-      <input type="text" placeholder="ملاحظات إضافية" class="full">
-      <button class="book-btn full">تأكيد الحجز 📅</button>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon si-blue">❤️</div>
+      <div class="service-title">أمراض القلب والأوعية</div>
+      <p class="service-desc">تشخيص متقدم لأمراض القلب باستخدام أجهزة إيكو ٣D ومرسم القلب الرقمي وقسطرة القلب.</p>
+      <a href="#" class="service-link">اعرف أكثر &#8592;</a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon si-teal">🦷</div>
+      <div class="service-title">طب الأسنان والزراعة</div>
+      <p class="service-desc">تقويم، تجميل، وزراعة أسنان بأعلى المعايير الدولية. ابتسامة هوليود في متناول يدك.</p>
+      <a href="#" class="service-link">اعرف أكثر &#8592;</a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon si-purple">🧠</div>
+      <div class="service-title">الطب النفسي والنفسي</div>
+      <p class="service-desc">دعم نفسي متخصص لمعالجة القلق والاكتئاب وإدارة الضغوط بأساليب علمية حديثة وآمنة.</p>
+      <a href="#" class="service-link">اعرف أكثر &#8592;</a>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon si-blue">🔬</div>
+      <div class="service-title">مختبر التحاليل الطبية</div>
+      <p class="service-desc">أكثر من ٥٠٠ نوع تحليل طبي بأعلى دقة ودقيقة. النتائج خلال ساعتين أو تُسلَّم إلكترونياً.</p>
+      <a href="#" class="service-link">اعرف أكثر &#8592;</a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon si-teal">🩻</div>
+      <div class="service-title">الأشعة والتصوير الطبي</div>
+      <p class="service-desc">رنين مغناطيسي، أشعة مقطعية، وسونار رباعي الأبعاد بأعلى دقة تشخيصية في المنطقة.</p>
+      <a href="#" class="service-link">اعرف أكثر &#8592;</a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon si-purple">👶</div>
+      <div class="service-title">طب الأطفال والرضّع</div>
+      <p class="service-desc">رعاية متخصصة للأطفال من الولادة حتى المراهقة. بيئة ودية ومطمئنة تجعل زيارة الطبيب لحظة سعيدة.</p>
+      <a href="#" class="service-link">اعرف أكثر &#8592;</a>
     </div>
   </div>
 </section>
 
+<!-- DOCTORS -->
+<section class="doctors-section section">
+  <div class="reveal">
+    <span class="sec-tag">فريقنا الطبي</span>
+    <h2 class="sec-title">أطباؤنا<br><span>المتخصصون</span></h2>
+    <p class="sec-desc">نخبة من أفضل الأطباء المعتمدين في المغرب، بخبرات دولية وشهادات عالمية رفيعة.</p>
+  </div>
+  <div class="doctors-grid">
+    <div class="doctor-card reveal reveal-delay-1">
+      <div class="doctor-img">
+        <div class="doctor-avatar">أ</div>
+      </div>
+      <div class="doctor-info">
+        <div class="doctor-name">د. أحمد الكريمي</div>
+        <div class="doctor-spec">أمراض القلب</div>
+        <div class="doctor-rating">
+          <span class="stars">★★★★★</span>
+          ٤.٩ (٢٣٤ مريض)
+        </div>
+        <button class="appt-btn">احجز موعداً</button>
+      </div>
+    </div>
+    <div class="doctor-card reveal reveal-delay-2">
+      <div class="doctor-img" style="background:linear-gradient(160deg,#e0f7f4,#c0efe8)">
+        <div class="doctor-avatar" style="background:linear-gradient(135deg,var(--teal),#007a6b)">س</div>
+      </div>
+      <div class="doctor-info">
+        <div class="doctor-name">د. سارة البنعلي</div>
+        <div class="doctor-spec">طب الأطفال</div>
+        <div class="doctor-rating">
+          <span class="stars">★★★★★</span>
+          ٤.٨ (١٩٨ مريض)
+        </div>
+        <button class="appt-btn">احجز موعداً</button>
+      </div>
+    </div>
+    <div class="doctor-card reveal reveal-delay-3">
+      <div class="doctor-img" style="background:linear-gradient(160deg,#f0e8fe,#e0d0fe)">
+        <div class="doctor-avatar" style="background:linear-gradient(135deg,#7c3aed,#5b21b6)">ي</div>
+      </div>
+      <div class="doctor-info">
+        <div class="doctor-name">د. يوسف المنصوري</div>
+        <div class="doctor-spec">جراحة العظام</div>
+        <div class="doctor-rating">
+          <span class="stars">★★★★★</span>
+          ٤.٧ (١٥٦ مريض)
+        </div>
+        <button class="appt-btn">احجز موعداً</button>
+      </div>
+    </div>
+    <div class="doctor-card reveal reveal-delay-4">
+      <div class="doctor-img" style="background:linear-gradient(160deg,#fff0f0,#ffe0e0)">
+        <div class="doctor-avatar" style="background:linear-gradient(135deg,#dc2626,#991b1b)">ن</div>
+      </div>
+      <div class="doctor-info">
+        <div class="doctor-name">د. نادية العمراني</div>
+        <div class="doctor-spec">الطب النفسي</div>
+        <div class="doctor-rating">
+          <span class="stars">★★★★★</span>
+          ٤.٩ (٣١٠ مريض)
+        </div>
+        <button class="appt-btn">احجز موعداً</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-inner">
+    <div class="booking-header reveal">
+      <h2>احجز موعدك الآن</h2>
+      <p>فريقنا متاح لمساعدتك على مدار الساعة — الحجز سريع وسهل</p>
+    </div>
+    <div class="booking-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input type="text" placeholder="أدخل اسمك الكامل">
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف</label>
+          <input type="tel" placeholder="+212 6XX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label>التخصص الطبي</label>
+          <select>
+            <option>اختر التخصص</option>
+            <option>أمراض القلب</option>
+            <option>طب الأسنان</option>
+            <option>الطب النفسي</option>
+            <option>طب الأطفال</option>
+            <option>جراحة العظام</option>
+            <option>الأشعة والتصوير</option>
+            <option>التحاليل الطبية</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>تاريخ الموعد</label>
+          <input type="date">
+        </div>
+        <div class="form-group full">
+          <label>ملاحظات إضافية</label>
+          <input type="text" placeholder="اذكر أي ملاحظات أو أعراض للطبيب (اختياري)">
+        </div>
+      </div>
+      <button class="form-submit">تأكيد حجز الموعد — سيتواصل معك فريقنا</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div style="text-align:center" class="reveal">
+    <span class="sec-tag">آراء مرضانا</span>
+    <h2 class="sec-title" style="text-align:center">ماذا يقول<br><span>مرضانا</span></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">أفضل مركز طبي تعاملت معه. الأطباء محترفون جداً والخدمة سريعة ومريحة. د. أحمد شخّص حالتي بدقة لم أجدها في أي مكان آخر.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">م</div>
+        <div>
+          <div class="testi-name">محمد الطاهر</div>
+          <div class="testi-role">مريض منذ ٢٠٢٢</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">د. سارة طبيبة ولدي المفضلة. تعامل الأطفال بصبر وحنان لا مثيل لهما. المركز نظيف جداً والحجز عبر الإنترنت رائع.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ف</div>
+        <div>
+          <div class="testi-name">فاطمة الزهراوي</div>
+          <div class="testi-role">أم لثلاثة أطفال</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">نتائج التحاليل جاهزة في ساعتين والرسالة وصلتني على الهاتف. تقنية حديثة وكفاءة عالية. هذا هو المستوى الذي نستحقه.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ي</div>
+        <div>
+          <div class="testi-name">يحيى المغربي</div>
+          <div class="testi-role">مريض منذ ٢٠٢١</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="f-logo"><div class="f-logo-icon">🏥</div><div class="f-logo-text">عيادة الشفاء</div></div>
-      <p class="f-desc">مركز طبي متكامل يقدم رعاية صحية شاملة بأحدث التقنيات وأمهر الأطباء المتخصصين في بيئة آمنة ومريحة.</p>
+      <div class="f-logo">
+        <div class="f-logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M11 8h2v3h3v2h-3v3h-2v-3H8v-2h3z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity=".5"/></svg>
+        </div>
+        <span class="f-logo-name">عيادة الشفاء</span>
+      </div>
+      <p class="f-desc">مركز طبي متكامل يقدم رعاية صحية شاملة بأحدث التقنيات وأمهر الأطباء في بيئة آمنة ومريحة.</p>
     </div>
-    <div class="f-col"><h4>روابط سريعة</h4><ul><li><a href="#">الرئيسية</a></li><li><a href="#">خدماتنا</a></li><li><a href="#">أطباؤنا</a></li><li><a href="#">نتائج التحاليل</a></li></ul></div>
-    <div class="f-col"><h4>التخصصات</h4><ul><li><a href="#">أمراض القلب</a></li><li><a href="#">طب الأسنان</a></li><li><a href="#">طب الأطفال</a></li><li><a href="#">الجراحة</a></li></ul></div>
-    <div class="f-col"><h4>تواصل معنا</h4><ul><li><a href="#">المغرب، الرباط</a></li><li><a href="#">+212 500 000 000</a></li><li><a href="#">info@clinic.ma</a></li><li><a href="#">٢٤/٧ متاح</a></li></ul></div>
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">خدماتنا</a></li>
+        <li><a href="#">أطباؤنا</a></li>
+        <li><a href="#">نتائج التحاليل</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>التخصصات</h4>
+      <ul>
+        <li><a href="#">أمراض القلب</a></li>
+        <li><a href="#">طب الأسنان</a></li>
+        <li><a href="#">طب الأطفال</a></li>
+        <li><a href="#">الجراحة العامة</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><a href="#">المغرب، الرباط</a></li>
+        <li><a href="#">+212 500 000 000</a></li>
+        <li><a href="#">info@clinic.ma</a></li>
+        <li><a href="#">٢٤/٧ متاح</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 عيادة الشفاء — تصميم خبراء الويب</div>
+  <div class="footer-bottom">
+    <span>© 2026 عيادة الشفاء — جميع الحقوق محفوظة</span>
+    <div class="f-socials">
+      <a class="fsoc" href="#">f</a>
+      <a class="fsoc" href="#">in</a>
+      <a class="fsoc" href="#">ig</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+}, { threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(r => obs.observe(r));
+</script>
 </body>
 </html>
