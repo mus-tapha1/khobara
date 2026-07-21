@@ -379,7 +379,7 @@ header img:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero_background.png') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero_bg_v2.png?v=2') center/cover no-repeat;
     overflow: hidden;
 }
 
@@ -576,8 +576,22 @@ footer {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 
-    /* Hide desktop nav on mobile */
+    /* Hide desktop nav on mobile - STRONG FIX */
     .hidden.md\:flex {
+        display: none !important;
+    }
+    
+    /* Also hide language switcher */
+    .language-switcher {
+        display: none !important;
+    }
+    
+    /* Ensure header nav is clean on mobile */
+    header nav {
+        justify-content: space-between !important;
+    }
+    
+    header nav ul {
         display: none !important;
     }
 
