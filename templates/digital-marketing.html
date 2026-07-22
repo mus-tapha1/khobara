@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بيكسل كور — وكالة التسويق الرقمي</title>
+<meta name="description" content="بيكسل كور — وكالة تسويق رقمي متكاملة تحوّل علامتك التجارية إلى قوة رقمية لا تُنسى">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#050508;
+  --bg2:#08080d;
+  --bg3:#0a0a12;
+  --violet:#5b21b6;
+  --violet2:#7c3aed;
+  --violet3:#a855f7;
+  --cyan:#06b6d4;
+  --cyan2:#22d3ee;
+  --pink:#ec4899;
+  --v-glow:rgba(91,33,182,.22);
+  --v-dim:rgba(91,33,182,.1);
+  --v-border:rgba(124,58,237,.25);
+  --border:rgba(255,255,255,.07);
+  --text:#e8edf5;
+  --text-dim:rgba(232,237,245,.6);
+  --text-muted:rgba(232,237,245,.32);
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;background:rgba(5,5,8,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--violet2),var(--violet3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.logo-name{font-size:1.05rem;font-weight:900;color:#fff}
+.logo-name span{background:linear-gradient(90deg,var(--violet3),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.83rem;font-weight:600;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:1.5px;background:linear-gradient(90deg,var(--violet2),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:right}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.btn-nav{background:linear-gradient(135deg,var(--violet2),var(--violet3));color:#fff;padding:.55rem 1.5rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.8rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px var(--v-glow)}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(124,58,237,.4)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 6%;padding-top:88px;position:relative;overflow:hidden;background:var(--bg)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.03) 1px,transparent 1px);background-size:70px 70px}
+.glow-1{position:absolute;top:-20%;right:-10%;width:900px;height:900px;background:radial-gradient(circle,rgba(91,33,182,.1),transparent 65%);pointer-events:none}
+.glow-2{position:absolute;bottom:-20%;left:10%;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,.06),transparent 65%);pointer-events:none}
+.glow-3{position:absolute;top:40%;right:40%;width:400px;height:400px;background:radial-gradient(circle,rgba(236,72,153,.04),transparent 65%);pointer-events:none}
+
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--v-border);background:var(--v-dim);color:var(--violet3);padding:.4rem 1.2rem;border-radius:4px;font-size:.7rem;font-weight:700;margin-bottom:1.8rem;letter-spacing:.1em;text-transform:uppercase}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan2);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.08;margin-bottom:1.4rem;color:#fff}
+.hero h1 .grad-v{background:linear-gradient(90deg,var(--violet3),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .grad-c{background:linear-gradient(90deg,var(--cyan),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{color:var(--text-dim);line-height:2;margin-bottom:2.8rem;font-size:.98rem;max-width:520px}
+.hero-btns{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--violet2),var(--violet3));color:#fff;padding:.9rem 2.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.92rem;text-decoration:none;transition:all .3s;box-shadow:0 6px 24px var(--v-glow)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(124,58,237,.45)}
+.btn-ghost{border:1px solid var(--border);color:var(--text-dim);padding:.9rem 2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .3s}
+.btn-ghost:hover{border-color:var(--v-border);color:#fff;background:var(--v-dim)}
+.hero-trust{display:flex;align-items:center;gap:1.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.trust-num{font-size:1.5rem;font-weight:900;color:var(--violet3);display:block}
+.trust-lbl{font-size:.67rem;color:var(--text-muted)}
+.trust-sep{width:1px;height:36px;background:var(--border)}
+
+/* Hero metrics panel */
+.hero-panel{display:flex;flex-direction:column;gap:1.2rem}
+.metric-card{background:rgba(8,8,13,.85);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.6rem;backdrop-filter:blur(16px);transition:border-color .3s;position:relative;overflow:hidden}
+.metric-card:hover{border-color:var(--v-border)}
+.metric-card.featured{border-color:var(--v-border);background:rgba(91,33,182,.05)}
+.mc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem}
+.mc-label{font-size:.67rem;font-weight:700;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+.mc-badge{font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px}
+.mc-badge.up{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.2)}
+.mc-badge.fire{background:rgba(236,72,153,.1);color:#f472b6;border:1px solid rgba(236,72,153,.2)}
+.mc-value{font-size:2rem;font-weight:900;color:#fff;line-height:1}
+.mc-value small{font-size:.95rem;color:var(--violet3)}
+.mc-sub{font-size:.72rem;color:var(--text-muted);margin-top:.4rem}
+.mc-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:.8rem;overflow:hidden}
+.mc-bar-fill{height:100%;border-radius:2px;animation:fill 2s ease forwards 1s}
+.mc-bar-fill.violet{background:linear-gradient(90deg,var(--violet2),var(--violet3))}
+.mc-bar-fill.cyan{background:linear-gradient(90deg,var(--cyan),var(--cyan2))}
+.mc-bar-fill.pink{background:linear-gradient(90deg,var(--pink),#f472b6)}
+@keyframes fill{from{width:0}to{width:var(--w)}}
+.float-pill{position:absolute;background:rgba(8,8,13,.95);border:1px solid var(--v-border);border-radius:8px;padding:.5rem 1rem;font-size:.7rem;font-weight:700;color:#fff;backdrop-filter:blur(8px);animation:float 4s ease-in-out infinite}
+.fp-1{top:-15px;left:-20px;animation-delay:0s}
+.fp-2{bottom:-12px;right:-15px;animation-delay:2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* CLIENTS */
+.clients-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.6rem 6%;background:var(--bg2);overflow:hidden}
+.clients-label{text-align:center;font-size:.7rem;color:var(--text-muted);letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:1.2rem}
+.clients-row{display:flex;gap:3rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.client-name{font-size:.9rem;font-weight:800;color:var(--text-muted);letter-spacing:.08em;transition:color .3s}
+.client-name:hover{color:var(--violet3)}
+
+/* SECTION */
+.sec{padding:6rem 6%}
+.sec-hd{text-align:center;margin-bottom:4rem}
+.sec-tag{font-size:.7rem;color:var(--violet3);letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:.7rem;display:block}
+.sec-title{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:.8rem;line-height:1.2}
+.sec-sub{color:var(--text-dim);font-size:.92rem;max-width:520px;margin:0 auto;line-height:1.85}
+
+/* SERVICES */
+.services-bg{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.5rem}
+.service-card{background:rgba(5,5,8,.7);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .35s;position:relative;overflow:hidden;cursor:default}
+.service-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.0) 0%,rgba(124,58,237,.06) 100%);opacity:0;transition:opacity .35s}
+.service-card:hover{border-color:var(--v-border);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.service-card:hover::after{opacity:1}
+.service-icon-wrap{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem;flex-shrink:0}
+.ic-violet{background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25)}
+.ic-cyan{background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.22)}
+.ic-pink{background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.2)}
+.ic-green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2)}
+.service-name{font-size:1rem;font-weight:900;color:#fff;margin-bottom:.5rem}
+.service-desc{font-size:.83rem;color:var(--text-dim);line-height:1.8;margin-bottom:1rem}
+.service-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.s-tag{font-size:.63rem;font-weight:700;padding:.2rem .6rem;border-radius:4px;background:var(--v-dim);border:1px solid var(--v-border);color:var(--violet3)}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.result-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;transition:all .3s}
+.result-card:hover{border-color:var(--v-border);transform:translateY(-4px)}
+.result-num{font-size:2.8rem;font-weight:900;display:block;line-height:1}
+.result-num.violet{background:linear-gradient(90deg,var(--violet3),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.result-num.cyan{background:linear-gradient(90deg,var(--cyan),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.result-lbl{font-size:.8rem;color:var(--text-dim);margin-top:.4rem;display:block;font-weight:600}
+
+/* PROCESS */
+.process-bg{background:var(--bg2)}
+.process-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;position:relative}
+.process-wrap::before{content:'';position:absolute;top:36px;right:10%;left:10%;height:1px;background:linear-gradient(90deg,transparent,var(--v-border),var(--v-border),transparent)}
+.process-step{text-align:center;padding:0 1rem;position:relative}
+.step-circle{width:72px;height:72px;border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;position:relative}
+.step-circle::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--v-border);animation:ring 3s ease-in-out infinite}
+@keyframes ring{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.12)}}
+.sc-1{background:linear-gradient(135deg,var(--violet),var(--violet2))}
+.sc-2{background:linear-gradient(135deg,var(--violet2),var(--violet3))}
+.sc-3{background:linear-gradient(135deg,var(--violet3),var(--pink))}
+.sc-4{background:linear-gradient(135deg,var(--cyan),var(--cyan2))}
+.step-title{font-size:1rem;font-weight:900;color:#fff;margin-bottom:.5rem}
+.step-desc{font-size:.8rem;color:var(--text-dim);line-height:1.8}
+
+/* CASE STUDIES */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.8rem}
+.case-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .35s}
+.case-card:hover{border-color:var(--v-border);transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.case-header{padding:2rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--border)}
+.case-logo{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.case-client{font-size:1rem;font-weight:900;color:#fff}
+.case-sector{font-size:.72rem;color:var(--text-muted)}
+.case-body{padding:1.6rem}
+.case-challenge{font-size:.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6}
+.case-results{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.cr-item{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:.8rem;text-align:center}
+.cr-num{font-size:1.4rem;font-weight:900;display:block}
+.cr-num.g{color:#4ade80}
+.cr-num.v{color:var(--violet3)}
+.cr-lbl{font-size:.65rem;color:var(--text-muted)}
+.case-footer{padding:.8rem 1.6rem 1.6rem;display:flex;gap:.4rem;flex-wrap:wrap}
+.c-chip{font-size:.63rem;font-weight:700;padding:.2rem .6rem;border-radius:4px;background:var(--v-dim);border:1px solid var(--v-border);color:var(--violet3)}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
+.team-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .35s;text-align:center}
+.team-card:hover{border-color:var(--v-border);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.team-avatar{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative}
+.team-body{padding:1.3rem}
+.team-name{font-size:.95rem;font-weight:900;color:#fff;margin-bottom:.2rem}
+.team-role{font-size:.72rem;color:var(--violet3);font-weight:700;margin-bottom:.6rem}
+.team-bio{font-size:.78rem;color:var(--text-dim);line-height:1.6}
+
+/* PRICING */
+.pricing-bg{background:var(--bg2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:960px;margin:0 auto}
+.price-card{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:2.2rem;transition:all .35s;position:relative}
+.price-card.popular{border-color:var(--v-border);background:rgba(91,33,182,.06)}
+.price-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.popular-badge{position:absolute;top:-12px;right:50%;transform:translateX(50%);background:linear-gradient(135deg,var(--violet2),var(--violet3));color:#fff;padding:.3rem 1.2rem;border-radius:20px;font-size:.68rem;font-weight:700;white-space:nowrap}
+.price-tier{font-size:.75rem;font-weight:700;color:var(--text-muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+.price-amount{display:flex;align-items:baseline;gap:.3rem;margin-bottom:.4rem}
+.price-val{font-size:2.6rem;font-weight:900;color:#fff}
+.price-cur{font-size:1rem;color:var(--text-muted)}
+.price-period{font-size:.75rem;color:var(--text-muted)}
+.price-desc{font-size:.8rem;color:var(--text-dim);line-height:1.7;margin-bottom:1.5rem}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.8rem}
+.price-features li{font-size:.82rem;color:var(--text-dim);display:flex;align-items:center;gap:.6rem}
+.price-features li::before{content:'✓';color:var(--violet3);font-weight:900;flex-shrink:0}
+.price-features li.dim::before{content:'–';color:var(--text-muted)}
+.price-features li.dim{color:var(--text-muted)}
+.btn-price{display:block;text-align:center;padding:.8rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.88rem;text-decoration:none;transition:all .3s}
+.btn-price.outline{border:1px solid var(--v-border);color:var(--violet3)}
+.btn-price.outline:hover{background:var(--v-dim)}
+.btn-price.solid{background:linear-gradient(135deg,var(--violet2),var(--violet3));color:#fff;box-shadow:0 4px 16px var(--v-glow)}
+.btn-price.solid:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(124,58,237,.4)}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:border-color .3s;position:relative}
+.testi-card:hover{border-color:var(--v-border)}
+.testi-stars{color:#fbbf24;font-size:.9rem;margin-bottom:.8rem;letter-spacing:.05em}
+.testi-quote{font-size:.86rem;color:var(--text-dim);line-height:1.9;margin-bottom:1.2rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.8rem;padding-top:1rem;border-top:1px solid var(--border)}
+.testi-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border:1px solid var(--v-border);background:var(--v-dim)}
+.testi-name{font-weight:700;font-size:.86rem;color:#fff}
+.testi-role{font-size:.7rem;color:var(--text-muted)}
+.result-chip{position:absolute;top:1.2rem;left:1.2rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.62rem;font-weight:700}
+
+/* CTA */
+.cta-sec{padding:5rem 6%;text-align:center;background:linear-gradient(135deg,var(--bg2),var(--bg3));border-top:1px solid var(--border);position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,var(--v-glow),transparent)}
+.cta-sec h2{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:1rem;position:relative}
+.cta-sec p{color:var(--text-dim);font-size:1rem;position:relative;max-width:500px;margin:0 auto 2.5rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:1rem}
+.contact-info p{color:var(--text-dim);line-height:1.9;font-size:.9rem;margin-bottom:1.8rem}
+.contact-details{display:flex;flex-direction:column;gap:1rem}
+.cd-item{display:flex;align-items:center;gap:.8rem;color:var(--text-dim);font-size:.85rem}
+.cd-icon{width:36px;height:36px;border-radius:8px;background:var(--v-dim);border:1px solid var(--v-border);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.contact-form{background:rgba(5,5,8,.7);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-label{font-size:.74rem;font-weight:700;color:var(--text-dim);letter-spacing:.05em}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);font-family:'Cairo',sans-serif;font-size:.88rem;border-radius:8px;padding:.8rem 1rem;width:100%;transition:border-color .3s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--v-border)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
+.form-select option{background:var(--bg2)}
+.form-textarea{min-height:110px;resize:vertical}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--violet2),var(--violet3));color:#fff;border:none;border-radius:8px;padding:1rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:.95rem;cursor:pointer;transition:all .3s;margin-top:1.2rem;box-shadow:0 6px 24px var(--v-glow)}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,58,237,.45)}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 6% 2rem}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:.8rem;color:var(--text-muted);line-height:1.8;max-width:260px;margin-top:.8rem}
+.footer-col h4{font-size:.78rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul li a{color:var(--text-muted);font-size:.8rem;text-decoration:none;transition:color .3s}
+.footer-col ul li a:hover{color:var(--violet3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-cr{font-size:.74rem;color:var(--text-muted)}
+.footer-badge{display:flex;align-items:center;gap:.4rem;border:1px solid var(--v-border);background:var(--v-dim);color:var(--violet3);padding:.3rem .9rem;border-radius:20px;font-size:.68rem;font-weight:700}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-panel{display:none}
+  .contact-wrap{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.btn-nav{display:none}
+  .nav-burger{display:flex}
+  .nav-links.nav-open{display:flex;flex-direction:column;position:fixed;top:65px;right:0;left:0;background:rgba(5,5,8,.98);padding:2rem 6%;border-bottom:1px solid var(--border);gap:1.2rem}
+  .process-wrap::before{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-name">بيكسل<span>كور</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#cases">أعمالنا</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
+    <li><a href="#team">فريقنا</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+  <a href="#contact" class="btn-nav">ابدأ مشروعك</a>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="glow-3"></div>
+
+  <div class="hero-inner">
+    <div class="reveal">
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span>وكالة تسويق رقمي متكاملة</div>
+      <h1>نحوّل علامتك إلى<br><span class="grad-v">قوة رقمية</span><br>لا <span class="grad-c">تُنسى</span></h1>
+      <p class="hero-desc">بيكسل كور — شريكك الاستراتيجي في التسويق الرقمي. من بناء الهوية إلى الإعلانات المدفوعة وإدارة وسائل التواصل الاجتماعي وتحسين محركات البحث — نحن هنا لنجعل علامتك تتصدر.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">ابدأ مشروعك مجاناً</a>
+        <a href="#cases" class="btn-ghost">اكتشف أعمالنا</a>
+      </div>
+      <div class="hero-trust">
+        <div><span class="trust-num">+200</span><span class="trust-lbl">عميل نشط</span></div>
+        <div class="trust-sep"></div>
+        <div><span class="trust-num">+4.2م</span><span class="trust-lbl">وصول شهري</span></div>
+        <div class="trust-sep"></div>
+        <div><span class="trust-num">8 سنوات</span><span class="trust-lbl">خبرة في السوق</span></div>
+        <div class="trust-sep"></div>
+        <div><span class="trust-num">340%</span><span class="trust-lbl">متوسط نمو العملاء</span></div>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="metric-card featured" style="position:relative">
+        <div class="float-pill fp-1">📈 +340% نمو خلال 6 أشهر</div>
+        <div class="mc-top"><span class="mc-label">معدل التحويل</span><span class="mc-badge up">↑ 47%</span></div>
+        <div class="mc-value"><small>%</small>8.4</div>
+        <div class="mc-sub">متوسط معدل التحويل عبر عملائنا</div>
+        <div class="mc-bar"><div class="mc-bar-fill violet" style="--w:84%"></div></div>
+        <div class="float-pill fp-2">🎯 إعلانات مستهدفة بدقة</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-top"><span class="mc-label">الوصول الشهري</span><span class="mc-badge fire">🔥 متسارع</span></div>
+        <div class="mc-value"><small>م+</small>4.2</div>
+        <div class="mc-sub">مجموع مشاهدات عبر جميع قنوات عملائنا</div>
+        <div class="mc-bar"><div class="mc-bar-fill cyan" style="--w:72%"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-top"><span class="mc-label">عائد الاستثمار</span><span class="mc-badge up">↑ 6.8x</span></div>
+        <div class="mc-value"><small>x</small>6.8</div>
+        <div class="mc-sub">متوسط عائد مقابل كل ريال أُنفق على الإعلانات</div>
+        <div class="mc-bar"><div class="mc-bar-fill pink" style="--w:68%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients-bar">
+  <div class="clients-label">شركاء نجاحنا من أبرز العلامات التجارية</div>
+  <div class="clients-row">
+    <span class="client-name">NEXORA</span>
+    <span class="client-name">LUMINA</span>
+    <span class="client-name">ARCADIA</span>
+    <span class="client-name">VANTAGE</span>
+    <span class="client-name">ORBIS</span>
+    <span class="client-name">STRATUM</span>
+    <span class="client-name">CRESTLINE</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec services-bg" id="services">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">خدماتنا</span>
+    <h2 class="sec-title">كل ما تحتاجه لتنمو رقمياً</h2>
+    <p class="sec-sub">حلول تسويقية متكاملة تغطي كل جانب من جوانب حضورك الرقمي</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal rd1">
+      <div class="service-icon-wrap ic-violet">📣</div>
+      <div class="service-name">إدارة وسائل التواصل</div>
+      <p class="service-desc">إنتاج محتوى جذاب، جدولة النشر، التفاعل مع الجمهور وتحليل الأداء عبر جميع المنصات.</p>
+      <div class="service-tags">
+        <span class="s-tag">إنستقرام</span><span class="s-tag">تيك توك</span><span class="s-tag">لينكدإن</span><span class="s-tag">يوتيوب</span>
+      </div>
+    </div>
+    <div class="service-card reveal rd2">
+      <div class="service-icon-wrap ic-cyan">🎯</div>
+      <div class="service-name">الإعلانات المدفوعة (PPC)</div>
+      <p class="service-desc">حملات إعلانية مستهدفة على جوجل وميتا وسناب بأعلى عائد استثمار وأقل تكلفة اكتساب ممكنة.</p>
+      <div class="service-tags">
+        <span class="s-tag">Google Ads</span><span class="s-tag">Meta Ads</span><span class="s-tag">Snap Ads</span>
+      </div>
+    </div>
+    <div class="service-card reveal rd3">
+      <div class="service-icon-wrap ic-pink">🔍</div>
+      <div class="service-name">تحسين محركات البحث (SEO)</div>
+      <p class="service-desc">استراتيجيات SEO متقدمة لتصدّر نتائج جوجل بشكل عضوي دائم — بحث كلمات مفتاحية، محتوى وبناء روابط.</p>
+      <div class="service-tags">
+        <span class="s-tag">SEO تقني</span><span class="s-tag">محتوى</span><span class="s-tag">روابط خلفية</span>
+      </div>
+    </div>
+    <div class="service-card reveal rd1">
+      <div class="service-icon-wrap ic-green">🎨</div>
+      <div class="service-name">الهوية البصرية والبراندينج</div>
+      <p class="service-desc">بناء هوية بصرية متكاملة — شعار، دليل هوية، تصاميم منصات ومواد تسويقية احترافية.</p>
+      <div class="service-tags">
+        <span class="s-tag">شعار</span><span class="s-tag">دليل هوية</span><span class="s-tag">تصاميم</span>
+      </div>
+    </div>
+    <div class="service-card reveal rd2">
+      <div class="service-icon-wrap ic-violet">🎬</div>
+      <div class="service-name">إنتاج المحتوى المرئي</div>
+      <p class="service-desc">ريلز احترافية، موشن جرافيك، مقاطع ترويجية ومحتوى مصوّر يصنع الفارق ويحقق الانتشار.</p>
+      <div class="service-tags">
+        <span class="s-tag">ريلز</span><span class="s-tag">موشن</span><span class="s-tag">إنتاج مرئي</span>
+      </div>
+    </div>
+    <div class="service-card reveal rd3">
+      <div class="service-icon-wrap ic-cyan">📊</div>
+      <div class="service-name">التحليل وذكاء البيانات</div>
+      <p class="service-desc">تقارير دورية شاملة تُترجم الأرقام إلى قرارات — لوحات تحكم مباشرة ورؤى استراتيجية قابلة للتنفيذ.</p>
+      <div class="service-tags">
+        <span class="s-tag">Analytics</span><span class="s-tag">BI Reports</span><span class="s-tag">KPIs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">أرقام حقيقية</span>
+    <h2 class="sec-title">نتائج تتحدث عن نفسها</h2>
+    <p class="sec-sub">أرقام مُحقَّقة فعلياً عبر عملائنا خلال 2024</p>
+  </div>
+  <div class="results-grid">
+    <div class="result-card reveal rd1"><span class="result-num violet">+340%</span><span class="result-lbl">متوسط نمو المبيعات</span></div>
+    <div class="result-card reveal rd2"><span class="result-num cyan">6.8x</span><span class="result-lbl">عائد الإعلان الموسط (ROAS)</span></div>
+    <div class="result-card reveal rd3"><span class="result-num violet">-62%</span><span class="result-lbl">انخفاض تكلفة الاكتساب</span></div>
+    <div class="result-card reveal rd4"><span class="result-num cyan">+4.2م</span><span class="result-lbl">وصول شهري مُجمَّع</span></div>
+    <div class="result-card reveal rd1"><span class="result-num violet">+200</span><span class="result-lbl">عميل نشط في 8 سنوات</span></div>
+    <div class="result-card reveal rd2"><span class="result-num cyan">92%</span><span class="result-lbl">معدل الاحتفاظ بالعملاء</span></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec process-bg" id="process">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">كيف نعمل</span>
+    <h2 class="sec-title">من الفكرة إلى النتيجة في 4 خطوات</h2>
+    <p class="sec-sub">منهجية مُثبَتة تضمن تحقيق أهدافك بأسرع وقت وأعلى جودة</p>
+  </div>
+  <div class="process-wrap">
+    <div class="process-step reveal rd1"><div class="step-circle sc-1">١</div><div class="step-title">الاكتشاف والتحليل</div><p class="step-desc">نحلل علامتك التجارية، المنافسين والجمهور المستهدف لوضع استراتيجية مبنية على بيانات حقيقية.</p></div>
+    <div class="process-step reveal rd2"><div class="step-circle sc-2">٢</div><div class="step-title">بناء الاستراتيجية</div><p class="step-desc">نُعِدّ خطة تسويقية شاملة مع أهداف واضحة ومؤشرات أداء قابلة للقياس لكل مرحلة.</p></div>
+    <div class="process-step reveal rd3"><div class="step-circle sc-3">٣</div><div class="step-title">التنفيذ والإطلاق</div><p class="step-desc">نُنفِّذ الخطة بدقة ونُطلق الحملات مع مراقبة لحظية وتحسين مستمر لتحقيق أفضل النتائج.</p></div>
+    <div class="process-step reveal rd4"><div class="step-circle sc-4">٤</div><div class="step-title">القياس والتطوير</div><p class="step-desc">تقارير دورية شفافة وجلسات مراجعة منتظمة لتطوير الأداء وتحقيق نمو متصاعد ومستدام.</p></div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="sec" id="cases">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">أعمالنا</span>
+    <h2 class="sec-title">قصص نجاح حقيقية</h2>
+    <p class="sec-sub">نماذج من نتائج حققناها مع عملائنا عبر قطاعات مختلفة</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card reveal rd1">
+      <div class="case-header">
+        <div class="case-logo" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25)">🛍️</div>
+        <div><div class="case-client">Nexora Fashion</div><div class="case-sector">أزياء وموضة</div></div>
+      </div>
+      <div class="case-body">
+        <div class="case-challenge">إطلاق متجر أزياء جديد في سوق مشبع بالمنافسة — الهدف: الوصول لـ500 عميل أول خلال 90 يوماً.</div>
+        <div class="case-results">
+          <div class="cr-item"><span class="cr-num g">+580%</span><span class="cr-lbl">نمو المبيعات</span></div>
+          <div class="cr-item"><span class="cr-num v">8.2x</span><span class="cr-lbl">عائد الإعلانات</span></div>
+          <div class="cr-item"><span class="cr-num g">820</span><span class="cr-lbl">عميل في 90 يوماً</span></div>
+          <div class="cr-item"><span class="cr-num v">-54%</span><span class="cr-lbl">تكلفة الاكتساب</span></div>
+        </div>
+      </div>
+      <div class="case-footer"><span class="c-chip">Meta Ads</span><span class="c-chip">إنستقرام</span><span class="c-chip">محتوى مرئي</span></div>
+    </div>
+    <div class="case-card reveal rd2">
+      <div class="case-header">
+        <div class="case-logo" style="background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.22)">🏢</div>
+        <div><div class="case-client">Arcadia Real Estate</div><div class="case-sector">عقارات</div></div>
+      </div>
+      <div class="case-body">
+        <div class="case-challenge">شركة عقارية راسخة تفقد حصتها السوقية لصالح المنافسين الرقميين — إعادة بناء الحضور الرقمي.</div>
+        <div class="case-results">
+          <div class="cr-item"><span class="cr-num g">+400%</span><span class="cr-lbl">حجوزات أونلاين</span></div>
+          <div class="cr-item"><span class="cr-num v">الصفحة ١</span><span class="cr-lbl">جوجل SEO</span></div>
+          <div class="cr-item"><span class="cr-num g">+15k</span><span class="cr-lbl">متابع جديد</span></div>
+          <div class="cr-item"><span class="cr-num v">-38%</span><span class="cr-lbl">تكلفة العميل</span></div>
+        </div>
+      </div>
+      <div class="case-footer"><span class="c-chip">SEO</span><span class="c-chip">Google Ads</span><span class="c-chip">محتوى</span></div>
+    </div>
+    <div class="case-card reveal rd3">
+      <div class="case-header">
+        <div class="case-logo" style="background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.2)">☕</div>
+        <div><div class="case-client">Lumina Coffee</div><div class="case-sector">مطاعم وقهوة</div></div>
+      </div>
+      <div class="case-body">
+        <div class="case-challenge">سلسلة قهوة محلية تريد التوسع من فرعين إلى خمسة خلال عام واحد بالاعتماد على التسويق الرقمي.</div>
+        <div class="case-results">
+          <div class="cr-item"><span class="cr-num g">+290%</span><span class="cr-lbl">إيرادات اليومية</span></div>
+          <div class="cr-item"><span class="cr-num v">5 فروع</span><span class="cr-lbl">توسع ناجح</span></div>
+          <div class="cr-item"><span class="cr-num g">+45k</span><span class="cr-lbl">متابع عضوي</span></div>
+          <div class="cr-item"><span class="cr-num v">7.1x</span><span class="cr-lbl">ROAS</span></div>
+        </div>
+      </div>
+      <div class="case-footer"><span class="c-chip">تيك توك</span><span class="c-chip">ريلز</span><span class="c-chip">Snap Ads</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec" style="background:var(--bg2)" id="team">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">فريق بيكسل كور</span>
+    <h2 class="sec-title">المبدعون وراء النتائج</h2>
+    <p class="sec-sub">فريق من خبراء التسويق والإبداع بخلفيات دولية وخبرات سوقية عميقة</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal rd1">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#0c0518,#180a2e)">🧠</div>
+      <div class="team-body">
+        <div class="team-name">ريم الفيصل</div>
+        <div class="team-role">Chief Marketing Officer</div>
+        <div class="team-bio">8 سنوات خبرة في استراتيجيات النمو الرقمي. أدارت حملات لعلامات في 6 دول خليجية.</div>
+      </div>
+    </div>
+    <div class="team-card reveal rd2">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#05100e,#0a1e1a)">⚡</div>
+      <div class="team-body">
+        <div class="team-name">خالد النجار</div>
+        <div class="team-role">Head of Performance Marketing</div>
+        <div class="team-bio">متخصص في Google & Meta Ads. حقق أكثر من 50 مليون ريال مبيعات من الإعلانات المدفوعة.</div>
+      </div>
+    </div>
+    <div class="team-card reveal rd3">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#0a0510,#14081c)">🎨</div>
+      <div class="team-body">
+        <div class="team-name">نور السهيل</div>
+        <div class="team-role">Creative Director</div>
+        <div class="team-bio">مبدعة بصرية حاصلة على جوائز دولية. تُشرف على إنتاج أكثر من 500 محتوى شهرياً.</div>
+      </div>
+    </div>
+    <div class="team-card reveal rd4">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#050a10,#0a1420)">📊</div>
+      <div class="team-body">
+        <div class="team-name">عمر القحطاني</div>
+        <div class="team-role">Head of SEO & Analytics</div>
+        <div class="team-bio">خبير SEO تقني أوصل أكثر من 80 موقعاً لصفحة النتائج الأولى في جوجل.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pricing-bg" id="pricing">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">الأسعار</span>
+    <h2 class="sec-title">خطط تناسب كل مرحلة نمو</h2>
+    <p class="sec-sub">أسعار شفافة بدون رسوم خفية — اختر ما يناسب طموحك</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal rd1">
+      <div class="price-tier">الباقة الأساسية</div>
+      <div class="price-amount"><span class="price-val">3,500</span><span class="price-cur">ريال</span></div>
+      <div class="price-period">شهرياً</div>
+      <div class="price-desc">مثالية للشركات الناشئة والمشاريع الصغيرة التي تبدأ رحلتها الرقمية.</div>
+      <ul class="price-features">
+        <li>إدارة منصتين اجتماعيتين</li>
+        <li>12 منشور شهرياً</li>
+        <li>تقرير أداء شهري</li>
+        <li>دعم عبر واتساب</li>
+        <li class="dim">إعلانات مدفوعة</li>
+        <li class="dim">SEO</li>
+        <li class="dim">مدير حساب مخصص</li>
+      </ul>
+      <a href="#contact" class="btn-price outline">ابدأ بالأساسية</a>
+    </div>
+    <div class="price-card popular reveal rd2">
+      <div class="popular-badge">الأكثر اختياراً</div>
+      <div class="price-tier">الباقة الاحترافية</div>
+      <div class="price-amount"><span class="price-val">8,900</span><span class="price-cur">ريال</span></div>
+      <div class="price-period">شهرياً</div>
+      <div class="price-desc">للشركات المتوسطة الراغبة في نمو حقيقي وقابل للقياس.</div>
+      <ul class="price-features">
+        <li>إدارة 4 منصات اجتماعية</li>
+        <li>30 منشور شهرياً + ريلز</li>
+        <li>إعلانات مدفوعة (ميزانية حتى 15k)</li>
+        <li>SEO أساسي</li>
+        <li>تقارير أسبوعية</li>
+        <li>مدير حساب مخصص</li>
+        <li>دعم 24/7</li>
+      </ul>
+      <a href="#contact" class="btn-price solid">ابدأ بالاحترافية</a>
+    </div>
+    <div class="price-card reveal rd3">
+      <div class="price-tier">باقة النمو المتسارع</div>
+      <div class="price-amount"><span class="price-val">18,000</span><span class="price-cur">ريال</span></div>
+      <div class="price-period">شهرياً</div>
+      <div class="price-desc">للعلامات الكبيرة التي تريد الهيمنة على السوق الرقمي بالكامل.</div>
+      <ul class="price-features">
+        <li>إدارة كاملة لجميع المنصات</li>
+        <li>محتوى غير محدود</li>
+        <li>إعلانات متقدمة (ميزانية مفتوحة)</li>
+        <li>SEO متكامل + محتوى</li>
+        <li>هوية بصرية وتصاميم</li>
+        <li>فريق مخصص بالكامل</li>
+        <li>تقارير لحظية + اجتماع أسبوعي</li>
+      </ul>
+      <a href="#contact" class="btn-price outline">تواصل لمناقشة الخطة</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">آراء عملائنا</span>
+    <h2 class="sec-title">ماذا يقول من نجحوا معنا</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal rd1">
+      <span class="result-chip">+580% مبيعات</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">بيكسل كور غيّروا مسار مشروعي بالكامل. في 3 أشهر فقط تجاوزنا هدفنا السنوي. فريق استثنائي يفهم التسويق الرقمي بعمق حقيقي.</p>
+      <div class="testi-author">
+        <div class="testi-av">👤</div>
+        <div><div class="testi-name">سارة المطيري</div><div class="testi-role">مؤسسة Nexora Fashion</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal rd2">
+      <span class="result-chip">الصفحة الأولى جوجل</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">كنا نعتمد على التسويق التقليدي فحسب. بعد شهرين مع بيكسل كور أصبحنا في الصفحة الأولى لأهم 20 كلمة مفتاحية في قطاع العقارات.</p>
+      <div class="testi-author">
+        <div class="testi-av">👤</div>
+        <div><div class="testi-name">أحمد الشمري</div><div class="testi-role">مدير عام Arcadia Real Estate</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal rd3">
+      <span class="result-chip">+45k متابع عضوي</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">الريلز التي ينتجونها مبدعة وتلامس جمهورنا فعلاً. في 6 أشهر نمونا من فرعين إلى خمسة وكل فرع جديد حقق الربح من الشهر الأول.</p>
+      <div class="testi-author">
+        <div class="testi-av">👤</div>
+        <div><div class="testi-name">عبدالله الغامدي</div><div class="testi-role">مؤسس Lumina Coffee</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" style="background:var(--bg2)" id="contact">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">ابدأ الآن</span>
+    <h2 class="sec-title">احجز استشارتك المجانية</h2>
+    <p class="sec-sub">تحدث مع أحد خبرائنا مجاناً واكتشف إمكانيات نموك الرقمي</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info reveal rd1">
+      <h3>لنبني مستقبلك الرقمي معاً</h3>
+      <p>فريقنا جاهز للاستماع إلى أهدافك وتقديم خطة تسويقية مخصصة تناسب نشاطك ومرحلة نموك بالكامل.</p>
+      <div class="contact-details">
+        <div class="cd-item"><div class="cd-icon">📍</div><span>برج التميز، الطابق 22 — الرياض، المملكة العربية السعودية</span></div>
+        <div class="cd-item"><div class="cd-icon">📞</div><span>+966 11 000 1234</span></div>
+        <div class="cd-item"><div class="cd-icon">✉️</div><span>hello@pixelcore.sa</span></div>
+        <div class="cd-item"><div class="cd-icon">🕐</div><span>الأحد – الخميس: 9ص – 6م</span></div>
+      </div>
+    </div>
+    <div class="contact-form reveal rd2">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">الاسم</label><input class="form-input" type="text" placeholder="اسمك الكامل"></div>
+        <div class="form-group"><label class="form-label">الجوال</label><input class="form-input" type="tel" placeholder="+966 5X XXX XXXX"></div>
+      </div>
+      <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input class="form-input" type="email" placeholder="your@email.com"></div>
+      <div class="form-group">
+        <label class="form-label">الخدمة المطلوبة</label>
+        <select class="form-select">
+          <option value="" disabled selected>اختر الخدمة</option>
+          <option>إدارة وسائل التواصل الاجتماعي</option>
+          <option>الإعلانات المدفوعة (PPC)</option>
+          <option>SEO وتحسين محركات البحث</option>
+          <option>الهوية البصرية والبراندينج</option>
+          <option>إنتاج محتوى مرئي</option>
+          <option>باقة متكاملة</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">ما هو هدفك التسويقي؟</label><textarea class="form-textarea" placeholder="أخبرنا عن مشروعك وما تريد تحقيقه..."></textarea></div>
+      <button class="btn-submit" id="submit-btn">احجز الاستشارة المجانية ←</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo"><div class="logo-icon">⚡</div><div class="logo-name" style="margin-right:.5rem">بيكسل<span>كور</span></div></div>
+      <p>وكالة تسويق رقمي متكاملة تحوّل علامتك التجارية إلى قوة رقمية لا تُنسى. شريكك الاستراتيجي في النمو.</p>
+    </div>
+    <div class="footer-col">
+      <h4>الخدمات</h4>
+      <ul>
+        <li><a href="#">إدارة السوشيال ميديا</a></li>
+        <li><a href="#">الإعلانات المدفوعة</a></li>
+        <li><a href="#">SEO وتحسين البحث</a></li>
+        <li><a href="#">الهوية البصرية</a></li>
+        <li><a href="#">إنتاج المحتوى</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>الوكالة</h4>
+      <ul>
+        <li><a href="#">عن بيكسل كور</a></li>
+        <li><a href="#">فريق العمل</a></li>
+        <li><a href="#">أعمالنا</a></li>
+        <li><a href="#">المدونة</a></li>
+        <li><a href="#">وظائف</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="#">استشارة مجانية</a></li>
+        <li><a href="#">لينكدإن</a></li>
+        <li><a href="#">إنستقرام</a></li>
+        <li><a href="#">تويتر / X</a></li>
+        <li><a href="#">يوتيوب</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-cr">© 2025 بيكسل كور — جميع الحقوق محفوظة</span>
+    <div style="display:flex;gap:.8rem;align-items:center">
+      <a href="#" style="color:var(--text-muted);font-size:.75rem;text-decoration:none">سياسة الخصوصية</a>
+      <span style="color:var(--border)">|</span>
+      <a href="#" style="color:var(--text-muted);font-size:.75rem;text-decoration:none">شروط الخدمة</a>
+    </div>
+    <div class="footer-badge">⚡ Meta Business Partner</div>
+  </div>
+</footer>
+
+<script>
+// REVEAL
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+// NAV
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  nav.style.background = window.scrollY > 60 ? 'rgba(5,5,8,.98)' : 'rgba(5,5,8,.88)';
+});
+
+// BURGER
+(function(){
+  const b = document.getElementById('burger');
+  const l = document.querySelector('nav .nav-links');
+  if(b && l){
+    b.addEventListener('click', () => { l.classList.toggle('nav-open'); b.classList.toggle('is-open'); });
+    l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('nav-open'); b.classList.remove('is-open'); }));
+  }
+})();
+
+// FORM
+document.getElementById('submit-btn')?.addEventListener('click', function(){
+  const name = document.querySelector('.form-input[placeholder="اسمك الكامل"]')?.value;
+  const email = document.querySelector('.form-input[type="email"]')?.value;
+  if(!name || !email){ alert('يرجى ملء الاسم والبريد الإلكتروني'); return; }
+  this.textContent = '✓ تم استلام طلبك — سنتواصل خلال 24 ساعة';
+  this.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+  this.disabled = true;
+  setTimeout(() => {
+    this.textContent = 'احجز الاستشارة المجانية ←';
+    this.style.background = '';
+    this.disabled = false;
+    document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(i => i.value = '');
+  }, 5000);
+});
+</script>
+</body>
+</html>
