@@ -2,6 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="نادي رياضي احترافي — برامج تدريبية متخصصة وعضويات لجميع المستويات في طنجة">
+<meta property="og:title" content="X FIT — النادي الرياضي">
+<meta property="og:description" content="نادي رياضي احترافي — برامج تدريبية متخصصة وعضويات لجميع المستويات في طنجة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>XFIT — نادي رياضي متكامل</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -471,6 +476,20 @@ footer{
   .footer-grid{grid-template-columns:1fr}
   .hero-stats{gap:1.5rem}
 }
+
+/* ── Mobile Burger ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:10001;position:relative;color:inherit}
+.nav-burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .35s ease}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-burger{display:flex!important}
+  nav .nav-btns,nav .nav-actions,nav .nav-cta,nav .hire-btn,nav .join-btn,nav .btn-join,nav .btn-login,nav .nav-btn,nav .nav-btn-ghost,nav .nav-btn-solid{display:none!important}
+  nav .nav-links{display:none!important}
+  nav .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:10000;font-size:1.2rem;list-style:none;margin:0;padding:0;background:rgba(0,0,0,.97)}
+}
+@media(min-width:769px){.nav-burger{display:none!important}}
 </style>
 </head>
 <body>
@@ -486,6 +505,7 @@ footer{
     <li><a href="#">التحدي ٣٠ يوم</a></li>
   </ul>
   <button class="join-btn">انضم الآن</button>
+<button class="nav-burger" aria-label="القائمة"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -852,7 +872,7 @@ footer{
       <ul>
         <li><a href="#">الرباط، المغرب</a></li>
         <li><a href="#">+212 500 000 000</a></li>
-        <li><a href="#">info@xfit.ma</a></li>
+        <li><a href="#">khobaraweb@gmail.com</a></li>
         <li><a href="#">٢٤/٧ مفتوح</a></li>
       </ul>
     </div>
@@ -873,6 +893,9 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
 }, { threshold:0.08, rootMargin:'0px 0px -40px 0px'});
 reveals.forEach(r => obs.observe(r));
+</script>
+<script>
+(function(){var b=document.querySelector('.nav-burger');var l=document.querySelector('nav .nav-links')||document.querySelector('header .nav-links');if(b&&l){b.addEventListener('click',function(){l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('nav-open');b.classList.remove('is-open')})})}})();
 </script>
 </body>
 </html>
