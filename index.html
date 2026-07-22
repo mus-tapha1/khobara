@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>خبرة — قوالب مواقع احترافية</title>
+<meta name="description" content="قوالب مواقع ويب احترافية جاهزة للاستخدام — أكاديميات، متاجر، عيادات، عقارات، مطاعم والمزيد">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:#0a0a0f;color:#e8edf5;min-height:100vh}
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-size:1.4rem;font-weight:900;color:#fff;text-decoration:none}.logo span{color:#7c3aff}
+.nav-badge{background:rgba(124,58,255,.15);border:1px solid rgba(124,58,255,.3);color:#b880ff;padding:.3rem .9rem;border-radius:20px;font-size:.75rem;font-weight:700}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 6% 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(124,58,255,.12),transparent)}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(124,58,255,.3);background:rgba(124,58,255,.08);color:#b880ff;padding:.4rem 1.2rem;border-radius:30px;font-size:.78rem;font-weight:700;margin-bottom:2rem}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.1;margin-bottom:1.2rem}
+.hero h1 span{background:linear-gradient(90deg,#7c3aff,#b880ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:#8898aa;max-width:560px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-p{background:linear-gradient(135deg,#7c3aff,#9b5cff);color:#fff;padding:.85rem 2.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.95rem;text-decoration:none;transition:all .3s;box-shadow:0 6px 25px rgba(124,58,255,.35)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(124,58,255,.5)}
+.btn-g{border:1px solid rgba(255,255,255,.15);color:#e8edf5;padding:.85rem 2.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .3s}
+.btn-g:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04)}
+.stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;padding:2rem 6%;border-bottom:1px solid rgba(255,255,255,.06)}
+.stat{text-align:center}.stat-n{display:block;font-size:2rem;font-weight:900;color:#fff}.stat-n span{color:#7c3aff}.stat-l{font-size:.8rem;color:#8898aa;font-weight:600}
+.sec{padding:5rem 6%}.sec-hd{text-align:center;margin-bottom:3.5rem}
+.sec-tag{font-size:.75rem;color:#b880ff;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:.8rem;display:block}
+.sec-title{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:.8rem}
+.sec-sub{color:#8898aa;font-size:.95rem;max-width:500px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.5rem}
+.card{border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02);transition:all .35s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.card:hover{border-color:rgba(124,58,255,.3);transform:translateY(-6px);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+.card-prev{height:170px;display:flex;align-items:center;justify-content:center;font-size:3.8rem;position:relative}
+.card-badge{position:absolute;top:.7rem;right:.7rem;background:rgba(124,58,255,.2);border:1px solid rgba(124,58,255,.3);color:#b880ff;padding:.2rem .6rem;border-radius:20px;font-size:.65rem;font-weight:700}
+.card-body{padding:1.2rem 1.4rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.card-name{font-size:1rem;font-weight:800;color:#fff;margin-bottom:.35rem}
+.card-desc{font-size:.81rem;color:#8898aa;line-height:1.6;flex:1;margin-bottom:1.1rem}
+.card-link{color:#b880ff;font-weight:700;font-size:.82rem}
+.cta-s{background:linear-gradient(135deg,rgba(124,58,255,.12),rgba(155,92,255,.06));border-top:1px solid rgba(124,58,255,.12);padding:5rem 6%;text-align:center}
+.cta-s h2{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:1rem}
+.cta-s p{color:#8898aa;font-size:1rem;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto}
+footer{padding:2rem 6%;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-logo{font-size:1.1rem;font-weight:900;color:#fff;text-decoration:none}.f-logo span{color:#7c3aff}
+.f-links{display:flex;gap:1.5rem;list-style:none}.f-links a{color:#8898aa;text-decoration:none;font-size:.82rem}
+.f-cr{font-size:.78rem;color:#445566}
+@media(max-width:768px){nav,footer{padding:1rem 4%}.hero,.sec{padding:5rem 4% 3rem}.stats{padding:2rem 4%}.grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo">خبرة<span>.</span></a>
+  <div class="nav-badge">١١ قالب احترافي</div>
+</nav>
+<section class="hero">
+  <div>
+    <div class="hero-tag">✦ قوالب مواقع جاهزة للإطلاق</div>
+    <h1>قوالب مواقع <span>احترافية</span><br>لكل الأعمال</h1>
+    <p>مجموعة متكاملة من قوالب المواقع الإلكترونية عالية الجودة — مصممة بدقة لتناسب طيفاً واسعاً من القطاعات</p>
+    <div class="hero-cta">
+      <a href="#templates" class="btn-p">استكشف القوالب</a>
+      <a href="mailto:khobaraweb@gmail.com" class="btn-g">تواصل معنا</a>
+    </div>
+  </div>
+</section>
+<div class="stats">
+  <div class="stat"><span class="stat-n">١١<span>+</span></span><span class="stat-l">قالب احترافي</span></div>
+  <div class="stat"><span class="stat-n">١٠<span>+</span></span><span class="stat-l">قطاعات مختلفة</span></div>
+  <div class="stat"><span class="stat-n">١٠٠<span>%</span></span><span class="stat-l">تصميم متجاوب</span></div>
+</div>
+<section class="sec" id="templates">
+  <div class="sec-hd">
+    <span class="sec-tag">مكتبة القوالب</span>
+    <h2 class="sec-title">اختر القالب المناسب لمشروعك</h2>
+    <p class="sec-sub">كل قالب مبني بـ HTML خالص — سريع، خفيف، وجاهز للتخصيص</p>
+  </div>
+  <div class="grid">
+    <a href="templates/academy.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#07050f,#0d0a1e)">🎓<div class="card-badge">تعليم</div></div><div class="card-body"><div class="card-name">أكاديمية تعليمية</div><div class="card-desc">منصة تعليمية احترافية — دورات، مدربون، مسارات تعلم وأسعار</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/consulting.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0a12,#131320)">💼<div class="card-badge">استشارات</div></div><div class="card-body"><div class="card-name">شركة استشارات</div><div class="card-desc">موقع شركة استشارات أعمال — خدمات، حالات نجاح وفريق متخصص</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/ecommerce-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080a10,#0d1020)">🛍️<div class="card-badge">تجارة إلكترونية</div></div><div class="card-body"><div class="card-name">متجر إلكتروني</div><div class="card-desc">متجر إلكتروني متكامل — منتجات، تصنيفات، سلة تسوق وعروض</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/fashion-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0c080f,#1a0f1e)">👗<div class="card-badge">أزياء</div></div><div class="card-body"><div class="card-name">متجر أزياء</div><div class="card-desc">متجر أزياء راقٍ — مجموعات، ماركات وأحدث صيحات الموضة</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/fitness.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#060606,#140000)">💪<div class="card-badge">رياضة</div></div><div class="card-body"><div class="card-name">نادي رياضي</div><div class="card-desc">صالة لياقة بدنية — برامج تدريب، مدربون وعضويات</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/maison-velours.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0806,#1a1410)">🌹<div class="card-badge">موضة فاخرة</div></div><div class="card-body"><div class="card-name">دار أزياء فاخرة</div><div class="card-desc">براند فاشن راقٍ — مجموعات حصرية بتصميم لوكشري أصيل</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/medical-clinic.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#040f0a,#071a10)">🏥<div class="card-badge">صحة</div></div><div class="card-body"><div class="card-name">عيادة طبية</div><div class="card-desc">مركز طبي متكامل — أطباء، خدمات وحجز مواعيد أونلاين</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/portfolio.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#050510,#0a0a20)">💻<div class="card-badge">بورتفوليو</div></div><div class="card-body"><div class="card-name">ملف شخصي / فريلانسر</div><div class="card-desc">بورتفوليو مطور ويب — مشاريع، مهارات وتواصل مباشر</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/real-estate.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0800,#1a1200)">🏠<div class="card-badge">عقارات</div></div><div class="card-body"><div class="card-name">وكالة عقارية</div><div class="card-desc">موقع عقاري احترافي — عقارات للبيع والإيجار مع بحث متقدم</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/restaurant.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0d0800,#1a1000)">☕<div class="card-badge">مطعم / مقهى</div></div><div class="card-body"><div class="card-name">مقهى / مطعم</div><div class="card-desc">موقع مقهى راقٍ — قائمة، حجوزات وقصة العلامة التجارية</div><span class="card-link">معاينة القالب ←</span></div></a>
+    <a href="templates/travel.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#040810,#08101e)">✈️<div class="card-badge">سياحة</div></div><div class="card-body"><div class="card-name">وكالة سياحية</div><div class="card-desc">وكالة سفر احترافية — وجهات، باقات سياحية وحجوزات</div><span class="card-link">معاينة القالب ←</span></div></a>
+  </div>
+</section>
+<section class="cta-s">
+  <h2>هل تحتاج قالباً مخصصاً؟</h2>
+  <p>تواصل معنا وسنصمم لك قالب موقع احترافي يناسب نشاطك التجاري تماماً</p>
+  <a href="mailto:khobaraweb@gmail.com" class="btn-p">تواصل معنا</a>
+</section>
+<footer>
+  <a href="#" class="f-logo">خبرة<span>.</span></a>
+  <ul class="f-links"><li><a href="#templates">القوالب</a></li><li><a href="mailto:khobaraweb@gmail.com">تواصل</a></li></ul>
+  <div class="f-cr">© 2025 خبرة — جميع الحقوق محفوظة</div>
+</footer>
+</body>
+</html>
