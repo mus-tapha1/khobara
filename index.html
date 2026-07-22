@@ -109,10 +109,53 @@ nav.scrolled{background:rgba(6,11,24,.97);border-bottom-color:rgba(26,110,255,.1
    HERO
 ══════════════════════════════════════════ */
 .hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:120px 6% 80px;position:relative;z-index:1;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:90px 6% 60px;
+  position:relative;z-index:1;gap:2.8rem;
 }
-.hero-inner{max-width:780px;margin:0 auto}
+.hero-inner{max-width:780px;margin:0 auto;width:100%}
+
+/* ── Hero Visual (category showcase) ── */
+.hero-visual{
+  width:100%;max-width:680px;
+  display:flex;flex-direction:column;gap:.75rem;
+  animation:fadeInUp .9s ease .05s both;
+}
+.hero-visual-row{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap}
+.hv-card{
+  display:flex;align-items:center;gap:.55rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:.6rem 1.05rem;
+  backdrop-filter:blur(12px);
+  transition:var(--transition);cursor:default;
+}
+.hv-card:hover{
+  border-color:rgba(26,110,255,.4);
+  background:rgba(26,110,255,.07);
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,.35),0 0 0 1px rgba(26,110,255,.15);
+}
+.hv-icon{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:1.05rem;
+}
+.hv-info{display:flex;flex-direction:column;text-align:right}
+.hv-name{font-size:.76rem;font-weight:800;color:var(--white);line-height:1.2}
+.hv-count{font-size:.63rem;color:var(--text-muted);font-weight:600}
+
+/* ── Hero Trust Strip ── */
+.hero-trust{
+  display:flex;align-items:center;justify-content:center;gap:1.6rem;
+  flex-wrap:wrap;animation:fadeInUp .8s ease .55s both;margin-top:.5rem;
+}
+.trust-item{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.75rem;color:var(--text-muted);font-weight:600;
+}
+.trust-item svg{color:var(--blue-400);flex-shrink:0}
+.trust-sep{width:3px;height:3px;background:var(--navy-500);border-radius:50%}
 .hero-badge{
   display:inline-flex;align-items:center;gap:.5rem;
   border:1px solid rgba(26,110,255,.35);
@@ -218,9 +261,15 @@ nav.scrolled{background:rgba(6,11,24,.97);border-bottom-color:rgba(26,110,255,.1
 .section-sub{font-size:.92rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7}
 
 /* ══════════════════════════════════════════
-   SEARCH + FILTER
+   SEARCH + FILTER — STICKY
 ══════════════════════════════════════════ */
-.controls{margin-bottom:3rem;display:flex;flex-direction:column;gap:1.4rem;align-items:center}
+.controls{
+  position:sticky;top:68px;z-index:100;
+  background:rgba(6,11,24,.95);backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--border-subtle);
+  margin:0 -6% 2.5rem;padding:1.2rem 6%;
+  display:flex;flex-direction:column;gap:.9rem;align-items:center;
+}
 .search-wrap{position:relative;width:100%;max-width:520px}
 .search-icon{
   position:absolute;top:50%;right:1.1rem;transform:translateY(-50%);
@@ -437,6 +486,11 @@ footer{
   .features{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
+  .hv-card{padding:.5rem .8rem}
+  .hv-icon{width:28px;height:28px;font-size:.85rem}
+  .hv-name{font-size:.7rem}
+  .hero-trust{gap:1rem}
+  .controls{margin:0 -5% 2rem;padding:1rem 5%}
   nav{padding:0 5%}
   .nav-links{display:none}
   .nav-cta{display:none}
@@ -525,6 +579,46 @@ footer{
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
+  <!-- Category Showcase Cards -->
+  <div class="hero-visual">
+    <div class="hero-visual-row">
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(59,130,246,.15)">🛍️</div>
+        <div class="hv-info"><span class="hv-name">متاجر</span><span class="hv-count">13 قالب</span></div>
+      </div>
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(192,132,252,.15)">👗</div>
+        <div class="hv-info"><span class="hv-name">أزياء وموضة</span><span class="hv-count">4 قوالب</span></div>
+      </div>
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(251,191,36,.15)">💼</div>
+        <div class="hv-info"><span class="hv-name">خدمات</span><span class="hv-count">10 قوالب</span></div>
+      </div>
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(52,211,153,.15)">🏥</div>
+        <div class="hv-info"><span class="hv-name">صحة ولياقة</span><span class="hv-count">قالبان</span></div>
+      </div>
+    </div>
+    <div class="hero-visual-row">
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(251,146,60,.15)">🏨</div>
+        <div class="hv-info"><span class="hv-name">ضيافة وسياحة</span><span class="hv-count">6 قوالب</span></div>
+      </div>
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(99,102,241,.15)">💻</div>
+        <div class="hv-info"><span class="hv-name">تقنية وبرمجيات</span><span class="hv-count">3 قوالب</span></div>
+      </div>
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(245,158,11,.15)">🎓</div>
+        <div class="hv-info"><span class="hv-name">تعليم</span><span class="hv-count">قالب</span></div>
+      </div>
+      <div class="hv-card">
+        <div class="hv-icon" style="background:rgba(16,185,129,.15)">🏗️</div>
+        <div class="hv-info"><span class="hv-name">عقارات</span><span class="hv-count">قالب</span></div>
+      </div>
+    </div>
+  </div>
+
   <div class="hero-inner">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
@@ -540,6 +634,27 @@ footer{
     <div class="hero-cta">
       <a href="#templates" class="btn-primary">استعرض القوالب</a>
       <a href="mailto:khobaraweb@gmail.com" class="btn-ghost">قالب مخصص</a>
+    </div>
+    <div class="hero-trust">
+      <span class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        تسليم فوري
+      </span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        عربي RTL أصيل
+      </span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        دعم ما بعد البيع
+      </span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        متجاوب 100%
+      </span>
     </div>
   </div>
   <div class="hero-scroll">
