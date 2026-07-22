@@ -2,6 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="وكالة عقارية متخصصة في طنجة — أفضل العقارات للبيع والإيجار مع DARIA">
+<meta property="og:title" content="DARIA Real Estate — العقارات">
+<meta property="og:description" content="وكالة عقارية متخصصة في طنجة — أفضل العقارات للبيع والإيجار مع DARIA">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>داريا — وكالة عقارية فاخرة</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -399,6 +404,20 @@ footer{background:var(--slate);padding:5rem 5% 2rem}
   .stats-inner{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
 }
+
+/* ── Mobile Burger ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:10001;position:relative;color:inherit}
+.nav-burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .35s ease}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-burger{display:flex!important}
+  nav .nav-btns,nav .nav-actions,nav .nav-cta,nav .hire-btn,nav .join-btn,nav .btn-join,nav .btn-login,nav .nav-btn,nav .nav-btn-ghost,nav .nav-btn-solid{display:none!important}
+  nav .nav-links{display:none!important}
+  nav .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:10000;font-size:1.2rem;list-style:none;margin:0;padding:0;background:rgba(0,0,0,.97)}
+}
+@media(min-width:769px){.nav-burger{display:none!important}}
 </style>
 </head>
 <body>
@@ -420,6 +439,7 @@ footer{background:var(--slate);padding:5rem 5% 2rem}
     <button class="nav-btn-ghost">تواصل معنا</button>
     <button class="nav-btn-solid">أضف عقارك</button>
   </div>
+<button class="nav-burger" aria-label="القائمة"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -465,7 +485,7 @@ footer{background:var(--slate);padding:5rem 5% 2rem}
     <div class="sfield">
       <label>المدينة</label>
       <select>
-        <option>الدار البيضاء</option>
+        <option>طنجة</option>
         <option>الرباط</option>
         <option>مراكش</option>
         <option>طنجة</option>
@@ -569,7 +589,7 @@ footer{background:var(--slate);padding:5rem 5% 2rem}
         <div class="prop-fav">&#9825;</div>
       </div>
       <div class="prop-info">
-        <div class="prop-location">&#8197; الدار البيضاء — أنفا</div>
+        <div class="prop-location">&#8197; طنجة — أنفا</div>
         <div class="prop-name">شقة فاخرة إطلالة بحرية</div>
         <div class="prop-specs">
           <span class="prop-spec"><span class="spec-icon">🛏</span> ٣ غرف</span>
@@ -715,7 +735,7 @@ footer{background:var(--slate);padding:5rem 5% 2rem}
     <div class="agent-card reveal reveal-delay-1">
       <div class="agent-avatar">ح</div>
       <div class="agent-name">حسن العلوي</div>
-      <div class="agent-title">خبير عقاري — الدار البيضاء</div>
+      <div class="agent-title">خبير عقاري — طنجة</div>
       <div class="agent-stats">★ ٤.٩ &nbsp;|&nbsp; ١٤٨ صفقة &nbsp;|&nbsp; ١٢ سنة</div>
       <div class="agent-actions">
         <button class="agent-btn">اتصال</button>
@@ -796,9 +816,9 @@ footer{background:var(--slate);padding:5rem 5% 2rem}
     <div class="footer-col">
       <h4>تواصل</h4>
       <ul>
-        <li><a href="#">الدار البيضاء، المغرب</a></li>
+        <li><a href="#">طنجة، المغرب</a></li>
         <li><a href="#">+212 522 000 000</a></li>
-        <li><a href="#">info@daria.ma</a></li>
+        <li><a href="#">khobaraweb@gmail.com</a></li>
         <li><a href="#">السبت – الخميس</a></li>
       </ul>
     </div>
@@ -825,6 +845,9 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 reveals.forEach(r => observer.observe(r));
+</script>
+<script>
+(function(){var b=document.querySelector('.nav-burger');var l=document.querySelector('nav .nav-links')||document.querySelector('header .nav-links');if(b&&l){b.addEventListener('click',function(){l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('nav-open');b.classList.remove('is-open')})})}})();
 </script>
 </body>
 </html>
