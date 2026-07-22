@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX — متجر الرياضة والأداء</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0a0a0a;
+    --dark: #111;
+    --surface: #1a1a1a;
+    --accent: #00ff87;
+    --accent2: #ff3b30;
+    --white: #f5f5f5;
+    --gray: #555;
+    --light-gray: #888;
+    --border: rgba(255,255,255,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Tajawal', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+  /* ── Ticker ── */
+  .ticker { background: var(--accent); color: var(--black); padding: 8px 0; overflow: hidden; }
+  .ticker-inner { display: flex; gap: 0; animation: ticker 25s linear infinite; white-space: nowrap; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item { padding: 0 32px; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+  .ticker-dot { color: var(--black); opacity: 0.4; }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px; font-weight: 900;
+    color: var(--white); letter-spacing: 4px;
+    text-decoration: none; text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(245,245,245,0.7); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-actions { display: flex; gap: 16px; align-items: center; }
+  .nav-btn { background: var(--accent); color: var(--black); border: none; padding: 10px 24px; font-family: 'Tajawal', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+  .nav-btn:hover { background: #00d672; transform: translateY(-1px); }
+  .nav-icon { background: none; border: none; color: var(--white); font-size: 18px; cursor: pointer; transition: color 0.2s; position: relative; }
+  .nav-icon:hover { color: var(--accent); }
+  .badge { position: absolute; top: -8px; right: -8px; background: var(--accent2); color: #fff; font-size: 10px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+  /* ── Hero ── */
+  .hero { height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; }
+  .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=1800&q=80') center/cover no-repeat; filter: brightness(0.3) contrast(1.1); }
+  .hero-grid { position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px); }
+  .hero-content { position: relative; z-index: 2; padding: 0 80px; max-width: 800px; }
+  .hero-label { display: inline-flex; align-items: center; gap: 12px; background: rgba(0,255,135,0.1); border: 1px solid rgba(0,255,135,0.3); color: var(--accent); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; padding: 8px 18px; margin-bottom: 32px; }
+  .hero-label::before { content: ''; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(72px, 10vw, 140px); font-weight: 900; line-height: 0.92; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 28px; }
+  .hero h1 em { color: var(--accent); font-style: normal; display: block; }
+  .hero p { font-size: 17px; line-height: 1.7; color: rgba(245,245,245,0.6); margin-bottom: 48px; max-width: 500px; font-weight: 300; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: var(--black); border: none; padding: 18px 48px; font-family: 'Tajawal', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: #00d672; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,255,135,0.35); }
+  .btn-outline { background: none; border: 2px solid rgba(245,245,245,0.3); color: var(--white); padding: 18px 48px; font-family: 'Tajawal', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats { position: absolute; bottom: 60px; left: 80px; display: flex; gap: 48px; z-index: 2; }
+  .h-stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900; color: var(--accent); display: block; line-height: 1; }
+  .h-stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,245,245,0.5); margin-top: 4px; }
+
+  /* ── Categories Slider ── */
+  .section { padding: 100px 80px; }
+  .section-header { margin-bottom: 56px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .section-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; display: block; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1; }
+  .see-all { color: var(--accent); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--accent); padding-bottom: 2px; white-space: nowrap; }
+
+  .cats-row { display: flex; gap: 3px; overflow-x: auto; scrollbar-width: none; padding-bottom: 8px; }
+  .cats-row::-webkit-scrollbar { display: none; }
+  .cat-card { flex: 0 0 260px; height: 360px; position: relative; overflow: hidden; cursor: pointer; background: var(--surface); }
+  .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.5); }
+  .cat-card:hover img { transform: scale(1.08); filter: brightness(0.35); }
+  .cat-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.9), transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; }
+  .cat-name { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .cat-count { font-size: 12px; color: var(--accent); letter-spacing: 2px; }
+
+  /* ── Products ── */
+  .products { background: var(--dark); }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+  .prod-card { background: var(--surface); position: relative; overflow: hidden; cursor: pointer; }
+  .prod-img { position: relative; overflow: hidden; aspect-ratio: 1; }
+  .prod-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .prod-card:hover .prod-img img { transform: scale(1.06); }
+  .prod-tag { position: absolute; top: 14px; right: 14px; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; background: var(--accent); color: var(--black); }
+  .prod-tag.sale { background: var(--accent2); color: #fff; }
+  .prod-tag.new { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+  .prod-wish { position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); border: none; color: #fff; font-size: 18px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(-6px); transition: all 0.3s; }
+  .prod-card:hover .prod-wish { opacity: 1; transform: translateY(0); }
+  .prod-wish:hover { color: var(--accent); }
+  .prod-action { position: absolute; bottom: 0; left: 0; right: 0; background: var(--accent); border: none; color: var(--black); font-family: 'Tajawal', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px; cursor: pointer; transform: translateY(100%); transition: transform 0.35s ease; width: 100%; }
+  .prod-card:hover .prod-action { transform: translateY(0); }
+  .prod-action:hover { background: #00d672; }
+  .prod-info { padding: 20px; }
+  .prod-brand { font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 5px; }
+  .prod-name { font-weight: 700; font-size: 15px; margin-bottom: 6px; line-height: 1.3; }
+  .prod-sizes { display: flex; gap: 6px; margin-bottom: 10px; }
+  .sz { border: 1px solid var(--border); font-size: 10px; padding: 3px 7px; color: var(--light-gray); cursor: pointer; transition: all 0.2s; }
+  .sz:hover { border-color: var(--accent); color: var(--accent); }
+  .prod-price { display: flex; gap: 10px; align-items: center; }
+  .p-new { font-size: 18px; font-weight: 700; color: var(--accent); }
+  .p-old { font-size: 13px; text-decoration: line-through; color: var(--gray); }
+  .prod-rating { font-size: 12px; color: var(--light-gray); margin-top: 6px; }
+  .prod-rating span { color: #ffc107; }
+
+  /* ── Drop Banner ── */
+  .drop-banner { background: var(--surface); border-top: 2px solid var(--accent); border-bottom: 2px solid var(--accent); padding: 60px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .drop-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .drop-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(40px, 5vw, 72px); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1; margin-bottom: 16px; }
+  .drop-desc { font-size: 15px; line-height: 1.7; color: rgba(245,245,245,0.6); margin-bottom: 32px; font-weight: 300; }
+  .drop-timer { display: flex; gap: 16px; margin-bottom: 36px; }
+  .timer-unit { text-align: center; }
+  .timer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 900; color: var(--accent); line-height: 1; display: block; }
+  .timer-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+  .timer-sep { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900; color: var(--accent); align-self: flex-start; padding-top: 4px; }
+  .drop-img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .drop-img img { width: 100%; height: 100%; object-fit: cover; }
+  .drop-img-tag { position: absolute; top: 20px; right: 20px; background: var(--accent); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 2px; padding: 8px 18px; text-transform: uppercase; }
+
+  /* ── Brand Strip ── */
+  .brands { background: var(--surface); padding: 40px 80px; border-top: 1px solid var(--border); }
+  .brands-label { text-align: center; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
+  .brands-row { display: flex; gap: 48px; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .brand-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: var(--gray); letter-spacing: 3px; text-transform: uppercase; transition: color 0.3s; cursor: pointer; }
+  .brand-logo:hover { color: var(--white); }
+
+  /* ── Testimonials ── */
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .review-card { background: var(--surface); padding: 40px 32px; border-bottom: 3px solid transparent; transition: border-color 0.3s; }
+  .review-card:hover { border-color: var(--accent); }
+  .review-sport { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .review-stars { color: #ffc107; font-size: 14px; letter-spacing: 3px; margin-bottom: 16px; }
+  .review-text { font-size: 15px; line-height: 1.7; color: rgba(245,245,245,0.75); margin-bottom: 24px; }
+  .review-author { display: flex; align-items: center; gap: 12px; }
+  .review-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border); }
+  .review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .review-name { font-weight: 700; font-size: 14px; }
+  .review-role { font-size: 11px; color: var(--gray); letter-spacing: 1px; }
+
+  /* ── Newsletter ── */
+  .newsletter { background: linear-gradient(135deg, #001a0d, #0a0a0a); border-top: 2px solid var(--accent); padding: 100px 80px; text-align: center; }
+  .newsletter-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: block; }
+  .newsletter h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 12px; }
+  .newsletter p { color: rgba(245,245,245,0.55); font-size: 15px; margin-bottom: 40px; max-width: 400px; margin-inline: auto; }
+  .nl-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
+  .nl-input { flex: 1; background: var(--surface); border: 2px solid var(--border); border-left: none; color: var(--white); font-family: 'Tajawal', sans-serif; font-size: 14px; padding: 16px 20px; outline: none; transition: border-color 0.2s; }
+  .nl-input:first-child { border-left: 2px solid var(--border); }
+  .nl-input:focus { border-color: var(--accent); }
+  .nl-input::placeholder { color: var(--gray); }
+  .nl-btn { background: var(--accent); color: var(--black); border: none; padding: 16px 28px; font-family: 'Tajawal', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+  .nl-btn:hover { background: #00d672; }
+
+  /* ── Footer ── */
+  footer { background: var(--dark); border-top: 1px solid var(--border); padding: 80px 80px 40px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  .f-brand { }
+  .f-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; color: var(--white); letter-spacing: 4px; text-transform: uppercase; text-decoration: none; display: block; margin-bottom: 16px; }
+  .f-logo span { color: var(--accent); }
+  .f-desc { font-size: 14px; line-height: 1.8; color: var(--gray); max-width: 280px; margin-bottom: 24px; }
+  .f-social { display: flex; gap: 10px; }
+  .fsoc { width: 40px; height: 40px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 14px; text-decoration: none; transition: all 0.2s; }
+  .fsoc:hover { border-color: var(--accent); color: var(--accent); }
+  .f-col h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--white); margin-bottom: 24px; font-weight: 700; }
+  .f-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .f-links a { color: var(--gray); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .f-links a:hover { color: var(--accent); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--gray); font-size: 12px; }
+
+  /* ── Cart ── */
+  .cart-ov { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .cart-ov.open { opacity: 1; pointer-events: all; }
+  .cart-dr { position: fixed; top: 0; left: -440px; height: 100vh; width: 420px; background: var(--dark); border-right: 1px solid var(--border); z-index: 1000; transition: left 0.35s ease; overflow-y: auto; display: flex; flex-direction: column; }
+  .cart-dr.open { left: 0; }
+  .ch { padding: 24px 24px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .ch h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .ch-close { background: none; border: 2px solid var(--border); color: var(--white); font-size: 14px; width: 36px; height: 36px; cursor: pointer; transition: all 0.2s; }
+  .ch-close:hover { border-color: var(--accent); color: var(--accent); }
+  .c-items { flex: 1; padding: 20px 24px; }
+  .c-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .c-img { width: 80px; height: 80px; object-fit: cover; flex-shrink: 0; }
+  .c-info { flex: 1; }
+  .c-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .c-meta { font-size: 12px; color: var(--gray); margin-bottom: 8px; }
+  .c-price { color: var(--accent); font-weight: 700; font-size: 15px; }
+  .c-foot { padding: 20px 24px; border-top: 1px solid var(--border); }
+  .c-total { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 15px; }
+  .c-total-amount { color: var(--accent); font-weight: 700; font-size: 22px; }
+  .btn-co { width: 100%; background: var(--accent); color: var(--black); border: none; padding: 18px; font-family: 'Tajawal', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  .btn-co:hover { background: #00d672; }
+  .toast { position: fixed; top: 90px; left: 50%; transform: translateX(-50%) translateY(-10px); background: var(--surface); border: 2px solid var(--accent); color: var(--accent); padding: 14px 28px; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; opacity: 0; pointer-events: none; transition: all 0.35s; z-index: 2000; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 1024px) {
+    nav, .section, .drop-banner, .brands, .newsletter, footer { padding-left: 24px; padding-right: 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 32px; }
+    .hero-stats { left: 32px; bottom: 40px; gap: 28px; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .drop-banner { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">⚡ شحن مجاني فوق ٣٠٠ درهم</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">🏆 أداء احترافي مضمون</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">↩ إرجاع مجاني ٤٥ يوماً</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">💳 تقسيط بدون فوائد</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">⚡ شحن مجاني فوق ٣٠٠ درهم</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">🏆 أداء احترافي مضمون</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">↩ إرجاع مجاني ٤٥ يوماً</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">💳 تقسيط بدون فوائد</span><span class="ticker-dot">◆</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="#cats">الفئات</a></li>
+    <li><a href="#products">المنتجات</a></li>
+    <li><a href="#drop">الإصدارات</a></li>
+    <li><a href="#reviews">التقييمات</a></li>
+  </ul>
+  <a href="#" class="nav-logo">APEX<span>X</span></a>
+  <div class="nav-actions">
+    <button class="nav-icon">🔍</button>
+    <button class="nav-icon" onclick="openCart()">
+      🛒 <span class="badge" id="cartBadge">٢</span>
+    </button>
+    <button class="nav-btn">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-label">مجموعة الأداء العالي ٢٠٢٦</div>
+    <h1>تجاوز<br><em>حدودك</em></h1>
+    <p>معدات رياضية احترافية لمن يرفض الرضا بالأقل — كل قطعة صُممت لرفع مستوى أدائك في الملعب وخارجه.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">تسوق الآن</a>
+      <a href="#drop" class="btn-outline">الإصدار الجديد</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <span class="h-stat-num">+١٢٠٠</span>
+      <div class="h-stat-label">منتج رياضي</div>
+    </div>
+    <div>
+      <span class="h-stat-num">٩٨٪</span>
+      <div class="h-stat-label">أداء مضمون</div>
+    </div>
+    <div>
+      <span class="h-stat-num">+٥٠٠٠</span>
+      <div class="h-stat-label">رياضي يثق بـ APEX</div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section" id="cats">
+  <div class="section-header">
+    <div>
+      <span class="section-tag">تسوق حسب الرياضة</span>
+      <div class="section-title">اختر<br>تخصصك</div>
+    </div>
+    <a href="#" class="see-all">عرض الكل →</a>
+  </div>
+  <div class="cats-row">
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="كرة القدم">
+      <div class="cat-overlay">
+        <div class="cat-name">كرة القدم</div>
+        <div class="cat-count">+٤٢٠ منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80" alt="الجري">
+      <div class="cat-overlay">
+        <div class="cat-name">الجري</div>
+        <div class="cat-count">+٣١٠ منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="الصالة">
+      <div class="cat-overlay">
+        <div class="cat-name">الصالة الرياضية</div>
+        <div class="cat-count">+٢٨٠ منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=600&q=80" alt="كرة السلة">
+      <div class="cat-overlay">
+        <div class="cat-name">كرة السلة</div>
+        <div class="cat-count">+١٩٠ منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&q=80" alt="السباحة">
+      <div class="cat-overlay">
+        <div class="cat-name">السباحة</div>
+        <div class="cat-count">+١٤٠ منتج</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="section products" id="products">
+  <div class="section-header">
+    <div>
+      <span class="section-tag">وصل حديثاً</span>
+      <div class="section-title">الأكثر<br>مبيعاً</div>
+    </div>
+    <a href="#" class="see-all">عرض الكل →</a>
+  </div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="حذاء">
+        <div class="prod-tag new">جديد</div>
+        <button class="prod-wish" onclick="wish(this)">♡</button>
+        <button class="prod-action" onclick="addToCart()">+ أضف للسلة</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Nike Running</div>
+        <div class="prod-name">Air Zoom Pegasus 42</div>
+        <div class="prod-sizes"><span class="sz">40</span><span class="sz">41</span><span class="sz">42</span><span class="sz">43</span><span class="sz">44</span></div>
+        <div class="prod-price"><span class="p-new">٨٥٠ درهم</span></div>
+        <div class="prod-rating"><span>★★★★★</span> (٣٤٢)</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80" alt="حذاء أديداس">
+        <div class="prod-tag sale">-٢٥٪</div>
+        <button class="prod-wish" onclick="wish(this)">♡</button>
+        <button class="prod-action" onclick="addToCart()">+ أضف للسلة</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Adidas Performance</div>
+        <div class="prod-name">Ultraboost 24 — Carbon</div>
+        <div class="prod-sizes"><span class="sz">40</span><span class="sz">41</span><span class="sz">42</span><span class="sz">44</span></div>
+        <div class="prod-price"><span class="p-new">٧٣٥ درهم</span><span class="p-old">٩٨٠ درهم</span></div>
+        <div class="prod-rating"><span>★★★★★</span> (٢١٧)</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=600&q=80" alt="ملابس">
+        <div class="prod-tag">حصري</div>
+        <button class="prod-wish" onclick="wish(this)">♡</button>
+        <button class="prod-action" onclick="addToCart()">+ أضف للسلة</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">APEX Originals</div>
+        <div class="prod-name">مجموعة التدريب الشتوي — Pro</div>
+        <div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span><span class="sz">XL</span></div>
+        <div class="prod-price"><span class="p-new">٦٢٠ درهم</span></div>
+        <div class="prod-rating"><span>★★★★☆</span> (١٨٤)</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1592859600972-1b0834d83747?w=600&q=80" alt="كرة">
+        <div class="prod-tag new">جديد</div>
+        <button class="prod-wish" onclick="wish(this)">♡</button>
+        <button class="prod-action" onclick="addToCart()">+ أضف للسلة</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Nike Football</div>
+        <div class="prod-name">كرة جوهرة ١٠٠ — FIFA Pro</div>
+        <div class="prod-price"><span class="p-new">٤٢٠ درهم</span></div>
+        <div class="prod-rating"><span>★★★★★</span> (٤٩٣)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Drop Banner -->
+<div class="drop-banner" id="drop">
+  <div>
+    <div class="drop-label">الإصدار المحدود — حصري APEX</div>
+    <div class="drop-title">حذاء المنتخب<br>الوطني ٢٠٢٦</div>
+    <p class="drop-desc">تصميم حصري بألوان المنتخب الوطني — ١٠٠٠ نسخة فقط حول العالم. السباق على الحجز بدأ.</p>
+    <div class="drop-timer">
+      <div class="timer-unit"><span class="timer-num" id="th">٠٢</span><div class="timer-label">يوم</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-unit"><span class="timer-num" id="tm">١٤</span><div class="timer-label">ساعة</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-unit"><span class="timer-num" id="ts">٣٧</span><div class="timer-label">دقيقة</div></div>
+    </div>
+    <button class="btn-primary" onclick="addToCart()">احجز نسختك الآن</button>
+  </div>
+  <div class="drop-img">
+    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80" alt="الإصدار المحدود">
+    <div class="drop-img-tag">١٠٠٠ نسخة فقط</div>
+  </div>
+</div>
+
+<!-- Brands -->
+<div class="brands">
+  <div class="brands-label">شركاؤنا العالميون</div>
+  <div class="brands-row">
+    <div class="brand-logo">NIKE</div>
+    <div class="brand-logo">ADIDAS</div>
+    <div class="brand-logo">PUMA</div>
+    <div class="brand-logo">UNDER ARMOUR</div>
+    <div class="brand-logo">NEW BALANCE</div>
+    <div class="brand-logo">ASICS</div>
+    <div class="brand-logo">REEBOK</div>
+  </div>
+</div>
+
+<!-- Reviews -->
+<section class="section" id="reviews">
+  <div class="section-header">
+    <div>
+      <span class="section-tag">آراء الرياضيين</span>
+      <div class="section-title">يثقون<br>بـ APEX</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-sport">🏃 الجري الاحترافي</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"منذ أن بدأت استخدام حذاء Pegasus 42 من APEX، تحسنت أوقات سباقاتي بشكل ملحوظ. الراحة والأداء مثاليان."</p>
+      <div class="review-author">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&q=80" alt=""></div>
+        <div>
+          <div class="review-name">أحمد الربيعي</div>
+          <div class="review-role">عداء نصف ماراثون</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-sport">⚽ كرة القدم</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"أفضل متجر رياضي على الإطلاق — شحن سريع، منتجات أصلية ١٠٠٪، وخدمة عملاء استثنائية. لن أتسوق من مكان آخر."</p>
+      <div class="review-author">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&q=80" alt=""></div>
+        <div>
+          <div class="review-name">كريم بن عمر</div>
+          <div class="review-role">لاعب كرة قدم هاوٍ</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-sport">🏋️ الصالة الرياضية</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"المجموعة الرياضية من APEX Originals ممتازة للتدريب الشديد — مرونة عالية، وتهوية رائعة حتى في الجلسات المكثفة."</p>
+      <div class="review-author">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt=""></div>
+        <div>
+          <div class="review-name">سارة المقدم</div>
+          <div class="review-role">مدربة لياقة بدنية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <span class="newsletter-tag">انضم للمجتمع</span>
+  <h2>لا تفوت<br>أي إصدار</h2>
+  <p>اشترك وكن أول من يعلم بالإصدارات المحدودة والعروض الحصرية.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-input" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشترك ⚡</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="f-brand">
+      <a href="#" class="f-logo">APEX<span>X</span></a>
+      <p class="f-desc">معدات رياضية احترافية لكل رياضي يسعى إلى الأفضل — من الهواة إلى المحترفين.</p>
+      <div class="f-social">
+        <a href="#" class="fsoc">𝕏</a>
+        <a href="#" class="fsoc">in</a>
+        <a href="#" class="fsoc">📷</a>
+        <a href="#" class="fsoc">▶</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>الرياضات</h4>
+      <ul class="f-links">
+        <li><a href="#">كرة القدم</a></li>
+        <li><a href="#">الجري والمشي</a></li>
+        <li><a href="#">الصالة الرياضية</a></li>
+        <li><a href="#">كرة السلة</a></li>
+        <li><a href="#">السباحة</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>خدماتنا</h4>
+      <ul class="f-links">
+        <li><a href="#">شحن سريع</a></li>
+        <li><a href="#">إرجاع مجاني</a></li>
+        <li><a href="#">ضمان الأصالة</a></li>
+        <li><a href="#">تخصيص الملابس</a></li>
+        <li><a href="#">برنامج الولاء</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>تواصل معنا</h4>
+      <ul class="f-links">
+        <li><a href="#">الدار البيضاء</a></li>
+        <li><a href="#">الرياض</a></li>
+        <li><a href="#">apex@sports.ma</a></li>
+        <li><a href="#">+212 600-000000</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© ٢٠٢٦ APEX Sports — جميع الحقوق محفوظة</span>
+    <span>VISA · MC · PayPal · Apple Pay</span>
+  </div>
+</footer>
+
+<!-- Cart -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch">
+    <h3>سلة التسوق (٢)</h3>
+    <button class="ch-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="c-items">
+    <div class="c-item">
+      <img class="c-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80" alt="">
+      <div class="c-info">
+        <div class="c-name">Air Zoom Pegasus 42</div>
+        <div class="c-meta">المقاس: ٤٢ | اللون: أسود</div>
+        <div class="c-price">٨٥٠ درهم</div>
+      </div>
+    </div>
+    <div class="c-item">
+      <img class="c-img" src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&q=80" alt="">
+      <div class="c-info">
+        <div class="c-name">Ultraboost 24 — Carbon</div>
+        <div class="c-meta">المقاس: ٤٣ | اللون: رمادي</div>
+        <div class="c-price">٧٣٥ درهم</div>
+      </div>
+    </div>
+  </div>
+  <div class="c-foot">
+    <div class="c-total"><span>المجموع</span><span class="c-total-amount">١,٥٨٥ درهم</span></div>
+    <button class="btn-co">إتمام الشراء ⚡</button>
+  </div>
+</div>
+<div class="toast" id="t">⚡ تمت الإضافة للسلة</div>
+
+<script>
+  function openCart() { document.getElementById('cov').classList.add('open'); document.getElementById('cdr').classList.add('open'); }
+  function closeCart() { document.getElementById('cov').classList.remove('open'); document.getElementById('cdr').classList.remove('open'); }
+  function addToCart() {
+    const t = document.getElementById('t'); t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+  function wish(el) { el.textContent = el.textContent === '♡' ? '♥' : '♡'; el.style.color = el.style.color ? '' : '#00ff87'; }
+
+  // Timer
+  let secs = 2*86400 + 14*3600 + 37*60;
+  setInterval(() => {
+    secs--;
+    const d = Math.floor(secs / 86400), h = Math.floor((secs % 86400) / 3600), m = Math.floor((secs % 3600) / 60);
+    const toAr = n => n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+    const pad = n => n.toString().padStart(2, '0');
+    document.getElementById('th').textContent = toAr(pad(d));
+    document.getElementById('tm').textContent = toAr(pad(h));
+    document.getElementById('ts').textContent = toAr(pad(m));
+  }, 1000);
+
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), { threshold: 0.1 });
+  document.querySelectorAll('.prod-card, .review-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(24px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; obs.observe(el); });
+</script>
+</body>
+</html>
