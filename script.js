@@ -1,53 +1,48 @@
 // ===== MOBILE MENU TOGGLE =====
-    document.addEventListener('DOMContentLoaded', function () {
-      const btn   = document.getElementById('mobileMenuBtn');
-      const menu  = document.getElementById('mobileMenu');
-      const close = document.getElementById('closeMobileMenu');
+    (function () {
+      var btn   = document.getElementById('mobileMenuBtn');
+      var menu  = document.getElementById('mobileMenu');
+      var close = document.getElementById('closeMobileMenu');
       if (!btn || !menu) return;
 
+      var isOpen = false;
+
       function openMenu() {
-          menu.classList.remove('hidden');
+          isOpen = true;
+          menu.style.cssText += ';display:block !important;z-index:9999;';
           document.body.style.overflow = 'hidden';
-          btn.innerHTML = '✕';
+          btn.innerHTML = '&#10005;';
           btn.setAttribute('aria-expanded', 'true');
       }
 
       function closeMenu() {
-          menu.classList.add('hidden');
+          isOpen = false;
+          menu.style.display = 'none';
           document.body.style.overflow = '';
-          btn.innerHTML = '☰';
+          btn.innerHTML = '&#9776;';
           btn.setAttribute('aria-expanded', 'false');
       }
 
-      btn.addEventListener('click', function () {
-          if (menu.classList.contains('hidden')) {
-              openMenu();
-          } else {
-              closeMenu();
-          }
+      // Start hidden
+      menu.style.display = 'none';
+
+      btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          isOpen ? closeMenu() : openMenu();
       });
 
       if (close) close.addEventListener('click', closeMenu);
 
-      // Close when any nav link is clicked
-      menu.querySelectorAll('a').forEach(link => {
+      menu.querySelectorAll('a').forEach(function (link) {
           link.addEventListener('click', closeMenu);
       });
 
-      // Close on Escape key
       document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') closeMenu();
+          if (e.key === 'Escape' && isOpen) closeMenu();
       });
+    })();
 
-      // Close when clicking the overlay background (outside menu links)
-      menu.addEventListener('click', function (e) {
-          if (e.target === menu) closeMenu();
-      });
-    });
-
-    // Premium Animations and Interactions for Khobara Web
-
-// Smooth Scroll Behavior
+    // Smooth Scroll Behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
