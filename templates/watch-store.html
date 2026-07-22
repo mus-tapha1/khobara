@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>كرونوس — ساعات سويسرية فاخرة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080808;
+  --bg2:#0e0e0e;
+  --bg3:#151515;
+  --bg4:#1c1c1c;
+  --silver:#c0c0c0;
+  --silver2:#d8d8d8;
+  --silver3:#ebebeb;
+  --silver-dim:rgba(192,192,192,.1);
+  --silver-border:rgba(192,192,192,.15);
+  --gold:#b8966e;
+  --gold2:#d4b896;
+  --white:#f5f5f5;
+  --text:#b0b0b0;
+  --text-mid:#787878;
+  --text-dim:#4a4a4a;
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(192,192,192,.2);
+  --card:#0f0f0f;
+  --shadow:0 8px 40px rgba(0,0,0,.7);
+  --shadow-silver:0 8px 32px rgba(192,192,192,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--text-dim)}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+
+/* ════ LOADER ════ */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;
+  transition:opacity 1s,visibility 1s;
+}
+#loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+.ld-logo{
+  font-family:'Playfair Display',serif;font-size:2.8rem;letter-spacing:.5em;
+  color:var(--silver2);animation:ldReveal 1.4s ease forwards;opacity:0;
+}
+@keyframes ldReveal{from{opacity:0;letter-spacing:.8em}to{opacity:1;letter-spacing:.5em}}
+.ld-line{
+  width:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--silver),transparent);
+  animation:ldLine 1.2s .6s ease forwards;
+}
+@keyframes ldLine{to{width:200px}}
+.ld-sub{
+  font-size:.55rem;letter-spacing:.45em;color:var(--text-dim);text-transform:uppercase;
+  opacity:0;animation:ldFade .8s 1s ease forwards;
+}
+@keyframes ldFade{to{opacity:1}}
+.ld-bar{width:200px;height:1px;background:var(--bg3);margin-top:.4rem}
+.ld-fill{height:100%;background:var(--silver);animation:ldBar 2.2s ease forwards}
+@keyframes ldBar{to{width:100%}}
+
+/* ════ HEADER ════ */
+header{
+  position:fixed;top:0;inset-x:0;z-index:800;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 5%;transition:all .4s;
+}
+header.solid{
+  background:rgba(8,8,8,.93);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:1rem 5%;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;letter-spacing:.18em;color:var(--silver2);
+}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:2.2rem}
+.nav-a{
+  font-size:.72rem;letter-spacing:.14em;color:var(--text-mid);
+  text-transform:uppercase;transition:color .3s;position:relative;
+}
+.nav-a::after{
+  content:'';position:absolute;bottom:-.3rem;right:0;
+  width:0;height:1px;background:var(--silver);transition:width .3s;
+}
+.nav-a:hover{color:var(--silver2)}
+.nav-a:hover::after{width:100%}
+.hdr-icons{display:flex;align-items:center;gap:.8rem}
+.hdr-icon{
+  width:38px;height:38px;background:transparent;
+  border:1px solid var(--border);
+  color:var(--text-mid);font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;position:relative;
+}
+.hdr-icon:hover{border-color:var(--silver-border);color:var(--silver2)}
+.hdr-icon .n{
+  position:absolute;top:-.3rem;left:-.3rem;
+  width:17px;height:17px;background:var(--silver);
+  color:var(--bg);font-size:.55rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ════ HERO ════ */
+.hero{
+  position:relative;height:100vh;min-height:680px;
+  display:flex;align-items:center;overflow:hidden;
+}
+.hero-video-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1800&q=85') center/cover no-repeat;
+  filter:brightness(.3) grayscale(.4);
+}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 30%,rgba(8,8,8,.8) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;padding:0 8%;
+  max-width:680px;
+}
+.hero-eyebrow{
+  font-size:.65rem;letter-spacing:.4em;color:var(--silver);
+  text-transform:uppercase;margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--silver);flex-shrink:0}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5.5vw,5rem);font-weight:400;
+  line-height:1.15;color:var(--white);margin-bottom:1.2rem;
+}
+.hero-title em{color:var(--silver2);font-style:italic}
+.hero-desc{
+  font-size:.9rem;color:var(--text);line-height:1.9;
+  max-width:440px;margin-bottom:2.5rem;
+}
+.hero-ctas{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn-silver{
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:1px solid var(--silver);color:var(--silver2);
+  background:transparent;padding:.9rem 2.5rem;
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  position:relative;overflow:hidden;transition:color .35s;
+}
+.btn-silver::before{
+  content:'';position:absolute;inset:0;background:var(--silver);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:-1;
+}
+.btn-silver:hover{color:var(--bg)}
+.btn-silver:hover::before{transform:scaleX(1)}
+.btn-text{
+  font-size:.72rem;letter-spacing:.18em;color:var(--text-mid);
+  text-transform:uppercase;display:flex;align-items:center;gap:.5rem;
+  transition:color .3s;background:transparent;border:none;
+}
+.btn-text:hover{color:var(--silver2)}
+/* Hero watch float */
+.hero-watch{
+  position:absolute;left:8%;top:50%;transform:translateY(-50%);
+  width:38%;max-width:520px;z-index:1;
+  filter:drop-shadow(0 30px 80px rgba(0,0,0,.8));
+  animation:watchFloat 5s ease-in-out infinite;
+}
+@keyframes watchFloat{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 18px))}}
+/* Scroll line */
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:2;
+}
+.hero-scroll-line{
+  width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--silver));
+  animation:scrollPulse 1.6s ease infinite;
+}
+@keyframes scrollPulse{0%{opacity:0;transform:scaleY(0);transform-origin:top}60%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+.hero-scroll-txt{font-size:.55rem;letter-spacing:.3em;color:var(--text-dim);text-transform:uppercase}
+
+/* ════ TICKER ════ */
+.ticker{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--bg2);overflow:hidden;padding:.65rem 0;
+}
+.ticker-inner{
+  display:flex;gap:4rem;width:max-content;
+  animation:tick 30s linear infinite;
+}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{
+  font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--text-dim);white-space:nowrap;display:flex;align-items:center;gap:1rem;
+}
+.ticker-dot{width:4px;height:4px;background:var(--silver);border-radius:50%;opacity:.4}
+
+/* ════ SECTION ════ */
+.sec{padding:6rem 6%}
+.eyebrow{
+  font-size:.65rem;letter-spacing:.35em;color:var(--silver);
+  text-transform:uppercase;margin-bottom:.8rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--silver);flex-shrink:0}
+.sec-h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.5vw,3rem);font-weight:400;
+  color:var(--white);line-height:1.2;margin-bottom:.8rem;
+}
+.sec-sub{font-size:.85rem;color:var(--text-mid);line-height:1.9;max-width:480px}
+
+/* ════ COLLECTIONS ════ */
+.coll-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);margin-top:3.5rem;
+}
+.coll-item{
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--bg);
+}
+.coll-item img{
+  width:100%;height:380px;object-fit:cover;
+  transition:transform .8s ease,filter .5s;
+  filter:grayscale(.5) brightness(.7);
+}
+.coll-item:hover img{transform:scale(1.04);filter:grayscale(.2) brightness(.55)}
+.coll-info{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2rem;
+  background:linear-gradient(to top,rgba(8,8,8,.92) 0%,transparent 55%);
+}
+.coll-name{
+  font-family:'Playfair Display',serif;font-size:1.4rem;
+  color:var(--white);margin-bottom:.3rem;
+}
+.coll-count{font-size:.68rem;letter-spacing:.15em;color:var(--text-mid);text-transform:uppercase}
+.coll-arrow{
+  margin-top:.8rem;opacity:0;transform:translateX(6px);
+  transition:all .35s;font-size:.7rem;letter-spacing:.18em;
+  color:var(--silver);text-transform:uppercase;display:flex;align-items:center;gap:.4rem;
+}
+.coll-item:hover .coll-arrow{opacity:1;transform:translateX(0)}
+
+/* ════ PRODUCTS ════ */
+.prod-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1px;background:var(--border);margin-top:3rem;
+}
+.prod-card{
+  background:var(--card);padding:2rem;
+  position:relative;overflow:hidden;
+  transition:background .4s;
+}
+.prod-card:hover{background:var(--bg2)}
+.prod-card::after{
+  content:'';position:absolute;bottom:0;right:0;left:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--silver-border),transparent);
+  opacity:0;transition:opacity .4s;
+}
+.prod-card:hover::after{opacity:1}
+.prod-tag{
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:.22rem .6rem;margin-bottom:1.2rem;width:fit-content;
+  font-weight:600;
+}
+.tag-platinum{background:var(--silver-dim);border:1px solid var(--silver-border);color:var(--silver2)}
+.tag-gold{background:rgba(184,150,110,.1);border:1px solid rgba(184,150,110,.25);color:var(--gold2)}
+.tag-new{background:transparent;border:1px solid var(--border2);color:var(--text-mid)}
+.tag-sold{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#f87171}
+.prod-img{
+  height:240px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.5rem;position:relative;overflow:hidden;
+}
+.prod-img img{
+  width:75%;height:100%;object-fit:contain;
+  filter:grayscale(.2) drop-shadow(0 12px 40px rgba(0,0,0,.8));
+  transition:transform .5s ease,filter .4s;
+}
+.prod-card:hover .prod-img img{transform:scale(1.04);filter:grayscale(0) drop-shadow(0 20px 50px rgba(0,0,0,.7))}
+.prod-wish{
+  position:absolute;top:0;left:0;
+  width:36px;height:36px;background:rgba(8,8,8,.7);
+  border:1px solid var(--border);color:var(--text-mid);
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;
+  transition:all .25s;
+}
+.prod-wish:hover{border-color:var(--silver-border);color:var(--silver2)}
+.prod-brand{
+  font-size:.62rem;letter-spacing:.22em;color:var(--silver);
+  text-transform:uppercase;margin-bottom:.4rem;
+}
+.prod-name{
+  font-family:'Playfair Display',serif;font-size:1.15rem;
+  color:var(--white);margin-bottom:.3rem;line-height:1.3;
+}
+.prod-ref{font-size:.65rem;color:var(--text-dim);letter-spacing:.1em;margin-bottom:.8rem}
+.prod-specs-row{
+  display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.1rem;
+}
+.spec{
+  font-size:.62rem;border:1px solid var(--border);
+  color:var(--text-mid);padding:.2rem .5rem;letter-spacing:.04em;
+}
+.prod-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
+.prod-price-wrap{}
+.prod-price{
+  font-family:'Playfair Display',serif;font-size:1.4rem;
+  color:var(--silver2);
+}
+.prod-price-old{font-size:.78rem;color:var(--text-dim);text-decoration:line-through;margin-right:.3rem}
+.prod-cur{font-size:.75rem;color:var(--text-mid)}
+.prod-avail{font-size:.62rem;color:var(--text-dim);letter-spacing:.06em;margin-top:.2rem}
+.add-btn{
+  width:42px;height:42px;background:transparent;
+  border:1px solid var(--border2);color:var(--silver);
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;
+  transition:all .25s;flex-shrink:0;
+}
+.add-btn:hover{background:var(--silver);color:var(--bg)}
+
+/* ════ HERITAGE SECTION ════ */
+.heritage{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:580px;background:var(--bg2);
+}
+.heritage-img{position:relative;overflow:hidden}
+.heritage-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) brightness(.8)}
+.heritage-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to left,rgba(14,14,14,.9),transparent 60%);
+}
+.heritage-body{
+  padding:5rem 5rem;display:flex;flex-direction:column;justify-content:center;
+}
+.heritage-year{
+  font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;
+  color:var(--border);line-height:1;margin-bottom:1rem;
+}
+.heritage-quote{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;
+  color:var(--white);line-height:1.6;margin-bottom:1.5rem;
+  border-right:2px solid var(--silver);padding-right:1.2rem;
+}
+.heritage-text{font-size:.82rem;color:var(--text-mid);line-height:1.9;margin-bottom:2rem}
+.heritage-stat-row{display:flex;gap:2.5rem}
+.heritage-stat-num{
+  font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--silver2);
+}
+.heritage-stat-lbl{font-size:.65rem;letter-spacing:.15em;color:var(--text-dim);text-transform:uppercase;margin-top:.2rem}
+
+/* ════ FEATURES STRIP ════ */
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.feat{
+  padding:2.5rem 2rem;border-left:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:.6rem;
+  transition:background .3s;
+}
+.feat:last-child{border-left:none}
+.feat:hover{background:var(--bg2)}
+.feat-icon{font-size:1.5rem;color:var(--silver);margin-bottom:.3rem}
+.feat-title{font-size:.82rem;color:var(--white);font-weight:600;letter-spacing:.04em}
+.feat-desc{font-size:.72rem;color:var(--text-dim);line-height:1.7}
+
+/* ════ TESTIMONIALS ════ */
+.test-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);margin-top:3rem;
+}
+.test-card{
+  background:var(--card);padding:2.5rem 2rem;
+}
+.test-stars{color:var(--silver);font-size:.75rem;letter-spacing:.08em;margin-bottom:1.2rem}
+.test-text{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.98rem;color:var(--white);line-height:1.75;margin-bottom:1.5rem;
+}
+.test-name{font-size:.8rem;color:var(--silver2);font-weight:600}
+.test-loc{font-size:.65rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-top:.15rem}
+.test-model{
+  font-size:.62rem;letter-spacing:.12em;color:var(--silver);
+  text-transform:uppercase;margin-top:.6rem;padding-top:.6rem;
+  border-top:1px solid var(--border);
+}
+
+/* ════ NEWSLETTER ════ */
+.nl{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:6rem 6%;text-align:center;
+}
+.nl-title{
+  font-family:'Playfair Display',serif;font-size:2.6rem;
+  color:var(--white);margin-bottom:.7rem;
+}
+.nl-sub{font-size:.85rem;color:var(--text-mid);margin-bottom:2.5rem;line-height:1.8}
+.nl-form{display:flex;max-width:460px;margin:0 auto;gap:0}
+.nl-in{
+  flex:1;background:transparent;border:1px solid var(--border2);
+  border-left:none;padding:.85rem 1.2rem;font-family:'Cairo',sans-serif;
+  font-size:.82rem;color:var(--white);outline:none;text-align:right;
+  transition:border-color .25s;
+}
+.nl-in::placeholder{color:var(--text-dim)}
+.nl-in:focus{border-color:var(--silver)}
+.nl-btn{
+  background:transparent;border:1px solid var(--silver);border-right:none;
+  color:var(--silver);padding:.85rem 2rem;font-size:.7rem;letter-spacing:.2em;
+  text-transform:uppercase;transition:all .3s;white-space:nowrap;
+}
+.nl-btn:hover{background:var(--silver);color:var(--bg)}
+
+/* ════ FOOTER ════ */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 6% 0}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem}
+.foot-logo{
+  font-family:'Playfair Display',serif;font-size:1.8rem;letter-spacing:.2em;
+  color:var(--silver2);margin-bottom:.4rem;
+}
+.foot-est{font-size:.6rem;letter-spacing:.3em;color:var(--text-dim);text-transform:uppercase;margin-bottom:1.2rem}
+.foot-desc{font-size:.78rem;color:var(--text-dim);line-height:1.8;max-width:250px;margin-bottom:1.5rem}
+.foot-socials{display:flex;gap:.5rem}
+.soc{
+  width:34px;height:34px;border:1px solid var(--border);
+  color:var(--text-dim);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;transition:all .25s;
+}
+.soc:hover{border-color:var(--silver-border);color:var(--silver2)}
+.foot-h{font-size:.62rem;letter-spacing:.28em;color:var(--silver);text-transform:uppercase;margin-bottom:1.2rem}
+.foot-links{display:flex;flex-direction:column;gap:.7rem}
+.foot-links a{font-size:.78rem;color:var(--text-dim);transition:color .25s}
+.foot-links a:hover{color:var(--silver2)}
+.foot-btm{
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.5rem 0;flex-wrap:wrap;gap:.8rem;
+}
+.foot-copy{font-size:.7rem;color:var(--text-dim);letter-spacing:.04em}
+.certifs{display:flex;gap:.5rem}
+.cert{
+  border:1px solid var(--border);font-size:.6rem;
+  color:var(--text-dim);padding:.25rem .55rem;letter-spacing:.06em;
+}
+
+/* ════ CART ════ */
+#cart-ov{
+  position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9000;
+  opacity:0;visibility:hidden;transition:all .4s;backdrop-filter:blur(3px);
+}
+#cart-ov.open{opacity:1;visibility:visible}
+#cart-drawer{
+  position:fixed;left:0;top:0;bottom:0;width:400px;max-width:95vw;
+  background:var(--bg2);border-right:1px solid var(--border);
+  z-index:9001;transform:translateX(-100%);transition:transform .45s ease;
+  display:flex;flex-direction:column;
+}
+#cart-drawer.open{transform:translateX(0)}
+.cart-hd{
+  padding:1.5rem 1.8rem;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.cart-hd-title{
+  font-family:'Playfair Display',serif;font-size:1.2rem;
+  color:var(--white);letter-spacing:.08em;
+}
+.cart-x{
+  width:32px;height:32px;background:transparent;border:1px solid var(--border);
+  color:var(--text-mid);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;transition:all .2s;
+}
+.cart-x:hover{border-color:var(--silver-border);color:var(--silver2)}
+.cart-body{flex:1;overflow-y:auto;padding:1.2rem 1.8rem}
+.cart-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;height:200px;color:var(--text-dim);font-size:.82rem;
+}
+.cart-empty i{font-size:2.5rem;color:var(--border)}
+.c-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.c-img{
+  width:68px;height:68px;background:var(--bg3);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.c-img img{width:100%;height:100%;object-fit:contain;filter:grayscale(.3)}
+.c-info{flex:1}
+.c-name{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--white);margin-bottom:.2rem}
+.c-ref{font-size:.62rem;color:var(--text-dim);letter-spacing:.1em}
+.c-price{color:var(--silver2);font-size:.95rem;font-weight:600;margin-top:.3rem}
+.cart-foot{border-top:1px solid var(--border);padding:1.5rem 1.8rem}
+.cart-tot{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.cart-tot-lbl{font-size:.7rem;letter-spacing:.15em;color:var(--text-mid);text-transform:uppercase}
+.cart-tot-val{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--silver2)}
+.checkout{
+  width:100%;background:transparent;border:1px solid var(--silver);
+  color:var(--silver2);padding:1rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  position:relative;overflow:hidden;transition:color .35s;
+}
+.checkout::before{
+  content:'';position:absolute;inset:0;background:var(--silver);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:-1;
+}
+.checkout:hover{color:var(--bg)}
+.checkout:hover::before{transform:scaleX(1)}
+
+/* ════ TOAST ════ */
+#toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(10px);
+  background:var(--bg2);border:1px solid var(--silver-border);
+  color:var(--text);padding:.7rem 1.4rem;font-size:.78rem;z-index:9999;
+  opacity:0;transition:all .3s;display:flex;align-items:center;gap:.6rem;
+  letter-spacing:.04em;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast i{color:var(--silver)}
+
+@media(max-width:960px){
+  .heritage{grid-template-columns:1fr}
+  .heritage-img{height:320px}
+  .heritage-body{padding:3rem}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .test-grid{grid-template-columns:1fr}
+  .coll-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero-watch{display:none}
+}
+@media(max-width:640px){
+  nav{display:none}
+  .coll-grid{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .nl-form{flex-direction:column}
+  .nl-in{border-left:1px solid var(--border2)}
+  .nl-btn{border-right:1px solid var(--silver)}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">CHRONOS</div>
+  <div class="ld-line"></div>
+  <div class="ld-sub">كرونوس — الساعات السويسرية الفاخرة</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+</div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <nav>
+    <a href="#collections" class="nav-a">المجموعات</a>
+    <a href="#products" class="nav-a">الساعات</a>
+    <a href="#heritage" class="nav-a">الإرث</a>
+    <a href="#" class="nav-a">المتاجر</a>
+  </nav>
+  <div class="logo">CHRON<span>O</span>S</div>
+  <div class="hdr-icons">
+    <button class="hdr-icon"><i class="fas fa-search"></i></button>
+    <button class="hdr-icon"><i class="fas fa-heart"></i></button>
+    <button class="hdr-icon" onclick="openCart()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="n" id="cartN">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">مجموعة ٢٠٢٦ الذهبية</div>
+    <h1 class="hero-title">
+      الوقت<br>
+      <em>فن يُرتدى</em><br>
+      على المعصم
+    </h1>
+    <p class="hero-desc">
+      حرفة سويسرية خالصة منذ ١٨٩٢ — كل ساعة من كرونوس تُعبّر عن شخصية مرتديها 
+      قبل أن ينطق بكلمة. دقة لا تُضاهى في تصميم لا يُنسى.
+    </p>
+    <div class="hero-ctas">
+      <button class="btn-silver" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-watch"></i> استكشف المجموعة
+      </button>
+      <button class="btn-text">
+        <i class="fas fa-play-circle"></i> مشاهدة الإرث
+      </button>
+    </div>
+  </div>
+  <img class="hero-watch" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=85&fit=crop&crop=center" alt="ساعة فاخرة">
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <div class="hero-scroll-txt">اكتشف</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">صنع في سويسرا <span class="ticker-dot"></span></span>
+    <span class="ticker-item">١٣٢ سنة من الدقة <span class="ticker-dot"></span></span>
+    <span class="ticker-item">COSC Certified <span class="ticker-dot"></span></span>
+    <span class="ticker-item">ضمان خمس سنوات <span class="ticker-dot"></span></span>
+    <span class="ticker-item">ياقوت صافٍ <span class="ticker-dot"></span></span>
+    <span class="ticker-item">فولاذ 316L <span class="ticker-dot"></span></span>
+    <span class="ticker-item">مقاوم للماء 300م <span class="ticker-dot"></span></span>
+    <span class="ticker-item">توصيل آمن خلال ٤٨ساعة <span class="ticker-dot"></span></span>
+    <!-- dup -->
+    <span class="ticker-item">صنع في سويسرا <span class="ticker-dot"></span></span>
+    <span class="ticker-item">١٣٢ سنة من الدقة <span class="ticker-dot"></span></span>
+    <span class="ticker-item">COSC Certified <span class="ticker-dot"></span></span>
+    <span class="ticker-item">ضمان خمس سنوات <span class="ticker-dot"></span></span>
+    <span class="ticker-item">ياقوت صافٍ <span class="ticker-dot"></span></span>
+    <span class="ticker-item">فولاذ 316L <span class="ticker-dot"></span></span>
+    <span class="ticker-item">مقاوم للماء 300م <span class="ticker-dot"></span></span>
+    <span class="ticker-item">توصيل آمن خلال ٤٨ساعة <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="sec" id="collections">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div class="eyebrow">عوالمنا</div>
+      <h2 class="sec-h2">مجموعات تحكي التاريخ</h2>
+    </div>
+    <button class="btn-text" style="margin-bottom:.3rem">عرض الكل <i class="fas fa-arrow-left"></i></button>
+  </div>
+  <div class="coll-grid">
+    <div class="coll-item">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" alt="بلاتينيوم">
+      <div class="coll-info">
+        <div class="coll-name">Platinum Perpetual</div>
+        <div class="coll-count">١٨ طراز</div>
+        <div class="coll-arrow">استعرض <i class="fas fa-arrow-left"></i></div>
+      </div>
+    </div>
+    <div class="coll-item">
+      <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&q=80" alt="سيدر">
+      <div class="coll-info">
+        <div class="coll-name">Sider Heritage</div>
+        <div class="coll-count">١٢ طراز</div>
+        <div class="coll-arrow">استعرض <i class="fas fa-arrow-left"></i></div>
+      </div>
+    </div>
+    <div class="coll-item">
+      <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&q=80" alt="ماستر">
+      <div class="coll-info">
+        <div class="coll-name">Master Marine</div>
+        <div class="coll-count">٩ طرازات</div>
+        <div class="coll-arrow">استعرض <i class="fas fa-arrow-left"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="sec" id="products" style="padding-top:0">
+  <div>
+    <div class="eyebrow">أبرز الطرازات</div>
+    <h2 class="sec-h2">ساعات تستحق اسمك</h2>
+  </div>
+  <div class="prod-grid">
+
+    <!-- 1 -->
+    <div class="prod-card">
+      <div class="prod-tag tag-platinum">Platinum Edition</div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="">
+      </div>
+      <div class="prod-brand">CHRONOS — Grand Complication</div>
+      <div class="prod-name">Perpetual Calendar Tourbillon</div>
+      <div class="prod-ref">Ref. CHR-PC-TRB-001 · بلاتينيوم ٩٥٠</div>
+      <div class="prod-specs-row">
+        <span class="spec">٤٢mm</span>
+        <span class="spec">Tourbillon</span>
+        <span class="spec">٩٦٠ قطعة</span>
+        <span class="spec">مقاوم ١٠٠م</span>
+      </div>
+      <div class="prod-bottom">
+        <div class="prod-price-wrap">
+          <span class="prod-price">١٨٥٬٠٠٠</span>
+          <span class="prod-cur"> ريال</span>
+          <div class="prod-avail">مخصص للطلب — ٨ أسابيع</div>
+        </div>
+        <button class="add-btn" onclick="addCart('Perpetual Calendar Tourbillon','185000')"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="prod-card">
+      <div class="prod-tag tag-gold">Gold Collection</div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&q=80" alt="">
+      </div>
+      <div class="prod-brand">CHRONOS — Heritage</div>
+      <div class="prod-name">Datograph Chronograph</div>
+      <div class="prod-ref">Ref. CHR-DG-CH-18K · ذهب أبيض ١٨K</div>
+      <div class="prod-specs-row">
+        <span class="spec">٤٠mm</span>
+        <span class="spec">Flyback</span>
+        <span class="spec">Manufacture</span>
+        <span class="spec">٥٠م</span>
+      </div>
+      <div class="prod-bottom">
+        <div class="prod-price-wrap">
+          <span class="prod-price-old">٧٨٬٠٠٠</span>
+          <span class="prod-price">٦٥٬٠٠٠</span>
+          <span class="prod-cur"> ريال</span>
+          <div class="prod-avail">٣ قطع متبقية</div>
+        </div>
+        <button class="add-btn" onclick="addCart('Datograph Chronograph','65000')"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="prod-card">
+      <div class="prod-tag tag-new">إطلاق ٢٠٢٦</div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80" alt="">
+      </div>
+      <div class="prod-brand">CHRONOS — Marine</div>
+      <div class="prod-name">Aqua Master Diver</div>
+      <div class="prod-ref">Ref. CHR-AM-DV-SS · فولاذ ٣١٦L</div>
+      <div class="prod-specs-row">
+        <span class="spec">٤٤mm</span>
+        <span class="spec">Helium Valve</span>
+        <span class="spec">٣٠٠م</span>
+        <span class="spec">Ceramic Bezel</span>
+      </div>
+      <div class="prod-bottom">
+        <div class="prod-price-wrap">
+          <span class="prod-price">٢٣٬٥٠٠</span>
+          <span class="prod-cur"> ريال</span>
+          <div class="prod-avail">متوفر للشحن الفوري</div>
+        </div>
+        <button class="add-btn" onclick="addCart('Aqua Master Diver','23500')"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="prod-card">
+      <div class="prod-tag tag-new">جديد</div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1639136659426-08c1e04e4cf8?w=500&q=80" alt="">
+      </div>
+      <div class="prod-brand">CHRONOS — Classique</div>
+      <div class="prod-name">Élégance Ultra-Thin</div>
+      <div class="prod-ref">Ref. CHR-EL-UT-002 · فولاذ / عقارب ذهبية</div>
+      <div class="prod-specs-row">
+        <span class="spec">٣٨mm</span>
+        <span class="spec">٥.٨mm رفيع</span>
+        <span class="spec">Sapphire Back</span>
+        <span class="spec">٣٠م</span>
+      </div>
+      <div class="prod-bottom">
+        <div class="prod-price-wrap">
+          <span class="prod-price">١٥٬٩٠٠</span>
+          <span class="prod-cur"> ريال</span>
+          <div class="prod-avail">متوفر</div>
+        </div>
+        <button class="add-btn" onclick="addCart('Élégance Ultra-Thin','15900')"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="prod-card">
+      <div class="prod-tag tag-sold">نفد المخزون</div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="">
+      </div>
+      <div class="prod-brand">CHRONOS — Limited</div>
+      <div class="prod-name">Skeleton Open Heart</div>
+      <div class="prod-ref">Ref. CHR-SK-OH-L20 · إصدار محدود ٢٠ قطعة</div>
+      <div class="prod-specs-row">
+        <span class="spec">٤٢mm</span>
+        <span class="spec">Skeleton Dial</span>
+        <span class="spec">Manual Wind</span>
+        <span class="spec">تيتانيوم</span>
+      </div>
+      <div class="prod-bottom">
+        <div class="prod-price-wrap">
+          <span class="prod-price">٤٢٬٠٠٠</span>
+          <span class="prod-cur"> ريال</span>
+          <div class="prod-avail" style="color:#f87171">نفد — سجّل للإخطار</div>
+        </div>
+        <button class="add-btn" style="opacity:.4" disabled><i class="fas fa-bell"></i></button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="prod-card">
+      <div class="prod-tag tag-platinum">Platinum Series</div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt="">
+      </div>
+      <div class="prod-brand">CHRONOS — Prestige</div>
+      <div class="prod-name">Grand Seiko Homage</div>
+      <div class="prod-ref">Ref. CHR-GS-HMG-PT · بلاتينيوم / لوح طبيعي</div>
+      <div class="prod-specs-row">
+        <span class="spec">٤١mm</span>
+        <span class="spec">Spring Drive</span>
+        <span class="spec">±١ثا/يوم</span>
+        <span class="spec">١٠٠م</span>
+      </div>
+      <div class="prod-bottom">
+        <div class="prod-price-wrap">
+          <span class="prod-price">٩٨٬٠٠٠</span>
+          <span class="prod-cur"> ريال</span>
+          <div class="prod-avail">٥ قطع فقط</div>
+        </div>
+        <button class="add-btn" onclick="addCart('Grand Seiko Homage','98000')"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section class="heritage" id="heritage">
+  <div class="heritage-img">
+    <img src="https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=900&q=80" alt="الإرث">
+  </div>
+  <div class="heritage-body">
+    <div class="heritage-year">١٨٩٢</div>
+    <div class="eyebrow" style="margin-bottom:1rem">قصتنا</div>
+    <blockquote class="heritage-quote">
+      "الساعة الحقيقية لا تُقاس بثمنها،<br>بل بالقصة التي تحملها."
+    </blockquote>
+    <p class="heritage-text">
+      في ورشة صغيرة بجنيف ١٨٩٢، نحت هانز كرونوس أولى تحفه بيديه من قطع الفولاذ والنحاس. 
+      اليوم وبعد أكثر من قرن، تواصل كرونوس نفس الروح — يدان بشريتان وعقل مدرّب لعقود 
+      يصنعان معاً كل ساعة، قطعةً قطعة، بدقة لا تتسامح مع الخطأ.
+    </p>
+    <div class="heritage-stat-row">
+      <div>
+        <div class="heritage-stat-num">١٣٢</div>
+        <div class="heritage-stat-lbl">عاماً من الحرفة</div>
+      </div>
+      <div>
+        <div class="heritage-stat-num">٣٨</div>
+        <div class="heritage-stat-lbl">براءة اختراع</div>
+      </div>
+      <div>
+        <div class="heritage-stat-num">٩٤٬٠٠٠</div>
+        <div class="heritage-stat-lbl">ساعة مُسلَّمة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="feat">
+    <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+    <div class="feat-title">ضمان ٥ سنوات</div>
+    <div class="feat-desc">ضمان شامل يغطي أي عيب في الحركة والهيكل</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon"><i class="fas fa-certificate"></i></div>
+    <div class="feat-title">COSC معتمد</div>
+    <div class="feat-desc">كل حركة مُعتمدة من مركز السيرنيبوس السويسري</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon"><i class="fas fa-box-open"></i></div>
+    <div class="feat-title">تغليف فاخر</div>
+    <div class="feat-desc">صندوق خشب الجوز مع بطاقة الاعتماد والمستندات</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon"><i class="fas fa-plane"></i></div>
+    <div class="feat-title">شحن مؤمَّن</div>
+    <div class="feat-desc">تأمين كامل وتتبع مباشر حتى وصول ساعتك</div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--border)">
+  <div style="text-align:center;margin-bottom:0">
+    <div class="eyebrow" style="justify-content:center">شهادات العملاء</div>
+    <h2 class="sec-h2" style="text-align:center">ما يقوله أصحاب كرونوس</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"اقتنيت Datograph Chronograph منذ ثلاث سنوات ولا تزال تُثير إعجاب الجميع. الحركة منظّمة وثابتة، والتشطيب يشهد على حرفة حقيقية لا مثيل لها."</p>
+      <div class="test-name">خالد الغامدي</div>
+      <div class="test-loc">جدة · المملكة العربية السعودية</div>
+      <div class="test-model"><i class="fas fa-watch" style="margin-left:.4rem"></i>Datograph Chronograph · ذهب أبيض</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"هدية خطوبتي كانت Élégance Ultra-Thin. رقتها وخفتها على المعصم لا توصف. كرونوس لا تبيع ساعة، تبيع قطعة فن يُرتدى كل يوم."</p>
+      <div class="test-name">منى السيف</div>
+      <div class="test-loc">الكويت</div>
+      <div class="test-model"><i class="fas fa-watch" style="margin-left:.4rem"></i>Élégance Ultra-Thin</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"شاهدت Tourbillon Perpetual في معرض جنيف ولم أصدق أن أجدها متاحة بهذا الاحتراف عبر الإنترنت مع كامل مستنداتها. التوصيل والتعبئة فاخران جداً."</p>
+      <div class="test-name">عمر المهاري</div>
+      <div class="test-loc">دبي · الإمارات</div>
+      <div class="test-model"><i class="fas fa-watch" style="margin-left:.4rem"></i>Perpetual Calendar Tourbillon</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl">
+  <div class="eyebrow" style="justify-content:center;margin-bottom:1rem">النشرة الخاصة</div>
+  <h2 class="nl-title">أخبار من جنيف — مباشرةً إليك</h2>
+  <p class="nl-sub">اشترك للحصول على أولوية بإطلاقات المجموعات الجديدة، دعوات خاصة لمعارض كرونوس،<br>وتقارير حصرية عن عالم الساعات الفاخرة.</p>
+  <form class="nl-form" onsubmit="return false">
+    <button class="nl-btn">اشترك</button>
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني...">
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">CHRONOS</div>
+      <div class="foot-est">منذ ١٨٩٢ · جنيف · سويسرا</div>
+      <p class="foot-desc">دار ساعات سويسرية مستقلة تجمع بين الحرفة اليدوية القديمة والتصميم المعاصر. كل ساعة قصة تُكتب بالفولاذ والوقت.</p>
+      <div class="foot-socials">
+        <a href="#" class="soc"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="soc"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="soc"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="soc"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">المجموعات</div>
+      <div class="foot-links">
+        <a href="#">Platinum Perpetual</a>
+        <a href="#">Heritage Chronograph</a>
+        <a href="#">Marine Diver</a>
+        <a href="#">Classique Élégance</a>
+        <a href="#">Limited Editions</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">خدمات</div>
+      <div class="foot-links">
+        <a href="#">خدمة ما بعد البيع</a>
+        <a href="#">مركز الصيانة</a>
+        <a href="#">شهادات الاعتماد</a>
+        <a href="#">الشراء الآمن</a>
+        <a href="#">هدية ساعة</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">تواصل معنا</div>
+      <div class="foot-links">
+        <a href="#"><i class="fas fa-phone-alt" style="font-size:.65rem;color:var(--silver)"></i> ٩٢٠٠٠٠٠٠٠</a>
+        <a href="#"><i class="fas fa-envelope" style="font-size:.65rem;color:var(--silver)"></i> info@chronos.sa</a>
+        <a href="#"><i class="fas fa-map-marker-alt" style="font-size:.65rem;color:var(--silver)"></i> الرياض · برج المملكة</a>
+        <a href="#"><i class="fas fa-clock" style="font-size:.65rem;color:var(--silver)"></i> السبت – الخميس</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-btm">
+    <div class="foot-copy">© ٢٠٢٦ Chronos — جميع الحقوق محفوظة · صنع في سويسرا</div>
+    <div class="certifs">
+      <span class="cert">Visa</span>
+      <span class="cert">Mastercard</span>
+      <span class="cert">Mada</span>
+      <span class="cert">Apple Pay</span>
+      <span class="cert">Wire Transfer</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div id="cart-ov" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="cart-hd">
+    <div class="cart-hd-title">حقيبتك</div>
+    <button class="cart-x" onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty"><i class="fas fa-shopping-bag"></i><span>لا توجد ساعات في حقيبتك بعد</span></div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-tot">
+      <span class="cart-tot-lbl">المجموع</span>
+      <span class="cart-tot-val" id="cartTot">٠ ريال</span>
+    </div>
+    <button class="checkout"><i class="fas fa-lock" style="margin-left:.5rem"></i> إتمام الطلب</button>
+  </div>
+</div>
+
+<div id="toast"><i class="fas fa-check"></i><span id="toastTxt"></span></div>
+
+<script>
+// Loader
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('gone'),2400));
+
+// Header
+window.addEventListener('scroll',()=>{
+  document.getElementById('hdr').classList.toggle('solid',window.scrollY>80);
+});
+
+// Cart
+let cart=[];
+function openCart(){document.getElementById('cart-ov').classList.add('open');document.getElementById('cart-drawer').classList.add('open')}
+function closeCart(){document.getElementById('cart-ov').classList.remove('open');document.getElementById('cart-drawer').classList.remove('open')}
+
+function addCart(name,price){
+  const ex=cart.find(i=>i.name===name);
+  if(ex)ex.qty++;else cart.push({name,price,qty:1});
+  renderCart();
+  toast('تمت إضافة '+name+' إلى حقيبتك');
+  document.getElementById('cartN').textContent=cart.reduce((s,i)=>s+i.qty,0);
+}
+function renderCart(){
+  const b=document.getElementById('cartBody');
+  if(!cart.length){
+    b.innerHTML='<div class="cart-empty"><i class="fas fa-shopping-bag"></i><span>لا توجد ساعات في حقيبتك بعد</span></div>';
+    document.getElementById('cartTot').textContent='٠ ريال';return;
+  }
+  b.innerHTML=cart.map((c,i)=>`
+    <div class="c-item">
+      <div class="c-img"><i class="fas fa-watch" style="font-size:2rem;color:var(--silver)"></i></div>
+      <div class="c-info">
+        <div class="c-name">${c.name}</div>
+        <div class="c-ref">Chronos Manufacture</div>
+        <div class="c-price">${parseInt(c.price).toLocaleString('ar-EG')} ريال</div>
+      </div>
+    </div>
+  `).join('');
+  const tot=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);
+  document.getElementById('cartTot').textContent=tot.toLocaleString('ar-EG')+' ريال';
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastTxt').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// Wishlist
+document.querySelectorAll('.prod-wish').forEach(b=>{
+  b.addEventListener('click',function(){
+    const icon=this.querySelector('i');
+    icon.classList.toggle('far');icon.classList.toggle('fas');
+    icon.style.color=icon.classList.contains('fas')?'var(--silver2)':'';
+    toast(icon.classList.contains('fas')?'أُضيف إلى المفضلة':'أُزيل من المفضلة');
+  });
+});
+</script>
+</body>
+</html>
