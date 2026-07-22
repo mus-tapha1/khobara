@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvet Skin — متجر العناية بالبشرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --rose:#f5e8e4;--blush:#e8c5bc;--mauve:#c49a94;--deep:#7a4f49;
+    --cream:#faf7f5;--off:#f0ebe7;--white:#fff;
+    --text:#2d1f1e;--text-soft:#8a6b68;--text-light:#b89794;
+    --border:rgba(196,154,148,0.25);--green:#4a7a5e;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+  /* Announce */
+  .ann{background:var(--deep);color:var(--rose);text-align:center;padding:10px;font-size:12px;letter-spacing:2px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(250,247,245,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--deep);letter-spacing:3px;text-decoration:none}
+  .logo span{font-style:italic;color:var(--mauve)}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{color:var(--text-soft);text-decoration:none;font-size:13px;letter-spacing:1px;transition:color 0.3s}
+  .nav-links a:hover{color:var(--deep)}
+  .nav-acts{display:flex;gap:16px;align-items:center}
+  .ic{background:none;border:none;font-size:16px;color:var(--text-soft);cursor:pointer;transition:color 0.3s;position:relative}
+  .ic:hover{color:var(--deep)}
+  .ic-badge{position:absolute;top:-6px;right:-6px;background:var(--mauve);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .btn-login{border:1px solid var(--mauve);color:var(--deep);background:none;padding:8px 20px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;cursor:pointer;transition:all 0.3s}
+  .btn-login:hover{background:var(--deep);color:var(--rose);border-color:var(--deep)}
+
+  /* Hero */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+  .hero-left{padding:100px 80px;display:flex;flex-direction:column;justify-content:center;background:var(--off)}
+  .hero-eyebrow{display:flex;align-items:center;gap:16px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:32px}
+  .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--mauve)}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,5.5vw,76px);font-weight:300;line-height:1.1;margin-bottom:24px}
+  .hero h1 em{font-style:italic;color:var(--mauve)}
+  .hero h1 strong{font-weight:600;display:block}
+  .hero-desc{font-size:15px;line-height:1.9;color:var(--text-soft);margin-bottom:48px;max-width:440px;font-weight:300}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+  .btn-p{background:var(--deep);color:var(--rose);border:none;padding:16px 40px;font-family:'Tajawal',sans-serif;font-size:13px;letter-spacing:2px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+  .btn-p:hover{background:var(--mauve);transform:translateY(-2px);box-shadow:0 8px 28px rgba(122,79,73,0.25)}
+  .btn-g{background:none;border:1px solid var(--border);color:var(--deep);padding:16px 40px;font-family:'Tajawal',sans-serif;font-size:13px;letter-spacing:2px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+  .btn-g:hover{border-color:var(--deep)}
+  .hero-trust{display:flex;gap:24px;margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-soft)}
+  .trust-icon{font-size:16px}
+  .hero-right{position:relative;overflow:hidden;background:var(--rose)}
+  .hero-img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+  .hero-right:hover .hero-img{transform:scale(1.04)}
+  .hero-badge{position:absolute;bottom:48px;right:48px;background:var(--white);padding:20px 24px;border-left:3px solid var(--mauve)}
+  .hb-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--deep);line-height:1}
+  .hb-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-soft);margin-top:4px}
+
+  /* Values */
+  .values{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .val-icon{font-size:24px;margin-bottom:10px}
+  .val-title{font-size:13px;font-weight:700;color:var(--deep);margin-bottom:4px}
+  .val-desc{font-size:12px;color:var(--text-light)}
+
+  /* Section */
+  .sec{padding:100px 80px}
+  .sec-head{text-align:center;margin-bottom:60px}
+  .sec-eye{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);display:block;margin-bottom:14px}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.2}
+  .sec-title em{font-style:italic;color:var(--mauve)}
+  .sec-line{width:48px;height:1px;background:var(--mauve);margin:20px auto 0}
+
+  /* Products */
+  .prods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+  .pc{background:var(--white);cursor:pointer;position:relative;overflow:hidden}
+  .pc-img{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--off)}
+  .pc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+  .pc:hover .pc-img img{transform:scale(1.06)}
+  .pc-badge{position:absolute;top:14px;right:14px;background:var(--deep);color:var(--rose);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px}
+  .pc-badge.new{background:transparent;border:1px solid var(--mauve);color:var(--mauve)}
+  .pc-wish{position:absolute;top:14px;left:14px;background:rgba(250,247,245,0.9);border:none;color:var(--text-soft);font-size:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(-8px);transition:all 0.3s}
+  .pc:hover .pc-wish{opacity:1;transform:translateY(0)}
+  .pc-wish:hover{color:var(--deep)}
+  .pc-add{position:absolute;bottom:0;left:0;right:0;background:var(--deep);border:none;color:var(--rose);font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:13px;cursor:pointer;transform:translateY(100%);transition:transform 0.4s ease;width:100%}
+  .pc:hover .pc-add{transform:translateY(0)}
+  .pc-add:hover{background:var(--mauve)}
+  .pc-info{padding:18px}
+  .pc-cat{font-size:10px;letter-spacing:2px;color:var(--mauve);text-transform:uppercase;margin-bottom:5px}
+  .pc-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;line-height:1.4;margin-bottom:6px}
+  .pc-stars{font-size:11px;color:var(--mauve);margin-bottom:6px}
+  .pc-price{display:flex;gap:8px;align-items:center}
+  .pn{font-size:17px;font-weight:700;color:var(--deep)}
+  .po{font-size:13px;text-decoration:line-through;color:var(--text-light)}
+  .pc-ing{font-size:11px;color:var(--text-light);margin-top:6px}
+
+  /* Routine Strip */
+  .routine{background:var(--deep);color:var(--rose);padding:80px}
+  .routine-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .routine-steps{display:flex;flex-direction:column;gap:24px}
+  .step{display:flex;gap:20px;align-items:flex-start;padding:20px;border:1px solid rgba(245,232,228,0.15);transition:border-color 0.3s}
+  .step:hover{border-color:rgba(245,232,228,0.4)}
+  .step-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--blush);line-height:1;flex-shrink:0;width:44px}
+  .step-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:6px}
+  .step-desc{font-size:13px;color:rgba(245,232,228,0.65);line-height:1.7;font-weight:300}
+  .routine-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .routine-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85)}
+  .routine-tag{position:absolute;bottom:24px;left:24px;background:var(--deep);padding:16px 20px;border-top:2px solid var(--blush)}
+  .rt-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:6px}
+  .rt-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--rose)}
+
+  /* Ingredients */
+  .ingreds{background:var(--off)}
+  .ingred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+  .ig{background:var(--white);padding:48px 36px;text-align:center;border-bottom:3px solid transparent;transition:border-color 0.3s}
+  .ig:hover{border-color:var(--mauve)}
+  .ig-icon{font-size:40px;margin-bottom:16px}
+  .ig-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--deep);margin-bottom:10px}
+  .ig-benefit{font-size:13px;color:var(--text-soft);line-height:1.7}
+  .ig-badge{display:inline-block;margin-top:12px;background:rgba(196,154,148,0.1);border:1px solid var(--border);color:var(--mauve);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px}
+
+  /* Before/After */
+  .results{background:var(--white)}
+  .results-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .result-imgs{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .ri{position:relative}
+  .ri img{width:100%;aspect-ratio:3/4;object-fit:cover}
+  .ri-label{position:absolute;bottom:0;left:0;right:0;background:rgba(45,31,30,0.7);color:var(--rose);text-align:center;padding:10px;font-size:11px;letter-spacing:3px;text-transform:uppercase}
+  .results-content{padding:20px}
+  .result-stat{display:flex;flex-direction:column;gap:24px}
+  .rs-item{display:flex;align-items:center;gap:20px}
+  .rs-bar-wrap{flex:1;height:6px;background:var(--off);border-radius:3px;overflow:hidden}
+  .rs-bar{height:100%;background:linear-gradient(to left,var(--mauve),var(--deep));border-radius:3px;transition:width 1s ease}
+  .rs-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--deep);white-space:nowrap}
+  .rs-label{font-size:11px;color:var(--text-soft);letter-spacing:1px}
+
+  /* Testimonials */
+  .testis{background:var(--off)}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+  .tc{background:var(--white);padding:40px 32px;border-top:2px solid transparent;transition:border-color 0.3s}
+  .tc:hover{border-color:var(--mauve)}
+  .tc-stars{color:var(--mauve);font-size:14px;letter-spacing:3px;margin-bottom:16px}
+  .tc-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;line-height:1.7;color:var(--text);margin-bottom:24px}
+  .tc-author{display:flex;align-items:center;gap:12px}
+  .tc-av{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid var(--border)}
+  .tc-av img{width:100%;height:100%;object-fit:cover}
+  .tc-name{font-size:14px;font-weight:700;color:var(--deep)}
+  .tc-role{font-size:11px;color:var(--text-light)}
+  .tc-skin{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);margin-bottom:12px}
+
+  /* Newsletter */
+  .nl{background:linear-gradient(135deg,var(--deep),#4a2825);padding:100px 80px;text-align:center}
+  .nl h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--rose);margin-bottom:12px}
+  .nl h2 em{font-style:italic;color:var(--blush)}
+  .nl p{color:rgba(245,232,228,0.65);font-size:14px;margin-bottom:40px;max-width:380px;margin-inline:auto}
+  .nl-form{display:flex;max-width:460px;margin:0 auto}
+  .nl-in{flex:1;background:rgba(250,247,245,0.08);border:1px solid rgba(245,232,228,0.2);border-left:none;color:var(--rose);font-family:'Tajawal',sans-serif;font-size:14px;padding:16px 20px;outline:none}
+  .nl-in:first-child{border-left:1px solid rgba(245,232,228,0.2)}
+  .nl-in:focus{border-color:var(--blush)}
+  .nl-in::placeholder{color:rgba(245,232,228,0.4)}
+  .nl-btn{background:var(--blush);color:var(--deep);border:none;padding:16px 28px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .nl-btn:hover{background:var(--rose)}
+
+  /* Footer */
+  footer{background:var(--text);color:var(--rose);padding:80px 80px 40px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(245,232,228,0.1);margin-bottom:40px}
+  .fb .logo{color:var(--rose);display:block;margin-bottom:16px}
+  .fb-desc{font-size:14px;line-height:1.8;color:rgba(245,232,228,0.5);max-width:260px;margin-bottom:24px}
+  .fb-soc{display:flex;gap:10px}
+  .fs{width:40px;height:40px;border:1px solid rgba(245,232,228,0.15);display:flex;align-items:center;justify-content:center;color:rgba(245,232,228,0.5);font-size:13px;text-decoration:none;transition:all 0.3s}
+  .fs:hover{border-color:var(--blush);color:var(--blush)}
+  .fc h4{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:20px}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fl a{color:rgba(245,232,228,0.5);text-decoration:none;font-size:13px;transition:color 0.3s}
+  .fl a:hover{color:var(--rose)}
+  .fb-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(245,232,228,0.35)}
+
+  /* Cart */
+  .cart-ov{position:fixed;inset:0;background:rgba(45,31,30,0.5);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+  .cart-ov.open{opacity:1;pointer-events:all}
+  .cart-dr{position:fixed;top:0;left:-440px;height:100vh;width:420px;background:var(--white);border-right:1px solid var(--border);z-index:1000;transition:left 0.4s ease;overflow-y:auto;display:flex;flex-direction:column}
+  .cart-dr.open{left:0}
+  .ch{padding:24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .ch h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--deep)}
+  .ch-x{background:none;border:1px solid var(--border);color:var(--text-soft);font-size:14px;width:34px;height:34px;cursor:pointer;transition:all 0.2s}
+  .ch-x:hover{border-color:var(--deep);color:var(--deep)}
+  .ci{flex:1;padding:20px 24px}
+  .citem{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+  .citem-img{width:76px;height:90px;object-fit:cover;flex-shrink:0}
+  .citem-info{flex:1}
+  .citem-name{font-size:14px;color:var(--deep);margin-bottom:4px}
+  .citem-meta{font-size:12px;color:var(--text-light);margin-bottom:8px}
+  .citem-price{font-size:15px;color:var(--deep);font-weight:700}
+  .cf{padding:20px 24px;border-top:1px solid var(--border)}
+  .ct{display:flex;justify-content:space-between;margin-bottom:16px;font-size:15px;color:var(--deep)}
+  .ct-amount{font-size:20px;font-weight:700;color:var(--deep)}
+  .btn-co{width:100%;background:var(--deep);color:var(--rose);border:none;padding:16px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
+  .btn-co:hover{background:var(--mauve)}
+  .toast{position:fixed;top:90px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--deep);color:var(--rose);border:1px solid var(--mauve);padding:14px 28px;font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:0;pointer-events:none;transition:all 0.35s;z-index:2000}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:1024px){
+    nav,.sec,.nl,footer{padding-left:24px;padding-right:24px}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr}
+    .hero-right{height:60vh}
+    .hero-left{padding:60px 32px}
+    .values{grid-template-columns:repeat(2,1fr);padding:32px 24px}
+    .prods-grid{grid-template-columns:repeat(2,1fr)}
+    .routine{padding:60px 24px}
+    .routine-inner{grid-template-columns:1fr}
+    .ingred-grid{grid-template-columns:1fr}
+    .results-inner{grid-template-columns:1fr}
+    .testi-grid{grid-template-columns:1fr}
+    .ft{grid-template-columns:1fr 1fr;gap:36px}
+    .nl-form{flex-direction:column}
+    .nl-in:first-child{border-left:none;border-top:1px solid rgba(245,232,228,0.2)}
+  }
+</style>
+</head>
+<body>
+
+<div class="ann">✦ شحن مجاني للطلبات فوق ٢٠٠ درهم ✦ هدية مجانية مع كل طلب فوق ٤٠٠ درهم</div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#prods">المنتجات</a></li>
+    <li><a href="#routine">الروتين</a></li>
+    <li><a href="#ingreds">المكونات</a></li>
+    <li><a href="#results">النتائج</a></li>
+  </ul>
+  <a href="#" class="logo">Velvet <span>Skin</span></a>
+  <div class="nav-acts">
+    <button class="ic">🔍</button>
+    <button class="ic" onclick="openCart()">🛒<span class="ic-badge">٢</span></button>
+    <button class="btn-login">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">العناية الطبيعية الفاخرة</div>
+    <h1>بشرتك <em>تستحق</em><br><strong>الأفضل</strong></h1>
+    <p class="hero-desc">تركيبات نقية مستوحاة من الطبيعة — بلا مواد كيميائية ضارة، بلا وعود زائفة. فقط العلم والطبيعة معاً لبشرة تتألق.</p>
+    <div class="hero-btns">
+      <a href="#prods" class="btn-p">اكتشفي روتينك</a>
+      <a href="#quiz" class="btn-g">اختباري لنوع بشرتك</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-icon">🌿</span> مكونات طبيعية</div>
+      <div class="trust-item"><span class="trust-icon">🐰</span> لم يُختبر على الحيوانات</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> معتمد طبياً</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=1000&q=80" alt="عناية بشرة">
+    <div class="hero-badge">
+      <div class="hb-num">٩٧٪</div>
+      <div class="hb-label">رضا العملاء</div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<div class="values">
+  <div>
+    <div class="val-icon">🌿</div>
+    <div class="val-title">١٠٠٪ طبيعي</div>
+    <div class="val-desc">مكونات نقية من مصادر مستدامة</div>
+  </div>
+  <div>
+    <div class="val-icon">🔬</div>
+    <div class="val-title">مدروس علمياً</div>
+    <div class="val-desc">تركيبات اختُبرت سريرياً</div>
+  </div>
+  <div>
+    <div class="val-icon">🐰</div>
+    <div class="val-title">بلا اختبارات</div>
+    <div class="val-desc">لم يُختبر على الحيوانات أبداً</div>
+  </div>
+  <div>
+    <div class="val-icon">♻️</div>
+    <div class="val-title">تغليف مستدام</div>
+    <div class="val-desc">مواد قابلة لإعادة التدوير</div>
+  </div>
+</div>
+
+<!-- Products -->
+<section class="sec" id="prods">
+  <div class="sec-head">
+    <span class="sec-eye">منتجاتنا الأكثر مبيعاً</span>
+    <div class="sec-title">روتين <em>يغير البشرة</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="prods-grid">
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80" alt="سيروم">
+        <span class="pc-badge new">جديد</span>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضيفي للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">الترطيب / سيروم</div>
+        <div class="pc-name">سيروم Velvet Glow — حمض الهيالورونيك</div>
+        <div class="pc-stars">★★★★★ (٤٣٢)</div>
+        <div class="pc-price"><span class="pn">٢٢٠ درهم</span></div>
+        <div class="pc-ing">🌿 زيت الأرغان · حمض الهيالورونيك · فيتامين C</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&q=80" alt="كريم">
+        <span class="pc-badge">-٢٠٪</span>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضيفي للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">الترطيب / كريم</div>
+        <div class="pc-name">كريم ليلي Velvet Sleep — تجديد خلوي</div>
+        <div class="pc-stars">★★★★★ (٢٨٧)</div>
+        <div class="pc-price"><span class="pn">١٩٢ درهم</span><span class="po">٢٤٠ درهم</span></div>
+        <div class="pc-ing">🌸 الريتينول · زبدة الشيا · زيت الورد</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80" alt="واقي الشمس">
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضيفي للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">الحماية / واقي شمس</div>
+        <div class="pc-name">واقي الشمس Velvet Shield SPF 50+</div>
+        <div class="pc-stars">★★★★☆ (١٩٣)</div>
+        <div class="pc-price"><span class="pn">١٨٠ درهم</span></div>
+        <div class="pc-ing">☀️ مرشحات معدنية · فيتامين E · الزنك</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1601612628452-9e99ced43524?w=600&q=80" alt="تونر">
+        <span class="pc-badge new">جديد</span>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضيفي للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">التنظيف / تونر</div>
+        <div class="pc-name">تونر Velvet Balance — موازنة البشرة</div>
+        <div class="pc-stars">★★★★★ (٣٤١)</div>
+        <div class="pc-price"><span class="pn">١٤٥ درهم</span></div>
+        <div class="pc-ing">🌿 نياسيناميد · ماء الورد · الصبار</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Routine -->
+<section class="routine" id="routine">
+  <div class="routine-inner">
+    <div>
+      <div class="sec-head" style="text-align:right;margin-bottom:40px">
+        <span class="sec-eye">للبشرة المثالية</span>
+        <div class="sec-title" style="color:var(--rose)">روتين <em style="color:var(--blush)">الأربع خطوات</em></div>
+      </div>
+      <div class="routine-steps">
+        <div class="step">
+          <div class="step-num">١</div>
+          <div>
+            <div class="step-title">التنظيف العميق</div>
+            <div class="step-desc">ابدئي بتنظيف البشرة من الشوائب والمكياج بلطف دون إزالة رطوبتها الطبيعية.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">٢</div>
+          <div>
+            <div class="step-title">الترطيب المكثف</div>
+            <div class="step-desc">السيروم يخترق طبقات البشرة لتوصيل العناصر الفعالة مباشرة إلى الخلايا.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">٣</div>
+          <div>
+            <div class="step-title">التغذية والإصلاح</div>
+            <div class="step-desc">الكريم يحبس الرطوبة ويدعم تجديد الخلايا خلال ساعات النوم.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">٤</div>
+          <div>
+            <div class="step-title">الحماية اليومية</div>
+            <div class="step-desc">واقي الشمس يحمي من الأشعة فوق البنفسجية التي تسبب الشيخوخة المبكرة.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="routine-img">
+      <img src="https://images.unsplash.com/photo-1570194065650-d99fb4ee19de?w=700&q=80" alt="روتين عناية">
+      <div class="routine-tag">
+        <div class="rt-eyebrow">نتيجة مضمونة</div>
+        <div class="rt-title">٤ أسابيع لبشرة مشعة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ingredients -->
+<section class="sec ingreds" id="ingreds">
+  <div class="sec-head">
+    <span class="sec-eye">نقاء المكونات</span>
+    <div class="sec-title">الطبيعة <em>في كل قطرة</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="ingred-grid">
+    <div class="ig">
+      <div class="ig-icon">🌹</div>
+      <div class="ig-name">زيت الورد الدمشقي</div>
+      <p class="ig-benefit">يجدد خلايا البشرة ويوحد لونها، مضاد قوي للأكسدة يحارب علامات التقدم في السن ويمنح البشرة إشراقاً طبيعياً.</p>
+      <span class="ig-badge">مضاد أكسدة</span>
+    </div>
+    <div class="ig">
+      <div class="ig-icon">💧</div>
+      <div class="ig-name">حمض الهيالورونيك</div>
+      <p class="ig-benefit">يحتجز الرطوبة لمدة ٧٢ ساعة ويملأ الخطوط الدقيقة من الداخل، مما يمنح البشرة نضارة ممتلئة وحيوية.</p>
+      <span class="ig-badge">ترطيب فائق</span>
+    </div>
+    <div class="ig">
+      <div class="ig-icon">✨</div>
+      <div class="ig-name">زيت الأرغان المغربي</div>
+      <p class="ig-benefit">يغذي ويرطب البشرة بعمق، غني بفيتامين E والأحماض الدهنية الأساسية لبشرة ناعمة ومرنة على مدار اليوم.</p>
+      <span class="ig-badge">تغذية عميقة</span>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="sec results" id="results">
+  <div class="results-inner">
+    <div class="result-imgs">
+      <div class="ri">
+        <img src="https://images.unsplash.com/photo-1616391182219-e080b4d1042a?w=400&q=80" alt="قبل">
+        <div class="ri-label">قبل</div>
+      </div>
+      <div class="ri">
+        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80" alt="بعد">
+        <div class="ri-label">بعد ٤ أسابيع</div>
+      </div>
+    </div>
+    <div class="results-content">
+      <div class="sec-head" style="text-align:right;margin-bottom:40px">
+        <span class="sec-eye">نتائج مثبتة سريرياً</span>
+        <div class="sec-title">أرقام <em>لا تكذب</em></div>
+      </div>
+      <div class="result-stat">
+        <div class="rs-item">
+          <div>
+            <div class="rs-num">٩٧٪</div>
+            <div class="rs-label">رضا العملاء</div>
+          </div>
+          <div class="rs-bar-wrap"><div class="rs-bar" style="width:97%"></div></div>
+        </div>
+        <div class="rs-item">
+          <div>
+            <div class="rs-num">٨٩٪</div>
+            <div class="rs-label">تحسن في الترطيب</div>
+          </div>
+          <div class="rs-bar-wrap"><div class="rs-bar" style="width:89%"></div></div>
+        </div>
+        <div class="rs-item">
+          <div>
+            <div class="rs-num">٨٣٪</div>
+            <div class="rs-label">تقليل الخطوط الدقيقة</div>
+          </div>
+          <div class="rs-bar-wrap"><div class="rs-bar" style="width:83%"></div></div>
+        </div>
+        <div class="rs-item">
+          <div>
+            <div class="rs-num">٧٨٪</div>
+            <div class="rs-label">توحيد لون البشرة</div>
+          </div>
+          <div class="rs-bar-wrap"><div class="rs-bar" style="width:78%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="sec testis">
+  <div class="sec-head">
+    <span class="sec-eye">قالت عنا عملاؤنا</span>
+    <div class="sec-title">تجارب <em>حقيقية</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="tc">
+      <div class="tc-skin">بشرة مختلطة</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"جربت عشرات المنتجات وأخيراً وجدت ما يناسب بشرتي المختلطة. سيروم Velvet Glow غيّر بشرتي خلال أسبوعين فقط!"</p>
+      <div class="tc-author">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&q=80" alt=""></div>
+        <div><div class="tc-name">نور المالكي</div><div class="tc-role">٢٨ سنة — الرياض</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-skin">بشرة جافة</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"الكريم الليلي معجزة! أستيقظ كل صباح ببشرة ناعمة ومرطبة. لن أستبدله بأي منتج آخر. شكراً Velvet Skin."</p>
+      <div class="tc-author">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt=""></div>
+        <div><div class="tc-name">هند الفارسي</div><div class="tc-role">٣٤ سنة — دبي</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-skin">بشرة دهنية</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"تونر Velvet Balance هو الأفضل للبشرة الدهنية. يوازن الزهم دون جفاف، والبشرة مشرقة طوال اليوم."</p>
+      <div class="tc-author">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=80" alt=""></div>
+        <div><div class="tc-name">لمياء الشمري</div><div class="tc-role">٢٤ سنة — الكويت</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="nl">
+  <h2>سرّ <em>البشرة المثالية</em><br>في صندوق وارد</h2>
+  <p>اشتركي ولك هدية مجانية في أول طلب + نصائح خبراء البشرة أسبوعياً.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشتركي 🌿</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <a href="#" class="logo" style="color:var(--rose)">Velvet <span style="color:var(--blush);font-style:italic">Skin</span></a>
+      <p class="fb-desc">عناية طبيعية فاخرة من أجل بشرة تستحق الأفضل — بلا مواد كيميائية ضارة، بوعد حقيقي.</p>
+      <div class="fb-soc">
+        <a href="#" class="fs">𝕏</a><a href="#" class="fs">📷</a><a href="#" class="fs">▶</a><a href="#" class="fs">in</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>المنتجات</h4>
+      <ul class="fl">
+        <li><a href="#">السيروم</a></li><li><a href="#">الكريمات</a></li>
+        <li><a href="#">التنظيف</a></li><li><a href="#">الحماية</a></li>
+        <li><a href="#">مجموعات العناية</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>عن Velvet</h4>
+      <ul class="fl">
+        <li><a href="#">قصتنا</a></li><li><a href="#">مكوناتنا</a></li>
+        <li><a href="#">التزامنا البيئي</a></li><li><a href="#">المختبر</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>خدمة العملاء</h4>
+      <ul class="fl">
+        <li><a href="#">اتصلي بنا</a></li><li><a href="#">الشحن والإرجاع</a></li>
+        <li><a href="#">اختبار نوع بشرتك</a></li><li><a href="#">مدونة العناية</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bottom">
+    <span>© ٢٠٢٦ Velvet Skin — جميع الحقوق محفوظة</span>
+    <span>VISA · MC · PayPal · Apple Pay</span>
+  </div>
+</footer>
+
+<!-- Cart Drawer -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch">
+    <h3>سلتك (٢ منتجات)</h3>
+    <button class="ch-x" onclick="closeCart()">✕</button>
+  </div>
+  <div class="ci">
+    <div class="citem">
+      <img class="citem-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80" alt="">
+      <div class="citem-info">
+        <div class="citem-name">سيروم Velvet Glow</div>
+        <div class="citem-meta">٣٠ml — ×١</div>
+        <div class="citem-price">٢٢٠ درهم</div>
+      </div>
+    </div>
+    <div class="citem">
+      <img class="citem-img" src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=200&q=80" alt="">
+      <div class="citem-info">
+        <div class="citem-name">كريم ليلي Velvet Sleep</div>
+        <div class="citem-meta">٥٠ml — ×١</div>
+        <div class="citem-price">١٩٢ درهم</div>
+      </div>
+    </div>
+  </div>
+  <div class="cf">
+    <div class="ct"><span>المجموع</span><span class="ct-amount">٤١٢ درهم</span></div>
+    <button class="btn-co">إتمام الطلب ♡</button>
+  </div>
+</div>
+<div class="toast" id="tst">✦ أُضيف للسلة بنجاح</div>
+
+<script>
+  function openCart(){ document.getElementById('cov').classList.add('open'); document.getElementById('cdr').classList.add('open'); }
+  function closeCart(){ document.getElementById('cov').classList.remove('open'); document.getElementById('cdr').classList.remove('open'); }
+  function addCart(){ const t=document.getElementById('tst'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+  function wish(el){ el.textContent=el.textContent==='♡'?'♥':'♡'; el.style.color=el.style.color?'':var(--deep); }
+
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}},{threshold:0.1}));
+  document.querySelectorAll('.pc,.tc,.ig').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity 0.55s ease,transform 0.55s ease';obs.observe(el);});
+</script>
+</body>
+</html>
