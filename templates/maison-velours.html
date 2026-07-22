@@ -2,6 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
+<meta name="description" content="دار أزياء راقية — تصاميم حصرية بلمسة شرقية في طنجة">
+<meta property="og:title" content="Maison Velours — الأزياء الراقية">
+<meta property="og:description" content="دار أزياء راقية — تصاميم حصرية بلمسة شرقية في طنجة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ميزون فيلور | أزياء راقية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -514,6 +519,19 @@ footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.08); 
   .nav-links { display: none; }
   .section-title { font-size: 2rem; }
 }
+
+/* ── Mobile Burger ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:10001;position:relative;color:inherit}
+.nav-burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .35s ease}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-burger{display:flex!important}
+  header .nav-links{display:none!important}
+  header .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:10000;font-size:1.2rem;list-style:none;margin:0;padding:0;background:rgba(0,0,0,.97)}
+}
+@media(min-width:769px){.nav-burger{display:none!important}}
 </style>
 </head>
 <body>
@@ -567,7 +585,8 @@ footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.08); 
         <span class="cart-badge">2</span>
       </button>
     </div>
-  </div>
+  <button class="nav-burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+</div>
 </header>
 
 <!-- HERO SPLIT -->
@@ -933,7 +952,7 @@ footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.08); 
       <div class="section-label" style="justify-content:center;display:flex;margin-bottom:16px">النشرة الحصرية</div>
       <div class="newsletter-title">كوني أول من تعلم</div>
       <div class="newsletter-sub">اشتركي في نشرتنا وكوني أول من يحصل على العروض الحصرية<br/>والمجموعات الجديدة قبل الجميع</div>
-      <form class="newsletter-form" onsubmit="return false">
+      <form class="newsletter-form" action="https://formsubmit.co/khobaraweb@gmail.com" method="POST"><input type="hidden" name="_subject" value="اشتراك في النشرة"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://mus-tapha1.github.io/khobara/">
         <input class="newsletter-input" type="email" placeholder="بريدك الإلكتروني" />
         <button class="newsletter-btn" type="submit">اشتراك</button>
       </form>
@@ -1088,6 +1107,9 @@ document.querySelectorAll('.prod-quick').forEach(btn => {
     setTimeout(() => { this.textContent = 'إضافة للسلة'; this.style.background = ''; }, 1800);
   });
 });
+</script>
+<script>
+(function(){var b=document.querySelector('.nav-burger');var l=document.querySelector('header .nav-links')||document.querySelector('header .nav-links');if(b&&l){b.addEventListener('click',function(){l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('nav-open');b.classList.remove('is-open')})})}})();
 </script>
 </body>
 </html>
