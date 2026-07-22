@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="نيكسوس — منصة SaaS متكاملة لإدارة المشاريع والفرق بذكاء اصطناعي متقدم">
+<meta property="og:title" content="نيكسوس — برمجيات الأعمال الذكية">
+<meta property="og:description" content="منصة SaaS متكاملة لإدارة المشاريع والفرق بذكاء اصطناعي متقدم">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نيكسوس — منصة إدارة الأعمال الذكية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050918;
+  --bg2:#080f22;
+  --bg3:#0d1530;
+  --surface:#0f1a38;
+  --surface2:#172040;
+  --blue:#3d6fff;
+  --blue2:#5a84ff;
+  --purple:#7c4dff;
+  --cyan:#00d4ff;
+  --green:#00e5a0;
+  --border:rgba(61,111,255,.18);
+  --border2:rgba(255,255,255,.07);
+  --text:#e8eeff;
+  --text-dim:rgba(232,238,255,.55);
+  --text-muted:rgba(232,238,255,.3);
+  --grad:linear-gradient(135deg,var(--blue),var(--purple));
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;z-index:900;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;
+  background:rgba(5,9,24,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+  transition:all .4s;
+}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo-icon{
+  width:36px;height:36px;background:var(--grad);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:900;color:#fff;
+}
+.logo-text{font-size:1.3rem;font-weight:900;color:var(--text);letter-spacing:-.01em}
+.logo-text span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.84rem;font-weight:600;letter-spacing:.02em;transition:color .3s}
+.nav-links a:hover{color:var(--text)}
+.nav-actions{display:flex;gap:.8rem;align-items:center}
+.btn-ghost{
+  border:1px solid var(--border);color:var(--text-dim);background:transparent;
+  padding:.55rem 1.3rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.82rem;cursor:pointer;transition:all .3s;border-radius:8px;
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--text)}
+.btn-primary{
+  background:var(--grad);color:#fff;border:none;
+  padding:.6rem 1.5rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.82rem;cursor:pointer;transition:all .3s;border-radius:8px;
+  box-shadow:0 0 20px rgba(61,111,255,.4);
+}
+.btn-primary:hover{box-shadow:0 0 30px rgba(61,111,255,.6);transform:translateY(-1px)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;padding:.3rem;flex-direction:column;gap:5px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .btn-ghost{display:none}
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:9rem 5% 5rem;text-align:center;position:relative;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(61,111,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(61,111,255,.04) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 40%,transparent 100%);
+}
+.hero-glow{
+  position:absolute;top:15%;left:50%;transform:translateX(-50%);
+  width:700px;height:500px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(61,111,255,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid var(--border);background:rgba(61,111,255,.08);
+  padding:.4rem 1.1rem;border-radius:50px;font-size:.74rem;font-weight:700;
+  color:var(--blue2);margin-bottom:2rem;
+}
+.hero-badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,160,.4)}50%{box-shadow:0 0 0 6px rgba(0,229,160,0)}}
+.hero h1{
+  font-size:clamp(2.8rem,6vw,5rem);font-weight:900;
+  line-height:1.1;letter-spacing:-.02em;
+  color:var(--text);margin-bottom:1.8rem;
+}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .grad-cyan{background:linear-gradient(90deg,var(--cyan),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{
+  font-size:1.08rem;color:var(--text-dim);max-width:560px;
+  margin:0 auto 2.5rem;line-height:2;
+}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-xl{
+  background:var(--grad);color:#fff;border:none;
+  padding:.9rem 2.2rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:1rem;cursor:pointer;border-radius:10px;
+  box-shadow:0 0 30px rgba(61,111,255,.5);transition:all .3s;
+}
+.btn-xl:hover{box-shadow:0 0 50px rgba(61,111,255,.7);transform:translateY(-2px)}
+.btn-xl-ghost{
+  border:1px solid var(--border2);color:var(--text);background:rgba(255,255,255,.04);
+  padding:.9rem 2.2rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:1rem;cursor:pointer;border-radius:10px;transition:all .3s;
+}
+.btn-xl-ghost:hover{border-color:var(--blue);background:rgba(61,111,255,.08)}
+.hero-trust{display:flex;align-items:center;gap:.7rem;justify-content:center;font-size:.78rem;color:var(--text-muted)}
+.hero-avatars{display:flex}
+.hero-avatar{
+  width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);
+  background:var(--grad);margin-left:-8px;display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:700;color:#fff;
+}
+.hero-avatar:nth-child(2){background:linear-gradient(135deg,var(--purple),var(--cyan))}
+.hero-avatar:nth-child(3){background:linear-gradient(135deg,var(--cyan),var(--green))}
+.hero-avatar:nth-child(4){background:linear-gradient(135deg,var(--green),var(--blue))}
+
+/* ── DASHBOARD MOCKUP ── */
+.hero-dashboard{
+  width:100%;max-width:1000px;margin:3rem auto 0;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px var(--border2),inset 0 1px 0 rgba(255,255,255,.05);
+  position:relative;
+}
+.dash-bar{
+  background:var(--bg3);padding:.7rem 1.2rem;
+  display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border2);
+}
+.dash-dot{width:10px;height:10px;border-radius:50%}
+.dash-dot:nth-child(1){background:#ff5f57}
+.dash-dot:nth-child(2){background:#febc2e}
+.dash-dot:nth-child(3){background:#28c840}
+.dash-url{
+  margin:0 auto;background:rgba(255,255,255,.05);border:1px solid var(--border2);
+  border-radius:6px;padding:.3rem 1rem;font-size:.7rem;color:var(--text-muted);
+  display:flex;align-items:center;gap:.4rem;
+}
+.dash-body{display:flex;height:420px}
+.dash-sidebar{
+  width:200px;min-width:200px;background:var(--bg2);border-left:1px solid var(--border2);
+  padding:1.2rem .8rem;display:flex;flex-direction:column;gap:.3rem;
+}
+.dash-nav-item{
+  padding:.6rem .8rem;border-radius:8px;font-size:.75rem;
+  color:var(--text-muted);display:flex;align-items:center;gap:.6rem;cursor:pointer;
+  transition:.2s;
+}
+.dash-nav-item.active{background:rgba(61,111,255,.15);color:var(--blue2)}
+.dash-nav-item .nav-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.dash-main{flex:1;padding:1.5rem;display:flex;flex-direction:column;gap:1.2rem;overflow:hidden}
+.dash-row{display:flex;gap:1rem}
+.dash-stat{
+  flex:1;background:rgba(255,255,255,.03);border:1px solid var(--border2);
+  border-radius:10px;padding:1rem;
+}
+.dash-stat-label{font-size:.65rem;color:var(--text-muted);margin-bottom:.4rem}
+.dash-stat-val{font-size:1.5rem;font-weight:900;color:var(--text);line-height:1}
+.dash-stat-change{font-size:.65rem;color:var(--green);margin-top:.3rem}
+.dash-chart{
+  background:rgba(255,255,255,.03);border:1px solid var(--border2);
+  border-radius:10px;padding:1rem;flex:2;
+}
+.dash-chart-label{font-size:.65rem;color:var(--text-muted);margin-bottom:.8rem}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:80px}
+.chart-bar{
+  flex:1;border-radius:4px 4px 0 0;
+  background:linear-gradient(to top,var(--blue),var(--purple));opacity:.7;
+  transition:.3s;
+}
+.chart-bar:hover{opacity:1}
+.dash-tasks{
+  background:rgba(255,255,255,.03);border:1px solid var(--border2);
+  border-radius:10px;padding:1rem;
+}
+.task-item{
+  display:flex;align-items:center;gap:.7rem;padding:.5rem 0;
+  border-bottom:1px solid var(--border2);font-size:.72rem;color:var(--text-dim);
+}
+.task-item:last-child{border-bottom:none}
+.task-check{
+  width:14px;height:14px;border-radius:4px;flex-shrink:0;
+  border:1.5px solid var(--blue);
+}
+.task-check.done{background:var(--blue);border-color:var(--blue);display:flex;align-items:center;justify-content:center}
+.task-check.done::after{content:'✓';color:#fff;font-size:.55rem}
+.task-badge{
+  margin-right:auto;font-size:.6rem;padding:.15rem .5rem;border-radius:4px;
+}
+.badge-blue{background:rgba(61,111,255,.2);color:var(--blue2)}
+.badge-purple{background:rgba(124,77,255,.2);color:#b39dff}
+.badge-green{background:rgba(0,229,160,.12);color:var(--green)}
+
+/* ── LOGOS ── */
+.logos{padding:3rem 5%;text-align:center;border-bottom:1px solid var(--border2)}
+.logos-label{font-size:.72rem;color:var(--text-muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem;font-weight:700}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap}
+.logo-item{
+  font-size:.95rem;font-weight:900;color:var(--text-muted);letter-spacing:.05em;
+  opacity:.5;transition:.3s;font-family:'Space Grotesk',sans-serif;
+}
+.logo-item:hover{opacity:.9;color:var(--text)}
+
+/* ── SECTIONS COMMON ── */
+section{padding:5.5rem 6%}
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(61,111,255,.1);border:1px solid rgba(61,111,255,.25);
+  color:var(--blue2);font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:1.2rem;padding:.35rem 1rem;border-radius:50px;
+}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--text);line-height:1.15;margin-bottom:1.2rem;letter-spacing:-.01em}
+.section-title .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-desc{color:var(--text-dim);line-height:2;font-size:.97rem;max-width:580px}
+.section-header{margin-bottom:4rem}
+.section-header.center{text-align:center}
+.section-header.center .section-desc{margin:0 auto}
+.section-header.center .section-eyebrow{display:inline-flex}
+
+/* ── FEATURES ── */
+.features{background:var(--bg)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feature-card{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:16px;padding:2rem;
+  transition:all .4s;position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 30%,rgba(61,111,255,.06),transparent 70%);
+  opacity:0;transition:.4s;
+}
+.feature-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.feature-card:hover::before{opacity:1}
+.feature-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(61,111,255,.2),rgba(124,77,255,.2));
+  border:1px solid rgba(61,111,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.2rem;
+}
+.feature-title{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.7rem}
+.feature-desc{font-size:.85rem;color:var(--text-dim);line-height:1.9}
+.feature-card.featured{
+  grid-column:span 2;
+  background:linear-gradient(135deg,rgba(61,111,255,.08),rgba(124,77,255,.05));
+  border-color:rgba(61,111,255,.25);
+}
+
+/* ── HOW IT WORKS ── */
+.how{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
+.steps::before{
+  content:'';position:absolute;top:2.5rem;right:12.5%;left:12.5%;
+  height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:.3;
+}
+.step{text-align:center;position:relative}
+.step-num{
+  width:52px;height:52px;border-radius:50%;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;font-weight:900;color:#fff;margin:0 auto 1.2rem;
+  box-shadow:0 0 20px rgba(61,111,255,.4);position:relative;z-index:1;
+}
+.step-title{font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:.6rem}
+.step-desc{font-size:.82rem;color:var(--text-dim);line-height:1.85}
+
+/* ── PRICING ── */
+.pricing{background:var(--bg)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1000px;margin:0 auto}
+.plan{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:20px;padding:2.2rem;position:relative;transition:.3s;
+}
+.plan:hover{transform:translateY(-4px)}
+.plan.featured{
+  background:linear-gradient(135deg,rgba(61,111,255,.12),rgba(124,77,255,.08));
+  border-color:var(--blue);
+  box-shadow:0 0 0 1px rgba(61,111,255,.3),0 20px 60px rgba(61,111,255,.15);
+}
+.plan-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--grad);color:#fff;font-size:.68rem;font-weight:700;
+  padding:.3rem .9rem;border-radius:20px;letter-spacing:.08em;white-space:nowrap;
+}
+.plan-name{font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.5rem}
+.plan-price{font-size:3rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:.3rem}
+.plan-price span{font-size:1rem;color:var(--text-muted);font-weight:500}
+.plan-period{font-size:.8rem;color:var(--text-muted);margin-bottom:1.5rem}
+.plan-divider{height:1px;background:var(--border2);margin-bottom:1.5rem}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.plan-feature{display:flex;align-items:flex-start;gap:.7rem;font-size:.83rem;color:var(--text-dim)}
+.plan-feature-icon{color:var(--green);flex-shrink:0;font-size:.9rem}
+.plan-feature.dim{color:var(--text-muted);text-decoration:line-through;opacity:.5}
+.plan-cta{
+  width:100%;padding:.8rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.88rem;cursor:pointer;border-radius:10px;transition:.3s;
+  border:1.5px solid var(--border);background:transparent;color:var(--text);
+}
+.plan-cta:hover{border-color:var(--blue);color:var(--blue2)}
+.plan.featured .plan-cta{
+  background:var(--grad);color:#fff;border-color:transparent;
+  box-shadow:0 0 20px rgba(61,111,255,.4);
+}
+.plan.featured .plan-cta:hover{box-shadow:0 0 35px rgba(61,111,255,.6)}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--bg2)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.testimonial-card{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:16px;padding:2rem;transition:.3s;
+}
+.testimonial-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.stars{display:flex;gap:.2rem;margin-bottom:1.2rem}
+.star{color:#fbbf24;font-size:.85rem}
+.testimonial-text{font-size:.87rem;color:var(--text-dim);line-height:2;margin-bottom:1.5rem}
+.testimonial-author{display:flex;align-items:center;gap:.8rem}
+.author-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--grad);display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:#fff;font-size:.85rem;flex-shrink:0;
+}
+.author-name{font-size:.85rem;font-weight:700;color:var(--text)}
+.author-role{font-size:.72rem;color:var(--text-muted)}
+
+/* ── STATS ── */
+.stats{background:var(--bg3);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{
+  font-size:3rem;font-weight:900;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1;margin-bottom:.4rem;
+}
+.stat-label{font-size:.82rem;color:var(--text-muted)}
+
+/* ── FAQ ── */
+.faq{background:var(--bg)}
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.faq-item{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:12px;overflow:hidden;transition:.3s;
+}
+.faq-item:hover{border-color:var(--border)}
+.faq-q{
+  padding:1.2rem 1.5rem;font-size:.92rem;font-weight:700;color:var(--text);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  list-style:none;user-select:none;
+}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--blue2);transition:.3s}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{
+  padding:0 1.5rem 1.2rem;font-size:.85rem;color:var(--text-dim);
+  line-height:2;display:none;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ── CTA ── */
+.cta-section{
+  background:var(--bg2);text-align:center;position:relative;overflow:hidden;
+  border-top:1px solid var(--border2);
+}
+.cta-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:400px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(61,111,255,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-section h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--text);margin-bottom:1.2rem;letter-spacing:-.02em}
+.cta-section p{font-size:1rem;color:var(--text-dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:2}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-note{font-size:.75rem;color:var(--text-muted);margin-top:1rem}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border2);padding:4rem 6% 2rem}
+.footer-grid{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:.83rem;color:var(--text-dim);line-height:1.9;margin-top:.8rem;max-width:220px}
+.footer-col h4{font-size:.78rem;font-weight:800;color:var(--text);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.82rem;color:var(--text-muted);text-decoration:none;transition:.3s}
+.footer-col a:hover{color:var(--blue2)}
+.footer-bottom{border-top:1px solid var(--border2);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--text-muted)}
+.footer-badge{
+  display:flex;align-items:center;gap:.5rem;
+  border:1px solid var(--border);padding:.35rem .9rem;border-radius:20px;
+  color:var(--blue2);font-size:.7rem;font-weight:700;
+}
+.footer-socials{display:flex;gap:1rem}
+.footer-socials a{
+  width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);
+  background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;
+  color:var(--text-muted);text-decoration:none;font-size:.75rem;transition:.3s;
+}
+.footer-socials a:hover{border-color:var(--blue);color:var(--blue2)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── MOBILE ── */
+@media(max-width:1024px){
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .feature-card.featured{grid-column:span 1}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .steps::before{display:none}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .features-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .dash-sidebar{display:none}
+  section{padding:4rem 5%}
+  .hero{padding:8rem 5% 4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">N</div>
+    <span class="logo-text">نيكسوس<span></span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">المميزات</a></li>
+    <li><a href="#how">كيف يعمل</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
+    <li><a href="#testimonials">آراء العملاء</a></li>
+    <li><a href="#faq">الأسئلة الشائعة</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-ghost">تسجيل الدخول</button>
+    <button class="btn-primary">ابدأ مجاناً</button>
+  </div>
+  <button class="nav-burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    جديد — تكامل الذكاء الاصطناعي GPT-4
+  </div>
+  <h1>
+    أدِر مشاريعك بـ<br>
+    <span class="grad">ذكاء حقيقي</span><br>
+    وسرعة لا تصدق
+  </h1>
+  <p class="hero-desc">
+    نيكسوس هي المنصة الأولى من نوعها التي تجمع إدارة المشاريع والفرق والتحليلات في مكان واحد — مدعومة بالذكاء الاصطناعي لتوفير ساعات من العمل كل يوم.
+  </p>
+  <div class="hero-btns">
+    <button class="btn-xl">ابدأ تجربتك المجانية</button>
+    <button class="btn-xl-ghost">🎥 شاهد العرض التوضيحي</button>
+  </div>
+  <div class="hero-trust">
+    <div class="hero-avatars">
+      <div class="hero-avatar">أ</div>
+      <div class="hero-avatar">م</div>
+      <div class="hero-avatar">س</div>
+      <div class="hero-avatar">ف</div>
+    </div>
+    <span>+14,000 شركة تستخدم نيكسوس</span>
+  </div>
+  <div class="hero-dashboard reveal">
+    <div class="dash-bar">
+      <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
+      <div class="dash-url">🔒 app.nexus.sa/dashboard</div>
+    </div>
+    <div class="dash-body">
+      <div class="dash-sidebar">
+        <div class="dash-nav-item active"><span class="nav-dot"></span>لوحة التحكم</div>
+        <div class="dash-nav-item"><span class="nav-dot"></span>المشاريع</div>
+        <div class="dash-nav-item"><span class="nav-dot"></span>المهام</div>
+        <div class="dash-nav-item"><span class="nav-dot"></span>الفريق</div>
+        <div class="dash-nav-item"><span class="nav-dot"></span>التقارير</div>
+        <div class="dash-nav-item"><span class="nav-dot"></span>الإعدادات</div>
+      </div>
+      <div class="dash-main">
+        <div class="dash-row">
+          <div class="dash-stat">
+            <div class="dash-stat-label">المشاريع النشطة</div>
+            <div class="dash-stat-val">24</div>
+            <div class="dash-stat-change">↑ 12% هذا الشهر</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-label">المهام المكتملة</div>
+            <div class="dash-stat-val">847</div>
+            <div class="dash-stat-change">↑ 8% هذا الأسبوع</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-label">أعضاء الفريق</div>
+            <div class="dash-stat-val">56</div>
+            <div class="dash-stat-change">↑ 3 جدد اليوم</div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-label">الأداء الأسبوعي</div>
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:40%"></div>
+              <div class="chart-bar" style="height:65%"></div>
+              <div class="chart-bar" style="height:50%"></div>
+              <div class="chart-bar" style="height:80%"></div>
+              <div class="chart-bar" style="height:60%"></div>
+              <div class="chart-bar" style="height:90%"></div>
+              <div class="chart-bar" style="height:75%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-tasks">
+          <div class="task-item">
+            <div class="task-check done"></div>
+            <span>مراجعة تصميم الواجهة الجديدة</span>
+            <span class="task-badge badge-blue">تصميم</span>
+          </div>
+          <div class="task-item">
+            <div class="task-check"></div>
+            <span>اجتماع مع فريق التطوير — الساعة 3 م</span>
+            <span class="task-badge badge-purple">اجتماع</span>
+          </div>
+          <div class="task-item">
+            <div class="task-check done"></div>
+            <span>تسليم تقرير التحليل الربعي</span>
+            <span class="task-badge badge-green">مكتمل</span>
+          </div>
+          <div class="task-item">
+            <div class="task-check"></div>
+            <span>إعداد خريطة المشروع للعميل الجديد</span>
+            <span class="task-badge badge-blue">تخطيط</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <p class="logos-label">يثق بها رواد الأعمال في 40+ دولة</p>
+  <div class="logos-row">
+    <span class="logo-item">ARAMCO</span>
+    <span class="logo-item">STC PAY</span>
+    <span class="logo-item">NOON</span>
+    <span class="logo-item">JAZEERA</span>
+    <span class="logo-item">TAMIMI</span>
+    <span class="logo-item">SALAM</span>
+    <span class="logo-item">ALMAJDOUIE</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-header center">
+    <div class="section-eyebrow">المميزات</div>
+    <h2 class="section-title reveal">كل أداة تحتاجها<br>في <span class="grad">منصة واحدة</span></h2>
+    <p class="section-desc reveal">من إدارة المهام وتتبع الوقت وحتى التقارير التلقائية — نيكسوس يغطي كل جانب من جوانب عملك.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card featured">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title">الذكاء الاصطناعي للمشاريع</div>
+      <p class="feature-desc">يقترح نظامنا توزيع المهام، يتنبأ بالتأخيرات قبل حدوثها، ويولد تقارير موجزة في ثوانٍ. وفّر أكثر من 10 ساعات أسبوعياً تلقائياً.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">تحليلات متقدمة</div>
+      <p class="feature-desc">لوحات بيانات تفاعلية تعطيك رؤية 360° لأداء فريقك ومشاريعك في الوقت الفعلي.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <div class="feature-title">إدارة الفرق</div>
+      <p class="feature-desc">صلاحيات مخصصة، تتبع الحضور، تقييم الأداء — كل ما تحتاجه لقيادة فريقك.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <div class="feature-title">200+ تكامل</div>
+      <p class="feature-desc">يتصل بأدواتك المفضلة: Slack, Zoom, Google Drive, Jira, والمزيد دون أي كود.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">أمان من الدرجة الأولى</div>
+      <p class="feature-desc">تشفير AES-256، مصادقة ثنائية، سجلات نشاط كاملة — بياناتك في أمان تام.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">تطبيق موبايل متكامل</div>
+      <p class="feature-desc">تابع مشاريعك من أي مكان. تطبيقات iOS وAndroid بنفس قوة النسخة الكاملة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid" style="max-width:1100px;margin:0 auto">
+    <div>
+      <div class="stat-num reveal">14K+</div>
+      <div class="stat-label">شركة مستخدمة</div>
+    </div>
+    <div>
+      <div class="stat-num reveal">2.4M</div>
+      <div class="stat-label">مهمة مكتملة شهرياً</div>
+    </div>
+    <div>
+      <div class="stat-num reveal">99.9%</div>
+      <div class="stat-label">نسبة التشغيل</div>
+    </div>
+    <div>
+      <div class="stat-num reveal">4.9★</div>
+      <div class="stat-label">تقييم المستخدمين</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header center">
+    <div class="section-eyebrow">كيف يعمل</div>
+    <h2 class="section-title reveal">ابدأ في <span class="grad">دقيقتين</span> فقط</h2>
+    <p class="section-desc reveal">لا تثبيت، لا تعقيد — أنشئ حسابك وابدأ بإدارة مشاريعك فوراً.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">١</div>
+      <div class="step-title">أنشئ حسابك</div>
+      <p class="step-desc">سجّل مجاناً ببريدك الإلكتروني أو حساب Google — لا بطاقة ائتمان مطلوبة.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">٢</div>
+      <div class="step-title">أضف فريقك</div>
+      <p class="step-desc">ادعُ أعضاء فريقك بالبريد الإلكتروني وحدد صلاحيات كل عضو في ثوانٍ.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">٣</div>
+      <div class="step-title">أنشئ مشروعك</div>
+      <p class="step-desc">استخدم قوالب جاهزة أو ابدأ من الصفر — خطط، وزّع، وتابع المهام بسهولة.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">٤</div>
+      <div class="step-title">تتبع التقدم</div>
+      <p class="step-desc">احصل على تقارير ذكية تلقائية وتنبيهات فورية لمتابعة كل شاردة وواردة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-header center">
+    <div class="section-eyebrow">الأسعار</div>
+    <h2 class="section-title reveal">خطط تناسب<br><span class="grad">كل حجم أعمال</span></h2>
+    <p class="section-desc reveal">ابدأ مجاناً وطوّر خطتك مع نمو فريقك — بدون رسوم خفية.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="plan">
+      <div class="plan-name">مجاني</div>
+      <div class="plan-price">0<span> ر.س</span></div>
+      <div class="plan-period">للأبد</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>حتى 3 مشاريع</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>5 أعضاء فريق</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>2 جيجا تخزين</li>
+        <li class="plan-feature dim"><span class="plan-feature-icon">✗</span>الذكاء الاصطناعي</li>
+        <li class="plan-feature dim"><span class="plan-feature-icon">✗</span>التقارير المتقدمة</li>
+      </ul>
+      <button class="plan-cta">ابدأ مجاناً</button>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">الأكثر شعبية</div>
+      <div class="plan-name">احترافي</div>
+      <div class="plan-price">149<span> ر.س</span></div>
+      <div class="plan-period">لكل مستخدم / شهرياً</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>مشاريع غير محدودة</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>25 عضو فريق</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>50 جيجا تخزين</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>ذكاء اصطناعي كامل</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>تقارير متقدمة</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>دعم أولوية 24/7</li>
+      </ul>
+      <button class="plan-cta">ابدأ تجربة 14 يوم</button>
+    </div>
+    <div class="plan">
+      <div class="plan-name">مؤسسي</div>
+      <div class="plan-price">399<span> ر.س</span></div>
+      <div class="plan-period">لكل مستخدم / شهرياً</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>كل مزايا الاحترافي</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>أعضاء غير محدودون</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>تخزين غير محدود</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>تكامل API مخصص</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>مدير حساب مخصص</li>
+        <li class="plan-feature"><span class="plan-feature-icon">✓</span>SLA 99.99% ضمان</li>
+      </ul>
+      <button class="plan-cta">تواصل مع المبيعات</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header center">
+    <div class="section-eyebrow">آراء العملاء</div>
+    <h2 class="section-title reveal">ماذا يقول<br><span class="grad">عملاؤنا؟</span></h2>
+    <p class="section-desc reveal">أكثر من 14,000 شركة تثق بنيكسوس يومياً — هذا ما يقولونه.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="testimonial-text">«نيكسوس غيّر طريقة عملنا كلياً. وفّرنا أكثر من 15 ساعة أسبوعياً لكل مدير مشروع. العائد على الاستثمار كان واضحاً من الأسبوع الأول.»</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">أح</div>
+        <div>
+          <div class="author-name">أحمد الغامدي</div>
+          <div class="author-role">المدير التنفيذي، تك فيجن السعودية</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="testimonial-text">«ميزة الذكاء الاصطناعي مذهلة — تتوقع التأخيرات قبل حدوثها وتقترح الحلول. لم أر شيئاً مثله في أي منصة أخرى جربناها.»</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#7c4dff,#00d4ff)">سم</div>
+        <div>
+          <div class="author-name">سارة المطيري</div>
+          <div class="author-role">مديرة العمليات، ديجيتال برو</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="testimonial-text">«الدعم الفني ممتاز — يردون خلال دقائق. التطبيق سهل جداً حتى أن فريقنا بأكمله تعلمه في يوم واحد. أنصح به بشدة.»</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#00e5a0,#3d6fff)">فع</div>
+        <div>
+          <div class="author-name">فارس العتيبي</div>
+          <div class="author-role">مؤسس، نكست ستارت</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-header center">
+    <div class="section-eyebrow">الأسئلة الشائعة</div>
+    <h2 class="section-title reveal">أسئلة<br><span class="grad">وأجوبة</span></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q">هل هناك تجربة مجانية؟</div>
+      <p class="faq-a">نعم، الخطة المجانية متاحة للأبد بدون بطاقة ائتمان. كما نقدم تجربة 14 يوم مجانية لجميع الخطط المدفوعة مع إمكانية الإلغاء في أي وقت.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">هل بياناتي آمنة مع نيكسوس؟</div>
+      <p class="faq-a">بياناتك محمية بتشفير AES-256 ومخزنة في خوادم سحابية بشهادة ISO 27001. نحن لا نشارك بياناتك مع أي طرف ثالث أبداً.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">هل يمكنني الاستيراد من أدوات أخرى؟</div>
+      <p class="faq-a">نعم، يدعم نيكسوس الاستيراد من Trello، Asana، Monday.com، Jira، وأكثر من 50 أداة أخرى. يمكنك الانتقال بلا ألم في دقائق.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">ما مدى دعمكم للغة العربية؟</div>
+      <p class="faq-a">نيكسوس مبني من الأساس للغة العربية — واجهة RTL كاملة، دعم للتقويم الهجري، وخدمة عملاء بالعربية على مدار الساعة.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">ماذا يحدث إذا تجاوزت حد الخطة؟</div>
+      <p class="faq-a">سنخطرك قبل الوصول للحد ونقترح الترقية المناسبة. لن نوقف حسابك فجأة أو نحذف أي بيانات دون إشعار كافٍ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="section-eyebrow" style="justify-content:center;display:inline-flex">ابدأ الآن</div>
+  <h2 class="reveal">جاهز لتحويل طريقة<br>إدارة أعمالك؟</h2>
+  <p class="reveal">انضم إلى أكثر من 14,000 شركة تستخدم نيكسوس يومياً. ابدأ مجاناً — لا بطاقة ائتمان مطلوبة.</p>
+  <div class="cta-btns">
+    <button class="btn-xl">ابدأ تجربتك المجانية الآن</button>
+    <button class="btn-xl-ghost">تحدث مع فريق المبيعات</button>
+  </div>
+  <p class="cta-note">تجربة مجانية 14 يوم · لا التزام · إلغاء في أي وقت</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:.8rem">
+        <div class="logo-icon">N</div>
+        <span class="logo-text">نيكسوس</span>
+      </div>
+      <p>منصة SaaS متكاملة لإدارة المشاريع والفرق بالذكاء الاصطناعي — مصممة للأعمال العربية.</p>
+      <div class="footer-socials" style="margin-top:1rem">
+        <a href="#">in</a>
+        <a href="#">𝕏</a>
+        <a href="#">ig</a>
+        <a href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>المنتج</h4>
+      <ul>
+        <li><a href="#">المميزات</a></li>
+        <li><a href="#">الأسعار</a></li>
+        <li><a href="#">التكاملات</a></li>
+        <li><a href="#">مخطط التطوير</a></li>
+        <li><a href="#">الجديد</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>الشركة</h4>
+      <ul>
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">المدونة</a></li>
+        <li><a href="#">الشركاء</a></li>
+        <li><a href="#">وظائف</a></li>
+        <li><a href="#">تواصل</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>الدعم</h4>
+      <ul>
+        <li><a href="#">مركز المساعدة</a></li>
+        <li><a href="#">توثيق API</a></li>
+        <li><a href="#">حالة الخدمة</a></li>
+        <li><a href="#">الخصوصية</a></li>
+        <li><a href="#">الشروط</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 نيكسوس. جميع الحقوق محفوظة.</span>
+    <div class="footer-badge">🔒 SSL آمن</div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// Nav burger
+document.querySelector('.nav-burger')?.addEventListener('click', () => {
+  const links = document.querySelector('.nav-links');
+  if(links) {
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '70px';
+    links.style.right = '0';
+    links.style.left = '0';
+    links.style.background = 'rgba(5,9,24,.98)';
+    links.style.padding = '1.5rem 5%';
+    links.style.borderBottom = '1px solid rgba(255,255,255,.07)';
+  }
+});
+</script>
+</body>
+</html>
