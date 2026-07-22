@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فيلو — منصة إدارة الأعمال الذكية</title>
+<meta name="description" content="فيلو — منصة SaaS ذكية لإدارة الفرق، المشاريع والعملاء. وفر ٤٠٪ من وقتك وضاعف إنتاجيتك من أول أسبوع.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#030510;
+  --bg2:#050818;
+  --bg3:#070a1e;
+  --indigo:#4f46e5;
+  --indigo2:#6366f1;
+  --indigo3:#818cf8;
+  --violet:#7c3aed;
+  --cyan:#06b6d4;
+  --cyan2:#22d3ee;
+  --indigo-glow:rgba(79,70,229,.25);
+  --indigo-dim:rgba(79,70,229,.08);
+  --indigo-border:rgba(79,70,229,.3);
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(255,255,255,.1);
+  --text:#e2e8f8;
+  --text-dim:rgba(226,232,248,.5);
+  --text-muted:rgba(226,232,248,.28);
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;background:rgba(3,5,16,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--indigo),var(--violet));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;box-shadow:0 4px 16px var(--indigo-glow)}
+.logo-name{font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:.04em}
+.logo-name em{font-style:normal;color:var(--indigo3)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.82rem;font-weight:600;transition:color .3s}
+.nav-links a:hover{color:#fff}
+.nav-actions{display:flex;gap:.8rem;align-items:center}
+.btn-ghost{color:var(--text-dim);padding:.55rem 1.2rem;font-family:'Cairo',sans-serif;font-weight:700;font-size:.82rem;text-decoration:none;transition:color .3s}
+.btn-ghost:hover{color:#fff}
+.btn-primary{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;padding:.6rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.82rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px var(--indigo-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,70,229,.45)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 6% 4rem;position:relative;overflow:hidden}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(79,70,229,.12),transparent 70%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(6,182,212,.06),transparent 60%),radial-gradient(ellipse 40% 30% at 20% 70%,rgba(124,58,237,.06),transparent 60%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent)}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--indigo-border);background:var(--indigo-dim);color:var(--indigo3);padding:.4rem 1.2rem;border-radius:30px;font-size:.75rem;font-weight:700;margin-bottom:2rem;position:relative;z-index:2}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan2);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.06;margin-bottom:1.5rem;color:#fff;position:relative;z-index:2}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--indigo2),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.1rem;color:var(--text-dim);max-width:580px;line-height:1.8;margin-bottom:3rem;position:relative;z-index:2}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;position:relative;z-index:2}
+.btn-hero-p{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;padding:.95rem 2.5rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;transition:all .3s;box-shadow:0 8px 28px var(--indigo-glow)}
+.btn-hero-p:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(79,70,229,.5)}
+.btn-hero-g{border:1px solid var(--border2);color:var(--text);padding:.95rem 2.5rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;transition:all .3s;display:flex;align-items:center;gap:.5rem}
+.btn-hero-g:hover{border-color:var(--indigo-border);background:var(--indigo-dim)}
+.hero-social-proof{display:flex;align-items:center;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+.proof-avatars{display:flex}
+.proof-av{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:.8rem;margin-left:-8px}
+.proof-av:first-child{margin-left:0}
+.proof-text{font-size:.8rem;color:var(--text-dim)}
+.proof-text strong{color:#fff}
+.proof-stars{color:#f59e0b;font-size:.8rem}
+
+/* APP PREVIEW */
+.app-preview{padding:3rem 6%;position:relative;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.app-preview-inner{max-width:1100px;margin:0 auto}
+.app-window{background:var(--bg3);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 80px rgba(79,70,229,.08)}
+.app-titlebar{display:flex;align-items:center;gap:.6rem;padding:.8rem 1.2rem;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)}
+.app-dot{width:10px;height:10px;border-radius:50%}
+.app-url{flex:1;background:rgba(255,255,255,.04);border-radius:4px;padding:.3rem 1rem;font-size:.72rem;color:var(--text-muted);font-family:monospace}
+.app-body{display:grid;grid-template-columns:200px 1fr;min-height:360px}
+.app-sidebar{background:rgba(255,255,255,.02);border-left:1px solid var(--border);padding:1rem .8rem;display:flex;flex-direction:column;gap:.3rem}
+.sidebar-logo{font-size:.9rem;font-weight:900;color:#fff;padding:.5rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.sidebar-logo-mark{width:22px;height:22px;background:linear-gradient(135deg,var(--indigo),var(--violet));border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.6rem}
+.sidebar-item{display:flex;align-items:center;gap:.5rem;padding:.45rem .7rem;border-radius:6px;font-size:.75rem;color:var(--text-muted);cursor:pointer;transition:all .2s}
+.sidebar-item.active{background:var(--indigo-dim);border:1px solid var(--indigo-border);color:var(--indigo3)}
+.sidebar-item:hover:not(.active){background:rgba(255,255,255,.03);color:var(--text)}
+.sidebar-item-icon{font-size:.85rem;min-width:16px}
+.app-main{padding:1.5rem}
+.app-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.app-page-title{font-size:.95rem;font-weight:800;color:#fff}
+.app-actions{display:flex;gap:.5rem}
+.app-btn{padding:.35rem .9rem;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;border:none;font-family:'Cairo',sans-serif}
+.app-btn-p{background:var(--indigo);color:#fff}
+.app-btn-s{background:rgba(255,255,255,.06);color:var(--text-dim);border:1px solid var(--border)}
+.app-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1.5rem}
+.app-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:.9rem}
+.app-card-label{font-size:.62rem;color:var(--text-muted);margin-bottom:.3rem;font-weight:600}
+.app-card-value{font-size:1.3rem;font-weight:900;color:#fff}
+.app-card-change{font-size:.62rem;font-weight:600;margin-top:.15rem}
+.app-card-change.up{color:#10b981}
+.app-card-change.down{color:#f43f5e}
+.app-chart{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px;padding:1rem;height:120px;display:flex;align-items:flex-end;gap:6px;overflow:hidden}
+.chart-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(to top,var(--indigo),var(--indigo3));opacity:.7;transition:opacity .3s}
+.chart-bar:hover{opacity:1}
+
+/* FEATURES */
+.sec{padding:6rem 6%}
+.sec-hd{text-align:center;margin-bottom:3.5rem}
+.sec-chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--indigo-border);background:var(--indigo-dim);color:var(--indigo3);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;margin-bottom:.8rem}
+.sec-title{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:.7rem}
+.sec-title em{font-style:normal;background:linear-gradient(90deg,var(--indigo2),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sec-sub{color:var(--text-dim);font-size:.9rem;max-width:500px;margin:0 auto;line-height:1.75}
+
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feat-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .4s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;right:0;left:0;height:1px;background:linear-gradient(90deg,transparent,var(--indigo-border),transparent);opacity:0;transition:opacity .4s}
+.feat-card:hover{border-color:var(--indigo-border);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{width:48px;height:48px;border-radius:12px;background:var(--indigo-dim);border:1px solid var(--indigo-border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.2rem}
+.feat-title{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.feat-desc{font-size:.82rem;color:var(--text-dim);line-height:1.7}
+
+/* HOW IT WORKS */
+.how-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.how-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto}
+.how-steps{display:flex;flex-direction:column;gap:1.5rem}
+.how-step{display:flex;gap:1.2rem;align-items:flex-start;padding:1.2rem;border:1px solid var(--border);border-radius:14px;transition:all .3s;cursor:pointer}
+.how-step:hover,.how-step.active{border-color:var(--indigo-border);background:var(--indigo-dim)}
+.how-num{min-width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--indigo),var(--violet));display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;color:#fff;box-shadow:0 4px 14px var(--indigo-glow)}
+.how-title{font-size:.9rem;font-weight:800;color:#fff;margin-bottom:.3rem}
+.how-desc{font-size:.8rem;color:var(--text-dim);line-height:1.6}
+.how-visual{background:var(--bg3);border:1px solid var(--border);border-radius:20px;aspect-ratio:1/1.1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
+.how-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(79,70,229,.06),transparent 70%)}
+.how-emoji{font-size:6rem;filter:drop-shadow(0 0 30px var(--indigo-glow))}
+.how-visual-label{font-size:.82rem;font-weight:800;color:var(--indigo3);text-align:center}
+
+/* INTEGRATIONS */
+.integrations-sec{border-top:1px solid var(--border)}
+.integrations-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem;max-width:900px;margin:0 auto}
+.int-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;transition:all .3s;cursor:pointer}
+.int-card:hover{border-color:var(--indigo-border);transform:translateY(-3px);background:var(--indigo-dim)}
+.int-icon{font-size:1.8rem;margin-bottom:.5rem;display:block}
+.int-name{font-size:.72rem;color:var(--text-muted);font-weight:700}
+
+/* TESTIMONIALS */
+.tests-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.test-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all .35s}
+.test-card:hover{border-color:var(--indigo-border);transform:translateY(-3px)}
+.test-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.test-logo{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:var(--indigo-dim);border:1px solid var(--indigo-border)}
+.test-company{font-size:.78rem;font-weight:800;color:#fff}
+.test-role{font-size:.7rem;color:var(--text-muted)}
+.test-quote{font-size:.85rem;color:var(--text-dim);line-height:1.8;font-style:italic;margin-bottom:1rem}
+.test-result{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:#34d399;padding:.25rem .8rem;border-radius:20px;font-size:.72rem;font-weight:700}
+
+/* PRICING */
+.pricing-sec{background:var(--bg2);border-top:1px solid var(--border)}
+.pricing-toggle{display:flex;align-items:center;gap:.8rem;justify-content:center;margin-bottom:2.5rem}
+.toggle-label{font-size:.85rem;font-weight:700;color:var(--text-dim)}
+.toggle-label.active{color:#fff}
+.toggle-switch{width:44px;height:24px;background:var(--indigo);border-radius:12px;position:relative;cursor:pointer}
+.toggle-switch::after{content:'';position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .3s}
+.toggle-badge{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:#34d399;padding:.15rem .7rem;border-radius:20px;font-size:.68rem;font-weight:700}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.plan-card{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;transition:all .4s}
+.plan-card.featured{border-color:var(--indigo-border);background:rgba(79,70,229,.04)}
+.plan-card.featured::before{content:'الأشهر';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;padding:.25rem 1.2rem;border-radius:0 0 10px 10px;font-size:.65rem;font-weight:900;letter-spacing:.08em;white-space:nowrap}
+.plan-name{font-size:.78rem;color:var(--indigo3);font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5rem}
+.plan-price{font-size:2.5rem;font-weight:900;color:#fff;margin-bottom:.2rem}
+.plan-price small{font-size:.85rem;color:var(--text-muted);font-weight:400}
+.plan-desc{font-size:.8rem;color:var(--text-dim);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);line-height:1.6}
+.plan-features{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+.plan-feat{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--text-dim)}
+.plan-feat-check{color:#10b981;font-size:.75rem;min-width:14px}
+.plan-feat-x{color:var(--text-muted);font-size:.75rem;min-width:14px}
+.btn-plan{display:block;text-align:center;padding:.85rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.88rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.btn-plan-p{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;box-shadow:0 4px 18px var(--indigo-glow)}
+.btn-plan-p:hover{box-shadow:0 10px 28px rgba(79,70,229,.45)}
+.btn-plan-s{border:1px solid var(--indigo-border);color:var(--indigo3);background:transparent}
+.btn-plan-s:hover{background:var(--indigo-dim)}
+
+/* FAQ */
+.faq-inner{max-width:700px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden;transition:border .3s}
+.faq-item.open{border-color:var(--indigo-border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.4rem;cursor:pointer;transition:background .3s}
+.faq-item.open .faq-q{background:var(--indigo-dim)}
+.faq-q-text{font-size:.88rem;font-weight:800;color:#fff}
+.faq-arrow{color:var(--indigo3);font-size:.8rem;transition:transform .3s;min-width:16px}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{font-size:.82rem;color:var(--text-dim);line-height:1.75;padding:0 1.4rem;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.4rem 1.2rem}
+
+/* NUMBERS */
+.numbers-strip{background:linear-gradient(135deg,var(--indigo),var(--violet));padding:3rem 6%}
+.numbers-inner{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;max-width:900px;margin:0 auto}
+.num-item{text-align:center;flex:1;min-width:130px}
+.num-val{font-size:2.5rem;font-weight:900;color:#fff;display:block}
+.num-label{font-size:.78rem;color:rgba(255,255,255,.7);font-weight:600}
+
+/* CTA */
+.cta-sec{padding:7rem 6%;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(79,70,229,.1),transparent)}
+.cta-sec::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 60% 50% at 50% 50%,black,transparent)}
+.cta-inner{position:relative;z-index:2}
+.cta-title{font-size:2.8rem;font-weight:900;color:#fff;margin-bottom:.8rem;line-height:1.1}
+.cta-title em{font-style:normal;background:linear-gradient(90deg,var(--indigo2),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sub{color:var(--text-dim);max-width:460px;margin:0 auto 2.8rem;line-height:1.75}
+.cta-note{font-size:.78rem;color:var(--text-muted);margin-top:1.2rem}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem 6% 2rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.f-logo{font-size:1.1rem;font-weight:900;color:#fff;text-decoration:none;display:flex;align-items:center;gap:.5rem;margin-bottom:.8rem}
+.f-logo-mark{width:26px;height:26px;background:linear-gradient(135deg,var(--indigo),var(--violet));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem}
+.f-desc{font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.2rem}
+.f-social{display:flex;gap:.6rem}
+.f-soc{width:30px;height:30px;border-radius:7px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;cursor:pointer;transition:all .3s;text-decoration:none;color:inherit}
+.f-soc:hover{border-color:var(--indigo-border);background:var(--indigo-dim)}
+.f-col-title{font-size:.7rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.f-links a{font-size:.8rem;color:var(--text-muted);text-decoration:none;transition:color .3s}
+.f-links a:hover{color:var(--indigo3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
+.f-cr{font-size:.75rem;color:var(--text-muted)}
+.f-langs{display:flex;gap:1rem}
+.f-langs a{font-size:.75rem;color:var(--text-muted);text-decoration:none;transition:color .3s}
+.f-langs a:hover{color:#fff}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+@media(max-width:1024px){
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .how-inner{grid-template-columns:1fr;gap:3rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .app-body{grid-template-columns:1fr}
+  .app-sidebar{display:none}
+  .app-cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:1rem 5%}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .sec{padding:4rem 5%}
+  .hero{padding:6rem 5% 4rem}
+  .hero h1{font-size:clamp(2rem,7vw,3rem)}
+  .features-grid{grid-template-columns:1fr}
+  .numbers-inner{gap:1.5rem}
+}
+@media(max-width:480px){
+  .footer-top{grid-template-columns:1fr}
+  .app-cards{grid-template-columns:1fr 1fr}
+  .plans-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">⚡</div>
+    <span class="logo-name">في<em>لو</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">المميزات</a></li>
+    <li><a href="#how">كيف يعمل</a></li>
+    <li><a href="#integrations">التكاملات</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
+    <li><a href="#faq">الأسئلة الشائعة</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#" class="btn-ghost">تسجيل الدخول</a>
+    <a href="#pricing" class="btn-primary">ابدأ مجاناً →</a>
+  </div>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-badge"><span class="hero-badge-dot"></span> جديد — تكامل مع الذكاء الاصطناعي</div>
+  <h1>أدِر فريقك وأعمالك<br>بذكاء <em>لا مثيل له</em></h1>
+  <p class="hero-sub">منصة SaaS شاملة تجمع إدارة المشاريع، التواصل مع الفريق، تتبع العملاء والتحليلات في لوحة واحدة ذكية — تعمل بالعربية ومصممة للسوق الخليجي.</p>
+  <div class="hero-cta">
+    <a href="#pricing" class="btn-hero-p">ابدأ تجربة مجانية ١٤ يوماً</a>
+    <a href="#" class="btn-hero-g">▶ شاهد العرض التوضيحي</a>
+  </div>
+  <div class="hero-social-proof">
+    <div class="proof-avatars">
+      <div class="proof-av" style="background:#4f46e5">👤</div>
+      <div class="proof-av" style="background:#7c3aed">👤</div>
+      <div class="proof-av" style="background:#06b6d4">👤</div>
+      <div class="proof-av" style="background:#10b981">👤</div>
+      <div class="proof-av" style="background:#f59e0b">👤</div>
+    </div>
+    <div class="proof-text"><span class="proof-stars">⭐⭐⭐⭐⭐</span> <strong>+٢,٥٠٠ شركة</strong> تثق بنا يومياً</div>
+  </div>
+</section>
+
+<div class="app-preview">
+  <div class="app-preview-inner">
+    <div class="app-window">
+      <div class="app-titlebar">
+        <div class="app-dot" style="background:#ff5f57"></div>
+        <div class="app-dot" style="background:#febc2e"></div>
+        <div class="app-dot" style="background:#28c840"></div>
+        <div class="app-url">app.filo.sa/dashboard</div>
+      </div>
+      <div class="app-body">
+        <div class="app-sidebar">
+          <div class="sidebar-logo"><div class="sidebar-logo-mark">⚡</div> فيلو</div>
+          <div class="sidebar-item active"><span class="sidebar-item-icon">📊</span> لوحة التحكم</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📋</span> المشاريع</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">👥</span> الفريق</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">💬</span> الرسائل</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">👤</span> العملاء</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📈</span> التقارير</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">⚙️</span> الإعدادات</div>
+        </div>
+        <div class="app-main">
+          <div class="app-topbar">
+            <div class="app-page-title">لوحة التحكم — يوليو ٢٠٢٥</div>
+            <div class="app-actions">
+              <button class="app-btn app-btn-s">تصدير</button>
+              <button class="app-btn app-btn-p">+ مشروع جديد</button>
+            </div>
+          </div>
+          <div class="app-cards">
+            <div class="app-card">
+              <div class="app-card-label">الإيرادات الشهرية</div>
+              <div class="app-card-value">٢٤٥K</div>
+              <div class="app-card-change up">↑ ١٨٪ عن الشهر الماضي</div>
+            </div>
+            <div class="app-card">
+              <div class="app-card-label">المشاريع النشطة</div>
+              <div class="app-card-value">٤٢</div>
+              <div class="app-card-change up">↑ ٣ مشاريع جديدة</div>
+            </div>
+            <div class="app-card">
+              <div class="app-card-label">العملاء النشطون</div>
+              <div class="app-card-value">١٢٨</div>
+              <div class="app-card-change up">↑ ٦٪ نمو</div>
+            </div>
+            <div class="app-card">
+              <div class="app-card-label">المهام المنجزة</div>
+              <div class="app-card-value">٨٧٪</div>
+              <div class="app-card-change down">↓ ٢٪ عن الهدف</div>
+            </div>
+          </div>
+          <div class="app-chart">
+            <div class="chart-bar" style="height:45%"></div>
+            <div class="chart-bar" style="height:60%"></div>
+            <div class="chart-bar" style="height:40%"></div>
+            <div class="chart-bar" style="height:75%"></div>
+            <div class="chart-bar" style="height:55%"></div>
+            <div class="chart-bar" style="height:85%"></div>
+            <div class="chart-bar" style="height:65%"></div>
+            <div class="chart-bar" style="height:90%"></div>
+            <div class="chart-bar" style="height:70%"></div>
+            <div class="chart-bar" style="height:95%"></div>
+            <div class="chart-bar" style="height:80%"></div>
+            <div class="chart-bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="features">
+  <div class="sec-hd reveal">
+    <span class="sec-chip">✦ المميزات</span>
+    <h2 class="sec-title">كل ما تحتاجه في <em>مكان واحد</em></h2>
+    <p class="sec-sub">لا حاجة لأدوات متفرقة — فيلو يجمع كل شيء ويجعله يعمل معاً بسلاسة</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <div class="feat-icon">📋</div>
+      <div class="feat-title">إدارة المشاريع والمهام</div>
+      <p class="feat-desc">Kanban، Gantt وقوائم مهام ذكية — تتبع تقدم كل مشروع بدقة متناهية مع إشعارات فورية للفريق.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <div class="feat-icon">👥</div>
+      <div class="feat-title">إدارة الفريق</div>
+      <p class="feat-desc">أدوار وصلاحيات، تتبع الوقت، تقييم الأداء وجدول الإجازات — كل ما يحتاجه مدير الفريق.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <div class="feat-icon">👤</div>
+      <div class="feat-title">إدارة العملاء (CRM)</div>
+      <p class="feat-desc">قاعدة بيانات كاملة للعملاء، تتبع المحادثات، الفرص والعقود في مكان واحد منظم.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">تقارير وتحليلات</div>
+      <p class="feat-desc">لوحات تحليلية تفاعلية — إيرادات، إنتاجية، تقدم المشاريع وأداء الفريق بالرسوم البيانية.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <div class="feat-icon">💬</div>
+      <div class="feat-title">تواصل الفريق</div>
+      <p class="feat-desc">رسائل فورية، محادثات جماعية، مشاركة الملفات ومكالمات فيديو مدمجة دون الحاجة لـ Zoom.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <div class="feat-icon">🤖</div>
+      <div class="feat-title">مساعد ذكاء اصطناعي</div>
+      <p class="feat-desc">مساعد AI يحلل بياناتك، يقترح تحسينات، يكتب التقارير ويتنبأ بالمشاكل قبل وقوعها.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">🔔</div>
+      <div class="feat-title">إشعارات ذكية</div>
+      <p class="feat-desc">إشعارات مخصصة لكل دور — فلا تضيع وقتك في متابعة ما لا يخصك مع الأولوية الذكية.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <div class="feat-icon">🔒</div>
+      <div class="feat-title">أمان على مستوى المؤسسات</div>
+      <p class="feat-desc">تشفير AES-256، تسجيل دخول SSO، سجل نشاط كامل وامتثال لمتطلبات SAMA وNCA.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <div class="feat-icon">📱</div>
+      <div class="feat-title">تطبيق جوال متكامل</div>
+      <p class="feat-desc">iOS وAndroid — نفس تجربة الويب على هاتفك، حتى بدون إنترنت مع المزامنة التلقائية.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec how-sec" id="how">
+  <div class="how-inner">
+    <div>
+      <div class="sec-hd" style="text-align:right;margin-bottom:2rem">
+        <span class="sec-chip">✦ كيف يعمل</span>
+        <h2 class="sec-title" style="text-align:right">ابدأ في <em>دقائق</em></h2>
+        <p class="sec-sub" style="text-align:right;margin:0">لا تدريب معقد — واجهة عربية بديهية تعلمها فريقك في أول ساعة</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step active reveal">
+          <div class="how-num">١</div>
+          <div>
+            <div class="how-title">أنشئ حسابك مجاناً</div>
+            <div class="how-desc">سجل بإيميلك العمل في ٣٠ ثانية — لا بطاقة ائتمان مطلوبة. ١٤ يوماً مجاناً بالكامل.</div>
+          </div>
+        </div>
+        <div class="how-step reveal reveal-delay-1">
+          <div class="how-num">٢</div>
+          <div>
+            <div class="how-title">أضف فريقك</div>
+            <div class="how-desc">ادعُ أعضاء فريقك بالإيميل وحدد صلاحيات كل شخص. مزامنة تلقائية فورية.</div>
+          </div>
+        </div>
+        <div class="how-step reveal reveal-delay-2">
+          <div class="how-num">٣</div>
+          <div>
+            <div class="how-title">ابدأ بمشاريعك</div>
+            <div class="how-desc">أنشئ مشروعك الأول، أضف المهام وعيّن المسؤولين — فيلو يتتبع كل شيء تلقائياً.</div>
+          </div>
+        </div>
+        <div class="how-step reveal reveal-delay-3">
+          <div class="how-num">٤</div>
+          <div>
+            <div class="how-title">اتخذ قرارات أذكى</div>
+            <div class="how-desc">لوحات تحليلية حية تعطيك رؤية كاملة لأداء فريقك وأعمالك في أي وقت.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-visual reveal reveal-delay-2">
+      <span class="how-emoji">⚡</span>
+      <div class="how-visual-label">إعداد في ٥ دقائق<br><span style="color:var(--text-muted);font-weight:400">دون الحاجة لخبرة تقنية</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec integrations-sec" id="integrations">
+  <div class="sec-hd reveal">
+    <span class="sec-chip">✦ التكاملات</span>
+    <h2 class="sec-title">يتصل مع أدواتك <em>الحالية</em></h2>
+    <p class="sec-sub">فيلو يتكامل مع ٥٠+ تطبيق تستخدمه يومياً — لا تغيير في عادات عملك</p>
+  </div>
+  <div class="integrations-grid">
+    <div class="int-card reveal"><span class="int-icon">📧</span><div class="int-name">Gmail</div></div>
+    <div class="int-card reveal reveal-delay-1"><span class="int-icon">📅</span><div class="int-name">Google Calendar</div></div>
+    <div class="int-card reveal reveal-delay-2"><span class="int-icon">💳</span><div class="int-name">Stripe</div></div>
+    <div class="int-card reveal"><span class="int-icon">📊</span><div class="int-name">Google Sheets</div></div>
+    <div class="int-card reveal reveal-delay-1"><span class="int-icon">🗂️</span><div class="int-name">Dropbox</div></div>
+    <div class="int-card reveal reveal-delay-2"><span class="int-icon">💬</span><div class="int-name">Slack</div></div>
+    <div class="int-card reveal"><span class="int-icon">🔗</span><div class="int-name">Zapier</div></div>
+    <div class="int-card reveal reveal-delay-1"><span class="int-icon">📦</span><div class="int-name">GitHub</div></div>
+    <div class="int-card reveal reveal-delay-2"><span class="int-icon">🎯</span><div class="int-name">HubSpot</div></div>
+    <div class="int-card reveal"><span class="int-icon">📺</span><div class="int-name">Zoom</div></div>
+    <div class="int-card reveal reveal-delay-1"><span class="int-icon">🏦</span><div class="int-name">بنك الراجحي</div></div>
+    <div class="int-card reveal reveal-delay-2"><span class="int-icon">+٤٠</span><div class="int-name">والمزيد...</div></div>
+  </div>
+</section>
+
+<div class="numbers-strip">
+  <div class="numbers-inner">
+    <div class="num-item"><span class="num-val">٢,٥٠٠+</span><span class="num-label">شركة نشطة</span></div>
+    <div class="num-item"><span class="num-val">١٨,٠٠٠+</span><span class="num-label">مستخدم يومي</span></div>
+    <div class="num-item"><span class="num-val">٤٠٪</span><span class="num-label">زيادة في الإنتاجية</span></div>
+    <div class="num-item"><span class="num-val">٩٩.٩٪</span><span class="num-label">ضمان الخدمة SLA</span></div>
+    <div class="num-item"><span class="num-val">٢٤/٧</span><span class="num-label">دعم فني عربي</span></div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="sec-hd reveal">
+    <span class="sec-chip">✦ قصص نجاح</span>
+    <h2 class="sec-title">شركات <em>تحولت</em> بفيلو</h2>
+    <p class="sec-sub">نتائج حقيقية من شركات خليجية تستخدم فيلو يومياً</p>
+  </div>
+  <div class="tests-grid">
+    <div class="test-card reveal">
+      <div class="test-header">
+        <div class="test-logo">🏢</div>
+        <div>
+          <div class="test-company">ألفا للتقنية</div>
+          <div class="test-role">فهد الدوسري، المدير التنفيذي</div>
+        </div>
+      </div>
+      <p class="test-quote">"قبل فيلو كنا نستخدم ٧ أدوات مختلفة — اليوم كل شيء في مكان واحد وفريقي يعمل بكفاءة لم أتخيلها. الإيرادات زادت والتوتر قلّ."</p>
+      <div class="test-result">↑ ٤٥٪ زيادة في إنتاجية الفريق</div>
+    </div>
+    <div class="test-card reveal reveal-delay-1">
+      <div class="test-header">
+        <div class="test-logo">🚀</div>
+        <div>
+          <div class="test-company">نكست لايف للتسويق</div>
+          <div class="test-role">نورا العتيبي، المؤسسة</div>
+        </div>
+      </div>
+      <p class="test-quote">"الواجهة العربية وسهولة الاستخدام كانا قرار الشراء الأسهل في تاريخ شركتي. الدعم الفني يرد في دقائق ويفهم السياق المحلي تماماً."</p>
+      <div class="test-result">↓ ٣٠٪ تراجع في أخطاء التواصل</div>
+    </div>
+    <div class="test-card reveal reveal-delay-2">
+      <div class="test-header">
+        <div class="test-logo">🏗️</div>
+        <div>
+          <div class="test-company">شركة البنيان للإنشاء</div>
+          <div class="test-role">عبدالله القحطاني، مدير المشاريع</div>
+        </div>
+      </div>
+      <p class="test-quote">"لدينا ٢٠ مشروع بناء في وقت واحد — فيلو يعطيني رؤية كاملة على كل مشروع، كل ميزانية وكل فريق من شاشة واحدة. لا أستطيع العمل بدونه."</p>
+      <div class="test-result">↑ ٦٠٪ سرعة في التقارير</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec pricing-sec" id="pricing">
+  <div class="sec-hd reveal">
+    <span class="sec-chip">✦ الأسعار</span>
+    <h2 class="sec-title">سعر <em>عادل</em> لكل حجم</h2>
+    <p class="sec-sub">ابدأ مجاناً وتوسع مع نمو أعمالك — بدون رسوم مخفية</p>
+  </div>
+  <div class="pricing-toggle reveal">
+    <span class="toggle-label active">شهري</span>
+    <div class="toggle-switch" onclick="this.classList.toggle('yearly')"></div>
+    <span class="toggle-label">سنوي</span>
+    <span class="toggle-badge">وفر ٢٠٪</span>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card reveal">
+      <div class="plan-name">ستارتر</div>
+      <div class="plan-price">مجاناً <small>إلى الأبد</small></div>
+      <div class="plan-desc">للأفراد والفرق الصغيرة — ابدأ بدون أي تكلفة</div>
+      <div class="plan-features">
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> حتى ٥ مستخدمين</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> ٣ مشاريع نشطة</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> ١ جيجا تخزين</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> التقارير الأساسية</div>
+        <div class="plan-feat"><span class="plan-feat-x">✗</span> التكاملات المتقدمة</div>
+        <div class="plan-feat"><span class="plan-feat-x">✗</span> مساعد AI</div>
+        <div class="plan-feat"><span class="plan-feat-x">✗</span> دعم فني أولوية</div>
+      </div>
+      <a href="#" class="btn-plan btn-plan-s">ابدأ مجاناً</a>
+    </div>
+    <div class="plan-card featured reveal reveal-delay-1">
+      <div class="plan-name">برو</div>
+      <div class="plan-price">٢٩٩ <small>ريال/شهر</small></div>
+      <div class="plan-desc">للفرق المتنامية — كل ما تحتاجه للنمو بشكل منظم</div>
+      <div class="plan-features">
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> حتى ٢٥ مستخدماً</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> مشاريع غير محدودة</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> ١٠٠ جيجا تخزين</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> تقارير متقدمة</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> ٢٠+ تكامل</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> مساعد AI أساسي</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> دعم عبر الإيميل</div>
+      </div>
+      <a href="#" class="btn-plan btn-plan-p">ابدأ تجربة مجانية</a>
+    </div>
+    <div class="plan-card reveal reveal-delay-2">
+      <div class="plan-name">إنتربرايز</div>
+      <div class="plan-price">تواصل معنا</div>
+      <div class="plan-desc">للشركات الكبيرة — حلول مخصصة وامتثال كامل</div>
+      <div class="plan-features">
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> مستخدمون غير محدودون</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> تخزين غير محدود</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> SSO وAzure AD</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> مساعد AI متقدم</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> API كامل</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> دعم ٢٤/٧ مخصص</div>
+        <div class="plan-feat"><span class="plan-feat-check">✓</span> تدريب الفريق</div>
+      </div>
+      <a href="#" class="btn-plan btn-plan-s">تحدث مع المبيعات</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="sec-hd reveal">
+    <span class="sec-chip">✦ الأسئلة الشائعة</span>
+    <h2 class="sec-title">إجابات على <em>أسئلتك</em></h2>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item open reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">هل بياناتي آمنة على فيلو؟</span><span class="faq-arrow">▼</span></div>
+      <div class="faq-a">نعم — نستخدم تشفير AES-256 لجميع البيانات، مراكز بيانات معتمدة داخل المملكة ونمتثل لمتطلبات SAMA وNCA. لديك خيار الاحتفاظ ببياناتك داخل السعودية فقط.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">هل يمكنني إلغاء اشتراكي في أي وقت؟</span><span class="faq-arrow">▼</span></div>
+      <div class="faq-a">بالطبع — لا التزامات طويلة الأمد. يمكنك إلغاء اشتراكك في أي وقت وستستمر في الخدمة حتى نهاية فترة الفوترة الحالية. نحن نثق بجودة منتجنا.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">كيف يتم دعم العملاء؟</span><span class="faq-arrow">▼</span></div>
+      <div class="faq-a">فريق دعم عربي ٢٤/٧ عبر الدردشة الحية، الإيميل والهاتف. متوسط وقت الرد أقل من ٤ دقائق. الخطة الإنتربرايز تشمل مدير نجاح حساب مخصص.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">هل هناك حد لعدد المشاريع في الخطة المجانية؟</span><span class="faq-arrow">▼</span></div>
+      <div class="faq-a">نعم، الخطة المجانية تشمل ٣ مشاريع نشطة وحتى ٥ مستخدمين. يمكنك ترقية خطتك في أي وقت دون فقدان بياناتك.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">هل يمكن استيراد بياناتي من أدوات أخرى؟</span><span class="faq-arrow">▼</span></div>
+      <div class="faq-a">نعم — ندعم الاستيراد من Asana وTrello وJira وMonday وExcel وGoogle Sheets. فريقنا التقني يساعدك مجاناً في عملية الانتقال.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-inner">
+    <h2 class="cta-title">ابدأ <em>رحلة التحول</em> اليوم</h2>
+    <p class="cta-sub">١٤ يوماً مجاناً — لا بطاقة ائتمان — إلغاء فوري في أي وقت</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-hero-p">ابدأ مجاناً الآن</a>
+      <a href="#" class="btn-hero-g">📅 احجز عرضاً تجريبياً</a>
+    </div>
+    <div class="cta-note">✓ بدون بطاقة ائتمان &nbsp;&nbsp; ✓ إعداد في ٥ دقائق &nbsp;&nbsp; ✓ دعم عربي كامل</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="#" class="f-logo">
+        <div class="f-logo-mark">⚡</div>
+        فيلو
+      </a>
+      <p class="f-desc">منصة SaaS عربية شاملة لإدارة الأعمال والفرق — مصممة للسوق الخليجي بفهم عميق لاحتياجاته.</p>
+      <div class="f-social">
+        <a href="#" class="f-soc">🐦</a>
+        <a href="#" class="f-soc">📘</a>
+        <a href="#" class="f-soc">💼</a>
+        <a href="#" class="f-soc">📱</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">المنتج</div>
+      <ul class="f-links">
+        <li><a href="#">المميزات</a></li>
+        <li><a href="#">الأسعار</a></li>
+        <li><a href="#">التكاملات</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">خريطة الطريق</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">الشركة</div>
+      <ul class="f-links">
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">المدونة</a></li>
+        <li><a href="#">وظائف</a></li>
+        <li><a href="#">الشركاء</a></li>
+        <li><a href="#">تواصل</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">الدعم</div>
+      <ul class="f-links">
+        <li><a href="#">مركز المساعدة</a></li>
+        <li><a href="#">دليل المستخدم</a></li>
+        <li><a href="#">حالة النظام</a></li>
+        <li><a href="#">الأمان</a></li>
+        <li><a href="#">ابلاغ عن مشكلة</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-cr">© 2025 فيلو — جميع الحقوق محفوظة | مرخصة في المملكة العربية السعودية</span>
+    <div class="f-langs"><a href="#">العربية</a><a href="#">English</a></div>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(r => obs.observe(r));
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(3,5,16,.98)' : 'rgba(3,5,16,.92)';
+});
+function toggleFaq(item) {
+  document.querySelectorAll('.faq-item').forEach(i => { if(i !== item) i.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
