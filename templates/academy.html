@@ -292,6 +292,7 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
   <div class="hero-bg"></div>
   <div class="hero-glow-1"></div>
   <div class="hero-glow-2"></div>
+  <div class="particles" id="particles"></div>
   <div class="hero-inner">
     <div>
       <div class="hero-tag">🏆 المنصة العربية الأولى للتعليم التقني</div>
@@ -752,6 +753,8 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
 </footer>
 <script>
 (function(){var b=document.querySelector('.nav-burger');var l=document.querySelector('nav .nav-links')||document.querySelector('header .nav-links');if(b&&l){b.addEventListener('click',function(){l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('nav-open');b.classList.remove('is-open')})})}})();
+(function(){var c=document.getElementById('particles');if(!c)return;var colors=['rgba(124,58,255,0.5)','rgba(155,92,255,0.4)','rgba(184,128,255,0.35)','rgba(245,158,11,0.3)','rgba(16,185,129,0.25)'];for(var i=0;i<18;i++){var p=document.createElement('div');p.className='particle';var s=Math.random()*5+2;p.style.cssText='width:'+s+'px;height:'+s+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-delay:'+(Math.random()*6)+'s;animation-duration:'+(5+Math.random()*6)+'s';c.appendChild(p);}})();
+(function(){if(!window.IntersectionObserver)return;var els=document.querySelectorAll('.stat-item,.course-card,.inst-card,.path-step,.testi-card,.price-card');var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){el.style.opacity='0';el.style.transform='translateY(28px)';el.style.transition='opacity 0.55s ease, transform 0.55s ease';obs.observe(el);});})();
 </script>
 </body>
 </html>
