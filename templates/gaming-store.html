@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نيون أرينا — متجر الألعاب الإلكترونية</title>
+<meta name="description" content="متجر ألعاب إلكترونية احترافي — ألعاب، أجهزة، إكسسوارات وبطاقات شحن">
+<meta property="og:title" content="نيون أرينا — متجر الألعاب الإلكترونية">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06060e;
+  --bg2:#0a0a16;
+  --bg3:#0f0f1e;
+  --bg4:#141428;
+  --neon:#00ff88;
+  --neon2:#00e5ff;
+  --neon3:#ff006e;
+  --purple:#7b2fff;
+  --purple2:#a855f7;
+  --white:#ffffff;
+  --text:#c8d0e0;
+  --text-mid:#7a8899;
+  --text-dim:#445566;
+  --border:rgba(255,255,255,.06);
+  --border-neon:rgba(0,255,136,.2);
+  --card:#0c0c1a;
+  --card2:#101020;
+  --red:#ff3355;
+  --gold:#ffcc00;
+  --gradient-neon:linear-gradient(135deg,#00ff88,#00e5ff);
+  --gradient-purple:linear-gradient(135deg,#7b2fff,#a855f7);
+  --gradient-hot:linear-gradient(135deg,#ff006e,#ff3355);
+  --shadow-neon:0 0 20px rgba(0,255,136,.25),0 0 60px rgba(0,255,136,.08);
+  --shadow-purple:0 0 20px rgba(123,47,255,.3),0 0 60px rgba(123,47,255,.1);
+  --glow-neon:0 0 15px rgba(0,255,136,.6);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--neon);border-radius:2px;box-shadow:var(--glow-neon)}
+a{text-decoration:none;color:inherit}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+
+/* ══════════ CUSTOM CURSOR ══════════ */
+#cursor{
+  position:fixed;width:20px;height:20px;
+  border:2px solid var(--neon);border-radius:50%;
+  pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:width .25s,height .25s,border-color .25s;
+  box-shadow:var(--glow-neon);
+}
+#cursor-dot{
+  position:fixed;width:4px;height:4px;
+  background:var(--neon);border-radius:50%;
+  pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  box-shadow:var(--glow-neon);
+}
+body:has(a:hover) #cursor,body:has(button:hover) #cursor{width:36px;height:36px;border-color:var(--neon2)}
+
+/* ══════════ LOADER ══════════ */
+#loader{
+  position:fixed;inset:0;z-index:99998;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
+  transition:opacity .8s,visibility .8s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{
+  font-family:'Orbitron',monospace;font-size:2.8rem;font-weight:900;letter-spacing:.1em;
+  background:linear-gradient(90deg,var(--neon),var(--neon2),var(--purple2),var(--neon));
+  background-size:300% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:gradShift 2s linear infinite;
+}
+@keyframes gradShift{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+.loader-bar-wrap{width:200px;height:3px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.loader-bar{height:100%;width:0;background:var(--gradient-neon);border-radius:2px;
+  animation:loadBar 1.8s ease forwards;box-shadow:var(--glow-neon)}
+@keyframes loadBar{0%{width:0}100%{width:100%}}
+.loader-txt{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--text-mid);
+  animation:blink 1s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ══════════ ANNOUNCEMENT BAR ══════════ */
+.ann-bar{
+  background:linear-gradient(90deg,var(--bg2),rgba(0,255,136,.08),var(--bg2));
+  border-bottom:1px solid var(--border-neon);
+  padding:.45rem 0;overflow:hidden;position:relative;
+}
+.ann-inner{display:flex;gap:0;width:max-content;animation:annScroll 40s linear infinite}
+.ann-item{
+  display:flex;align-items:center;gap:.5rem;padding:0 3rem;
+  font-size:.74rem;font-weight:600;letter-spacing:.04em;white-space:nowrap;
+}
+.ann-neon{color:var(--neon)}
+.ann-sep{color:var(--text-dim);margin:0 .5rem}
+@keyframes annScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════ HEADER ══════════ */
+header{
+  position:sticky;top:0;z-index:900;
+  background:rgba(6,6,14,.95);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 4%;gap:1.2rem;
+}
+.logo{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+.logo-icon{
+  width:40px;height:40px;background:var(--gradient-neon);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  box-shadow:var(--shadow-neon);animation:logoGlow 3s ease-in-out infinite;
+}
+@keyframes logoGlow{0%,100%{box-shadow:var(--shadow-neon)}50%{box-shadow:0 0 30px rgba(0,255,136,.5),0 0 80px rgba(0,255,136,.15)}}
+.logo-text{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;
+  background:var(--gradient-neon);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-sub{font-size:.55rem;color:var(--text-dim);letter-spacing:.2em;text-transform:uppercase;margin-top:-.15rem}
+.search-bar{
+  flex:1;max-width:520px;display:flex;align-items:center;
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;transition:border-color .25s,box-shadow .25s;
+}
+.search-bar:focus-within{border-color:var(--neon);box-shadow:0 0 0 3px rgba(0,255,136,.1)}
+.search-input{
+  flex:1;border:none;background:transparent;outline:none;
+  padding:.65rem 1rem;font-family:'Cairo',sans-serif;font-size:.88rem;color:var(--white);
+}
+.search-input::placeholder{color:var(--text-dim)}
+.search-btn{
+  background:var(--gradient-neon);border:none;padding:.65rem 1.2rem;
+  font-size:.95rem;color:var(--bg);font-weight:700;transition:opacity .2s;
+}
+.search-btn:hover{opacity:.85}
+.header-actions{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.hdr-btn{
+  display:flex;flex-direction:column;align-items:center;gap:.15rem;
+  padding:.5rem .65rem;background:transparent;
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--text-mid);font-size:.58rem;letter-spacing:.05em;
+  transition:all .2s;position:relative;cursor:pointer;
+}
+.hdr-btn-icon{font-size:1.1rem;color:var(--text)}
+.hdr-btn:hover{border-color:var(--neon);color:var(--neon)}
+.hdr-btn:hover .hdr-btn-icon{color:var(--neon)}
+.badge{
+  position:absolute;top:-.3rem;left:-.3rem;
+  background:var(--neon);color:var(--bg);
+  font-size:.58rem;font-weight:900;
+  min-width:17px;height:17px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;padding:0 3px;
+}
+.btn-cart{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--gradient-neon);color:var(--bg);border:none;
+  padding:.6rem 1.3rem;border-radius:10px;font-size:.85rem;font-weight:700;
+  transition:opacity .2s,transform .15s;box-shadow:var(--shadow-neon);
+}
+.btn-cart:hover{opacity:.88;transform:translateY(-1px)}
+
+/* ══════════ NAV ══════════ */
+nav{border-top:1px solid var(--border);background:rgba(10,10,22,.88)}
+.nav-inner{
+  display:flex;align-items:center;gap:0;padding:0 4%;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-link{
+  display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;
+  font-size:.84rem;font-weight:600;color:var(--text-mid);white-space:nowrap;
+  border-bottom:2px solid transparent;transition:all .2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--neon);border-bottom-color:var(--neon);text-shadow:0 0 12px rgba(0,255,136,.5)}
+.nav-link.hot{color:var(--red)}
+.nav-link.hot:hover{color:var(--red);border-bottom-color:var(--red);text-shadow:0 0 12px rgba(255,0,110,.5)}
+.nav-icon{font-size:.95rem}
+
+/* ══════════ HERO ══════════ */
+.hero{
+  position:relative;min-height:620px;overflow:hidden;
+  background:var(--bg);
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 50%,rgba(0,255,136,.07) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 70% at 80% 30%,rgba(0,229,255,.05) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 60% 80%,rgba(123,47,255,.07) 0%,transparent 60%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,255,136,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,136,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+}
+.hero-left{
+  position:relative;z-index:2;
+  padding:5rem 4% 5rem 6%;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,255,136,.1);border:1px solid var(--border-neon);
+  color:var(--neon);font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  padding:.45rem 1.1rem;border-radius:30px;margin-bottom:1.8rem;
+  text-shadow:var(--glow-neon);width:fit-content;
+}
+.hero-badge-dot{width:7px;height:7px;background:var(--neon);border-radius:50%;
+  box-shadow:var(--glow-neon);animation:dot-pulse 1.5s ease-in-out infinite}
+@keyframes dot-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.7}}
+.hero h1{
+  font-family:'Orbitron',monospace;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:900;
+  line-height:1.1;margin-bottom:1.3rem;
+  background:linear-gradient(135deg,#fff 40%,var(--neon) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero h1 span{
+  background:var(--gradient-neon);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  display:block;filter:drop-shadow(0 0 20px rgba(0,255,136,.4));
+}
+.hero-sub{font-size:.98rem;color:var(--text-mid);line-height:1.7;max-width:440px;margin-bottom:2.5rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gradient-neon);color:var(--bg);border:none;
+  padding:.9rem 2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.95rem;
+  transition:all .3s;box-shadow:var(--shadow-neon);letter-spacing:.02em;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(0,255,136,.4)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:1px solid var(--border-neon);color:var(--neon);
+  padding:.9rem 2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;
+  transition:all .3s;background:rgba(0,255,136,.05);
+}
+.btn-secondary:hover{background:rgba(0,255,136,.12);border-color:var(--neon)}
+.hero-stats{
+  display:flex;gap:2rem;margin-top:2.5rem;padding-top:2.5rem;
+  border-top:1px solid var(--border);flex-wrap:wrap;
+}
+.hero-stat span{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;
+  color:var(--neon);display:block;text-shadow:var(--glow-neon)}
+.hero-stat small{font-size:.72rem;color:var(--text-dim);letter-spacing:.1em}
+
+/* Hero Right — Game Art */
+.hero-right{
+  position:relative;z-index:2;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.game-art-wrap{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.game-console{
+  position:relative;width:320px;height:320px;
+  animation:floatConsole 5s ease-in-out infinite;
+}
+@keyframes floatConsole{0%,100%{transform:translateY(0) rotateY(-8deg) rotateX(5deg)}50%{transform:translateY(-18px) rotateY(8deg) rotateX(-5deg)}}
+.console-body{
+  width:100%;height:100%;
+  background:linear-gradient(145deg,#0a0a1e,#12122e,#0a0a1a);
+  border:2px solid rgba(0,255,136,.2);border-radius:24px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:
+    0 0 40px rgba(0,255,136,.15),
+    0 0 100px rgba(0,255,136,.06),
+    inset 0 0 30px rgba(0,229,255,.04);
+  position:relative;overflow:hidden;
+}
+.console-screen{
+  width:72%;height:52%;
+  background:linear-gradient(135deg,#0d1535,#0a2035,#051225);
+  border-radius:12px;border:1px solid rgba(0,229,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 0 20px rgba(0,229,255,.2),inset 0 0 30px rgba(0,255,136,.05);
+}
+.screen-content{
+  font-family:'Orbitron',monospace;
+  text-align:center;position:relative;z-index:2;
+}
+.screen-title{font-size:.55rem;letter-spacing:.2em;color:rgba(0,229,255,.6);text-transform:uppercase;margin-bottom:.3rem}
+.screen-score{font-size:1.4rem;font-weight:900;color:var(--neon);text-shadow:var(--glow-neon);line-height:1}
+.screen-sub{font-size:.45rem;color:rgba(0,229,255,.4);letter-spacing:.15em;margin-top:.3rem}
+.screen-scanlines{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.15) 2px,rgba(0,0,0,.15) 4px);
+  pointer-events:none;
+}
+.screen-glitch{
+  position:absolute;inset:0;
+  animation:glitch 8s linear infinite;
+}
+@keyframes glitch{
+  0%,94%,100%{opacity:0}
+  95%{opacity:1;background:linear-gradient(transparent 30%,rgba(0,255,136,.08) 31%,rgba(0,255,136,.08) 32%,transparent 33%)}
+  97%{opacity:1;background:linear-gradient(transparent 60%,rgba(0,229,255,.06) 61%,rgba(0,229,255,.06) 63%,transparent 64%)}
+}
+.console-btn-left,.console-btn-right{
+  position:absolute;display:flex;gap:.4rem;flex-direction:column;
+}
+.console-btn-left{right:12%;top:50%;transform:translateY(-50%)}
+.console-btn-right{left:12%;top:50%;transform:translateY(-50%)}
+.cbtn{
+  width:14px;height:14px;border-radius:50%;
+  box-shadow:0 0 8px currentColor;
+  animation:btnGlow 2s ease-in-out infinite;
+}
+.cbtn-a{background:var(--neon);color:var(--neon);animation-delay:0s}
+.cbtn-b{background:var(--neon2);color:var(--neon2);animation-delay:.3s}
+.cbtn-x{background:var(--purple2);color:var(--purple2);animation-delay:.6s}
+.cbtn-y{background:var(--neon3);color:var(--neon3);animation-delay:.9s}
+@keyframes btnGlow{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+.console-dpad{
+  position:absolute;right:14%;bottom:18%;
+  width:44px;height:44px;position:relative;
+}
+.dpad-h{position:absolute;top:50%;left:0;right:0;height:33%;background:rgba(0,255,136,.15);border-radius:3px;transform:translateY(-50%)}
+.dpad-v{position:absolute;left:50%;top:0;bottom:0;width:33%;background:rgba(0,255,136,.15);border-radius:3px;transform:translateX(-50%)}
+.console-glow{
+  position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);
+  width:260px;height:80px;
+  background:radial-gradient(ellipse,rgba(0,255,136,.18),transparent 70%);
+  filter:blur(15px);pointer-events:none;
+}
+.orbit-ring{
+  position:absolute;border-radius:50%;border:1px solid;
+  animation:orbit 6s linear infinite;pointer-events:none;
+}
+.ring1{
+  width:380px;height:380px;
+  border-color:rgba(0,255,136,.06);
+  top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);
+}
+.ring2{
+  width:480px;height:480px;
+  border-color:rgba(0,229,255,.04);
+  top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);
+  animation-duration:10s;animation-direction:reverse;
+}
+@keyframes orbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* ══════════ CATEGORIES ══════════ */
+.section{padding:5rem 4%}
+.sec-header{text-align:center;margin-bottom:3.5rem}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--neon);margin-bottom:.8rem;
+}
+.sec-tag::before,.sec-tag::after{content:'';flex:1;height:1px;background:rgba(0,255,136,.2);width:30px}
+.sec-title{font-family:'Orbitron',monospace;font-size:1.9rem;font-weight:700;color:var(--white);margin-bottom:.7rem}
+.sec-sub{color:var(--text-mid);font-size:.9rem;max-width:480px;margin:0 auto}
+
+.cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+.cat-card{
+  position:relative;padding:1.8rem 1rem 1.5rem;
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  text-align:center;transition:all .3s;overflow:hidden;cursor:pointer;
+}
+.cat-card::before{
+  content:'';position:absolute;inset:0;
+  background:var(--gradient-neon);opacity:0;transition:opacity .3s;border-radius:16px;
+}
+.cat-card:hover{border-color:rgba(0,255,136,.35);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,255,136,.12)}
+.cat-card:hover::before{opacity:.04}
+.cat-icon{font-size:2.4rem;margin-bottom:.8rem;display:block;position:relative;z-index:1;
+  transition:transform .3s}
+.cat-card:hover .cat-icon{transform:scale(1.2) rotate(-5deg)}
+.cat-name{font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.25rem;position:relative;z-index:1}
+.cat-count{font-size:.7rem;color:var(--text-dim);position:relative;z-index:1}
+.cat-badge{
+  position:absolute;top:.7rem;right:.7rem;
+  background:var(--neon3);color:#fff;
+  font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:30px;
+}
+
+/* ══════════ FLASH SALE ══════════ */
+.flash-band{
+  background:linear-gradient(90deg,var(--bg2),rgba(255,0,110,.06),var(--bg2));
+  border-top:1px solid rgba(255,0,110,.12);
+  border-bottom:1px solid rgba(255,0,110,.12);
+  padding:3.5rem 4%;
+}
+.flash-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+.flash-title-wrap{display:flex;align-items:center;gap:1rem}
+.flash-fire{font-size:2rem;animation:fireAnim 1s ease-in-out infinite}
+@keyframes fireAnim{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.1) rotate(3deg)}}
+.flash-title{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:700;color:var(--white)}
+.flash-sub{font-size:.8rem;color:var(--text-mid);margin-top:.2rem}
+.countdown{display:flex;gap:.6rem;align-items:center}
+.cd-block{
+  background:var(--bg3);border:1px solid rgba(255,51,85,.3);
+  border-radius:8px;padding:.5rem .8rem;text-align:center;min-width:55px;
+}
+.cd-num{
+  font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:700;
+  color:var(--red);line-height:1;text-shadow:0 0 15px rgba(255,51,85,.5);
+}
+.cd-lbl{font-size:.58rem;color:var(--text-dim);letter-spacing:.1em;margin-top:.2rem}
+.cd-sep{font-family:'Orbitron',monospace;font-size:1.4rem;color:var(--red);font-weight:700}
+
+/* ══════════ PRODUCTS GRID ══════════ */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.2rem}
+.prod-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;transition:all .3s;position:relative;
+}
+.prod-card:hover{border-color:rgba(0,255,136,.25);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.prod-thumb{
+  height:180px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.prod-thumb-inner{
+  width:100px;height:100px;display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;position:relative;z-index:2;
+  transition:transform .4s;
+}
+.prod-card:hover .prod-thumb-inner{transform:scale(1.15) rotate(-5deg)}
+.prod-glow{
+  position:absolute;inset:0;opacity:0;transition:opacity .3s;
+}
+.prod-card:hover .prod-glow{opacity:1}
+.prod-badges{position:absolute;top:.75rem;right:.75rem;display:flex;flex-direction:column;gap:.35rem;z-index:3}
+.prod-badge{font-size:.62rem;font-weight:700;padding:.2rem .55rem;border-radius:30px}
+.badge-hot{background:var(--red);color:#fff}
+.badge-new{background:var(--neon);color:var(--bg)}
+.badge-sale{background:var(--gold);color:var(--bg)}
+.badge-exclusive{background:var(--purple);color:#fff}
+.prod-wishlist{
+  position:absolute;top:.75rem;left:.75rem;z-index:3;
+  width:32px;height:32px;background:rgba(0,0,0,.4);border:1px solid var(--border);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;cursor:pointer;transition:all .2s;
+}
+.prod-wishlist:hover{border-color:var(--neon3);background:rgba(255,0,110,.15)}
+.prod-info{padding:1.1rem}
+.prod-platform{
+  display:flex;gap:.4rem;margin-bottom:.5rem;flex-wrap:wrap;
+}
+.platform-tag{
+  font-size:.58rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;
+  background:var(--bg4);border:1px solid var(--border);color:var(--text-mid);
+  letter-spacing:.05em;
+}
+.prod-name{font-size:.92rem;font-weight:700;color:var(--white);margin-bottom:.35rem;line-height:1.3}
+.prod-rating{display:flex;align-items:center;gap:.4rem;margin-bottom:.7rem}
+.stars{color:var(--gold);font-size:.75rem;letter-spacing:-.05em}
+.rating-num{font-size:.72rem;color:var(--text-mid)}
+.prod-price-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.prod-price{
+  display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap;
+}
+.price-current{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:var(--neon);
+  text-shadow:0 0 10px rgba(0,255,136,.3)}
+.price-old{font-size:.78rem;color:var(--text-dim);text-decoration:line-through}
+.btn-add{
+  background:var(--gradient-neon);color:var(--bg);border:none;
+  padding:.5rem .9rem;border-radius:8px;font-size:.78rem;font-weight:700;
+  transition:all .25s;white-space:nowrap;
+}
+.btn-add:hover{transform:scale(1.05);box-shadow:var(--shadow-neon)}
+
+/* ══════════ FEATURED BANNER ══════════ */
+.feat-banner{
+  margin:0 4%;border-radius:20px;overflow:hidden;
+  background:linear-gradient(135deg,#08083a,#0a1020,#04041a);
+  border:1px solid rgba(123,47,255,.2);
+  padding:4rem;position:relative;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.feat-banner::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 80% at 30% 50%,rgba(123,47,255,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 30%,rgba(0,229,255,.06) 0%,transparent 60%);
+}
+.feat-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(123,47,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(123,47,255,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.feat-tag{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);
+  color:var(--purple2);font-size:.7rem;font-weight:700;letter-spacing:.12em;
+  padding:.4rem 1rem;border-radius:30px;margin-bottom:1.2rem;width:fit-content;position:relative;z-index:2;
+}
+.feat-title{
+  font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;
+  color:var(--white);line-height:1.1;margin-bottom:1rem;position:relative;z-index:2;
+}
+.feat-title span{
+  background:var(--gradient-purple);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.feat-desc{color:var(--text-mid);line-height:1.7;margin-bottom:1.5rem;font-size:.93rem;position:relative;z-index:2}
+.feat-list{list-style:none;margin-bottom:2rem;position:relative;z-index:2}
+.feat-list li{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.85rem;color:var(--text);padding:.4rem 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.feat-list li::before{content:'⚡';color:var(--neon);font-size:.8rem}
+.feat-cta{display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:2}
+.btn-purple{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--gradient-purple);color:#fff;border:none;
+  padding:.85rem 1.8rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;
+  transition:all .3s;box-shadow:var(--shadow-purple);
+}
+.btn-purple:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(123,47,255,.4)}
+.feat-price-box{
+  background:rgba(0,0,0,.3);border:1px solid rgba(123,47,255,.2);
+  border-radius:14px;padding:1.5rem;position:relative;z-index:2;
+  margin-top:1.5rem;display:inline-block;
+}
+.feat-price-old{font-size:.82rem;color:var(--text-dim);text-decoration:line-through;margin-bottom:.3rem}
+.feat-price-new{font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:700;
+  color:var(--purple2);text-shadow:0 0 20px rgba(168,85,247,.4)}
+.feat-price-save{font-size:.72rem;color:var(--neon);margin-top:.3rem}
+.feat-art{
+  position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-height:280px;
+}
+.vr-headset{
+  font-size:8rem;animation:vr-float 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 30px rgba(123,47,255,.5));
+}
+@keyframes vr-float{0%,100%{transform:translateY(0) rotateY(-15deg)}50%{transform:translateY(-15px) rotateY(15deg)}}
+
+/* ══════════ BRANDS ══════════ */
+.brands-row{
+  padding:3rem 4%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.brands-inner{display:flex;gap:0;width:max-content;animation:brandScroll 30s linear infinite}
+.brand-item{
+  display:flex;align-items:center;gap:.6rem;padding:0 3rem;
+  font-family:'Orbitron',monospace;font-size:.8rem;font-weight:700;
+  color:var(--text-dim);white-space:nowrap;letter-spacing:.1em;
+  transition:color .3s;
+}
+.brand-item:hover{color:var(--neon)}
+.brand-logo{font-size:1.4rem}
+@keyframes brandScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════ NEW RELEASES ══════════ */
+.new-releases{padding:5rem 4%}
+.release-card{
+  display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.2rem 1.4rem;transition:all .3s;margin-bottom:.8rem;
+}
+.release-card:hover{border-color:rgba(0,255,136,.2);background:var(--card2)}
+.release-thumb{
+  width:64px;height:64px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+}
+.release-info{min-width:0}
+.release-name{font-size:.92rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
+.release-genre{font-size:.73rem;color:var(--text-dim);margin-bottom:.4rem}
+.release-meta{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.release-tag{font-size:.62rem;font-weight:700;padding:.15rem .5rem;border-radius:4px}
+.tag-pc{background:rgba(0,229,255,.12);color:var(--neon2);border:1px solid rgba(0,229,255,.2)}
+.tag-ps{background:rgba(0,112,243,.15);color:#007af3;border:1px solid rgba(0,112,243,.25)}
+.tag-xbox{background:rgba(16,124,16,.15);color:#107c10;border:1px solid rgba(16,124,16,.25)}
+.tag-mobile{background:rgba(255,204,0,.1);color:var(--gold);border:1px solid rgba(255,204,0,.2)}
+.release-price-col{text-align:left;flex-shrink:0}
+.release-price{font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:var(--neon);
+  text-shadow:0 0 8px rgba(0,255,136,.3);margin-bottom:.4rem}
+.release-date{font-size:.68rem;color:var(--text-dim);white-space:nowrap}
+.btn-pre{
+  font-size:.72rem;font-weight:700;padding:.35rem .8rem;border-radius:6px;
+  background:rgba(0,255,136,.1);border:1px solid var(--border-neon);color:var(--neon);
+  cursor:pointer;transition:all .2s;margin-top:.4rem;display:block;text-align:center;
+}
+.btn-pre:hover{background:rgba(0,255,136,.2)}
+
+/* ══════════ ACCESSORIES ══════════ */
+.accessories{padding:5rem 4%;background:var(--bg2)}
+.acc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.acc-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.5rem 1.2rem;text-align:center;transition:all .3s;position:relative;overflow:hidden;
+}
+.acc-card:hover{border-color:rgba(0,229,255,.25);transform:translateY(-4px)}
+.acc-icon{font-size:2.8rem;margin-bottom:1rem;display:block;transition:transform .3s}
+.acc-card:hover .acc-icon{transform:scale(1.15)}
+.acc-name{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.acc-price{font-family:'Orbitron',monospace;font-size:.9rem;color:var(--neon2);font-weight:700;margin-bottom:.8rem}
+.acc-card .btn-add{width:100%}
+.acc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--gradient-neon);transform:scaleX(0);transition:transform .3s;transform-origin:right;
+}
+.acc-card:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* ══════════ GIFT CARDS ══════════ */
+.gift-section{padding:5rem 4%}
+.gift-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.gift-card{
+  border-radius:16px;padding:2rem 1.5rem;position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);transition:all .3s;cursor:pointer;
+}
+.gift-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.gift-card-g1{background:linear-gradient(135deg,#0d1b2a,#1a2d47)}
+.gift-card-g2{background:linear-gradient(135deg,#1a0d2e,#2d1a47)}
+.gift-card-g3{background:linear-gradient(135deg,#0d2a0d,#1a471a)}
+.gift-card-g4{background:linear-gradient(135deg,#2a0d0d,#471a1a)}
+.gift-logo{font-size:2rem;margin-bottom:.8rem;display:block}
+.gift-platform{font-family:'Orbitron',monospace;font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
+.gift-desc{font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:1.2rem;line-height:1.5}
+.gift-amounts{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.amt-btn{
+  font-size:.72rem;font-weight:700;padding:.3rem .7rem;border-radius:6px;
+  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--white);
+  cursor:pointer;transition:all .2s;
+}
+.amt-btn:hover,.amt-btn.active{background:var(--neon);color:var(--bg);border-color:var(--neon)}
+.btn-gift{
+  width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  color:var(--white);padding:.65rem;border-radius:8px;font-family:'Cairo',sans-serif;
+  font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;
+}
+.btn-gift:hover{background:rgba(255,255,255,.18)}
+.gift-card::after{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(255,255,255,.03);
+}
+
+/* ══════════ TESTIMONIALS ══════════ */
+.reviews{padding:5rem 4%;background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.review-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.5rem;transition:all .3s;
+}
+.review-card:hover{border-color:rgba(0,255,136,.15);transform:translateY(-3px)}
+.review-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.review-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  flex-shrink:0;border:2px solid var(--border-neon);
+}
+.review-name{font-size:.9rem;font-weight:700;color:var(--white)}
+.review-game{font-size:.72rem;color:var(--text-dim)}
+.review-stars{color:var(--gold);font-size:.82rem;margin-bottom:.8rem}
+.review-text{font-size:.84rem;color:var(--text-mid);line-height:1.7}
+.review-badge{
+  display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem;
+  background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.15);
+  color:var(--neon);font-size:.62rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;
+}
+
+/* ══════════ NEWSLETTER ══════════ */
+.newsletter{
+  margin:0 4% 5rem;border-radius:20px;
+  background:linear-gradient(135deg,#070720,#0a0a2a,#060618);
+  border:1px solid rgba(0,255,136,.1);padding:4rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.newsletter::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(0,255,136,.05) 0%,transparent 60%);
+}
+.nl-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.2);
+  color:var(--neon);font-size:.7rem;font-weight:700;letter-spacing:.12em;
+  padding:.4rem 1.1rem;border-radius:30px;margin-bottom:1.5rem;position:relative;z-index:2;
+}
+.newsletter h2{
+  font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:700;
+  color:var(--white);margin-bottom:.8rem;position:relative;z-index:2;
+}
+.newsletter p{color:var(--text-mid);font-size:.92rem;margin-bottom:2rem;max-width:440px;margin-left:auto;margin-right:auto;position:relative;z-index:2}
+.nl-form{
+  display:flex;gap:.8rem;max-width:480px;margin:0 auto;
+  position:relative;z-index:2;
+}
+.nl-input{
+  flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:10px;
+  padding:.85rem 1.2rem;font-family:'Cairo',sans-serif;font-size:.9rem;
+  color:var(--white);outline:none;transition:border-color .25s;
+}
+.nl-input:focus{border-color:var(--neon)}
+.nl-input::placeholder{color:var(--text-dim)}
+.btn-nl{
+  background:var(--gradient-neon);color:var(--bg);border:none;
+  padding:.85rem 1.8rem;border-radius:10px;font-family:'Cairo',sans-serif;
+  font-size:.9rem;font-weight:700;transition:all .3s;box-shadow:var(--shadow-neon);white-space:nowrap;
+}
+.btn-nl:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,.4)}
+
+/* ══════════ FOOTER ══════════ */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:3.5rem 4% 2rem;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo{margin-bottom:1rem}
+.footer-desc{font-size:.84rem;color:var(--text-mid);line-height:1.7;max-width:280px;margin-bottom:1.5rem}
+.footer-social{display:flex;gap:.7rem}
+.social-btn{
+  width:36px;height:36px;background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;transition:all .2s;cursor:pointer;
+}
+.social-btn:hover{border-color:var(--neon);color:var(--neon);box-shadow:0 0 12px rgba(0,255,136,.2)}
+.footer-col h4{font-size:.85rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;
+  letter-spacing:.05em;text-transform:uppercase}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:.7rem}
+.footer-links a{font-size:.82rem;color:var(--text-mid);transition:color .2s}
+.footer-links a:hover{color:var(--neon)}
+.footer-bottom{
+  padding-top:2rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-copy{font-size:.78rem;color:var(--text-dim)}
+.footer-badges{display:flex;gap:.5rem;flex-wrap:wrap}
+.f-badge{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:.3rem .7rem;font-size:.67rem;color:var(--text-dim);
+}
+
+/* ══════════ CART SIDEBAR ══════════ */
+#cart-overlay{
+  position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:all .35s;
+}
+#cart-overlay.open{opacity:1;visibility:visible}
+#cart-sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:400px;max-width:100vw;
+  background:var(--bg2);border-right:1px solid var(--border-neon);
+  z-index:9001;transform:translateX(-100%);transition:transform .45s ease;
+  display:flex;flex-direction:column;
+}
+#cart-sidebar.open{transform:translateX(0)}
+.cart-head{
+  padding:1.5rem;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.cart-head-left{display:flex;align-items:center;gap:.7rem}
+.cart-head-icon{
+  width:36px;height:36px;background:rgba(0,255,136,.1);border:1px solid var(--border-neon);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.cart-head h3{font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:var(--white)}
+.cart-close{
+  width:34px;height:34px;background:transparent;border:1px solid var(--border);
+  color:var(--white);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;transition:all .2s;
+}
+.cart-close:hover{border-color:var(--neon);color:var(--neon)}
+.cart-items{flex:1;overflow-y:auto;padding:1.2rem}
+.cart-item{
+  display:grid;grid-template-columns:60px 1fr auto;gap:.9rem;align-items:center;
+  padding:1rem 0;border-bottom:1px solid var(--border);
+}
+.cart-thumb{
+  width:60px;height:60px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+  background:var(--bg3);
+}
+.cart-item-name{font-size:.85rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
+.cart-item-platform{font-size:.7rem;color:var(--text-dim)}
+.cart-item-price{font-family:'Orbitron',monospace;font-size:.9rem;color:var(--neon);font-weight:700}
+.cart-footer{padding:1.2rem;border-top:1px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.cart-total-label{font-size:.82rem;color:var(--text-mid);text-transform:uppercase;letter-spacing:.08em}
+.cart-total-price{font-family:'Orbitron',monospace;font-size:1.3rem;color:var(--neon);font-weight:700;
+  text-shadow:var(--glow-neon)}
+.btn-checkout{
+  width:100%;padding:1rem;background:var(--gradient-neon);color:var(--bg);
+  border:none;font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;
+  border-radius:10px;cursor:pointer;transition:all .3s;box-shadow:var(--shadow-neon);
+}
+.btn-checkout:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,.4)}
+
+/* ══════════ MOBILE MENU ══════════ */
+#mob-menu{
+  position:fixed;inset:0;z-index:8000;
+  background:var(--bg);
+  clip-path:circle(0% at 95% 4%);
+  transition:clip-path .55s ease;
+  display:flex;flex-direction:column;padding:5rem 2rem 3rem;
+}
+#mob-menu.open{clip-path:circle(150% at 95% 4%)}
+.mob-links{list-style:none;flex:1}
+.mob-links li{border-bottom:1px solid var(--border)}
+.mob-links a{
+  display:block;padding:1.1rem 0;
+  font-family:'Orbitron',monospace;font-size:1.3rem;font-weight:700;color:var(--text-mid);
+  transition:color .3s;
+}
+.mob-links a:hover{color:var(--neon);text-shadow:var(--glow-neon)}
+.mob-close{
+  position:absolute;top:1.2rem;right:1.2rem;
+  width:42px;height:42px;background:transparent;border:1px solid var(--border);
+  color:var(--white);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.hamburger{
+  display:none;width:40px;height:40px;
+  border:1px solid var(--border);background:transparent;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  border-radius:8px;cursor:pointer;
+}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--white);transition:all .3s}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{display:none}
+  .feat-banner{grid-template-columns:1fr;padding:2.5rem}
+  .feat-art{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  header .search-bar{display:none}
+  .hamburger{display:flex}
+  .nav-link span{display:none}
+  .hdr-btn span{display:none}
+  .hero-left{padding:3rem 4%}
+  .hero h1{font-size:1.8rem}
+  .section,.new-releases,.accessories,.gift-section,.reviews{padding:3.5rem 4%}
+  .flash-band{padding:2.5rem 4%}
+  .flash-head{flex-direction:column;align-items:flex-start}
+  .newsletter{margin:0 4% 3rem;padding:2.5rem 1.5rem}
+  .nl-form{flex-direction:column}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .feat-banner{padding:2rem 1.5rem}
+  .release-card{grid-template-columns:auto 1fr;gap:.8rem}
+  .release-price-col{display:none}
+  .cats-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">NEON ARENA</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-txt">جاري التحميل...</div>
+</div>
+
+<!-- CART OVERLAY -->
+<div id="cart-overlay" onclick="toggleCart()">
+  <div id="cart-sidebar" onclick="event.stopPropagation()">
+    <div class="cart-head">
+      <div class="cart-head-left">
+        <div class="cart-head-icon">🛒</div>
+        <h3>سلة التسوق</h3>
+      </div>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items">
+      <div class="cart-item">
+        <div class="cart-thumb">🎮</div>
+        <div>
+          <div class="cart-item-name">Elden Ring – Deluxe Edition</div>
+          <div class="cart-item-platform">PlayStation 5</div>
+        </div>
+        <div class="cart-item-price">$59</div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb">🕹️</div>
+        <div>
+          <div class="cart-item-name">DualSense Controller</div>
+          <div class="cart-item-platform">PS5 Accessories</div>
+        </div>
+        <div class="cart-item-price">$69</div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb">💳</div>
+        <div>
+          <div class="cart-item-name">PlayStation Store – بطاقة 50$</div>
+          <div class="cart-item-platform">بطاقة هدية</div>
+        </div>
+        <div class="cart-item-price">$50</div>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">المجموع</span>
+        <span class="cart-total-price">$178</span>
+      </div>
+      <button class="btn-checkout">إتمام الشراء ⚡</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <ul class="mob-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">الألعاب</a></li>
+    <li><a href="#">الأجهزة</a></li>
+    <li><a href="#">الإكسسوارات</a></li>
+    <li><a href="#">بطاقات الشحن</a></li>
+    <li><a href="#">العروض</a></li>
+    <li><a href="#">الجديد</a></li>
+  </ul>
+</div>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  <div class="ann-inner">
+    <div class="ann-item"><span class="ann-neon">⚡</span> شحن مجاني على الطلبات فوق 100$<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">🎮</span> ألعاب جديدة كل أسبوع<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">💳</span> بطاقات شحن فورية 24/7<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">🏆</span> برنامج نقاط مكافآت حصري<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">🔥</span> عروض محدودة — وفّر حتى 70%<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">⚡</span> شحن مجاني على الطلبات فوق 100$<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">🎮</span> ألعاب جديدة كل أسبوع<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">💳</span> بطاقات شحن فورية 24/7<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">🏆</span> برنامج نقاط مكافآت حصري<span class="ann-sep">|</span></div>
+    <div class="ann-item"><span class="ann-neon">🔥</span> عروض محدودة — وفّر حتى 70%<span class="ann-sep">|</span></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">🎮</div>
+      <div>
+        <div class="logo-text">NEON ARENA</div>
+        <div class="logo-sub">متجر الألعاب الإلكترونية</div>
+      </div>
+    </div>
+    <div class="search-bar">
+      <input class="search-input" type="text" placeholder="ابحث عن لعبة، جهاز أو إكسسوار...">
+      <button class="search-btn">🔍</button>
+    </div>
+    <div class="header-actions">
+      <button class="hdr-btn">
+        <span class="hdr-btn-icon">🔔</span>
+        <span>التنبيهات</span>
+        <div class="badge">3</div>
+      </button>
+      <button class="hdr-btn">
+        <span class="hdr-btn-icon">❤️</span>
+        <span>المفضلة</span>
+        <div class="badge">7</div>
+      </button>
+      <button class="hdr-btn">
+        <span class="hdr-btn-icon">👤</span>
+        <span>حسابي</span>
+      </button>
+      <button class="btn-cart" onclick="toggleCart()">
+        🛒 <span>السلة (3)</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-link active"><span class="nav-icon">🏠</span> <span>الرئيسية</span></a>
+      <a href="#" class="nav-link"><span class="nav-icon">🎮</span> <span>الألعاب</span></a>
+      <a href="#" class="nav-link"><span class="nav-icon">📺</span> <span>أجهزة الألعاب</span></a>
+      <a href="#" class="nav-link"><span class="nav-icon">🕹️</span> <span>الإكسسوارات</span></a>
+      <a href="#" class="nav-link"><span class="nav-icon">💳</span> <span>بطاقات الشحن</span></a>
+      <a href="#" class="nav-link hot"><span class="nav-icon">🔥</span> <span>العروض الحصرية</span></a>
+      <a href="#" class="nav-link"><span class="nav-icon">✨</span> <span>الجديد</span></a>
+      <a href="#" class="nav-link"><span class="nav-icon">🏆</span> <span>التورنامنت</span></a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      إصدار محدود — الآن متاح
+    </div>
+    <h1>
+      عالم الألعاب
+      <span>بلا حدود</span>
+    </h1>
+    <p class="hero-sub">أكبر متجر ألعاب إلكترونية في العالم العربي — آلاف الألعاب، أجهزة الجيل الجديد، إكسسوارات احترافية وبطاقات شحن فورية. تجربة تسوق لا تُنسى.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-primary">🚀 تسوق الآن</a>
+      <a href="#" class="btn-secondary">🏆 التورنامنت</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span>+5000</span>
+        <small>لعبة متاحة</small>
+      </div>
+      <div class="hero-stat">
+        <span>24/7</span>
+        <small>دعم فوري</small>
+      </div>
+      <div class="hero-stat">
+        <span>+120K</span>
+        <small>لاعب نشط</small>
+      </div>
+      <div class="hero-stat">
+        <span>4.9★</span>
+        <small>تقييم العملاء</small>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="orbit-ring ring1"></div>
+    <div class="orbit-ring ring2"></div>
+    <div class="game-art-wrap">
+      <div class="game-console">
+        <div class="console-body">
+          <div class="console-screen">
+            <div class="screen-scanlines"></div>
+            <div class="screen-glitch"></div>
+            <div class="screen-content">
+              <div class="screen-title">PLAYER 1</div>
+              <div class="screen-score">99,999</div>
+              <div class="screen-sub">HIGH SCORE</div>
+            </div>
+          </div>
+          <div class="console-btn-right">
+            <div class="cbtn cbtn-a"></div>
+            <div class="cbtn cbtn-b"></div>
+          </div>
+          <div class="console-btn-left">
+            <div class="cbtn cbtn-x"></div>
+            <div class="cbtn cbtn-y"></div>
+          </div>
+        </div>
+        <div class="console-glow"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section" id="cats">
+  <div class="sec-header">
+    <div class="sec-tag">تصفح حسب الفئة</div>
+    <h2 class="sec-title">اختر نوع اللعبة</h2>
+    <p class="sec-sub">من أكشن وأدفنتشر إلى RPG وسباقات — كل شيء في مكان واحد</p>
+  </div>
+  <div class="cats-grid">
+    <div class="cat-card">
+      <span class="cat-icon">⚔️</span>
+      <div class="cat-name">أكشن وأدفنتشر</div>
+      <div class="cat-count">+820 لعبة</div>
+      <div class="cat-badge">الأكثر</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🏎️</span>
+      <div class="cat-name">سباق وسرعة</div>
+      <div class="cat-count">+240 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">⚽</span>
+      <div class="cat-name">رياضة</div>
+      <div class="cat-count">+180 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🐉</span>
+      <div class="cat-name">RPG وFantasy</div>
+      <div class="cat-count">+650 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🔫</span>
+      <div class="cat-name">شوتر ومعارك</div>
+      <div class="cat-count">+390 لعبة</div>
+      <div class="cat-badge">🔥</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🧩</span>
+      <div class="cat-name">ألغاز وذكاء</div>
+      <div class="cat-count">+340 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">👥</span>
+      <div class="cat-name">مالتي بلاير</div>
+      <div class="cat-count">+520 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">😱</span>
+      <div class="cat-name">رعب وإثارة</div>
+      <div class="cat-count">+130 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🌍</span>
+      <div class="cat-name">عالم مفتوح</div>
+      <div class="cat-count">+290 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🎵</span>
+      <div class="cat-name">إيقاع وموسيقى</div>
+      <div class="cat-count">+75 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🃏</span>
+      <div class="cat-name">استراتيجية</div>
+      <div class="cat-count">+410 لعبة</div>
+    </div>
+    <div class="cat-card">
+      <span class="cat-icon">🎰</span>
+      <div class="cat-name">إندي وتجريبية</div>
+      <div class="cat-count">+200 لعبة</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLASH SALE -->
+<section class="flash-band">
+  <div class="flash-head">
+    <div class="flash-title-wrap">
+      <div class="flash-fire">🔥</div>
+      <div>
+        <div class="flash-title">فلاش سيل حصري</div>
+        <div class="flash-sub">عروض لا تتكرر — كميات محدودة جداً</div>
+      </div>
+    </div>
+    <div class="countdown">
+      <div class="cd-block">
+        <div class="cd-num" id="cd-h">08</div>
+        <div class="cd-lbl">ساعة</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-block">
+        <div class="cd-num" id="cd-m">34</div>
+        <div class="cd-lbl">دقيقة</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-block">
+        <div class="cd-num" id="cd-s">19</div>
+        <div class="cd-lbl">ثانية</div>
+      </div>
+    </div>
+  </div>
+  <div class="products-grid">
+    <!-- Card 1 -->
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#0a0a20,#141430)">
+        <div class="prod-thumb-inner">⚔️</div>
+        <div class="prod-glow" style="background:radial-gradient(circle,rgba(0,229,255,.12),transparent)"></div>
+        <div class="prod-badges">
+          <span class="prod-badge badge-hot">-60%</span>
+        </div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-platform">
+          <span class="platform-tag">PS5</span>
+          <span class="platform-tag">PS4</span>
+        </div>
+        <div class="prod-name">Elden Ring – Shadow of the Erdtree</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.9 (12,450)</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-price">
+            <span class="price-current">$23</span>
+            <span class="price-old">$59</span>
+          </div>
+          <button class="btn-add">+ أضف</button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#0d0a1a,#1a1030)">
+        <div class="prod-thumb-inner">🌊</div>
+        <div class="prod-glow" style="background:radial-gradient(circle,rgba(123,47,255,.12),transparent)"></div>
+        <div class="prod-badges">
+          <span class="prod-badge badge-new">جديد</span>
+        </div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-platform">
+          <span class="platform-tag">PC</span>
+          <span class="platform-tag">Xbox</span>
+        </div>
+        <div class="prod-name">Horizon Zero Dawn 2 – Complete</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.8 (8,230)</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-price">
+            <span class="price-current">$34</span>
+            <span class="price-old">$69</span>
+          </div>
+          <button class="btn-add">+ أضف</button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#0a1a0a,#102010)">
+        <div class="prod-thumb-inner">🏎️</div>
+        <div class="prod-glow" style="background:radial-gradient(circle,rgba(0,255,136,.1),transparent)"></div>
+        <div class="prod-badges">
+          <span class="prod-badge badge-sale">-45%</span>
+        </div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-platform">
+          <span class="platform-tag">PC</span>
+          <span class="platform-tag">PS5</span>
+        </div>
+        <div class="prod-name">Gran Turismo 7 – Premium Pack</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-num">4.7 (6,100)</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-price">
+            <span class="price-current">$27</span>
+            <span class="price-old">$49</span>
+          </div>
+          <button class="btn-add">+ أضف</button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#1a0a0a,#2a1010)">
+        <div class="prod-thumb-inner">🔫</div>
+        <div class="prod-glow" style="background:radial-gradient(circle,rgba(255,0,110,.1),transparent)"></div>
+        <div class="prod-badges">
+          <span class="prod-badge badge-exclusive">حصري</span>
+        </div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-platform">
+          <span class="platform-tag">PC</span>
+        </div>
+        <div class="prod-name">Call of Duty: Black Ops 7 – Ultra</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.9 (22,800)</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-price">
+            <span class="price-current">$49</span>
+            <span class="price-old">$79</span>
+          </div>
+          <button class="btn-add">+ أضف</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCT -->
+<section class="feat-banner">
+  <div class="feat-grid-bg"></div>
+  <div class="feat-content">
+    <div class="feat-tag">⭐ منتج مميز</div>
+    <h2 class="feat-title">PlayStation VR2 –<br><span>تجربة واقع افتراضي</span></h2>
+    <p class="feat-desc">انغمس في تجربة ألعاب لا مثيل لها مع نظارة الواقع الافتراضي الجيل الثاني من PlayStation. دقة مذهلة، تعقب حركة دقيق وصوت ثلاثي الأبعاد يجعلك داخل اللعبة تماماً.</p>
+    <ul class="feat-list">
+      <li>دقة 4K HDR لكل عين — رؤية واضحة مذهلة</li>
+      <li>تعقب حركة العين لتجربة أكثر طبيعية</li>
+      <li>تقنية Tempest 3D AudioTech حصرية</li>
+      <li>أكثر من 100 لعبة متوافقة</li>
+    </ul>
+    <div class="feat-price-box">
+      <div class="feat-price-old">$699.99</div>
+      <div class="feat-price-new">$549.99</div>
+      <div class="feat-price-save">💰 وفّر $150 — عرض محدود</div>
+    </div>
+    <div class="feat-cta" style="margin-top:1.5rem">
+      <a href="#" class="btn-purple">🛒 اطلب الآن</a>
+      <a href="#" class="btn-secondary">📹 شاهد المراجعة</a>
+    </div>
+  </div>
+  <div class="feat-art">
+    <div class="vr-headset">🥽</div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-row">
+  <div class="brands-inner">
+    <div class="brand-item"><span class="brand-logo">🎮</span>PLAYSTATION</div>
+    <div class="brand-item"><span class="brand-logo">🟢</span>XBOX</div>
+    <div class="brand-item"><span class="brand-logo">🔴</span>NINTENDO</div>
+    <div class="brand-item"><span class="brand-logo">🖥️</span>EA SPORTS</div>
+    <div class="brand-item"><span class="brand-logo">🎯</span>UBISOFT</div>
+    <div class="brand-item"><span class="brand-logo">⚡</span>BETHESDA</div>
+    <div class="brand-item"><span class="brand-logo">🔵</span>ACTIVISION</div>
+    <div class="brand-item"><span class="brand-logo">🌟</span>ROCKSTAR</div>
+    <div class="brand-item"><span class="brand-logo">🎮</span>PLAYSTATION</div>
+    <div class="brand-item"><span class="brand-logo">🟢</span>XBOX</div>
+    <div class="brand-item"><span class="brand-logo">🔴</span>NINTENDO</div>
+    <div class="brand-item"><span class="brand-logo">🖥️</span>EA SPORTS</div>
+    <div class="brand-item"><span class="brand-logo">🎯</span>UBISOFT</div>
+    <div class="brand-item"><span class="brand-logo">⚡</span>BETHESDA</div>
+    <div class="brand-item"><span class="brand-logo">🔵</span>ACTIVISION</div>
+    <div class="brand-item"><span class="brand-logo">🌟</span>ROCKSTAR</div>
+  </div>
+</div>
+
+<!-- NEW RELEASES -->
+<section class="new-releases">
+  <div class="sec-header">
+    <div class="sec-tag">أحدث الإصدارات</div>
+    <h2 class="sec-title">قادم قريباً</h2>
+    <p class="sec-sub">احجز مسبقاً وكن أول من يلعب</p>
+  </div>
+  <div class="release-card">
+    <div class="release-thumb" style="background:linear-gradient(135deg,#0a0a20,#14142a)">🐉</div>
+    <div class="release-info">
+      <div class="release-name">Dragon Age: The Veilguard – GOTY Edition</div>
+      <div class="release-genre">RPG / Open World</div>
+      <div class="release-meta">
+        <span class="release-tag tag-pc">PC</span>
+        <span class="release-tag tag-ps">PS5</span>
+        <span class="release-tag tag-xbox">Xbox</span>
+      </div>
+    </div>
+    <div class="release-price-col">
+      <div class="release-price">$69</div>
+      <div class="release-date">📅 15 أغسطس 2026</div>
+      <button class="btn-pre">حجز مسبق</button>
+    </div>
+  </div>
+  <div class="release-card">
+    <div class="release-thumb" style="background:linear-gradient(135deg,#200a0a,#301010)">🔫</div>
+    <div class="release-info">
+      <div class="release-name">Halo Infinite Season 7 – Battle Pass</div>
+      <div class="release-genre">FPS / Multiplayer</div>
+      <div class="release-meta">
+        <span class="release-tag tag-xbox">Xbox</span>
+        <span class="release-tag tag-pc">PC</span>
+      </div>
+    </div>
+    <div class="release-price-col">
+      <div class="release-price">$19</div>
+      <div class="release-date">📅 1 أغسطس 2026</div>
+      <button class="btn-pre">حجز مسبق</button>
+    </div>
+  </div>
+  <div class="release-card">
+    <div class="release-thumb" style="background:linear-gradient(135deg,#0a200a,#103010)">🌍</div>
+    <div class="release-info">
+      <div class="release-name">GTA VI – Vice City Chronicles</div>
+      <div class="release-genre">Open World / Action</div>
+      <div class="release-meta">
+        <span class="release-tag tag-ps">PS5</span>
+        <span class="release-tag tag-xbox">Xbox</span>
+        <span class="release-tag tag-pc">PC</span>
+      </div>
+    </div>
+    <div class="release-price-col">
+      <div class="release-price">$79</div>
+      <div class="release-date">📅 Q4 2026</div>
+      <button class="btn-pre">حجز مسبق</button>
+    </div>
+  </div>
+  <div class="release-card">
+    <div class="release-thumb" style="background:linear-gradient(135deg,#0a0a20,#0a1430)">⚽</div>
+    <div class="release-info">
+      <div class="release-name">EA FC 27 – Ultimate Edition</div>
+      <div class="release-genre">Sports / Football</div>
+      <div class="release-meta">
+        <span class="release-tag tag-ps">PS5</span>
+        <span class="release-tag tag-xbox">Xbox</span>
+        <span class="release-tag tag-mobile">Mobile</span>
+      </div>
+    </div>
+    <div class="release-price-col">
+      <div class="release-price">$69</div>
+      <div class="release-date">📅 27 سبتمبر 2026</div>
+      <button class="btn-pre">حجز مسبق</button>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSORIES -->
+<section class="accessories">
+  <div class="sec-header">
+    <div class="sec-tag">إكسسوارات احترافية</div>
+    <h2 class="sec-title">ارتقِ بمستوى لعبك</h2>
+    <p class="sec-sub">أدوات الإيسبورت التي يستخدمها المحترفون</p>
+  </div>
+  <div class="acc-grid">
+    <div class="acc-card">
+      <span class="acc-icon">🎧</span>
+      <div class="acc-name">سماعات HyperX Cloud III</div>
+      <div class="acc-price">$129</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">🖱️</span>
+      <div class="acc-name">Logitech G Pro X Superlight 2</div>
+      <div class="acc-price">$159</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">⌨️</span>
+      <div class="acc-name">Razer BlackWidow V4</div>
+      <div class="acc-price">$139</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">🕹️</span>
+      <div class="acc-name">DualSense Edge Controller</div>
+      <div class="acc-price">$199</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">🖥️</span>
+      <div class="acc-name">AOC 27" 144Hz Gaming Monitor</div>
+      <div class="acc-price">$329</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">🎙️</span>
+      <div class="acc-name">Blue Yeti USB Microphone</div>
+      <div class="acc-price">$99</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">💺</span>
+      <div class="acc-name">Secretlab Titan Gaming Chair</div>
+      <div class="acc-price">$499</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+    <div class="acc-card">
+      <span class="acc-icon">💡</span>
+      <div class="acc-name">Govee RGB Gaming Light Strip</div>
+      <div class="acc-price">$49</div>
+      <button class="btn-add">أضف للسلة</button>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<section class="gift-section">
+  <div class="sec-header">
+    <div class="sec-tag">بطاقات الشحن</div>
+    <h2 class="sec-title">شحن فوري لجميع المنصات</h2>
+    <p class="sec-sub">استلم بطاقتك فوراً عبر الإيميل — متاح 24/7</p>
+  </div>
+  <div class="gift-grid">
+    <div class="gift-card gift-card-g1">
+      <span class="gift-logo">🎮</span>
+      <div class="gift-platform">PlayStation Store</div>
+      <div class="gift-desc">شحن رصيد PlayStation وشراء الألعاب والاشتراكات</div>
+      <div class="gift-amounts">
+        <button class="amt-btn active">$10</button>
+        <button class="amt-btn">$25</button>
+        <button class="amt-btn">$50</button>
+        <button class="amt-btn">$100</button>
+      </div>
+      <button class="btn-gift">اشتر الآن ⚡</button>
+    </div>
+    <div class="gift-card gift-card-g2">
+      <span class="gift-logo">🟢</span>
+      <div class="gift-platform">Xbox Game Pass</div>
+      <div class="gift-desc">اشترك في Xbox Game Pass Ultimate والعب 100+ لعبة</div>
+      <div class="gift-amounts">
+        <button class="amt-btn">1 شهر</button>
+        <button class="amt-btn active">3 أشهر</button>
+        <button class="amt-btn">6 أشهر</button>
+        <button class="amt-btn">سنة</button>
+      </div>
+      <button class="btn-gift">اشتر الآن ⚡</button>
+    </div>
+    <div class="gift-card gift-card-g3">
+      <span class="gift-logo">🖥️</span>
+      <div class="gift-platform">Steam Wallet</div>
+      <div class="gift-desc">رصيد Steam لشراء آلاف الألعاب للـ PC</div>
+      <div class="gift-amounts">
+        <button class="amt-btn">$5</button>
+        <button class="amt-btn active">$20</button>
+        <button class="amt-btn">$50</button>
+        <button class="amt-btn">$100</button>
+      </div>
+      <button class="btn-gift">اشتر الآن ⚡</button>
+    </div>
+    <div class="gift-card gift-card-g4">
+      <span class="gift-logo">🔴</span>
+      <div class="gift-platform">Nintendo eShop</div>
+      <div class="gift-desc">رصيد Nintendo للعب أحدث ألعاب Switch</div>
+      <div class="gift-amounts">
+        <button class="amt-btn">$10</button>
+        <button class="amt-btn active">$25</button>
+        <button class="amt-btn">$50</button>
+      </div>
+      <button class="btn-gift">اشتر الآن ⚡</button>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="sec-header">
+    <div class="sec-tag">آراء اللاعبين</div>
+    <h2 class="sec-title">ماذا يقول عملاؤنا</h2>
+    <p class="sec-sub">أكثر من 120,000 لاعب يثقون بنيون أرينا</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:linear-gradient(135deg,rgba(0,255,136,.15),rgba(0,229,255,.1))">⚡</div>
+        <div>
+          <div class="review-name">أحمد الحربي</div>
+          <div class="review-game">Elden Ring Veteran</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">أفضل متجر ألعاب جربته — الأسعار ممتازة والتوصيل سريع جداً. بطاقة الشحن وصلت خلال دقائق. رح أكون زبون دائم.</div>
+      <div class="review-badge">✓ مشتري موثق</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:linear-gradient(135deg,rgba(123,47,255,.15),rgba(168,85,247,.1))">🏆</div>
+        <div>
+          <div class="review-name">سارة المطيري</div>
+          <div class="review-game">Pro Gamer – Valorant</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">اشتريت سماعات HyperX وكانت الجودة رهيبة. التغليف ممتاز والسعر أقل من جميع المتاجر. شكراً نيون أرينا!</div>
+      <div class="review-badge">✓ مشتري موثق</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:linear-gradient(135deg,rgba(255,0,110,.12),rgba(255,51,85,.08))">🎯</div>
+        <div>
+          <div class="review-name">خالد العتيبي</div>
+          <div class="review-game">FIFA Ultimate Champion</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">بطاقات الشحن فورية ومضمونة 100%. دعم العملاء متواجد دائماً. الموقع سهل الاستخدام والتنقل. ممتاز!</div>
+      <div class="review-badge">✓ مشتري موثق</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(0,200,220,.08))">🌊</div>
+        <div>
+          <div class="review-name">فاطمة الزهراني</div>
+          <div class="review-game">Streamer & Content Creator</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">اشتريت كرسي الجيمينج والميكروفون من هنا — الجودة فاقت توقعاتي. التوصيل في يومين بس. بنصح فيه الكل.</div>
+      <div class="review-badge">✓ مشتري موثق</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:linear-gradient(135deg,rgba(255,204,0,.12),rgba(255,180,0,.08))">👑</div>
+        <div>
+          <div class="review-name">عمر الشهراني</div>
+          <div class="review-game">Xbox Game Pass Subscriber</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">أجدد اشتراك Game Pass من هنا كل شهر. السعر أقل وما في رسوم خفية. موثوق ومريح جداً.</div>
+      <div class="review-badge">✓ مشتري موثق</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:linear-gradient(135deg,rgba(0,255,136,.1),rgba(0,200,100,.06))">🚀</div>
+        <div>
+          <div class="review-name">نواف السبيعي</div>
+          <div class="review-game">Nintendo Switch Fan</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★☆</div>
+      <div class="review-text">اشتريت بطاقة Nintendo eShop وكانت فورية تماماً. تجربة ممتازة. أتمنى يضيفون المزيد من الإكسسوارات.</div>
+      <div class="review-badge">✓ مشتري موثق</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="nl-tag">🎮 نشرة اللاعبين</div>
+  <h2>لا تفوّت أي عرض</h2>
+  <p>اشترك في نشرتنا البريدية واحصل على أول إشعار بعروض الفلاش سيل والألعاب الجديدة</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="بريدك الإلكتروني...">
+    <button class="btn-nl">اشترك مجاناً ⚡</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon">🎮</div>
+        <div>
+          <div class="logo-text">NEON ARENA</div>
+        </div>
+      </div>
+      <p class="footer-desc">أكبر متجر ألعاب إلكترونية في العالم العربي — ألعاب، أجهزة، إكسسوارات وبطاقات شحن فورية بأسعار لا تُنافَس.</p>
+      <div class="footer-social">
+        <div class="social-btn">📘</div>
+        <div class="social-btn">🐦</div>
+        <div class="social-btn">📸</div>
+        <div class="social-btn">▶️</div>
+        <div class="social-btn">💬</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>الألعاب</h4>
+      <ul class="footer-links">
+        <li><a href="#">أكشن وأدفنتشر</a></li>
+        <li><a href="#">RPG وفانتازيا</a></li>
+        <li><a href="#">شوتر</a></li>
+        <li><a href="#">رياضة</a></li>
+        <li><a href="#">سباق</a></li>
+        <li><a href="#">مالتي بلاير</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>المنصات</h4>
+      <ul class="footer-links">
+        <li><a href="#">PlayStation 5</a></li>
+        <li><a href="#">Xbox Series X</a></li>
+        <li><a href="#">Nintendo Switch</a></li>
+        <li><a href="#">PC Gaming</a></li>
+        <li><a href="#">Mobile Games</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>الدعم</h4>
+      <ul class="footer-links">
+        <li><a href="#">تتبع طلبك</a></li>
+        <li><a href="#">سياسة الإرجاع</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">تواصل معنا</a></li>
+        <li><a href="#">برنامج المكافآت</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 نيون أرينا — جميع الحقوق محفوظة</div>
+    <div class="footer-badges">
+      <span class="f-badge">🔒 SSL آمن</span>
+      <span class="f-badge">💳 دفع آمن</span>
+      <span class="f-badge">⚡ تسليم فوري</span>
+      <span class="f-badge">↩️ إرجاع مضمون</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cursor=document.getElementById('cursor');
+const dot=document.getElementById('cursor-dot');
+let cx=0,cy=0,dx=0,dy=0;
+document.addEventListener('mousemove',e=>{dx=e.clientX;dy=e.clientY;dot.style.left=dx+'px';dot.style.top=dy+'px'});
+function animCursor(){cx+=(dx-cx)*.12;cy+=(dy-cy)*.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(animCursor)}
+animCursor();
+
+// LOADER
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},1900)});
+
+// CART
+function toggleCart(){document.getElementById('cart-overlay').classList.toggle('open');document.getElementById('cart-sidebar').classList.toggle('open')}
+
+// MOBILE MENU
+function toggleMenu(){document.getElementById('mob-menu').classList.toggle('open')}
+
+// COUNTDOWN
+let seconds=8*3600+34*60+19;
+function updateCountdown(){
+  if(seconds<=0)return;
+  seconds--;
+  const h=Math.floor(seconds/3600);
+  const m=Math.floor((seconds%3600)/60);
+  const s=seconds%60;
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+setInterval(updateCountdown,1000);
+
+// GIFT AMOUNTS
+document.querySelectorAll('.gift-amounts').forEach(group=>{
+  group.querySelectorAll('.amt-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      group.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+});
+
+// ADD TO CART FEEDBACK
+document.querySelectorAll('.btn-add,.btn-cart,.btn-checkout').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const orig=this.textContent;
+    if(this.classList.contains('btn-add')){
+      this.textContent='✓ تمت الإضافة';
+      this.style.background='linear-gradient(135deg,#00aa55,#00cc66)';
+      setTimeout(()=>{this.textContent=orig;this.style.background=''},1500);
+    }
+  });
+});
+
+// NAV STICKY SCROLL
+const header=document.querySelector('header');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>60)header.style.boxShadow='0 4px 30px rgba(0,0,0,.5)';
+  else header.style.boxShadow='none';
+});
+</script>
+</body>
+</html>
