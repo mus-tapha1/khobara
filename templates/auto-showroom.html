@@ -49,7 +49,15 @@ nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;
 .btn-nav{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;padding:.6rem 1.4rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.82rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 18px var(--red-glow)}
 .btn-nav:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(192,40,26,.45)}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:all .35s ease}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  nav .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:10000;background:rgba(5,7,10,.98);font-size:1.2rem;list-style:none;margin:0;padding:0}
+  nav .nav-links.nav-open a{color:var(--text);font-size:1.15rem;font-weight:700}
+  nav .nav-actions{display:none}
+}
 
 /* HERO */
 .hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:7rem 6% 4rem}
@@ -298,7 +306,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3.5rem 6
     <a href="tel:+966500000000" class="btn-nav-call">📞 920-000-000</a>
     <a href="#inventory" class="btn-nav">تصفح السيارات</a>
   </div>
-  <div class="nav-burger" onclick="this.classList.toggle('open')">
+  <div class="nav-burger" aria-label="القائمة">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -1008,6 +1016,23 @@ document.querySelectorAll('.car-fav').forEach(btn => {
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(5,7,10,.97)' : 'rgba(5,7,10,.9)';
 });
+
+// Mobile burger nav
+(function(){
+  var burger = document.querySelector('.nav-burger');
+  var links = document.querySelector('nav .nav-links');
+  if(!burger || !links) return;
+  burger.addEventListener('click', function(){
+    links.classList.toggle('nav-open');
+    burger.classList.toggle('is-open');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('nav-open');
+      burger.classList.remove('is-open');
+    });
+  });
+})();
 </script>
 </body>
 </html>
