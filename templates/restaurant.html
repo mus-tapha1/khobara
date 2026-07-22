@@ -2,6 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="مقهى قلب مقاهي في طنجة — تجربة قهوة استثنائية بلمسة مغربية أصيلة">
+<meta property="og:title" content="قلب مقاهي — مقهى طنجة">
+<meta property="og:description" content="مقهى قلب مقاهي في طنجة — تجربة قهوة استثنائية بلمسة مغربية أصيلة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>قلب مقاهي — أكثر من قهوة</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -1164,9 +1169,9 @@ footer{background:#0a0300;padding:5rem 6% 2rem;border-top:1px solid rgba(191,126
     <div class="footer-col">
       <h4>تواصل معنا</h4>
       <ul>
-        <li><a href="tel:+212600000000">+212 6XX XXX XXX</a></li>
-        <li><a href="mailto:hello@qalbmaqahi.ma">hello@qalbmaqahi.ma</a></li>
-        <li><a href="#">الدار البيضاء، المغرب</a></li>
+        <li><a href="tel:+212778878421">+212 6XX XXX XXX</a></li>
+        <li><a href="mailto:khobaraweb@gmail.com">khobaraweb@gmail.com</a></li>
+        <li><a href="#">طنجة، المغرب</a></li>
       </ul>
     </div>
   </div>
@@ -1226,6 +1231,8 @@ document.querySelectorAll('.menu-tab').forEach(tab => {
 
 // ── RESERVATION ──
 function handleReservation(e) {
+  var fd=new FormData(e.target);fd.append('_subject','حجز طاولة جديد');fd.append('_captcha','false');
+  fetch('https://formsubmit.co/ajax/khobaraweb@gmail.com',{method:'POST',body:fd,headers:{Accept:'application/json'}}).catch(function(){});
   e.preventDefault();
   const btn = e.target.querySelector('.res-submit');
   btn.textContent = 'تم الإرسال — سنتواصل معك قريباً!';
