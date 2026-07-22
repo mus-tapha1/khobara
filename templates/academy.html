@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="description" content="منصة تعليمية احترافية — اكتشف أفضل الدورات ومسارات التعلم مع أكاديمية رائد">
+<meta property="og:title" content="أكاديمية رائد — منصة تعليمية">
+<meta property="og:description" content="منصة تعليمية احترافية — اكتشف أفضل الدورات ومسارات التعلم مع أكاديمية رائد">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>أكاديمية رائد — منصة تعليمية احترافية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
@@ -239,6 +244,20 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
 }
+
+/* ── Mobile Burger ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:10001;position:relative;color:inherit}
+.nav-burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .35s ease}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-burger{display:flex!important}
+  nav .nav-btns,nav .nav-actions,nav .nav-cta,nav .hire-btn,nav .join-btn,nav .btn-join,nav .btn-login,nav .nav-btn,nav .nav-btn-ghost,nav .nav-btn-solid{display:none!important}
+  nav .nav-links{display:none!important}
+  nav .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:10000;font-size:1.2rem;list-style:none;margin:0;padding:0;background:rgba(0,0,0,.97)}
+}
+@media(min-width:769px){.nav-burger{display:none!important}}
 </style>
 </head>
 <body>
@@ -260,6 +279,7 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
     <a href="#" class="btn-login">تسجيل الدخول</a>
     <a href="#" class="btn-join">انضم مجاناً 🚀</a>
   </div>
+<button class="nav-burger" aria-label="القائمة"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -574,7 +594,7 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
       <p class="testi-text">"كنت أعمل موظفة إدارية. بعد دورة UI/UX أصبحت مصممة مستقلة وأكسب أكثر من ٣ أضعاف راتبي السابق. شكراً لفريق أكاديمية رائد!"</p>
       <div class="testi-author">
         <div class="t-av ta2">👩</div>
-        <div><div class="t-name">سلمى بنشريف</div><div class="t-course">مصممة UI/UX · الدار البيضاء</div></div>
+        <div><div class="t-name">سلمى بنشريف</div><div class="t-course">مصممة UI/UX · طنجة</div></div>
       </div>
     </div>
     <div class="testi-card">
@@ -676,6 +696,17 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
       <button class="send-btn">🚀 أرسل رسالتك — سنرد خلال ساعة</button>
     </div>
   </div>
+<form action="https://formsubmit.co/khobaraweb@gmail.com" method="POST" style="display:flex;flex-direction:column;gap:1rem;max-width:520px;margin:2rem auto 0">
+    <input type="hidden" name="_subject" value="رسالة جديدة من الموقع">
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://mus-tapha1.github.io/khobara/">
+    <input type="text" name="name" placeholder="اسمك الكامل" required style="padding:.9rem 1.2rem;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:inherit;font-family:inherit;font-size:.95rem;width:100%">
+    <input type="email" name="email" placeholder="بريدك الإلكتروني" required style="padding:.9rem 1.2rem;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:inherit;font-family:inherit;font-size:.95rem;width:100%">
+    <input type="tel" name="phone" placeholder="رقم هاتفك" style="padding:.9rem 1.2rem;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:inherit;font-family:inherit;font-size:.95rem;width:100%">
+    <textarea name="message" rows="4" placeholder="رسالتك..." required style="padding:.9rem 1.2rem;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:inherit;font-family:inherit;font-size:.95rem;width:100%;resize:vertical"></textarea>
+    <button type="submit" style="padding:1rem 2rem;border:none;border-radius:8px;font-family:inherit;font-weight:700;font-size:1rem;cursor:pointer;background:rgba(255,255,255,.9);color:#111">إرسال الرسالة ✉</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -721,5 +752,8 @@ footer{background:#040309;border-top:1px solid rgba(255,255,255,.04);padding:4re
     <p>تصميم: خبراء الويب 🇲🇦</p>
   </div>
 </footer>
+<script>
+(function(){var b=document.querySelector('.nav-burger');var l=document.querySelector('nav .nav-links')||document.querySelector('header .nav-links');if(b&&l){b.addEventListener('click',function(){l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('nav-open');b.classList.remove('is-open')})})}})();
+</script>
 </body>
 </html>
