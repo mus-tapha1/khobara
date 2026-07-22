@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>قلب مقاهي — أكثر من قهوة</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --espresso:#130800;
-  --coffee:#1e0e02;
-  --coffee2:#2a1506;
+  --espresso:#0d0500;
+  --coffee:#1a0c02;
+  --coffee2:#221205;
   --mocha:#3d1c02;
   --bark:#5a2e08;
   --caramel:#bf7e3a;
@@ -25,47 +25,37 @@
 html{scroll-behavior:smooth}
 body{font-family:'Cairo',sans-serif;background:var(--espresso);color:var(--cream);overflow-x:hidden}
 
-/* SCROLLBAR */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--coffee)}
-::-webkit-scrollbar-thumb{background:var(--bark);border-radius:2px}
+::-webkit-scrollbar-thumb{background:var(--caramel);border-radius:2px}
 
-/* NOISE */
 body::before{
   content:'';position:fixed;inset:0;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:1000;opacity:.35;
+  pointer-events:none;z-index:1000;opacity:.3
 }
 
 /* ══ NAV ══ */
 nav{
   position:fixed;top:0;z-index:900;width:100%;
   display:flex;align-items:center;justify-content:space-between;
-  padding:1.4rem 6%;
-  transition:all .5s ease;
+  padding:1.5rem 6%;
+  transition:all .5s cubic-bezier(.4,0,.2,1);
   border-bottom:1px solid transparent;
 }
 nav.scrolled{
-  background:rgba(19,8,0,.96);
-  backdrop-filter:blur(30px) saturate(180%);
-  border-bottom-color:rgba(191,126,58,.18);
+  background:rgba(13,5,0,.97);
+  backdrop-filter:blur(40px) saturate(200%);
+  border-bottom-color:rgba(191,126,58,.15);
   padding:1rem 6%;
 }
 .nav-logo{display:flex;flex-direction:column;line-height:1;text-decoration:none}
-.logo-ar{
-  font-family:'Cairo',sans-serif;font-weight:900;
-  font-size:1.5rem;color:var(--caramel-light);
-  letter-spacing:.02em;
-}
-.logo-tagline{
-  font-size:.58rem;letter-spacing:.45em;text-transform:uppercase;
-  color:var(--text-muted);margin-top:2px;font-weight:400;
-}
-.nav-links{display:flex;gap:2.4rem;list-style:none;align-items:center}
+.logo-ar{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.6rem;color:var(--caramel-light);letter-spacing:.02em}
+.logo-tagline{font-size:.56rem;letter-spacing:.45em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;font-weight:400}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
 .nav-links a{
-  color:var(--text-mid);text-decoration:none;
-  font-size:.82rem;letter-spacing:.08em;
-  font-weight:600;transition:color .3s;position:relative;
+  color:var(--text-mid);text-decoration:none;font-size:.82rem;
+  letter-spacing:.08em;font-weight:600;transition:color .3s;position:relative;
 }
 .nav-links a::after{
   content:'';position:absolute;bottom:-4px;right:0;left:0;
@@ -76,49 +66,29 @@ nav.scrolled{
 .nav-links a:hover::after{transform:scaleX(1)}
 .nav-cta{
   background:linear-gradient(135deg,var(--caramel),var(--bark));
-  color:var(--cream-light);
-  padding:.65rem 1.8rem;
-  font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:700;
-  letter-spacing:.08em;border:none;cursor:pointer;
-  text-decoration:none;display:inline-block;
-  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
-  transition:all .35s;
-  box-shadow:0 6px 25px rgba(191,126,58,.25);
+  color:var(--cream-light);padding:.7rem 2rem;
+  font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:700;
+  letter-spacing:.08em;border:none;cursor:pointer;text-decoration:none;display:inline-block;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  transition:all .35s;box-shadow:0 6px 25px rgba(191,126,58,.25);
 }
-.nav-cta:hover{
-  background:linear-gradient(135deg,var(--caramel-light),var(--caramel));
-  box-shadow:0 10px 35px rgba(191,126,58,.4);
-}
-
-/* MOBILE HAMBURGER */
-.nav-hamburger{
-  display:none;flex-direction:column;gap:5px;
-  cursor:pointer;padding:.5rem;background:none;border:none;
-}
-.nav-hamburger span{
-  width:26px;height:2px;background:var(--caramel-light);
-  transition:all .3s;display:block;
-}
+.nav-cta:hover{background:linear-gradient(135deg,var(--caramel-light),var(--caramel));box-shadow:0 10px 35px rgba(191,126,58,.45);transform:translateY(-1px)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;background:none;border:none}
+.nav-hamburger span{width:26px;height:2px;background:var(--caramel-light);transition:all .3s;display:block}
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-/* MOBILE MENU OVERLAY */
 #mobileOverlay{
-  position:fixed;inset:0;top:72px;
-  background:rgba(19,8,0,.98);
-  backdrop-filter:blur(20px);
-  z-index:850;
+  position:fixed;inset:0;top:68px;background:rgba(13,5,0,.99);
+  backdrop-filter:blur(20px);z-index:850;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:0;opacity:0;pointer-events:none;transition:opacity .3s;
+  opacity:0;pointer-events:none;transition:opacity .3s;
 }
 #mobileOverlay.open{opacity:1;pointer-events:all}
 #mobileOverlay a{
-  color:var(--cream);text-decoration:none;
-  font-size:1.5rem;font-weight:700;
+  color:var(--cream);text-decoration:none;font-size:1.5rem;font-weight:700;
   padding:1.1rem 3rem;width:100%;text-align:center;
-  border-bottom:1px solid rgba(191,126,58,.08);
-  transition:all .3s;
+  border-bottom:1px solid rgba(191,126,58,.08);transition:all .3s;
 }
 #mobileOverlay a:hover{color:var(--caramel-light);background:rgba(191,126,58,.06)}
 #mobileOverlay .mob-cta{
@@ -126,7 +96,7 @@ nav.scrolled{
   background:linear-gradient(135deg,var(--caramel),var(--bark));
   color:var(--cream-light)!important;
   clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
-  width:70%!important;text-align:center;font-size:1.1rem!important;
+  width:70%!important;font-size:1.1rem!important;
   padding:1.1rem!important;border-bottom:none!important;
 }
 
@@ -136,212 +106,158 @@ nav.scrolled{
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
 }
-.hero-bg{
+.hero-bg-img{
+  position:absolute;inset:0;
+  background:url('./restaurant-assets/hero.jpg') center center/cover no-repeat;
+  transform:scale(1.08);
+  animation:heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{
+  0%{transform:scale(1.08)}
+  100%{transform:scale(1.15)}
+}
+.hero-overlay{
   position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%,rgba(61,28,2,.9) 0%,var(--espresso) 65%),
-    radial-gradient(ellipse 50% 80% at 80% 50%,rgba(90,46,8,.15) 0%,transparent 60%);
+    linear-gradient(to top, rgba(13,5,0,1) 0%, rgba(13,5,0,.85) 30%, rgba(13,5,0,.5) 60%, rgba(13,5,0,.65) 100%);
 }
-
-/* Steam animation */
-.steam-wrap{
-  position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:100%;height:100%;pointer-events:none;overflow:hidden;
+.hero-overlay-side{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 60%, transparent 40%, rgba(13,5,0,.6) 100%);
 }
+.steam-wrap{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;height:100%;pointer-events:none;overflow:hidden}
 .steam{
-  position:absolute;bottom:20%;
-  width:2px;border-radius:50%;
-  background:linear-gradient(to top,rgba(191,126,58,.06),transparent);
-  animation:steamRise 6s ease-in-out infinite;
-  filter:blur(8px);
+  position:absolute;bottom:25%;width:2px;border-radius:50%;
+  background:linear-gradient(to top,rgba(191,126,58,.08),transparent);
+  animation:steamRise 7s ease-in-out infinite;filter:blur(10px);
 }
-.steam:nth-child(1){left:44%;height:200px;animation-delay:0s;width:3px}
-.steam:nth-child(2){left:48%;height:250px;animation-delay:1.5s;width:2px}
-.steam:nth-child(3){left:52%;height:180px;animation-delay:3s;width:4px}
-.steam:nth-child(4){left:56%;height:220px;animation-delay:4.5s;width:2px}
+.steam:nth-child(1){left:44%;height:220px;animation-delay:0s;width:4px}
+.steam:nth-child(2){left:48%;height:280px;animation-delay:1.8s;width:2px}
+.steam:nth-child(3){left:52%;height:190px;animation-delay:3.5s;width:5px}
+.steam:nth-child(4){left:56%;height:240px;animation-delay:5s;width:2px}
 @keyframes steamRise{
   0%{opacity:0;transform:translateY(0) scaleX(1)}
-  30%{opacity:1}
-  70%{opacity:.5;transform:translateY(-180px) scaleX(2)}
-  100%{opacity:0;transform:translateY(-280px) scaleX(3)}
+  30%{opacity:.8}
+  70%{opacity:.4;transform:translateY(-200px) scaleX(2.5)}
+  100%{opacity:0;transform:translateY(-320px) scaleX(4)}
 }
-
-/* Rotating ring */
 .hero-ring{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
-  width:min(75vw,680px);height:min(75vw,680px);
-  border:1px solid rgba(191,126,58,.07);border-radius:50%;
-  animation:ringRotate 50s linear infinite;
+  width:min(80vw,720px);height:min(80vw,720px);
+  border:1px solid rgba(191,126,58,.06);border-radius:50%;
+  animation:ringRotate 60s linear infinite;
 }
-.hero-ring::before{
-  content:'';position:absolute;inset:15%;
-  border:1px solid rgba(191,126,58,.05);border-radius:50%;
-}
-.hero-ring::after{
-  content:'';position:absolute;inset:30%;
-  border:1px solid rgba(232,192,104,.04);border-radius:50%;
-}
+.hero-ring::before{content:'';position:absolute;inset:18%;border:1px solid rgba(191,126,58,.04);border-radius:50%}
+.hero-ring::after{content:'';position:absolute;inset:36%;border:1px solid rgba(232,192,104,.03);border-radius:50%}
 @keyframes ringRotate{to{transform:translate(-50%,-50%) rotate(360deg)}}
-
-.hero-content{
-  position:relative;z-index:2;text-align:center;
-  max-width:820px;padding:0 5%;
-}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:860px;padding:0 5%}
 .hero-badge{
   display:inline-flex;align-items:center;gap:1rem;
-  background:rgba(191,126,58,.1);border:1px solid rgba(191,126,58,.2);
-  padding:.5rem 1.5rem;margin-bottom:2.5rem;
+  background:rgba(191,126,58,.1);border:1px solid rgba(191,126,58,.25);
+  padding:.55rem 1.6rem;margin-bottom:2.5rem;
+  animation:fadeIn 1s ease .2s both;
 }
 .badge-dot{width:6px;height:6px;background:var(--caramel);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+.badge-text{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel-light);font-weight:600}
 @keyframes pulse{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
-.badge-text{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--caramel);font-weight:600}
-
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,8vw,6.5rem);
-  font-weight:400;line-height:1.05;
-  color:var(--cream);margin-bottom:1.5rem;
+.hero-content h1{
+  font-family:'Cairo',sans-serif;font-weight:900;
+  font-size:clamp(2.6rem,6vw,5rem);
+  color:var(--cream);line-height:1.15;margin-bottom:1rem;
+  animation:slideUp 1s ease .4s both;
 }
-.hero h1 em{
-  font-style:italic;color:var(--caramel-light);
-  display:block;
+.hero-content h1 em{
+  font-style:normal;
+  color:transparent;
+  background:linear-gradient(135deg,var(--gold),var(--caramel-light),var(--gold));
+  -webkit-background-clip:text;background-clip:text;
+  display:block;font-family:'Playfair Display',serif;font-style:italic;
 }
 .hero-divider{
-  display:flex;align-items:center;justify-content:center;
-  gap:1rem;margin:2rem auto;
+  display:flex;align-items:center;gap:1rem;justify-content:center;
+  margin:1.8rem 0;animation:fadeIn 1s ease .6s both;
 }
-.hdl{width:70px;height:1px;background:linear-gradient(to right,var(--caramel),transparent)}
-.hdl:last-child{background:linear-gradient(to left,var(--caramel),transparent)}
-.hdg{width:8px;height:8px;background:var(--caramel);transform:rotate(45deg);flex-shrink:0}
-
-.hero p{
-  color:var(--text-muted);line-height:2;font-size:1rem;
-  max-width:520px;margin:0 auto 3rem;font-weight:300;
+.hdl{flex:0 0 60px;height:1px;background:linear-gradient(to left,var(--caramel),transparent)}
+.hdg{width:8px;height:8px;background:var(--caramel);transform:rotate(45deg)}
+.hero-sub{
+  color:rgba(245,230,204,.75);font-size:1rem;line-height:1.9;
+  max-width:560px;margin:0 auto 2.5rem;animation:fadeIn 1s ease .7s both;
 }
-.hero-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.hero-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadeIn 1s ease .8s both}
 .btn-primary{
   background:linear-gradient(135deg,var(--caramel),var(--bark));
-  color:var(--cream-light);border:none;
-  padding:1.1rem 3rem;
-  font-family:'Cairo',sans-serif;font-weight:700;
-  font-size:.92rem;letter-spacing:.08em;
-  cursor:pointer;text-decoration:none;display:inline-block;
+  color:var(--cream-light);padding:1.1rem 3rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.1em;
+  border:none;cursor:pointer;text-decoration:none;display:inline-block;
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
-  transition:all .35s;
-  box-shadow:0 12px 40px rgba(191,126,58,.3);
+  transition:all .35s;box-shadow:0 8px 30px rgba(191,126,58,.3);
 }
-.btn-primary:hover{
-  box-shadow:0 18px 55px rgba(191,126,58,.5);
-  transform:translateY(-2px);
-  background:linear-gradient(135deg,var(--caramel-light),var(--caramel));
-}
+.btn-primary:hover{box-shadow:0 18px 55px rgba(191,126,58,.55);transform:translateY(-2px);background:linear-gradient(135deg,var(--caramel-light),var(--caramel))}
 .btn-ghost{
-  background:transparent;
-  border:1px solid rgba(191,126,58,.4);
-  color:var(--caramel-light);
-  padding:1.1rem 3rem;
-  font-family:'Cairo',sans-serif;font-weight:600;
-  font-size:.92rem;letter-spacing:.08em;
-  cursor:pointer;text-decoration:none;display:inline-block;
-  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
-  transition:all .35s;
+  background:transparent;border:1px solid rgba(191,126,58,.45);color:var(--caramel-light);
+  padding:1.1rem 3rem;font-family:'Cairo',sans-serif;font-weight:600;font-size:.92rem;
+  letter-spacing:.08em;cursor:pointer;text-decoration:none;display:inline-block;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:all .35s;
 }
-.btn-ghost:hover{background:rgba(191,126,58,.1);border-color:var(--caramel)}
-
+.btn-ghost:hover{background:rgba(191,126,58,.12);border-color:var(--caramel);transform:translateY(-1px)}
 .hero-stats{
-  display:flex;gap:3.5rem;justify-content:center;
-  margin-top:4rem;padding-top:3rem;
-  border-top:1px solid rgba(191,126,58,.1);
-  flex-wrap:wrap;
+  display:flex;gap:0;justify-content:center;margin-top:4.5rem;
+  padding-top:3rem;border-top:1px solid rgba(191,126,58,.12);
+  flex-wrap:wrap;animation:fadeIn 1s ease 1s both;
 }
-.hstat{text-align:center}
+.hstat{text-align:center;padding:0 2.5rem;position:relative}
+.hstat+.hstat::after{content:'';position:absolute;top:10%;right:0;height:80%;width:1px;background:rgba(191,126,58,.12)}
 .hstat-num{
-  font-family:'Playfair Display',serif;
-  font-size:2.8rem;color:var(--caramel-light);
-  display:block;line-height:1;margin-bottom:.4rem;
+  font-family:'Playfair Display',serif;font-size:3rem;color:var(--caramel-light);
+  display:block;line-height:1;margin-bottom:.5rem;font-weight:700;
 }
-.hstat-label{
-  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--text-muted);
-}
-
+.hstat-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
 .scroll-indicator{
   position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.8rem;
-  z-index:2;opacity:.5;
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;z-index:2;opacity:.5;
+  animation:fadeIn 1s ease 1.5s both;
 }
-.scroll-line{
-  width:1px;height:50px;
-  background:linear-gradient(to bottom,transparent,var(--caramel),transparent);
-  animation:scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+.scroll-line{width:1px;height:55px;background:linear-gradient(to bottom,transparent,var(--caramel),transparent);animation:scrollPulse 2s ease-in-out infinite}
 .scroll-text{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--caramel)}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
 /* ══ SECTIONS BASE ══ */
 .section{padding:8rem 6%}
-.section-eyebrow{
-  display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;
-}
-.section-eyebrow-text{
-  font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;
-  color:var(--caramel);font-weight:600;
-}
+.section-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.section-eyebrow-text{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--caramel);font-weight:600}
 .section-eyebrow-line{flex:0 0 40px;height:1px;background:var(--caramel);opacity:.6}
-h2.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,4vw,3rem);font-weight:400;
-  color:var(--cream);line-height:1.2;
-}
+h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--cream);line-height:1.2}
 h2.section-title em{font-style:italic;color:var(--caramel-light)}
 
 /* ══ STORY ══ */
 .story{background:var(--coffee);display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.story-visual{
-  position:relative;overflow:hidden;min-height:600px;
-  background:linear-gradient(145deg,#261200,#3d1c02,#1e0e02);
+.story-visual{position:relative;overflow:hidden;min-height:600px}
+.story-visual img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 8s ease;
 }
-.story-pattern{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 25% 35%,rgba(191,126,58,.1) 0%,transparent 50%),
-    radial-gradient(circle at 75% 65%,rgba(90,46,8,.15) 0%,transparent 50%);
+.story:hover .story-visual img{transform:scale(1.05)}
+.story-visual::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(13,5,0,.4),rgba(61,28,2,.2));
+  z-index:1;pointer-events:none;
 }
-.story-frame{
-  position:absolute;inset:2.5rem;
-  border:1px solid rgba(191,126,58,.12);
-  display:flex;align-items:center;justify-content:center;
-}
-.story-cup{
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  opacity:.35;
-}
-.story-cup-svg{width:120px;height:120px;fill:var(--caramel)}
 .story-badge{
-  position:absolute;bottom:3rem;left:3rem;
+  position:absolute;bottom:3rem;right:3rem;z-index:2;
   background:linear-gradient(135deg,var(--caramel),var(--bark));
   color:var(--espresso);padding:1.2rem 1.8rem;
   clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
   text-align:center;
 }
-.story-badge-num{
-  font-family:'Playfair Display',serif;
-  font-size:2.8rem;font-weight:700;line-height:1;display:block;
-}
+.story-badge-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;line-height:1;display:block}
 .story-badge-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
 .story-content{padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center}
-.story-content p{
-  color:var(--text-muted);line-height:2;margin-bottom:1.5rem;
-  font-size:.95rem;font-weight:300;
-}
-.story-highlights{
-  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;
-}
-.highlight-item{
-  display:flex;align-items:center;gap:.8rem;
-  padding:.8rem;border-right:2px solid rgba(191,126,58,.2);
-}
+.story-content p{color:var(--text-muted);line-height:2;margin-bottom:1.5rem;font-size:.95rem;font-weight:300}
+.story-highlights{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.highlight-item{display:flex;align-items:center;gap:.8rem;padding:.8rem;border-right:2px solid rgba(191,126,58,.2)}
 .highlight-dot{width:6px;height:6px;background:var(--caramel);border-radius:50%;flex-shrink:0}
 .highlight-text{font-size:.85rem;color:var(--text-mid);font-weight:600}
 
@@ -353,304 +269,188 @@ h2.section-title em{font-style:italic;color:var(--caramel-light)}
   background:radial-gradient(circle,rgba(191,126,58,.05),transparent 70%);
   border-radius:50%;
 }
-.origins-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2rem;margin-top:5rem;position:relative;z-index:2;
+.origins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:5rem;position:relative;z-index:2}
+.origin-card{border:1px solid rgba(191,126,58,.1);overflow:hidden;position:relative;transition:all .45s;background:rgba(191,126,58,.02)}
+.origin-card-img{height:220px;overflow:hidden;position:relative}
+.origin-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.origin-card:hover .origin-card-img img{transform:scale(1.08)}
+.origin-card-img::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:60%;
+  background:linear-gradient(to top,rgba(13,5,0,.85),transparent);
 }
-.origin-card{
-  padding:3rem 2.5rem;
-  border:1px solid rgba(191,126,58,.1);
-  background:rgba(191,126,58,.03);
-  position:relative;overflow:hidden;
-  transition:all .45s;
-}
+.origin-card-body{padding:2.5rem 2.5rem 3rem}
 .origin-card::before{
-  content:'';position:absolute;
-  bottom:0;left:0;right:0;height:3px;
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
   background:linear-gradient(to right,var(--caramel),var(--caramel-light),var(--caramel));
   transform:scaleX(0);transform-origin:right;transition:transform .4s;
 }
-.origin-card:hover{
-  border-color:rgba(191,126,58,.3);
-  transform:translateY(-8px);
-  box-shadow:0 30px 60px rgba(0,0,0,.5);
-}
+.origin-card:hover{border-color:rgba(191,126,58,.35);transform:translateY(-8px);box-shadow:0 35px 70px rgba(0,0,0,.5)}
 .origin-card:hover::before{transform:scaleX(1)}
-.origin-flag{font-size:2.5rem;margin-bottom:1.5rem;display:block}
-.origin-country{
-  font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;
-  color:var(--caramel);font-weight:600;margin-bottom:.5rem;
-}
-.origin-name{
-  font-family:'Playfair Display',serif;
-  font-size:1.4rem;color:var(--cream);margin-bottom:1rem;
-}
+.origin-flag{font-size:2rem;margin-bottom:1rem;display:block}
+.origin-country{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--caramel);font-weight:600;margin-bottom:.5rem}
+.origin-name{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);margin-bottom:1rem}
 .origin-desc{font-size:.85rem;color:var(--text-muted);line-height:1.9}
 .origin-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}
-.origin-tag{
-  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
-  background:rgba(191,126,58,.1);color:var(--caramel);
-  padding:.25rem .7rem;border:1px solid rgba(191,126,58,.2);
-}
+.origin-tag{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(191,126,58,.1);color:var(--caramel);padding:.25rem .7rem;border:1px solid rgba(191,126,58,.2)}
 
 /* ══ MENU ══ */
-.menu-section{background:var(--coffee2)}
-.menu-tabs{
-  display:flex;gap:.8rem;margin-bottom:3.5rem;flex-wrap:wrap;
-}
+.menu-section{background:var(--coffee)}
+.menu-tabs{display:flex;gap:.8rem;margin-bottom:3.5rem;flex-wrap:wrap}
 .menu-tab{
   background:transparent;border:1px solid rgba(191,126,58,.2);
-  color:var(--text-muted);
-  padding:.7rem 1.8rem;
+  color:var(--text-muted);padding:.7rem 1.8rem;
   font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:600;
   letter-spacing:.06em;cursor:pointer;transition:all .3s;
 }
-.menu-tab.active,.menu-tab:hover{
-  background:rgba(191,126,58,.12);border-color:var(--caramel);color:var(--caramel);
-}
-.menu-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:1px;background:rgba(191,126,58,.07);
-}
-.menu-item{
-  background:var(--coffee2);padding:2rem 2.5rem;
-  display:flex;gap:1.5rem;align-items:flex-start;
-  transition:background .3s;position:relative;overflow:hidden;
-}
-.menu-item::before{
-  content:'';position:absolute;top:0;right:0;
-  width:3px;height:0;background:var(--caramel);
-  transition:height .4s ease;
-}
-.menu-item:hover{background:rgba(191,126,58,.04)}
-.menu-item:hover::before{height:100%}
-.menu-img{
-  flex-shrink:0;width:68px;height:68px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(191,126,58,.15),rgba(191,126,58,.04));
-  border:1px solid rgba(191,126,58,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.7rem;
-}
-.menu-info{flex:1}
-.menu-name{
-  font-family:'Playfair Display',serif;
-  font-size:1rem;color:var(--cream);margin-bottom:.35rem;
-}
-.menu-desc{font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-bottom:.8rem}
-.menu-footer{display:flex;align-items:center;justify-content:space-between}
-.menu-price{
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;color:var(--caramel-light);font-weight:700;
-}
-.menu-tag{
-  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
-  background:rgba(191,126,58,.1);color:var(--caramel);
-  padding:.25rem .7rem;border:1px solid rgba(191,126,58,.2);
-}
-.menu-tag.best{
-  background:rgba(232,192,104,.1);color:var(--gold);
-  border-color:rgba(232,192,104,.3);
-}
-
-/* MENU DATA */
+.menu-tab.active,.menu-tab:hover{background:rgba(191,126,58,.12);border-color:var(--caramel);color:var(--caramel)}
 .menu-data{display:none}
 .menu-data.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:rgba(191,126,58,.07)}
+.menu-item{
+  background:var(--coffee);padding:0;
+  display:flex;flex-direction:column;
+  transition:background .3s;position:relative;overflow:hidden;
+}
+.menu-item-img{
+  height:200px;overflow:hidden;position:relative;
+}
+.menu-item-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.menu-item:hover .menu-item-img img{transform:scale(1.06)}
+.menu-item-img-placeholder{
+  height:200px;
+  background:linear-gradient(135deg,rgba(191,126,58,.15),rgba(191,126,58,.04));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;
+}
+.menu-item-body{padding:1.8rem 2.2rem}
+.menu-item::before{content:'';position:absolute;top:0;right:0;width:3px;height:0;background:var(--caramel);transition:height .4s ease}
+.menu-item:hover{background:rgba(191,126,58,.04)}
+.menu-item:hover::before{height:100%}
+.menu-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);margin-bottom:.4rem}
+.menu-desc{font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-bottom:.8rem}
+.menu-footer{display:flex;align-items:center;justify-content:space-between}
+.menu-price{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--caramel-light);font-weight:700}
+.menu-tag{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(191,126,58,.1);color:var(--caramel);padding:.25rem .7rem;border:1px solid rgba(191,126,58,.2)}
+.menu-tag.best{background:rgba(232,192,104,.1);color:var(--gold);border-color:rgba(232,192,104,.3)}
 
-/* ══ EXPERIENCE ══ */
-.experience{background:var(--coffee);position:relative;overflow:hidden}
-.experience::before{
-  content:'';position:absolute;top:-40%;left:-10%;
-  width:700px;height:700px;
-  background:radial-gradient(circle,rgba(191,126,58,.03),transparent 70%);
-  border-radius:50%;
+/* ══ GALLERY ══ */
+.gallery{background:var(--espresso);padding:8rem 6%}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:320px 240px;
+  gap:6px;margin-top:4rem;
 }
-.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative;z-index:2}
-.exp-card{
-  padding:3rem 2.5rem;
-  border:1px solid rgba(191,126,58,.1);
-  background:rgba(191,126,58,.02);
-  position:relative;overflow:hidden;transition:all .4s;
-}
-.exp-card::after{
+.gallery-item{overflow:hidden;position:relative;cursor:pointer}
+.gallery-item:first-child{grid-row:1/3;grid-column:1}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.gallery-item::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(145deg,rgba(191,126,58,.06),transparent);
+  background:rgba(13,5,0,0);transition:background .4s;
+}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item:hover::after{background:rgba(191,126,58,.12)}
+.gallery-item::before{
+  content:'عرض';position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--caramel-light);font-size:.85rem;letter-spacing:.2em;font-weight:600;
   opacity:0;transition:opacity .4s;
 }
-.exp-card:hover{
-  border-color:rgba(191,126,58,.3);transform:translateY(-6px);
-  box-shadow:0 30px 60px rgba(0,0,0,.4);
+.gallery-item:hover::before{opacity:1}
+
+/* ══ EXPERIENCE ══ */
+.experience{background:var(--coffee2);position:relative;overflow:hidden}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative;z-index:2}
+.exp-card{
+  padding:3rem 2.5rem;border:1px solid rgba(191,126,58,.1);
+  background:rgba(191,126,58,.02);position:relative;overflow:hidden;transition:all .4s;
 }
+.exp-card::after{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(191,126,58,.06),transparent);opacity:0;transition:opacity .4s}
+.exp-card:hover{border-color:rgba(191,126,58,.35);transform:translateY(-8px);box-shadow:0 35px 65px rgba(0,0,0,.45)}
 .exp-card:hover::after{opacity:1}
-.exp-num{
-  font-family:'Playfair Display',serif;
-  font-size:5rem;color:rgba(191,126,58,.05);
-  line-height:1;position:absolute;top:1rem;left:1.5rem;font-weight:700;
-}
+.exp-num{font-family:'Playfair Display',serif;font-size:5rem;color:rgba(191,126,58,.05);line-height:1;position:absolute;top:1rem;left:1.5rem;font-weight:700}
 .exp-icon{
-  width:56px;height:56px;border:1px solid rgba(191,126,58,.3);
+  width:58px;height:58px;border:1px solid rgba(191,126,58,.3);
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1.8rem;position:relative;z-index:1;
-  font-size:1.5rem;
 }
-.exp-title{
-  font-family:'Playfair Display',serif;
-  font-size:1.15rem;color:var(--cream);
-  margin-bottom:.8rem;position:relative;z-index:1;
-}
+.exp-icon svg{width:28px;height:28px;stroke:var(--caramel);fill:none;stroke-width:1.5}
+.exp-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.8rem;position:relative;z-index:1}
 .exp-desc{font-size:.85rem;color:var(--text-muted);line-height:1.9;position:relative;z-index:1}
 
 /* ══ BARISTAS ══ */
 .baristas{background:var(--espresso)}
-.baristas-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2rem;margin-top:4rem;
-}
-.barista-card{
-  border:1px solid rgba(191,126,58,.1);
-  overflow:hidden;transition:all .4s;
-  position:relative;
-}
-.barista-card:hover{
-  border-color:rgba(191,126,58,.3);
-  transform:translateY(-6px);
-  box-shadow:0 30px 60px rgba(0,0,0,.4);
-}
+.baristas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
+.barista-card{border:1px solid rgba(191,126,58,.1);overflow:hidden;transition:all .4s}
+.barista-card:hover{border-color:rgba(191,126,58,.3);transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
 .barista-photo{
   height:220px;
-  background:linear-gradient(145deg,#3d1c02,#5a2e08,#2a1506);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.barista-photo::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 40% 30%,rgba(191,126,58,.15),transparent 50%),
-    radial-gradient(circle at 60% 70%,rgba(90,46,8,.2),transparent 50%);
+  background:linear-gradient(145deg,#2a1506,#3d1c02,#1a0c02);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
 }
 .barista-avatar{
   width:100px;height:100px;border-radius:50%;
-  border:2px solid rgba(191,126,58,.3);
+  border:2px solid rgba(191,126,58,.35);
   background:rgba(191,126,58,.08);
   display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;
-  font-size:2.5rem;color:var(--caramel);
-  position:relative;z-index:1;
+  font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--caramel);position:relative;z-index:1;
 }
 .barista-specialty{
   position:absolute;bottom:1rem;right:1rem;
   background:linear-gradient(135deg,var(--caramel),var(--bark));
-  color:var(--espresso);
-  font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--espresso);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:.3rem .8rem;
 }
 .barista-info{padding:1.8rem 2rem}
-.barista-name{
-  font-family:'Playfair Display',serif;
-  font-size:1.15rem;color:var(--cream);margin-bottom:.3rem;
-}
-.barista-role{
-  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--caramel);font-weight:600;margin-bottom:.8rem;
-}
+.barista-name{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.3rem}
+.barista-role{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel);font-weight:600;margin-bottom:.8rem}
 .barista-bio{font-size:.82rem;color:var(--text-muted);line-height:1.8}
-.barista-awards{
-  display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;
-}
-.award-tag{
-  font-size:.65rem;letter-spacing:.05em;
-  background:rgba(191,126,58,.08);color:var(--text-mid);
-  padding:.2rem .6rem;border:1px solid rgba(191,126,58,.15);
-}
+.barista-awards{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.award-tag{font-size:.65rem;background:rgba(191,126,58,.08);color:var(--text-mid);padding:.2rem .6rem;border:1px solid rgba(191,126,58,.15)}
 
 /* ══ RESERVATION ══ */
 .reservation{background:var(--coffee);position:relative;overflow:hidden}
-.reservation::before{
-  content:'';position:absolute;top:-30%;right:-10%;
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(191,126,58,.04),transparent 70%);
-  border-radius:50%;
-}
 .res-container{max-width:860px;margin:0 auto;position:relative;z-index:2}
 .res-header{text-align:center;margin-bottom:4rem}
-.res-form{
-  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
-}
+.res-form{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .form-group{display:flex;flex-direction:column;gap:.6rem}
-.form-group label{
-  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--caramel);font-weight:600;
+.form-group label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel);font-weight:600}
+.form-group input,.form-group select,.form-group textarea{
+  background:rgba(191,126,58,.04);border:1px solid rgba(191,126,58,.15);
+  color:var(--cream);padding:1rem 1.2rem;font-family:'Cairo',sans-serif;font-size:.9rem;
+  outline:none;transition:all .3s;-webkit-appearance:none;
 }
-.form-group input,
-.form-group select,
-.form-group textarea{
-  background:rgba(191,126,58,.04);
-  border:1px solid rgba(191,126,58,.15);
-  color:var(--cream);
-  padding:1rem 1.2rem;
-  font-family:'Cairo',sans-serif;font-size:.9rem;
-  outline:none;transition:all .3s;
-  -webkit-appearance:none;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  border-color:rgba(191,126,58,.5);
-  background:rgba(191,126,58,.07);
-  box-shadow:0 0 0 3px rgba(191,126,58,.05);
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:rgba(191,126,58,.5);background:rgba(191,126,58,.07);box-shadow:0 0 0 3px rgba(191,126,58,.05);
 }
 .form-group input::placeholder{color:var(--text-muted)}
 .form-group select option{background:var(--coffee);color:var(--cream)}
 .form-group.full{grid-column:1/-1}
 .res-submit{
-  grid-column:1/-1;
-  background:linear-gradient(135deg,var(--caramel),var(--bark));
-  color:var(--cream-light);border:none;
-  padding:1.3rem;
-  font-family:'Cairo',sans-serif;font-weight:700;
-  font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;
-  cursor:pointer;transition:all .35s;
-  box-shadow:0 10px 40px rgba(191,126,58,.2);
+  grid-column:1/-1;background:linear-gradient(135deg,var(--caramel),var(--bark));
+  color:var(--cream-light);border:none;padding:1.3rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:all .35s;box-shadow:0 10px 40px rgba(191,126,58,.2);
 }
-.res-submit:hover{
-  box-shadow:0 15px 50px rgba(191,126,58,.45);
-  transform:translateY(-2px);
-}
+.res-submit:hover{box-shadow:0 15px 50px rgba(191,126,58,.45);transform:translateY(-2px)}
 
 /* ══ TESTIMONIALS ══ */
 .testimonials{background:var(--coffee2)}
 .testi-track{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .testi-card{
-  padding:2.5rem;
-  border:1px solid rgba(191,126,58,.1);
-  position:relative;transition:all .4s;
-  background:rgba(191,126,58,.02);
+  padding:2.5rem;border:1px solid rgba(191,126,58,.1);
+  position:relative;transition:all .4s;background:rgba(191,126,58,.02);
 }
-.testi-card:hover{
-  border-color:rgba(191,126,58,.25);
-  background:rgba(191,126,58,.04);
-  transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,0,0,.3);
-}
-.testi-quote{
-  font-size:3rem;line-height:.8;
-  color:var(--caramel);opacity:.2;
-  font-family:'Playfair Display',serif;
-  margin-bottom:1.2rem;
-}
+.testi-card:hover{border-color:rgba(191,126,58,.25);background:rgba(191,126,58,.04);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.testi-quote{font-size:3rem;line-height:.8;color:var(--caramel);opacity:.2;font-family:'Playfair Display',serif;margin-bottom:1.2rem}
 .testi-stars{color:var(--gold);font-size:.9rem;margin-bottom:1rem;letter-spacing:.1em}
-.testi-text{
-  font-size:.9rem;color:var(--text-mid);
-  line-height:1.9;margin-bottom:1.8rem;
-  font-style:italic;font-family:'Playfair Display',serif;
-}
+.testi-text{font-size:.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.8rem;font-style:italic;font-family:'Playfair Display',serif}
 .testi-author{display:flex;align-items:center;gap:1rem}
 .testi-avatar{
   width:46px;height:46px;border-radius:50%;
   background:linear-gradient(135deg,rgba(191,126,58,.3),rgba(191,126,58,.1));
   border:1px solid rgba(191,126,58,.3);
   display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--caramel-light);
-  font-weight:700;
+  font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--caramel-light);font-weight:700;
 }
 .testi-name{font-weight:700;font-size:.9rem;color:var(--cream)}
 .testi-role{font-size:.75rem;color:var(--text-muted)}
@@ -660,154 +460,91 @@ h2.section-title em{font-style:italic;color:var(--caramel-light)}
   background:linear-gradient(135deg,var(--mocha),var(--bark),var(--mocha));
   padding:5rem 6%;text-align:center;position:relative;overflow:hidden;
 }
-.loyalty::before{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
 .loyalty-content{position:relative;z-index:1;max-width:600px;margin:0 auto}
-.loyalty-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
-.loyalty h3{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.6rem,3vw,2.5rem);color:var(--cream-light);
-  margin-bottom:1rem;
-}
+.loyalty h3{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);color:var(--cream-light);margin-bottom:1rem}
 .loyalty p{color:rgba(245,230,204,.7);font-size:.95rem;line-height:1.8;margin-bottom:2rem}
-.loyalty-steps{
-  display:flex;gap:1rem;justify-content:center;
-  margin-bottom:2.5rem;flex-wrap:wrap;
-}
+.loyalty-steps{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
 .loyalty-step{
-  background:rgba(19,8,0,.35);
-  border:1px solid rgba(245,230,204,.15);
-  padding:.8rem 1.4rem;
   display:flex;align-items:center;gap:.6rem;
+  background:rgba(245,230,204,.08);padding:.6rem 1.2rem;
+  border:1px solid rgba(245,230,204,.15);
 }
-.step-num{
-  font-family:'Playfair Display',serif;
-  font-size:1.4rem;color:var(--gold);font-weight:700;
-}
-.step-text{font-size:.8rem;color:rgba(245,230,204,.8)}
-.loyalty .btn-primary{
-  background:var(--espresso);
-  color:var(--caramel-light);
-  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
-  box-shadow:0 10px 40px rgba(0,0,0,.3);
-}
-.loyalty .btn-primary:hover{
-  background:#261000;box-shadow:0 15px 50px rgba(0,0,0,.4);
-}
+.loyalty-step-num{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);font-weight:700}
+.loyalty-step-label{font-size:.8rem;color:var(--cream-light)}
 
 /* ══ FOOTER ══ */
-footer{
-  background:#0a0300;
-  border-top:1px solid rgba(191,126,58,.1);
-  padding:5rem 6% 2rem;
-}
-.footer-grid{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;
-  gap:4rem;margin-bottom:4rem;
-}
-.footer-logo-main{
-  font-family:'Cairo',sans-serif;font-weight:900;
-  font-size:1.6rem;color:var(--caramel-light);
-  margin-bottom:.3rem;display:block;
-}
-.footer-logo-sub{
-  font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;
-  color:var(--text-muted);display:block;margin-bottom:1.4rem;
-}
-.footer-desc{font-size:.85rem;color:var(--text-muted);line-height:1.9;max-width:270px}
-.footer-col h4{
-  font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--caramel);margin-bottom:1.4rem;font-weight:600;
-}
+footer{background:#0a0300;padding:5rem 6% 2rem;border-top:1px solid rgba(191,126,58,.08)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo-ar{font-size:1.8rem}
+.footer-brand p{color:var(--text-muted);font-size:.88rem;line-height:1.9;margin-top:1rem;max-width:280px}
+.footer-col h4{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--caramel);font-weight:600;margin-bottom:1.5rem}
 .footer-col ul{list-style:none}
-.footer-col li{margin-bottom:.8rem}
-.footer-col a{color:var(--text-muted);text-decoration:none;font-size:.85rem;transition:color .3s}
-.footer-col a:hover{color:var(--cream)}
-.footer-col li.no-link{color:var(--text-muted);font-size:.85rem}
-.footer-hours{
-  display:flex;flex-direction:column;gap:.5rem;
-}
-.hours-row{
-  display:flex;justify-content:space-between;
-  font-size:.82rem;color:var(--text-muted);
-  padding-bottom:.5rem;
-  border-bottom:1px solid rgba(191,126,58,.07);
-}
-.hours-row:last-child{border-bottom:none}
-.hours-day{color:var(--text-mid);font-weight:600}
+.footer-col li{margin-bottom:.7rem}
+.footer-col a{color:var(--text-muted);text-decoration:none;font-size:.88rem;transition:color .3s}
+.footer-col a:hover{color:var(--caramel-light)}
+.footer-hours p{color:var(--text-muted);font-size:.85rem;line-height:2}
+.footer-hours strong{color:var(--caramel)}
 .footer-bottom{
-  border-top:1px solid rgba(191,126,58,.08);
-  padding-top:2rem;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.78rem;color:var(--text-muted);
-  flex-wrap:wrap;gap:1rem;
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:2rem;border-top:1px solid rgba(191,126,58,.08);flex-wrap:wrap;gap:1rem;
 }
-.footer-socials{display:flex;gap:.8rem}
+.footer-bottom p{color:var(--text-muted);font-size:.8rem}
+.social-links{display:flex;gap:.8rem}
 .social-btn{
-  width:38px;height:38px;
-  border:1px solid rgba(191,126,58,.2);
+  width:38px;height:38px;border:1px solid rgba(191,126,58,.2);
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .3s;font-size:.85rem;
-  color:var(--text-muted);text-decoration:none;
+  color:var(--text-muted);text-decoration:none;transition:all .3s;font-size:.75rem;font-weight:700;
 }
-.social-btn:hover{border-color:var(--caramel);color:var(--caramel);background:rgba(191,126,58,.08)}
+.social-btn:hover{border-color:var(--caramel);color:var(--caramel-light);background:rgba(191,126,58,.08)}
 
 /* ══ REVEAL ANIMATIONS ══ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-1{transition-delay:.12s}
+.reveal-delay-2{transition-delay:.24s}
+.reveal-delay-3{transition-delay:.36s}
 
 /* ══ RESPONSIVE ══ */
-@media(max-width:960px){
-  .story{grid-template-columns:1fr}
-  .story-visual{min-height:320px}
-  .story-content{padding:4rem 2.5rem}
-  .origins-grid{grid-template-columns:1fr}
-  .exp-grid{grid-template-columns:1fr}
-  .baristas-grid{grid-template-columns:1fr}
-  .testi-track{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
-  .hero-stats{gap:2rem}
+@media(max-width:1024px){
+  .origins-grid,.exp-grid,.testi-track{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:250px 250px 250px}
+  .gallery-item:first-child{grid-row:auto;grid-column:auto}
 }
-@media(max-width:640px){
-  nav{padding:1rem 4%}
+@media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-hamburger{display:flex}
-  .section{padding:5rem 5%}
-  .story-content{padding:3rem 1.5rem}
+  .story{grid-template-columns:1fr}
+  .story-visual{min-height:350px}
+  .story-content{padding:3.5rem 2rem}
+  .hero-stats{gap:0}
+  .hstat{padding:0 1.5rem}
+  .hstat-num{font-size:2rem}
+  .origins-grid,.exp-grid,.baristas-grid,.testi-track{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .gallery-item{height:250px}
+  .gallery-item:first-child{grid-row:auto;grid-column:auto}
   .res-form{grid-template-columns:1fr}
-  .hero-stats{flex-direction:column;gap:1.5rem;align-items:center}
-  .loyalty-steps{flex-direction:column;align-items:center}
-  .footer-grid{grid-template-columns:1fr;gap:2rem}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .origins-grid{grid-template-columns:1fr}
-  .baristas-grid{grid-template-columns:1fr}
-  .testi-track{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column;align-items:center}
-  .hero-actions .btn-primary,.hero-actions .btn-ghost{
-    width:85%;max-width:300px;text-align:center;padding:1rem 1.5rem;
-  }
-  .menu-grid,.menu-data.active{grid-template-columns:1fr}
+  .form-group.full{grid-column:1}
+  .section{padding:5rem 5%}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ NAVIGATION ══ -->
+<!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
     <span class="logo-ar">قلب مقاهي</span>
     <span class="logo-tagline">Specialty Coffee — Since 2015</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#story">قصتنا</a></li>
     <li><a href="#menu">القائمة</a></li>
-    <li><a href="#origins">أصول القهوة</a></li>
-    <li><a href="#baristas">باريستا</a></li>
+    <li><a href="#gallery">المعرض</a></li>
+    <li><a href="#origins">الأصول</a></li>
+    <li><a href="#baristas">الباريستا</a></li>
     <li><a href="#reservation">احجز طاولة</a></li>
   </ul>
   <a href="#reservation" class="nav-cta">احجز الآن</a>
@@ -816,18 +553,21 @@ footer{
   </button>
 </nav>
 
-<!-- MOBILE OVERLAY -->
 <div id="mobileOverlay">
+  <a href="#story" class="mob-link">قصتنا</a>
   <a href="#menu" class="mob-link">القائمة</a>
-  <a href="#origins" class="mob-link">أصول القهوة</a>
-  <a href="#baristas" class="mob-link">فريق الباريستا</a>
+  <a href="#gallery" class="mob-link">المعرض</a>
+  <a href="#origins" class="mob-link">الأصول</a>
+  <a href="#baristas" class="mob-link">الباريستا</a>
   <a href="#reservation" class="mob-link">احجز طاولة</a>
   <a href="#reservation" class="mob-cta">احجز الآن</a>
 </div>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-side"></div>
   <div class="steam-wrap">
     <div class="steam"></div><div class="steam"></div>
     <div class="steam"></div><div class="steam"></div>
@@ -845,7 +585,7 @@ footer{
       <span class="hdg"></span>
       <span class="hdl"></span>
     </div>
-    <p>في قلب مقاهي نؤمن أن كل فنجان قصيدة. نختار حبوبنا من مزارع إثيوبيا وكولومبيا والبرازيل، ونحمصها يومياً لنقدم لك تجربة لا تُنسى.</p>
+    <p class="hero-sub">في قلب مقاهي نؤمن أن كل فنجان قصيدة. نختار حبوبنا من مزارع إثيوبيا وكولومبيا والبرازيل، ونحمصها يومياً لنقدم لك تجربة لا تُنسى.</p>
     <div class="hero-actions">
       <a href="#menu" class="btn-primary">استكشف قائمتنا</a>
       <a href="#reservation" class="btn-ghost">احجز طاولتك</a>
@@ -878,48 +618,27 @@ footer{
 <!-- ══ STORY ══ -->
 <section class="story" id="story">
   <div class="story-visual">
-    <div class="story-pattern"></div>
-    <div class="story-frame">
-      <div class="story-cup">
-        <svg class="story-cup-svg" viewBox="0 0 64 64">
-          <path d="M8 14h48l-6 36H14L8 14zm8 0V10c0-2 2-4 4-4h24c2 0 4 2 4 4v4"/>
-          <ellipse cx="32" cy="56" rx="18" ry="3"/>
-          <path d="M44 20c4 0 8 2 8 6s-4 6-8 6" fill="none" stroke-width="2"/>
-        </svg>
-      </div>
-    </div>
+    <img src="./restaurant-assets/story.jpg" alt="يد باريستا تصنع latte art" loading="lazy">
     <div class="story-badge">
       <span class="story-badge-num">١٠</span>
       <span class="story-badge-label">سنة من الشغف</span>
     </div>
   </div>
   <div class="story-content">
-    <div class="section-eyebrow">
+    <div class="section-eyebrow reveal">
       <span class="section-eyebrow-line"></span>
       <span class="section-eyebrow-text">قصتنا</span>
     </div>
-    <h2 class="section-title" style="margin-bottom:1.8rem">من حبة واحدة<br><em>إلى فنجان استثنائي</em></h2>
-    <p>بدأت قصة قلب مقاهي عام ٢٠١٥ بحلم بسيط: تقديم قهوة specialty حقيقية في المغرب. رفضنا القهوة التجارية، وسافرنا إلى إثيوبيا والبرازيل وكولومبيا لنختار بأنفسنا أفضل الحبوب من المزارع مباشرة.</p>
-    <p>اليوم يشرف على محمصتنا اليدوية خبراء تحميص حاصلون على شهادة SCA الدولية. كل كوب تشربه محمّص منذ أقل من أسبوع، لأن القهوة الطازجة هي الأساس.</p>
-    <div class="story-highlights">
-      <div class="highlight-item">
-        <span class="highlight-dot"></span>
-        <span class="highlight-text">حبوب مصدر مفرد</span>
-      </div>
-      <div class="highlight-item">
-        <span class="highlight-dot"></span>
-        <span class="highlight-text">تحميص يدوي يومي</span>
-      </div>
-      <div class="highlight-item">
-        <span class="highlight-dot"></span>
-        <span class="highlight-text">شهادة SCA الدولية</span>
-      </div>
-      <div class="highlight-item">
-        <span class="highlight-dot"></span>
-        <span class="highlight-text">أجواء دافئة ومريحة</span>
-      </div>
+    <h2 class="section-title reveal" style="margin-bottom:1.8rem">من حبة واحدة<br><em>إلى فنجان استثنائي</em></h2>
+    <p class="reveal">بدأت قصة قلب مقاهي عام ٢٠١٥ بحلم بسيط: تقديم قهوة specialty حقيقية. رفضنا القهوة التجارية، وسافرنا إلى إثيوبيا والبرازيل وكولومبيا لنختار بأنفسنا أفضل الحبوب من المزارع مباشرة.</p>
+    <p class="reveal">اليوم يشرف على محمصتنا اليدوية خبراء تحميص حاصلون على شهادة SCA الدولية. كل كوب تشربه محمّص منذ أقل من أسبوع، لأن القهوة الطازجة هي الأساس.</p>
+    <div class="story-highlights reveal">
+      <div class="highlight-item"><span class="highlight-dot"></span><span class="highlight-text">حبوب مصدر مفرد</span></div>
+      <div class="highlight-item"><span class="highlight-dot"></span><span class="highlight-text">تحميص يدوي يومي</span></div>
+      <div class="highlight-item"><span class="highlight-dot"></span><span class="highlight-text">شهادة SCA الدولية</span></div>
+      <div class="highlight-item"><span class="highlight-dot"></span><span class="highlight-text">أجواء دافئة ومريحة</span></div>
     </div>
-    <a href="#menu" class="btn-primary" style="margin-top:1rem">اكتشف قائمتنا</a>
+    <a href="#menu" class="btn-primary reveal" style="margin-top:1rem">اكتشف قائمتنا</a>
   </div>
 </section>
 
@@ -936,36 +655,51 @@ footer{
   </div>
   <div class="origins-grid">
     <div class="origin-card reveal reveal-delay-1">
-      <span class="origin-flag">🇪🇹</span>
-      <div class="origin-country">إثيوبيا</div>
-      <div class="origin-name">يرغاشيف — مزارع غاردن</div>
-      <div class="origin-desc">مهد القهوة في العالم. حبوب يرغاشيف تتميز بنكهات زهرية مع لمسات عنب وحمضيات خفيفة تجعل كل رشفة مغامرة في المذاق.</div>
-      <div class="origin-tags">
-        <span class="origin-tag">زهري</span>
-        <span class="origin-tag">حمضيات</span>
-        <span class="origin-tag">طازج</span>
+      <div class="origin-card-img">
+        <img src="./restaurant-assets/origin-ethiopia.jpg" alt="مزارع قهوة إثيوبيا" loading="lazy">
+      </div>
+      <div class="origin-card-body">
+        <span class="origin-flag">🇪🇹</span>
+        <div class="origin-country">إثيوبيا</div>
+        <div class="origin-name">يرغاشيف — مزارع غاردن</div>
+        <div class="origin-desc">مهد القهوة في العالم. حبوب يرغاشيف تتميز بنكهات زهرية مع لمسات عنب وحمضيات خفيفة تجعل كل رشفة مغامرة في المذاق.</div>
+        <div class="origin-tags">
+          <span class="origin-tag">زهري</span>
+          <span class="origin-tag">حمضيات</span>
+          <span class="origin-tag">عنب</span>
+        </div>
       </div>
     </div>
     <div class="origin-card reveal reveal-delay-2">
-      <span class="origin-flag">🇨🇴</span>
-      <div class="origin-country">كولومبيا</div>
-      <div class="origin-name">هوييلا — مزارع الجبال</div>
-      <div class="origin-desc">تُزرع على ارتفاع ٢٠٠٠ متر فوق سطح البحر. نكهات الكراميل والشوكولاتة الداكنة مع حموضة ناعمة تجعلها الاختيار المثالي للـ Espresso.</div>
-      <div class="origin-tags">
-        <span class="origin-tag">كراميل</span>
-        <span class="origin-tag">شوكولاتة</span>
-        <span class="origin-tag">متوازن</span>
+      <div class="origin-card-img">
+        <img src="./restaurant-assets/origin-colombia.jpg" alt="مزارع قهوة كولومبيا" loading="lazy">
+      </div>
+      <div class="origin-card-body">
+        <span class="origin-flag">🇨🇴</span>
+        <div class="origin-country">كولومبيا</div>
+        <div class="origin-name">هويلا — مزارع الجبل</div>
+        <div class="origin-desc">من أعلى جبال الأنديز تأتي حبوبنا الكولومبية بنكهات الكراميل والشوكولاتة الداكنة مع حموضة متوازنة تُرضي أرقى الأذواق.</div>
+        <div class="origin-tags">
+          <span class="origin-tag">كراميل</span>
+          <span class="origin-tag">شوكولاتة</span>
+          <span class="origin-tag">متوازن</span>
+        </div>
       </div>
     </div>
     <div class="origin-card reveal reveal-delay-3">
-      <span class="origin-flag">🇧🇷</span>
-      <div class="origin-country">البرازيل</div>
-      <div class="origin-name">ميناس جيرايس — ميزا برازيل</div>
-      <div class="origin-desc">الكلاسيكي الذي لا يشيخ. نكهة البندق والسكر البني مع جسم ثقيل ناعم — القاعدة المثالية لمشروبات اللبن كالكابتشينو والأوليه.</div>
-      <div class="origin-tags">
-        <span class="origin-tag">بندق</span>
-        <span class="origin-tag">سكر بني</span>
-        <span class="origin-tag">ثقيل</span>
+      <div class="origin-card-img">
+        <img src="./restaurant-assets/origin-brazil.jpg" alt="مزارع قهوة البرازيل" loading="lazy">
+      </div>
+      <div class="origin-card-body">
+        <span class="origin-flag">🇧🇷</span>
+        <div class="origin-country">البرازيل</div>
+        <div class="origin-name">ميناس جيرايس — مزارع سيرادو</div>
+        <div class="origin-desc">أكبر منتج للقهوة في العالم. حبوبنا البرازيلية تقدم نكهة غنية بالمكسرات والشوكولاتة الحليب مع جسم ثقيل ودفء يلائم إسبريسو مثالي.</div>
+        <div class="origin-tags">
+          <span class="origin-tag">مكسرات</span>
+          <span class="origin-tag">شوكولاتة حليب</span>
+          <span class="origin-tag">جسم ثقيل</span>
+        </div>
       </div>
     </div>
   </div>
@@ -973,120 +707,67 @@ footer{
 
 <!-- ══ MENU ══ -->
 <section class="menu-section section" id="menu">
-  <div class="reveal" style="margin-bottom:3rem">
+  <div class="reveal">
     <div class="section-eyebrow">
       <span class="section-eyebrow-line"></span>
-      <span class="section-eyebrow-text">قائمة المشروبات</span>
+      <span class="section-eyebrow-text">قائمتنا المتخصصة</span>
     </div>
-    <h2 class="section-title">اكتشف <em>عالمنا الممتع</em></h2>
+    <h2 class="section-title" style="margin-bottom:3rem">كل فنجان <em>حكاية بحد ذاتها</em></h2>
   </div>
-  <div class="menu-tabs reveal" id="menuTabs">
-    <button class="menu-tab active" data-menu="hot">☕ قهوة ساخنة</button>
-    <button class="menu-tab" data-menu="cold">🧊 قهوة باردة</button>
-    <button class="menu-tab" data-menu="drinks">🍵 مشروبات أخرى</button>
-    <button class="menu-tab" data-menu="food">🥐 معجنات وحلويات</button>
-  </div>
-
-  <!-- HOT -->
-  <div class="menu-data active reveal" id="menu-hot">
-    <div class="menu-item">
-      <div class="menu-img">☕</div>
-      <div class="menu-info">
-        <div class="menu-name">Espresso — إسبريسو</div>
-        <div class="menu-desc">جرعة مركزة من نكهة كولومبيا هوييلا — ٣٠ml من الجوهر النقي مع كريما ذهبية كثيفة</div>
-        <div class="menu-footer"><span class="menu-price">18 MAD</span><span class="menu-tag best">الأكثر طلباً ★</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">🫧</div>
-      <div class="menu-info">
-        <div class="menu-name">Cappuccino — كابتشينو</div>
-        <div class="menu-desc">إسبريسو مزدوج مع حليب مبخر مُخفق بعناية — توازن مثالي بين القوة والنعومة</div>
-        <div class="menu-footer"><span class="menu-price">28 MAD</span><span class="menu-tag">كلاسيكي</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">🥛</div>
-      <div class="menu-info">
-        <div class="menu-name">Latte Art — لاتيه بفن</div>
-        <div class="menu-desc">إسبريسو ناعم مع حليب مبخر وفن لاتيه يرسمه باريستانا — تجربة بصرية وذوقية في آنٍ واحد</div>
-        <div class="menu-footer"><span class="menu-price">32 MAD</span><span class="menu-tag">حصري</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">🍫</div>
-      <div class="menu-info">
-        <div class="menu-name">Mocha — موكا</div>
-        <div class="menu-desc">إسبريسو + شوكولاتة بلجيكية داكنة + حليب مبخر + كريمة مخفوقة — دفء في كل رشفة</div>
-        <div class="menu-footer"><span class="menu-price">35 MAD</span><span class="menu-tag">جديد</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">🌿</div>
-      <div class="menu-info">
-        <div class="menu-name">Cortado — كورتادو</div>
-        <div class="menu-desc">إسبريسو مزدوج مع نفس حجم الحليب البارد — للمحبين الذين يريدون قهوة بدون فقدان القوة</div>
-        <div class="menu-footer"><span class="menu-price">25 MAD</span><span class="menu-tag">للمختصين</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">✨</div>
-      <div class="menu-info">
-        <div class="menu-name">Signature Blend — توقيعنا الخاص</div>
-        <div class="menu-desc">مزيج سري من إثيوبيا وكولومبيا مطهو بالبريبور — ابتكار يجعل زبائننا يعودون كل يوم</div>
-        <div class="menu-footer"><span class="menu-price">38 MAD</span><span class="menu-tag best">حصري ★</span></div>
-      </div>
-    </div>
+  <div class="menu-tabs reveal">
+    <button class="menu-tab active" data-menu="coffee">القهوة المتخصصة</button>
+    <button class="menu-tab" data-menu="drinks">المشروبات الباردة</button>
+    <button class="menu-tab" data-menu="food">الحلويات والمعجنات</button>
   </div>
 
-  <!-- COLD -->
-  <div class="menu-data" id="menu-cold">
+  <!-- COFFEE -->
+  <div class="menu-data active" id="menu-coffee">
     <div class="menu-item">
-      <div class="menu-img">🧊</div>
-      <div class="menu-info">
-        <div class="menu-name">Cold Brew — كولد برو</div>
-        <div class="menu-desc">حبوب إثيوبية تُنقع في ماء بارد لـ ١٨ ساعة — نتيجة ناعمة وحلوة بشكل طبيعي بدون مرارة</div>
-        <div class="menu-footer"><span class="menu-price">35 MAD</span><span class="menu-tag best">الأكثر طلباً ★</span></div>
+      <div class="menu-item-img"><img src="./restaurant-assets/menu-espresso.jpg" alt="إسبريسو" loading="lazy"></div>
+      <div class="menu-item-body">
+        <div class="menu-name">إسبريسو مفرد / مزدوج</div>
+        <div class="menu-desc">استخلاص دقيق في ٢٥ ثانية من حبوب يرغاشيف الإثيوبية — طبقة كريما ذهبية كثيفة وعمق لا مثيل له</div>
+        <div class="menu-footer"><span class="menu-price">22 / 28 MAD</span><span class="menu-tag best">الأكثر طلباً ★</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🌊</div>
-      <div class="menu-info">
-        <div class="menu-name">Iced Latte — آيس لاتيه</div>
-        <div class="menu-desc">إسبريسو مركز على ثلج مع حليب كامل الدسم — منعش وغني في نفس الوقت</div>
-        <div class="menu-footer"><span class="menu-price">32 MAD</span><span class="menu-tag">منعش</span></div>
+      <div class="menu-item-img"><img src="./restaurant-assets/menu-latte.jpg" alt="لاتيه" loading="lazy"></div>
+      <div class="menu-item-body">
+        <div class="menu-name">لاتيه الشعير</div>
+        <div class="menu-desc">إسبريسو مزدوج مع حليب بخاري منقوع وبصمة Latte Art محترفة — توازن مثالي بين القوة والنعومة</div>
+        <div class="menu-footer"><span class="menu-price">38 MAD</span><span class="menu-tag">كلاسيك</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🍯</div>
-      <div class="menu-info">
-        <div class="menu-name">Brown Sugar Latte — لاتيه سكر بني</div>
-        <div class="menu-desc">إسبريسو + سكر بني + حليب شوفان + رشة قرفة مدهشة — النجم الأول على إنستغرام</div>
-        <div class="menu-footer"><span class="menu-price">38 MAD</span><span class="menu-tag">ترند</span></div>
+      <div class="menu-item-img-placeholder">☕</div>
+      <div class="menu-item-body">
+        <div class="menu-name">فلات وايت</div>
+        <div class="menu-desc">ريسترتو مركّز مع حليب مخملي ناعم — أكثر قوة من اللاتيه، أقل حدة من الإسبريسو. اختيار الخبراء</div>
+        <div class="menu-footer"><span class="menu-price">35 MAD</span><span class="menu-tag">خبراء</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🍵</div>
-      <div class="menu-info">
-        <div class="menu-name">Matcha Latte — لاتيه ماتشا</div>
-        <div class="menu-desc">ماتشا ياباني ممتاز الدرجة مع حليب لوز طازج وعسل طبيعي — لمن يريد التغيير</div>
-        <div class="menu-footer"><span class="menu-price">40 MAD</span><span class="menu-tag">جديد</span></div>
+      <div class="menu-item-img-placeholder">🫗</div>
+      <div class="menu-item-body">
+        <div class="menu-name">ماكياتو كراميل</div>
+        <div class="menu-desc">إسبريسو على قاعدة حليب دافئ مع صوص كراميل منزلي — درامية في الشكل، متوازن في المذاق</div>
+        <div class="menu-footer"><span class="menu-price">42 MAD</span><span class="menu-tag">منزلي</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🌺</div>
-      <div class="menu-info">
-        <div class="menu-name">Rose Cold Brew — كولد برو الورد</div>
-        <div class="menu-desc">كولد برو بإضافة ماء الورد المغربي الأصيل — توقيع قلب مقاهي الذي لا تجده في أي مكان</div>
-        <div class="menu-footer"><span class="menu-price">42 MAD</span><span class="menu-tag best">حصري ★</span></div>
+      <div class="menu-item-img-placeholder">🍵</div>
+      <div class="menu-item-body">
+        <div class="menu-name">ماتشا لاتيه</div>
+        <div class="menu-desc">مسحوق ماتشا ياباني درجة الشاي مخفوق مع حليب شوفان بارد — أخضر نابض، منعش، صحي</div>
+        <div class="menu-footer"><span class="menu-price">45 MAD</span><span class="menu-tag">صحي</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🍋</div>
-      <div class="menu-info">
-        <div class="menu-name">Sparkling Espresso — إسبريسو مفوار</div>
-        <div class="menu-desc">إسبريسو على ماء فوار مع ليمون وأوريغانو — تجربة جريئة لأصحاب الذوق الجريء</div>
-        <div class="menu-footer"><span class="menu-price">38 MAD</span><span class="menu-tag">غير عادي</span></div>
+      <div class="menu-item-img-placeholder">🌹</div>
+      <div class="menu-item-body">
+        <div class="menu-name">كولد برو الورد</div>
+        <div class="menu-desc">قهوة باردة منقوعة ٢٤ ساعة مع ماء ورد مغربي أصيل وشراب اللافندر — الأيقونة التي اخترعها رضا</div>
+        <div class="menu-footer"><span class="menu-price">48 MAD</span><span class="menu-tag best">أيقونة ★</span></div>
       </div>
     </div>
   </div>
@@ -1094,35 +775,51 @@ footer{
   <!-- DRINKS -->
   <div class="menu-data" id="menu-drinks">
     <div class="menu-item">
-      <div class="menu-img">🫖</div>
-      <div class="menu-info">
-        <div class="menu-name">أطقم شاي مغربي راقٍ</div>
-        <div class="menu-desc">شاي أخضر صيني أصيل مع النعناع الجبلي الطازج والصعتر — مقدم في إبريق نحاسي أصيل</div>
-        <div class="menu-footer"><span class="menu-price">25 MAD</span><span class="menu-tag">تقليدي</span></div>
+      <div class="menu-item-img"><img src="./restaurant-assets/gallery-3.jpg" alt="مشروبات باردة" loading="lazy"></div>
+      <div class="menu-item-body">
+        <div class="menu-name">كولد برو الورد الأيقوني</div>
+        <div class="menu-desc">قهوة منقوعة ٢٤ ساعة مع ماء الورد وبتلات اللافندر وكريمة مبشرة — تحفة فنية في كوب</div>
+        <div class="menu-footer"><span class="menu-price">48 MAD</span><span class="menu-tag best">أيقونة ★</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🍫</div>
-      <div class="menu-info">
+      <div class="menu-item-img-placeholder">🧋</div>
+      <div class="menu-item-body">
+        <div class="menu-name">فرابيه الكراميل</div>
+        <div class="menu-desc">إسبريسو مثلج مخفوق مع حليب مثلج وصوص الكراميل المنزلي وكريمة شانتيي خفيفة</div>
+        <div class="menu-footer"><span class="menu-price">45 MAD</span><span class="menu-tag">صيفي</span></div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-img-placeholder">🥤</div>
+      <div class="menu-item-body">
+        <div class="menu-name">ليموناضة النعناع الطازج</div>
+        <div class="menu-desc">ليمون طازج معصور مع نعناع مغربي وشراب الزعتر — منعش وأصيل لا يشبهه شيء</div>
+        <div class="menu-footer"><span class="menu-price">32 MAD</span><span class="menu-tag">طازج</span></div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-img-placeholder">🫖</div>
+      <div class="menu-item-body">
+        <div class="menu-name">أتاي مغربي أصيل</div>
+        <div class="menu-desc">شاي أخضر مع نعناع طازج وسكر على الطريقة التقليدية — للروح التي تحنّ للأصالة</div>
+        <div class="menu-footer"><span class="menu-price">25 MAD</span><span class="menu-tag">أصيل</span></div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-img-placeholder">🍋</div>
+      <div class="menu-item-body">
+        <div class="menu-name">عصير برتقال طازج</div>
+        <div class="menu-desc">برتقال مغربي طازج معصور أمامك — فيتامين في كل رشفة</div>
+        <div class="menu-footer"><span class="menu-price">28 MAD</span><span class="menu-tag">صحي</span></div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-img-placeholder">🍫</div>
+      <div class="menu-item-body">
         <div class="menu-name">شوكولاتة ساخنة بلجيكية</div>
-        <div class="menu-desc">شوكولاتة بلجيكية ٧٠٪ ذوبان بطيء مع حليب كامل الدسم وكريمة مخفوقة يدوياً</div>
-        <div class="menu-footer"><span class="menu-price">32 MAD</span><span class="menu-tag">شتوي</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">🥤</div>
-      <div class="menu-info">
-        <div class="menu-name">عصائر طازجة يومية</div>
-        <div class="menu-desc">برتقال + جزر + زنجبيل، أو تفاح + نعناع + ليمون — محضرة لحظة الطلب فقط</div>
-        <div class="menu-footer"><span class="menu-price">30 MAD</span><span class="menu-tag">طازج</span></div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-img">🌸</div>
-      <div class="menu-info">
-        <div class="menu-name">شاي أعشاب علاجي</div>
-        <div class="menu-desc">مزيج من الخزامى والبابونج والزعتر الجبلي — للاسترخاء وتصفية الذهن</div>
-        <div class="menu-footer"><span class="menu-price">22 MAD</span><span class="menu-tag">مهدئ</span></div>
+        <div class="menu-desc">شوكولاتة داكنة ٧٠٪ بلجيكية مذابة مع حليب كامل الدسم وقرفة — ترف في كل كوب</div>
+        <div class="menu-footer"><span class="menu-price">40 MAD</span><span class="menu-tag">شتوي</span></div>
       </div>
     </div>
   </div>
@@ -1130,36 +827,81 @@ footer{
   <!-- FOOD -->
   <div class="menu-data" id="menu-food">
     <div class="menu-item">
-      <div class="menu-img">🥐</div>
-      <div class="menu-info">
+      <div class="menu-item-img"><img src="./restaurant-assets/menu-food.jpg" alt="كرواسان" loading="lazy"></div>
+      <div class="menu-item-body">
         <div class="menu-name">كرواسان زبدي طازج</div>
         <div class="menu-desc">كرواسان فرنسي أصيل بالزبدة الطازجة يُخبز كل صباح — هش من الخارج طري من الداخل</div>
         <div class="menu-footer"><span class="menu-price">18 MAD</span><span class="menu-tag best">الأفضل ★</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🍰</div>
-      <div class="menu-info">
+      <div class="menu-item-img-placeholder">🍰</div>
+      <div class="menu-item-body">
         <div class="menu-name">تشيزكيك اللوتس</div>
         <div class="menu-desc">قاعدة بيسكويت لوتس مقرمشة مع كريمة جبن حلوة وصلصة لوتس — الأكثر تصويراً على الإنستغرام</div>
         <div class="menu-footer"><span class="menu-price">45 MAD</span><span class="menu-tag">ترند</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🧇</div>
-      <div class="menu-info">
+      <div class="menu-item-img-placeholder">🧇</div>
+      <div class="menu-item-body">
         <div class="menu-name">وافل بلجيكي محشو</div>
         <div class="menu-desc">وافل بلجيكي ساخن مع نوتيلا أو عسل وبندق محمص — طبق الفطور المثالي</div>
         <div class="menu-footer"><span class="menu-price">40 MAD</span><span class="menu-tag">إفطار</span></div>
       </div>
     </div>
     <div class="menu-item">
-      <div class="menu-img">🍫</div>
-      <div class="menu-info">
+      <div class="menu-item-img-placeholder">🍫</div>
+      <div class="menu-item-body">
         <div class="menu-name">براونيز شوكولاتة داكنة</div>
         <div class="menu-desc">براونيز بلجيكي بالشوكولاتة الداكنة ٧٠٪ — كثيف وطري وتقديم دافئ مع آيس كريم اختياري</div>
         <div class="menu-footer"><span class="menu-price">38 MAD</span><span class="menu-tag">حلو</span></div>
       </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-img-placeholder">🫙</div>
+      <div class="menu-item-body">
+        <div class="menu-name">أوفر نايت أوتس بالفراولة</div>
+        <div class="menu-desc">شوفان منقوع بحليب اللوز مع فراولة طازجة وعسل نحل جبلي — إفطار صحي ومغذٍ</div>
+        <div class="menu-footer"><span class="menu-price">35 MAD</span><span class="menu-tag">صحي</span></div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-img-placeholder">🥐</div>
+      <div class="menu-item-body">
+        <div class="menu-name">باجيل بالسلمون والكريمة</div>
+        <div class="menu-desc">خبز باجيل طازج محمص مع جبن كريمي وسلمون مدخن وأفوكادو وليمون — وجبة خفيفة راقية</div>
+        <div class="menu-footer"><span class="menu-price">65 MAD</span><span class="menu-tag">راقي</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery" id="gallery">
+  <div style="text-align:center" class="reveal">
+    <div class="section-eyebrow" style="justify-content:center">
+      <span class="section-eyebrow-line"></span>
+      <span class="section-eyebrow-text">لحظاتنا</span>
+      <span class="section-eyebrow-line"></span>
+    </div>
+    <h2 class="section-title">أجواء <em>لا تُنسى</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <img src="./restaurant-assets/gallery-1.jpg" alt="أجواء المقهى" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="./restaurant-assets/gallery-2.jpg" alt="حبوب القهوة" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="./restaurant-assets/menu-espresso.jpg" alt="إسبريسو" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="./restaurant-assets/gallery-3.jpg" alt="كولد برو" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="./restaurant-assets/menu-latte.jpg" alt="لاتيه" loading="lazy">
     </div>
   </div>
 </section>
@@ -1177,19 +919,25 @@ footer{
   <div class="exp-grid">
     <div class="exp-card reveal reveal-delay-1">
       <span class="exp-num">01</span>
-      <div class="exp-icon">☕</div>
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
       <h3 class="exp-title">تحميص يدوي طازج</h3>
       <p class="exp-desc">نحمص حبوبنا في محمصتنا الخاصة كل يوم اثنين وخميس. لا تجد عندنا حبوباً أعمر من ٧ أيام — لأن الطازج هو الأساس.</p>
     </div>
     <div class="exp-card reveal reveal-delay-2">
       <span class="exp-num">02</span>
-      <div class="exp-icon">🏆</div>
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      </div>
       <h3 class="exp-title">باريستا معتمد SCA</h3>
       <p class="exp-desc">فريقنا حاصل على شهادة Specialty Coffee Association الدولية. كل كوب يُعد بدقة ومعايير احترافية لا تجده في المقاهي العادية.</p>
     </div>
     <div class="exp-card reveal reveal-delay-3">
       <span class="exp-num">03</span>
-      <div class="exp-icon">🌍</div>
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
       <h3 class="exp-title">مباشر من المزارع</h3>
       <p class="exp-desc">علاقة مباشرة مع مزارعين في ٣ قارات. ندفع أسعاراً عادلة ونزور المزارع شخصياً لنضمن الجودة وندعم التجارة المسؤولة.</p>
     </div>
@@ -1209,13 +957,13 @@ footer{
   <div class="baristas-grid">
     <div class="barista-card reveal reveal-delay-1">
       <div class="barista-photo">
-        <div class="barista-avatar">ا</div>
+        <div class="barista-avatar">أ</div>
         <span class="barista-specialty">Head Barista</span>
       </div>
       <div class="barista-info">
         <div class="barista-name">أسامة العلوي</div>
         <div class="barista-role">رئيس فريق الباريستا</div>
-        <div class="barista-bio">١٢ سنة في عالم القهوة. درس في إيطاليا وحاصل على شهادة Q-Grader الدولية — الشخص الذي يُذيق القهوة ويعرف أصلها بمجرد رشفة.</div>
+        <div class="barista-bio">١٢ سنة في عالم القهوة. درس في إيطاليا وحاصل على شهادة Q-Grader الدولية — يُذيق القهوة ويعرف أصلها بمجرد رشفة.</div>
         <div class="barista-awards">
           <span class="award-tag">Q-Grader</span>
           <span class="award-tag">SCA Certified</span>
@@ -1246,7 +994,7 @@ footer{
       <div class="barista-info">
         <div class="barista-name">رضا الخياري</div>
         <div class="barista-role">متخصص القهوة الباردة</div>
-        <div class="barista-bio">مخترع وصفة كولد برو الورد الشهيرة التي أصبحت أيقونة قلب مقاهي. شغفه تطوير وصفات جديدة تجمع بين القهوة والنكهات المغربية الأصيلة.</div>
+        <div class="barista-bio">مخترع وصفة كولد برو الورد الشهيرة. شغفه تطوير وصفات تجمع بين القهوة والنكهات المغربية الأصيلة.</div>
         <div class="barista-awards">
           <span class="award-tag">Innovation Award</span>
           <span class="award-tag">Cold Brew Expert</span>
@@ -1266,60 +1014,69 @@ footer{
         <span class="section-eyebrow-line"></span>
       </div>
       <h2 class="section-title" style="text-align:center;margin-bottom:.8rem">نحجز لك <em>اللحظة المثالية</em></h2>
-      <p style="text-align:center;color:var(--text-muted);font-size:.9rem;margin-bottom:3rem;line-height:1.9">سواء كنت مع صديق أو للعمل أو لوحدك مع كتاب — طاولتنا تنتظرك. احجز مسبقاً ونجهز لك كوبك الأول قبل وصولك</p>
+      <p style="text-align:center;color:var(--text-muted);font-size:.9rem;margin-top:.8rem">للحجز المسبق يرجى الاتصال أو إرسال رسالة على واتساب: <strong style="color:var(--caramel)">+212 6XX XXX XXX</strong></p>
     </div>
-    <div class="res-form reveal">
+    <form class="res-form reveal" onsubmit="handleReservation(event)">
       <div class="form-group">
         <label>الاسم الكامل</label>
-        <input type="text" placeholder="أدخل اسمك">
+        <input type="text" placeholder="أدخل اسمك" required>
       </div>
       <div class="form-group">
-        <label>رقم الهاتف (WhatsApp)</label>
-        <input type="tel" placeholder="+212 6XX XXX XXX">
+        <label>رقم الهاتف</label>
+        <input type="tel" placeholder="+212 6XX XXX XXX" required>
       </div>
       <div class="form-group">
-        <label>تاريخ الزيارة</label>
-        <input type="date">
+        <label>التاريخ</label>
+        <input type="date" required>
       </div>
       <div class="form-group">
-        <label>وقت الوصول</label>
-        <select>
-          <option>٨:٠٠ صباحاً</option>
-          <option>١٠:٠٠ صباحاً</option>
-          <option>١٢:٠٠ ظهراً</option>
-          <option>٢:٠٠ مساءً</option>
-          <option>٤:٠٠ مساءً</option>
-          <option>٦:٠٠ مساءً</option>
-          <option>٨:٠٠ مساءً</option>
+        <label>الوقت</label>
+        <select required>
+          <option value="">اختر الوقت</option>
+          <option>09:00 صباحاً</option>
+          <option>10:00 صباحاً</option>
+          <option>11:00 صباحاً</option>
+          <option>12:00 ظهراً</option>
+          <option>01:00 مساءً</option>
+          <option>02:00 مساءً</option>
+          <option>03:00 مساءً</option>
+          <option>04:00 مساءً</option>
+          <option>05:00 مساءً</option>
+          <option>06:00 مساءً</option>
+          <option>07:00 مساءً</option>
+          <option>08:00 مساءً</option>
+          <option>09:00 مساءً</option>
         </select>
       </div>
       <div class="form-group">
         <label>عدد الأشخاص</label>
-        <select>
-          <option>شخص واحد</option>
-          <option>٢ أشخاص</option>
-          <option>٣-٤ أشخاص</option>
-          <option>٥-٦ أشخاص</option>
-          <option>٧ أشخاص وأكثر</option>
+        <select required>
+          <option value="">اختر العدد</option>
+          <option>١ شخص</option>
+          <option>٢ شخصين</option>
+          <option>٣ أشخاص</option>
+          <option>٤ أشخاص</option>
+          <option>٥ أشخاص</option>
+          <option>٦ أشخاص أو أكثر</option>
         </select>
       </div>
       <div class="form-group">
-        <label>مناسبة الزيارة</label>
+        <label>المناسبة</label>
         <select>
-          <option>قهوة صباحية</option>
-          <option>لقاء عمل</option>
-          <option>مع الأصدقاء</option>
-          <option>تصوير / محتوى</option>
-          <option>احتفال خاص</option>
-          <option>أخرى</option>
+          <option value="">اختر المناسبة (اختياري)</option>
+          <option>عيد ميلاد</option>
+          <option>اجتماع عمل</option>
+          <option>موعد رومانسي</option>
+          <option>احتفال عائلي</option>
+          <option>غير ذلك</option>
         </select>
       </div>
       <div class="form-group full">
-        <label>طلب خاص أو ملاحظة</label>
-        <textarea rows="3" placeholder="هل تريد تحضير مشروب معين؟ ركن هادئ؟ أي طلب خاص نسعد بخدمتك..." style="resize:vertical"></textarea>
+        <label>ملاحظات إضافية</label>
+        <textarea rows="3" placeholder="أي طلبات خاصة أو ملاحظات..."></textarea>
       </div>
-      <button class="res-submit">احجز طاولتك الآن — نتشرف بضيافتكم ☕</button>
-    </div>
+      <button type="submit" class="res-submit">احجز طاولتك الآن</button>
+    </form>
   </div>
 </section>
 
@@ -1328,127 +1085,98 @@ footer{
   <div style="text-align:center;margin-bottom:4rem" class="reveal">
     <div class="section-eyebrow" style="justify-content:center">
       <span class="section-eyebrow-line"></span>
-      <span class="section-eyebrow-text">ماذا يقولون عنا</span>
+      <span class="section-eyebrow-text">آراء زبائننا</span>
       <span class="section-eyebrow-line"></span>
     </div>
-    <h2 class="section-title">زبائننا <em>هم قصتنا</em></h2>
+    <h2 class="section-title">ماذا يقولون عن <em>قلب مقاهي</em></h2>
   </div>
   <div class="testi-track">
     <div class="testi-card reveal reveal-delay-1">
       <div class="testi-quote">"</div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">جربت قهوة في لندن وباريس واسطنبول، ووالله كولد برو الورد في قلب مقاهي لا تجده في أي مكان آخر. هذا المقهى استثنائي.</p>
+      <p class="testi-text">أفضل قهوة تذوقتها في حياتي. كولد برو الورد تجربة من كوكب آخر — أصبح وجهتي اليومية بدون مبالغة.</p>
       <div class="testi-author">
-        <div class="testi-avatar">م</div>
-        <div>
-          <div class="testi-name">مريم الإدريسي</div>
-          <div class="testi-role">مصممة جرافيك — الرباط</div>
-        </div>
+        <div class="testi-avatar">ي</div>
+        <div><div class="testi-name">ياسمين البوشي</div><div class="testi-role">مصممة جرافيك</div></div>
       </div>
     </div>
     <div class="testi-card reveal reveal-delay-2">
       <div class="testi-quote">"</div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">أنا أحضر كل اجتماعات عملي هنا. الجو هادئ، الواي فاي ممتاز، والقهوة تعطيني طاقة فعلية مختلفة عن أي مكان آخر. أصبح مكتبي الثاني.</p>
+      <p class="testi-text">الفرق بين القهوة التجارية وقهوتهم كالفرق بين الليل والنهار. يرغاشيف الإثيوبي غيّر مفهومي للقهوة تماماً.</p>
       <div class="testi-author">
-        <div class="testi-avatar">ط</div>
-        <div>
-          <div class="testi-name">طارق بنعلي</div>
-          <div class="testi-role">مستشار أعمال — الدار البيضاء</div>
-        </div>
+        <div class="testi-avatar">ك</div>
+        <div><div class="testi-name">كريم الإدريسي</div><div class="testi-role">مهندس برمجيات</div></div>
       </div>
     </div>
     <div class="testi-card reveal reveal-delay-3">
       <div class="testi-quote">"</div>
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">الكابتشينو هنا يذكرني بالكابتشينو في نابولي. أسامة يعرف معنى القهوة الحقيقية. التشيزكيك + الكابتشينو = أفضل صباح في حياتي.</p>
+      <p class="testi-text">المكان نفسه تحفة معمارية، والقهوة أفضل منه. كل مرة أزورها أكتشف نكهة جديدة. فريق رائع ومحترف.</p>
       <div class="testi-author">
         <div class="testi-avatar">ن</div>
-        <div>
-          <div class="testi-name">نوال السعيدي</div>
-          <div class="testi-role">طبيبة — فاس</div>
-        </div>
+        <div><div class="testi-name">نادية المرابط</div><div class="testi-role">طبيبة</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ LOYALTY PROGRAM ══ -->
+<!-- ══ LOYALTY BANNER ══ -->
 <section class="loyalty">
-  <div class="loyalty-content">
-    <span class="loyalty-icon">♥</span>
-    <h3>برنامج ولاء قلب مقاهي</h3>
-    <p>كل زيارة تقربك من قهوة مجانية. اجمع النقاط واحصل على مكافآت حصرية لزبائننا المميزين.</p>
+  <div class="loyalty-content reveal">
+    <h3>انضم إلى برنامج <em style="color:var(--gold);font-style:italic">قلب الذهبي</em></h3>
+    <p>اجمع نقاطك مع كل فنجان واستمتع بمكافآت حصرية، تذوقات مجانية، وأولوية الحجز في مناسباتنا الخاصة.</p>
     <div class="loyalty-steps">
-      <div class="loyalty-step">
-        <span class="step-num">١</span>
-        <span class="step-text">سجّل مجاناً</span>
-      </div>
-      <div class="loyalty-step">
-        <span class="step-num">٢</span>
-        <span class="step-text">اجمع النقاط</span>
-      </div>
-      <div class="loyalty-step">
-        <span class="step-num">٣</span>
-        <span class="step-text">استمتع بمكافآتك</span>
-      </div>
+      <div class="loyalty-step"><span class="loyalty-step-num">١</span><span class="loyalty-step-label">سجّل مجاناً</span></div>
+      <div class="loyalty-step"><span class="loyalty-step-num">٢</span><span class="loyalty-step-label">اجمع النقاط</span></div>
+      <div class="loyalty-step"><span class="loyalty-step-num">٣</span><span class="loyalty-step-label">استمتع بالمكافآت</span></div>
     </div>
-    <a href="#" class="btn-primary">انضم الآن — مجاناً</a>
+    <a href="#" class="btn-primary">سجّل الآن مجاناً</a>
   </div>
 </section>
 
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <span class="footer-logo-main">قلب مقاهي</span>
-      <span class="footer-logo-sub">Specialty Coffee — Maroc</span>
-      <p class="footer-desc">نؤمن أن القهوة أكثر من مشروب — هي ثقافة وفن وتجربة إنسانية. نحمص حبوبنا يدوياً ونختارها من أفضل مزارع العالم لنقدم لك الاستثنائي كل يوم.</p>
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <span class="logo-ar">قلب مقاهي</span>
+        <span class="logo-tagline">Specialty Coffee — Since 2015</span>
+      </a>
+      <p>في قلب مقاهي نؤمن أن كل فنجان قصيدة. من مزارع العالم إلى يديك — جودة لا تُنسى في كل رشفة.</p>
     </div>
     <div class="footer-col">
       <h4>روابط سريعة</h4>
       <ul>
-        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#story">قصتنا</a></li>
         <li><a href="#menu">القائمة</a></li>
-        <li><a href="#origins">أصول القهوة</a></li>
+        <li><a href="#gallery">المعرض</a></li>
+        <li><a href="#origins">أصول الحبوب</a></li>
         <li><a href="#baristas">فريق الباريستا</a></li>
         <li><a href="#reservation">احجز طاولة</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h4>أوقات العمل</h4>
-      <div class="footer-hours">
-        <div class="hours-row">
-          <span class="hours-day">الأحد — الخميس</span>
-          <span>٧:٣٠ص — ١٠:٠٠م</span>
-        </div>
-        <div class="hours-row">
-          <span class="hours-day">الجمعة</span>
-          <span>٨:٠٠ص — ١١:٠٠م</span>
-        </div>
-        <div class="hours-row">
-          <span class="hours-day">السبت</span>
-          <span>٧:٠٠ص — ١١:٠٠م</span>
-        </div>
-      </div>
+    <div class="footer-col footer-hours">
+      <h4>ساعات العمل</h4>
+      <p><strong>السبت — الخميس</strong><br>٠٧:٠٠ صباحاً — ١١:٠٠ مساءً</p>
+      <p style="margin-top:.8rem"><strong>الجمعة</strong><br>٠٨:٠٠ صباحاً — ١٢:٠٠ منتصف الليل</p>
     </div>
     <div class="footer-col">
       <h4>تواصل معنا</h4>
       <ul>
-        <li class="no-link">📍 شارع محمد الخامس، طنجة</li>
-        <li><a href="tel:+212600000000">📞 +212 600 000 000</a></li>
-        <li><a href="mailto:info@qalbmaqahi.ma">✉️ info@qalbmaqahi.ma</a></li>
-        <li><a href="#">💬 واتساب للحجز</a></li>
+        <li><a href="tel:+212600000000">+212 6XX XXX XXX</a></li>
+        <li><a href="mailto:hello@qalbmaqahi.ma">hello@qalbmaqahi.ma</a></li>
+        <li><a href="#">الدار البيضاء، المغرب</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 قلب مقاهي — جميع الحقوق محفوظة</span>
-    <div class="footer-socials">
-      <a class="social-btn" href="#" title="فيسبوك">f</a>
-      <a class="social-btn" href="#" title="إنستغرام">ig</a>
-      <a class="social-btn" href="#" title="تيك توك">tk</a>
-      <a class="social-btn" href="#" title="واتساب">w</a>
+    <p>© ٢٠٢٥ قلب مقاهي — جميع الحقوق محفوظة</p>
+    <div class="social-links">
+      <a class="social-btn" href="#" title="انستغرام">IG</a>
+      <a class="social-btn" href="#" title="تيك توك">TK</a>
+      <a class="social-btn" href="#" title="فيسبوك">FB</a>
+      <a class="social-btn" href="#" title="واتساب">WA</a>
     </div>
   </div>
 </footer>
@@ -1458,7 +1186,7 @@ footer{
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+}, { passive: true });
 
 // ── HAMBURGER MENU ──
 const hamburger = document.getElementById('hamburger');
@@ -1482,7 +1210,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(r => observer.observe(r));
 
 // ── MENU TABS ──
@@ -1495,6 +1223,21 @@ document.querySelectorAll('.menu-tab').forEach(tab => {
     if(target) target.classList.add('active');
   });
 });
+
+// ── RESERVATION ──
+function handleReservation(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.res-submit');
+  btn.textContent = 'تم الإرسال — سنتواصل معك قريباً!';
+  btn.style.background = 'linear-gradient(135deg,#2d6a2d,#1a4a1a)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'احجز طاولتك الآن';
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 4000);
+}
 </script>
 </body>
 </html>
