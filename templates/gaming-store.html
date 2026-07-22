@@ -847,6 +847,17 @@ footer{
   .release-price-col{display:none}
   .cats-grid{grid-template-columns:repeat(3,1fr)}
 }
+
+  /* ─── Extra-small phone fixes (≤480px) ─── */
+  @media(max-width:480px){
+    [class*="prods-grid"],[class*="products-grid"],[class*="prod-grid"]{grid-template-columns:repeat(2,1fr)!important}
+    [class*="cats-row"],[class*="cats-grid"],[class*="categories-grid"]{grid-template-columns:repeat(2,1fr)!important}
+    [class*="foot"]{grid-template-columns:1fr!important}
+    [class*="hero"]{padding-left:16px!important;padding-right:16px!important}
+    section,[class*="-sec"]{padding-left:16px!important;padding-right:16px!important}
+    h1{font-size:clamp(28px,8vw,42px)!important}
+    h2{font-size:clamp(22px,6vw,34px)!important}
+  }
 </style>
 </head>
 <body>

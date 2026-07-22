@@ -635,12 +635,38 @@ footer{
   .hero-side{display:none}
 }
 @media(max-width:680px){
-  nav{display:none}
+  nav{overflow-x:auto;scrollbar-width:none}
   .hero-title{font-size:2.8rem}
   .footer-grid{grid-template-columns:1fr}
   .collections-grid{grid-template-columns:1fr}
   .nl-form{flex-direction:column}
 }
+
+  /* ─── Perfume Store Mobile Nav ─── */
+  .mob-tog{display:none;flex-direction:column;gap:4px;padding:8px;background:none;border:1px solid rgba(255,255,255,0.15);cursor:pointer;align-self:center;flex-shrink:0}
+  .mob-tog span{display:block;width:20px;height:1px;background:var(--gold,#d4af7a);transition:all .3s}
+  .mob-tog.is-open span:nth-child(1){transform:rotate(45deg) translate(3px,4px)}
+  .mob-tog.is-open span:nth-child(2){opacity:0}
+  .mob-tog.is-open span:nth-child(3){transform:rotate(-45deg) translate(3px,-4px)}
+  @media(max-width:1000px){.mob-tog{display:flex!important}}
+  nav.mob-open{display:flex!important;flex-direction:column;position:absolute;top:100%;right:0;left:0;background:rgba(5,3,2,0.98);backdrop-filter:blur(20px);padding:1.5rem 5%;gap:1.2rem;z-index:150;border-bottom:1px solid rgba(212,175,122,0.15)}
+  nav.mob-open .nav-a{font-size:14px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.06);letter-spacing:2px}
+  @media(max-width:680px){
+    #mainHeader{padding:0 16px}
+    .story{grid-template-columns:1fr!important}
+    .collections-grid{grid-template-columns:1fr!important}
+    .footer-grid{grid-template-columns:1fr!important}
+  }
+  /* ─── Extra-small phone fixes (≤480px) ─── */
+  @media(max-width:480px){
+    [class*="prods-grid"],[class*="products-grid"],[class*="prod-grid"]{grid-template-columns:repeat(2,1fr)!important}
+    [class*="cats-row"],[class*="cats-grid"],[class*="categories-grid"]{grid-template-columns:repeat(2,1fr)!important}
+    [class*="foot"]{grid-template-columns:1fr!important}
+    [class*="hero"]{padding-left:16px!important;padding-right:16px!important}
+    section,[class*="-sec"]{padding-left:16px!important;padding-right:16px!important}
+    h1{font-size:clamp(28px,8vw,42px)!important}
+    h2{font-size:clamp(22px,6vw,34px)!important}
+  }
 </style>
 </head>
 <body>
@@ -670,6 +696,7 @@ footer{
     <div class="logo-ar">بيت العطور الفاخرة</div>
   </div>
   <div class="header-actions">
+    <button class="mob-tog" id="mobTog" aria-label="القائمة"><span></span><span></span><span></span></button>
     <button class="hdr-ico"><i class="fas fa-search"></i></button>
     <button class="hdr-ico"><i class="fas fa-heart"></i></button>
     <button class="hdr-ico" onclick="toggleCart()">
@@ -1174,6 +1201,21 @@ document.querySelectorAll('.prod-sizes').forEach(wrap=>{
     });
   });
 });
+</script>
+
+<script>
+(function(){
+  var tog=document.getElementById('mobTog');
+  var nav=document.querySelector('#mainHeader nav')||document.querySelector('header nav');
+  if(!tog||!nav)return;
+  tog.addEventListener('click',function(){
+    tog.classList.toggle('is-open');
+    nav.classList.toggle('mob-open');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){tog.classList.remove('is-open');nav.classList.remove('mob-open')});
+  });
+})();
 </script>
 </body>
 </html>

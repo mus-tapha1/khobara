@@ -490,6 +490,17 @@ footer{
   nav .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:10000;font-size:1.2rem;list-style:none;margin:0;padding:0;background:rgba(0,0,0,.97)}
 }
 @media(min-width:769px){.nav-burger{display:none!important}}
+
+  /* ─── Extra-small phone fixes (≤480px) ─── */
+  @media(max-width:480px){
+    [class*="prods-grid"],[class*="products-grid"],[class*="prod-grid"]{grid-template-columns:repeat(2,1fr)!important}
+    [class*="cats-row"],[class*="cats-grid"],[class*="categories-grid"]{grid-template-columns:repeat(2,1fr)!important}
+    [class*="foot"]{grid-template-columns:1fr!important}
+    [class*="hero"]{padding-left:16px!important;padding-right:16px!important}
+    section,[class*="-sec"]{padding-left:16px!important;padding-right:16px!important}
+    h1{font-size:clamp(28px,8vw,42px)!important}
+    h2{font-size:clamp(22px,6vw,34px)!important}
+  }
 </style>
 </head>
 <body>
