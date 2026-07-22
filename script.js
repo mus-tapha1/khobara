@@ -1,4 +1,51 @@
-// Premium Animations and Interactions for Khobara Web
+// ===== MOBILE MENU TOGGLE =====
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn   = document.getElementById('mobileMenuBtn');
+      const menu  = document.getElementById('mobileMenu');
+      const close = document.getElementById('closeMobileMenu');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+          menu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          btn.innerHTML = '✕';
+          btn.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeMenu() {
+          menu.classList.add('hidden');
+          document.body.style.overflow = '';
+          btn.innerHTML = '☰';
+          btn.setAttribute('aria-expanded', 'false');
+      }
+
+      btn.addEventListener('click', function () {
+          if (menu.classList.contains('hidden')) {
+              openMenu();
+          } else {
+              closeMenu();
+          }
+      });
+
+      if (close) close.addEventListener('click', closeMenu);
+
+      // Close when any nav link is clicked
+      menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', closeMenu);
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeMenu();
+      });
+
+      // Close when clicking the overlay background (outside menu links)
+      menu.addEventListener('click', function (e) {
+          if (e.target === menu) closeMenu();
+      });
+    });
+
+    // Premium Animations and Interactions for Khobara Web
 
 // Smooth Scroll Behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
