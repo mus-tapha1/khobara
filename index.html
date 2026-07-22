@@ -8,7 +8,7 @@
 <meta property="og:title" content="خبراء الويب — قوالب مواقع احترافية">
 <meta property="og:description" content="أكثر من 40 قالب موقع ويب احترافي جاهز للنشر">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230a1628'/><text x='50' y='62' text-anchor='middle' font-size='44' font-weight='900' fill='url(%23g)'>WD</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='%231a6eff'/><stop offset='1' stop-color='%2300cfff'/></linearGradient></defs></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230a1628'/><text x='50' y='62' text-anchor='middle' font-size='44' font-weight='900' fill='url(%23g)'>خ</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='%231a6eff'/><stop offset='1' stop-color='%2300cfff'/></linearGradient></defs></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -524,6 +524,169 @@ footer{
 ══════════════════════════════════════════ */
 .card{opacity:0;transform:translateY(20px);animation:cardIn .5s ease forwards}
 @keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════════════
+   WHATSAPP FLOAT BUTTON
+══════════════════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:2rem;left:2rem;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 25px rgba(37,211,102,.4);
+  transition:transform .2s,box-shadow .2s;
+}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 12px 35px rgba(37,211,102,.6)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-float-ring{
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid rgba(37,211,102,.35);
+  animation:waRing 2.5s ease-in-out infinite;
+}
+@keyframes waRing{
+  0%{transform:scale(1);opacity:.7}
+  70%{transform:scale(1.3);opacity:0}
+  100%{transform:scale(1.3);opacity:0}
+}
+
+/* ══════════════════════════════════════════
+   HV-ICON SVG FIX
+══════════════════════════════════════════ */
+.hv-icon{
+  display:flex;align-items:center;justify-content:center;
+}
+.hv-icon svg{
+  width:22px;height:22px;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ══════════════════════════════════════════
+   WHATSAPP BUTTON VARIANT
+══════════════════════════════════════════ */
+.btn-wa{display:inline-flex;align-items:center;gap:.55rem;justify-content:center}
+.btn-wa svg{width:17px;height:17px;fill:currentColor;flex-shrink:0}
+.btn-ghost.btn-wa svg{fill:var(--text-primary)}
+
+/* ══════════════════════════════════════════
+   TESTIMONIALS SECTION
+══════════════════════════════════════════ */
+.testimonials-section{padding:5rem 6%;position:relative;z-index:1}
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.testimonial-card{
+  padding:2rem 1.8rem;border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.025);border:1px solid var(--border-subtle);
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.testimonial-card:hover{border-color:rgba(26,110,255,.25);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.testimonial-quote-mark{
+  position:absolute;top:.8rem;left:1.5rem;
+  font-size:4.5rem;line-height:1;color:rgba(26,110,255,.1);
+  font-family:Georgia,serif;pointer-events:none;font-weight:900;
+}
+.testimonial-stars{display:flex;gap:.2rem;margin-bottom:1rem}
+.testimonial-stars span{color:#f59e0b;font-size:.85rem}
+.testimonial-text{
+  font-size:.86rem;color:var(--text-secondary);line-height:1.85;margin-bottom:1.5rem;
+  position:relative;z-index:1;
+}
+.testimonial-author{display:flex;align-items:center;gap:.85rem}
+.testimonial-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gradient-brand);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:900;color:#fff;flex-shrink:0;
+}
+.testimonial-name{font-size:.88rem;font-weight:800;color:var(--white);margin-bottom:.15rem}
+.testimonial-role{font-size:.73rem;color:var(--text-muted)}
+
+/* ══════════════════════════════════════════
+   PRICING SECTION
+══════════════════════════════════════════ */
+.pricing-section{padding:5rem 6%;position:relative;z-index:1}
+.pricing-note{
+  text-align:center;margin-top:2rem;
+  font-size:.78rem;color:var(--text-muted);
+}
+.pricing-note a{color:var(--blue-400);font-weight:700}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;max-width:1040px;margin:0 auto;
+  align-items:start;
+}
+.pricing-card{
+  border-radius:var(--radius-lg);padding:2.2rem 1.8rem;
+  background:rgba(255,255,255,.025);border:1px solid var(--border-subtle);
+  transition:var(--transition);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.pricing-card:hover{border-color:rgba(26,110,255,.3);transform:translateY(-5px);box-shadow:0 25px 50px rgba(0,0,0,.4)}
+.pricing-card.featured{
+  border-color:rgba(26,110,255,.45);
+  background:linear-gradient(160deg,rgba(26,110,255,.07) 0%,rgba(0,207,255,.03) 100%);
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.4),var(--glow-blue);
+}
+.pricing-card.featured:hover{transform:translateY(-14px)}
+.pricing-popular-badge{
+  position:absolute;top:1.2rem;left:1.5rem;
+  background:var(--gradient-brand);color:#fff;
+  padding:.22rem .85rem;border-radius:20px;font-size:.62rem;font-weight:800;
+  letter-spacing:.05em;
+}
+.pricing-tier{
+  font-size:.68rem;color:var(--blue-400);font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:.7rem;
+}
+.pricing-name{font-size:1.35rem;font-weight:900;color:var(--white);margin-bottom:.45rem}
+.pricing-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.65;margin-bottom:1.6rem}
+.pricing-amount{display:flex;align-items:baseline;gap:.25rem;margin-bottom:1.8rem}
+.price-currency{font-size:1.1rem;font-weight:700;color:var(--text-secondary);margin-top:.3rem}
+.price-num{font-size:2.8rem;font-weight:900;color:var(--white);line-height:1}
+.price-unit{font-size:.75rem;color:var(--text-muted);margin-right:.2rem}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:.75rem;flex:1;margin-bottom:1.8rem}
+.pricing-features li{
+  display:flex;align-items:flex-start;gap:.65rem;
+  font-size:.81rem;color:var(--text-secondary);line-height:1.4;
+}
+.pricing-features li svg{
+  flex-shrink:0;margin-top:1px;
+  width:14px;height:14px;
+  color:var(--blue-400);stroke:var(--blue-400);
+}
+.pricing-cta{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  text-align:center;padding:.85rem;border-radius:10px;
+  font-size:.83rem;font-weight:800;transition:var(--transition);
+  background:rgba(255,255,255,.05);border:1px solid var(--border-mid);
+  color:var(--text-primary);
+}
+.pricing-cta svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
+.pricing-cta:hover{background:rgba(26,110,255,.12);border-color:rgba(26,110,255,.4);color:var(--blue-400)}
+.pricing-card.featured .pricing-cta{
+  background:var(--gradient-brand);border-color:transparent;color:#fff;
+  box-shadow:0 6px 20px rgba(26,110,255,.4);
+}
+.pricing-card.featured .pricing-cta:hover{
+  box-shadow:0 10px 30px rgba(26,110,255,.6);
+  transform:translateY(-1px);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE – NEW SECTIONS
+══════════════════════════════════════════ */
+@media(max-width:900px){
+  .testimonials-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:420px}
+  .pricing-card.featured{transform:translateY(0)}
+}
+@media(max-width:640px){
+  .testimonials-grid{grid-template-columns:1fr}
+  .wa-float{bottom:1.5rem;left:1.5rem;width:52px;height:52px}
+}
 </style>
 </head>
 <body>
@@ -546,7 +709,7 @@ footer{
       <line x1="1" y1="21" x2="41" y2="21" stroke="rgba(26,110,255,.25)" stroke-width="1"/>
       <line x1="21" y1="1" x2="21" y2="41" stroke="rgba(26,110,255,.25)" stroke-width="1"/>
       <circle cx="21" cy="21" r="20" fill="none" stroke="rgba(26,110,255,.5)" stroke-width="1.5"/>
-      <text x="21" y="26" text-anchor="middle" font-family="Cairo,sans-serif" font-weight="900" font-size="13" fill="url(#logoGrad)">WD</text>
+      <text x="21" y="27" text-anchor="middle" font-family="Cairo,sans-serif" font-weight="900" font-size="17" fill="url(#logoGrad)">خ</text>
       <defs>
         <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#1a6eff"/>
@@ -562,9 +725,10 @@ footer{
   <ul class="nav-links">
     <li><a href="#templates">القوالب</a></li>
     <li><a href="#features">مميزاتنا</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
     <li><a href="#contact">تواصل</a></li>
   </ul>
-  <a href="mailto:khobaraweb@gmail.com" class="nav-cta">ابدأ الآن</a>
+  <a href="https://wa.me/967778878421" class="nav-cta">ابدأ الآن</a>
   <div class="nav-mobile-toggle" id="mobileToggle" aria-label="القائمة">
     <span></span><span></span><span></span>
   </div>
@@ -573,8 +737,9 @@ footer{
 <div class="nav-mobile-menu" id="mobileMenu">
   <a href="#templates" onclick="closeMobile()">القوالب</a>
   <a href="#features" onclick="closeMobile()">مميزاتنا</a>
+  <a href="#pricing" onclick="closeMobile()">الأسعار</a>
   <a href="#contact" onclick="closeMobile()">تواصل</a>
-  <a href="mailto:khobaraweb@gmail.com" class="nav-cta">ابدأ الآن</a>
+  <a href="https://wa.me/967778878421" class="nav-cta">ابدأ الآن</a>
 </div>
 
 <!-- ══════════ HERO ══════════ -->
@@ -583,37 +748,53 @@ footer{
   <div class="hero-visual">
     <div class="hero-visual-row">
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(59,130,246,.15)">🛍️</div>
+        <div class="hv-icon" style="background:rgba(59,130,246,.12);color:#5ba3ff">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">متاجر</span><span class="hv-count">13 قالب</span></div>
       </div>
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(192,132,252,.15)">👗</div>
+        <div class="hv-icon" style="background:rgba(192,132,252,.12);color:#c084fc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">أزياء وموضة</span><span class="hv-count">4 قوالب</span></div>
       </div>
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(251,191,36,.15)">💼</div>
+        <div class="hv-icon" style="background:rgba(251,191,36,.12);color:#fbbf24">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">خدمات</span><span class="hv-count">10 قوالب</span></div>
       </div>
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(52,211,153,.15)">🏥</div>
+        <div class="hv-icon" style="background:rgba(52,211,153,.12);color:#34d399">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">صحة ولياقة</span><span class="hv-count">قالبان</span></div>
       </div>
     </div>
     <div class="hero-visual-row">
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(251,146,60,.15)">🏨</div>
+        <div class="hv-icon" style="background:rgba(251,146,60,.12);color:#fb923c">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">ضيافة وسياحة</span><span class="hv-count">6 قوالب</span></div>
       </div>
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(99,102,241,.15)">💻</div>
+        <div class="hv-icon" style="background:rgba(99,102,241,.12);color:#818cf8">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">تقنية وبرمجيات</span><span class="hv-count">3 قوالب</span></div>
       </div>
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(245,158,11,.15)">🎓</div>
+        <div class="hv-icon" style="background:rgba(245,158,11,.12);color:#fbbf24">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">تعليم</span><span class="hv-count">قالب</span></div>
       </div>
       <div class="hv-card">
-        <div class="hv-icon" style="background:rgba(16,185,129,.15)">🏗️</div>
+        <div class="hv-icon" style="background:rgba(16,185,129,.12);color:#10b981">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/><rect x="7" y="3" width="3" height="3" rx=".5"/></svg>
+        </div>
         <div class="hv-info"><span class="hv-name">عقارات</span><span class="hv-count">قالب</span></div>
       </div>
     </div>
@@ -633,7 +814,10 @@ footer{
     </p>
     <div class="hero-cta">
       <a href="#templates" class="btn-primary">استعرض القوالب</a>
-      <a href="mailto:khobaraweb@gmail.com" class="btn-ghost">قالب مخصص</a>
+      <a href="https://wa.me/967778878421" class="btn-ghost btn-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        تواصل عبر واتساب
+      </a>
     </div>
     <div class="hero-trust">
       <span class="trust-item">
@@ -1574,6 +1758,120 @@ footer{
   </div><!-- /templatesGrid -->
 </section>
 
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <span class="section-tag">آراء العملاء</span>
+    <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+    <p class="section-sub">أصحاب أعمال انطلقوا بقوالبنا — هذا ما يقولونه بعد التجربة</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="testimonial-text">القالب الذي طلبته كان احترافياً بشكل لم أتوقعه — التسليم فوري والتصميم يفوق كل توقعاتي. زبائني بدأوا يثقون بنشاطي أكثر بعد إطلاق الموقع مباشرة.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">أ</div>
+        <div>
+          <div class="testimonial-name">أحمد الزبيدي</div>
+          <div class="testimonial-role">صاحب متجر إلكتروني</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="testimonial-text">طلبت قالباً لعيادتي وتسلمته خلال يوم واحد — عربي بالكامل، سهل التعديل، والدعم عبر واتساب كان رائعاً. أجابوا على كل أسئلتي بسرعة واحترافية.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">م</div>
+        <div>
+          <div class="testimonial-name">د. مريم السالم</div>
+          <div class="testimonial-role">طبيبة — عيادة خاصة</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="testimonial-text">أنصح كل صاحب نشاط بخبراء الويب — القوالب تبدو وكأنها بميزانية ضخمة لكن سعرها معقول جداً. موقعنا أصبح واجهة نفخر بها أمام كل عميل.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">ف</div>
+        <div>
+          <div class="testimonial-name">فيصل المطيري</div>
+          <div class="testimonial-role">مدير مطعم</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRICING ══════════ -->
+<section class="pricing-section" id="pricing">
+  <div class="section-header">
+    <span class="section-tag">الأسعار</span>
+    <h2 class="section-title">اختر ما يناسب نشاطك</h2>
+    <p class="section-sub">أسعار واضحة وشفافة — لا مفاجآت ولا رسوم خفية. تواصل معنا وابدأ اليوم</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">الأساسي</div>
+      <div class="pricing-name">قالب جاهز</div>
+      <div class="pricing-desc">قالب من مكتبتنا مع تعديل بياناتك الأساسية</div>
+      <div class="pricing-amount">
+        <span class="price-currency">$</span>
+        <span class="price-num">29</span>
+        <span class="price-unit">/ مرة واحدة</span>
+      </div>
+      <ul class="pricing-features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> قالب احترافي جاهز من المكتبة</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تعديل النصوص والبيانات</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تصميم RTL عربي كامل</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تسليم خلال 24 ساعة</li>
+      </ul>
+      <a href="https://wa.me/967778878421" class="pricing-cta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> ابدأ الآن</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-popular-badge">الأكثر طلباً</div>
+      <div class="pricing-tier" style="margin-top:1.8rem">المميز</div>
+      <div class="pricing-name">قالب مخصص</div>
+      <div class="pricing-desc">تصميم كامل بهويتك وألوانك وتفاصيل نشاطك</div>
+      <div class="pricing-amount">
+        <span class="price-currency">$</span>
+        <span class="price-num">89</span>
+        <span class="price-unit">/ مرة واحدة</span>
+      </div>
+      <ul class="pricing-features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تصميم مخصص بهويتك بالكامل</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ألوان وشعار مخصص</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> صفحات متعددة</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> دعم واتساب بعد التسليم</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تسليم خلال 48 ساعة</li>
+      </ul>
+      <a href="https://wa.me/967778878421" class="pricing-cta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> اطلب الآن</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">المتكامل</div>
+      <div class="pricing-name">حزمة شاملة</div>
+      <div class="pricing-desc">موقع متكامل مع نطاق واستضافة وصيانة</div>
+      <div class="pricing-amount">
+        <span class="price-currency">$</span>
+        <span class="price-num">199</span>
+        <span class="price-unit">/ مرة واحدة</span>
+      </div>
+      <ul class="pricing-features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> كل مزايا القالب المخصص</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> نطاق مجاني لسنة كاملة</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> استضافة سريعة وآمنة</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> صيانة وتحديث 6 أشهر</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> دعم واتساب مستمر</li>
+      </ul>
+      <a href="https://wa.me/967778878421" class="pricing-cta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> تواصل معنا</a>
+    </div>
+  </div>
+  <p class="pricing-note">السعر يختلف حسب تعقيد المشروع — <a href="https://wa.me/967778878421" target="_blank">راسلنا على واتساب</a> للحصول على سعر دقيق</p>
+</section>
+
 <!-- ══════════ FEATURES ══════════ -->
 <section id="features">
   <div class="section-header" style="padding:0 6% 2.5rem;text-align:center">
@@ -1617,15 +1915,27 @@ footer{
       <div class="feature-title">جاهز للنشر الفوري</div>
       <div class="feature-desc">HTML نظيف يعمل فور التسليم — لا إعداد معقد ولا متطلبات خاصة</div>
     </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <div class="feature-title">دعم واتساب مستمر</div>
+      <div class="feature-desc">فريقنا متاح عبر واتساب للإجابة على استفساراتك وتقديم الدعم الفوري</div>
+    </div>
   </div>
 </section>
 
 <!-- ══════════ CTA ══════════ -->
 <div class="cta-section" id="contact">
   <h2>هل تريد قالباً مخصصاً لنشاطك؟</h2>
-  <p>تواصل معنا وسنصمم لك موقعاً احترافياً يعكس هويتك التجارية بالكامل — من الفكرة إلى النشر</p>
+  <p>تواصل معنا عبر واتساب وسنصمم لك موقعاً احترافياً يعكس هويتك التجارية بالكامل — من الفكرة إلى النشر، بأسرع وقت وأفضل سعر</p>
   <div class="cta-btns">
-    <a href="mailto:khobaraweb@gmail.com" class="btn-primary">تواصل معنا</a>
+    <a href="https://wa.me/967778878421" class="btn-primary btn-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      راسلنا على واتساب
+    </a>
     <a href="#templates" class="btn-ghost">استعرض القوالب</a>
   </div>
 </div>
@@ -1640,7 +1950,7 @@ footer{
       <line x1="1" y1="21" x2="41" y2="21" stroke="rgba(26,110,255,.2)" stroke-width="1"/>
       <line x1="21" y1="1" x2="21" y2="41" stroke="rgba(26,110,255,.2)" stroke-width="1"/>
       <circle cx="21" cy="21" r="20" fill="none" stroke="rgba(26,110,255,.4)" stroke-width="1.5"/>
-      <text x="21" y="26" text-anchor="middle" font-family="Cairo,sans-serif" font-weight="900" font-size="13" fill="url(#footerGrad)">WD</text>
+      <text x="21" y="27" text-anchor="middle" font-family="Cairo,sans-serif" font-weight="900" font-size="17" fill="url(#footerGrad)">خ</text>
       <defs>
         <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#1a6eff"/><stop offset="100%" stop-color="#00cfff"/>
@@ -1654,7 +1964,7 @@ footer{
   <ul class="footer-links">
     <li><a href="#templates">القوالب</a></li>
     <li><a href="#features">مميزاتنا</a></li>
-    <li><a href="mailto:khobaraweb@gmail.com">تواصل معنا</a></li>
+    <li><a href="https://wa.me/967778878421" target="_blank" rel="noopener">واتساب</a></li>
   </ul>
   <div class="footer-copy">© 2025 خبراء الويب — جميع الحقوق محفوظة</div>
 </footer>
@@ -1733,5 +2043,12 @@ footer{
   }
 })();
 </script>
+
+<!-- ══════════ FLOATING WHATSAPP ══════════ -->
+<a href="https://wa.me/967778878421" class="wa-float" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+  <div class="wa-float-ring"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 </body>
 </html>
