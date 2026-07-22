@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مكتب الحارثي للمحاماة والاستشارات القانونية</title>
+<meta name="description" content="مكتب محاماة احترافي — استشارات قانونية، قضايا تجارية، عائلية وجنائية بخبرة تتجاوز 25 عاماً">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#05070e;
+  --navy2:#080c1a;
+  --navy3:#0c1224;
+  --gold:#b8922a;
+  --gold2:#d4a843;
+  --gold3:#e8c96a;
+  --gold-glow:rgba(184,146,42,.18);
+  --gold-dim:rgba(184,146,42,.08);
+  --gold-border:rgba(184,146,42,.22);
+  --border:rgba(255,255,255,.07);
+  --border2:rgba(255,255,255,.04);
+  --text:#e8edf5;
+  --text-dim:rgba(232,237,245,.6);
+  --text-muted:rgba(232,237,245,.35);
+  --red:#7c1f1f;
+  --red-dim:rgba(124,31,31,.12);
+}
+body{font-family:'Cairo',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6%;background:rgba(5,7,14,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s}
+.logo{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-size:.95rem;font-weight:900;color:#fff;letter-spacing:.03em}
+.logo-sub{font-size:.6rem;color:var(--gold);font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.84rem;font-weight:600;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:1.5px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:right}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-actions{display:flex;gap:.8rem;align-items:center}
+.btn-nav{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#05070e;padding:.55rem 1.4rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.8rem;text-decoration:none;transition:all .3s;white-space:nowrap}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--gold-glow)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;display:block}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:4rem;padding:0 6%;padding-top:88px;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--navy) 0%,var(--navy2) 55%,var(--navy) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,146,42,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(184,146,42,.025) 1px,transparent 1px);background-size:90px 90px}
+.glow{position:absolute;border-radius:50%;pointer-events:none}
+.glow-1{top:-10%;right:-5%;width:800px;height:800px;background:radial-gradient(circle,rgba(184,146,42,.07),transparent 65%)}
+.glow-2{bottom:-10%;left:5%;width:600px;height:600px;background:radial-gradient(circle,rgba(124,31,31,.06),transparent 65%)}
+
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold2);padding:.45rem 1.3rem;border-radius:4px;font-size:.72rem;font-weight:700;margin-bottom:2rem;letter-spacing:.1em;text-transform:uppercase}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;color:#fff}
+.hero h1 .accent{background:linear-gradient(90deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{color:var(--text-dim);line-height:2;margin-bottom:2.8rem;font-size:1rem;max-width:520px}
+.hero-btns{display:flex;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#05070e;padding:.9rem 2.2rem;border-radius:7px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.9rem;text-decoration:none;transition:all .3s;box-shadow:0 6px 24px var(--gold-glow)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(184,146,42,.35)}
+.btn-ghost{border:1px solid var(--border2);color:var(--text-dim);padding:.9rem 2rem;border-radius:7px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--gold-border);color:#fff;background:var(--gold-dim)}
+.hero-trust{display:flex;align-items:center;gap:1.6rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.trust-item{text-align:center}
+.trust-num{font-size:1.6rem;font-weight:900;color:var(--gold2);display:block}
+.trust-lbl{font-size:.68rem;color:var(--text-muted);white-space:nowrap}
+.trust-sep{width:1px;height:36px;background:var(--border)}
+
+/* Hero Visual */
+.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
+.scale-wrap{position:relative;width:100%;max-width:420px}
+.scale-card{background:rgba(12,18,36,.85);border:1px solid var(--border);border-radius:20px;padding:2.5rem 2rem;backdrop-filter:blur(16px);position:relative;overflow:hidden}
+.scale-card::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,var(--gold-glow),transparent 70%);pointer-events:none}
+.scale-icon{font-size:4rem;display:block;text-align:center;margin-bottom:1.5rem;filter:drop-shadow(0 0 20px rgba(184,146,42,.4))}
+.scale-title{font-size:1.2rem;font-weight:900;color:#fff;text-align:center;margin-bottom:1rem}
+.scale-badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.6rem}
+.scale-badge{background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold2);padding:.3rem .8rem;border-radius:4px;font-size:.68rem;font-weight:700}
+.scale-divider{border:none;border-top:1px solid var(--border);margin:1.2rem 0}
+.scale-stats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.ss-item{background:var(--navy3);border:1px solid var(--border);border-radius:10px;padding:.8rem;text-align:center}
+.ss-num{font-size:1.5rem;font-weight:900;color:var(--gold);display:block}
+.ss-lbl{font-size:.65rem;color:var(--text-muted)}
+
+/* Float cards */
+.float-badge{position:absolute;background:rgba(12,18,36,.95);border:1px solid var(--gold-border);border-radius:10px;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;color:#fff;backdrop-filter:blur(10px);animation:floatBadge 4s ease-in-out infinite}
+.float-badge-1{top:-20px;left:-30px;animation-delay:0s}
+.float-badge-2{bottom:-15px;right:-20px;animation-delay:2s}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fb-dot{width:8px;height:8px;border-radius:50%}
+.fb-dot.green{background:#22c55e}
+.fb-dot.gold{background:var(--gold)}
+
+/* ─── STATS BAR ─── */
+.stats-bar{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.2rem 6%;display:flex;gap:0;justify-content:center;overflow:hidden}
+.stat-item{text-align:center;padding:0 3.5rem;border-left:1px solid var(--border);flex:1;max-width:200px}
+.stat-item:last-child{border-left:none}
+.stat-num{font-size:2.4rem;font-weight:900;color:#fff;display:block;line-height:1}
+.stat-num span{color:var(--gold)}
+.stat-lbl{font-size:.75rem;color:var(--text-muted);margin-top:.3rem;display:block}
+
+/* ─── SECTIONS ─── */
+.sec{padding:6rem 6%}
+.sec-hd{text-align:center;margin-bottom:4rem}
+.sec-tag{font-size:.72rem;color:var(--gold2);letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:.8rem;display:block}
+.sec-title{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:.8rem;line-height:1.2}
+.sec-sub{color:var(--text-dim);font-size:.95rem;max-width:540px;margin:0 auto;line-height:1.8}
+
+/* ─── PRACTICE AREAS ─── */
+.practice-bg{background:var(--navy2)}
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.practice-card{background:rgba(5,7,14,.6);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .35s;position:relative;overflow:hidden;cursor:default}
+.practice-card::before{content:'';position:absolute;top:0;right:0;width:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold));transition:width .4s}
+.practice-card:hover{border-color:var(--gold-border);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.practice-card:hover::before{width:100%}
+.practice-icon{font-size:2.4rem;margin-bottom:1.2rem;display:block}
+.practice-name{font-size:1.05rem;font-weight:900;color:#fff;margin-bottom:.6rem}
+.practice-desc{font-size:.84rem;color:var(--text-dim);line-height:1.8}
+.practice-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--gold2);font-size:.78rem;font-weight:700;margin-top:1rem;opacity:0;transition:opacity .3s}
+.practice-card:hover .practice-link{opacity:1}
+
+/* ─── ATTORNEYS ─── */
+.attorneys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+.attorney-card{border:1px solid var(--border);border-radius:20px;overflow:hidden;background:rgba(8,12,26,.5);transition:all .35s}
+.attorney-card:hover{border-color:var(--gold-border);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.attorney-avatar{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.attorney-avatar-inner{width:110px;height:110px;border-radius:50%;border:3px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--navy3);position:relative;z-index:1}
+.attorney-avatar-bg{position:absolute;inset:0}
+.attorney-body{padding:1.6rem}
+.attorney-name{font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:.25rem}
+.attorney-title{font-size:.78rem;color:var(--gold2);font-weight:700;margin-bottom:.8rem}
+.attorney-bio{font-size:.82rem;color:var(--text-dim);line-height:1.7;margin-bottom:1.2rem}
+.attorney-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.atag{background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold2);padding:.25rem .7rem;border-radius:4px;font-size:.65rem;font-weight:700}
+
+/* ─── PROCESS ─── */
+.process-bg{background:var(--navy2)}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;right:10%;left:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),var(--gold-border),transparent);z-index:0}
+.process-step{text-align:center;padding:0 1.5rem;position:relative;z-index:1}
+.step-num{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#05070e;margin:0 auto 1.4rem;box-shadow:0 8px 24px var(--gold-glow);position:relative}
+.step-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold-border);animation:step-ring 3s ease-in-out infinite}
+@keyframes step-ring{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.1)}}
+.step-title{font-size:1rem;font-weight:900;color:#fff;margin-bottom:.6rem}
+.step-desc{font-size:.82rem;color:var(--text-dim);line-height:1.8}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.testi-card{background:rgba(8,12,26,.6);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:border-color .3s;position:relative}
+.testi-card:hover{border-color:var(--gold-border)}
+.testi-stars{display:flex;gap:.2rem;margin-bottom:1rem}
+.star{color:var(--gold);font-size:.9rem}
+.testi-text{font-size:.88rem;color:var(--text-dim);line-height:1.9;margin-bottom:1.4rem;font-style:italic}
+.testi-text::before{content:'"';font-size:2rem;color:var(--gold-border);line-height:0;vertical-align:-.4em;margin-left:.2rem}
+.testi-author{display:flex;align-items:center;gap:.8rem;border-top:1px solid var(--border);padding-top:1.2rem}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.testi-name{font-weight:700;font-size:.88rem;color:#fff}
+.testi-role{font-size:.72rem;color:var(--text-muted)}
+.testi-badge{position:absolute;top:1.2rem;left:1.2rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.62rem;font-weight:700}
+
+/* ─── FAQ ─── */
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.faq-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .3s;background:rgba(8,12,26,.4)}
+.faq-item.open{border-color:var(--gold-border)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.6rem;cursor:pointer;font-weight:700;font-size:.92rem;color:#fff;gap:1rem;user-select:none}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--gold2);flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:.85rem;color:var(--text-dim);line-height:1.8}
+.faq-a-inner{padding:0 1.6rem 1.3rem}
+.faq-item.open .faq-a{max-height:300px}
+
+/* ─── CONTACT ─── */
+.contact-bg{background:var(--navy2)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:1rem}
+.contact-info p{color:var(--text-dim);line-height:1.9;font-size:.9rem;margin-bottom:2rem}
+.contact-details{display:flex;flex-direction:column;gap:1rem}
+.cd-item{display:flex;align-items:center;gap:.8rem;color:var(--text-dim);font-size:.86rem}
+.cd-icon{width:36px;height:36px;border-radius:8px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.contact-form{background:rgba(5,7,14,.7);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-group:last-of-type{margin-bottom:0}
+.form-label{font-size:.75rem;font-weight:700;color:var(--text-dim);letter-spacing:.05em}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);font-family:'Cairo',sans-serif;font-size:.88rem;border-radius:8px;padding:.8rem 1rem;width:100%;transition:border-color .3s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold-border)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
+.form-select option{background:var(--navy2)}
+.form-textarea{min-height:110px;resize:vertical}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#05070e;border:none;border-radius:8px;padding:1rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:.95rem;cursor:pointer;transition:all .3s;margin-top:1.2rem;box-shadow:0 6px 24px var(--gold-glow)}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(184,146,42,.4)}
+
+/* ─── CTA ─── */
+.cta-sec{padding:5rem 6%;text-align:center;background:linear-gradient(135deg,var(--navy2),var(--navy3));border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,var(--gold-glow),transparent)}
+.cta-sec h2{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:1rem;position:relative}
+.cta-sec p{color:var(--text-dim);font-size:1rem;margin-bottom:2.5rem;position:relative;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* ─── FOOTER ─── */
+footer{background:var(--navy);border-top:1px solid var(--border);padding:4rem 6% 2rem}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo{margin-bottom:1rem}
+.footer-brand p{font-size:.82rem;color:var(--text-muted);line-height:1.8;max-width:260px}
+.footer-col h4{font-size:.8rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul li a{color:var(--text-muted);font-size:.82rem;text-decoration:none;transition:color .3s}
+.footer-col ul li a:hover{color:var(--gold2)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-cr{font-size:.75rem;color:var(--text-muted)}
+.footer-badge{display:flex;align-items:center;gap:.5rem;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold2);padding:.35rem .9rem;border-radius:20px;font-size:.7rem;font-weight:700}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:100px;text-align:center}
+  .hero-visual{display:none}
+  .hero-btns,.hero-trust{justify-content:center}
+  .contact-wrap{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .stats-bar{flex-wrap:wrap;gap:1.5rem}
+  .stat-item{border-left:none;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+  .stat-item:last-child{border-bottom:none;padding-bottom:0}
+  .process-steps::before{display:none}
+  .nav-links,.nav-actions .btn-nav{display:none}
+  .nav-burger{display:flex}
+  .nav-links.nav-open{display:flex;flex-direction:column;position:fixed;top:65px;right:0;left:0;background:rgba(5,7,14,.98);padding:2rem 6%;border-bottom:1px solid var(--border);gap:1.2rem}
+  .footer-top{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="main-nav">
+  <a href="#" class="logo">
+    <div class="logo-icon">⚖️</div>
+    <div class="logo-text">
+      <span class="logo-name">الحارثي</span>
+      <span class="logo-sub">للمحاماة والاستشارات</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#practice">مجالات العمل</a></li>
+    <li><a href="#attorneys">فريق المحامين</a></li>
+    <li><a href="#process">كيف نعمل</a></li>
+    <li><a href="#testimonials">آراء العملاء</a></li>
+    <li><a href="#contact">تواصل معنا</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#contact" class="btn-nav">احجز استشارة مجانية</a>
+  </div>
+  <div class="nav-burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      مكتب قانوني معتمد منذ 1999
+    </div>
+    <h1>
+      نُدافع عن <span class="accent">حقوقك</span><br>
+      بخبرة ربع قرن
+    </h1>
+    <p class="hero-desc">
+      مكتب الحارثي للمحاماة والاستشارات القانونية — نقدّم حلولاً قانونية شاملة للأفراد والشركات في القضايا التجارية والعائلية والجنائية والعقارية، مع ضمان أعلى معدلات الفوز.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">احجز استشارتك المجانية</a>
+      <a href="#practice" class="btn-ghost">مجالات التخصص</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <span class="trust-num">+2500</span>
+        <span class="trust-lbl">قضية محلولة</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-num">94%</span>
+        <span class="trust-lbl">نسبة الفوز</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-num">25+</span>
+        <span class="trust-lbl">سنة خبرة</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-num">+18</span>
+        <span class="trust-lbl">محامٍ متخصص</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="scale-wrap">
+      <div class="float-badge float-badge-1">
+        <span class="fb-dot green"></span>
+        استشارة مجانية متاحة الآن
+      </div>
+      <div class="scale-card">
+        <span class="scale-icon">⚖️</span>
+        <div class="scale-title">مكتب الحارثي القانوني</div>
+        <div class="scale-badges">
+          <span class="scale-badge">ترخيص نقابة المحامين</span>
+          <span class="scale-badge">ISO 9001</span>
+          <span class="scale-badge">عضو ILFA</span>
+        </div>
+        <hr class="scale-divider">
+        <div class="scale-stats">
+          <div class="ss-item">
+            <span class="ss-num">94%</span>
+            <span class="ss-lbl">نسبة الفوز</span>
+          </div>
+          <div class="ss-item">
+            <span class="ss-num">25+</span>
+            <span class="ss-lbl">سنة خبرة</span>
+          </div>
+          <div class="ss-item">
+            <span class="ss-num">2500+</span>
+            <span class="ss-lbl">قضية محلولة</span>
+          </div>
+          <div class="ss-item">
+            <span class="ss-num">18+</span>
+            <span class="ss-lbl">محامٍ متخصص</span>
+          </div>
+        </div>
+      </div>
+      <div class="float-badge float-badge-2">
+        <span class="fb-dot gold"></span>
+        آخر فوز: قضية تجارية — البارحة
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">2<span>500</span>+</span>
+    <span class="stat-lbl">قضية منجزة بنجاح</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span>94</span>%</span>
+    <span class="stat-lbl">معدل الفوز في القضايا</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span>25</span>+</span>
+    <span class="stat-lbl">سنة من الخبرة القانونية</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span>18</span></span>
+    <span class="stat-lbl">محامٍ وقانوني متخصص</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span>24</span>/7</span>
+    <span class="stat-lbl">خدمة الطوارئ القانونية</span>
+  </div>
+</div>
+
+<!-- ─── PRACTICE AREAS ─── -->
+<section class="sec practice-bg" id="practice">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">مجالات التخصص</span>
+    <h2 class="sec-title">خبرة قانونية شاملة في كل المجالات</h2>
+    <p class="sec-sub">نغطي أوسع نطاق من القضايا القانونية بفريق متخصص في كل مجال</p>
+  </div>
+  <div class="practice-grid">
+    <div class="practice-card reveal reveal-delay-1">
+      <span class="practice-icon">🏢</span>
+      <div class="practice-name">القضايا التجارية</div>
+      <p class="practice-desc">عقود الشركات، النزاعات التجارية، الاندماجات والاستحواذ، حماية الملكية الفكرية وإعادة الهيكلة.</p>
+      <span class="practice-link">استفسر الآن ←</span>
+    </div>
+    <div class="practice-card reveal reveal-delay-2">
+      <span class="practice-icon">👨‍👩‍👧</span>
+      <div class="practice-name">قضايا الأسرة</div>
+      <p class="practice-desc">الطلاق، الحضانة، النفقة، الميراث وتقسيم الأصول بأسلوب يراعي التوازن الأسري.</p>
+      <span class="practice-link">استفسر الآن ←</span>
+    </div>
+    <div class="practice-card reveal reveal-delay-3">
+      <span class="practice-icon">🏠</span>
+      <div class="practice-name">النزاعات العقارية</div>
+      <p class="practice-desc">عقود البيع والإيجار، تسوية النزاعات العقارية، الاستملاك، التطوير وتراخيص البناء.</p>
+      <span class="practice-link">استفسر الآن ←</span>
+    </div>
+    <div class="practice-card reveal reveal-delay-1">
+      <span class="practice-icon">⚖️</span>
+      <div class="practice-name">القانون الجنائي</div>
+      <p class="practice-desc">الدفاع الجنائي، قضايا الاحتيال والفساد، الجرائم المالية وقضايا الجرائم الإلكترونية.</p>
+      <span class="practice-link">استفسر الآن ←</span>
+    </div>
+    <div class="practice-card reveal reveal-delay-2">
+      <span class="practice-icon">💼</span>
+      <div class="practice-name">قانون العمل والتوظيف</div>
+      <p class="practice-desc">عقود العمل، الفصل التعسفي، النزاعات العمالية، إجراءات الفصل وحقوق الموظفين.</p>
+      <span class="practice-link">استفسر الآن ←</span>
+    </div>
+    <div class="practice-card reveal reveal-delay-3">
+      <span class="practice-icon">🛡️</span>
+      <div class="practice-name">التحكيم والوساطة</div>
+      <p class="practice-desc">حل النزاعات بالطرق البديلة — التحكيم الدولي، الوساطة وإجراءات تسوية النزاعات خارج المحاكم.</p>
+      <span class="practice-link">استفسر الآن ←</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ATTORNEYS ─── -->
+<section class="sec" id="attorneys">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">فريقنا القانوني</span>
+    <h2 class="sec-title">محامون خبراء في خدمتك</h2>
+    <p class="sec-sub">فريق من أفضل المحامين المعتمدين بخلفيات أكاديمية وخبرات قضائية رفيعة</p>
+  </div>
+  <div class="attorneys-grid">
+    <div class="attorney-card reveal reveal-delay-1">
+      <div class="attorney-avatar" style="background:linear-gradient(135deg,#0c1020,#151c30)">
+        <div class="attorney-avatar-inner">👨‍⚖️</div>
+      </div>
+      <div class="attorney-body">
+        <div class="attorney-name">أ. خالد الحارثي</div>
+        <div class="attorney-title">المؤسس والشريك الأول — محامٍ أمام المحاكم العليا</div>
+        <p class="attorney-bio">25 عاماً من الخبرة في القانون التجاري والجنائي. حاصل على الدكتوراه من جامعة السوربون. ترأّس أكثر من 600 قضية كبرى.</p>
+        <div class="attorney-tags">
+          <span class="atag">القانون التجاري</span>
+          <span class="atag">الجنائي</span>
+          <span class="atag">التحكيم الدولي</span>
+        </div>
+      </div>
+    </div>
+    <div class="attorney-card reveal reveal-delay-2">
+      <div class="attorney-avatar" style="background:linear-gradient(135deg,#0e0a1a,#1a1030)">
+        <div class="attorney-avatar-inner">👩‍⚖️</div>
+      </div>
+      <div class="attorney-body">
+        <div class="attorney-name">أ. سارة المنصور</div>
+        <div class="attorney-title">شريكة — رئيسة قسم قانون الأسرة والعقارات</div>
+        <p class="attorney-bio">18 عاماً من الخبرة في قضايا الأسرة والعقارات. أستاذة زائرة في كلية الحقوق. فازت بأكثر من 400 قضية عائلية.</p>
+        <div class="attorney-tags">
+          <span class="atag">قانون الأسرة</span>
+          <span class="atag">العقارات</span>
+          <span class="atag">الميراث</span>
+        </div>
+      </div>
+    </div>
+    <div class="attorney-card reveal reveal-delay-3">
+      <div class="attorney-avatar" style="background:linear-gradient(135deg,#050d0a,#0a1a12)">
+        <div class="attorney-avatar-inner">👨‍⚖️</div>
+      </div>
+      <div class="attorney-body">
+        <div class="attorney-name">أ. فهد السليمان</div>
+        <div class="attorney-title">شريك — رئيس قسم قانون العمل والتوظيف</div>
+        <p class="attorney-bio">12 عاماً متخصصاً في قانون العمل والنزاعات المؤسسية. مستشار قانوني لعدد من الشركات الكبرى في المنطقة.</p>
+        <div class="attorney-tags">
+          <span class="atag">قانون العمل</span>
+          <span class="atag">المؤسسي</span>
+          <span class="atag">الوساطة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section class="sec process-bg" id="process">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">كيف نعمل</span>
+    <h2 class="sec-title">أربع خطوات نحو حل قضيتك</h2>
+    <p class="sec-sub">عملية شفافة ومنظمة نضمن من خلالها أفضل نتيجة قانونية ممكنة</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-num">١</div>
+      <div class="step-title">الاستشارة الأولية</div>
+      <p class="step-desc">جلسة مجانية لمدة ساعة نستمع فيها لتفاصيل قضيتك ونقدّم تقييماً أولياً للموقف القانوني.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-num">٢</div>
+      <div class="step-title">تحليل القضية</div>
+      <p class="step-desc">يدرس فريقنا جميع وثائق القضية ويُعدّ استراتيجية قانونية محكمة مدعومة بالأدلة والسوابق القضائية.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-num">٣</div>
+      <div class="step-title">التمثيل القانوني</div>
+      <p class="step-desc">نمثّلك أمام جميع الجهات القضائية والإدارية بأعلى مستوى من الاحترافية والإتقان القانوني.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-4">
+      <div class="step-num">٤</div>
+      <div class="step-title">إغلاق القضية</div>
+      <p class="step-desc">نُوصِل قضيتك إلى أفضل نتيجة ممكنة ونضمن تنفيذ الأحكام وحماية حقوقك الكاملة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="sec" id="testimonials">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">آراء موكلينا</span>
+    <h2 class="sec-title">ماذا يقول من دافعنا عنهم</h2>
+    <p class="sec-sub">أكثر من 2500 موكل وثقوا بنا — إليك ما يقوله بعضهم</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal reveal-delay-1">
+      <span class="testi-badge">✓ موثّق</span>
+      <div class="testi-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testi-text">مكتب الحارثي كان إلى جانبي في أصعب قضية تجارية مررت بها. الاحترافية والشفافية التي تعاملوا بها أعادت لي ثقتي بالقانون. فزنا بالقضية خلال 4 أشهر فقط.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">محمد العمري</div>
+          <div class="testi-role">رجل أعمال — الرياض</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <span class="testi-badge">✓ موثّق</span>
+      <div class="testi-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testi-text">الأستاذة سارة تعاملت مع قضية الطلاق والحضانة بحساسية عالية وكفاءة مذهلة. حصلت على جميع حقوقي وحقوق أطفالي بالكامل. شكراً جزيلاً.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">نورة الزهراني</div>
+          <div class="testi-role">معلمة — جدة</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <span class="testi-badge">✓ موثّق</span>
+      <div class="testi-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testi-text">وكّلنا المكتب في نزاع عقاري معقد استمر سنوات مع مطوّر. أنهوه خلال ثمانية أشهر واسترددنا كامل المبلغ مع التعويض. فريق يستحق كل الثقة.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">عبدالرحمن القحطاني</div>
+          <div class="testi-role">مدير تنفيذي — الدمام</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="sec" style="background:var(--navy2);padding-top:4rem;padding-bottom:4rem">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">أسئلة شائعة</span>
+    <h2 class="sec-title">أجوبة لأكثر أسئلتكم شيوعاً</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q">هل الاستشارة الأولى مجانية حقاً؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">نعم، نقدم استشارة قانونية أولية مجانية لمدة 60 دقيقة لجميع الحالات الجديدة. يمكنك حجزها عبر الموقع أو الاتصال بنا مباشرة.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">كم تستغرق القضية الواحدة في المتوسط؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">تتفاوت المدة حسب نوع القضية وتعقيدها. القضايا التجارية البسيطة قد تُحل خلال 3-6 أشهر، بينما القضايا المعقدة قد تستغرق سنة أو أكثر. نُحدّد جدولاً زمنياً واقعياً منذ البداية.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">ما هي أتعاب المكتب؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">أتعابنا تتحدد بناءً على نوع القضية وتعقيدها. نقدم خيارات متعددة: الرسوم الثابتة، الرسوم الزمنية، أو الرسوم المشروطة بالفوز في بعض الحالات. نوضح كل شيء بشفافية كاملة قبل التعاقد.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">هل تتعاملون مع القضايا الدولية؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">نعم، لدينا خبرة في التحكيم الدولي والقضايا العابرة للحدود. نتعاون مع شركاء من مكاتب قانونية دولية معتمدة في أكثر من 20 دولة.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">هل تتوفر خدمة الطوارئ القانونية 24/7؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">نعم، لدينا خط طوارئ قانونية يعمل على مدار الساعة طوال أيام الأسبوع للحالات العاجلة كالاعتقال أو الإشعارات القانونية المفاجئة. اتصل بنا في أي وقت.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="sec contact-bg" id="contact">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">تواصل معنا</span>
+    <h2 class="sec-title">احجز استشارتك القانونية المجانية</h2>
+    <p class="sec-sub">سيتواصل معك أحد محامينا خلال ساعتين من استلام طلبك</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info reveal reveal-delay-1">
+      <h3>كيف تصلنا؟</h3>
+      <p>فريقنا متاح من الأحد إلى الخميس من 8 صباحاً حتى 6 مساءً. لطوارئ قانونية خارج أوقات الدوام، استخدم خط الطوارئ.</p>
+      <div class="contact-details">
+        <div class="cd-item">
+          <div class="cd-icon">📍</div>
+          <span>برج الأعمال، الطابق 18، شارع الملك فهد — الرياض</span>
+        </div>
+        <div class="cd-item">
+          <div class="cd-icon">📞</div>
+          <span>+966 11 234 5678 (الرئيسي) | +966 55 999 0000 (طوارئ)</span>
+        </div>
+        <div class="cd-item">
+          <div class="cd-icon">✉️</div>
+          <span>info@alharthy-law.com</span>
+        </div>
+        <div class="cd-item">
+          <div class="cd-icon">🕐</div>
+          <span>الأحد – الخميس: 8ص – 6م | الطوارئ: 24/7</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">الاسم الكامل</label>
+          <input class="form-input" type="text" placeholder="الاسم الكامل">
+        </div>
+        <div class="form-group">
+          <label class="form-label">رقم الجوال</label>
+          <input class="form-input" type="tel" placeholder="+966 5X XXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">البريد الإلكتروني</label>
+        <input class="form-input" type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">نوع القضية</label>
+        <select class="form-select">
+          <option value="" disabled selected>اختر مجال القضية</option>
+          <option>قضية تجارية</option>
+          <option>قضية عائلية / طلاق / حضانة</option>
+          <option>نزاع عقاري</option>
+          <option>قضية جنائية</option>
+          <option>قانون العمل</option>
+          <option>تحكيم ووساطة</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ملخص القضية</label>
+        <textarea class="form-textarea" placeholder="اشرح باختصار تفاصيل قضيتك والنتيجة التي تسعى إليها..."></textarea>
+      </div>
+      <button class="btn-submit" id="submit-btn">
+        إرسال طلب الاستشارة المجانية ←
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta-sec">
+  <h2>حقوقك تستحق أفضل دفاع</h2>
+  <p style="margin-bottom:2.5rem">لا تواجه التحديات القانونية وحدك — تواصل معنا اليوم واحصل على استشارتك المجانية</p>
+  <div class="cta-btns">
+    <a href="#contact" class="btn-primary">احجز استشارة مجانية</a>
+    <a href="tel:+96611234567" class="btn-ghost">📞 اتصل بنا الآن</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="margin-bottom:1rem;display:inline-flex">
+        <div class="logo-icon">⚖️</div>
+        <div class="logo-text" style="margin-right:.6rem">
+          <span class="logo-name">الحارثي</span>
+          <span class="logo-sub">للمحاماة والاستشارات</span>
+        </div>
+      </a>
+      <p>مكتب قانوني متكامل يقدم خدمات الدفاع والاستشارات القانونية بأعلى معايير الجودة والنزاهة منذ عام 1999.</p>
+    </div>
+    <div class="footer-col">
+      <h4>مجالات العمل</h4>
+      <ul>
+        <li><a href="#">القانون التجاري</a></li>
+        <li><a href="#">قانون الأسرة</a></li>
+        <li><a href="#">النزاعات العقارية</a></li>
+        <li><a href="#">القانون الجنائي</a></li>
+        <li><a href="#">قانون العمل</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>المكتب</h4>
+      <ul>
+        <li><a href="#">عن المكتب</a></li>
+        <li><a href="#">فريق المحامين</a></li>
+        <li><a href="#">قضايا بارزة</a></li>
+        <li><a href="#">المدونة القانونية</a></li>
+        <li><a href="#">وظائف</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="#">احجز استشارة</a></li>
+        <li><a href="#">خط الطوارئ</a></li>
+        <li><a href="#">الموقع والاتجاهات</a></li>
+        <li><a href="#">تويتر / X</a></li>
+        <li><a href="#">لينكدإن</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-cr">© 2025 مكتب الحارثي للمحاماة — جميع الحقوق محفوظة</span>
+    <div style="display:flex;gap:.8rem;align-items:center">
+      <a href="#" style="color:var(--text-muted);font-size:.75rem;text-decoration:none">سياسة الخصوصية</a>
+      <span style="color:var(--border)">|</span>
+      <a href="#" style="color:var(--text-muted);font-size:.75rem;text-decoration:none">شروط الاستخدام</a>
+    </div>
+    <div class="footer-badge">⚖️ نقابة المحامين — ترخيص رسمي</div>
+  </div>
+</footer>
+
+<script>
+// ─── REVEAL ───
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(5,7,14,.98)' : 'rgba(5,7,14,.9)';
+});
+
+// ─── BURGER ───
+(function(){
+  const burger = document.getElementById('burger');
+  const links = document.querySelector('nav .nav-links');
+  if(burger && links){
+    burger.addEventListener('click', () => {
+      links.classList.toggle('nav-open');
+      burger.classList.toggle('is-open');
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('nav-open');
+      burger.classList.remove('is-open');
+    }));
+  }
+})();
+
+// ─── FAQ ───
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// ─── FORM ───
+document.getElementById('submit-btn')?.addEventListener('click', function(){
+  const name = document.querySelector('.form-input[placeholder="الاسم الكامل"]')?.value;
+  const email = document.querySelector('.form-input[type="email"]')?.value;
+  if(!name || !email){ alert('يرجى ملء الاسم والبريد الإلكتروني'); return; }
+  this.textContent = '✓ تم استلام طلبك — سنتواصل معك خلال ساعتين';
+  this.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+  this.disabled = true;
+  setTimeout(() => {
+    this.textContent = 'إرسال طلب الاستشارة المجانية ←';
+    this.style.background = '';
+    this.disabled = false;
+    document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(i => i.value = '');
+  }, 5000);
+});
+</script>
+</body>
+</html>
