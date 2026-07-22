@@ -655,31 +655,205 @@ footer{background:var(--dark);color:rgba(255,255,255,.7);padding:3rem 4% 1.5rem}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:none}
 
+/* ══ TABLET ══ */
 @media(max-width:1024px){
   .prods-grid,.flash-grid{grid-template-columns:repeat(2,1fr)}
   .cats-grid{grid-template-columns:repeat(3,1fr)}
   .cats-grid .cat-featured{grid-column:span 3}
   .footer-grid{grid-template-columns:1fr 1fr}
+  .app-section{gap:2rem}
+  .hero-left{padding:3rem 4%}
 }
+
+/* ══ MOBILE ══ */
 @media(max-width:768px){
+
+  /* HEADER */
+  .header-top{
+    flex-wrap:wrap;
+    padding:.7rem 4%;
+    gap:.6rem;
+  }
+  .logo-wrap{flex:1}
+  .logo-txt{font-size:1.35rem}
+  .search-wrap{
+    order:10;width:100%;
+    flex:none;
+  }
+  .search-select{display:none}
+  .h-icon-label{display:none}
+  .header-icons{gap:.1rem}
+  .h-icon{padding:.45rem .5rem}
+  .h-icon svg{width:20px;height:20px}
+  .hamburger{display:flex}
+  .nav-cats{display:none !important}
+
+  /* MOBILE MENU */
+  .mobile-menu{
+    display:none;position:fixed;inset:0;top:0;z-index:9999;
+    background:var(--dark);overflow-y:auto;
+    flex-direction:column;
+  }
+  .mobile-menu.open{display:flex}
+  .mobile-menu-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1rem 5%;background:var(--navy);
+    position:sticky;top:0;z-index:2;
+  }
+  .mobile-menu-logo{font-size:1.3rem;font-weight:900;color:#fff}
+  .mobile-menu-logo span{color:var(--orange)}
+  .mobile-menu-close{
+    background:rgba(255,255,255,.15);border:none;color:#fff;
+    width:36px;height:36px;border-radius:8px;font-size:1.2rem;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .mobile-menu-search{padding:1rem 5%;background:#111}
+  .mobile-menu-search input{
+    width:100%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);
+    color:#fff;border-radius:10px;padding:.75rem 1rem;
+    font-family:'Cairo',sans-serif;font-size:.9rem;outline:none;
+  }
+  .mobile-menu-cats{padding:1rem 0}
+  .mobile-menu-cat{
+    display:flex;align-items:center;gap:.9rem;
+    padding:1rem 5%;color:rgba(255,255,255,.8);
+    font-size:.95rem;font-weight:600;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    cursor:pointer;transition:background .2s;
+  }
+  .mobile-menu-cat:hover{background:rgba(255,255,255,.06)}
+  .mobile-menu-cat-icon{font-size:1.2rem;width:28px;text-align:center}
+  .mobile-menu-cat-arrow{margin-right:auto;color:rgba(255,255,255,.35)}
+  .mobile-menu-footer{
+    padding:1.5rem 5%;margin-top:auto;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;gap:1rem;flex-wrap:wrap;
+  }
+  .mobile-menu-action{
+    flex:1;padding:.75rem;border-radius:10px;
+    font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:700;
+    text-align:center;cursor:pointer;border:none;min-width:130px;
+  }
+  .mma-orange{background:var(--orange);color:#fff}
+  .mma-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)!important;border:1px solid}
+
+  /* HERO */
   .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-right{min-height:280px}
-  .hero-img-main{width:60%}
+  .hero-left{
+    padding:2.5rem 5%;
+    order:2;
+  }
+  .hero h1{font-size:1.7rem;margin-bottom:.75rem}
+  .hero-desc{font-size:.85rem;margin-bottom:1.2rem}
+  .hero-price-row{margin-bottom:1.2rem}
+  .hero-price{font-size:1.8rem}
+  .hero-actions{gap:.7rem}
+  .btn-orange,.btn-outline-w{padding:.8rem 1.4rem;font-size:.82rem;flex:1;justify-content:center}
+  .hero-trust{gap:1rem;margin-top:1.2rem}
+  .htrust{font-size:.7rem}
+  .hero-right{
+    min-height:240px;
+    order:1;
+  }
+  .hero-img-main{width:65%;max-width:260px}
   .hero-side-products{display:none}
+  .hero-badge{
+    width:52px;height:52px;font-size:.7rem;
+    top:1rem;left:1rem;
+  }
+
+  /* TRUST BAR */
   .trust-bar{grid-template-columns:1fr 1fr}
-  .trust-item{border:1px solid var(--border)}
+  .trust-item{
+    padding:.9rem 1rem;
+    border:none;
+    border-bottom:1px solid var(--border);
+    border-left:1px solid var(--border);
+  }
+  .trust-item:nth-child(odd){border-left:none}
+  .trust-icon-wrap{width:38px;height:38px;font-size:1.1rem}
+  .trust-txt h4{font-size:.78rem}
+  .trust-txt p{font-size:.68rem}
+
+  /* SECTIONS */
+  .section{padding:2.5rem 4%}
+  .cats-section,.flash-section,.banners-section,.arrivals-section,
+  .reviews-section,.brands-section,.newsletter-section{
+    padding:2.5rem 4%;
+  }
+  .sec-head{flex-direction:column;align-items:flex-start;gap:.8rem;margin-bottom:1.5rem}
+  .sec-title{font-size:1.25rem}
+
+  /* CATEGORIES */
+  .cats-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .cats-grid .cat-featured{grid-column:span 2;min-height:160px}
+  .cat-img{height:110px}
+  .cat-name{font-size:.78rem}
+  .cat-count{font-size:.65rem}
+
+  /* FLASH SALE */
+  .flash-head{
+    flex-direction:column;align-items:flex-start;gap:1rem;
+    margin-bottom:1.5rem;
+  }
+  .flash-left{flex-direction:column;align-items:flex-start;gap:.8rem}
+  .flash-title{font-size:1.2rem}
+  .countdown{gap:.35rem}
+  .cd-block{min-width:44px;padding:.4rem .6rem}
+  .cd-num{font-size:1.1rem}
+  .flash-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .flash-card .prod-img-wrap{height:150px}
+
+  /* PRODUCT CARDS */
+  .prods-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .prod-body{padding:.8rem}
+  .prod-name{font-size:.8rem}
+  .prod-price{font-size:1rem}
+  .prod-add-btn{font-size:.78rem;padding:.6rem}
+  .prod-actions{opacity:1}
+
+  /* BANNERS */
   .banners-grid{grid-template-columns:1fr}
+  .promo-banner{min-height:170px}
+  .promo-banner-content{padding:1.8rem 1.5rem}
+  .pb-title{font-size:1.1rem}
+  .pb-sub{font-size:.78rem;margin-bottom:.8rem}
+
+  /* BRANDS */
+  .brands-strip{gap:1.5rem}
+  .brand-logo{font-size:.8rem;padding:.3rem .6rem}
+
+  /* REVIEWS */
   .reviews-grid{grid-template-columns:1fr}
-  .app-section{grid-template-columns:1fr;text-align:center}
+
+  /* APP */
+  .app-section{
+    grid-template-columns:1fr;
+    padding:2.5rem 5%;
+    text-align:center;
+  }
   .app-buttons{justify-content:center}
   .app-img-wrap{display:none}
-  .footer-grid{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .nl-form{flex-direction:column}
-  .header-top{flex-wrap:wrap}
-  .search-wrap{order:3;width:100%;min-width:280px}
-  .hamburger{display:flex}
-  .nav-cats{display:none}
+  .app-title{font-size:1.5rem}
+
+  /* NEWSLETTER */
+  .nl-form{flex-direction:column;max-width:100%}
+  .nl-input,.nl-btn{width:100%}
+
+  /* FOOTER */
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;text-align:center;gap:.6rem}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1rem}
+}
+
+/* ══ SMALL PHONES ══ */
+@media(max-width:390px){
+  .hero h1{font-size:1.45rem}
+  .flash-grid,.prods-grid{grid-template-columns:1fr}
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-bar{grid-template-columns:1fr}
+  .trust-item{border-left:none!important}
+  .countdown{flex-wrap:wrap}
 }
 </style>
 </head>
@@ -761,6 +935,34 @@ footer{background:var(--dark);color:rgba(255,255,255,.7);padding:3rem 4% 1.5rem}
     <a class="nav-cat"><span class="nav-cat-icon">🚗</span> السيارات</a>
   </nav>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-logo">نوڤا<span>ستور</span></div>
+    <button class="mobile-menu-close" id="mobileClose">✕</button>
+  </div>
+  <div class="mobile-menu-search">
+    <input type="text" placeholder="🔍 ابحث عن منتج...">
+  </div>
+  <div class="mobile-menu-cats">
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">🏠</span> الرئيسية <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">📱</span> الإلكترونيات <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">👗</span> الأزياء <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">🛋️</span> المنزل والديكور <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">💄</span> الجمال والعناية <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">⚽</span> الرياضة <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">🎮</span> الألعاب <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">📚</span> الكتب <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">🍼</span> الأطفال <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">🚗</span> السيارات <span class="mobile-menu-cat-arrow">←</span></div>
+    <div class="mobile-menu-cat"><span class="mobile-menu-cat-icon">🏷️</span> العروض والتخفيضات <span class="mobile-menu-cat-arrow">←</span></div>
+  </div>
+  <div class="mobile-menu-footer">
+    <button class="mobile-menu-action mma-orange">🛒 السلة (5)</button>
+    <button class="mobile-menu-action mma-outline">♡ المفضلة (3)</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1561,21 +1763,26 @@ document.querySelector('.nl-btn')?.addEventListener('click',function(){
   }
 });
 
-/* ══ HAMBURGER ══ */
+/* ══ MOBILE MENU ══ */
 const ham=document.getElementById('ham');
-const navCats=document.getElementById('navCats');
-if(ham&&navCats){
-  ham.addEventListener('click',function(){
-    const open=navCats.style.display==='flex';
-    navCats.style.display=open?'none':'flex';
-    navCats.style.flexDirection='column';
-    navCats.style.position='absolute';
-    navCats.style.top='100%';
-    navCats.style.left='0';
-    navCats.style.right='0';
-    navCats.style.zIndex='999';
-  });
+const mobileMenu=document.getElementById('mobileMenu');
+const mobileClose=document.getElementById('mobileClose');
+
+function openMobileMenu(){
+  mobileMenu.classList.add('open');
+  document.body.style.overflow='hidden';
+  ham.classList.add('open');
 }
+function closeMobileMenu(){
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+  ham.classList.remove('open');
+}
+if(ham) ham.addEventListener('click', openMobileMenu);
+if(mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mobile-menu-cat').forEach(cat=>{
+  cat.addEventListener('click', closeMobileMenu);
+});
 </script>
 </body>
 </html>
