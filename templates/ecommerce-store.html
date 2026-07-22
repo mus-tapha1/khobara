@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نوڤا ستور — تسوق بلا حدود</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#1e3a8a;
+  --navy2:#1d4ed8;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --orange:#f97316;
+  --orange2:#ea580c;
+  --orange-light:#fff7ed;
+  --dark:#0f172a;
+  --text:#1e293b;
+  --text-mid:#64748b;
+  --text-dim:#94a3b8;
+  --border:#e2e8f0;
+  --light:#f8fafc;
+  --white:#ffffff;
+  --red:#dc2626;
+  --green:#16a34a;
+  --card:#ffffff;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:#f8fafc;color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:var(--navy);border-radius:2px}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+
+/* ══ ANNOUNCEMENT BAR ══ */
+.ann-bar{
+  background:var(--navy);color:#fff;
+  padding:.5rem 0;overflow:hidden;
+  position:relative;
+}
+.ann-inner{
+  display:flex;gap:5rem;width:max-content;
+  animation:annScroll 30s linear infinite;
+}
+.ann-item{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:600;letter-spacing:.05em;
+  white-space:nowrap;
+}
+.ann-sep{color:rgba(255,255,255,.4);font-size:.6rem}
+@keyframes annScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══ HEADER ══ */
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:500;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 4%;gap:1.5rem;
+}
+.logo-wrap{flex-shrink:0}
+.logo-txt{
+  font-size:1.7rem;font-weight:900;letter-spacing:-.02em;
+  color:var(--navy);line-height:1;
+}
+.logo-txt span{color:var(--orange)}
+.logo-sub{font-size:.6rem;font-weight:500;color:var(--text-mid);letter-spacing:.12em;text-transform:uppercase}
+
+/* search */
+.search-wrap{
+  flex:1;max-width:550px;
+  display:flex;align-items:center;
+  border:2px solid var(--border);border-radius:12px;
+  overflow:hidden;transition:border-color .25s;
+  background:#f8fafc;
+}
+.search-wrap:focus-within{border-color:var(--blue)}
+.search-select{
+  background:var(--light);border:none;border-left:1px solid var(--border);
+  padding:.65rem .9rem;font-family:'Cairo',sans-serif;font-size:.78rem;
+  color:var(--text-mid);cursor:pointer;outline:none;
+  order:2;
+}
+.search-input{
+  flex:1;border:none;background:transparent;outline:none;
+  padding:.65rem 1rem;font-family:'Cairo',sans-serif;font-size:.88rem;
+  color:var(--text);order:1;
+}
+.search-btn{
+  background:var(--blue);color:#fff;border:none;
+  padding:.65rem 1.3rem;cursor:pointer;font-size:1rem;
+  order:3;transition:background .2s;
+}
+.search-btn:hover{background:var(--navy)}
+
+/* nav icons */
+.header-icons{display:flex;align-items:center;gap:.3rem;flex-shrink:0}
+.h-icon{
+  display:flex;flex-direction:column;align-items:center;
+  gap:.15rem;padding:.5rem .7rem;border-radius:10px;
+  cursor:pointer;transition:background .2s;border:none;background:none;
+  font-family:'Cairo',sans-serif;position:relative;
+}
+.h-icon:hover{background:var(--light)}
+.h-icon svg{width:22px;height:22px;stroke:var(--text);stroke-width:1.8;fill:none}
+.h-icon-label{font-size:.62rem;color:var(--text-mid);font-weight:500}
+.badge{
+  position:absolute;top:4px;right:4px;
+  background:var(--orange);color:#fff;
+  font-size:.6rem;font-weight:700;
+  width:17px;height:17px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #fff;
+}
+
+/* nav categories bar */
+.nav-cats{
+  background:var(--navy);
+  display:flex;align-items:center;gap:0;
+  padding:0 4%;overflow-x:auto;
+}
+.nav-cats::-webkit-scrollbar{height:0}
+.nav-cat{
+  color:rgba(255,255,255,.8);
+  font-size:.8rem;font-weight:600;
+  padding:.65rem 1.2rem;white-space:nowrap;
+  transition:all .2s;cursor:pointer;
+  border-bottom:2px solid transparent;
+  display:flex;align-items:center;gap:.4rem;
+}
+.nav-cat:hover,.nav-cat.active{
+  color:#fff;background:rgba(255,255,255,.1);
+  border-bottom-color:var(--orange);
+}
+.nav-cat-icon{font-size:.9rem}
+.nav-cat-new{
+  background:var(--orange);color:#fff;
+  font-size:.55rem;font-weight:700;padding:.1rem .35rem;
+  border-radius:3px;letter-spacing:.05em;text-transform:uppercase;
+}
+
+/* ══ HERO ══ */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:480px;overflow:hidden;
+}
+.hero-left{
+  background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#1d4ed8 100%);
+  padding:4rem 5%;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-left::before{
+  content:'';position:absolute;
+  top:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(249,115,22,.15),transparent 70%);
+  border-radius:50%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.4);
+  color:var(--orange);padding:.35rem 1rem;
+  border-radius:50px;font-size:.75rem;font-weight:700;
+  letter-spacing:.05em;margin-bottom:1.5rem;width:fit-content;
+}
+.hero h1{
+  font-size:clamp(1.8rem,4vw,3.2rem);
+  font-weight:900;color:#fff;
+  line-height:1.15;margin-bottom:1rem;
+}
+.hero h1 .highlight{
+  background:linear-gradient(90deg,var(--orange),#fbbf24);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{
+  color:rgba(255,255,255,.65);font-size:.9rem;
+  line-height:1.9;margin-bottom:2rem;max-width:420px;
+}
+.hero-price-row{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem}
+.hero-old{
+  font-size:1rem;color:rgba(255,255,255,.4);
+  text-decoration:line-through;
+}
+.hero-price{font-size:2.2rem;font-weight:900;color:#fbbf24}
+.hero-cur{font-size:1rem;color:rgba(255,255,255,.6);margin-right:.3rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-orange{
+  background:linear-gradient(135deg,var(--orange),var(--orange2));
+  color:#fff;border:none;padding:.9rem 2rem;
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;
+  cursor:pointer;border-radius:10px;transition:all .3s;
+  display:inline-flex;align-items:center;gap:.5rem;
+  box-shadow:0 6px 20px rgba(249,115,22,.35);
+}
+.btn-orange:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(249,115,22,.5)}
+.btn-outline-w{
+  background:transparent;color:#fff;
+  border:2px solid rgba(255,255,255,.3);padding:.9rem 2rem;
+  font-family:'Cairo',sans-serif;font-weight:600;font-size:.88rem;
+  cursor:pointer;border-radius:10px;transition:all .3s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-outline-w:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-trust{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+.htrust{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.55);font-weight:500}
+.htrust-icon{font-size:1rem}
+
+/* hero right */
+.hero-right{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#dbeafe,#eff6ff);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-img-main{
+  width:80%;max-width:400px;
+  object-fit:contain;
+  filter:drop-shadow(0 20px 60px rgba(30,58,138,.3));
+  animation:heroFloat 4s ease-in-out infinite;
+  transition:.3s;
+}
+@keyframes heroFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+.hero-badge{
+  position:absolute;top:2rem;left:2rem;
+  background:var(--red);color:#fff;
+  font-size:.8rem;font-weight:900;
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;line-height:1.2;
+  box-shadow:0 6px 20px rgba(220,38,38,.4);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.hero-side-products{
+  position:absolute;bottom:1.5rem;right:1.5rem;
+  display:flex;flex-direction:column;gap:.6rem;
+}
+.hero-mini-card{
+  background:#fff;border-radius:10px;padding:.6rem .8rem;
+  display:flex;align-items:center;gap:.6rem;
+  box-shadow:var(--shadow-md);cursor:pointer;transition:transform .2s;
+  width:180px;
+}
+.hero-mini-card:hover{transform:translateX(-4px)}
+.hero-mini-img{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#f8fafc;flex-shrink:0}
+.hmc-name{font-size:.7rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hmc-price{font-size:.72rem;color:var(--blue);font-weight:700}
+
+/* ══ TRUST BAR ══ */
+.trust-bar{
+  background:#fff;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.trust-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:1.2rem 2rem;
+  border-left:1px solid var(--border);
+}
+.trust-item:last-child{border-left:none}
+.trust-icon-wrap{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--blue-light);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+}
+.trust-txt h4{font-size:.85rem;font-weight:700;color:var(--text)}
+.trust-txt p{font-size:.75rem;color:var(--text-mid);margin-top:.1rem}
+
+/* ══ SECTION BASE ══ */
+.section{padding:4rem 4%}
+.sec-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:2rem;
+}
+.sec-title-group{}
+.sec-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:.3rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--orange);border-radius:1px}
+.sec-title{font-size:1.5rem;font-weight:900;color:var(--dark);line-height:1.2}
+.sec-title span{color:var(--blue)}
+.see-all{
+  color:var(--blue);font-size:.82rem;font-weight:700;
+  display:flex;align-items:center;gap:.3rem;
+  padding:.5rem 1rem;border:1px solid var(--border);border-radius:8px;
+  transition:all .25s;
+}
+.see-all:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* ══ CATEGORIES ══ */
+.cats-section{background:#fff;padding:3rem 4%}
+.cats-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:1rem;
+}
+.cat-card{
+  border-radius:16px;overflow:hidden;
+  cursor:pointer;transition:all .3s;
+  background:#fff;border:1px solid var(--border);
+  position:relative;group:true;
+}
+.cat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--blue)}
+.cat-img{
+  height:140px;object-fit:cover;
+  transition:transform .4s;
+}
+.cat-card:hover .cat-img{transform:scale(1.05)}
+.cat-info{padding:.9rem .8rem;text-align:center}
+.cat-name{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.cat-count{font-size:.72rem;color:var(--text-mid)}
+.cat-featured{
+  grid-column:span 2;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  border:none;color:#fff;
+}
+.cat-featured .cat-img{height:100%;min-height:200px}
+.cat-featured-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,23,42,.9) 0%,transparent 50%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.2rem;
+}
+.cat-featured-title{font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:.3rem}
+.cat-featured-sub{font-size:.78rem;color:rgba(255,255,255,.7)}
+.cat-featured-btn{
+  background:var(--orange);color:#fff;border:none;
+  padding:.45rem 1rem;border-radius:6px;font-family:'Cairo',sans-serif;
+  font-size:.75rem;font-weight:700;cursor:pointer;
+  width:fit-content;margin-top:.7rem;transition:background .2s;
+}
+.cat-featured-btn:hover{background:var(--orange2)}
+
+/* ══ FLASH SALE ══ */
+.flash-section{
+  background:linear-gradient(135deg,var(--dark) 0%,#1e1b4b 100%);
+  padding:3.5rem 4%;
+}
+.flash-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:gap}
+.flash-left{display:flex;align-items:center;gap:1.5rem}
+.flash-title{
+  font-size:1.6rem;font-weight:900;color:#fff;
+  display:flex;align-items:center;gap:.6rem;
+}
+.flash-fire{font-size:1.8rem}
+.countdown{display:flex;align-items:center;gap:.5rem}
+.cd-block{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;padding:.5rem .8rem;
+  text-align:center;min-width:52px;
+}
+.cd-num{font-size:1.4rem;font-weight:900;color:#fff;line-height:1;display:block}
+.cd-label{font-size:.58rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem;display:block}
+.cd-sep{font-size:1.4rem;font-weight:900;color:var(--orange)}
+.see-all-w{
+  color:rgba(255,255,255,.8);font-size:.82rem;font-weight:700;
+  border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.5rem 1rem;
+  transition:all .25s;
+}
+.see-all-w:hover{background:#fff;color:var(--navy)}
+
+.flash-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+}
+
+/* ══ PRODUCT CARD ══ */
+.prod-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow);transition:all .35s;
+  cursor:pointer;position:relative;
+}
+.prod-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.prod-img-wrap{
+  position:relative;overflow:hidden;
+  background:#f8fafc;
+  aspect-ratio:1;
+}
+.prod-img{
+  width:100%;height:100%;object-fit:contain;
+  padding:1.5rem;transition:transform .4s;
+}
+.prod-card:hover .prod-img{transform:scale(1.05)}
+.prod-badge{
+  position:absolute;top:.7rem;right:.7rem;
+  background:var(--red);color:#fff;
+  font-size:.68rem;font-weight:700;
+  padding:.2rem .55rem;border-radius:5px;
+}
+.prod-badge.new{background:var(--green)}
+.prod-badge.hot{background:var(--orange)}
+.prod-actions{
+  position:absolute;top:.7rem;left:.7rem;
+  display:flex;flex-direction:column;gap:.4rem;
+  opacity:0;transition:opacity .3s;
+}
+.prod-card:hover .prod-actions{opacity:1}
+.prod-act-btn{
+  width:34px;height:34px;border-radius:8px;
+  background:#fff;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;font-size:.85rem;
+}
+.prod-act-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.prod-body{padding:1rem}
+.prod-brand{font-size:.68rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem}
+.prod-name{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.5rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-stars{display:flex;align-items:center;gap:.3rem;margin-bottom:.6rem}
+.stars{color:#f59e0b;font-size:.75rem;letter-spacing:-.05em}
+.reviews-count{font-size:.7rem;color:var(--text-dim)}
+.prod-price-row{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.8rem;flex-wrap:wrap}
+.prod-price{font-size:1.1rem;font-weight:900;color:var(--navy)}
+.prod-currency{font-size:.75rem;font-weight:600;color:var(--text-mid)}
+.prod-old{font-size:.8rem;color:var(--text-dim);text-decoration:line-through}
+.prod-discount{font-size:.72rem;font-weight:700;color:var(--red);background:#fef2f2;padding:.1rem .4rem;border-radius:4px}
+.prod-add-btn{
+  width:100%;background:var(--blue);color:#fff;border:none;
+  padding:.7rem;border-radius:10px;font-family:'Cairo',sans-serif;
+  font-size:.82rem;font-weight:700;cursor:pointer;
+  transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.4rem;
+}
+.prod-add-btn:hover{background:var(--navy);transform:none}
+
+/* flash sale progress */
+.flash-card .prod-img-wrap{aspect-ratio:auto;height:180px}
+.flash-progress-wrap{padding:.6rem 1rem 0}
+.flash-progress-label{display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.3rem}
+.flash-progress-label span:first-child{color:var(--text-mid)}
+.flash-progress-label span:last-child{color:var(--red);font-weight:700}
+.flash-progress-bar{height:5px;background:#f1f5f9;border-radius:3px;overflow:hidden;margin-bottom:.7rem}
+.flash-progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--red));border-radius:3px;transition:width .5s}
+
+/* ══ FEATURED PRODUCTS ══ */
+.featured-section{background:var(--light);padding:3.5rem 4%}
+.prod-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.prod-tab{
+  padding:.5rem 1.2rem;border-radius:50px;
+  border:1px solid var(--border);background:#fff;
+  font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:600;
+  cursor:pointer;transition:all .25s;color:var(--text-mid);
+}
+.prod-tab.active,.prod-tab:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.prods-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1.2rem;
+}
+
+/* ══ PROMO BANNERS ══ */
+.banners-section{padding:2rem 4%;background:#fff}
+.banners-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.promo-banner{
+  border-radius:18px;overflow:hidden;position:relative;
+  min-height:200px;display:flex;align-items:center;
+  cursor:pointer;
+}
+.promo-banner-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform .5s;
+}
+.promo-banner:hover .promo-banner-bg{transform:scale(1.04)}
+.promo-banner-overlay{
+  position:absolute;inset:0;
+}
+.promo-banner-content{
+  position:relative;z-index:2;padding:2.5rem 3rem;
+}
+.pb-tag{
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:.6rem;display:block;
+}
+.pb-title{font-size:1.4rem;font-weight:900;line-height:1.2;margin-bottom:.4rem}
+.pb-sub{font-size:.82rem;line-height:1.6;margin-bottom:1.2rem;opacity:.8}
+.pb-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.6rem 1.4rem;border-radius:8px;
+  font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:700;
+  cursor:pointer;border:none;transition:all .25s;
+}
+
+/* ══ NEW ARRIVALS ══ */
+.arrivals-section{padding:3.5rem 4%;background:var(--light)}
+
+/* ══ BRANDS ══ */
+.brands-section{
+  background:#fff;padding:2.5rem 4%;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.brands-title{text-align:center;font-size:.78rem;font-weight:600;color:var(--text-mid);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem}
+.brands-strip{
+  display:flex;align-items:center;justify-content:center;
+  gap:3rem;flex-wrap:wrap;
+}
+.brand-logo{
+  font-size:.9rem;font-weight:900;letter-spacing:-.02em;
+  color:var(--text-dim);filter:grayscale(1);opacity:.5;
+  transition:all .3s;cursor:pointer;
+  padding:.5rem 1rem;
+}
+.brand-logo:hover{color:var(--navy);filter:none;opacity:1}
+
+/* ══ REVIEWS ══ */
+.reviews-section{background:var(--light);padding:3.5rem 4%}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.review-card{
+  background:#fff;border-radius:16px;padding:1.5rem;
+  box-shadow:var(--shadow);transition:transform .25s;
+}
+.review-card:hover{transform:translateY(-4px)}
+.rev-stars{font-size:.9rem;color:#f59e0b;margin-bottom:.8rem;letter-spacing:-.05em}
+.rev-text{font-size:.85rem;line-height:1.85;color:var(--text-mid);margin-bottom:1.2rem}
+.rev-author{display:flex;align-items:center;gap:.7rem}
+.rev-avatar{
+  width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--light);flex-shrink:0;
+}
+.rev-avatar img{width:100%;height:100%;object-fit:cover}
+.rev-name{font-size:.85rem;font-weight:700;color:var(--text)}
+.rev-date{font-size:.72rem;color:var(--text-dim)}
+.rev-verify{font-size:.68rem;color:var(--green);font-weight:600;margin-top:.1rem;display:flex;align-items:center;gap:.2rem}
+
+/* ══ APP DOWNLOAD ══ */
+.app-section{
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  padding:3.5rem 4%;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:center;
+  overflow:hidden;position:relative;
+}
+.app-section::before{
+  content:'';position:absolute;
+  top:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(249,115,22,.15),transparent 70%);
+}
+.app-content{position:relative;z-index:2}
+.app-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);
+  color:#fff;padding:.3rem .8rem;border-radius:50px;
+  font-size:.72rem;font-weight:700;margin-bottom:1rem;
+}
+.app-title{font-size:2rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:.8rem}
+.app-desc{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.9;margin-bottom:1.5rem}
+.app-buttons{display:flex;gap:.8rem;flex-wrap:wrap}
+.app-btn{
+  display:flex;align-items:center;gap:.7rem;
+  background:#fff;color:var(--navy);
+  padding:.75rem 1.4rem;border-radius:12px;
+  transition:all .25s;font-weight:700;
+}
+.app-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.app-btn-icon{font-size:1.5rem}
+.app-btn-sub{font-size:.62rem;font-weight:400;color:var(--text-mid);display:block}
+.app-btn-name{font-size:.88rem;font-weight:900;display:block;line-height:1}
+.app-img-wrap{
+  position:relative;z-index:2;
+  display:flex;justify-content:center;align-items:center;
+  gap:1rem;
+}
+.app-phone{
+  width:160px;
+  border-radius:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,.3);
+  transform:rotate(-5deg);
+  border:3px solid rgba(255,255,255,.2);
+}
+.app-phone2{
+  width:140px;border-radius:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,.3);
+  transform:rotate(5deg) translateY(-20px);
+  border:3px solid rgba(255,255,255,.2);
+}
+
+/* ══ NEWSLETTER ══ */
+.newsletter-section{
+  background:#fff;padding:3rem 4%;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+.nl-title{font-size:1.4rem;font-weight:900;color:var(--dark);margin-bottom:.4rem}
+.nl-sub{font-size:.88rem;color:var(--text-mid);margin-bottom:1.5rem}
+.nl-form{display:flex;gap:.8rem;max-width:480px;margin:0 auto;justify-content:center}
+.nl-input{
+  flex:1;border:2px solid var(--border);border-radius:10px;
+  padding:.8rem 1.2rem;font-family:'Cairo',sans-serif;font-size:.88rem;
+  outline:none;transition:border-color .2s;
+}
+.nl-input:focus{border-color:var(--blue)}
+.nl-btn{
+  background:var(--blue);color:#fff;border:none;
+  padding:.8rem 1.8rem;border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:.88rem;font-weight:700;
+  cursor:pointer;transition:all .25s;white-space:nowrap;
+}
+.nl-btn:hover{background:var(--navy)}
+
+/* ══ FOOTER ══ */
+footer{background:var(--dark);color:rgba(255,255,255,.7);padding:3rem 4% 1.5rem}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:2.5rem;
+}
+.footer-brand .logo-txt{font-size:1.4rem;margin-bottom:.7rem;display:block}
+.footer-brand p{font-size:.82rem;line-height:1.9;color:rgba(255,255,255,.5);margin-bottom:1.2rem}
+.footer-socials{display:flex;gap:.6rem}
+.fsoc{
+  width:35px;height:35px;border-radius:8px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;color:rgba(255,255,255,.7);
+  transition:all .2s;cursor:pointer;
+}
+.fsoc:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.footer-col h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.6rem}
+.footer-col ul li a{font-size:.8rem;color:rgba(255,255,255,.5);transition:color .2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-payments{
+  display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-top:1rem;
+}
+.pay-badge{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.6);padding:.3rem .7rem;border-radius:5px;
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;
+}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:.75rem;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.75rem;color:rgba(255,255,255,.35);transition:color .2s}
+.footer-links a:hover{color:#fff}
+
+/* ══ MOBILE ══ */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.4rem}
+.hamburger span{width:22px;height:2px;background:var(--text);display:block;transition:.3s}
+
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .prods-grid,.flash-grid{grid-template-columns:repeat(2,1fr)}
+  .cats-grid{grid-template-columns:repeat(3,1fr)}
+  .cats-grid .cat-featured{grid-column:span 3}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{min-height:280px}
+  .hero-img-main{width:60%}
+  .hero-side-products{display:none}
+  .trust-bar{grid-template-columns:1fr 1fr}
+  .trust-item{border:1px solid var(--border)}
+  .banners-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .app-section{grid-template-columns:1fr;text-align:center}
+  .app-buttons{justify-content:center}
+  .app-img-wrap{display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .nl-form{flex-direction:column}
+  .header-top{flex-wrap:wrap}
+  .search-wrap{order:3;width:100%;min-width:280px}
+  .hamburger{display:flex}
+  .nav-cats{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  <div class="ann-inner">
+    <div class="ann-item">🚚 شحن مجاني على الطلبات فوق 200 درهم <span class="ann-sep">●</span></div>
+    <div class="ann-item">🔥 خصم 30% على الإلكترونيات هذا الأسبوع <span class="ann-sep">●</span></div>
+    <div class="ann-item">💳 قسّط الآن بدون فوائد — حتى 12 شهرًا <span class="ann-sep">●</span></div>
+    <div class="ann-item">🛡️ ضمان الإرجاع خلال 30 يومًا <span class="ann-sep">●</span></div>
+    <div class="ann-item">📞 دعم العملاء على مدار الساعة <span class="ann-sep">●</span></div>
+    <!-- duplicate for infinite scroll -->
+    <div class="ann-item">🚚 شحن مجاني على الطلبات فوق 200 درهم <span class="ann-sep">●</span></div>
+    <div class="ann-item">🔥 خصم 30% على الإلكترونيات هذا الأسبوع <span class="ann-sep">●</span></div>
+    <div class="ann-item">💳 قسّط الآن بدون فوائد — حتى 12 شهرًا <span class="ann-sep">●</span></div>
+    <div class="ann-item">🛡️ ضمان الإرجاع خلال 30 يومًا <span class="ann-sep">●</span></div>
+    <div class="ann-item">📞 دعم العملاء على مدار الساعة <span class="ann-sep">●</span></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <div class="logo-txt">نوڤا<span>ستور</span></div>
+      <div class="logo-sub">Nova Store</div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrap">
+      <input class="search-input" type="text" placeholder="ابحث عن منتج، ماركة، أو فئة...">
+      <select class="search-select">
+        <option>كل الفئات</option>
+        <option>الإلكترونيات</option>
+        <option>الأزياء</option>
+        <option>المنزل</option>
+        <option>الجمال</option>
+      </select>
+      <button class="search-btn">🔍</button>
+    </div>
+
+    <!-- Icons -->
+    <div class="header-icons">
+      <button class="h-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="h-icon-label">المفضلة</span>
+        <span class="badge">3</span>
+      </button>
+      <button class="h-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="h-icon-label">السلة</span>
+        <span class="badge" style="background:var(--red)">5</span>
+      </button>
+      <button class="h-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="h-icon-label">حسابي</span>
+      </button>
+    </div>
+
+    <button class="hamburger" id="ham">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Categories Nav -->
+  <nav class="nav-cats" id="navCats">
+    <a class="nav-cat active"><span class="nav-cat-icon">🏠</span> الرئيسية</a>
+    <a class="nav-cat"><span class="nav-cat-icon">📱</span> الإلكترونيات <span class="nav-cat-new">جديد</span></a>
+    <a class="nav-cat"><span class="nav-cat-icon">👗</span> الأزياء</a>
+    <a class="nav-cat"><span class="nav-cat-icon">🛋️</span> المنزل والديكور</a>
+    <a class="nav-cat"><span class="nav-cat-icon">💄</span> الجمال والعناية</a>
+    <a class="nav-cat"><span class="nav-cat-icon">⚽</span> الرياضة</a>
+    <a class="nav-cat"><span class="nav-cat-icon">🎮</span> الألعاب</a>
+    <a class="nav-cat"><span class="nav-cat-icon">📚</span> الكتب</a>
+    <a class="nav-cat"><span class="nav-cat-icon">🍼</span> الأطفال</a>
+    <a class="nav-cat"><span class="nav-cat-icon">🚗</span> السيارات</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">🔥 عرض لمحدود الوقت</div>
+    <h1>أحدث<br><span class="highlight">لابتوب MacBook</span><br>بسعر لا يُصدَّق</h1>
+    <p class="hero-desc">
+      قوة استثنائية. تصميم رفيع. بطارية تدوم يومًا كاملًا.
+      اكتشف مجموعة أحدث اللابتوبات وتمتع بتجربة عمل لا مثيل لها.
+    </p>
+    <div class="hero-price-row">
+      <span class="hero-cur">درهم</span>
+      <span class="hero-price">8,999</span>
+      <span class="hero-old">12,499 درهم</span>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-orange">🛒 أضف إلى السلة</button>
+      <button class="btn-outline-w">👁️ معاينة سريعة</button>
+    </div>
+    <div class="hero-trust">
+      <div class="htrust"><span class="htrust-icon">✅</span> ضمان أصالة</div>
+      <div class="htrust"><span class="htrust-icon">🚚</span> توصيل 24 ساعة</div>
+      <div class="htrust"><span class="htrust-icon">🔄</span> إرجاع مجاني</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-badge">-28%<br>خصم</div>
+    <img class="hero-img-main" src="https://images.pexels.com/photos/4812932/pexels-photo-4812932.jpeg?auto=compress&cs=tinysrgb&w=800" alt="MacBook Pro">
+    <div class="hero-side-products">
+      <div class="hero-mini-card">
+        <img class="hero-mini-img" src="https://images.pexels.com/photos/19060954/pexels-photo-19060954/free-photo-of-close-up-of-an-iphone-15-pro.jpeg?auto=compress&cs=tinysrgb&w=200" alt="iPhone 15 Pro">
+        <div>
+          <div class="hmc-name">iPhone 15 Pro</div>
+          <div class="hmc-price">5,499 درهم</div>
+        </div>
+      </div>
+      <div class="hero-mini-card">
+        <img class="hero-mini-img" src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Sony WH1000XM5">
+        <div>
+          <div class="hmc-name">Sony WH-1000XM5</div>
+          <div class="hmc-price">1,899 درهم</div>
+        </div>
+      </div>
+      <div class="hero-mini-card">
+        <img class="hero-mini-img" src="https://images.pexels.com/photos/5081420/pexels-photo-5081420.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Apple Watch">
+        <div>
+          <div class="hmc-name">Apple Watch S9</div>
+          <div class="hmc-price">2,699 درهم</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon-wrap">🚚</div>
+    <div class="trust-txt">
+      <h4>توصيل سريع</h4>
+      <p>خلال 24-48 ساعة لكل المدن</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon-wrap">🔄</div>
+    <div class="trust-txt">
+      <h4>إرجاع مجاني</h4>
+      <p>ضمان الإرجاع 30 يومًا</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon-wrap">🔒</div>
+    <div class="trust-txt">
+      <h4>دفع آمن 100%</h4>
+      <p>تشفير كامل لبياناتك</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon-wrap">📞</div>
+    <div class="trust-txt">
+      <h4>دعم 24/7</h4>
+      <p>فريق خدمة دائم الحضور</p>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="cats-section">
+  <div class="sec-head">
+    <div class="sec-title-group">
+      <div class="sec-eyebrow">تصفح حسب الفئة</div>
+      <h2 class="sec-title">تسوق حسب <span>اهتمامك</span></h2>
+    </div>
+    <a class="see-all" href="#">كل الفئات ←</a>
+  </div>
+  <div class="cats-grid">
+
+    <!-- Featured category (span 2) -->
+    <div class="cat-card cat-featured reveal">
+      <img class="cat-img" src="https://images.pexels.com/photos/4812932/pexels-photo-4812932.jpeg?auto=compress&cs=tinysrgb&w=600" alt="الإلكترونيات" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5">
+      <div class="cat-featured-overlay">
+        <div class="cat-featured-title">📱 الإلكترونيات</div>
+        <div class="cat-featured-sub">أحدث الهواتف، اللابتوبات والإكسسوارات</div>
+        <button class="cat-featured-btn">تسوق الآن ←</button>
+      </div>
+    </div>
+
+    <!-- Regular categories -->
+    <div class="cat-card reveal">
+      <img class="cat-img" src="https://cdn.create.vista.com/api/media/small/670203156/stock-photo-carefree-muslim-woman-trendy-casual-outfit-hijab-sitting-beige-modern" alt="الأزياء">
+      <div class="cat-info">
+        <div class="cat-name">👗 الأزياء</div>
+        <div class="cat-count">+1,200 منتج</div>
+      </div>
+    </div>
+
+    <div class="cat-card reveal">
+      <img class="cat-img" src="https://www.livingroomideas.eu/wp-content/uploads/2020/04/How-To-Create-Modern-Arabic-Interior-Design-In-5-Simple-Steps-2.jpg" alt="المنزل">
+      <div class="cat-info">
+        <div class="cat-name">🛋️ المنزل والديكور</div>
+        <div class="cat-count">+850 منتج</div>
+      </div>
+    </div>
+
+    <div class="cat-card reveal">
+      <img class="cat-img" src="https://thumbs.dreamstime.com/b/organic-skincare-products-natural-ingredients-flat-lay-white-background-top-down-view-cream-lotion-makeup-brush-399118037.jpg" alt="الجمال">
+      <div class="cat-info">
+        <div class="cat-name">💄 الجمال والعناية</div>
+        <div class="cat-count">+620 منتج</div>
+      </div>
+    </div>
+
+    <div class="cat-card reveal">
+      <img class="cat-img" src="https://images.pexels.com/photos/4065509/pexels-photo-4065509.jpeg?auto=compress&cs=tinysrgb&w=400" alt="الرياضة">
+      <div class="cat-info">
+        <div class="cat-name">⚽ الرياضة</div>
+        <div class="cat-count">+470 منتج</div>
+      </div>
+    </div>
+
+    <div class="cat-card reveal">
+      <img class="cat-img" src="https://m.media-amazon.com/images/I/41RH9XCVsLL.jpg" alt="الألعاب">
+      <div class="cat-info">
+        <div class="cat-name">🎮 الألعاب</div>
+        <div class="cat-count">+390 منتج</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLASH SALE -->
+<section class="flash-section">
+  <div class="flash-head">
+    <div class="flash-left">
+      <div class="flash-title"><span class="flash-fire">⚡</span> تخفيضات سريعة</div>
+      <div class="countdown">
+        <div class="cd-block">
+          <span class="cd-num" id="cdH">05</span>
+          <span class="cd-label">ساعة</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cdM">47</span>
+          <span class="cd-label">دقيقة</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cdS">33</span>
+          <span class="cd-label">ثانية</span>
+        </div>
+      </div>
+    </div>
+    <a class="see-all-w" href="#">كل العروض ←</a>
+  </div>
+
+  <div class="flash-grid">
+
+    <!-- Flash Product 1 -->
+    <div class="prod-card flash-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/9371408/pexels-photo-9371408.jpeg?auto=compress&cs=tinysrgb&w=600" alt="سماعات سوني">
+        <span class="prod-badge">-35%</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn" title="المفضلة">♡</button>
+          <button class="prod-act-btn" title="مقارنة">⇄</button>
+        </div>
+      </div>
+      <div class="flash-progress-wrap">
+        <div class="flash-progress-label"><span>الكميات المتبقية</span><span>14 قطعة فقط!</span></div>
+        <div class="flash-progress-bar"><div class="flash-progress-fill" style="width:72%"></div></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Sony</div>
+        <div class="prod-name">سماعات سوني WH-1000XM5 لاسلكية بإلغاء الضوضاء</div>
+        <div class="prod-stars">
+          <span class="stars">★★★★★</span>
+          <span class="reviews-count">(2,341)</span>
+        </div>
+        <div class="prod-price-row">
+          <span class="prod-price">1,299</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">1,999 درهم</span>
+          <span class="prod-discount">وفّر 700 درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <!-- Flash Product 2 -->
+    <div class="prod-card flash-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/19060954/pexels-photo-19060954/free-photo-of-close-up-of-an-iphone-15-pro.jpeg?auto=compress&cs=tinysrgb&w=600" alt="iPhone 15 Pro">
+        <span class="prod-badge">-22%</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="flash-progress-wrap">
+        <div class="flash-progress-label"><span>الكميات المتبقية</span><span>7 قطع فقط!</span></div>
+        <div class="flash-progress-bar"><div class="flash-progress-fill" style="width:86%"></div></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Apple</div>
+        <div class="prod-name">iPhone 15 Pro — 256GB تيتانيوم أسود</div>
+        <div class="prod-stars">
+          <span class="stars">★★★★★</span>
+          <span class="reviews-count">(5,892)</span>
+        </div>
+        <div class="prod-price-row">
+          <span class="prod-price">5,499</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">6,999 درهم</span>
+          <span class="prod-discount">وفّر 1,500 درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <!-- Flash Product 3 -->
+    <div class="prod-card flash-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/9794724/pexels-photo-9794724.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Apple Watch">
+        <span class="prod-badge">-18%</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="flash-progress-wrap">
+        <div class="flash-progress-label"><span>الكميات المتبقية</span><span>22 قطعة</span></div>
+        <div class="flash-progress-bar"><div class="flash-progress-fill" style="width:55%"></div></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Apple</div>
+        <div class="prod-name">Apple Watch Series 9 — 45mm — GPS + Cellular</div>
+        <div class="prod-stars">
+          <span class="stars">★★★★☆</span>
+          <span class="reviews-count">(1,204)</span>
+        </div>
+        <div class="prod-price-row">
+          <span class="prod-price">2,699</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">3,299 درهم</span>
+          <span class="prod-discount">وفّر 600 درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <!-- Flash Product 4 -->
+    <div class="prod-card flash-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/3640629/pexels-photo-3640629.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Laptop">
+        <span class="prod-badge hot">HOT</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="flash-progress-wrap">
+        <div class="flash-progress-label"><span>الكميات المتبقية</span><span>3 قطع فقط!</span></div>
+        <div class="flash-progress-bar"><div class="flash-progress-fill" style="width:94%"></div></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Lenovo</div>
+        <div class="prod-name">لابتوب Lenovo ThinkPad X1 Carbon Gen 11 — i7</div>
+        <div class="prod-stars">
+          <span class="stars">★★★★★</span>
+          <span class="reviews-count">(877)</span>
+        </div>
+        <div class="prod-price-row">
+          <span class="prod-price">7,299</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">9,999 درهم</span>
+          <span class="prod-discount">وفّر 2,700 درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured-section section">
+  <div class="sec-head">
+    <div class="sec-title-group">
+      <div class="sec-eyebrow">الأكثر مبيعًا</div>
+      <h2 class="sec-title">منتجات <span>مميزة</span></h2>
+    </div>
+    <a class="see-all" href="#">كل المنتجات ←</a>
+  </div>
+
+  <div class="prod-tabs">
+    <button class="prod-tab active">الكل</button>
+    <button class="prod-tab">الإلكترونيات</button>
+    <button class="prod-tab">الأزياء</button>
+    <button class="prod-tab">المنزل والديكور</button>
+    <button class="prod-tab">الجمال</button>
+    <button class="prod-tab">الرياضة</button>
+  </div>
+
+  <div class="prods-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=600" alt="سماعات">
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Bose</div>
+        <div class="prod-name">سماعات Bose QuietComfort 45 — أسود</div>
+        <div class="prod-stars"><span class="stars">★★★★★</span><span class="reviews-count">(3,102)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">1,599</span><span class="prod-currency">درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/5083218/pexels-photo-5083218.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ساعة ذكية">
+        <span class="prod-badge">-15%</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Samsung</div>
+        <div class="prod-name">Samsung Galaxy Watch 6 Classic — 47mm</div>
+        <div class="prod-stars"><span class="stars">★★★★☆</span><span class="reviews-count">(987)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">1,899</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">2,249 درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://thumbs.dreamstime.com/b/cosmetics-skincare-products-cream-jars-bottles-eucalyptus-beauty-flat-lay-stylish-showcasing-various-including-spray-bottle-398769938.jpg" alt="عناية بالبشرة">
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">The Ordinary</div>
+        <div class="prod-name">مجموعة العناية بالبشرة — سيروم + مرطب + تونر</div>
+        <div class="prod-stars"><span class="stars">★★★★★</span><span class="reviews-count">(4,521)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">349</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">499 درهم</span>
+          <span class="prod-discount">-30%</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://static.vecteezy.com/system/resources/thumbnails/054/571/693/small/sports-sneakers-on-grey-background-with-copy-space-the-concept-of-a-sporty-lifestyle-and-training-photo.jpg" alt="أحذية رياضية">
+        <span class="prod-badge hot">HOT</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+          <button class="prod-act-btn">⇄</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Nike</div>
+        <div class="prod-name">حذاء Nike Air Max 270 — أبيض/أسود</div>
+        <div class="prod-stars"><span class="stars">★★★★★</span><span class="reviews-count">(6,784)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">799</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">999 درهم</span>
+          <span class="prod-discount">-20%</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROMO BANNERS -->
+<section class="banners-section">
+  <div class="banners-grid">
+
+    <!-- Banner 1 -->
+    <div class="promo-banner">
+      <div class="promo-banner-bg" style="background-image:url('https://images.pexels.com/photos/5793947/pexels-photo-5793947.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      <div class="promo-banner-overlay" style="background:linear-gradient(135deg,rgba(15,23,42,.9) 0%,rgba(30,58,138,.6) 100%)"></div>
+      <div class="promo-banner-content">
+        <span class="pb-tag" style="color:var(--orange)">⚡ عرض حصري</span>
+        <div class="pb-title" style="color:#fff">خصم 40% على<br>جميع اللابتوبات</div>
+        <div class="pb-sub" style="color:rgba(255,255,255,.7)">أحدث إصدارات Dell، HP، Lenovo، Apple</div>
+        <button class="pb-btn" style="background:var(--orange);color:#fff">تسوق الآن ←</button>
+      </div>
+    </div>
+
+    <!-- Banner 2 -->
+    <div class="promo-banner">
+      <div class="promo-banner-bg" style="background-image:url('https://cdn.create.vista.com/api/media/small/670203424/stock-photo-side-view-muslim-woman-stylish-sunglasses-hijab-smiling-beige-modern')"></div>
+      <div class="promo-banner-overlay" style="background:linear-gradient(135deg,rgba(249,115,22,.85) 0%,rgba(234,88,12,.6) 100%)"></div>
+      <div class="promo-banner-content">
+        <span class="pb-tag" style="color:#fff;opacity:.8">👗 تشكيلة جديدة</span>
+        <div class="pb-title" style="color:#fff">موضة الموسم<br>وصلت للمتجر</div>
+        <div class="pb-sub" style="color:rgba(255,255,255,.8)">آلاف القطع من أشهر الماركات العالمية</div>
+        <button class="pb-btn" style="background:#fff;color:var(--orange2)">اكتشفي الجديد ←</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="arrivals-section section">
+  <div class="sec-head">
+    <div class="sec-title-group">
+      <div class="sec-eyebrow">وصل حديثًا</div>
+      <h2 class="sec-title">أحدث <span>الوافدين</span></h2>
+    </div>
+    <a class="see-all" href="#">كل الجديد ←</a>
+  </div>
+
+  <div class="prods-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/7241360/pexels-photo-7241360.jpeg?auto=compress&cs=tinysrgb&w=600" alt="سماعات">
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">JBL</div>
+        <div class="prod-name">سماعات JBL Tune 770NC لاسلكية — أزرق</div>
+        <div class="prod-stars"><span class="stars">★★★★☆</span><span class="reviews-count">(543)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">699</span><span class="prod-currency">درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/1334602/pexels-photo-1334602.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ساعة كلاسيك">
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Fossil</div>
+        <div class="prod-name">ساعة Fossil Gen 6 Smartwatch — ذهبي</div>
+        <div class="prod-stars"><span class="stars">★★★★★</span><span class="reviews-count">(218)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">1,199</span><span class="prod-currency">درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://thumbs.dreamstime.com/b/natural-skincare-products-white-textured-sand-background-flat-lay-flat-lay-arrangement-various-natural-organic-428516563.jpg" alt="عناية طبيعية">
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Natural Beauty</div>
+        <div class="prod-name">مجموعة العناية الطبيعية — أرجان وأركان</div>
+        <div class="prod-stars"><span class="stars">★★★★★</span><span class="reviews-count">(1,876)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">199</span><span class="prod-currency">درهم</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img-wrap">
+        <img class="prod-img" src="https://images.pexels.com/photos/5793947/pexels-photo-5793947.jpeg?auto=compress&cs=tinysrgb&w=600" alt="لابتوب">
+        <span class="prod-badge new">جديد</span>
+        <div class="prod-actions">
+          <button class="prod-act-btn">♡</button>
+          <button class="prod-act-btn">👁️</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">ASUS</div>
+        <div class="prod-name">لابتوب ASUS ZenBook 14 OLED — i7 Gen 13</div>
+        <div class="prod-stars"><span class="stars">★★★★★</span><span class="reviews-count">(432)</span></div>
+        <div class="prod-price-row">
+          <span class="prod-price">6,499</span><span class="prod-currency">درهم</span>
+          <span class="prod-old">7,999 درهم</span>
+          <span class="prod-discount">-19%</span>
+        </div>
+        <button class="prod-add-btn">🛒 أضف إلى السلة</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands-section">
+  <div class="brands-title">ماركات عالمية موثوقة</div>
+  <div class="brands-strip">
+    <div class="brand-logo">Apple</div>
+    <div class="brand-logo">Samsung</div>
+    <div class="brand-logo">Sony</div>
+    <div class="brand-logo">Nike</div>
+    <div class="brand-logo">Adidas</div>
+    <div class="brand-logo">Bose</div>
+    <div class="brand-logo">LG</div>
+    <div class="brand-logo">Lenovo</div>
+    <div class="brand-logo">Xiaomi</div>
+    <div class="brand-logo">Dyson</div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section section">
+  <div class="sec-head">
+    <div class="sec-title-group">
+      <div class="sec-eyebrow">آراء العملاء</div>
+      <h2 class="sec-title">ماذا يقول <span>مشترونا</span></h2>
+    </div>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <span style="font-size:1.2rem;color:#f59e0b;letter-spacing:-.05em">★★★★★</span>
+      <span style="font-size:.85rem;font-weight:700;color:var(--dark)">4.9/5</span>
+      <span style="font-size:.78rem;color:var(--text-mid)">من 12,400+ تقييم</span>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"تجربة تسوق رائعة! وصلت البضاعة في اليوم التالي وكانت في حالة ممتازة. الجودة تفوق التوقعات بكثير وسأعود للتسوق بالتأكيد."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">
+          <img src="https://cdn.create.vista.com/api/media/small/670202988/stock-photo-trendy-muslim-woman-white-sweatshirt-hijab-smiling-camera-beige-personal" alt="سارة">
+        </div>
+        <div>
+          <div class="rev-name">سارة المنصوري</div>
+          <div class="rev-date">15 يوليو 2026</div>
+          <div class="rev-verify">✅ مشتري موثق</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"اشتريت سماعات سوني بسعر ممتاز مقارنة بالمحلات. التغليف احترافي، الشحن سريع، وخدمة العملاء تجاوبت معي فورًا. أنصح الجميع بهذا المتجر!"</p>
+      <div class="rev-author">
+        <div class="rev-avatar" style="background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem">ي</div>
+        <div>
+          <div class="rev-name">يوسف العمري</div>
+          <div class="rev-date">10 يوليو 2026</div>
+          <div class="rev-verify">✅ مشتري موثق</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"المتجر يتميز بتنوع المنتجات وأسعار تنافسية. اشتريت iPhone 15 Pro وكان أصليًا 100%. سياسة الإرجاع واضحة والفريق محترف جدًا."</p>
+      <div class="rev-author">
+        <div class="rev-avatar" style="background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem">ن</div>
+        <div>
+          <div class="rev-name">نورة الزهراني</div>
+          <div class="rev-date">5 يوليو 2026</div>
+          <div class="rev-verify">✅ مشتري موثق</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- APP DOWNLOAD -->
+<section class="app-section">
+  <div class="app-content">
+    <div class="app-tag">📱 تطبيق نوڤا ستور</div>
+    <h2 class="app-title">تسوق أسهل<br>مع تطبيقنا!</h2>
+    <p class="app-desc">
+      حمّل التطبيق الآن واستمتع بتجربة تسوق أسرع، إشعارات العروض الحصرية،
+      وتتبع طلباتك في الوقت الفعلي. متاح على iOS وAndroid.
+    </p>
+    <div class="app-buttons">
+      <div class="app-btn">
+        <span class="app-btn-icon"></span>
+        <div>
+          <span class="app-btn-sub">تحميل من</span>
+          <span class="app-btn-name">App Store</span>
+        </div>
+      </div>
+      <div class="app-btn">
+        <span class="app-btn-icon">▶</span>
+        <div>
+          <span class="app-btn-sub">تحميل من</span>
+          <span class="app-btn-name">Google Play</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-img-wrap">
+    <img class="app-phone" src="https://images.pexels.com/photos/19060767/pexels-photo-19060767/free-photo-of-close-up-of-a-person-holding-an-iphone-15-pro.jpeg?auto=compress&cs=tinysrgb&w=400" alt="تطبيق نوڤا">
+    <img class="app-phone2" src="https://images.pexels.com/photos/3571093/pexels-photo-3571093.jpeg?auto=compress&cs=tinysrgb&w=400" alt="تطبيق نوڤا 2">
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div style="font-size:2rem;margin-bottom:.5rem">📬</div>
+  <h2 class="nl-title">اشترك في نشرتنا البريدية</h2>
+  <p class="nl-sub">احصل على أحدث العروض والتخفيضات مباشرة في بريدك الإلكتروني</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="بريدك الإلكتروني...">
+    <button class="nl-btn">اشترك الآن</button>
+  </div>
+  <p style="font-size:.72rem;color:var(--text-dim);margin-top:.8rem">🔒 نحترم خصوصيتك — لن نرسل رسائل مزعجة أبدًا</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-txt">نوڤا<span>ستور</span></span>
+      <p>متجرك الإلكتروني الأول في المغرب والعالم العربي. جودة مضمونة، أسعار تنافسية، وتوصيل سريع لباب منزلك.</p>
+      <div class="footer-socials">
+        <div class="fsoc">f</div>
+        <div class="fsoc">ig</div>
+        <div class="fsoc">tw</div>
+        <div class="fsoc">yt</div>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">العروض والتخفيضات</a></li>
+        <li><a href="#">أكثر المبيعات</a></li>
+        <li><a href="#">الوافد الجديد</a></li>
+        <li><a href="#">تتبع طلبك</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>خدمة العملاء</h4>
+      <ul>
+        <li><a href="#">سياسة الإرجاع</a></li>
+        <li><a href="#">ضمان المنتجات</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">تواصل معنا</a></li>
+        <li><a href="#">بوابة الشكاوى</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><a href="#">📞 +212 600 000 000</a></li>
+        <li><a href="#">✉️ info@novastore.ma</a></li>
+        <li><a href="#">📍 الدار البيضاء، المغرب</a></li>
+        <li><a href="#">⏰ السبت – الخميس: 9ص – 9م</a></li>
+      </ul>
+      <div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.4);margin:1rem 0 .5rem">طرق الدفع المقبولة:</div>
+        <div class="footer-payments">
+          <span class="pay-badge">VISA</span>
+          <span class="pay-badge">MC</span>
+          <span class="pay-badge">CMI</span>
+          <span class="pay-badge">Cash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 نوڤا ستور — جميع الحقوق محفوظة</p>
+    <div class="footer-links">
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">الشروط والأحكام</a>
+      <a href="#">خريطة الموقع</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══ COUNTDOWN TIMER ══ */
+(function(){
+  let h=5,m=47,s=33;
+  setInterval(function(){
+    s--;
+    if(s<0){s=59;m--;}
+    if(m<0){m=59;h--;}
+    if(h<0){h=5;m=59;s=59;}
+    document.getElementById('cdH').textContent=String(h).padStart(2,'0');
+    document.getElementById('cdM').textContent=String(m).padStart(2,'0');
+    document.getElementById('cdS').textContent=String(s).padStart(2,'0');
+  },1000);
+})();
+
+/* ══ PRODUCT TABS ══ */
+document.querySelectorAll('.prod-tab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.prod-tab').forEach(t=>t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+/* ══ NAV CATS ACTIVE ══ */
+document.querySelectorAll('.nav-cat').forEach(cat=>{
+  cat.addEventListener('click',function(){
+    document.querySelectorAll('.nav-cat').forEach(c=>c.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+/* ══ REVEAL ON SCROLL ══ */
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+reveals.forEach(r=>obs.observe(r));
+
+/* ══ ADD TO CART FEEDBACK ══ */
+document.querySelectorAll('.prod-add-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const orig=this.textContent;
+    this.textContent='✅ تمت الإضافة!';
+    this.style.background='var(--green)';
+    setTimeout(()=>{
+      this.textContent=orig;
+      this.style.background='';
+    },1500);
+  });
+});
+
+/* ══ NEWSLETTER ══ */
+document.querySelector('.nl-btn')?.addEventListener('click',function(){
+  const input=document.querySelector('.nl-input');
+  if(input.value.includes('@')){
+    this.textContent='✅ تم الاشتراك!';
+    this.style.background='var(--green)';
+    input.value='';
+    setTimeout(()=>{
+      this.textContent='اشترك الآن';
+      this.style.background='';
+    },3000);
+  }else{
+    input.style.borderColor='var(--red)';
+    setTimeout(()=>input.style.borderColor='',2000);
+  }
+});
+
+/* ══ HAMBURGER ══ */
+const ham=document.getElementById('ham');
+const navCats=document.getElementById('navCats');
+if(ham&&navCats){
+  ham.addEventListener('click',function(){
+    const open=navCats.style.display==='flex';
+    navCats.style.display=open?'none':'flex';
+    navCats.style.flexDirection='column';
+    navCats.style.position='absolute';
+    navCats.style.top='100%';
+    navCats.style.left='0';
+    navCats.style.right='0';
+    navCats.style.zIndex='999';
+  });
+}
+</script>
+</body>
+</html>
