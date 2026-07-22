@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تك نوفا — عالم التقنية الحديثة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#0f0f1a;
+  --bg3:#141424;
+  --bg4:#1a1a2e;
+  --accent:#6c63ff;
+  --accent2:#a855f7;
+  --accent3:#06b6d4;
+  --neon:#00f5ff;
+  --neon-dim:rgba(0,245,255,.12);
+  --white:#ffffff;
+  --text:#e2e8f0;
+  --text-mid:#94a3b8;
+  --text-dim:#64748b;
+  --border:rgba(255,255,255,.07);
+  --border2:rgba(108,99,255,.3);
+  --card:#12121f;
+  --card2:#16162a;
+  --red:#ef4444;
+  --green:#22c55e;
+  --orange:#f97316;
+  --gold:#fbbf24;
+  --gradient:linear-gradient(135deg,#6c63ff,#a855f7);
+  --gradient2:linear-gradient(135deg,#06b6d4,#6c63ff);
+  --shadow:0 2px 12px rgba(0,0,0,.4);
+  --shadow-accent:0 8px 32px rgba(108,99,255,.25);
+  --glow:0 0 20px rgba(0,245,255,.15),0 0 60px rgba(108,99,255,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+
+/* ══════════ ANNOUNCEMENT BAR ══════════ */
+.ann-bar{
+  background:var(--gradient);
+  padding:.5rem 0;overflow:hidden;position:relative;
+}
+.ann-inner{
+  display:flex;gap:6rem;width:max-content;
+  animation:annScroll 35s linear infinite;
+}
+.ann-item{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:600;letter-spacing:.05em;
+  white-space:nowrap;color:#fff;
+}
+.ann-dot{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%}
+@keyframes annScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════ HEADER ══════════ */
+header{
+  background:rgba(10,10,15,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:900;
+}
+.header-main{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 4%;gap:1.5rem;
+}
+/* Logo */
+.logo{flex-shrink:0;display:flex;align-items:center;gap:.6rem}
+.logo-icon{
+  width:38px;height:38px;
+  background:var(--gradient);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:#fff;
+  box-shadow:var(--shadow-accent);
+}
+.logo-text{font-size:1.5rem;font-weight:900;letter-spacing:-.02em}
+.logo-text span{
+  background:var(--gradient);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.logo-sub{font-size:.58rem;color:var(--text-dim);letter-spacing:.15em;text-transform:uppercase;margin-top:-.1rem}
+/* Search */
+.search-wrap{
+  flex:1;max-width:560px;
+  display:flex;align-items:center;
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:border-color .25s,box-shadow .25s;
+}
+.search-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(108,99,255,.12)}
+.search-cat{
+  background:var(--bg4);border:none;border-left:1px solid var(--border);
+  padding:.65rem .9rem;color:var(--text-mid);font-family:'Cairo',sans-serif;
+  font-size:.78rem;cursor:pointer;outline:none;order:2;
+}
+.search-input{
+  flex:1;border:none;background:transparent;outline:none;
+  padding:.65rem 1rem;font-family:'Cairo',sans-serif;font-size:.88rem;
+  color:var(--white);order:1;
+}
+.search-input::placeholder{color:var(--text-dim)}
+.search-btn{
+  background:var(--gradient);color:#fff;border:none;
+  padding:.65rem 1.3rem;font-size:.95rem;order:3;
+  transition:opacity .2s;
+}
+.search-btn:hover{opacity:.85}
+/* Header Actions */
+.header-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.hdr-btn{
+  display:flex;flex-direction:column;align-items:center;
+  gap:.15rem;padding:.5rem .7rem;
+  background:transparent;border:1px solid var(--border);
+  border-radius:10px;color:var(--text-mid);font-size:.6rem;
+  letter-spacing:.05em;transition:all .2s;position:relative;
+}
+.hdr-btn i{font-size:1.1rem;color:var(--text)}
+.hdr-btn:hover{border-color:var(--accent);color:var(--accent)}
+.hdr-btn:hover i{color:var(--accent)}
+.badge{
+  position:absolute;top:-.3rem;left:-.3rem;
+  background:var(--accent);color:#fff;
+  font-size:.6rem;font-weight:700;
+  min-width:18px;height:18px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 4px;
+}
+.btn-primary{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--gradient);color:#fff;border:none;
+  padding:.6rem 1.3rem;border-radius:10px;font-size:.85rem;font-weight:600;
+  transition:opacity .2s,transform .15s;
+}
+.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+
+/* ══════════ NAV ══════════ */
+nav{
+  border-top:1px solid var(--border);
+  background:rgba(10,10,15,.85);
+}
+.nav-inner{
+  display:flex;align-items:center;gap:0;
+  padding:0 4%;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-link{
+  display:flex;align-items:center;gap:.45rem;
+  padding:.75rem 1.1rem;font-size:.85rem;font-weight:500;
+  color:var(--text-mid);white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:all .2s;
+}
+.nav-link i{font-size:.9rem}
+.nav-link:hover,.nav-link.active{color:var(--white);border-bottom-color:var(--accent)}
+.nav-link.hot{color:var(--red)}
+.nav-link.hot i{animation:pulse .9s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ══════════ HERO SLIDER ══════════ */
+.hero{position:relative;height:520px;overflow:hidden}
+.hero-slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity .8s ease;
+}
+.hero-slide.active{opacity:1}
+.hero-slide img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.45);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(10,10,15,.9) 0%,rgba(10,10,15,.4) 50%,transparent 100%);
+}
+.hero-content{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 6%;max-width:620px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(108,99,255,.18);border:1px solid var(--border2);
+  color:var(--accent);font-size:.72rem;font-weight:600;
+  padding:.35rem .8rem;border-radius:20px;width:fit-content;
+  margin-bottom:1.2rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.hero-title{
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;
+  margin-bottom:.8rem;
+}
+.hero-title .hl{
+  background:var(--gradient2);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{
+  color:var(--text-mid);font-size:1rem;line-height:1.7;
+  margin-bottom:1.8rem;max-width:460px;
+}
+.hero-price-wrap{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.8rem}
+.hero-old{color:var(--text-dim);text-decoration:line-through;font-size:1.1rem}
+.hero-price{font-size:2.2rem;font-weight:900;color:var(--neon)}
+.hero-currency{font-size:1rem;color:var(--text-mid)}
+.hero-actions{display:flex;align-items:center;gap:1rem}
+.btn-buy{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gradient);color:#fff;border:none;
+  padding:.85rem 2rem;border-radius:12px;font-size:.95rem;font-weight:700;
+  box-shadow:var(--shadow-accent);transition:all .25s;
+}
+.btn-buy:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(108,99,255,.4)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:transparent;color:var(--white);
+  border:1px solid rgba(255,255,255,.2);
+  padding:.85rem 1.6rem;border-radius:12px;font-size:.95rem;font-weight:600;
+  transition:all .25s;
+}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+/* Dots */
+.hero-dots{
+  position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:.5rem;
+}
+.hero-dot{
+  width:8px;height:8px;background:rgba(255,255,255,.3);
+  border-radius:4px;cursor:pointer;transition:all .3s;
+}
+.hero-dot.active{width:28px;background:var(--accent)}
+/* Stats bar */
+.hero-stats{
+  position:absolute;bottom:0;right:0;
+  display:flex;align-items:stretch;
+}
+.hero-stat{
+  padding:1.1rem 2rem;background:rgba(15,15,26,.85);
+  backdrop-filter:blur(10px);border-right:1px solid var(--border);
+  text-align:center;
+}
+.hero-stat:last-child{border-right:none}
+.hero-stat-num{font-size:1.4rem;font-weight:900;color:var(--white)}
+.hero-stat-num span{font-size:.8rem;color:var(--accent)}
+.hero-stat-lbl{font-size:.72rem;color:var(--text-dim);margin-top:.1rem}
+
+/* ══════════ FLASH DEALS ══════════ */
+.flash-bar{
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:.9rem 4%;
+  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
+}
+.flash-label{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.85rem;font-weight:700;color:var(--red);white-space:nowrap;
+}
+.flash-label i{animation:flashBlink .7s ease infinite}
+@keyframes flashBlink{0%,100%{opacity:1}50%{opacity:.3}}
+.flash-timer{
+  display:flex;align-items:center;gap:.4rem;
+}
+.timer-block{
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--bg4);border:1px solid var(--border2);
+  border-radius:8px;padding:.25rem .55rem;min-width:40px;
+}
+.timer-num{font-size:1rem;font-weight:900;color:var(--accent);line-height:1}
+.timer-lbl{font-size:.55rem;color:var(--text-dim);letter-spacing:.05em}
+.timer-sep{font-size:1.1rem;font-weight:900;color:var(--text-dim);margin-bottom:.3rem}
+.flash-scrollwrap{flex:1;overflow:hidden}
+.flash-scroll{
+  display:flex;gap:1.2rem;
+  animation:flashScroll 25s linear infinite;
+  width:max-content;
+}
+@keyframes flashScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.flash-item{
+  display:flex;align-items:center;gap:.7rem;
+  background:var(--card2);border:1px solid var(--border);
+  border-radius:10px;padding:.5rem .9rem .5rem .5rem;
+  white-space:nowrap;flex-shrink:0;
+}
+.flash-img{width:44px;height:44px;object-fit:cover;border-radius:8px;background:#1a1a30}
+.flash-name{font-size:.78rem;font-weight:600;max-width:130px;overflow:hidden;text-overflow:ellipsis}
+.flash-prices{display:flex;align-items:center;gap:.5rem;margin-top:.1rem}
+.flash-old{font-size:.7rem;color:var(--text-dim);text-decoration:line-through}
+.flash-new{font-size:.82rem;font-weight:800;color:var(--neon)}
+.flash-pct{font-size:.68rem;font-weight:700;color:#fff;background:var(--red);padding:.1rem .3rem;border-radius:4px}
+
+/* ══════════ SECTION HEADER ══════════ */
+.sec-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.8rem;
+}
+.sec-title-wrap{}
+.sec-tag{
+  font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem;
+}
+.sec-tag::before{content:'';display:inline-block;width:18px;height:2px;background:var(--accent);border-radius:1px}
+.sec-title{font-size:1.6rem;font-weight:800}
+.sec-link{
+  display:flex;align-items:center;gap:.4rem;
+  color:var(--accent);font-size:.85rem;font-weight:600;
+  transition:gap .2s;
+}
+.sec-link:hover{gap:.7rem}
+
+/* ══════════ CATEGORIES ══════════ */
+.section{padding:3rem 4%}
+.categories-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:1rem;
+}
+.cat-card{
+  position:relative;border-radius:16px;overflow:hidden;
+  aspect-ratio:3/4;cursor:pointer;
+  border:1px solid var(--border);
+  transition:transform .3s,border-color .3s;
+}
+.cat-card:hover{transform:translateY(-4px);border-color:var(--border2)}
+.cat-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s;filter:brightness(.6);
+}
+.cat-card:hover img{transform:scale(1.05)}
+.cat-info{
+  position:absolute;bottom:0;inset-x:0;
+  padding:1.5rem .8rem .9rem;
+  background:linear-gradient(to top,rgba(10,10,15,.95),transparent);
+  text-align:center;
+}
+.cat-icon{
+  width:44px;height:44px;background:var(--gradient);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:#fff;margin:0 auto .5rem;
+  box-shadow:var(--shadow-accent);
+}
+.cat-name{font-size:.88rem;font-weight:700}
+.cat-count{font-size:.7rem;color:var(--text-dim);margin-top:.1rem}
+.cat-card.large{grid-row:span 2;aspect-ratio:auto}
+
+/* ══════════ PRODUCT GRID ══════════ */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:1.2rem;
+}
+.prod-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  position:relative;
+}
+.prod-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--border2);
+  box-shadow:var(--shadow-accent);
+}
+.prod-badges{
+  position:absolute;top:.8rem;right:.8rem;
+  display:flex;flex-direction:column;gap:.35rem;z-index:2;
+}
+.prod-badge{
+  font-size:.65rem;font-weight:700;padding:.2rem .5rem;
+  border-radius:6px;letter-spacing:.04em;
+}
+.badge-new{background:var(--accent);color:#fff}
+.badge-sale{background:var(--red);color:#fff}
+.badge-hot{background:var(--orange);color:#fff}
+.badge-free{background:var(--green);color:#fff}
+.prod-wish{
+  position:absolute;top:.8rem;left:.8rem;z-index:2;
+  width:34px;height:34px;background:rgba(10,10,15,.7);
+  border:1px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-mid);font-size:.85rem;cursor:pointer;
+  transition:all .2s;
+}
+.prod-wish:hover{background:rgba(239,68,68,.15);border-color:var(--red);color:var(--red)}
+.prod-img-wrap{
+  height:200px;background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.prod-img-wrap img{
+  width:80%;height:80%;object-fit:contain;
+  transition:transform .4s;filter:drop-shadow(0 8px 20px rgba(108,99,255,.2));
+}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-overlay{
+  position:absolute;inset:0;background:rgba(10,10,15,.6);
+  display:flex;align-items:center;justify-content:center;
+  gap:.6rem;opacity:0;transition:opacity .3s;
+}
+.prod-card:hover .prod-overlay{opacity:1}
+.quick-btn{
+  background:var(--gradient);color:#fff;border:none;
+  padding:.55rem 1.1rem;border-radius:8px;font-size:.8rem;font-weight:600;
+}
+.prod-body{padding:1rem}
+.prod-brand{font-size:.68rem;color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.prod-name{font-size:.92rem;font-weight:700;line-height:1.4;margin-bottom:.5rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-rating{display:flex;align-items:center;gap:.4rem;margin-bottom:.7rem}
+.stars{color:var(--gold);font-size:.78rem;letter-spacing:.05em}
+.rating-num{font-size:.75rem;color:var(--text-mid)}
+.prod-specs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem}
+.spec-chip{
+  font-size:.68rem;background:var(--bg3);
+  border:1px solid var(--border);color:var(--text-mid);
+  padding:.2rem .5rem;border-radius:6px;
+}
+.prod-price-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:.5rem;
+}
+.prod-prices{display:flex;align-items:baseline;gap:.5rem}
+.prod-old{font-size:.78rem;color:var(--text-dim);text-decoration:line-through}
+.prod-price{font-size:1.2rem;font-weight:900;color:var(--white)}
+.prod-currency{font-size:.72rem;color:var(--text-mid)}
+.prod-disc{font-size:.7rem;color:var(--green);font-weight:700}
+.add-btn{
+  background:var(--gradient);color:#fff;border:none;
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;flex-shrink:0;
+  transition:opacity .2s,transform .15s;
+}
+.add-btn:hover{opacity:.85;transform:scale(1.05)}
+.prod-stock{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.72rem;margin-top:.6rem;
+}
+.stock-bar{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.stock-fill{height:100%;border-radius:2px}
+.stock-fill.green{background:var(--green)}
+.stock-fill.orange{background:var(--orange)}
+.stock-fill.red{background:var(--red)}
+
+/* ══════════ BANNER STRIP ══════════ */
+.banner-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.2rem;margin:0 4%;
+}
+.banner-card{
+  position:relative;border-radius:20px;overflow:hidden;
+  min-height:220px;border:1px solid var(--border);
+}
+.banner-card img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;filter:brightness(.5);
+  transition:transform .5s;
+}
+.banner-card:hover img{transform:scale(1.03)}
+.banner-body{
+  position:relative;z-index:1;
+  padding:2rem;height:100%;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.banner-tag{
+  font-size:.68rem;color:var(--neon);font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;
+}
+.banner-title{font-size:1.5rem;font-weight:900;line-height:1.2;margin-bottom:.5rem}
+.banner-sub{font-size:.85rem;color:var(--text-mid);margin-bottom:1.2rem}
+.banner-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--gradient);color:#fff;border:none;
+  padding:.6rem 1.5rem;border-radius:10px;font-size:.85rem;font-weight:700;
+  width:fit-content;transition:opacity .2s;
+}
+.banner-btn:hover{opacity:.85}
+
+/* ══════════ BRANDS ══════════ */
+.brands-track{
+  display:flex;gap:2rem;align-items:center;
+  overflow:hidden;padding:2rem 0;
+}
+.brands-inner{
+  display:flex;gap:4rem;align-items:center;
+  width:max-content;animation:brandsScroll 30s linear infinite;
+}
+@keyframes brandsScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.brand-logo{
+  font-size:1.4rem;font-weight:900;letter-spacing:-.03em;
+  color:var(--text-dim);transition:color .2s;
+  white-space:nowrap;
+}
+.brand-logo:hover{color:var(--white)}
+
+/* ══════════ FEATURES ══════════ */
+.features-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;
+}
+.feature-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:1.5rem;
+  transition:border-color .3s,transform .3s;
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.feature-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.feat-icon{
+  width:52px;height:52px;flex-shrink:0;
+  background:var(--neon-dim);border:1px solid rgba(0,245,255,.2);
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--neon);
+}
+.feat-title{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+.feat-desc{font-size:.78rem;color:var(--text-mid);line-height:1.6}
+
+/* ══════════ NEWSLETTER ══════════ */
+.newsletter{
+  margin:0 4% 3rem;
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:24px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;
+}
+.newsletter::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(108,99,255,.12),transparent);
+  pointer-events:none;
+}
+.nl-body{padding:3rem;position:relative;z-index:1}
+.nl-tag{
+  font-size:.7rem;color:var(--accent);font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:.8rem;
+}
+.nl-title{font-size:1.8rem;font-weight:800;line-height:1.3;margin-bottom:.7rem}
+.nl-sub{color:var(--text-mid);font-size:.9rem;margin-bottom:1.5rem;line-height:1.6}
+.nl-form{display:flex;gap:.7rem}
+.nl-input{
+  flex:1;background:var(--bg4);border:1px solid var(--border);
+  border-radius:10px;padding:.75rem 1rem;font-family:'Cairo',sans-serif;
+  font-size:.88rem;color:var(--white);outline:none;
+  transition:border-color .2s;
+}
+.nl-input::placeholder{color:var(--text-dim)}
+.nl-input:focus{border-color:var(--accent)}
+.nl-btn{
+  background:var(--gradient);color:#fff;border:none;
+  padding:.75rem 1.8rem;border-radius:10px;font-size:.88rem;font-weight:700;
+  white-space:nowrap;transition:opacity .2s;
+}
+.nl-btn:hover{opacity:.85}
+.nl-visual{
+  position:relative;overflow:hidden;min-height:260px;
+}
+.nl-visual img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:brightness(.6) saturate(1.2);
+}
+.nl-visual-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to left,transparent,rgba(10,10,15,.7));
+}
+
+/* ══════════ FOOTER ══════════ */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:3rem 4% 0;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:2.5rem;
+}
+.footer-brand{margin-bottom:1.2rem}
+.footer-desc{color:var(--text-dim);font-size:.82rem;line-height:1.7;margin-bottom:1.5rem}
+.social-links{display:flex;gap:.6rem}
+.social-btn{
+  width:36px;height:36px;background:var(--bg3);
+  border:1px solid var(--border);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-mid);font-size:.9rem;transition:all .2s;
+}
+.social-btn:hover{background:var(--gradient);border-color:transparent;color:#fff}
+.footer-col h4{font-size:.9rem;font-weight:700;margin-bottom:1.2rem;color:var(--white)}
+.footer-links{display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{font-size:.82rem;color:var(--text-dim);transition:color .2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 0;flex-wrap:wrap;gap:.8rem;
+}
+.footer-copy{font-size:.78rem;color:var(--text-dim)}
+.footer-pay{display:flex;align-items:center;gap:.5rem}
+.pay-icon{
+  background:var(--bg4);border:1px solid var(--border);
+  border-radius:6px;padding:.2rem .5rem;font-size:.65rem;
+  color:var(--text-mid);font-weight:600;letter-spacing:.04em;
+}
+
+/* ══════════ CART SIDEBAR ══════════ */
+#cart-overlay{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  opacity:0;visibility:hidden;transition:all .4s;
+}
+#cart-overlay.open{opacity:1;visibility:visible}
+#cart-sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:420px;max-width:95vw;
+  background:var(--bg2);border-right:1px solid var(--border);
+  z-index:9001;transform:translateX(-100%);transition:transform .45s ease;
+  display:flex;flex-direction:column;
+}
+#cart-sidebar.open{transform:translateX(0)}
+.cart-head{
+  padding:1.5rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cart-head h3{font-size:1.1rem;font-weight:700}
+.cart-close{
+  width:36px;height:36px;background:var(--bg3);
+  border:1px solid var(--border);border-radius:50%;
+  color:var(--text-mid);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;
+}
+.cart-close:hover{background:var(--red);border-color:var(--red);color:#fff}
+.cart-empty{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1rem;
+  color:var(--text-dim);
+}
+.cart-empty i{font-size:3rem;color:var(--border)}
+.cart-items{flex:1;overflow-y:auto;padding:1rem}
+.cart-item{
+  display:flex;gap:1rem;padding:1rem 0;
+  border-bottom:1px solid var(--border);
+}
+.cart-item-img{
+  width:70px;height:70px;background:var(--bg3);
+  border-radius:10px;object-fit:contain;flex-shrink:0;
+}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+.cart-item-price{font-size:1rem;font-weight:800;color:var(--accent)}
+.cart-qty{display:flex;align-items:center;gap:.5rem;margin-top:.5rem}
+.qty-btn{
+  width:26px;height:26px;background:var(--bg3);
+  border:1px solid var(--border);border-radius:6px;
+  color:var(--white);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:.9rem;
+}
+.qty-num{font-size:.85rem;font-weight:700;min-width:20px;text-align:center}
+.cart-footer{
+  border-top:1px solid var(--border);padding:1.2rem 1.5rem;
+}
+.cart-total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1rem;
+}
+.cart-total-lbl{font-size:.9rem;color:var(--text-mid)}
+.cart-total-price{font-size:1.4rem;font-weight:900;color:var(--neon)}
+.checkout-btn{
+  width:100%;background:var(--gradient);color:#fff;border:none;
+  padding:1rem;border-radius:12px;font-size:1rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+}
+
+/* ══════════ TOAST ══════════ */
+#toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--bg3);border:1px solid var(--border2);
+  color:var(--white);padding:.8rem 1.5rem;border-radius:12px;
+  font-size:.88rem;font-weight:600;z-index:9999;
+  opacity:0;transition:all .3s;display:flex;align-items:center;gap:.6rem;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast i{color:var(--green)}
+
+/* ══════════ SCROLL TO TOP ══════════ */
+#scrollTop{
+  position:fixed;bottom:2rem;right:2rem;z-index:8000;
+  width:44px;height:44px;background:var(--gradient);
+  border:none;border-radius:12px;color:#fff;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;opacity:0;transform:translateY(10px);
+  transition:all .3s;box-shadow:var(--shadow-accent);
+}
+#scrollTop.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .newsletter{grid-template-columns:1fr}
+  .nl-visual{display:none}
+  .banner-grid{grid-template-columns:1fr}
+  .hero{height:400px}
+  .hero-stats{display:none}
+}
+@media(max-width:600px){
+  .header-main{flex-wrap:wrap}
+  .search-wrap{order:3;width:100%}
+  .footer-grid{grid-template-columns:1fr}
+  .categories-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  <div class="ann-inner">
+    <div class="ann-item"><i class="fas fa-truck"></i> شحن مجاني للطلبات فوق 200 ريال <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-shield-alt"></i> ضمان أصالة المنتجات 100% <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-rotate-left"></i> إرجاع مجاني خلال 30 يوم <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-headset"></i> دعم فني على مدار الساعة <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-tag"></i> خصومات حصرية لأعضاء النخبة <span class="ann-dot"></span></div>
+    <!-- duplicate for infinite scroll -->
+    <div class="ann-item"><i class="fas fa-truck"></i> شحن مجاني للطلبات فوق 200 ريال <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-shield-alt"></i> ضمان أصالة المنتجات 100% <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-rotate-left"></i> إرجاع مجاني خلال 30 يوم <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-headset"></i> دعم فني على مدار الساعة <span class="ann-dot"></span></div>
+    <div class="ann-item"><i class="fas fa-tag"></i> خصومات حصرية لأعضاء النخبة <span class="ann-dot"></span></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-main">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-microchip"></i></div>
+      <div>
+        <div class="logo-text">تك <span>نوفا</span></div>
+        <div class="logo-sub">Tech Nova Store</div>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" class="search-input" placeholder="ابحث عن منتجات، ماركات، تقنيات...">
+      <select class="search-cat">
+        <option>الكل</option>
+        <option>هواتف</option>
+        <option>لابتوب</option>
+        <option>سماعات</option>
+        <option>ألعاب</option>
+        <option>كاميرات</option>
+      </select>
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="header-actions">
+      <button class="hdr-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span>سلة الشراء</span>
+        <span class="badge" id="cartBadge">3</span>
+      </button>
+      <button class="hdr-btn">
+        <i class="fas fa-heart"></i>
+        <span>المفضلة</span>
+        <span class="badge" style="background:var(--red)">5</span>
+      </button>
+      <button class="btn-primary">
+        <i class="fas fa-user-circle"></i>
+        تسجيل الدخول
+      </button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="#" class="nav-link"><i class="fas fa-mobile-alt"></i> الهواتف</a>
+      <a href="#" class="nav-link"><i class="fas fa-laptop"></i> اللابتوب</a>
+      <a href="#" class="nav-link"><i class="fas fa-headphones"></i> الصوتيات</a>
+      <a href="#" class="nav-link"><i class="fas fa-gamepad"></i> الألعاب</a>
+      <a href="#" class="nav-link"><i class="fas fa-camera"></i> الكاميرات</a>
+      <a href="#" class="nav-link"><i class="fas fa-tv"></i> التلفزيونات</a>
+      <a href="#" class="nav-link"><i class="fas fa-watch"></i> الساعات الذكية</a>
+      <a href="#" class="nav-link hot"><i class="fas fa-fire"></i> عروض اليوم</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO SLIDER -->
+<div class="hero">
+  <div class="hero-slide active">
+    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=1600&q=80" alt="">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-bolt"></i> إطلاق حصري 2026</div>
+      <h1 class="hero-title">iPhone 17 Pro Max<br><span class="hl">تقنية المستقبل بين يديك</span></h1>
+      <p class="hero-desc">شريحة A20 Bionic الأقوى في تاريخ الهواتف، كاميرا 200 ميجابكسل، شاشة ProMotion 2K. تجربة لم تعرفها من قبل.</p>
+      <div class="hero-price-wrap">
+        <span class="hero-old">4,299</span>
+        <span class="hero-price">3,799</span>
+        <span class="hero-currency">ريال</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-buy" onclick="addToCart('iPhone 17 Pro Max','3,799')"><i class="fas fa-shopping-cart"></i> أضف إلى السلة</button>
+        <button class="btn-outline"><i class="fas fa-play-circle"></i> شاهد المراجعة</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slide">
+    <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1600&q=80" alt="">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-star"></i> الأكثر مبيعاً</div>
+      <h1 class="hero-title">MacBook Pro M4<br><span class="hl">قوة لا تُضاهى</span></h1>
+      <p class="hero-desc">شريحة M4 Ultra الثورية مع 64GB RAM و 2TB SSD. للمبدعين والمطورين الذين لا يقبلون بأقل من الأفضل.</p>
+      <div class="hero-price-wrap">
+        <span class="hero-old">8,999</span>
+        <span class="hero-price">7,499</span>
+        <span class="hero-currency">ريال</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-buy" onclick="addToCart('MacBook Pro M4','7,499')"><i class="fas fa-shopping-cart"></i> أضف إلى السلة</button>
+        <button class="btn-outline"><i class="fas fa-info-circle"></i> اعرف أكثر</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slide">
+    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1600&q=80" alt="">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-headphones"></i> جديد في الصوتيات</div>
+      <h1 class="hero-title">Sony WH-1000XM6<br><span class="hl">عزل صوتي فائق</span></h1>
+      <p class="hero-desc">أفضل سماعات عزل ضوضاء في العالم لعام 2026 — استمتع بصوت بلا ضوضاء لـ 40 ساعة متواصلة.</p>
+      <div class="hero-price-wrap">
+        <span class="hero-old">1,599</span>
+        <span class="hero-price">1,249</span>
+        <span class="hero-currency">ريال</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-buy" onclick="addToCart('Sony WH-1000XM6','1,249')"><i class="fas fa-shopping-cart"></i> أضف إلى السلة</button>
+        <button class="btn-outline"><i class="fas fa-volume-up"></i> استمع للعينة</button>
+      </div>
+    </div>
+  </div>
+  <!-- Dots -->
+  <div class="hero-dots">
+    <div class="hero-dot active" onclick="goSlide(0)"></div>
+    <div class="hero-dot" onclick="goSlide(1)"></div>
+    <div class="hero-dot" onclick="goSlide(2)"></div>
+  </div>
+  <!-- Stats -->
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">+50<span>k</span></div><div class="hero-stat-lbl">عميل راضٍ</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">+8<span>k</span></div><div class="hero-stat-lbl">منتج أصيل</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">4.9<span>★</span></div><div class="hero-stat-lbl">تقييم المتجر</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">24<span>/7</span></div><div class="hero-stat-lbl">دعم فني</div></div>
+  </div>
+</div>
+
+<!-- FLASH DEALS BAR -->
+<div class="flash-bar">
+  <div class="flash-label"><i class="fas fa-bolt"></i> صفقات البرق</div>
+  <div class="flash-timer">
+    <div class="timer-block"><span class="timer-num" id="hrs">07</span><span class="timer-lbl">ساعة</span></div>
+    <span class="timer-sep">:</span>
+    <div class="timer-block"><span class="timer-num" id="min">34</span><span class="timer-lbl">دقيقة</span></div>
+    <span class="timer-sep">:</span>
+    <div class="timer-block"><span class="timer-num" id="sec">21</span><span class="timer-lbl">ثانية</span></div>
+  </div>
+  <div class="flash-scrollwrap">
+    <div class="flash-scroll">
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100&q=80" alt="">
+        <div><div class="flash-name">Samsung Galaxy S25 Ultra</div><div class="flash-prices"><span class="flash-old">3,599</span><span class="flash-new">2,899 ريال</span><span class="flash-pct">-19%</span></div></div>
+      </div>
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=100&q=80" alt="">
+        <div><div class="flash-name">Dell XPS 15 2026</div><div class="flash-prices"><span class="flash-old">5,999</span><span class="flash-new">4,799 ريال</span><span class="flash-pct">-20%</span></div></div>
+      </div>
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=100&q=80" alt="">
+        <div><div class="flash-name">AirPods Pro 3</div><div class="flash-prices"><span class="flash-old">899</span><span class="flash-new">699 ريال</span><span class="flash-pct">-22%</span></div></div>
+      </div>
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=100&q=80" alt="">
+        <div><div class="flash-name">iPad Pro M4 11"</div><div class="flash-prices"><span class="flash-old">3,299</span><span class="flash-new">2,599 ريال</span><span class="flash-pct">-21%</span></div></div>
+      </div>
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1612198273689-b08e8d4af7c5?w=100&q=80" alt="">
+        <div><div class="flash-name">ASUS ROG Ally X</div><div class="flash-prices"><span class="flash-old">2,799</span><span class="flash-new">2,199 ريال</span><span class="flash-pct">-21%</span></div></div>
+      </div>
+      <!-- duplicate -->
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100&q=80" alt="">
+        <div><div class="flash-name">Samsung Galaxy S25 Ultra</div><div class="flash-prices"><span class="flash-old">3,599</span><span class="flash-new">2,899 ريال</span><span class="flash-pct">-19%</span></div></div>
+      </div>
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=100&q=80" alt="">
+        <div><div class="flash-name">Dell XPS 15 2026</div><div class="flash-prices"><span class="flash-old">5,999</span><span class="flash-new">4,799 ريال</span><span class="flash-pct">-20%</span></div></div>
+      </div>
+      <div class="flash-item">
+        <img class="flash-img" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=100&q=80" alt="">
+        <div><div class="flash-name">AirPods Pro 3</div><div class="flash-prices"><span class="flash-old">899</span><span class="flash-new">699 ريال</span><span class="flash-pct">-22%</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="sec-header">
+    <div class="sec-title-wrap">
+      <div class="sec-tag">استكشف</div>
+      <h2 class="sec-title">تصفح حسب الفئة</h2>
+    </div>
+    <a href="#" class="sec-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&q=80" alt="هواتف">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-mobile-alt"></i></div>
+        <div class="cat-name">الهواتف الذكية</div>
+        <div class="cat-count">+420 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80" alt="لابتوب">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-laptop"></i></div>
+        <div class="cat-name">اللابتوب</div>
+        <div class="cat-count">+280 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&q=80" alt="سماعات">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-headphones"></i></div>
+        <div class="cat-name">السماعات</div>
+        <div class="cat-count">+190 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1612198273689-b08e8d4af7c5?w=400&q=80" alt="ألعاب">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-gamepad"></i></div>
+        <div class="cat-name">الألعاب</div>
+        <div class="cat-count">+350 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=80" alt="كاميرات">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-camera"></i></div>
+        <div class="cat-name">الكاميرات</div>
+        <div class="cat-count">+160 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="ساعات">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-watch"></i></div>
+        <div class="cat-name">الساعات الذكية</div>
+        <div class="cat-count">+120 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829e1?w=400&q=80" alt="تلفزيون">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-tv"></i></div>
+        <div class="cat-name">التلفزيونات</div>
+        <div class="cat-count">+95 منتج</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="إكسسوارات">
+      <div class="cat-info">
+        <div class="cat-icon"><i class="fas fa-plug"></i></div>
+        <div class="cat-name">الإكسسوارات</div>
+        <div class="cat-count">+600 منتج</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section" style="padding-top:0">
+  <div class="sec-header">
+    <div class="sec-title-wrap">
+      <div class="sec-tag">أبرز المنتجات</div>
+      <h2 class="sec-title">الأكثر مبيعاً هذا الأسبوع</h2>
+    </div>
+    <a href="#" class="sec-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
+  </div>
+  <div class="product-grid">
+
+    <!-- Product 1 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-new">جديد</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&q=80" alt="iPhone">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('iPhone 17 Pro','3,799')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Apple</div>
+        <div class="prod-name">iPhone 17 Pro — 256GB تيتانيوم أسود</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">(2,841)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">A20 Bionic</span>
+          <span class="spec-chip">200MP</span>
+          <span class="spec-chip">6.3"</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">4,299</span>
+            <div>
+              <span class="prod-price">3,799</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('iPhone 17 Pro','3,799')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--green)">متبقي 12 فقط</span>
+          <div class="stock-bar"><div class="stock-fill orange" style="width:30%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-sale">-22%</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80" alt="MacBook">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('MacBook Pro M4','7,499')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Apple</div>
+        <div class="prod-name">MacBook Pro 16" M4 Pro — 32GB / 1TB</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">(1,204)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">M4 Pro</span>
+          <span class="spec-chip">32GB RAM</span>
+          <span class="spec-chip">1TB</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">9,599</span>
+            <div>
+              <span class="prod-price">7,499</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('MacBook Pro M4','7,499')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--orange)">متبقي 5 فقط!</span>
+          <div class="stock-bar"><div class="stock-fill red" style="width:15%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-hot">الأكثر طلباً</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&q=80" alt="Headphones">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('Sony WH-1000XM6','1,249')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Sony</div>
+        <div class="prod-name">WH-1000XM6 — عزل ضوضاء مريح للغاية</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">(4,592)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">40h بطارية</span>
+          <span class="spec-chip">LDAC</span>
+          <span class="spec-chip">Hi-Res</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">1,599</span>
+            <div>
+              <span class="prod-price">1,249</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('Sony WH-1000XM6','1,249')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--green)">متوفر بكميات</span>
+          <div class="stock-bar"><div class="stock-fill green" style="width:75%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-free">شحن مجاني</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Samsung">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('Galaxy S25 Ultra','2,899')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Samsung</div>
+        <div class="prod-name">Galaxy S25 Ultra 512GB — تيتانيوم فضي</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★½</span>
+          <span class="rating-num">(3,217)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">Snapdragon 8 Elite</span>
+          <span class="spec-chip">200MP</span>
+          <span class="spec-chip">S-Pen</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">3,599</span>
+            <div>
+              <span class="prod-price">2,899</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('Galaxy S25 Ultra','2,899')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--green)">متوفر</span>
+          <div class="stock-bar"><div class="stock-fill green" style="width:60%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-new">2026</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1593642632842-98d0fd5ebc1a?w=400&q=80" alt="iPad">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('iPad Pro M4','2,599')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Apple</div>
+        <div class="prod-name">iPad Pro 13" M4 — 512GB WiFi + 5G</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">(876)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">M4 Chip</span>
+          <span class="spec-chip">OLED</span>
+          <span class="spec-chip">Apple Pencil</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">3,299</span>
+            <div>
+              <span class="prod-price">2,599</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('iPad Pro M4','2,599')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--orange)">متبقي 8 فقط</span>
+          <div class="stock-bar"><div class="stock-fill orange" style="width:25%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-sale">-25%</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Apple Watch">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('Apple Watch Ultra 3','1,499')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Apple</div>
+        <div class="prod-name">Apple Watch Ultra 3 — تيتانيوم / أسود</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">(1,430)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">S10 Chip</span>
+          <span class="spec-chip">60h بطارية</span>
+          <span class="spec-chip">GPS L5</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">1,999</span>
+            <div>
+              <span class="prod-price">1,499</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('Apple Watch Ultra 3','1,499')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--green)">متوفر بكميات</span>
+          <div class="stock-bar"><div class="stock-fill green" style="width:65%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="prod-card">
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=80" alt="Camera">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('Sony A7R VI','5,999')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Sony</div>
+        <div class="prod-name">Sony Alpha A7R VI — 61MP Full Frame</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★½</span>
+          <span class="rating-num">(542)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">61MP</span>
+          <span class="spec-chip">8K Video</span>
+          <span class="spec-chip">AI AF</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <div>
+              <span class="prod-price">5,999</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('Sony A7R VI','5,999')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--green)">متوفر</span>
+          <div class="stock-bar"><div class="stock-fill green" style="width:55%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="prod-card">
+      <div class="prod-badges"><span class="prod-badge badge-hot">Gaming</span></div>
+      <button class="prod-wish"><i class="fas fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1612198273689-b08e8d4af7c5?w=400&q=80" alt="Gaming">
+        <div class="prod-overlay">
+          <button class="quick-btn" onclick="addToCart('ASUS ROG Ally X','2,199')">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">ASUS ROG</div>
+        <div class="prod-name">ROG Ally X 2025 — جهاز ألعاب محمول</div>
+        <div class="prod-rating">
+          <span class="stars">★★★★½</span>
+          <span class="rating-num">(988)</span>
+        </div>
+        <div class="prod-specs">
+          <span class="spec-chip">Ryzen Z2 Extreme</span>
+          <span class="spec-chip">24GB</span>
+          <span class="spec-chip">1TB</span>
+        </div>
+        <div class="prod-price-row">
+          <div class="prod-prices">
+            <span class="prod-old">2,799</span>
+            <div>
+              <span class="prod-price">2,199</span>
+              <span class="prod-currency"> ريال</span>
+            </div>
+          </div>
+          <button class="add-btn" onclick="addToCart('ASUS ROG Ally X','2,199')"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="prod-stock">
+          <span style="font-size:.7rem;color:var(--red)">آخر 3 قطع!</span>
+          <div class="stock-bar"><div class="stock-fill red" style="width:10%"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BANNERS -->
+<div class="banner-grid">
+  <div class="banner-card">
+    <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829e1?w=800&q=80" alt="">
+    <div class="banner-body">
+      <div class="banner-tag"><i class="fas fa-fire"></i> عرض محدود</div>
+      <h3 class="banner-title">تلفزيونات QLED 8K<br>بسعر لا يُصدق</h3>
+      <p class="banner-sub">Samsung QN990F — خصم يصل إلى 30%</p>
+      <button class="banner-btn"><i class="fas fa-shopping-bag"></i> تسوق الآن</button>
+    </div>
+  </div>
+  <div class="banner-card">
+    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80" alt="">
+    <div class="banner-body">
+      <div class="banner-tag"><i class="fas fa-headphones"></i> تجربة صوت استثنائية</div>
+      <h3 class="banner-title">أفضل سماعات 2026<br>متوفرة الآن</h3>
+      <p class="banner-sub">Sony · Bose · Apple · Sennheiser</p>
+      <button class="banner-btn"><i class="fas fa-music"></i> استكشف الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<section class="section" style="padding-bottom:2rem">
+  <div class="sec-header">
+    <div class="sec-title-wrap">
+      <div class="sec-tag">شركاؤنا</div>
+      <h2 class="sec-title">العلامات التجارية الكبرى</h2>
+    </div>
+  </div>
+  <div class="brands-track">
+    <div class="brands-inner">
+      <div class="brand-logo">Apple</div>
+      <div class="brand-logo">Samsung</div>
+      <div class="brand-logo">Sony</div>
+      <div class="brand-logo">Microsoft</div>
+      <div class="brand-logo">Dell</div>
+      <div class="brand-logo">LG</div>
+      <div class="brand-logo">Huawei</div>
+      <div class="brand-logo">ASUS ROG</div>
+      <div class="brand-logo">Xiaomi</div>
+      <div class="brand-logo">OnePlus</div>
+      <div class="brand-logo">Bose</div>
+      <div class="brand-logo">Canon</div>
+      <!-- duplicate -->
+      <div class="brand-logo">Apple</div>
+      <div class="brand-logo">Samsung</div>
+      <div class="brand-logo">Sony</div>
+      <div class="brand-logo">Microsoft</div>
+      <div class="brand-logo">Dell</div>
+      <div class="brand-logo">LG</div>
+      <div class="brand-logo">Huawei</div>
+      <div class="brand-logo">ASUS ROG</div>
+      <div class="brand-logo">Xiaomi</div>
+      <div class="brand-logo">OnePlus</div>
+      <div class="brand-logo">Bose</div>
+      <div class="brand-logo">Canon</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" style="padding-top:0">
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon"><i class="fas fa-truck-fast"></i></div>
+      <div>
+        <div class="feat-title">شحن فائق السرعة</div>
+        <div class="feat-desc">توصيل خلال 24 ساعة لمعظم مناطق المملكة، مع تتبع مباشر للشحنة.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon"><i class="fas fa-shield-halved"></i></div>
+      <div>
+        <div class="feat-title">ضمان الأصالة</div>
+        <div class="feat-desc">جميع منتجاتنا أصلية 100% مع ضمان المصنع وشهادات المصدر.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon"><i class="fas fa-rotate-left"></i></div>
+      <div>
+        <div class="feat-title">إرجاع سهل</div>
+        <div class="feat-desc">لا تحب المنتج؟ أعده خلال 30 يوماً دون أي أسئلة ومجاناً.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon"><i class="fas fa-headset"></i></div>
+      <div>
+        <div class="feat-title">دعم 24/7</div>
+        <div class="feat-desc">فريق متخصص من الخبراء التقنيين جاهز لمساعدتك في أي وقت.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="nl-body">
+    <div class="nl-tag"><i class="fas fa-envelope-open-text"></i> النشرة الإخبارية</div>
+    <h3 class="nl-title">لا تفوّت أفضل<br>العروض والإطلاقات</h3>
+    <p class="nl-sub">اشترك مجاناً واحصل على كود خصم 15% فوري على أول طلب، مع تنبيهات حصرية بعروض تك نوفا.</p>
+    <div class="nl-form">
+      <input type="email" class="nl-input" placeholder="أدخل بريدك الإلكتروني هنا...">
+      <button class="nl-btn"><i class="fas fa-paper-plane"></i> اشترك</button>
+    </div>
+  </div>
+  <div class="nl-visual">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="">
+    <div class="nl-visual-overlay"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem">
+          <div class="logo-icon"><i class="fas fa-microchip"></i></div>
+          <div class="logo-text">تك <span>نوفا</span></div>
+        </div>
+      </div>
+      <p class="footer-desc">وجهتك الأولى للتقنية الحديثة في منطقة الشرق الأوسط. أكثر من 8000 منتج أصلي بأفضل الأسعار مع تجربة تسوق استثنائية.</p>
+      <div class="social-links">
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-snapchat"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>تسوق</h4>
+      <div class="footer-links">
+        <a href="#">الهواتف الذكية</a>
+        <a href="#">اللابتوب والحاسوب</a>
+        <a href="#">الإكسسوارات</a>
+        <a href="#">الساعات الذكية</a>
+        <a href="#">الألعاب والترفيه</a>
+        <a href="#">الكاميرات</a>
+      </div>
+    </div>
+    <div>
+      <h4>خدمة العملاء</h4>
+      <div class="footer-links">
+        <a href="#">تتبع طلبي</a>
+        <a href="#">سياسة الإرجاع</a>
+        <a href="#">الضمان والإصلاح</a>
+        <a href="#">التوصيل والشحن</a>
+        <a href="#">الأسئلة الشائعة</a>
+        <a href="#">تواصل معنا</a>
+      </div>
+    </div>
+    <div>
+      <h4>تك نوفا</h4>
+      <div class="footer-links">
+        <a href="#">من نحن</a>
+        <a href="#">وظائف لدينا</a>
+        <a href="#">الشراكات والموزعون</a>
+        <a href="#">مدونتنا التقنية</a>
+        <a href="#">برنامج الولاء</a>
+        <a href="#">سياسة الخصوصية</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 تك نوفا — جميع الحقوق محفوظة</div>
+    <div class="footer-pay">
+      <span style="font-size:.72rem;color:var(--text-dim);margin-left:.5rem">نقبل:</span>
+      <span class="pay-icon">Visa</span>
+      <span class="pay-icon">Mastercard</span>
+      <span class="pay-icon">Mada</span>
+      <span class="pay-icon">STC Pay</span>
+      <span class="pay-icon">Apple Pay</span>
+      <span class="pay-icon">Tamara</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div id="cart-overlay" onclick="toggleCart()"></div>
+<div id="cart-sidebar">
+  <div class="cart-head">
+    <h3><i class="fas fa-shopping-cart" style="color:var(--accent);margin-left:.5rem"></i> سلة الشراء</h3>
+    <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-cart"></i>
+      <p>سلتك فارغة حالياً</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="cart-total-lbl">الإجمالي:</span>
+      <span class="cart-total-price" id="cartTotal">0 ريال</span>
+    </div>
+    <button class="checkout-btn"><i class="fas fa-lock"></i> إتمام الشراء بأمان</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
+
+<!-- SCROLL TOP -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// ─── HERO SLIDER ───
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+function goSlide(n){
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+setInterval(()=> goSlide((currentSlide+1)%slides.length), 5000);
+
+// ─── TIMER ───
+let totalSecs = 7*3600+34*60+21;
+function updateTimer(){
+  if(totalSecs<=0) return;
+  totalSecs--;
+  const h=Math.floor(totalSecs/3600);
+  const m=Math.floor((totalSecs%3600)/60);
+  const s=totalSecs%60;
+  document.getElementById('hrs').textContent=String(h).padStart(2,'0');
+  document.getElementById('min').textContent=String(m).padStart(2,'0');
+  document.getElementById('sec').textContent=String(s).padStart(2,'0');
+}
+setInterval(updateTimer,1000);
+
+// ─── CART ───
+let cartItems = [];
+function toggleCart(){
+  document.getElementById('cart-overlay').classList.toggle('open');
+  document.getElementById('cart-sidebar').classList.toggle('open');
+}
+function addToCart(name, price){
+  const existing = cartItems.find(i=>i.name===name);
+  if(existing){ existing.qty++; }
+  else { cartItems.push({name, price, qty:1}); }
+  renderCart();
+  showToast('تمت إضافة '+name+' إلى السلة');
+  updateBadge();
+}
+function renderCart(){
+  const container = document.getElementById('cartItems');
+  if(!cartItems.length){
+    container.innerHTML='<div class="cart-empty"><i class="fas fa-shopping-cart"></i><p>سلتك فارغة حالياً</p></div>';
+    document.getElementById('cartTotal').textContent='0 ريال';
+    return;
+  }
+  container.innerHTML = cartItems.map((item,i)=>`
+    <div class="cart-item">
+      <div style="width:70px;height:70px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <i class="fas fa-box" style="font-size:1.5rem;color:var(--accent)"></i>
+      </div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${item.price} ريال</div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="changeQty(${i},-1)">-</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  const total = cartItems.reduce((sum,i)=>{
+    const p = parseInt(i.price.replace(/,/g,''));
+    return sum + p*i.qty;
+  },0);
+  document.getElementById('cartTotal').textContent = total.toLocaleString('ar-SA')+' ريال';
+}
+function changeQty(idx, delta){
+  cartItems[idx].qty += delta;
+  if(cartItems[idx].qty<=0) cartItems.splice(idx,1);
+  renderCart(); updateBadge();
+}
+function updateBadge(){
+  const total = cartItems.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartBadge').textContent=total||0;
+}
+
+// ─── TOAST ───
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ─── WISHLIST TOGGLE ───
+document.querySelectorAll('.prod-wish').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    this.style.background = this.style.background ? '' : 'rgba(239,68,68,.15)';
+    this.style.borderColor = this.style.borderColor ? '' : 'var(--red)';
+    this.style.color = this.style.color ? '' : 'var(--red)';
+    showToast('تمت إضافة المنتج إلى المفضلة');
+  });
+});
+
+// ─── SCROLL TOP ───
+window.addEventListener('scroll',()=>{
+  const btn = document.getElementById('scrollTop');
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+</script>
+</body>
+</html>
