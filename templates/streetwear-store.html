@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DISTRICT — متجر الستريت وير</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --black:#080808;--dark:#111;--surface:#1c1c1c;
+    --white:#f0f0f0;--yellow:#f5e642;--red:#ff2d2d;
+    --gray:#333;--mid-gray:#555;--light-gray:#888;
+    --border:rgba(240,240,240,0.08);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+
+  /* Ticker */
+  .ticker{background:var(--yellow);color:var(--black);padding:8px 0;overflow:hidden}
+  .tick-inner{display:flex;animation:tick 20s linear infinite;white-space:nowrap}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ti{padding:0 24px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+  .td{opacity:0.3}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(8,8,8,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--white);letter-spacing:6px;text-decoration:none}
+  .logo span{color:var(--yellow)}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:rgba(240,240,240,0.6);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--yellow)}
+  .nav-acts{display:flex;gap:12px;align-items:center}
+  .ni{background:none;border:none;font-size:16px;color:rgba(240,240,240,0.6);cursor:pointer;transition:color 0.2s;position:relative}
+  .ni:hover{color:var(--yellow)}
+  .nb{position:absolute;top:-7px;right:-7px;background:var(--red);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .btn-ln{background:var(--yellow);color:var(--black);border:none;padding:9px 20px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+  .btn-ln:hover{background:var(--white)}
+
+  /* Hero — full screen raw */
+  .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+  .h-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1800&q=80') center/cover no-repeat;filter:brightness(0.4) contrast(1.1)}
+  .h-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.5}
+  .h-content{position:relative;z-index:2;padding:0 80px 80px}
+  .h-drop{display:inline-block;background:var(--yellow);color:var(--black);font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:6px 14px;margin-bottom:20px}
+  .h-title{font-family:'Bebas Neue',cursive;font-size:clamp(80px,12vw,160px);line-height:0.92;letter-spacing:2px;margin-bottom:16px}
+  .h-title span{color:var(--yellow);display:block}
+  .h-sub{font-size:16px;color:rgba(240,240,240,0.55);font-weight:300;max-width:500px;line-height:1.7;margin-bottom:36px}
+  .h-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-p{background:var(--yellow);color:var(--black);border:none;padding:16px 40px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-p:hover{background:var(--white);transform:translateY(-2px)}
+  .btn-g{background:none;border:2px solid rgba(240,240,240,0.3);color:var(--white);padding:16px 40px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-g:hover{border-color:var(--yellow);color:var(--yellow)}
+  .h-scroll{position:absolute;top:50%;right:40px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(240,240,240,0.3);font-size:9px;letter-spacing:4px;text-transform:uppercase;writing-mode:vertical-rl}
+  .h-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,rgba(240,240,240,0.3),transparent)}
+
+  /* Sections */
+  .sec{padding:80px 80px}
+  .sec-head{margin-bottom:48px}
+  .sec-head.flex{display:flex;align-items:flex-end;justify-content:space-between}
+  .sec-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--yellow);display:block;margin-bottom:10px}
+  .sec-title{font-family:'Bebas Neue',cursive;font-size:clamp(40px,6vw,80px);letter-spacing:2px;line-height:0.95}
+  .see-all{color:var(--yellow);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border-bottom:1px solid var(--yellow);white-space:nowrap}
+
+  /* Drop / Limited */
+  .drops{background:var(--dark)}
+  .drops-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .drop-card{position:relative;overflow:hidden;aspect-ratio:3/2;cursor:pointer;background:var(--surface)}
+  .drop-card img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5);transition:all 0.7s ease}
+  .drop-card:hover img{transform:scale(1.06);filter:brightness(0.4)}
+  .dc-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:32px}
+  .dc-tag{display:inline-block;background:var(--yellow);color:var(--black);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;margin-bottom:14px;width:fit-content}
+  .dc-tag.sold{background:var(--red);color:#fff}
+  .dc-name{font-family:'Bebas Neue',cursive;font-size:32px;letter-spacing:2px;margin-bottom:6px}
+  .dc-info{font-size:13px;color:rgba(240,240,240,0.65)}
+  .dc-arrow{margin-top:14px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);opacity:0;transform:translateX(10px);transition:all 0.3s}
+  .drop-card:hover .dc-arrow{opacity:1;transform:translateX(0)}
+
+  /* Products */
+  .prods{background:var(--black)}
+  .prods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+  .pc{background:var(--surface);position:relative;overflow:hidden;cursor:pointer}
+  .pc-img{position:relative;overflow:hidden;aspect-ratio:3/4}
+  .pc-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);transition:transform 0.5s ease}
+  .pc:hover .pc-img img{transform:scale(1.06)}
+  .pc-tag{position:absolute;top:12px;right:12px;font-family:'Bebas Neue',cursive;font-size:14px;letter-spacing:2px;padding:2px 8px;background:var(--yellow);color:var(--black)}
+  .pc-tag.new{background:transparent;border:1px solid var(--yellow);color:var(--yellow)}
+  .pc-tag.sold{background:var(--red);color:#fff}
+  .pc-wish{position:absolute;top:12px;left:12px;background:rgba(8,8,8,0.75);border:1px solid var(--border);color:var(--white);font-size:14px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(-6px);transition:all 0.3s}
+  .pc:hover .pc-wish{opacity:1;transform:translateY(0)}
+  .pc-wish:hover{color:var(--yellow)}
+  .pc-add{position:absolute;bottom:0;left:0;right:0;background:var(--yellow);color:var(--black);border:none;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:13px;cursor:pointer;transform:translateY(100%);transition:transform 0.35s ease;width:100%}
+  .pc:hover .pc-add{transform:translateY(0)}
+  .pc-add:hover{background:var(--white)}
+  .pc-info{padding:16px}
+  .pc-brand{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);margin-bottom:4px}
+  .pc-name{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:1px;margin-bottom:4px;line-height:1.1}
+  .pc-sizes{display:flex;gap:4px;margin-bottom:8px}
+  .sz{border:1px solid var(--border);font-size:9px;padding:3px 6px;color:var(--light-gray);cursor:pointer;transition:all 0.2s;font-weight:700}
+  .sz:hover{border-color:var(--yellow);color:var(--yellow)}
+  .pc-price{display:flex;gap:8px;align-items:center}
+  .p-new{font-size:16px;font-weight:700;color:var(--yellow)}
+  .p-old{font-size:12px;text-decoration:line-through;color:var(--light-gray)}
+  .pc-stars{font-size:11px;color:var(--light-gray);margin-top:4px}
+  .pc-stars span{color:var(--yellow)}
+
+  /* Collab Banner */
+  .collab{background:var(--yellow);color:var(--black);padding:60px 80px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+  .col-left{}
+  .col-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;margin-bottom:12px;opacity:0.6}
+  .col-title{font-family:'Bebas Neue',cursive;font-size:clamp(40px,6vw,80px);line-height:0.95;letter-spacing:2px;margin-bottom:16px}
+  .col-desc{font-size:15px;line-height:1.7;max-width:500px;margin-bottom:28px;opacity:0.7;font-weight:300}
+  .btn-dark{background:var(--black);color:var(--yellow);border:none;padding:15px 36px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-dark:hover{background:var(--dark)}
+  .col-img{flex-shrink:0;width:300px;height:400px;overflow:hidden;position:relative}
+  .col-img img{width:100%;height:100%;object-fit:cover}
+
+  /* Reviews */
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+  .rc{background:var(--surface);padding:32px 28px;border-left:3px solid transparent;transition:border-color 0.3s}
+  .rc:hover{border-color:var(--yellow)}
+  .rc-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);margin-bottom:10px}
+  .rc-stars{font-size:13px;letter-spacing:3px;color:var(--yellow);margin-bottom:12px}
+  .rc-text{font-size:14px;line-height:1.7;color:rgba(240,240,240,0.7);margin-bottom:20px}
+  .rc-auth{display:flex;align-items:center;gap:10px}
+  .rc-av{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid var(--border)}
+  .rc-av img{width:100%;height:100%;object-fit:cover}
+  .rc-name{font-size:13px;font-weight:700;color:var(--yellow)}
+  .rc-city{font-size:10px;color:var(--light-gray)}
+
+  /* Newsletter */
+  .nl{background:var(--surface);border-top:2px solid var(--yellow);border-bottom:2px solid var(--yellow);padding:60px 80px;text-align:center}
+  .nl h2{font-family:'Bebas Neue',cursive;font-size:clamp(40px,6vw,72px);letter-spacing:3px;margin-bottom:8px}
+  .nl h2 span{color:var(--yellow)}
+  .nl p{color:rgba(240,240,240,0.5);font-size:14px;margin-bottom:32px;max-width:360px;margin-inline:auto}
+  .nl-form{display:flex;max-width:440px;margin:0 auto}
+  .nl-in{flex:1;background:var(--black);border:2px solid var(--border);border-left:none;color:var(--white);font-family:'Tajawal',sans-serif;font-size:14px;padding:14px 18px;outline:none}
+  .nl-in:first-child{border-left:2px solid var(--border)}
+  .nl-in:focus{border-color:var(--yellow)}
+  .nl-in::placeholder{color:var(--light-gray)}
+  .nl-btn{background:var(--yellow);color:var(--black);border:none;padding:14px 24px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .nl-btn:hover{background:var(--white)}
+
+  /* Footer */
+  footer{background:var(--dark);border-top:1px solid var(--border);padding:70px 80px 36px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid var(--border);margin-bottom:36px}
+  .fb-desc{font-size:13px;line-height:1.8;color:var(--light-gray);max-width:260px;margin:12px 0 20px}
+  .fb-soc{display:flex;gap:8px}
+  .fso{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--light-gray);font-size:13px;text-decoration:none;transition:all 0.2s}
+  .fso:hover{border-color:var(--yellow);color:var(--yellow)}
+  .fc h4{font-family:'Bebas Neue',cursive;font-size:16px;letter-spacing:3px;color:var(--white);margin-bottom:18px}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fl a{color:var(--light-gray);text-decoration:none;font-size:13px;transition:color 0.2s}
+  .fl a:hover{color:var(--yellow)}
+  .fb-bottom{display:flex;justify-content:space-between;font-size:11px;color:var(--mid-gray)}
+
+  /* Cart */
+  .cart-ov{position:fixed;inset:0;background:rgba(8,8,8,0.85);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+  .cart-ov.open{opacity:1;pointer-events:all}
+  .cart-dr{position:fixed;top:0;left:-440px;height:100vh;width:420px;background:var(--dark);border-right:1px solid var(--border);z-index:1000;transition:left 0.35s ease;overflow-y:auto;display:flex;flex-direction:column}
+  .cart-dr.open{left:0}
+  .ch{padding:22px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .ch h3{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px}
+  .ch-x{background:none;border:2px solid var(--border);color:var(--white);font-size:14px;width:34px;height:34px;cursor:pointer;transition:all 0.2s}
+  .ch-x:hover{border-color:var(--yellow);color:var(--yellow)}
+  .ci{flex:1;padding:18px 24px}
+  .citem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+  .citem img{width:72px;height:90px;object-fit:cover;flex-shrink:0}
+  .citem-info{flex:1}
+  .citem-name{font-family:'Bebas Neue',cursive;font-size:16px;letter-spacing:1px;margin-bottom:3px}
+  .citem-meta{font-size:11px;color:var(--light-gray);margin-bottom:6px}
+  .citem-price{font-size:15px;font-weight:700;color:var(--yellow)}
+  .cf{padding:18px 24px;border-top:1px solid var(--border)}
+  .ct{display:flex;justify-content:space-between;margin-bottom:14px;font-size:15px}
+  .ct-amount{font-size:22px;font-weight:700;color:var(--yellow)}
+  .btn-co{width:100%;background:var(--yellow);color:var(--black);border:none;padding:15px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
+  .btn-co:hover{background:var(--white)}
+  .toast{position:fixed;top:84px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--surface);border:2px solid var(--yellow);color:var(--yellow);padding:12px 24px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:0;pointer-events:none;transition:all 0.3s;z-index:2000}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:1024px){
+    nav,footer,.sec,.collab,.nl{padding-left:24px;padding-right:24px}
+    .nav-links{display:none}
+    .h-content{padding:0 32px 60px}
+    .drops-grid{grid-template-columns:1fr}
+    .prods-grid{grid-template-columns:repeat(2,1fr)}
+    .collab{flex-direction:column}
+    .col-img{width:100%;height:280px}
+    .reviews-grid{grid-template-columns:1fr}
+    .ft{grid-template-columns:1fr 1fr;gap:32px}
+    .nl-form{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="tick-inner">
+    <span class="ti">🔥 إصدار محدود</span><span class="td">◆</span>
+    <span class="ti">⚡ شحن سريع ٢٤ ساعة</span><span class="td">◆</span>
+    <span class="ti">🎯 قطع حصرية لا تتكرر</span><span class="td">◆</span>
+    <span class="ti">🔥 إصدار محدود</span><span class="td">◆</span>
+    <span class="ti">⚡ شحن سريع ٢٤ ساعة</span><span class="td">◆</span>
+    <span class="ti">🎯 قطع حصرية لا تتكرر</span><span class="td">◆</span>
+  </div>
+</div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#drops">الإصدارات</a></li>
+    <li><a href="#prods">المنتجات</a></li>
+    <li><a href="#collab">التعاون</a></li>
+    <li><a href="#">الأرشيف</a></li>
+  </ul>
+  <a href="#" class="logo">DISTRICT<span>.</span></a>
+  <div class="nav-acts">
+    <button class="ni">🔍</button>
+    <button class="ni" onclick="openCart()">🛒<span class="nb">٢</span></button>
+    <button class="btn-ln">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="h-bg"></div>
+  <div class="h-noise"></div>
+  <div class="h-content">
+    <div class="h-drop">DROP 06 — يوليو ٢٠٢٦</div>
+    <div class="h-title">لا<br><span>قواعد</span></div>
+    <p class="h-sub">ستريت وير من الشارع للشارع — كل قطعة تحكي قصة، كل إصدار حدث لا ينتظر.</p>
+    <div class="h-btns">
+      <a href="#drops" class="btn-p">تسوق الإصدار الجديد</a>
+      <a href="#prods" class="btn-g">الأرشيف الكامل</a>
+    </div>
+  </div>
+  <div class="h-scroll">اسحب للأسفل</div>
+</section>
+
+<!-- Drops -->
+<section class="sec drops" id="drops">
+  <div class="sec-head flex">
+    <div>
+      <span class="sec-tag">إصدارات محدودة</span>
+      <div class="sec-title">آخر<br>الإصدارات</div>
+    </div>
+    <a href="#" class="see-all">كل الإصدارات →</a>
+  </div>
+  <div class="drops-grid">
+    <div class="drop-card">
+      <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=1000&q=80" alt="Drop 06">
+      <div class="dc-ov">
+        <div class="dc-tag">DROP 06 — متاح الآن</div>
+        <div class="dc-name">URBAN DECAY COLLECTION</div>
+        <div class="dc-info">٣٦ قطعة · ١٢ تصميم · كميات محدودة</div>
+        <div class="dc-arrow">تسوق الآن ←</div>
+      </div>
+    </div>
+    <div class="drop-card">
+      <img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=1000&q=80" alt="Drop 05">
+      <div class="dc-ov">
+        <div class="dc-tag sold">DROP 05 — نفذ</div>
+        <div class="dc-name">DESERT STORM SERIES</div>
+        <div class="dc-info">نفدت جميع القطع · قائمة الانتظار مفتوحة</div>
+        <div class="dc-arrow">قائمة الانتظار ←</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="sec prods" id="prods">
+  <div class="sec-head flex">
+    <div>
+      <span class="sec-tag">تسوق الآن</span>
+      <div class="sec-title">متاح<br>الآن</div>
+    </div>
+    <a href="#" class="see-all">الكتالوج الكامل →</a>
+  </div>
+  <div class="prods-grid">
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1503341338985-95ad4f0c0a34?w=600&q=80" alt="هودي">
+        <div class="pc-tag new">جديد</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-brand">DISTRICT Originals</div>
+        <div class="pc-name">BLACKOUT HOODIE vol.2</div>
+        <div class="pc-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span><span class="sz">XL</span></div>
+        <div class="pc-price"><span class="p-new">٥٤٠ درهم</span></div>
+        <div class="pc-stars"><span>★★★★★</span> (٢٨٣)</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="حذاء">
+        <div class="pc-tag" style="background:var(--red);color:#fff">-٢٥٪</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-brand">Collab × Nike</div>
+        <div class="pc-name">AIR MAX DISTRICT '26</div>
+        <div class="pc-sizes"><span class="sz">40</span><span class="sz">41</span><span class="sz">42</span><span class="sz">43</span></div>
+        <div class="pc-price"><span class="p-new">٩٠٠ درهم</span><span class="p-old">١,٢٠٠ درهم</span></div>
+        <div class="pc-stars"><span>★★★★★</span> (١٩٤)</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&q=80" alt="بنطلون">
+        <div class="pc-tag">حصري</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-brand">DISTRICT Cargo</div>
+        <div class="pc-name">TACTICAL CARGO PANTS</div>
+        <div class="pc-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div>
+        <div class="pc-price"><span class="p-new">٦٨٠ درهم</span></div>
+        <div class="pc-stars"><span>★★★★☆</span> (١٢٧)</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1495121553079-4c61bcce1894?w=600&q=80" alt="كاب">
+        <div class="pc-tag new">جديد</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-brand">DISTRICT Headwear</div>
+        <div class="pc-name">DISTRICT 6-PANEL CAP</div>
+        <div class="pc-sizes"><span class="sz">S/M</span><span class="sz">L/XL</span></div>
+        <div class="pc-price"><span class="p-new">١٨٠ درهم</span></div>
+        <div class="pc-stars"><span>★★★★★</span> (٤١٢)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Collab Banner -->
+<div class="collab" id="collab">
+  <div class="col-left">
+    <div class="col-tag">تعاون حصري — محدود بـ ٥٠٠ نسخة</div>
+    <div class="col-title">DISTRICT<br>× ARTCHAIN</div>
+    <p class="col-desc">شراكة فنية مع فنانين الشارع المغاربة — قطع ملابس تحمل أعمالاً فنية أصيلة. كل نسخة موقعة ومرقمة.</p>
+    <a href="#" class="btn-dark">احجز نسختك</a>
+  </div>
+  <div class="col-img">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="تعاون">
+  </div>
+</div>
+
+<!-- Reviews -->
+<section class="sec">
+  <div class="sec-head flex">
+    <div>
+      <span class="sec-tag">المجتمع يتكلم</span>
+      <div class="sec-title">REAL<br>TALK</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="rc">
+      <div class="rc-type">🧢 ستريت وير فاند</div>
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"DISTRICT الوحيد في المغرب اللي يفهم أسلوبي. كل قطعة عندهم فيها شخصية ومختلفة عن كل ما في السوق."</p>
+      <div class="rc-auth"><div class="rc-av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt=""></div><div><div class="rc-name">ياسين طالب</div><div class="rc-city">الدار البيضاء</div></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-type">👟 كوليكتور سنيكرز</div>
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"حذاء Air Max District '26 وصلني في يومين وبحالة ممتازة. الكوليكشن هذا fire والشحن سريع جداً."</p>
+      <div class="rc-auth"><div class="rc-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""></div><div><div class="rc-name">كمال أوشن</div><div class="rc-city">مراكش</div></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-type">🎨 فنان وستريت</div>
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"التعاون مع ArtChain شيء ما شفناه هنا من قبل — ملابس بها فن أصيل وليس مجرد طباعة. هذا هو المستوى."</p>
+      <div class="rc-auth"><div class="rc-av"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&q=80" alt=""></div><div><div class="rc-name">آدم سليمان</div><div class="rc-city">الرباط</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="nl">
+  <h2>STAY <span>IN THE</span> LOOP</h2>
+  <p>اشترك وكن أول من يعلم بكل إصدار جديد — لا إصدار يفوتك.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشترك 🔥</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="#" class="logo" style="color:var(--yellow)">DISTRICT<span style="color:var(--white)">.</span></a>
+      <p class="fb-desc">ستريت وير من الشارع — إصدارات محدودة، تصاميم أصيلة، قصص حقيقية.</p>
+      <div class="fb-soc"><a href="#" class="fso">𝕏</a><a href="#" class="fso">📷</a><a href="#" class="fso">▶</a><a href="#" class="fso">🎵</a></div>
+    </div>
+    <div class="fc"><h4>الكتالوج</h4><ul class="fl"><li><a href="#">الهوديز</a></li><li><a href="#">الأحذية</a></li><li><a href="#">البناطيل</a></li><li><a href="#">الكاب والقبعات</a></li></ul></div>
+    <div class="fc"><h4>الإصدارات</h4><ul class="fl"><li><a href="#">الإصدار الحالي</a></li><li><a href="#">الأرشيف</a></li><li><a href="#">التعاونات</a></li><li><a href="#">قائمة الانتظار</a></li></ul></div>
+    <div class="fc"><h4>تواصل</h4><ul class="fl"><li><a href="#">الدار البيضاء</a></li><li><a href="#">district@clothes.ma</a></li><li><a href="#">Instagram DM</a></li></ul></div>
+  </div>
+  <div class="fb-bottom"><span>© ٢٠٢٦ DISTRICT — No Rules. No Limits.</span><span>VISA · MC · PayPal · Apple Pay</span></div>
+</footer>
+
+<!-- Cart -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch"><h3>CART (٢)</h3><button class="ch-x" onclick="closeCart()">✕</button></div>
+  <div class="ci">
+    <div class="citem"><img src="https://images.unsplash.com/photo-1503341338985-95ad4f0c0a34?w=200&q=80" alt=""><div class="citem-info"><div class="citem-name">BLACKOUT HOODIE vol.2</div><div class="citem-meta">المقاس: L · اللون: أسود</div><div class="citem-price">٥٤٠ درهم</div></div></div>
+    <div class="citem"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80" alt=""><div class="citem-info"><div class="citem-name">AIR MAX DISTRICT '26</div><div class="citem-meta">الحجم: ٤٢ · أبيض/أسود</div><div class="citem-price">٩٠٠ درهم</div></div></div>
+  </div>
+  <div class="cf"><div class="ct"><span>المجموع</span><span class="ct-amount">١,٤٤٠ درهم</span></div><button class="btn-co">CHECKOUT →</button></div>
+</div>
+<div class="toast" id="tst">🔥 تمت الإضافة للسلة</div>
+
+<script>
+  function openCart(){document.getElementById('cov').classList.add('open');document.getElementById('cdr').classList.add('open')}
+  function closeCart(){document.getElementById('cov').classList.remove('open');document.getElementById('cdr').classList.remove('open')}
+  function addCart(){const t=document.getElementById('tst');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+  function wish(el){el.textContent=el.textContent==='♡'?'♥':'♡';el.style.color=el.style.color?'':'#f5e642'}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
+  document.querySelectorAll('.pc,.rc,.sb').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el)});
+</script>
+</body>
+</html>
