@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>خضرة — سوق الأغذية العضوية الطازجة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#2d6a4f;
+  --green2:#40916c;
+  --green3:#52b788;
+  --green-light:#d8f3dc;
+  --green-pale:#f0faf3;
+  --lime:#95d5b2;
+  --brown:#8b5e3c;
+  --brown2:#a67c52;
+  --cream:#fef9f0;
+  --cream2:#fdf3e3;
+  --white:#ffffff;
+  --text:#2d3a2e;
+  --text-mid:#5a6b5c;
+  --text-dim:#8fa390;
+  --border:#d4e6d7;
+  --border2:#b7d5bc;
+  --card:#ffffff;
+  --orange:#e07b39;
+  --orange2:#f4956a;
+  --red:#d62828;
+  --yellow:#f4c542;
+  --shadow:0 2px 12px rgba(45,106,79,.08);
+  --shadow-md:0 6px 24px rgba(45,106,79,.12);
+  --shadow-lg:0 16px 48px rgba(45,106,79,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--green-pale)}
+::-webkit-scrollbar-thumb{background:var(--green3);border-radius:3px}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+
+/* ══ ANNOUNCEMENT ══ */
+.ann{background:var(--green);padding:.5rem 0;overflow:hidden}
+.ann-inner{display:flex;gap:5rem;width:max-content;animation:annScroll 28s linear infinite}
+@keyframes annScroll{to{transform:translateX(-50%)}}
+.ann-item{display:flex;align-items:center;gap:.5rem;font-size:.76rem;color:#fff;font-weight:600;white-space:nowrap;letter-spacing:.04em}
+.ann-sep{width:5px;height:5px;background:rgba(255,255,255,.4);border-radius:50%}
+
+/* ══ HEADER ══ */
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:800;box-shadow:var(--shadow)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 4%;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo-icon{
+  width:44px;height:44px;background:var(--green);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;color:#fff;box-shadow:0 4px 16px rgba(45,106,79,.3);
+}
+.logo-ar{font-size:1.7rem;font-weight:900;color:var(--green);letter-spacing:-.01em}
+.logo-en{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-top:-.1rem}
+.search-bar{
+  flex:1;max-width:540px;display:flex;
+  background:var(--green-pale);border:1.5px solid var(--border);border-radius:50px;
+  overflow:hidden;transition:border-color .25s,box-shadow .25s;
+}
+.search-bar:focus-within{border-color:var(--green3);box-shadow:0 0 0 3px rgba(82,183,136,.15)}
+.search-bar input{
+  flex:1;border:none;background:transparent;padding:.65rem 1.2rem;
+  font-family:'Cairo',sans-serif;font-size:.88rem;color:var(--text);outline:none;
+}
+.search-bar input::placeholder{color:var(--text-dim)}
+.search-bar button{
+  background:var(--green);color:#fff;border:none;
+  padding:.65rem 1.3rem;font-size:.9rem;border-radius:0 50px 50px 0;
+  transition:background .2s;
+}
+.search-bar button:hover{background:var(--green2)}
+.hdr-actions{display:flex;gap:.6rem;align-items:center}
+.hdr-btn{
+  display:flex;flex-direction:column;align-items:center;gap:.15rem;
+  padding:.45rem .7rem;background:transparent;border:1.5px solid var(--border);
+  border-radius:12px;color:var(--text-mid);font-size:.58rem;letter-spacing:.04em;
+  transition:all .2s;position:relative;
+}
+.hdr-btn i{font-size:1.05rem;color:var(--text)}
+.hdr-btn:hover{border-color:var(--green3);color:var(--green)}
+.hdr-btn:hover i{color:var(--green)}
+.hdr-badge{
+  position:absolute;top:-.3rem;left:-.3rem;
+  background:var(--orange);color:#fff;font-size:.55rem;font-weight:700;
+  min-width:17px;height:17px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;padding:0 3px;
+}
+.btn-green{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--green);color:#fff;border:none;
+  padding:.6rem 1.4rem;border-radius:12px;font-size:.85rem;font-weight:700;
+  transition:background .2s,transform .15s;
+}
+.btn-green:hover{background:var(--green2);transform:translateY(-1px)}
+
+/* ══ NAV ══ */
+nav{background:var(--green-pale);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;padding:0 4%;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-a{
+  display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;
+  font-size:.82rem;font-weight:600;color:var(--text-mid);white-space:nowrap;
+  border-bottom:2.5px solid transparent;transition:all .2s;
+}
+.nav-a i{font-size:.85rem}
+.nav-a:hover,.nav-a.active{color:var(--green);border-bottom-color:var(--green)}
+.nav-a.sale{color:var(--red)}
+
+/* ══ HERO ══ */
+.hero{
+  background:linear-gradient(135deg,var(--green) 0%,var(--green2) 50%,#1b4332 100%);
+  position:relative;overflow:hidden;min-height:520px;
+  display:flex;align-items:center;
+}
+.hero-bg-pattern{
+  position:absolute;inset:0;opacity:.06;
+  background-image:radial-gradient(circle,#fff 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.hero-left{position:relative;z-index:2;padding:4rem 8%;flex:1;max-width:580px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  color:#fff;font-size:.7rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem;width:fit-content;
+}
+.hero-title{
+  font-family:'Lora',serif;font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:600;color:#fff;line-height:1.25;margin-bottom:.9rem;
+}
+.hero-title em{color:var(--lime);font-style:italic}
+.hero-desc{color:rgba(255,255,255,.8);font-size:.92rem;line-height:1.8;max-width:420px;margin-bottom:2rem}
+.hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn-white{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:#fff;color:var(--green);border:none;
+  padding:.85rem 2rem;border-radius:50px;font-size:.9rem;font-weight:700;
+  box-shadow:0 8px 24px rgba(0,0,0,.15);transition:all .25s;
+}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.btn-outline-white{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:transparent;color:#fff;
+  border:2px solid rgba(255,255,255,.4);
+  padding:.85rem 1.8rem;border-radius:50px;font-size:.9rem;font-weight:600;
+  transition:all .25s;
+}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-right{
+  position:relative;z-index:2;flex:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem;min-height:520px;
+}
+.hero-img-main{
+  width:380px;max-width:90%;border-radius:24px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+  animation:heroFloat 4s ease-in-out infinite;
+}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-stats{
+  display:flex;gap:0;margin-top:2rem;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
+  border-radius:16px;border:1px solid rgba(255,255,255,.15);overflow:hidden;
+  width:fit-content;
+}
+.hero-stat{
+  padding:.9rem 1.6rem;text-align:center;border-left:1px solid rgba(255,255,255,.1);
+}
+.hero-stat:last-child{border-left:none}
+.hero-stat-n{font-size:1.3rem;font-weight:900;color:#fff}
+.hero-stat-n span{font-size:.75rem;color:var(--lime)}
+.hero-stat-l{font-size:.65rem;color:rgba(255,255,255,.6);margin-top:.1rem}
+
+/* ══ FEATURES STRIP ══ */
+.features-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:#fff;border-bottom:1px solid var(--border);
+}
+.feat-item{
+  display:flex;align-items:center;gap:.8rem;
+  padding:1.2rem 1.5rem;border-left:1px solid var(--border);
+  transition:background .2s;
+}
+.feat-item:last-child{border-left:none}
+.feat-item:hover{background:var(--green-pale)}
+.feat-ic{
+  width:42px;height:42px;background:var(--green-pale);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  color:var(--green);flex-shrink:0;
+}
+.feat-t{font-size:.8rem;font-weight:700;color:var(--text)}
+.feat-d{font-size:.7rem;color:var(--text-dim);margin-top:.1rem}
+
+/* ══ SECTION ══ */
+.sec{padding:3.5rem 4%}
+.sec-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.8rem;flex-wrap:wrap;gap:.8rem}
+.sec-tag{font-size:.68rem;font-weight:700;color:var(--green3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem}
+.sec-tag::before{content:'';width:16px;height:2px;background:var(--green3);border-radius:1px}
+.sec-h{font-size:1.55rem;font-weight:800;color:var(--text)}
+.sec-link{display:flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:var(--green);transition:gap .2s}
+.sec-link:hover{gap:.7rem}
+
+/* ══ CATEGORIES ══ */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem}
+.cat-card{
+  background:#fff;border:1.5px solid var(--border);border-radius:20px;
+  padding:1.4rem 1rem;text-align:center;cursor:pointer;
+  transition:all .25s;
+}
+.cat-card:hover{border-color:var(--green3);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.cat-img{
+  width:70px;height:70px;border-radius:50%;object-fit:cover;
+  margin:0 auto .8rem;border:2px solid var(--green-light);
+}
+.cat-name{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.cat-count{font-size:.68rem;color:var(--text-dim)}
+
+/* ══ PRODUCTS ══ */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem}
+.prod-card{
+  background:#fff;border:1.5px solid var(--border);border-radius:20px;
+  overflow:hidden;transition:all .3s;position:relative;
+}
+.prod-card:hover{border-color:var(--green3);box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.prod-badges{position:absolute;top:.8rem;right:.8rem;display:flex;flex-direction:column;gap:.3rem;z-index:2}
+.pbadge{font-size:.62rem;font-weight:700;padding:.2rem .5rem;border-radius:8px;letter-spacing:.04em}
+.pbadge-org{background:var(--green);color:#fff}
+.pbadge-new{background:var(--orange);color:#fff}
+.pbadge-sale{background:var(--red);color:#fff}
+.pbadge-local{background:var(--yellow);color:var(--text)}
+.prod-wish{
+  position:absolute;top:.8rem;left:.8rem;z-index:2;
+  width:32px;height:32px;background:rgba(255,255,255,.9);
+  border:1.5px solid var(--border);border-radius:50%;
+  color:var(--text-dim);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;transition:all .2s;
+}
+.prod-wish:hover{border-color:var(--red);color:var(--red)}
+.prod-img-wrap{
+  height:185px;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
+}
+.prod-img-wrap img{width:80%;height:80%;object-fit:contain;transition:transform .4s}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-quick-ov{
+  position:absolute;inset:0;background:rgba(45,106,79,.7);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;
+}
+.prod-card:hover .prod-quick-ov{opacity:1}
+.quick-add{
+  background:#fff;color:var(--green);border:none;
+  padding:.55rem 1.2rem;border-radius:50px;font-size:.78rem;font-weight:700;
+}
+.prod-body{padding:1rem}
+.prod-origin{display:flex;align-items:center;gap:.3rem;font-size:.65rem;color:var(--green3);margin-bottom:.3rem;font-weight:600}
+.prod-name{font-size:.9rem;font-weight:700;margin-bottom:.4rem;line-height:1.4}
+.prod-weight{font-size:.72rem;color:var(--text-dim);margin-bottom:.6rem}
+.prod-rating{display:flex;align-items:center;gap:.3rem;margin-bottom:.7rem}
+.stars{font-size:.72rem;color:var(--yellow);letter-spacing:.04em}
+.rcount{font-size:.68rem;color:var(--text-dim)}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price-wrap{display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap}
+.prod-old{font-size:.75rem;color:var(--text-dim);text-decoration:line-through}
+.prod-price{font-size:1.15rem;font-weight:900;color:var(--green)}
+.prod-unit{font-size:.68rem;color:var(--text-mid)}
+.prod-disc{font-size:.65rem;color:var(--red);font-weight:700}
+.add-btn{
+  width:36px;height:36px;background:var(--green);color:#fff;
+  border:none;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;flex-shrink:0;transition:all .2s;
+}
+.add-btn:hover{background:var(--green2);transform:scale(1.05)}
+
+/* ══ PROMO BANNERS ══ */
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:0 4% 3rem}
+.promo-card{
+  position:relative;border-radius:20px;overflow:hidden;min-height:200px;
+}
+.promo-card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s;
+}
+.promo-card:hover img{transform:scale(1.03)}
+.promo-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.promo-card:nth-child(1) .promo-overlay{background:linear-gradient(135deg,rgba(45,106,79,.88),rgba(64,145,108,.6));padding:2rem 2.5rem}
+.promo-card:nth-child(2) .promo-overlay{background:linear-gradient(135deg,rgba(139,94,60,.88),rgba(166,124,82,.6));padding:2rem 2.5rem}
+.promo-tag{font-size:.65rem;color:rgba(255,255,255,.8);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;font-weight:600}
+.promo-title{font-family:'Lora',serif;font-size:1.5rem;color:#fff;margin-bottom:.4rem;font-weight:600}
+.promo-sub{font-size:.82rem;color:rgba(255,255,255,.75);margin-bottom:1.2rem}
+.promo-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#fff;color:var(--green);border:none;
+  padding:.6rem 1.5rem;border-radius:50px;font-size:.78rem;font-weight:700;
+  width:fit-content;transition:opacity .2s;
+}
+.promo-btn:hover{opacity:.9}
+.promo-btn.brown{color:var(--brown)}
+
+/* ══ FARM TO TABLE ══ */
+.farm{
+  background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.farm-inner{
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;
+  padding:4rem 6%;
+}
+.farm-img-wrap{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.farm-img-wrap img{width:100%;height:400px;object-fit:cover}
+.farm-img-badge{
+  position:absolute;bottom:1.5rem;right:1.5rem;
+  background:#fff;border-radius:16px;padding:1rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);text-align:center;
+}
+.farm-img-badge-n{font-size:1.8rem;font-weight:900;color:var(--green)}
+.farm-img-badge-l{font-size:.65rem;color:var(--text-mid);letter-spacing:.08em;text-transform:uppercase}
+.farm-body{}
+.farm-sec-tag{font-size:.68rem;color:var(--green3);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.farm-sec-tag::before{content:'';width:16px;height:2px;background:var(--green3)}
+.farm-h{font-family:'Lora',serif;font-size:2.2rem;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:.8rem}
+.farm-h em{color:var(--green);font-style:italic}
+.farm-p{font-size:.88rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.5rem}
+.farm-steps{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.farm-step{display:flex;align-items:flex-start;gap:.8rem}
+.farm-step-n{
+  width:32px;height:32px;background:var(--green);color:#fff;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:.1rem;
+}
+.farm-step-t{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:.1rem}
+.farm-step-d{font-size:.78rem;color:var(--text-dim);line-height:1.6}
+.btn-green-outline{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--green);
+  border:2px solid var(--green);padding:.75rem 1.8rem;border-radius:50px;
+  font-size:.88rem;font-weight:700;transition:all .25s;
+}
+.btn-green-outline:hover{background:var(--green);color:#fff}
+
+/* ══ BRANDS ══ */
+.brands{overflow:hidden;padding:2rem 0;background:var(--green-pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.brands-inner{display:flex;gap:4rem;width:max-content;animation:brandScroll 28s linear infinite;align-items:center}
+@keyframes brandScroll{to{transform:translateX(-50%)}}
+.brand-item{font-size:1rem;font-weight:900;color:var(--green2);white-space:nowrap;opacity:.6;transition:opacity .2s;letter-spacing:.05em}
+.brand-item:hover{opacity:1}
+
+/* ══ TESTIMONIALS ══ */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.test-card{
+  background:#fff;border:1.5px solid var(--border);border-radius:20px;
+  padding:1.5rem;
+}
+.test-stars{font-size:.75rem;color:var(--yellow);margin-bottom:.8rem;letter-spacing:.04em}
+.test-txt{font-family:'Lora',serif;font-style:italic;font-size:.9rem;color:var(--text);line-height:1.75;margin-bottom:1.2rem}
+.test-author{display:flex;align-items:center;gap:.7rem}
+.test-av{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--green-light)}
+.test-av img{width:100%;height:100%;object-fit:cover}
+.test-name{font-size:.82rem;font-weight:700;color:var(--text)}
+.test-loc{font-size:.68rem;color:var(--text-dim)}
+
+/* ══ NEWSLETTER ══ */
+.nl{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  margin:0 4% 3rem;border-radius:24px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;position:relative;
+}
+.nl::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.nl-body{padding:3rem;position:relative;z-index:1}
+.nl-tag{font-size:.68rem;color:var(--lime);font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.nl-h{font-family:'Lora',serif;font-size:1.8rem;color:#fff;margin-bottom:.6rem;font-weight:600}
+.nl-sub{font-size:.85rem;color:rgba(255,255,255,.75);margin-bottom:1.5rem;line-height:1.7}
+.nl-form{display:flex;gap:.6rem}
+.nl-in{
+  flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  border-radius:50px;padding:.7rem 1.2rem;font-family:'Cairo',sans-serif;
+  font-size:.85rem;color:#fff;outline:none;
+}
+.nl-in::placeholder{color:rgba(255,255,255,.55)}
+.nl-in:focus{background:rgba(255,255,255,.2)}
+.nl-submit{
+  background:#fff;color:var(--green);border:none;
+  padding:.7rem 1.6rem;border-radius:50px;font-size:.82rem;font-weight:700;
+  white-space:nowrap;transition:opacity .2s;
+}
+.nl-submit:hover{opacity:.9}
+.nl-img{position:relative}
+.nl-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(1.2)}
+.nl-img-ov{position:absolute;inset:0;background:linear-gradient(to left,transparent,rgba(45,106,79,.6))}
+
+/* ══ FOOTER ══ */
+footer{background:var(--green);color:#fff;padding:3.5rem 4% 0}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem}
+.foot-logo{font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:.3rem}
+.foot-sub{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);margin-bottom:1.2rem}
+.foot-desc{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.8;max-width:240px;margin-bottom:1.4rem}
+.foot-socials{display:flex;gap:.5rem}
+.foot-soc{
+  width:34px;height:34px;background:rgba(255,255,255,.12);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;transition:background .2s;
+}
+.foot-soc:hover{background:rgba(255,255,255,.25)}
+.foot-h{font-size:.68rem;letter-spacing:.2em;color:var(--lime);text-transform:uppercase;margin-bottom:1rem}
+.foot-links{display:flex;flex-direction:column;gap:.6rem}
+.foot-links a{font-size:.78rem;color:rgba(255,255,255,.65);transition:color .2s}
+.foot-links a:hover{color:#fff}
+.foot-btm{
+  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 0;flex-wrap:wrap;gap:.8rem;
+}
+.foot-copy{font-size:.72rem;color:rgba(255,255,255,.5)}
+.foot-pay{display:flex;gap:.5rem}
+.pay-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);font-size:.6rem;color:rgba(255,255,255,.7);padding:.2rem .5rem;border-radius:5px}
+
+/* ══ CART ══ */
+#cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9000;opacity:0;visibility:hidden;transition:all .35s;backdrop-filter:blur(3px)}
+#cart-ov.open{opacity:1;visibility:visible}
+#cart-sl{
+  position:fixed;left:0;top:0;bottom:0;width:400px;max-width:95vw;
+  background:#fff;border-right:1px solid var(--border);z-index:9001;
+  transform:translateX(-100%);transition:transform .4s ease;display:flex;flex-direction:column;
+}
+#cart-sl.open{transform:translateX(0)}
+.cart-hd{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-hd h3{font-size:1rem;font-weight:700;color:var(--text)}
+.cart-x{width:32px;height:32px;background:var(--green-pale);border:1.5px solid var(--border);border-radius:50%;color:var(--text-mid);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s}
+.cart-x:hover{background:var(--red);border-color:var(--red);color:#fff}
+.cart-body{flex:1;overflow-y:auto;padding:1rem 1.5rem}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;height:200px;color:var(--text-dim);font-size:.85rem}
+.cart-empty i{font-size:2.5rem;color:var(--border)}
+.c-item{display:flex;gap:.9rem;padding:.9rem 0;border-bottom:1px solid var(--border)}
+.c-img{width:65px;height:65px;background:var(--green-pale);border-radius:12px;object-fit:contain;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c-img img{width:85%;height:85%;object-fit:contain}
+.c-body{flex:1}
+.c-name{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.c-wt{font-size:.68rem;color:var(--text-dim)}
+.c-price{font-size:.95rem;font-weight:800;color:var(--green);margin-top:.3rem}
+.cart-foot{border-top:1px solid var(--border);padding:1.2rem 1.5rem}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.ct-lbl{font-size:.8rem;color:var(--text-mid)}
+.ct-val{font-size:1.3rem;font-weight:900;color:var(--green)}
+.checkout{width:100%;background:var(--green);color:#fff;border:none;padding:.9rem;border-radius:12px;font-size:.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:background .2s}
+.checkout:hover{background:var(--green2)}
+
+/* ══ TOAST ══ */
+#toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(10px);
+  background:var(--green);color:#fff;padding:.75rem 1.4rem;border-radius:50px;
+  font-size:.82rem;font-weight:600;z-index:9999;opacity:0;transition:all .3s;
+  display:flex;align-items:center;gap:.5rem;box-shadow:0 8px 24px rgba(45,106,79,.3);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:900px){
+  .features-strip{grid-template-columns:repeat(2,1fr)}
+  .farm-inner{grid-template-columns:1fr}
+  .nl{grid-template-columns:1fr}
+  .nl-img{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .promo-grid{grid-template-columns:1fr}
+  .hero{flex-direction:column}
+  .hero-right{display:none}
+}
+@media(max-width:600px){
+  .hdr-top{flex-wrap:wrap}
+  .search-bar{order:3;width:100%}
+  .features-strip{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .nl-form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="ann">
+  <div class="ann-inner">
+    <span class="ann-item"><i class="fas fa-leaf"></i> شحن مجاني للطلبات فوق 150 ريال <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-seedling"></i> منتجات عضوية معتمدة 100% <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-truck"></i> توصيل لباب البيت خلال 3 ساعات <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-store"></i> مزارع محلية موثوقة <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-recycle"></i> تغليف صديق للبيئة <span class="ann-sep"></span></span>
+    <!-- dup -->
+    <span class="ann-item"><i class="fas fa-leaf"></i> شحن مجاني للطلبات فوق 150 ريال <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-seedling"></i> منتجات عضوية معتمدة 100% <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-truck"></i> توصيل لباب البيت خلال 3 ساعات <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-store"></i> مزارع محلية موثوقة <span class="ann-sep"></span></span>
+    <span class="ann-item"><i class="fas fa-recycle"></i> تغليف صديق للبيئة <span class="ann-sep"></span></span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-top">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-seedling"></i></div>
+      <div>
+        <div class="logo-ar">خضرة</div>
+        <div class="logo-en">Khadra Organic Market</div>
+      </div>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="ابحث عن خضروات، فواكه، بقوليات...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="hdr-actions">
+      <button class="hdr-btn"><i class="fas fa-map-marker-alt"></i><span>موقعك</span></button>
+      <button class="hdr-btn" onclick="openCart()">
+        <i class="fas fa-shopping-basket"></i><span>السلة</span>
+        <span class="hdr-badge" id="cartN">0</span>
+      </button>
+      <button class="btn-green"><i class="fas fa-user"></i> حسابي</button>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-a active"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="#" class="nav-a"><i class="fas fa-carrot"></i> خضروات</a>
+      <a href="#" class="nav-a"><i class="fas fa-apple-alt"></i> فواكه</a>
+      <a href="#" class="nav-a"><i class="fas fa-egg"></i> منتجات الألبان</a>
+      <a href="#" class="nav-a"><i class="fas fa-fish"></i> بروتينات</a>
+      <a href="#" class="nav-a"><i class="fas fa-bread-slice"></i> مخبوزات</a>
+      <a href="#" class="nav-a"><i class="fas fa-jar"></i> مواد جافة</a>
+      <a href="#" class="nav-a"><i class="fas fa-mug-hot"></i> مشروبات</a>
+      <a href="#" class="nav-a sale"><i class="fas fa-tag"></i> تخفيضات</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><i class="fas fa-certificate"></i> عضوي معتمد ١٠٠٪</div>
+    <h1 class="hero-title">طازج من <em>المزرعة</em><br>لمائدتك اليوم</h1>
+    <p class="hero-desc">أفضل الخضروات والفواكه العضوية مباشرةً من مزارعنا المحلية — بلا مبيدات، بلا مواد حافظة، وبكامل النضارة حتى يصلك الطلب خلال ساعات.</p>
+    <div class="hero-btns">
+      <button class="btn-white" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-shopping-basket"></i> تسوق الآن
+      </button>
+      <button class="btn-outline-white"><i class="fas fa-play-circle"></i> قصة مزارعنا</button>
+    </div>
+    <div class="hero-stats" style="margin-top:2.5rem">
+      <div class="hero-stat"><div class="hero-stat-n">+200<span> مزرعة</span></div><div class="hero-stat-l">شريك محلي</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">98<span>٪</span></div><div class="hero-stat-l">رضا العملاء</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">3<span>ساعات</span></div><div class="hero-stat-l">أسرع توصيل</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-main">
+      <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?w=600&q=80" alt="خضروات طازجة">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="feat-item">
+    <div class="feat-ic"><i class="fas fa-truck-fast"></i></div>
+    <div><div class="feat-t">توصيل في 3 ساعات</div><div class="feat-d">لمعظم أحياء المدينة</div></div>
+  </div>
+  <div class="feat-item">
+    <div class="feat-ic"><i class="fas fa-leaf"></i></div>
+    <div><div class="feat-t">عضوي ومعتمد</div><div class="feat-d">شهادات هيئة الزراعة السعودية</div></div>
+  </div>
+  <div class="feat-item">
+    <div class="feat-ic"><i class="fas fa-rotate-left"></i></div>
+    <div><div class="feat-t">استرداد سهل</div><div class="feat-d">منتج غير طازج؟ نستبدله فوراً</div></div>
+  </div>
+  <div class="feat-item">
+    <div class="feat-ic"><i class="fas fa-box-open"></i></div>
+    <div><div class="feat-t">تغليف مستدام</div><div class="feat-d">مواد قابلة لإعادة التدوير</div></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="sec" id="categories">
+  <div class="sec-hdr">
+    <div><div class="sec-tag">تصفح</div><div class="sec-h">الأقسام الرئيسية</div></div>
+    <a href="#" class="sec-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&q=80" alt="خضروات">
+      <div class="cat-name">خضروات طازجة</div><div class="cat-count">+180 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=200&q=80" alt="فواكه">
+      <div class="cat-name">فواكه موسمية</div><div class="cat-count">+130 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&q=80" alt="ألبان">
+      <div class="cat-name">ألبان وأجبان</div><div class="cat-count">+60 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?w=200&q=80" alt="بيض">
+      <div class="cat-name">بيض ودواجن</div><div class="cat-count">+25 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&q=80" alt="مخبوزات">
+      <div class="cat-name">مخبوزات يدوية</div><div class="cat-count">+40 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1587734005433-8f2994dae979?w=200&q=80" alt="أعشاب">
+      <div class="cat-name">أعشاب وتوابل</div><div class="cat-count">+90 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1567526941eal?w=200&q=80" alt="بقوليات">
+      <div class="cat-name">حبوب وبقوليات</div><div class="cat-count">+70 صنف</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=200&q=80" alt="مشروبات">
+      <div class="cat-name">عصائر طبيعية</div><div class="cat-count">+35 صنف</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="sec" id="products" style="padding-top:0">
+  <div class="sec-hdr">
+    <div><div class="sec-tag">الأكثر طلباً</div><div class="sec-h">طازج من مزارعنا اليوم</div></div>
+    <a href="#" class="sec-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
+  </div>
+  <div class="prod-grid">
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-org">عضوي</span><span class="pbadge pbadge-local">محلي</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80" alt="خضروات">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('طماطم عضوية','18')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مزرعة الحسا — القطيف</div>
+        <div class="prod-name">طماطم كرزية عضوية</div>
+        <div class="prod-weight">500 غرام · قطف اليوم</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rcount">(٢٣٤)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-old">24</span>
+            <span class="prod-price">18</span>
+            <span class="prod-unit"> ريال</span>
+            <span class="prod-disc">وفّر 25%</span>
+          </div>
+          <button class="add-btn" onclick="addCart('طماطم عضوية','18')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-new">وصل حديثاً</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&q=80" alt="فواكه">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('فراولة طازجة','32')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مزرعة الطائف</div>
+        <div class="prod-name">فراولة طائفية طازجة</div>
+        <div class="prod-weight">1 كيلو · موسمية</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rcount">(٤١٨)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-price">32</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('فراولة طازجة','32')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-org">عضوي</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80" alt="حليب">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('حليب عضوي طازج','22')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مزرعة الدرعية</div>
+        <div class="prod-name">حليب أبقار عضوي كامل الدسم</div>
+        <div class="prod-weight">1 لتر · صباح اليوم</div>
+        <div class="prod-rating"><span class="stars">★★★★½</span><span class="rcount">(١٨٧)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-price">22</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('حليب عضوي طازج','22')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-local">محلي</span><span class="pbadge pbadge-sale">-30%</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?w=400&q=80" alt="بيض">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('بيض دجاج بلدي','28')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مزرعة الرياض</div>
+        <div class="prod-name">بيض دجاج بلدي حر المرعى</div>
+        <div class="prod-weight">12 بيضة · طبيعي 100%</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rcount">(٣٢٩)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-old">40</span>
+            <span class="prod-price">28</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('بيض دجاج بلدي','28')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-org">عضوي</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="خبز">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('خبز كامل الحبوب','15')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مخبز خضرة الحرفي</div>
+        <div class="prod-name">خبز حبوب كاملة محلي الصنع</div>
+        <div class="prod-weight">400 غرام · يومي الإنتاج</div>
+        <div class="prod-rating"><span class="stars">★★★★½</span><span class="rcount">(١٤٢)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-price">15</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('خبز كامل الحبوب','15')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-new">موسمي</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1587734005433-8f2994dae979?w=400&q=80" alt="أعشاب">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('باقة أعشاب طازجة','12')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مزارع عسير</div>
+        <div class="prod-name">باقة أعشاب طازجة مختلطة</div>
+        <div class="prod-weight">ريحان + نعناع + بقدونس</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rcount">(٩٦)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-price">12</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('باقة أعشاب طازجة','12')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-sale">-20%</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=400&q=80" alt="عصير">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('عصير برتقال طازج','24')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> بستان المدينة</div>
+        <div class="prod-name">عصير برتقال طازج معصور</div>
+        <div class="prod-weight">1 لتر · بدون سكر مضاف</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rcount">(٢٦١)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-old">30</span>
+            <span class="prod-price">24</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('عصير برتقال طازج','24')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-badges"><span class="pbadge pbadge-org">عضوي</span><span class="pbadge pbadge-local">محلي</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?w=400&q=80" alt="سلطة">
+        <div class="prod-quick-ov"><button class="quick-add" onclick="addCart('طقم سلطة عضوي','35')">أضف للسلة</button></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-origin"><i class="fas fa-map-marker-alt"></i> مزارع المنطقة الشرقية</div>
+        <div class="prod-name">طقم خضار سلطة عضوي كامل</div>
+        <div class="prod-weight">طماطم + خيار + خس + فلفل</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rcount">(١٩٤)</span></div>
+        <div class="prod-footer">
+          <div class="prod-price-wrap">
+            <span class="prod-price">35</span>
+            <span class="prod-unit"> ريال</span>
+          </div>
+          <button class="add-btn" onclick="addCart('طقم سلطة عضوي','35')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROMO BANNERS -->
+<div class="promo-grid">
+  <div class="promo-card">
+    <img src="https://images.unsplash.com/photo-1467453678174-768ec283a940?w=700&q=80" alt="">
+    <div class="promo-overlay">
+      <div class="promo-tag"><i class="fas fa-fire"></i> عرض الأسبوع</div>
+      <div class="promo-title">صناديق الخضار الأسبوعية</div>
+      <div class="promo-sub">اشترك واحصل على خصم 20% على كل صندوق أسبوعي</div>
+      <button class="promo-btn"><i class="fas fa-shopping-basket"></i> اشترك الآن</button>
+    </div>
+  </div>
+  <div class="promo-card">
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700&q=80" alt="">
+    <div class="promo-overlay">
+      <div class="promo-tag"><i class="fas fa-sun"></i> منتجات موسمية</div>
+      <div class="promo-title">تمور المدينة الفاخرة</div>
+      <div class="promo-sub">أجود أصناف التمر الطبيعي من مزارع المدينة المنورة</div>
+      <button class="promo-btn brown"><i class="fas fa-leaf"></i> اكتشف الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- FARM TO TABLE -->
+<div class="farm">
+  <div class="farm-inner">
+    <div class="farm-img-wrap">
+      <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=800&q=80" alt="مزرعة">
+      <div class="farm-img-badge">
+        <div class="farm-img-badge-n">+200</div>
+        <div class="farm-img-badge-l">مزرعة شريكة</div>
+      </div>
+    </div>
+    <div class="farm-body">
+      <div class="farm-sec-tag">قصتنا</div>
+      <h2 class="farm-h">من <em>المزرعة</em><br>إلى طاولتك مباشرةً</h2>
+      <p class="farm-p">نؤمن أن الطعام الجيد يبدأ من تربة نقية ويُحصد بيدٍ أمينة. نعمل مع أكثر من 200 مزارع محلي في مختلف مناطق المملكة لإيصال أطيب المنتجات إليك في أقصر وقت وبأعلى جودة.</p>
+      <div class="farm-steps">
+        <div class="farm-step">
+          <div class="farm-step-n">١</div>
+          <div>
+            <div class="farm-step-t">اختيار المزارع الموثوقة</div>
+            <div class="farm-step-d">نتفقد كل مزرعة شريكة للتأكد من الالتزام بمعايير الزراعة العضوية المعتمدة.</div>
+          </div>
+        </div>
+        <div class="farm-step">
+          <div class="farm-step-n">٢</div>
+          <div>
+            <div class="farm-step-t">حصاد يومي بعناية</div>
+            <div class="farm-step-d">كل منتج يُحصد صباح يوم التوصيل للحفاظ على أعلى مستوى من الطزاجة والقيمة الغذائية.</div>
+          </div>
+        </div>
+        <div class="farm-step">
+          <div class="farm-step-n">٣</div>
+          <div>
+            <div class="farm-step-t">توصيل مبرّد في ساعات</div>
+            <div class="farm-step-d">سلسلة تبريد متكاملة من المزرعة لباب بيتك خلال 3 ساعات كحد أقصى.</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-green-outline"><i class="fas fa-tractor"></i> تعرف على مزارعنا</button>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands">
+  <div class="brands-inner">
+    <span class="brand-item">🌿 الطبيعة الخضراء</span>
+    <span class="brand-item">🥗 مزارع الطائف</span>
+    <span class="brand-item">🍅 بساتين الحسا</span>
+    <span class="brand-item">🥛 مزرعة النقاء</span>
+    <span class="brand-item">🌾 حبوب الخير</span>
+    <span class="brand-item">🍓 بستان الفاكهة</span>
+    <span class="brand-item">🫒 زيتون عسير</span>
+    <span class="brand-item">🍯 عسل جبال السروات</span>
+    <!-- dup -->
+    <span class="brand-item">🌿 الطبيعة الخضراء</span>
+    <span class="brand-item">🥗 مزارع الطائف</span>
+    <span class="brand-item">🍅 بساتين الحسا</span>
+    <span class="brand-item">🥛 مزرعة النقاء</span>
+    <span class="brand-item">🌾 حبوب الخير</span>
+    <span class="brand-item">🍓 بستان الفاكهة</span>
+    <span class="brand-item">🫒 زيتون عسير</span>
+    <span class="brand-item">🍯 عسل جبال السروات</span>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="sec">
+  <div class="sec-hdr">
+    <div><div class="sec-tag">تقييمات العملاء</div><div class="sec-h">عائلات تثق بخضرة</div></div>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-txt">"من أفضل قرارات حياتي الاشتراك في صندوق خضرة الأسبوعي. الخضار دائماً طازجة جداً، وأحياناً أجد أنواعاً لم أجربها من قبل مع وصفات مقترحة. خدمة رائعة."</p>
+      <div class="test-author">
+        <div class="test-av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt=""></div>
+        <div><div class="test-name">نورة القحطاني</div><div class="test-loc">الرياض</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-txt">"جربت كثيراً من تطبيقات توصيل الخضار، لكن خضرة مختلفة — المنتجات أطول عمراً لأنها أطزج، وسعرها منافس جداً مقارنةً بالسوبرماركت مع توفير وقت الذهاب."</p>
+      <div class="test-author">
+        <div class="test-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""></div>
+        <div><div class="test-name">عبدالله الشمراني</div><div class="test-loc">جدة</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-txt">"بيض خضرة البلدي أصبح جزءاً ثابتاً من طاولتنا. طعمه مختلف تماماً عن ما في المتاجر، والحليب الطازج يجعل كوب قهوة الصباح تجربة لا تُوصف. شكراً!"</p>
+      <div class="test-author">
+        <div class="test-av"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt=""></div>
+        <div><div class="test-name">مريم العنزي</div><div class="test-loc">الدمام</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl">
+  <div class="nl-body">
+    <div class="nl-tag"><i class="fas fa-envelope-open-text"></i> النشرة الأسبوعية</div>
+    <h3 class="nl-h">وصفات ووصولات كل أسبوع</h3>
+    <p class="nl-sub">اشترك واحصل على كود خصم 10٪ فوري، مع وصفات صحية أسبوعية واطلاع مبكر على وصول المنتجات الموسمية.</p>
+    <form class="nl-form" onsubmit="return false">
+      <input type="email" class="nl-in" placeholder="بريدك الإلكتروني...">
+      <button class="nl-submit"><i class="fas fa-paper-plane"></i> اشترك</button>
+    </form>
+  </div>
+  <div class="nl-img">
+    <img src="https://images.unsplash.com/photo-1467453678174-768ec283a940?w=700&q=80" alt="">
+    <div class="nl-img-ov"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">🌿 خضرة</div>
+      <div class="foot-sub">Khadra Organic Market</div>
+      <p class="foot-desc">نربط المزارعين المحليين بالمستهلكين بشكل مباشر — لأن الطعام الطيب يبدأ من أرض طيبة ويصل إليك بيد أمينة.</p>
+      <div class="foot-socials">
+        <a href="#" class="foot-soc"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="foot-soc"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="foot-soc"><i class="fab fa-snapchat"></i></a>
+        <a href="#" class="foot-soc"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">أقسامنا</div>
+      <div class="foot-links">
+        <a href="#">خضروات طازجة</a>
+        <a href="#">فواكه موسمية</a>
+        <a href="#">ألبان وأجبان</a>
+        <a href="#">بيض ودواجن</a>
+        <a href="#">مخبوزات</a>
+        <a href="#">أعشاب وتوابل</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">خدماتنا</div>
+      <div class="foot-links">
+        <a href="#">صناديق الاشتراك</a>
+        <a href="#">تتبع طلبك</a>
+        <a href="#">إرجاع واستبدال</a>
+        <a href="#">مناطق التوصيل</a>
+        <a href="#">برنامج النقاط</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">خضرة</div>
+      <div class="foot-links">
+        <a href="#">قصتنا</a>
+        <a href="#">مزارعنا الشركاء</a>
+        <a href="#">معايير الجودة</a>
+        <a href="#">وظائف</a>
+        <a href="#">اتصل بنا</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-btm">
+    <div class="foot-copy">© ٢٠٢٦ خضرة — من المزرعة إلى مائدتك</div>
+    <div class="foot-pay">
+      <span class="pay-chip">Visa</span>
+      <span class="pay-chip">Mastercard</span>
+      <span class="pay-chip">Mada</span>
+      <span class="pay-chip">STC Pay</span>
+      <span class="pay-chip">Apple Pay</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div id="cart-ov" onclick="closeCart()"></div>
+<div id="cart-sl">
+  <div class="cart-hd">
+    <h3><i class="fas fa-shopping-basket" style="color:var(--green);margin-left:.4rem"></i> سلة التسوق</h3>
+    <button class="cart-x" onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty"><i class="fas fa-shopping-basket"></i><span>سلتك فارغة — ابدأ التسوق!</span></div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total">
+      <span class="ct-lbl">المجموع:</span>
+      <span class="ct-val" id="cartTot">٠ ريال</span>
+    </div>
+    <button class="checkout"><i class="fas fa-shield-alt"></i> إتمام الطلب بأمان</button>
+  </div>
+</div>
+
+<div id="toast"><i class="fas fa-check-circle"></i><span id="toastTxt"></span></div>
+
+<script>
+let cart=[];
+function openCart(){document.getElementById('cart-ov').classList.add('open');document.getElementById('cart-sl').classList.add('open')}
+function closeCart(){document.getElementById('cart-ov').classList.remove('open');document.getElementById('cart-sl').classList.remove('open')}
+function addCart(name,price){
+  const ex=cart.find(i=>i.name===name);
+  if(ex)ex.qty++;else cart.push({name,price,qty:1});
+  renderCart();toast('تمت إضافة '+name+' 🌿');
+  document.getElementById('cartN').textContent=cart.reduce((s,i)=>s+i.qty,0);
+}
+function renderCart(){
+  const b=document.getElementById('cartBody');
+  if(!cart.length){b.innerHTML='<div class="cart-empty"><i class="fas fa-shopping-basket"></i><span>سلتك فارغة</span></div>';document.getElementById('cartTot').textContent='٠ ريال';return}
+  b.innerHTML=cart.map((c,i)=>`
+    <div class="c-item">
+      <div class="c-img"><i class="fas fa-seedling" style="font-size:1.8rem;color:var(--green2)"></i></div>
+      <div class="c-body">
+        <div class="c-name">${c.name}</div>
+        <div class="c-wt">عضوي طازج</div>
+        <div class="c-price">${c.price} ريال × ${c.qty}</div>
+      </div>
+    </div>
+  `).join('');
+  const tot=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);
+  document.getElementById('cartTot').textContent=tot.toLocaleString('ar-EG')+' ريال';
+}
+function toast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastTxt').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
+}
+document.querySelectorAll('.prod-wish').forEach(b=>{
+  b.addEventListener('click',function(){
+    const i=this.querySelector('i');
+    i.classList.toggle('far');i.classList.toggle('fas');
+    this.style.borderColor=i.classList.contains('fas')?'var(--red)':'';
+    this.style.color=i.classList.contains('fas')?'var(--red)':'';
+  });
+});
+</script>
+</body>
+</html>
