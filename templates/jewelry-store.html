@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière — متجر المجوهرات الفاخرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --obsidian: #0a0a0f;
+    --deep: #111118;
+    --surface: #16161f;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e8c0;
+    --cream: #f9f4e8;
+    --text-primary: #f0e8d8;
+    --text-muted: #8a8070;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--obsidian);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  /* ── Announcement Bar ── */
+  .announce-bar {
+    background: linear-gradient(90deg, #1a1208, #2a1f08, #1a1208);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+  .announce-bar span { margin: 0 20px; opacity: 0.8; }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--text-primary); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 400; transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; right: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-actions { display: flex; gap: 24px; align-items: center; }
+  .nav-icon {
+    background: none; border: none; color: var(--text-primary);
+    font-size: 18px; cursor: pointer; transition: color 0.3s;
+    position: relative;
+  }
+  .nav-icon:hover { color: var(--gold); }
+  .cart-badge {
+    position: absolute; top: -8px; left: -8px;
+    background: var(--gold); color: var(--obsidian);
+    font-size: 10px; font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .btn-nav {
+    border: 1px solid var(--gold); color: var(--gold);
+    background: none; padding: 8px 20px;
+    font-family: 'Tajawal', sans-serif; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s;
+  }
+  .btn-nav:hover { background: var(--gold); color: var(--obsidian); }
+
+  /* ── Hero ── */
+  .hero {
+    height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1800&q=80') center/cover no-repeat;
+    filter: brightness(0.35);
+    transform: scale(1.05);
+    animation: heroZoom 12s ease-out forwards;
+  }
+  @keyframes heroZoom { from { transform: scale(1.05); } to { transform: scale(1); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,10,15,0.7) 0%, transparent 60%, rgba(10,10,15,0.4) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 80px; max-width: 700px;
+    animation: fadeUp 1.2s ease-out 0.3s both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-label {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero-label::before {
+    content: ''; width: 40px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p {
+    font-size: 17px; line-height: 1.8;
+    color: rgba(240,232,216,0.75);
+    margin-bottom: 48px; max-width: 480px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--obsidian);
+    border: none; padding: 18px 44px;
+    font-family: 'Tajawal', sans-serif; font-size: 13px;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+    cursor: pointer; transition: all 0.3s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light); transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.35);
+  }
+  .btn-ghost {
+    background: none; border: 1px solid rgba(240,232,216,0.4);
+    color: var(--text-primary); padding: 18px 44px;
+    font-family: 'Tajawal', sans-serif; font-size: 13px;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 400;
+    cursor: pointer; transition: all 0.3s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold); color: var(--gold);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    color: var(--text-muted); font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; animation: bounce 2s infinite;
+  }
+  .hero-scroll::after {
+    content: ''; width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* ── Stats ── */
+  .stats-bar {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 20px; text-align: center;
+  }
+  .stat-item { padding: 20px; border-left: 1px solid var(--border); }
+  .stat-item:first-child { border: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; color: var(--gold); font-weight: 700;
+    display: block; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+
+  /* ── Section Headers ── */
+  .section { padding: 100px 80px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700; line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-line {
+    width: 60px; height: 1px; background: var(--gold);
+    margin: 24px auto 0;
+  }
+
+  /* ── Categories ── */
+  .categories-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .cat-card {
+    position: relative; overflow: hidden;
+    height: 460px; cursor: pointer;
+    background: var(--surface);
+  }
+  .cat-card:first-child {
+    grid-row: span 2; height: 100%;
+  }
+  .cat-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease; filter: brightness(0.55);
+  }
+  .cat-card:hover img { transform: scale(1.06); filter: brightness(0.45); }
+  .cat-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, transparent 60%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 40px;
+  }
+  .cat-icon {
+    font-size: 32px; margin-bottom: 12px;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.6));
+  }
+  .cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; margin-bottom: 8px;
+  }
+  .cat-count { font-size: 13px; color: var(--gold); letter-spacing: 2px; }
+  .cat-arrow {
+    margin-top: 16px; display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-light); opacity: 0; transform: translateX(10px);
+    transition: all 0.4s;
+  }
+  .cat-card:hover .cat-arrow { opacity: 1; transform: translateX(0); }
+
+  /* ── Products ── */
+  .products-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .product-card {
+    background: var(--surface);
+    position: relative; overflow: hidden;
+    cursor: pointer;
+  }
+  .product-img {
+    position: relative; overflow: hidden; aspect-ratio: 3/4;
+    background: var(--deep);
+  }
+  .product-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .product-card:hover .product-img img { transform: scale(1.07); }
+  .product-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold); color: var(--obsidian);
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 4px 10px;
+  }
+  .product-badge.new { background: var(--obsidian); color: var(--gold); border: 1px solid var(--gold); }
+  .product-wish {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(10,10,15,0.7); border: 1px solid var(--border);
+    color: var(--text-muted); font-size: 16px;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s;
+    opacity: 0; transform: translateY(-8px);
+  }
+  .product-card:hover .product-wish { opacity: 1; transform: translateY(0); }
+  .product-wish:hover { background: var(--gold); color: var(--obsidian); border-color: var(--gold); }
+  .product-add {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(10,10,15,0.9); border-top: 1px solid var(--border);
+    color: var(--gold); font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px; text-align: center; cursor: pointer;
+    transform: translateY(100%); transition: transform 0.4s ease;
+    font-family: 'Tajawal', sans-serif;
+    border: none; width: 100%;
+  }
+  .product-card:hover .product-add { transform: translateY(0); }
+  .product-add:hover { background: var(--gold); color: var(--obsidian); }
+  .product-info { padding: 20px 20px 24px; }
+  .product-category { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 400; margin-bottom: 8px; line-height: 1.4; }
+  .product-stars { color: var(--gold); font-size: 12px; margin-bottom: 8px; }
+  .product-price { display: flex; gap: 10px; align-items: center; }
+  .price-new { font-size: 18px; font-weight: 700; color: var(--gold-light); }
+  .price-old { font-size: 14px; text-decoration: line-through; color: var(--text-muted); }
+  .product-colors { display: flex; gap: 6px; margin-top: 10px; }
+  .color-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    cursor: pointer; border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .color-dot:hover { border-color: var(--gold); }
+  .color-dot.active { border-color: var(--gold); }
+
+  /* ── Featured / Cinematic ── */
+  .featured {
+    position: relative; overflow: hidden;
+    height: 70vh; display: flex; align-items: center;
+    background: var(--deep);
+  }
+  .featured-img {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1800&q=80') center/cover no-repeat;
+    filter: brightness(0.4);
+  }
+  .featured-content {
+    position: relative; z-index: 2;
+    max-width: 600px; padding: 0 80px;
+    animation: fadeUp 1s ease-out;
+  }
+  .featured-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 16px;
+  }
+  .featured-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .featured h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .featured h2 em { color: var(--gold); font-style: italic; }
+  .featured p {
+    font-size: 15px; color: rgba(240,232,216,0.7);
+    line-height: 1.8; margin-bottom: 36px; font-weight: 300;
+  }
+  .featured-price {
+    margin-bottom: 32px;
+    font-size: 13px; color: var(--text-muted); letter-spacing: 1px;
+  }
+  .featured-price strong { font-size: 28px; color: var(--gold-light); font-weight: 700; }
+
+  /* ── Testimonials ── */
+  .testimonials { background: var(--deep); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .testimonial-card {
+    background: var(--surface);
+    padding: 48px 36px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .testimonial-card:hover { border-color: var(--gold); }
+  .testi-stars { color: var(--gold); font-size: 16px; margin-bottom: 20px; letter-spacing: 4px; }
+  .testi-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; line-height: 1.7;
+    color: var(--text-primary); margin-bottom: 28px;
+    font-style: italic;
+  }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 2px solid var(--border); overflow: hidden;
+  }
+  .testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .testi-name { font-weight: 700; font-size: 14px; color: var(--gold-light); }
+  .testi-role { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+
+  /* ── Newsletter ── */
+  .newsletter {
+    background: linear-gradient(135deg, #1a1208, #0f0c05);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 80px;
+    text-align: center;
+  }
+  .newsletter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    margin-bottom: 16px; font-weight: 700;
+  }
+  .newsletter h2 em { color: var(--gold); font-style: italic; }
+  .newsletter p { color: var(--text-muted); font-size: 15px; margin-bottom: 44px; max-width: 420px; margin-inline: auto; }
+  .newsletter-form { display: flex; gap: 0; max-width: 500px; margin: 0 auto; }
+  .newsletter-input {
+    flex: 1; padding: 18px 24px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: none; color: var(--text-primary);
+    font-family: 'Tajawal', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.3s;
+  }
+  .newsletter-input:focus { border-color: var(--gold); }
+  .newsletter-input::placeholder { color: var(--text-muted); }
+  .newsletter-input:first-child { border-left: 1px solid var(--border); }
+  .newsletter-submit {
+    background: var(--gold); color: var(--obsidian);
+    border: none; padding: 18px 32px;
+    font-family: 'Tajawal', sans-serif; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+    cursor: pointer; transition: all 0.3s; white-space: nowrap;
+  }
+  .newsletter-submit:hover { background: var(--gold-light); }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--obsidian);
+    border-top: 1px solid var(--border);
+    padding: 80px 80px 40px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 60px; border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .footer-brand .nav-logo { display: block; margin-bottom: 20px; }
+  .footer-desc { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 28px; max-width: 280px; }
+  .footer-social { display: flex; gap: 12px; }
+  .social-btn {
+    width: 40px; height: 40px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 14px; cursor: pointer;
+    transition: all 0.3s; text-decoration: none;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col h4 {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; font-weight: 700;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text-muted); font-size: 12px;
+  }
+  .footer-payments { display: flex; gap: 10px; }
+  .payment-icon {
+    border: 1px solid var(--border); padding: 4px 10px;
+    font-size: 10px; letter-spacing: 1px; color: var(--text-muted);
+    border-radius: 2px;
+  }
+
+  /* ── Cart Drawer ── */
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    z-index: 999; opacity: 0; pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+  .cart-drawer {
+    position: fixed; top: 0; left: -440px; height: 100vh;
+    width: 420px; background: var(--deep);
+    border-right: 1px solid var(--border);
+    z-index: 1000; transition: left 0.4s ease;
+    overflow-y: auto; display: flex; flex-direction: column;
+  }
+  .cart-drawer.open { left: 0; }
+  .cart-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cart-header h3 {
+    font-family: 'Playfair Display', serif; font-size: 20px;
+  }
+  .cart-close {
+    background: none; border: 1px solid var(--border);
+    color: var(--text-primary); font-size: 16px;
+    width: 36px; height: 36px; cursor: pointer;
+    transition: all 0.3s;
+  }
+  .cart-close:hover { border-color: var(--gold); color: var(--gold); }
+  .cart-items { flex: 1; padding: 24px 28px; }
+  .cart-item {
+    display: flex; gap: 16px; padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cart-item-img {
+    width: 80px; height: 100px; object-fit: cover;
+    flex-shrink: 0; filter: brightness(0.9);
+  }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-size: 14px; margin-bottom: 4px; font-family: 'Playfair Display', serif; }
+  .cart-item-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+  .cart-item-price { font-size: 16px; color: var(--gold-light); font-weight: 700; }
+  .cart-footer {
+    padding: 24px 28px;
+    border-top: 1px solid var(--border);
+  }
+  .cart-total {
+    display: flex; justify-content: space-between;
+    margin-bottom: 20px; font-size: 16px;
+  }
+  .cart-total-amount { color: var(--gold-light); font-weight: 700; font-size: 20px; }
+  .btn-checkout {
+    width: 100%; background: var(--gold); color: var(--obsidian);
+    border: none; padding: 18px;
+    font-family: 'Tajawal', sans-serif; font-size: 13px;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+    cursor: pointer; transition: all 0.3s;
+  }
+  .btn-checkout:hover { background: var(--gold-light); }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; top: 100px; left: 50%; transform: translateX(-50%) translateY(-20px);
+    background: var(--surface); border: 1px solid var(--gold);
+    color: var(--gold-light); padding: 16px 32px;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    opacity: 0; pointer-events: none; transition: all 0.4s;
+    z-index: 2000;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 32px; }
+    .nav-links { display: none; }
+    .section { padding: 60px 32px; }
+    .hero-content { padding: 0 40px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 32px; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .categories-grid { grid-template-columns: 1fr 1fr; }
+    .cat-card:first-child { grid-row: auto; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input:first-child { border-left: 1px solid var(--border); border-bottom: none; }
+    .featured-content { padding: 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announce-bar">
+  <span>✦ شحن مجاني لجميع الطلبات فوق ٣٠٠٠ د.م</span>
+  <span>✦ ضمان الأصالة ١٠٠٪ على جميع القطع</span>
+  <span>✦ خدمة التغليف الفاخر المجانية</span>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="#categories">المجموعات</a></li>
+    <li><a href="#products">المنتجات</a></li>
+    <li><a href="#featured">الأحجار الكريمة</a></li>
+    <li><a href="#about">عن لوميير</a></li>
+  </ul>
+  <a href="#" class="nav-logo">Lumière <span>✦</span></a>
+  <div class="nav-actions">
+    <button class="nav-icon">🔍</button>
+    <button class="nav-icon" onclick="openCart()">
+      🛒
+      <span class="cart-badge" id="cartCount">٢</span>
+    </button>
+    <button class="btn-nav">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">مجموعة ٢٠٢٦ الحصرية</div>
+    <h1>الفخامة <em>تُولد</em><br>من التفاصيل</h1>
+    <p>مجوهرات مصنوعة يدوياً من أجود الذهب والأحجار الكريمة — كل قطعة حكاية تحمل روح الحِرفة الفرنسية وأناقة الشرق.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">اكتشف المجموعة</a>
+      <a href="#featured" class="btn-ghost">الأحجار النادرة</a>
+    </div>
+  </div>
+  <div class="hero-scroll">تمرير</div>
+</section>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">١٨٩٢</span>
+    <span class="stat-label">تأسيس لوميير</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">+٤٨٠٠</span>
+    <span class="stat-label">قطعة فريدة</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">٩٨٪</span>
+    <span class="stat-label">رضا العملاء</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">٢٤/٧</span>
+    <span class="stat-label">خدمة شخصية</span>
+  </div>
+</div>
+
+<!-- Categories -->
+<section class="section" id="categories">
+  <div class="section-header">
+    <span class="section-eyebrow">تسوق حسب الفئة</span>
+    <h2 class="section-title">اكتشف <em>عالم لوميير</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&q=80" alt="خواتم">
+      <div class="cat-overlay">
+        <div class="cat-icon">💍</div>
+        <div class="cat-title">الخواتم</div>
+        <div class="cat-count">٣٢٠ قطعة</div>
+        <div class="cat-arrow">تسوق الآن ←</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80" alt="عقود">
+      <div class="cat-overlay">
+        <div class="cat-icon">📿</div>
+        <div class="cat-title">العقود</div>
+        <div class="cat-count">٢٨٦ قطعة</div>
+        <div class="cat-arrow">تسوق الآن ←</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&q=80" alt="أساور">
+      <div class="cat-overlay">
+        <div class="cat-icon">✨</div>
+        <div class="cat-title">الأساور</div>
+        <div class="cat-count">١٩٤ قطعة</div>
+        <div class="cat-arrow">تسوق الآن ←</div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&q=80" alt="أقراط">
+      <div class="cat-overlay">
+        <div class="cat-icon">🌟</div>
+        <div class="cat-title">الأقراط</div>
+        <div class="cat-count">٢٤٠ قطعة</div>
+        <div class="cat-arrow">تسوق الآن ←</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="section" id="products" style="background: var(--deep); padding-top: 100px;">
+  <div class="section-header">
+    <span class="section-eyebrow">وصل حديثاً</span>
+    <h2 class="section-title">أبرز <em>القطع الحصرية</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=600&q=80" alt="خاتم ألماس">
+        <span class="product-badge">حصري</span>
+        <button class="product-wish" onclick="addWish(this)">♡</button>
+        <button class="product-add" onclick="addCart()">+ إضافة للسلة</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">الخواتم / الماس</div>
+        <div class="product-name">خاتم ألماس Solitaire — الجيل الثالث</div>
+        <div class="product-stars">★★★★★ (٢٤٣)</div>
+        <div class="product-price">
+          <span class="price-new">٢٤,٥٠٠ د.م</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#d4af37;"></div>
+          <div class="color-dot" style="background:#e8e8e8;"></div>
+          <div class="color-dot" style="background:#b76e79;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80" alt="قلادة">
+        <span class="product-badge new">جديد</span>
+        <button class="product-wish" onclick="addWish(this)">♡</button>
+        <button class="product-add" onclick="addCart()">+ إضافة للسلة</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">العقود / ذهب أبيض</div>
+        <div class="product-name">قلادة Luna — ذهب ١٨ قيراط مع زفير</div>
+        <div class="product-stars">★★★★★ (١٨٧)</div>
+        <div class="product-price">
+          <span class="price-new">٨,٩٠٠ د.م</span>
+          <span class="price-old">١١,٢٠٠ د.م</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#d4af37;"></div>
+          <div class="color-dot" style="background:#4a90d9;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1573408301185-9519f94815b4?w=600&q=80" alt="سوار">
+        <button class="product-wish" onclick="addWish(this)">♡</button>
+        <button class="product-add" onclick="addCart()">+ إضافة للسلة</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">الأساور / ذهب أصفر</div>
+        <div class="product-name">سوار Étoile — بريليانت ٠.٥ قيراط</div>
+        <div class="product-stars">★★★★☆ (٩٢)</div>
+        <div class="product-price">
+          <span class="price-new">٥,٤٠٠ د.م</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#d4af37;"></div>
+          <div class="color-dot" style="background:#e8e8e8;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&q=80" alt="أقراط">
+        <span class="product-badge">-٣٠٪</span>
+        <button class="product-wish" onclick="addWish(this)">♡</button>
+        <button class="product-add" onclick="addCart()">+ إضافة للسلة</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">الأقراط / زمرد</div>
+        <div class="product-name">أقراط Jardin — زمرد كولومبي طبيعي</div>
+        <div class="product-stars">★★★★★ (٦٤)</div>
+        <div class="product-price">
+          <span class="price-new">١٣,٣٠٠ د.م</span>
+          <span class="price-old">١٩,٠٠٠ د.م</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#2d7d3a;"></div>
+          <div class="color-dot" style="background:#d4af37;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="featured" id="featured">
+  <div class="featured-img"></div>
+  <div class="featured-content">
+    <div class="featured-eyebrow">القطعة الحصرية لهذا الموسم</div>
+    <h2>أسطورة <em>الألماس</em><br>الوردي</h2>
+    <p>استوحينا هذه القطعة من لونية الفجر في مراكش — ألماس وردي نادر بوزن ٢.٣ قيراط، محاط بدائرة من البريليانت النقي على ذهب أبيض ٢٤ قيراط.</p>
+    <div class="featured-price">
+      السعر: <strong>١٢٨,٠٠٠ د.م</strong> — قطعة واحدة فقط
+    </div>
+    <a href="#" class="btn-primary">احجز قطعتك</a>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials" id="reviews">
+  <div class="section-header">
+    <span class="section-eyebrow">آراء عملائنا</span>
+    <h2 class="section-title">تجارب <em>لا تُنسى</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"اشتريت خاتم خطوبة من لوميير وكان أجمل ما يمكن. التغليف الفاخر والخدمة الشخصية جعلت اللحظة لا تُنسى."</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b67d?w=100&q=80" alt="عميلة"></div>
+        <div>
+          <div class="testi-name">مريم الزهراني</div>
+          <div class="testi-role">عميلة منذ ٢٠١٩</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"جودة استثنائية وتصميم راقٍ. كل قطعة تحكي قصة. لوميير ليست مجرد متجر، بل تجربة فاخرة متكاملة."</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="عميل"></div>
+        <div>
+          <div class="testi-name">خالد المنصور</div>
+          <div class="testi-role">عميل مخلص</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"أهديت زوجتي قلادة من لوميير بمناسبة ذكرى زواجنا العاشرة. وصلت في صندوق أنيق وكانت ردة فعلها لا تُوصف."</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="عميل"></div>
+        <div>
+          <div class="testi-name">طارق بن علي</div>
+          <div class="testi-role">دبي، الإمارات</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <h2>انضم إلى عالم <em>لوميير</em></h2>
+  <p>اشترك ليصلك أحدث مجموعاتنا الحصرية وعروضنا الخاصة قبل الجميع.</p>
+  <div class="newsletter-form">
+    <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني">
+    <button class="newsletter-submit">اشترك الآن</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Lumière <span>✦</span></a>
+      <p class="footer-desc">منذ ١٨٩٢، نحرف التقاليد الفرنسية في صناعة المجوهرات الفاخرة لنقدمها بروح الشرق وأصالته.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">📷</a>
+        <a href="#" class="social-btn">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>المجموعات</h4>
+      <ul class="footer-links">
+        <li><a href="#">الخواتم</a></li>
+        <li><a href="#">العقود والقلائد</a></li>
+        <li><a href="#">الأساور</a></li>
+        <li><a href="#">الأقراط</a></li>
+        <li><a href="#">طواقم كاملة</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>خدماتنا</h4>
+      <ul class="footer-links">
+        <li><a href="#">التخصيص والنقش</a></li>
+        <li><a href="#">خدمة الهدايا</a></li>
+        <li><a href="#">ضمان وصيانة</a></li>
+        <li><a href="#">تقييم المجوهرات</a></li>
+        <li><a href="#">مواعيد خاصة</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul class="footer-links">
+        <li><a href="#">الدار البيضاء — المركز الرئيسي</a></li>
+        <li><a href="#">الرياض — المملكة العربية</a></li>
+        <li><a href="#">دبي — الإمارات</a></li>
+        <li><a href="#">info@lumiere-jewels.com</a></li>
+        <li><a href="#">+212 5XX-XXXXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© ٢٠٢٦ لوميير للمجوهرات الفاخرة — جميع الحقوق محفوظة</span>
+    <div class="footer-payments">
+      <span class="payment-icon">VISA</span>
+      <span class="payment-icon">MC</span>
+      <span class="payment-icon">AMEX</span>
+      <span class="payment-icon">PayPal</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>سلة التسوق (٢)</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items">
+    <div class="cart-item">
+      <img class="cart-item-img" src="https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=200&q=80" alt="خاتم">
+      <div class="cart-item-info">
+        <div class="cart-item-name">خاتم ألماس Solitaire</div>
+        <div class="cart-item-meta">الحجم: ١٨ | الذهب الأصفر</div>
+        <div class="cart-item-price">٢٤,٥٠٠ د.م</div>
+      </div>
+    </div>
+    <div class="cart-item">
+      <img class="cart-item-img" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=200&q=80" alt="قلادة">
+      <div class="cart-item-info">
+        <div class="cart-item-name">قلادة Luna</div>
+        <div class="cart-item-meta">ذهب أبيض ١٨ قيراط</div>
+        <div class="cart-item-price">٨,٩٠٠ د.م</div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>المجموع الكلي</span>
+      <span class="cart-total-amount">٣٣,٤٠٠ د.م</span>
+    </div>
+    <button class="btn-checkout">إتمام الشراء ←</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">✦ تمت الإضافة للسلة</div>
+
+<script>
+  function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartDrawer').classList.add('open');
+  }
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartDrawer').classList.remove('open');
+  }
+  function addCart() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+    const badge = document.getElementById('cartCount');
+    badge.textContent = '٣';
+  }
+  function addWish(el) {
+    el.style.color = el.style.color === 'rgb(201, 168, 76)' ? '' : '#c9a84c';
+    el.textContent = el.textContent === '♡' ? '♥' : '♡';
+  }
+
+  // Intersection Observer for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .cat-card, .testimonial-card, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
