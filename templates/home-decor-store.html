@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Nord — متجر الديكور والأثاث</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --sand:#f5f0e8;--warm:#ede5d8;--oak:#c4956a;--walnut:#6b4226;
+    --charcoal:#2c2c2c;--mid:#6b6b6b;--light:#a0a0a0;
+    --white:#fff;--border:rgba(196,149,106,0.2);
+    --green:#4a6741;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--sand);color:var(--charcoal);overflow-x:hidden}
+
+  /* Announce */
+  .ann{background:var(--walnut);color:var(--sand);text-align:center;padding:10px;font-size:12px;letter-spacing:2px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(245,240,232,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:400;color:var(--walnut);letter-spacing:4px;text-decoration:none}
+  .logo span{font-style:italic}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{color:var(--mid);text-decoration:none;font-size:13px;letter-spacing:1px;transition:color 0.3s}
+  .nav-links a:hover{color:var(--walnut)}
+  .nav-acts{display:flex;gap:16px;align-items:center}
+  .nic{background:none;border:none;font-size:17px;color:var(--mid);cursor:pointer;transition:color 0.3s;position:relative}
+  .nic:hover{color:var(--walnut)}
+  .nic-b{position:absolute;top:-6px;right:-6px;background:var(--oak);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .btn-ln{border:1px solid var(--border);color:var(--charcoal);background:none;padding:8px 20px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;cursor:pointer;transition:all 0.3s}
+  .btn-ln:hover{background:var(--walnut);color:var(--sand);border-color:var(--walnut)}
+
+  /* Hero — editorial split */
+  .hero{display:grid;grid-template-columns:55% 45%;min-height:100vh}
+  .hero-img-wrap{position:relative;overflow:hidden}
+  .hero-img{width:100%;height:100%;object-fit:cover;transition:transform 10s ease}
+  .hero-img-wrap:hover .hero-img{transform:scale(1.04)}
+  .hero-tag{position:absolute;top:40px;right:40px;background:var(--white);padding:16px 20px;border-right:3px solid var(--oak)}
+  .hero-tag-num{font-family:'Libre Baskerville',serif;font-size:28px;color:var(--walnut);line-height:1}
+  .hero-tag-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-top:4px}
+  .hero-right{display:flex;flex-direction:column;justify-content:center;padding:80px 60px;background:var(--warm)}
+  .hero-eyebrow{display:flex;align-items:center;gap:16px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--oak);margin-bottom:32px}
+  .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--oak)}
+  .hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(40px,4.5vw,64px);font-weight:400;line-height:1.15;margin-bottom:24px}
+  .hero h1 em{font-style:italic;color:var(--oak)}
+  .hero-desc{font-size:15px;line-height:1.9;color:var(--mid);margin-bottom:48px;max-width:420px;font-weight:300}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-p{background:var(--walnut);color:var(--sand);border:none;padding:16px 40px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+  .btn-p:hover{background:var(--oak);transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,66,38,0.25)}
+  .btn-g{background:none;border:1px solid var(--border);color:var(--charcoal);padding:16px 40px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+  .btn-g:hover{border-color:var(--walnut);color:var(--walnut)}
+  .hero-awards{display:flex;gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+  .award{font-size:12px;color:var(--light)}
+  .award strong{display:block;color:var(--walnut);font-size:14px;margin-bottom:2px}
+
+  /* Section */
+  .sec{padding:100px 80px}
+  .sec-head{margin-bottom:60px}
+  .sec-head.center{text-align:center}
+  .sec-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--oak);display:block;margin-bottom:14px}
+  .sec-title{font-family:'Libre Baskerville',serif;font-size:clamp(28px,3.5vw,48px);font-weight:400;line-height:1.2}
+  .sec-title em{font-style:italic;color:var(--oak)}
+  .sec-line{width:48px;height:1px;background:var(--oak);margin-top:20px}
+  .sec-head.center .sec-line{margin-inline:auto}
+
+  /* Categories — masonry-like */
+  .cats-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:280px 280px;gap:3px}
+  .cm{position:relative;overflow:hidden;cursor:pointer;background:var(--warm)}
+  .cm:nth-child(1){grid-column:1/7;grid-row:1/2}
+  .cm:nth-child(2){grid-column:7/13;grid-row:1/2}
+  .cm:nth-child(3){grid-column:1/5;grid-row:2/3}
+  .cm:nth-child(4){grid-column:5/9;grid-row:2/3}
+  .cm:nth-child(5){grid-column:9/13;grid-row:2/3}
+  .cm img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65);transition:all 0.7s ease}
+  .cm:hover img{transform:scale(1.06);filter:brightness(0.5)}
+  .cm-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+  .cm-name{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:400;color:#fff;margin-bottom:4px}
+  .cm-cnt{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,0.7)}
+  .cm-arrow{margin-top:10px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--oak);opacity:0;transform:translateX(8px);transition:all 0.3s}
+  .cm:hover .cm-arrow{opacity:1;transform:translateX(0)}
+
+  /* Products */
+  .prods{background:var(--white)}
+  .prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+  .pc{background:var(--sand);cursor:pointer;position:relative;overflow:hidden}
+  .pc-img{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--warm)}
+  .pc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+  .pc:hover .pc-img img{transform:scale(1.05)}
+  .pc-badge{position:absolute;top:14px;right:14px;background:var(--walnut);color:var(--sand);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px}
+  .pc-badge.new{background:transparent;border:1px solid var(--oak);color:var(--oak)}
+  .pc-wish{position:absolute;top:14px;left:14px;background:rgba(245,240,232,0.9);border:none;color:var(--mid);font-size:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(-8px);transition:all 0.3s}
+  .pc:hover .pc-wish{opacity:1;transform:translateY(0)}
+  .pc-wish:hover{color:var(--walnut)}
+  .pc-add{position:absolute;bottom:0;left:0;right:0;background:var(--walnut);border:none;color:var(--sand);font-family:'Tajawal',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:13px;cursor:pointer;transform:translateY(100%);transition:transform 0.4s ease;width:100%}
+  .pc:hover .pc-add{transform:translateY(0)}
+  .pc-add:hover{background:var(--oak)}
+  .pc-info{padding:24px}
+  .pc-cat{font-size:10px;letter-spacing:2px;color:var(--oak);text-transform:uppercase;margin-bottom:5px}
+  .pc-name{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:400;line-height:1.4;margin-bottom:8px}
+  .pc-mat{font-size:12px;color:var(--light);margin-bottom:8px}
+  .pc-stars{font-size:11px;color:var(--oak);margin-bottom:8px}
+  .pc-price{display:flex;gap:10px;align-items:center}
+  .pn{font-size:18px;font-weight:700;color:var(--walnut)}
+  .po{font-size:13px;text-decoration:line-through;color:var(--light)}
+  .pc-colors{display:flex;gap:6px;margin-top:10px}
+  .cdot{width:16px;height:16px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s}
+  .cdot:hover,.cdot.a{border-color:var(--walnut)}
+
+  /* Editorial Banner */
+  .editorial{position:relative;height:75vh;overflow:hidden;display:flex;align-items:center}
+  .ed-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=1800&q=80') center/cover;filter:brightness(0.45)}
+  .ed-content{position:relative;z-index:2;padding:0 80px;max-width:620px}
+  .ed-eye{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--oak);margin-bottom:20px;display:flex;align-items:center;gap:16px}
+  .ed-eye::before{content:'';width:32px;height:1px;background:var(--oak)}
+  .ed-title{font-family:'Libre Baskerville',serif;font-size:clamp(40px,5vw,72px);color:#fff;font-weight:400;line-height:1.1;margin-bottom:20px}
+  .ed-title em{font-style:italic;color:var(--oak)}
+  .ed-desc{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:36px;font-weight:300}
+  .ed-price{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:28px}
+  .ed-price strong{font-size:26px;color:var(--oak);font-weight:700}
+
+  /* Craftsmanship */
+  .craft{background:var(--walnut);color:var(--sand)}
+  .craft-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .craft-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .craft-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8)}
+  .craft-badge{position:absolute;top:24px;left:24px;background:var(--sand);color:var(--walnut);padding:12px 16px;border-left:3px solid var(--oak)}
+  .cb-num{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700}
+  .cb-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid)}
+  .craft-content{}
+  .craft-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--oak);display:block;margin-bottom:14px}
+  .craft-title{font-family:'Libre Baskerville',serif;font-size:clamp(32px,4vw,52px);color:var(--sand);font-weight:400;line-height:1.15;margin-bottom:20px}
+  .craft-title em{font-style:italic;color:var(--oak)}
+  .craft-desc{font-size:15px;line-height:1.9;color:rgba(245,240,232,0.65);margin-bottom:40px;font-weight:300}
+  .craft-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+  .craft-list li{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:rgba(245,240,232,0.75)}
+  .craft-list li::before{content:'✦';color:var(--oak);flex-shrink:0;margin-top:1px}
+
+  /* Testimonials */
+  .testis{background:var(--warm)}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+  .tc{background:var(--white);padding:40px 32px;border-bottom:3px solid transparent;transition:border-color 0.3s}
+  .tc:hover{border-color:var(--oak)}
+  .tc-room{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--oak);margin-bottom:12px}
+  .tc-stars{color:var(--oak);font-size:13px;letter-spacing:3px;margin-bottom:14px}
+  .tc-text{font-family:'Libre Baskerville',serif;font-size:15px;font-style:italic;line-height:1.8;color:var(--charcoal);margin-bottom:24px}
+  .tc-auth{display:flex;align-items:center;gap:12px}
+  .tc-av{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid var(--border)}
+  .tc-av img{width:100%;height:100%;object-fit:cover}
+  .tc-name{font-size:14px;font-weight:700;color:var(--walnut)}
+  .tc-city{font-size:11px;color:var(--light)}
+
+  /* Newsletter */
+  .nl{background:linear-gradient(135deg,var(--charcoal),#1a1a1a);padding:100px 80px;text-align:center}
+  .nl h2{font-family:'Libre Baskerville',serif;font-size:clamp(32px,4vw,52px);color:var(--sand);font-weight:400;margin-bottom:12px}
+  .nl h2 em{font-style:italic;color:var(--oak)}
+  .nl p{color:rgba(245,240,232,0.55);font-size:14px;margin-bottom:40px;max-width:380px;margin-inline:auto}
+  .nl-form{display:flex;max-width:460px;margin:0 auto}
+  .nl-in{flex:1;background:rgba(245,240,232,0.07);border:1px solid rgba(245,240,232,0.15);border-left:none;color:var(--sand);font-family:'Tajawal',sans-serif;font-size:14px;padding:16px 20px;outline:none}
+  .nl-in:first-child{border-left:1px solid rgba(245,240,232,0.15)}
+  .nl-in:focus{border-color:var(--oak)}
+  .nl-in::placeholder{color:rgba(245,240,232,0.35)}
+  .nl-btn{background:var(--oak);color:#fff;border:none;padding:16px 28px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .nl-btn:hover{background:var(--walnut)}
+
+  /* Footer */
+  footer{background:var(--sand);border-top:1px solid var(--border);padding:80px 80px 40px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid var(--border);margin-bottom:40px}
+  .fb-desc{font-size:14px;line-height:1.8;color:var(--mid);max-width:260px;margin-bottom:24px;margin-top:12px}
+  .fb-soc{display:flex;gap:10px}
+  .fso{width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--light);font-size:13px;text-decoration:none;transition:all 0.2s}
+  .fso:hover{border-color:var(--walnut);color:var(--walnut)}
+  .fc h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--walnut);margin-bottom:20px}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fl a{color:var(--mid);text-decoration:none;font-size:13px;transition:color 0.2s}
+  .fl a:hover{color:var(--walnut)}
+  .fb-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--light)}
+
+  /* Cart */
+  .cart-ov{position:fixed;inset:0;background:rgba(44,44,44,0.5);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+  .cart-ov.open{opacity:1;pointer-events:all}
+  .cart-dr{position:fixed;top:0;left:-440px;height:100vh;width:420px;background:var(--white);border-right:1px solid var(--border);z-index:1000;transition:left 0.4s ease;overflow-y:auto;display:flex;flex-direction:column}
+  .cart-dr.open{left:0}
+  .ch{padding:24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .ch h3{font-family:'Libre Baskerville',serif;font-size:20px;color:var(--charcoal)}
+  .ch-x{background:none;border:1px solid var(--border);color:var(--mid);font-size:14px;width:34px;height:34px;cursor:pointer;transition:all 0.2s}
+  .ch-x:hover{border-color:var(--walnut);color:var(--walnut)}
+  .ci{flex:1;padding:20px 24px}
+  .citem{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+  .citem img{width:80px;height:80px;object-fit:cover;flex-shrink:0}
+  .citem-info{flex:1}
+  .citem-name{font-size:14px;color:var(--charcoal);margin-bottom:4px;font-family:'Libre Baskerville',serif}
+  .citem-meta{font-size:12px;color:var(--light);margin-bottom:8px}
+  .citem-price{font-size:15px;color:var(--walnut);font-weight:700}
+  .cf{padding:20px 24px;border-top:1px solid var(--border)}
+  .ct{display:flex;justify-content:space-between;margin-bottom:16px;font-size:15px}
+  .ct-amount{font-size:20px;font-weight:700;color:var(--walnut)}
+  .btn-co{width:100%;background:var(--walnut);color:var(--sand);border:none;padding:16px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
+  .btn-co:hover{background:var(--oak)}
+  .toast{position:fixed;top:90px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--walnut);color:var(--sand);padding:14px 28px;font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:0;pointer-events:none;transition:all 0.35s;z-index:2000}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:1024px){
+    nav,footer{padding-left:24px;padding-right:24px}
+    .sec{padding:60px 24px}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr}
+    .hero-img-wrap{height:60vh}
+    .hero-right{padding:60px 32px}
+    .cats-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+    .cm{grid-column:auto!important;grid-row:auto!important;height:240px}
+    .prods-grid{grid-template-columns:1fr 1fr}
+    .craft-inner{grid-template-columns:1fr}
+    .testi-grid{grid-template-columns:1fr}
+    .ft{grid-template-columns:1fr 1fr;gap:36px}
+    .ed-content{padding:0 32px}
+    .nl{padding:60px 24px}
+    .nl-form{flex-direction:column}
+    .nl-in:first-child{border-left:none;border-top:1px solid rgba(245,240,232,0.15)}
+  }
+</style>
+</head>
+<body>
+
+<div class="ann">✦ شحن مجاني للطلبات فوق ٥٠٠ درهم ✦ تجميع مجاني في المنزل للقطع الكبيرة</div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#cats">الفئات</a></li>
+    <li><a href="#prods">المنتجات</a></li>
+    <li><a href="#editorial">مجموعة الموسم</a></li>
+    <li><a href="#craft">حرفتنا</a></li>
+  </ul>
+  <a href="#" class="logo">Maison <span>Nord</span></a>
+  <div class="nav-acts">
+    <button class="nic">🔍</button>
+    <button class="nic" onclick="openCart()">🛒<span class="nic-b">٢</span></button>
+    <button class="btn-ln">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-img-wrap">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=80" alt="أثاث فاخر">
+    <div class="hero-tag">
+      <div class="hero-tag-num">١٢+</div>
+      <div class="hero-tag-label">سنة من الحرفية</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-eyebrow">مجموعة الشتاء ٢٠٢٦</div>
+    <h1>أثاث يحكي<br><em>قصة منزلك</em></h1>
+    <p class="hero-desc">كل قطعة في Maison Nord مصنوعة لتدوم — من خشب البلوط الصلب ومواد طبيعية مختارة، لأن المنزل الجميل يبدأ من الاختيار الصحيح.</p>
+    <div class="hero-btns">
+      <a href="#prods" class="btn-p">تسوق المجموعة</a>
+      <a href="#craft" class="btn-g">عن حرفتنا</a>
+    </div>
+    <div class="hero-awards">
+      <div class="award"><strong>🏆 جائزة</strong>أفضل تصميم ٢٠٢٥</div>
+      <div class="award"><strong>🌿 معتمد</strong>خشب مستدام FSC</div>
+      <div class="award"><strong>✦ ٥٠٠٠+</strong>منزل جميل</div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="sec" id="cats">
+  <div class="sec-head">
+    <span class="sec-eye">تسوق حسب الغرفة</span>
+    <div class="sec-title">صمّم <em>كل غرفة</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="cats-mosaic">
+    <div class="cm">
+      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80" alt="غرفة المعيشة">
+      <div class="cm-ov"><div class="cm-name">غرفة المعيشة</div><div class="cm-cnt">٣٢٠ قطعة</div><div class="cm-arrow">اكتشف ←</div></div>
+    </div>
+    <div class="cm">
+      <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=800&q=80" alt="غرفة النوم">
+      <div class="cm-ov"><div class="cm-name">غرفة النوم</div><div class="cm-cnt">٢٨٥ قطعة</div><div class="cm-arrow">اكتشف ←</div></div>
+    </div>
+    <div class="cm">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="المطبخ">
+      <div class="cm-ov"><div class="cm-name">المطبخ</div><div class="cm-cnt">١٩٤ قطعة</div><div class="cm-arrow">اكتشف ←</div></div>
+    </div>
+    <div class="cm">
+      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" alt="المكتب">
+      <div class="cm-ov"><div class="cm-name">مكتب المنزل</div><div class="cm-cnt">١٤٢ قطعة</div><div class="cm-arrow">اكتشف ←</div></div>
+    </div>
+    <div class="cm">
+      <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=600&q=80" alt="الديكور">
+      <div class="cm-ov"><div class="cm-name">الديكور والإكسسوارات</div><div class="cm-cnt">٤٨٠ قطعة</div><div class="cm-arrow">اكتشف ←</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="sec prods" id="prods">
+  <div class="sec-head center">
+    <span class="sec-eye">وصل حديثاً</span>
+    <div class="sec-title">قطع <em>مختارة بعناية</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="prods-grid">
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="أريكة">
+        <span class="pc-badge new">جديد</span>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">غرفة المعيشة / أرائك</div>
+        <div class="pc-name">أريكة Oslo — قماش الكتان الطبيعي</div>
+        <div class="pc-mat">بلوط أبيض · كتان بلجيكي · حشو دريم</div>
+        <div class="pc-stars">★★★★★ (٢٨٤)</div>
+        <div class="pc-price"><span class="pn">٨,٩٠٠ درهم</span></div>
+        <div class="pc-colors">
+          <div class="cdot a" style="background:#c4956a"></div>
+          <div class="cdot" style="background:#7a9a8a"></div>
+          <div class="cdot" style="background:#6b6b6b"></div>
+          <div class="cdot" style="background:#2c2c2c"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=700&q=80" alt="طاولة قهوة">
+        <span class="pc-badge">-١٥٪</span>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">غرفة المعيشة / طاولات</div>
+        <div class="pc-name">طاولة قهوة Bergen — خشب الجوز الصلب</div>
+        <div class="pc-mat">جوز أمريكي · رجل معدني مطفأ</div>
+        <div class="pc-stars">★★★★★ (١٩٣)</div>
+        <div class="pc-price"><span class="pn">٣,٢٠٠ درهم</span><span class="po">٣,٧٦٥ درهم</span></div>
+        <div class="pc-colors">
+          <div class="cdot a" style="background:#6b4226"></div>
+          <div class="cdot" style="background:#c4956a"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1555618254-e65600a26bdc?w=700&q=80" alt="مصباح">
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">الإضاءة / مصابيح أرضية</div>
+        <div class="pc-name">مصباح Fjord — نحاس طبيعي ونسيج كتان</div>
+        <div class="pc-mat">نحاس منقوش · نسيج كتان بيج</div>
+        <div class="pc-stars">★★★★☆ (٩٧)</div>
+        <div class="pc-price"><span class="pn">١,٨٥٠ درهم</span></div>
+        <div class="pc-colors">
+          <div class="cdot a" style="background:#c4956a"></div>
+          <div class="cdot" style="background:#a0a0a0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Editorial -->
+<div class="editorial" id="editorial">
+  <div class="ed-bg"></div>
+  <div class="ed-content">
+    <div class="ed-eye">مجموعة الموسم الحصرية</div>
+    <div class="ed-title">Nordic <em>Warmth</em><br>٢٠٢٦</div>
+    <p class="ed-desc">مجموعة محدودة مستوحاة من دفء المنازل الإسكندنافية في الشتاء — ألوان الأرض، مواد طبيعية، وتصميم يدعوك للبقاء.</p>
+    <div class="ed-price">المجموعة الكاملة: <strong>٢٤,٥٠٠ درهم</strong></div>
+    <a href="#" class="btn-p">اكتشف المجموعة</a>
+  </div>
+</div>
+
+<!-- Craftsmanship -->
+<section class="sec craft" id="craft">
+  <div class="craft-inner">
+    <div class="craft-img">
+      <img src="https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=800&q=80" alt="حرفية">
+      <div class="craft-badge">
+        <div class="cb-num">١٢</div>
+        <div class="cb-label">عاماً من الخبرة</div>
+      </div>
+    </div>
+    <div class="craft-content">
+      <span class="craft-eye">فلسفتنا في الصناعة</span>
+      <div class="craft-title">الحرفية<br><em>ليست مجرد كلمة</em></div>
+      <p class="craft-desc">في Maison Nord، كل قطعة تمر بأيدي حرفيين متخصصين أمضوا سنوات في إتقان فنهم. نستخدم فقط المواد الطبيعية المستدامة ونرفض الاختصارات على حساب الجودة.</p>
+      <ul class="craft-list">
+        <li>خشب معتمد من غابات مستدامة بشهادة FSC الدولية</li>
+        <li>أقمشة طبيعية خالية من المواد الكيميائية الضارة</li>
+        <li>عمر مضمون لأكثر من ٢٠ عاماً على كل قطعة</li>
+        <li>خدمة ما بعد البيع المجانية لأول ٥ سنوات</li>
+      </ul>
+      <a href="#" class="btn-p">تعرف علينا أكثر</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="sec testis">
+  <div class="sec-head center">
+    <span class="sec-eye">ما قاله عملاؤنا</span>
+    <div class="sec-title">منازل <em>تحكي عنا</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="tc">
+      <div class="tc-room">غرفة المعيشة</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"أريكة Oslo غيّرت شكل غرفة معيشتنا بالكامل. الجودة استثنائية والراحة لا مثيل لها. التوصيل كان سريعاً والتركيب احترافياً."</p>
+      <div class="tc-auth">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?w=100&q=80" alt=""></div>
+        <div><div class="tc-name">فاطمة الحربي</div><div class="tc-city">الرياض</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-room">غرفة النوم</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"اشتريت سرير وخزانة من Maison Nord. التصميم الإسكندنافي يناسب ذوقي تماماً والخشب الطبيعي يعطي دفئاً رائعاً للغرفة."</p>
+      <div class="tc-auth">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt=""></div>
+        <div><div class="tc-name">يوسف العمراني</div><div class="tc-city">الدار البيضاء</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-room">مكتب المنزل</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"مكتب Bergen المنزلي لا مثيل له في جودة الخشب والتشطيب. أصبح العمل من المنزل متعة بعد تجديد مكتبي بقطع من Maison Nord."</p>
+      <div class="tc-auth">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt=""></div>
+        <div><div class="tc-name">ريم الجابر</div><div class="tc-city">الكويت</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="nl">
+  <h2>إلهام يصلك <em>أسبوعياً</em></h2>
+  <p>اشترك لتحصل على أفكار الديكور والعروض الحصرية قبل الجميع.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشترك ✦</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="#" class="logo">Maison <span>Nord</span></a>
+      <p class="fb-desc">أثاث وديكور يجعل منزلك مكاناً تعشق قضاء الوقت فيه — مصنوع بحرفية لتدوم عقوداً.</p>
+      <div class="fb-soc">
+        <a href="#" class="fso">𝕏</a><a href="#" class="fso">📷</a><a href="#" class="fso">in</a><a href="#" class="fso">▶</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>غرف المنزل</h4>
+      <ul class="fl">
+        <li><a href="#">غرفة المعيشة</a></li><li><a href="#">غرفة النوم</a></li>
+        <li><a href="#">المطبخ</a></li><li><a href="#">مكتب المنزل</a></li>
+        <li><a href="#">الديكور</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>خدماتنا</h4>
+      <ul class="fl">
+        <li><a href="#">تصميم داخلي</a></li><li><a href="#">تجميع وتركيب</a></li>
+        <li><a href="#">ضمان ٥ سنوات</a></li><li><a href="#">تخصيص القياسات</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>تواصل معنا</h4>
+      <ul class="fl">
+        <li><a href="#">الدار البيضاء</a></li><li><a href="#">الرياض</a></li>
+        <li><a href="#">hello@maisonnord.ma</a></li><li><a href="#">+212 5XX-XXXXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bottom">
+    <span>© ٢٠٢٦ Maison Nord — جميع الحقوق محفوظة</span>
+    <span>VISA · MC · PayPal · Apple Pay</span>
+  </div>
+</footer>
+
+<!-- Cart -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch">
+    <h3>السلة (٢ قطعة)</h3>
+    <button class="ch-x" onclick="closeCart()">✕</button>
+  </div>
+  <div class="ci">
+    <div class="citem">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80" alt="">
+      <div class="citem-info">
+        <div class="citem-name">أريكة Oslo</div>
+        <div class="citem-meta">اللون: كتان بيج · ×١</div>
+        <div class="citem-price">٨,٩٠٠ درهم</div>
+      </div>
+    </div>
+    <div class="citem">
+      <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=200&q=80" alt="">
+      <div class="citem-info">
+        <div class="citem-name">طاولة قهوة Bergen</div>
+        <div class="citem-meta">اللون: جوز داكن · ×١</div>
+        <div class="citem-price">٣,٢٠٠ درهم</div>
+      </div>
+    </div>
+  </div>
+  <div class="cf">
+    <div class="ct"><span>المجموع</span><span class="ct-amount">١٢,١٠٠ درهم</span></div>
+    <button class="btn-co">إتمام الطلب ←</button>
+  </div>
+</div>
+<div class="toast" id="tst">✦ أُضيف للسلة</div>
+
+<script>
+  function openCart(){document.getElementById('cov').classList.add('open');document.getElementById('cdr').classList.add('open')}
+  function closeCart(){document.getElementById('cov').classList.remove('open');document.getElementById('cdr').classList.remove('open')}
+  function addCart(){const t=document.getElementById('tst');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+  function wish(el){el.textContent=el.textContent==='♡'?'♥':'♡';el.style.color=el.style.color?'':document.documentElement.style.getPropertyValue('--walnut')||'#6b4226'}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
+  document.querySelectorAll('.pc,.tc').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el)});
+</script>
+</body>
+</html>
