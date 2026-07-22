@@ -2,6 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="عيادة الشفاء — مركز طبي متكامل ومعتمد في طنجة المغرب">
+<meta property="og:title" content="عيادة الشفاء — مركز طبي متكامل">
+<meta property="og:description" content="عيادة الشفاء — مركز طبي متكامل ومعتمد في طنجة المغرب">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>عيادة الشفاء — مركز طبي متكامل</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -304,6 +309,20 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
   .footer-grid{grid-template-columns:1fr}
   .section-title{font-size:1.9rem}
 }
+
+/* ── Mobile Burger ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:10001;position:relative;color:inherit}
+.nav-burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .35s ease}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-burger{display:flex!important}
+  nav .nav-btns,nav .nav-actions,nav .nav-cta,nav .hire-btn,nav .join-btn,nav .btn-join,nav .btn-login,nav .nav-btn,nav .nav-btn-ghost,nav .nav-btn-solid{display:none!important}
+  nav .nav-links{display:none!important}
+  nav .nav-links.nav-open{display:flex!important;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:10000;font-size:1.2rem;list-style:none;margin:0;padding:0;background:rgba(0,0,0,.97)}
+}
+@media(min-width:769px){.nav-burger{display:none!important}}
 </style>
 </head>
 <body>
@@ -317,7 +336,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
     </div>
     <div class="top-contact">
       <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      <span>info@alshifa.ma</span>
+      <span>khobaraweb@gmail.com</span>
     </div>
     <div class="top-contact">
       <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -352,6 +371,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
     <a href="#contact" class="btn btn-outline btn-sm">نتائج التحاليل</a>
     <a href="#booking" class="btn btn-primary btn-sm">احجز موعد</a>
   </div>
+<button class="nav-burger" aria-label="القائمة"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -410,14 +430,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
 
   <div class="hero-visual">
     <div class="doctor-frame">
-      <div class="doctor-img-placeholder">
-        <div class="doctor-silhouette">
-          <svg viewBox="0 0 100 120" preserveAspectRatio="none">
-            <ellipse cx="50" cy="30" rx="22" ry="22"/>
-            <path d="M10 120 Q10 70 50 65 Q90 70 90 120Z"/>
-          </svg>
-        </div>
-      </div>
+      <img src="./clinic-assets/doctor-1.jpg" alt="طبيب متخصص" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block">
     </div>
 
     <!-- Floating: appointment -->
@@ -805,7 +818,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
           <div class="contact-card-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
           <div>
             <div class="contact-card-title">البريد الإلكتروني</div>
-            <div class="contact-card-val">info@alshifa.ma</div>
+            <div class="contact-card-val">khobaraweb@gmail.com</div>
           </div>
         </div>
         <div class="contact-card">
@@ -818,9 +831,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
       </div>
     </div>
     <div class="reveal">
-      <div class="map-placeholder">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-      </div>
+      <div class="map-placeholder" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;height:300px;border-radius:20px;background:linear-gradient(145deg,#d4eee9,#e8f5f0);border:1px solid #e0e0e0;text-align:center;padding:2rem">
+      <svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:#2d9e72"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <div style="font-weight:800;font-size:1.1rem;color:#1a1a2e">طنجة، المغرب</div>
+      <div style="color:#666;font-size:.88rem">0778878421 · khobaraweb@gmail.com</div>
+      <a href="https://www.google.com/maps/search/طنجة+المغرب" target="_blank" rel="noopener" style="color:#2d9e72;font-weight:700;font-size:.85rem;text-decoration:none;border:1px solid #2d9e72;padding:.35rem .9rem;border-radius:6px">عرض على خرائط جوجل ←</a>
+    </div>
     </div>
   </div>
 </section>
@@ -866,7 +882,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:4rem 6% 2rem}
       <ul>
         <li><a href="#">الرباط، المغرب</a></li>
         <li><a href="#">+212 500 000 000</a></li>
-        <li><a href="#">info@alshifa.ma</a></li>
+        <li><a href="#">khobaraweb@gmail.com</a></li>
         <li><a href="#">طوارئ ٢٤/٧</a></li>
       </ul>
     </div>
@@ -939,6 +955,9 @@ document.querySelector('.form-submit')?.addEventListener('click', function(){
     document.querySelectorAll('.form-input, .form-select').forEach(i => i.value = '');
   }, 3000);
 });
+</script>
+<script>
+(function(){var b=document.querySelector('.nav-burger');var l=document.querySelector('nav .nav-links')||document.querySelector('header .nav-links');if(b&&l){b.addEventListener('click',function(){l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('nav-open');b.classList.remove('is-open')})})}})();
 </script>
 </body>
 </html>
