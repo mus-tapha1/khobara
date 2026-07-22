@@ -195,6 +195,9 @@ nav{
   background:linear-gradient(160deg,var(--dark) 0%,var(--dark2) 40%,var(--black3) 100%);
   position:relative;overflow:hidden;transition:.5s;
 }
+.barber-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.gallery-item-inner{position:relative}
+.gallery-item-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .barber-card:hover .barber-img{transform:scale(1.03)}
 .barber-art{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -529,7 +532,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 6
   <div class="barbers-grid">
     <div class="barber-card reveal">
       <div class="barber-img">
-        <div class="barber-art">✂</div>
+        <img src="barbershop-assets/barber-ahmed.jpg" alt="أحمد السعيد">
         <div class="barber-overlay"></div>
       </div>
       <div class="barber-xp">10 سنوات</div>
@@ -543,8 +546,8 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 6
       </div>
     </div>
     <div class="barber-card reveal d1">
-      <div class="barber-img" style="background:linear-gradient(160deg,#1a1a1a,#0f1a0f,#0a0a0a)">
-        <div class="barber-art">💈</div>
+      <div class="barber-img">
+        <img src="barbershop-assets/barber-khalid.jpg" alt="خالد العمري">
         <div class="barber-overlay"></div>
       </div>
       <div class="barber-xp">7 سنوات</div>
@@ -558,8 +561,8 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 6
       </div>
     </div>
     <div class="barber-card reveal d2">
-      <div class="barber-img" style="background:linear-gradient(160deg,#0a0a1a,#0f0f1a,#0a0a0a)">
-        <div class="barber-art">✂</div>
+      <div class="barber-img">
+        <img src="barbershop-assets/barber-yasser.jpg" alt="ياسر المالكي">
         <div class="barber-overlay"></div>
       </div>
       <div class="barber-xp">5 سنوات</div>
@@ -573,8 +576,8 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 6
       </div>
     </div>
     <div class="barber-card reveal d3">
-      <div class="barber-img" style="background:linear-gradient(160deg,#1a0a0a,#1a1005,#0a0a0a)">
-        <div class="barber-art">💈</div>
+      <div class="barber-img">
+        <img src="barbershop-assets/barber-faisal.jpg" alt="فيصل الدوسري">
         <div class="barber-overlay"></div>
       </div>
       <div class="barber-xp">8 سنوات</div>
@@ -595,11 +598,11 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 6
   <div class="section-eyebrow reveal">أعمالنا</div>
   <h2 class="section-title reveal">نتحدث <span class="gold">بالصور</span></h2>
   <div class="gallery-grid reveal">
-    <div class="gallery-item"><div class="gallery-item-inner"><div class="barber-art" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:8rem;opacity:.08;color:var(--gold)">✂</div></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
-    <div class="gallery-item"><div class="gallery-item-inner"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
-    <div class="gallery-item"><div class="gallery-item-inner"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
-    <div class="gallery-item"><div class="gallery-item-inner"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
-    <div class="gallery-item"><div class="gallery-item-inner"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
+    <div class="gallery-item"><div class="gallery-item-inner"><img src="barbershop-assets/gallery-interior.jpg" alt="داخل الصالون"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
+    <div class="gallery-item"><div class="gallery-item-inner"><img src="barbershop-assets/gallery-fade.jpg" alt="قصة فيد"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
+    <div class="gallery-item"><div class="gallery-item-inner"><img src="barbershop-assets/gallery-beard.jpg" alt="تشكيل الذقن"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
+    <div class="gallery-item"><div class="gallery-item-inner"><img src="barbershop-assets/gallery-modern.jpg" alt="قصة عصرية"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
+    <div class="gallery-item"><div class="gallery-item-inner"><img src="barbershop-assets/gallery-vip.jpg" alt="كرسي VIP"></div><div class="gallery-overlay"><div class="gallery-icon">+</div></div></div>
   </div>
 </section>
 
