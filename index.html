@@ -26,19 +26,33 @@ nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;
 .btn-g:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04)}
 .stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;padding:2rem 6%;border-bottom:1px solid rgba(255,255,255,.06)}
 .stat{text-align:center}.stat-n{display:block;font-size:2rem;font-weight:900;color:#fff}.stat-n span{color:#7c3aff}.stat-l{font-size:.8rem;color:#8898aa;font-weight:600}
-.sec{padding:5rem 6%}.sec-hd{text-align:center;margin-bottom:3.5rem}
+.sec{padding:5rem 6%}.sec-hd{text-align:center;margin-bottom:2.5rem}
 .sec-tag{font-size:.75rem;color:#b880ff;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:.8rem;display:block}
 .sec-title{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:.8rem}
 .sec-sub{color:#8898aa;font-size:.95rem;max-width:500px;margin:0 auto}
+
+/* ── Filter Bar ── */
+.filter-wrap{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-bottom:2.8rem}
+.filter-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#8898aa;padding:.45rem 1.1rem;border-radius:30px;font-family:'Cairo',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .25s;white-space:nowrap}
+.filter-btn:hover{border-color:rgba(124,58,255,.4);color:#b880ff;background:rgba(124,58,255,.06)}
+.filter-btn.active{background:rgba(124,58,255,.18);border-color:rgba(124,58,255,.5);color:#d4a8ff}
+
+/* ── Grid & Cards ── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.5rem}
 .card{border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02);transition:all .35s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
 .card:hover{border-color:rgba(124,58,255,.3);transform:translateY(-6px);box-shadow:0 25px 60px rgba(0,0,0,.4)}
+.card.hidden{display:none}
 .card-prev{height:170px;display:flex;align-items:center;justify-content:center;font-size:3.8rem;position:relative}
 .card-badge{position:absolute;top:.7rem;right:.7rem;background:rgba(124,58,255,.2);border:1px solid rgba(124,58,255,.3);color:#b880ff;padding:.2rem .6rem;border-radius:20px;font-size:.65rem;font-weight:700}
 .card-body{padding:1.2rem 1.4rem 1.5rem;flex:1;display:flex;flex-direction:column}
 .card-name{font-size:1rem;font-weight:800;color:#fff;margin-bottom:.35rem}
 .card-desc{font-size:.81rem;color:#8898aa;line-height:1.6;flex:1;margin-bottom:1.1rem}
 .card-link{color:#b880ff;font-weight:700;font-size:.82rem}
+
+/* No results message */
+.no-results{display:none;text-align:center;padding:4rem 0;color:#8898aa;font-size:1rem;font-weight:600;grid-column:1/-1}
+.no-results.show{display:block}
+
 .cta-s{background:linear-gradient(135deg,rgba(124,58,255,.12),rgba(155,92,255,.06));border-top:1px solid rgba(124,58,255,.12);padding:5rem 6%;text-align:center}
 .cta-s h2{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:1rem}
 .cta-s p{color:#8898aa;font-size:1rem;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto}
@@ -46,14 +60,15 @@ footer{padding:2rem 6%;border-top:1px solid rgba(255,255,255,.06);display:flex;a
 .f-logo{font-size:1.1rem;font-weight:900;color:#fff;text-decoration:none}.f-logo span{color:#7c3aff}
 .f-links{display:flex;gap:1.5rem;list-style:none}.f-links a{color:#8898aa;text-decoration:none;font-size:.82rem}
 .f-cr{font-size:.78rem;color:#445566}
-@media(max-width:768px){nav,footer{padding:1rem 4%}.hero,.sec{padding:5rem 4% 3rem}.stats{padding:2rem 4%}.grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}}
+@media(max-width:768px){nav,footer{padding:1rem 4%}.hero,.sec{padding:5rem 4% 3rem}.stats{padding:2rem 4%}.grid{grid-template-columns:1fr}.filter-wrap{gap:.4rem}.filter-btn{font-size:.72rem;padding:.38rem .85rem}footer{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
 <nav>
   <a href="#" class="logo">خبرة<span>.</span></a>
-  <div class="nav-badge">٢٩ قالب احترافي</div>
+  <div class="nav-badge">٣٥ قالب احترافي</div>
 </nav>
+
 <section class="hero">
   <div>
     <div class="hero-tag">✦ قوالب مواقع جاهزة للإطلاق</div>
@@ -65,59 +80,271 @@ footer{padding:2rem 6%;border-top:1px solid rgba(255,255,255,.06);display:flex;a
     </div>
   </div>
 </section>
+
 <div class="stats">
-  <div class="stat"><span class="stat-n">٢٩<span>+</span></span><span class="stat-l">قالب احترافي</span></div>
+  <div class="stat"><span class="stat-n">٣٥<span>+</span></span><span class="stat-l">قالب احترافي</span></div>
   <div class="stat"><span class="stat-n">١٥<span>+</span></span><span class="stat-l">قطاعاً مختلفاً</span></div>
   <div class="stat"><span class="stat-n">١٠٠<span>%</span></span><span class="stat-l">تصميم متجاوب</span></div>
 </div>
+
 <section class="sec" id="templates">
   <div class="sec-hd">
     <span class="sec-tag">مكتبة القوالب</span>
     <h2 class="sec-title">اختر القالب المناسب لمشروعك</h2>
     <p class="sec-sub">كل قالب مبني بـ HTML خالص — سريع، خفيف، وجاهز للتخصيص</p>
   </div>
-  <div class="grid">
-    <a href="templates/eyewear-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#1a1510,#2c251c)">👓<div class="card-badge">نظارات</div></div><div class="card-body"><div class="card-name">متجر النظارات الفاخرة</div><div class="card-desc">متجر نظارات راقٍ — شمسية، طبية، رياضية وأطفال من أفخم الماركات العالمية</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/gaming-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#06060e,#0a0a16)">🎮<div class="card-badge">ألعاب</div></div><div class="card-body"><div class="card-name">متجر الألعاب الإلكترونية</div><div class="card-desc">متجر جيمينج سايبربانك — ألعاب، أجهزة، إكسسوارات وبطاقات شحن فورية</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/academy.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#07050f,#0d0a1e)">🎓<div class="card-badge">تعليم</div></div><div class="card-body"><div class="card-name">أكاديمية تعليمية</div><div class="card-desc">منصة تعليمية احترافية — دورات، مدربون، مسارات تعلم وأسعار</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/beauty-skincare-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0f0810,#1e0e1c)">💄<div class="card-badge">جمال</div></div><div class="card-body"><div class="card-name">متجر عناية بالبشرة</div><div class="card-desc">متجر جمال راقٍ — منتجات العناية بالبشرة، الوجه والجسم</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/bookstore.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080610,#10091e)">📚<div class="card-badge">ثقافة</div></div><div class="card-body"><div class="card-name">مكتبة إلكترونية</div><div class="card-desc">مكتبة ومتجر كتب — كتب ورقية ورقمية، تصنيفات وقراء موصى بهم</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/coffee-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#100800,#201200)">☕<div class="card-badge">قهوة</div></div><div class="card-body"><div class="card-name">متجر قهوة متخصصة</div><div class="card-desc">متجر قهوة حرفية — أصناف، تحضير، اشتراكات وتوصيل</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/consulting.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0a12,#131320)">💼<div class="card-badge">استشارات</div></div><div class="card-body"><div class="card-name">شركة استشارات</div><div class="card-desc">موقع شركة استشارات أعمال — خدمات، حالات نجاح وفريق متخصص</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/ecommerce-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080a10,#0d1020)">🛍️<div class="card-badge">تجارة إلكترونية</div></div><div class="card-body"><div class="card-name">متجر إلكتروني</div><div class="card-desc">متجر إلكتروني متكامل — منتجات، تصنيفات، سلة تسوق وعروض</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/fashion-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0c080f,#1a0f1e)">👗<div class="card-badge">أزياء</div></div><div class="card-body"><div class="card-name">متجر أزياء</div><div class="card-desc">متجر أزياء راقٍ — مجموعات، ماركات وأحدث صيحات الموضة</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/fitness.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#060606,#140000)">💪<div class="card-badge">رياضة</div></div><div class="card-body"><div class="card-name">نادي رياضي</div><div class="card-desc">صالة لياقة بدنية — برامج تدريب، مدربون وعضويات</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/home-decor-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0806,#18140a)">🛋️<div class="card-badge">ديكور</div></div><div class="card-body"><div class="card-name">متجر ديكور وأثاث</div><div class="card-desc">متجر أثاث وديكور منزلي — تشكيلات، غرف معروضة وتصميم داخلي</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/hotel.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#061820,#0a2535)">🏨<div class="card-badge">فندق</div></div><div class="card-body"><div class="card-name">فندق ومنتجع فاخر</div><div class="card-desc">منتجع شاطئي 5 نجوم — حجز غرف، مطاعم، سبا ومرافق فاخرة</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/jewelry-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0f0c04,#1e1808)">💍<div class="card-badge">مجوهرات</div></div><div class="card-body"><div class="card-name">متجر مجوهرات فاخرة</div><div class="card-desc">متجر مجوهرات راقٍ — خواتم، قلائد، أساور وهدايا فاخرة</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/kids-toys-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080f15,#0c1820)">🧸<div class="card-badge">أطفال</div></div><div class="card-body"><div class="card-name">متجر ألعاب الأطفال</div><div class="card-desc">متجر ألعاب ومستلزمات أطفال — تعليمية، ترفيهية وهدايا</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/law-firm.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#090710,#0f0a18)">⚖️<div class="card-badge">محاماة</div></div><div class="card-body"><div class="card-name">مكتب محاماة</div><div class="card-desc">مكتب قانوني احترافي — استشارات، قضايا تجارية وعائلية وجنائية</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/maison-velours.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0806,#1a1410)">🌹<div class="card-badge">موضة فاخرة</div></div><div class="card-body"><div class="card-name">دار أزياء فاخرة</div><div class="card-desc">براند فاشن راقٍ — مجموعات حصرية بتصميم لوكشري أصيل</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/medical-clinic.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#040f0a,#071a10)">🏥<div class="card-badge">صحة</div></div><div class="card-body"><div class="card-name">عيادة طبية</div><div class="card-desc">مركز طبي متكامل — أطباء، خدمات وحجز مواعيد أونلاين</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/organic-food-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#050f08,#091a0c)">🥦<div class="card-badge">أغذية</div></div><div class="card-body"><div class="card-name">سوق أغذية عضوية</div><div class="card-desc">متجر أغذية طبيعية وعضوية — خضروات، فواكه، منتجات صحية وتوصيل</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/perfume-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0e0c06,#1c1808)">🕌<div class="card-badge">عطور</div></div><div class="card-body"><div class="card-name">بيت العطور الفاخرة</div><div class="card-desc">متجر عطور شرقية وعالمية — مجموعات حصرية وتجربة تذوق أونلاين</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/portfolio.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#050510,#0a0a20)">💻<div class="card-badge">بورتفوليو</div></div><div class="card-body"><div class="card-name">ملف شخصي / فريلانسر</div><div class="card-desc">بورتفوليو مطور ويب — مشاريع، مهارات وتواصل مباشر</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/real-estate.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0800,#1a1200)">🏠<div class="card-badge">عقارات</div></div><div class="card-body"><div class="card-name">وكالة عقارية</div><div class="card-desc">موقع عقاري احترافي — عقارات للبيع والإيجار مع بحث متقدم</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/restaurant.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0d0800,#1a1000)">☕<div class="card-badge">مطعم / مقهى</div></div><div class="card-body"><div class="card-name">مقهى / مطعم</div><div class="card-desc">موقع مقهى راقٍ — قائمة، حجوزات وقصة العلامة التجارية</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/sports-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080610,#0e0a1a)">🏃<div class="card-badge">رياضة</div></div><div class="card-body"><div class="card-name">متجر معدات رياضية</div><div class="card-desc">متجر ملابس ومعدات رياضية — تسوق حسب الرياضة والأداء</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/streetwear-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080808,#121212)">👕<div class="card-badge">ستريت وير</div></div><div class="card-body"><div class="card-name">متجر ستريت وير</div><div class="card-desc">متجر ملابس شبابية — كولكشن حصرية، ماركات وتروبس مميزة</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/tech-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#060810,#0a0e1e)">📱<div class="card-badge">تقنية</div></div><div class="card-body"><div class="card-name">متجر إلكترونيات وتقنية</div><div class="card-desc">متجر أجهزة ذكية وإلكترونيات — هواتف، لابتوبات وأكسسوارات</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/digital-marketing.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#080510,#100a20)">📣<div class="card-badge">تسويق</div></div><div class="card-body"><div class="card-name">وكالة تسويق رقمي</div><div class="card-desc">وكالة تسويق متكاملة — سوشيال ميديا، إعلانات، SEO وإنتاج محتوى</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/travel.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#040810,#08101e)">✈️<div class="card-badge">سياحة</div></div><div class="card-body"><div class="card-name">وكالة سياحية</div><div class="card-desc">وكالة سفر احترافية — وجهات، باقات سياحية وحجوزات</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/interior-design.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0e0c08,#1c1a10)">🛋️<div class="card-badge">تصميم داخلي</div></div><div class="card-body"><div class="card-name">استوديو تصميم داخلي</div><div class="card-desc">استوديو راقٍ للتصميم الداخلي — فلل، شقق، مكاتب وباقات احترافية مع حاسبة أسعار</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/auto-showroom.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#100808,#200e0e)">🏎️<div class="card-badge">سيارات</div></div><div class="card-body"><div class="card-name">معرض سيارات فاخرة</div><div class="card-desc">معرض سيارات احترافي — مخزون، تمويل، حاسبة أقساط وخدمة ما بعد البيع</div><span class="card-link">معاينة القالب ←</span></div></a>
-    <a href="templates/watch-store.html" class="card"><div class="card-prev" style="background:linear-gradient(135deg,#0a0808,#181010)">⌚<div class="card-badge">ساعات</div></div><div class="card-body"><div class="card-name">متجر ساعات فاخرة</div><div class="card-desc">متجر ساعات سويسرية وفاخرة — مجموعات، ماركات وضمان أصالة</div><span class="card-link">معاينة القالب ←</span></div></a>
+
+  <!-- Filter Buttons -->
+  <div class="filter-wrap" id="filterBar">
+    <button class="filter-btn active" data-filter="all">الكل</button>
+    <button class="filter-btn" data-filter="stores">🛍️ متاجر</button>
+    <button class="filter-btn" data-filter="fashion">👗 أزياء وموضة</button>
+    <button class="filter-btn" data-filter="services">💼 خدمات</button>
+    <button class="filter-btn" data-filter="health">🏥 صحة ولياقة</button>
+    <button class="filter-btn" data-filter="hospitality">🌍 سياحة وضيافة</button>
+    <button class="filter-btn" data-filter="tech">💻 تقنية وأعمال</button>
+    <button class="filter-btn" data-filter="realestate">🏠 عقارات</button>
+    <button class="filter-btn" data-filter="education">🎓 تعليم</button>
+    <button class="filter-btn" data-filter="events">🎊 مناسبات</button>
+  </div>
+
+  <!-- Templates Grid -->
+  <div class="grid" id="templatesGrid">
+
+    <!-- متاجر -->
+    <a href="templates/eyewear-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#1a1510,#2c251c)">👓<div class="card-badge">نظارات</div></div>
+      <div class="card-body"><div class="card-name">متجر النظارات الفاخرة</div><div class="card-desc">متجر نظارات راقٍ — شمسية، طبية، رياضية وأطفال من أفخم الماركات العالمية</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/gaming-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#06060e,#0a0a16)">🎮<div class="card-badge">ألعاب</div></div>
+      <div class="card-body"><div class="card-name">متجر الألعاب الإلكترونية</div><div class="card-desc">متجر جيمينج سايبربانك — ألعاب، أجهزة، إكسسوارات وبطاقات شحن فورية</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/beauty-skincare-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0f0810,#1e0e1c)">💄<div class="card-badge">جمال</div></div>
+      <div class="card-body"><div class="card-name">متجر عناية بالبشرة</div><div class="card-desc">متجر جمال راقٍ — منتجات العناية بالبشرة، الوجه والجسم</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/bookstore.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#080610,#10091e)">📚<div class="card-badge">كتب</div></div>
+      <div class="card-body"><div class="card-name">مكتبة إلكترونية</div><div class="card-desc">مكتبة ومتجر كتب — كتب ورقية ورقمية، تصنيفات وقراء موصى بهم</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/coffee-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#100800,#201200)">☕<div class="card-badge">قهوة</div></div>
+      <div class="card-body"><div class="card-name">متجر قهوة متخصصة</div><div class="card-desc">متجر قهوة حرفية — أصناف، تحضير، اشتراكات وتوصيل</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/ecommerce-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#080a10,#0d1020)">🛍️<div class="card-badge">تجارة إلكترونية</div></div>
+      <div class="card-body"><div class="card-name">متجر إلكتروني</div><div class="card-desc">متجر إلكتروني متكامل — منتجات، تصنيفات، سلة تسوق وعروض</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/home-decor-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0a0806,#18140a)">🛋️<div class="card-badge">ديكور</div></div>
+      <div class="card-body"><div class="card-name">متجر ديكور وأثاث</div><div class="card-desc">متجر أثاث وديكور منزلي — تشكيلات، غرف معروضة وتصميم داخلي</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/jewelry-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0f0c04,#1e1808)">💍<div class="card-badge">مجوهرات</div></div>
+      <div class="card-body"><div class="card-name">متجر مجوهرات فاخرة</div><div class="card-desc">متجر مجوهرات راقٍ — خواتم، قلائد، أساور وهدايا فاخرة</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/kids-toys-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#080f15,#0c1820)">🧸<div class="card-badge">أطفال</div></div>
+      <div class="card-body"><div class="card-name">متجر ألعاب الأطفال</div><div class="card-desc">متجر ألعاب ومستلزمات أطفال — تعليمية، ترفيهية وهدايا</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/organic-food-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#050f08,#091a0c)">🥦<div class="card-badge">أغذية</div></div>
+      <div class="card-body"><div class="card-name">سوق أغذية عضوية</div><div class="card-desc">متجر أغذية طبيعية وعضوية — خضروات، فواكه، منتجات صحية وتوصيل</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/perfume-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0e0c06,#1c1808)">🕌<div class="card-badge">عطور</div></div>
+      <div class="card-body"><div class="card-name">بيت العطور الفاخرة</div><div class="card-desc">متجر عطور شرقية وعالمية — مجموعات حصرية وتجربة تذوق أونلاين</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/sports-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#080610,#0e0a1a)">🏃<div class="card-badge">رياضة</div></div>
+      <div class="card-body"><div class="card-name">متجر معدات رياضية</div><div class="card-desc">متجر ملابس ومعدات رياضية — تسوق حسب الرياضة والأداء</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/watch-store.html" class="card" data-cat="stores">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0a0808,#181010)">⌚<div class="card-badge">ساعات</div></div>
+      <div class="card-body"><div class="card-name">متجر ساعات فاخرة</div><div class="card-desc">متجر ساعات سويسرية وفاخرة — مجموعات، ماركات وضمان أصالة</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- أزياء وموضة -->
+    <a href="templates/fashion-store.html" class="card" data-cat="fashion">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0c080f,#1a0f1e)">👗<div class="card-badge">أزياء</div></div>
+      <div class="card-body"><div class="card-name">متجر أزياء</div><div class="card-desc">متجر أزياء راقٍ — مجموعات، ماركات وأحدث صيحات الموضة</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/maison-velours.html" class="card" data-cat="fashion">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0a0806,#1a1410)">🌹<div class="card-badge">موضة فاخرة</div></div>
+      <div class="card-body"><div class="card-name">دار أزياء فاخرة</div><div class="card-desc">براند فاشن راقٍ — مجموعات حصرية بتصميم لوكشري أصيل</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/streetwear-store.html" class="card" data-cat="fashion">
+      <div class="card-prev" style="background:linear-gradient(135deg,#080808,#121212)">👕<div class="card-badge">ستريت وير</div></div>
+      <div class="card-body"><div class="card-name">متجر ستريت وير</div><div class="card-desc">متجر ملابس شبابية — كولكشن حصرية، ماركات وتروبس مميزة</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- خدمات -->
+    <a href="templates/consulting.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0a0a12,#131320)">💼<div class="card-badge">استشارات</div></div>
+      <div class="card-body"><div class="card-name">شركة استشارات</div><div class="card-desc">موقع شركة استشارات أعمال — خدمات، حالات نجاح وفريق متخصص</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/law-firm.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#090710,#0f0a18)">⚖️<div class="card-badge">محاماة</div></div>
+      <div class="card-body"><div class="card-name">مكتب محاماة</div><div class="card-desc">مكتب قانوني احترافي — استشارات، قضايا تجارية وعائلية وجنائية</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/digital-marketing.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#080510,#100a20)">📣<div class="card-badge">تسويق</div></div>
+      <div class="card-body"><div class="card-name">وكالة تسويق رقمي</div><div class="card-desc">وكالة تسويق متكاملة — سوشيال ميديا، إعلانات، SEO وإنتاج محتوى</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/interior-design.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0e0c08,#1c1a10)">🛋️<div class="card-badge">تصميم داخلي</div></div>
+      <div class="card-body"><div class="card-name">استوديو تصميم داخلي</div><div class="card-desc">استوديو راقٍ للتصميم الداخلي — فلل، شقق، مكاتب وباقات احترافية مع حاسبة أسعار</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/auto-showroom.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#100808,#200e0e)">🏎️<div class="card-badge">سيارات</div></div>
+      <div class="card-body"><div class="card-name">معرض سيارات فاخرة</div><div class="card-desc">معرض سيارات احترافي — مخزون، تمويل، حاسبة أقساط وخدمة ما بعد البيع</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/barbershop.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#060604,#100e08)">✂️<div class="card-badge">حلاقة</div></div>
+      <div class="card-body"><div class="card-name">صالون حلاقة رجالي</div><div class="card-desc">صالون حلاقة فاخر — قصات عصرية، عناية باللحية وخدمات سبا رجالي مع حجوزات أونلاين</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/photography.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#05040a,#0a0810)">📷<div class="card-badge">تصوير</div></div>
+      <div class="card-body"><div class="card-name">استوديو التصوير الاحترافي</div><div class="card-desc">استوديو تصوير متخصص — تصوير أعراس، بورتريه وتجاري بعيون ترى الجمال</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/portfolio.html" class="card" data-cat="services">
+      <div class="card-prev" style="background:linear-gradient(135deg,#050510,#0a0a20)">💻<div class="card-badge">بورتفوليو</div></div>
+      <div class="card-body"><div class="card-name">ملف شخصي / فريلانسر</div><div class="card-desc">بورتفوليو مطور ويب — مشاريع، مهارات وتواصل مباشر</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- صحة ولياقة -->
+    <a href="templates/medical-clinic.html" class="card" data-cat="health">
+      <div class="card-prev" style="background:linear-gradient(135deg,#040f0a,#071a10)">🏥<div class="card-badge">صحة</div></div>
+      <div class="card-body"><div class="card-name">عيادة طبية</div><div class="card-desc">مركز طبي متكامل — أطباء، خدمات وحجز مواعيد أونلاين</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/fitness.html" class="card" data-cat="health">
+      <div class="card-prev" style="background:linear-gradient(135deg,#060606,#140000)">💪<div class="card-badge">لياقة</div></div>
+      <div class="card-body"><div class="card-name">نادي رياضي</div><div class="card-desc">صالة لياقة بدنية — برامج تدريب، مدربون وعضويات</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- سياحة وضيافة -->
+    <a href="templates/hotel.html" class="card" data-cat="hospitality">
+      <div class="card-prev" style="background:linear-gradient(135deg,#061820,#0a2535)">🏨<div class="card-badge">فندق</div></div>
+      <div class="card-body"><div class="card-name">فندق ومنتجع فاخر</div><div class="card-desc">منتجع شاطئي 5 نجوم — حجز غرف، مطاعم، سبا ومرافق فاخرة</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/travel.html" class="card" data-cat="hospitality">
+      <div class="card-prev" style="background:linear-gradient(135deg,#040810,#08101e)">✈️<div class="card-badge">سياحة</div></div>
+      <div class="card-body"><div class="card-name">وكالة سياحية</div><div class="card-desc">وكالة سفر احترافية — وجهات، باقات سياحية وحجوزات</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/restaurant.html" class="card" data-cat="hospitality">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0d0800,#1a1000)">🍽️<div class="card-badge">مطعم / مقهى</div></div>
+      <div class="card-body"><div class="card-name">مقهى / مطعم</div><div class="card-desc">موقع مقهى راقٍ — قائمة، حجوزات وقصة العلامة التجارية</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- تقنية وأعمال -->
+    <a href="templates/tech-store.html" class="card" data-cat="tech">
+      <div class="card-prev" style="background:linear-gradient(135deg,#060810,#0a0e1e)">📱<div class="card-badge">تقنية</div></div>
+      <div class="card-body"><div class="card-name">متجر إلكترونيات وتقنية</div><div class="card-desc">متجر أجهزة ذكية وإلكترونيات — هواتف، لابتوبات وأكسسوارات</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/saas.html" class="card" data-cat="tech">
+      <div class="card-prev" style="background:linear-gradient(135deg,#050918,#080f22)">⬡<div class="card-badge">SaaS</div></div>
+      <div class="card-body"><div class="card-name">منصة SaaS — نيكسوس</div><div class="card-desc">منصة SaaS متكاملة لإدارة المشاريع والفرق بذكاء اصطناعي متقدم</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/saas-app.html" class="card" data-cat="tech">
+      <div class="card-prev" style="background:linear-gradient(135deg,#030510,#050818)">⚡<div class="card-badge">SaaS</div></div>
+      <div class="card-body"><div class="card-name">منصة SaaS — فيلو</div><div class="card-desc">منصة SaaS ذكية لإدارة الفرق والمشاريع والعملاء — وفر وقتك وضاعف إنتاجيتك</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- عقارات -->
+    <a href="templates/real-estate.html" class="card" data-cat="realestate">
+      <div class="card-prev" style="background:linear-gradient(135deg,#0a0800,#1a1200)">🏠<div class="card-badge">عقارات</div></div>
+      <div class="card-body"><div class="card-name">وكالة عقارية</div><div class="card-desc">موقع عقاري احترافي — عقارات للبيع والإيجار مع بحث متقدم</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- تعليم -->
+    <a href="templates/academy.html" class="card" data-cat="education">
+      <div class="card-prev" style="background:linear-gradient(135deg,#07050f,#0d0a1e)">🎓<div class="card-badge">تعليم</div></div>
+      <div class="card-body"><div class="card-name">أكاديمية تعليمية</div><div class="card-desc">منصة تعليمية احترافية — دورات، مدربون، مسارات تعلم وأسعار</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- مناسبات -->
+    <a href="templates/wedding.html" class="card" data-cat="events">
+      <div class="card-prev" style="background:linear-gradient(135deg,#1c1008,#2c1810)">♡<div class="card-badge">أفراح</div></div>
+      <div class="card-body"><div class="card-name">تنظيم الأفراح — لحظات</div><div class="card-desc">شركة تنظيم أفراح ومناسبات فاخرة — تصاميم حصرية ولحظات لا تُنسى</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <a href="templates/wedding-events.html" class="card" data-cat="events">
+      <div class="card-prev" style="background:linear-gradient(135deg,#06040a,#0a0812)">💍<div class="card-badge">مناسبات</div></div>
+      <div class="card-body"><div class="card-name">بيت الأفراح</div><div class="card-desc">متخصصون في تنظيم حفلات الزفاف والخطوبة والفعاليات الفاخرة بلمسة إبداعية لا تُنسى</div><span class="card-link">معاينة القالب ←</span></div>
+    </a>
+
+    <!-- No results message (inside grid so it spans all columns) -->
+    <div class="no-results" id="noResults">لا توجد قوالب في هذه الفئة حتى الآن</div>
+
   </div>
 </section>
+
 <section class="cta-s">
   <h2>هل تحتاج قالباً مخصصاً؟</h2>
   <p>تواصل معنا وسنصمم لك قالب موقع احترافي يناسب نشاطك التجاري تماماً</p>
   <a href="mailto:khobaraweb@gmail.com" class="btn-p">تواصل معنا</a>
 </section>
+
 <footer>
   <a href="#" class="f-logo">خبرة<span>.</span></a>
   <ul class="f-links"><li><a href="#templates">القوالب</a></li><li><a href="mailto:khobaraweb@gmail.com">تواصل</a></li></ul>
   <div class="f-cr">© 2025 خبرة — جميع الحقوق محفوظة</div>
 </footer>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('#templatesGrid .card');
+  var noResults = document.getElementById('noResults');
+
+  function filter(cat) {
+    var visible = 0;
+    cards.forEach(function(card) {
+      if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    noResults.classList.toggle('show', visible === 0);
+  }
+
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      filter(btn.getAttribute('data-filter'));
+    });
+  });
+})();
+</script>
 </body>
 </html>
