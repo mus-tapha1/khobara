@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boon — متجر القهوة المتخصصة</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --espresso:#1a0f00;--dark-roast:#2d1b00;--medium:#5c3d1e;
+    --caramel:#c4853a;--cream:#f5edd8;--warm:#ede0c8;
+    --text:#1a0f00;--soft:#8a6040;--light:#b0906a;
+    --white:#fff;--border:rgba(92,61,30,0.2);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+  /* Ticker */
+  .ticker{background:var(--espresso);color:var(--cream);padding:9px;text-align:center;font-size:12px;letter-spacing:2px;overflow:hidden}
+  .ticker-inner{display:inline-flex;gap:0;animation:tick 30s linear infinite;white-space:nowrap}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ti{padding:0 28px}.td{opacity:0.4;padding:0 4px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(245,237,216,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:'Playfair Display',serif;font-size:24px;color:var(--espresso);letter-spacing:2px;text-decoration:none}
+  .logo span{color:var(--caramel);font-style:italic}
+  .nl{display:flex;gap:28px;list-style:none}
+  .nl a{color:var(--soft);text-decoration:none;font-size:13px;transition:color 0.3s}
+  .nl a:hover{color:var(--espresso)}
+  .na{display:flex;gap:14px;align-items:center}
+  .ni{background:none;border:none;font-size:16px;color:var(--soft);cursor:pointer;transition:color 0.3s;position:relative}
+  .ni:hover{color:var(--espresso)}
+  .nb{position:absolute;top:-6px;right:-6px;background:var(--caramel);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .btn-ln{border:1px solid var(--border);color:var(--text);background:none;padding:8px 18px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;cursor:pointer;transition:all 0.3s}
+  .btn-ln:hover{background:var(--espresso);color:var(--cream);border-color:var(--espresso)}
+
+  /* Hero */
+  .hero{min-height:100vh;display:grid;grid-template-columns:50% 50%}
+  .hl{position:relative;overflow:hidden}
+  .hl img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
+  .hl-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,15,0,0.8),transparent 50%)}
+  .hl-content{position:absolute;bottom:60px;right:60px;left:60px}
+  .hl-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(196,133,58,0.9);color:#fff;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:8px 16px;margin-bottom:20px}
+  .hl-title{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,60px);color:var(--cream);font-weight:700;line-height:1.1;margin-bottom:14px}
+  .hl-title em{font-style:italic;color:var(--caramel)}
+  .hl-desc{font-size:14px;color:rgba(245,237,216,0.75);line-height:1.7;max-width:380px;font-weight:300}
+  .hr-panel{display:flex;flex-direction:column;justify-content:center;padding:80px 60px;background:var(--warm)}
+  .hr-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--caramel);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .hr-eyebrow::before{content:'☕';font-size:18px}
+  .hr h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.15;margin-bottom:18px}
+  .hr h2 em{color:var(--caramel);font-style:italic}
+  .hr-desc{font-size:15px;line-height:1.9;color:var(--soft);margin-bottom:36px;font-weight:300;max-width:400px}
+  .hr-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-p{background:var(--espresso);color:var(--cream);border:none;padding:15px 36px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+  .btn-p:hover{background:var(--medium);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,15,0,0.3)}
+  .btn-g{background:none;border:1px solid var(--border);color:var(--text);padding:15px 36px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+  .btn-g:hover{border-color:var(--caramel);color:var(--caramel)}
+  .hr-origins{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;padding-top:36px;border-top:1px solid var(--border)}
+  .origin{text-align:center}
+  .origin-flag{font-size:24px;margin-bottom:6px}
+  .origin-name{font-size:13px;font-weight:700;color:var(--espresso);margin-bottom:2px}
+  .origin-region{font-size:11px;color:var(--light);letter-spacing:1px}
+
+  /* Section */
+  .sec{padding:80px 80px}
+  .sec-head{margin-bottom:48px}
+  .sec-head.center{text-align:center}
+  .sec-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--caramel);display:block;margin-bottom:12px}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);font-weight:700}
+  .sec-title em{color:var(--caramel);font-style:italic}
+  .sec-line{width:48px;height:1px;background:var(--caramel);margin-top:16px}
+  .sec-head.center .sec-line{margin-inline:auto}
+  .sec-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+  .see-all{color:var(--caramel);text-decoration:none;font-size:12px;letter-spacing:2px;font-weight:700;border-bottom:1px solid var(--caramel)}
+
+  /* Products — Coffee Cards */
+  .coffees-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+  .cc{background:var(--white);cursor:pointer;position:relative;overflow:hidden}
+  .cc-img{position:relative;overflow:hidden;aspect-ratio:1;background:var(--warm)}
+  .cc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+  .cc:hover .cc-img img{transform:scale(1.07)}
+  .cc-badge{position:absolute;top:12px;right:12px;background:var(--caramel);color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 8px}
+  .cc-badge.new{background:var(--espresso)}
+  .cc-wish{position:absolute;top:12px;left:12px;background:rgba(245,237,216,0.9);border:none;color:var(--soft);font-size:14px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(-6px);transition:all 0.3s}
+  .cc:hover .cc-wish{opacity:1;transform:translateY(0)}
+  .cc-add{position:absolute;bottom:0;left:0;right:0;background:var(--espresso);border:none;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:12px;cursor:pointer;transform:translateY(100%);transition:transform 0.35s ease;width:100%}
+  .cc:hover .cc-add{transform:translateY(0)}
+  .cc-add:hover{background:var(--caramel)}
+  .cc-info{padding:18px}
+  .cc-origin{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--caramel);margin-bottom:4px}
+  .cc-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:4px}
+  .cc-process{font-size:11px;color:var(--light);margin-bottom:6px}
+  .cc-tasting{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .ct-note{background:var(--warm);color:var(--soft);font-size:10px;padding:3px 8px;border-radius:12px}
+  .cc-stars{font-size:11px;color:var(--caramel);margin-bottom:6px}
+  .cc-price{display:flex;gap:8px;align-items:center}
+  .cp-new{font-size:16px;font-weight:700;color:var(--espresso)}
+  .cp-old{font-size:12px;text-decoration:line-through;color:var(--light)}
+  .cc-grind{display:flex;gap:6px;margin-top:8px}
+  .cg{border:1px solid var(--border);font-size:10px;padding:3px 7px;color:var(--soft);cursor:pointer;transition:all 0.2s}
+  .cg:hover{border-color:var(--caramel);color:var(--caramel)}
+
+  /* Process Steps */
+  .process{background:var(--espresso);color:var(--cream)}
+  .process-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .process-steps{display:flex;flex-direction:column;gap:0}
+  .ps{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid rgba(245,237,216,0.1);position:relative}
+  .ps:last-child{border:none}
+  .ps-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(196,133,58,0.3);line-height:1;flex-shrink:0;width:56px}
+  .ps-content{}
+  .ps-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin-bottom:6px}
+  .ps-desc{font-size:13px;line-height:1.7;color:rgba(245,237,216,0.55);font-weight:300}
+  .process-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .process-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75)}
+  .pi-label{position:absolute;bottom:24px;right:24px;background:var(--caramel);color:#fff;padding:12px 16px}
+  .pil-main{font-family:'Playfair Display',serif;font-size:18px;font-weight:700}
+  .pil-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:4px;opacity:0.8}
+
+  /* Subscriptions */
+  .subs-sec{background:var(--warm)}
+  .subs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+  .sb{background:var(--white);padding:48px 36px;border-top:4px solid transparent;transition:border-color 0.3s;text-align:center;position:relative}
+  .sb.popular{border-color:var(--caramel)}
+  .sb-popular{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--caramel);color:#fff;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 14px;white-space:nowrap}
+  .sb-name{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--caramel);margin-bottom:16px}
+  .sb-price{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--espresso);line-height:1}
+  .sb-per{font-size:13px;color:var(--light);margin-bottom:24px;display:block}
+  .sb-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px;text-align:right}
+  .sb-features li{font-size:13px;color:var(--soft);display:flex;align-items:center;gap:10px}
+  .sb-features li::before{content:'✓';color:var(--caramel);font-weight:700;flex-shrink:0}
+  .sb-btn{width:100%;background:var(--espresso);color:var(--cream);border:none;padding:14px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
+  .sb-btn:hover{background:var(--caramel)}
+  .sb.popular .sb-btn{background:var(--caramel)}
+  .sb.popular .sb-btn:hover{background:var(--medium)}
+
+  /* Testimonials */
+  .testis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+  .tc{background:var(--warm);padding:36px 28px;border-right:3px solid transparent;transition:border-color 0.3s}
+  .tc:hover{border-color:var(--caramel)}
+  .tc-cup{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--caramel);margin-bottom:12px}
+  .tc-stars{color:var(--caramel);font-size:13px;letter-spacing:3px;margin-bottom:14px}
+  .tc-text{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;line-height:1.7;color:var(--text);margin-bottom:20px}
+  .tc-auth{display:flex;align-items:center;gap:10px}
+  .tc-av{width:42px;height:42px;border-radius:50%;overflow:hidden;border:2px solid var(--border)}
+  .tc-av img{width:100%;height:100%;object-fit:cover}
+  .tc-name{font-size:13px;font-weight:700;color:var(--espresso)}
+  .tc-city{font-size:11px;color:var(--light)}
+
+  /* Newsletter */
+  .nl-sec{background:linear-gradient(135deg,var(--espresso),var(--dark-roast));padding:80px;text-align:center}
+  .nl-sec h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);color:var(--cream);font-weight:700;margin-bottom:10px}
+  .nl-sec h2 em{color:var(--caramel);font-style:italic}
+  .nl-sec p{color:rgba(245,237,216,0.55);font-size:14px;margin-bottom:36px;max-width:360px;margin-inline:auto}
+  .nl-form{display:flex;max-width:440px;margin:0 auto}
+  .nl-in{flex:1;background:rgba(245,237,216,0.07);border:1px solid rgba(245,237,216,0.15);border-left:none;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:14px;padding:14px 18px;outline:none}
+  .nl-in:first-child{border-left:1px solid rgba(245,237,216,0.15)}
+  .nl-in:focus{border-color:var(--caramel)}
+  .nl-in::placeholder{color:rgba(245,237,216,0.35)}
+  .nl-btn{background:var(--caramel);color:#fff;border:none;padding:14px 24px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .nl-btn:hover{background:var(--medium)}
+
+  /* Footer */
+  footer{background:var(--espresso);color:var(--cream);padding:70px 80px 36px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(245,237,216,0.1);margin-bottom:36px}
+  .fb-desc{font-size:14px;line-height:1.8;color:rgba(245,237,216,0.45);max-width:260px;margin:12px 0 20px}
+  .fb-soc{display:flex;gap:10px}
+  .fso{width:36px;height:36px;border:1px solid rgba(245,237,216,0.15);display:flex;align-items:center;justify-content:center;color:rgba(245,237,216,0.4);font-size:13px;text-decoration:none;transition:all 0.2s}
+  .fso:hover{border-color:var(--caramel);color:var(--caramel)}
+  .fc h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--caramel);margin-bottom:18px}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fl a{color:rgba(245,237,216,0.45);text-decoration:none;font-size:13px;transition:color 0.2s}
+  .fl a:hover{color:var(--caramel)}
+  .fb-bottom{display:flex;justify-content:space-between;font-size:12px;color:rgba(245,237,216,0.3)}
+
+  /* Cart */
+  .cart-ov{position:fixed;inset:0;background:rgba(26,15,0,0.6);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+  .cart-ov.open{opacity:1;pointer-events:all}
+  .cart-dr{position:fixed;top:0;left:-440px;height:100vh;width:420px;background:var(--cream);border-right:1px solid var(--border);z-index:1000;transition:left 0.4s ease;overflow-y:auto;display:flex;flex-direction:column}
+  .cart-dr.open{left:0}
+  .ch{padding:22px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .ch h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--espresso)}
+  .ch-x{background:none;border:1px solid var(--border);color:var(--soft);font-size:14px;width:34px;height:34px;cursor:pointer;transition:all 0.2s}
+  .ch-x:hover{border-color:var(--espresso);color:var(--espresso)}
+  .ci{flex:1;padding:18px 24px}
+  .citem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+  .citem img{width:72px;height:72px;object-fit:cover;flex-shrink:0}
+  .citem-info{flex:1}
+  .citem-name{font-family:'Playfair Display',serif;font-size:14px;color:var(--espresso);margin-bottom:3px}
+  .citem-meta{font-size:12px;color:var(--light);margin-bottom:6px}
+  .citem-price{font-size:14px;color:var(--caramel);font-weight:700}
+  .cf{padding:18px 24px;border-top:1px solid var(--border)}
+  .ct{display:flex;justify-content:space-between;margin-bottom:14px;font-size:15px}
+  .ct-amount{font-size:20px;font-weight:700;color:var(--espresso)}
+  .btn-co{width:100%;background:var(--espresso);color:var(--cream);border:none;padding:15px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
+  .btn-co:hover{background:var(--caramel)}
+  .toast{position:fixed;top:86px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--espresso);color:var(--cream);border:1px solid var(--caramel);padding:13px 26px;font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:0;pointer-events:none;transition:all 0.35s;z-index:2000}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:1024px){
+    nav,footer,.sec,.process,.nl-sec{padding-left:24px;padding-right:24px}
+    .nl{display:none}
+    .hero{grid-template-columns:1fr}
+    .hl{height:70vh}
+    .hr-panel{padding:60px 32px}
+    .coffees-grid{grid-template-columns:repeat(2,1fr)}
+    .process-inner{grid-template-columns:1fr}
+    .subs-grid{grid-template-columns:1fr}
+    .testis-grid{grid-template-columns:1fr}
+    .ft{grid-template-columns:1fr 1fr;gap:32px}
+    .nl-form{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ti">☕ شحن مبرد مجاني لكل الطلبات</span><span class="td">◆</span>
+    <span class="ti">🌿 قهوة ١٠٠٪ عضوية ومستدامة</span><span class="td">◆</span>
+    <span class="ti">📦 اشتراك شهري يوفر ٢٠٪</span><span class="td">◆</span>
+    <span class="ti">✈️ مباشرة من مزارع الأصل</span><span class="td">◆</span>
+    <span class="ti">☕ شحن مبرد مجاني لكل الطلبات</span><span class="td">◆</span>
+    <span class="ti">🌿 قهوة ١٠٠٪ عضوية ومستدامة</span><span class="td">◆</span>
+    <span class="ti">📦 اشتراك شهري يوفر ٢٠٪</span><span class="td">◆</span>
+    <span class="ti">✈️ مباشرة من مزارع الأصل</span><span class="td">◆</span>
+  </div>
+</div>
+
+<nav>
+  <ul class="nl">
+    <li><a href="#coffees">القهوة</a></li>
+    <li><a href="#process">من المزرعة</a></li>
+    <li><a href="#subs">اشتراك</a></li>
+    <li><a href="#">المعدات</a></li>
+  </ul>
+  <a href="#" class="logo">Boon <span>☕</span></a>
+  <div class="na">
+    <button class="ni">🔍</button>
+    <button class="ni" onclick="openCart()">🛒<span class="nb">٢</span></button>
+    <button class="btn-ln">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hl">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1000&q=80" alt="قهوة">
+    <div class="hl-ov"></div>
+    <div class="hl-content">
+      <div class="hl-tag">☕ قهوة متخصصة من المصدر</div>
+      <div class="hl-title">فنجان <em>يحكي</em><br>قصة أصله</div>
+      <p class="hl-desc">من مزارع إثيوبيا ويمن وكولومبيا مباشرةً إلى فنجانك — قهوة متخصصة تُحمص بعناية للكشف عن كل نكهاتها الفريدة.</p>
+    </div>
+  </div>
+  <div class="hr-panel">
+    <div class="hr-eyebrow">حبوب فاخرة مختارة</div>
+    <h2>اكتشف <em>عالم</em><br>القهوة المتخصصة</h2>
+    <p class="hr-desc">قهوة Single Origin محمصة حسب الطلب — نختار أفضل الحبوب من أعلى المزارع ونشحنها إليك طازجة خلال ٢٤ ساعة من التحميص.</p>
+    <div class="hr-btns">
+      <a href="#coffees" class="btn-p">تسوق الآن</a>
+      <a href="#subs" class="btn-g">اشتراك شهري</a>
+    </div>
+    <div class="hr-origins">
+      <div class="origin"><div class="origin-flag">🇪🇹</div><div class="origin-name">إثيوبيا</div><div class="origin-region">منطقة يرغاشيف</div></div>
+      <div class="origin"><div class="origin-flag">🇾🇪</div><div class="origin-name">اليمن</div><div class="origin-region">هرار الأصيل</div></div>
+      <div class="origin"><div class="origin-flag">🇨🇴</div><div class="origin-name">كولومبيا</div><div class="origin-region">هويلا</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Coffees -->
+<section class="sec" id="coffees">
+  <div class="sec-top">
+    <div>
+      <span class="sec-eye">حبوب Single Origin</span>
+      <div class="sec-title">اختياراتنا <em>الموسمية</em></div>
+    </div>
+    <a href="#" class="see-all">عرض الكل →</a>
+  </div>
+  <div class="coffees-grid">
+    <div class="cc">
+      <div class="cc-img">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=80" alt="قهوة إثيوبية">
+        <div class="cc-badge new">جديد</div>
+        <button class="cc-wish" onclick="wish(this)">♡</button>
+        <button class="cc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="cc-info">
+        <div class="cc-origin">🇪🇹 إثيوبيا — يرغاشيف</div>
+        <div class="cc-name">Yirgacheffe Natural</div>
+        <div class="cc-process">معالجة طبيعية · تحميص خفيف</div>
+        <div class="cc-tasting"><span class="ct-note">توت أزرق</span><span class="ct-note">زهور الجسمين</span><span class="ct-note">ليمون</span></div>
+        <div class="cc-stars">★★★★★ (٣٤٢)</div>
+        <div class="cc-price"><span class="cp-new">٢٢٠ درهم</span><span class="cp-old">٢٥٠ غ</span></div>
+        <div class="cc-grind"><span class="cg">حبوب</span><span class="cg">اسبريسو</span><span class="cg">مرشح</span><span class="cg">ناعم</span></div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-img">
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="قهوة يمنية">
+        <div class="cc-badge">نادر</div>
+        <button class="cc-wish" onclick="wish(this)">♡</button>
+        <button class="cc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="cc-info">
+        <div class="cc-origin">🇾🇪 اليمن — هرار</div>
+        <div class="cc-name">Yemen Harar Heirloom</div>
+        <div class="cc-process">معالجة جافة تقليدية · تحميص متوسط</div>
+        <div class="cc-tasting"><span class="ct-note">شوكولاتة</span><span class="ct-note">تين</span><span class="ct-note">بهارات</span></div>
+        <div class="cc-stars">★★★★★ (٢٨٧)</div>
+        <div class="cc-price"><span class="cp-new">٣٤٠ درهم</span><span class="cp-old">٢٥٠ غ</span></div>
+        <div class="cc-grind"><span class="cg">حبوب</span><span class="cg">اسبريسو</span><span class="cg">مرشح</span></div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-img">
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="قهوة كولومبية">
+        <button class="cc-wish" onclick="wish(this)">♡</button>
+        <button class="cc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="cc-info">
+        <div class="cc-origin">🇨🇴 كولومبيا — هويلا</div>
+        <div class="cc-name">Huila Washed Gesha</div>
+        <div class="cc-process">معالجة مغسولة · تحميص خفيف-متوسط</div>
+        <div class="cc-tasting"><span class="ct-note">خوخ</span><span class="ct-note">زهر البرتقال</span><span class="ct-note">عسل</span></div>
+        <div class="cc-stars">★★★★★ (١٩٤)</div>
+        <div class="cc-price"><span class="cp-new">٢٨٠ درهم</span></div>
+        <div class="cc-grind"><span class="cg">حبوب</span><span class="cg">اسبريسو</span><span class="cg">مرشح</span></div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-img">
+        <img src="https://images.unsplash.com/photo-1510591509098-f374fae3aae2?w=600&q=80" alt="مزيج">
+        <div class="cc-badge" style="background:var(--medium)">خاص</div>
+        <button class="cc-wish" onclick="wish(this)">♡</button>
+        <button class="cc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="cc-info">
+        <div class="cc-origin">🌍 مزيج الدار — Boon Blend</div>
+        <div class="cc-name">House Blend №7</div>
+        <div class="cc-process">مزيج ثلاثة أصول · تحميص متوسط-قوي</div>
+        <div class="cc-tasting"><span class="ct-note">كراميل</span><span class="ct-note">جوز</span><span class="ct-note">شوكولاتة داكنة</span></div>
+        <div class="cc-stars">★★★★★ (٦٢٤)</div>
+        <div class="cc-price"><span class="cp-new">١٨٠ درهم</span></div>
+        <div class="cc-grind"><span class="cg">حبوب</span><span class="cg">اسبريسو</span><span class="cg">مرشح</span><span class="cg">فرنش</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="sec process" id="process">
+  <div class="process-inner">
+    <div>
+      <div class="sec-head">
+        <span class="sec-eye">رحلة الفنجان</span>
+        <div class="sec-title" style="color:var(--cream)">من <em style="color:var(--caramel)">المزرعة</em><br>إلى فنجانك</div>
+      </div>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-num">١</div><div class="ps-content"><div class="ps-title">اختيار الحبوب</div><div class="ps-desc">نزور المزارع شخصياً ونختار فقط الحبوب التي تحقق معاييرنا العالية للجودة والاستدامة.</div></div></div>
+        <div class="ps"><div class="ps-num">٢</div><div class="ps-content"><div class="ps-title">المعالجة والتجفيف</div><div class="ps-desc">تُعالج الحبوب بأساليب تقليدية — طبيعية أو مغسولة أو هانيد — لاستخلاص أفضل نكهاتها.</div></div></div>
+        <div class="ps"><div class="ps-num">٣</div><div class="ps-content"><div class="ps-title">التحميص حسب الطلب</div><div class="ps-desc">نُحمص كميتك فور استلام الطلب — لأن القهوة الطازجة تختلف كلياً عن تلك التي مكثت في المستودع.</div></div></div>
+        <div class="ps"><div class="ps-num">٤</div><div class="ps-content"><div class="ps-title">الشحن المبرد خلال ٢٤ ساعة</div><div class="ps-desc">نشحن في علب خاصة تحافظ على الطزاجة — فنجانك الأول يجب أن يكون مثالياً.</div></div></div>
+      </div>
+    </div>
+    <div class="process-img">
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&q=80" alt="تحميص القهوة">
+      <div class="pi-label">
+        <div class="pil-main">٢٤ ساعة</div>
+        <div class="pil-sub">من التحميص إلى فنجانك</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subscriptions -->
+<section class="sec subs-sec" id="subs">
+  <div class="sec-head center">
+    <span class="sec-eye">وفر وتمتع دائماً بالطازج</span>
+    <div class="sec-title">اشتراك <em>شهري</em></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="subs-grid">
+    <div class="sb">
+      <div class="sb-name">مستكشف</div>
+      <div class="sb-price">١٥٩</div>
+      <span class="sb-per">درهم / شهر</span>
+      <ul class="sb-features">
+        <li>٢٥٠ غ من قهوة واحدة شهرياً</li>
+        <li>بطاقة أصل القهوة</li>
+        <li>إرشادات التحضير</li>
+        <li>خصم ١٠٪ على المشتريات</li>
+      </ul>
+      <button class="sb-btn">اشترك الآن</button>
+    </div>
+    <div class="sb popular">
+      <div class="sb-popular">الأكثر شعبية</div>
+      <div class="sb-name">عاشق القهوة</div>
+      <div class="sb-price">٢٨٩</div>
+      <span class="sb-per">درهم / شهر</span>
+      <ul class="sb-features">
+        <li>٥٠٠ غ من قهوتَين مختلفتَين</li>
+        <li>بطاقة أصل تفصيلية</li>
+        <li>مصنف نكهات شهري</li>
+        <li>خصم ١٥٪ على المشتريات</li>
+        <li>شحن مجاني دائماً</li>
+      </ul>
+      <button class="sb-btn">اشترك الآن</button>
+    </div>
+    <div class="sb">
+      <div class="sb-name">المحترف</div>
+      <div class="sb-price">٤٩٩</div>
+      <span class="sb-per">درهم / شهر</span>
+      <ul class="sb-features">
+        <li>١ كغ من ثلاثة أصول نادرة</li>
+        <li>جلسة تحضير مباشرة أونلاين</li>
+        <li>وصول حصري لإصدارات محدودة</li>
+        <li>خصم ٢٠٪ + دعوة لحدث Boon</li>
+        <li>شحن مجاني + مجفف رطوبة</li>
+      </ul>
+      <button class="sb-btn">اشترك الآن</button>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="sec">
+  <div class="sec-head center">
+    <span class="sec-eye">جمهور Boon يتحدث</span>
+    <div class="sec-title">من <em>فنجان</em> إلى آخر</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="testis-grid">
+    <div class="tc">
+      <div class="tc-cup">☕ اسبريسو محب</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"قهوة Yemen Harar هي الأفضل التي جربتها في حياتي. النكهة عميقة ومعقدة بطريقة لا تجدها في أي مكان آخر."</p>
+      <div class="tc-auth"><div class="tc-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""></div><div><div class="tc-name">محمد الغامدي</div><div class="tc-city">جدة</div></div></div>
+    </div>
+    <div class="tc">
+      <div class="tc-cup">🌿 قهوة مرشح</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"اشتركت في الخطة الشهرية منذ ٦ أشهر ولا يمكنني التوقف. كل شهر مفاجأة جديدة وطزاجة لا مثيل لها."</p>
+      <div class="tc-auth"><div class="tc-av"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b67d?w=100&q=80" alt=""></div><div><div class="tc-name">سارة المزروع</div><div class="tc-city">الرياض</div></div></div>
+    </div>
+    <div class="tc">
+      <div class="tc-cup">☕ باريستا هاوٍ</div>
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"Yirgacheffe Natural من Boon قلبت فهمي للقهوة. أجمل قهوة إثيوبية جربتها وطازجة بشكل لا يُصدق."</p>
+      <div class="tc-auth"><div class="tc-av"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&q=80" alt=""></div><div><div class="tc-name">عمر الشريف</div><div class="tc-city">القاهرة</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="nl-sec">
+  <h2>فنجان أفضل <em>كل صباح</em></h2>
+  <p>اشترك للحصول على وصفات التحضير، أخبار المواسم الجديدة، وعروض حصرية.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشترك ☕</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="#" class="logo" style="color:var(--caramel)">Boon <span style="color:var(--cream)">☕</span></a>
+      <p class="fb-desc">قهوة متخصصة من أفضل مزارع العالم — محمصة حسب الطلب، مشحونة بحب.</p>
+      <div class="fb-soc">
+        <a href="#" class="fso">𝕏</a><a href="#" class="fso">📷</a><a href="#" class="fso">▶</a><a href="#" class="fso">in</a>
+      </div>
+    </div>
+    <div class="fc"><h4>القهوة</h4><ul class="fl"><li><a href="#">أصول فردية</a></li><li><a href="#">المزيج الخاص</a></li><li><a href="#">موسمي ونادر</a></li><li><a href="#">المعدات</a></li></ul></div>
+    <div class="fc"><h4>اشتراك</h4><ul class="fl"><li><a href="#">خطة مستكشف</a></li><li><a href="#">خطة عاشق القهوة</a></li><li><a href="#">خطة المحترف</a></li></ul></div>
+    <div class="fc"><h4>تواصل</h4><ul class="fl"><li><a href="#">الدار البيضاء</a></li><li><a href="#">hello@boon.coffee</a></li><li><a href="#">+212 600-000000</a></li></ul></div>
+  </div>
+  <div class="fb-bottom"><span>© ٢٠٢٦ Boon Coffee — جميع الحقوق محفوظة</span><span>VISA · MC · PayPal</span></div>
+</footer>
+
+<!-- Cart -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch"><h3>سلتك (٢)</h3><button class="ch-x" onclick="closeCart()">✕</button></div>
+  <div class="ci">
+    <div class="citem"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&q=80" alt=""><div class="citem-info"><div class="citem-name">Yirgacheffe Natural</div><div class="citem-meta">٢٥٠غ · طحن مرشح</div><div class="citem-price">٢٢٠ درهم</div></div></div>
+    <div class="citem"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&q=80" alt=""><div class="citem-info"><div class="citem-name">Yemen Harar Heirloom</div><div class="citem-meta">٢٥٠غ · حبوب كاملة</div><div class="citem-price">٣٤٠ درهم</div></div></div>
+  </div>
+  <div class="cf"><div class="ct"><span>المجموع</span><span class="ct-amount">٥٦٠ درهم</span></div><button class="btn-co">إتمام الطلب ←</button></div>
+</div>
+<div class="toast" id="tst">☕ أُضيف للسلة</div>
+
+<script>
+  function openCart(){document.getElementById('cov').classList.add('open');document.getElementById('cdr').classList.add('open')}
+  function closeCart(){document.getElementById('cov').classList.remove('open');document.getElementById('cdr').classList.remove('open')}
+  function addCart(){const t=document.getElementById('tst');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+  function wish(el){el.textContent=el.textContent==='♡'?'♥':'♡';el.style.color=el.style.color?'':'';}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
+  document.querySelectorAll('.cc,.sb,.tc').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el)});
+</script>
+</body>
+</html>
