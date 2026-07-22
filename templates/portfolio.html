@@ -2,231 +2,533 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Zaid Design — بورتفوليو إبداعي</title>
+<title>ZAID.DEV — بورتفوليو مصمم ومطور ويب</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{font-family:'Cairo',sans-serif;background:#08090c;color:#e8edf5;overflow-x:hidden}
-:root{--cyan:#00d4ff;--green:#00ff88;--dark:#08090c;--card:#0e1016}
+:root{--dark:#08090c;--card:#0e1016;--cyan:#00d4ff;--green:#00ff88;--purple:#9b59ff;--muted:#8898aa}
 
-nav{position:fixed;top:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(8,9,12,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
-.logo{font-size:1.2rem;font-weight:900;letter-spacing:.1em;color:white}
-.logo span{color:var(--cyan)}
+/* ─── NAV ─── */
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6%;background:rgba(8,9,12,.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{font-size:1.2rem;font-weight:900;letter-spacing:.12em;color:white}
+.logo span{background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#6080a0;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a{color:#6080a0;text-decoration:none;font-size:.87rem;font-weight:600;transition:color .3s}
 .nav-links a:hover{color:white}
-.hire-btn{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border:none;padding:.7rem 1.8rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:800;cursor:pointer;font-size:.85rem}
+.hire-btn{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border:none;padding:.7rem 1.8rem;border-radius:7px;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer;font-size:.85rem;transition:all .3s;text-decoration:none;display:inline-block}
+.hire-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,212,255,.35)}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:0 5%;position:relative;overflow:hidden;padding-top:80px}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,212,255,.05),transparent),radial-gradient(ellipse 60% 60% at 80% 30%,rgba(0,255,136,.03),transparent)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:80px 80px}
-.hero-content{position:relative;z-index:2;max-width:55%}
-.hero-intro{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.status-dot{width:10px;height:10px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.4)}50%{box-shadow:0 0 0 8px rgba(0,255,136,0)}}
-.status-text{font-size:.85rem;color:#8898aa}
-.hero h1{font-size:4rem;font-weight:900;line-height:1.05;margin-bottom:1.5rem;color:white}
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 6%;position:relative;overflow:hidden;padding-top:80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 15% 50%,rgba(0,212,255,.04),transparent),radial-gradient(ellipse 50% 50% at 85% 30%,rgba(0,255,136,.03),transparent),radial-gradient(ellipse 40% 40% at 50% 80%,rgba(155,89,255,.03),transparent)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.035) 1px,transparent 1px);background-size:80px 80px}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;width:100%}
+.status-pill{display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,255,136,.07);border:1px solid rgba(0,255,136,.18);padding:.4rem 1.1rem;border-radius:30px;margin-bottom:2rem;font-size:.8rem;color:var(--green);font-weight:700}
+.status-dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.5)}50%{box-shadow:0 0 0 8px rgba(0,255,136,0)}}
+.hero h1{font-size:3.8rem;font-weight:900;line-height:1.05;margin-bottom:1.5rem;color:white}
 .hero h1 .name{background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
-.hero h1 .role{color:#556677;font-size:2.5rem;font-weight:300}
-.hero p{color:#8898aa;line-height:1.9;margin-bottom:2.5rem;max-width:480px}
-.hero-btns{display:flex;gap:1rem;margin-bottom:3rem}
-.btn-cyan{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border:none;padding:1rem 2.5rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:800;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-block;transition:all .3s}
-.btn-cyan:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,212,255,.3)}
-.btn-download{border:1px solid rgba(255,255,255,.15);color:white;background:transparent;padding:1rem 2.5rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-block;transition:all .3s}
-.btn-download:hover{border-color:var(--cyan);color:var(--cyan)}
-.skills-tags{display:flex;gap:.6rem;flex-wrap:wrap}
-.skill-tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.4rem .9rem;border-radius:20px;font-size:.78rem;color:#8898aa;transition:all .3s;cursor:pointer}
-.skill-tag:hover{border-color:var(--cyan);color:var(--cyan)}
-.hero-visual{position:absolute;left:5%;top:50%;transform:translateY(-50%);z-index:2}
-.avatar-card{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:2rem;text-align:center;position:relative}
-.avatar{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,#0a1a30,#1a2d50);border:3px solid rgba(0,212,255,.3);display:flex;align-items:center;justify-content:center;font-size:5rem;margin:0 auto 1.5rem}
-.exp-badge{position:absolute;top:-15px;left:-15px;background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;padding:.6rem .8rem;border-radius:10px;font-weight:900;font-size:.8rem;text-align:center}
-.exp-num{font-size:1.3rem;font-weight:900;display:block}
-.social-links{display:flex;gap:.8rem;justify-content:center;margin-top:1rem}
-.soc-link{width:36px;height:36px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;transition:all .3s}
-.soc-link:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero h1 .role{font-size:2.2rem;font-weight:300;color:#445566;display:block;margin-top:.3rem}
+.hero-desc{color:#8898aa;line-height:1.9;margin-bottom:2.5rem;max-width:490px;font-size:.97rem}
+.hero-btns{display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border:none;padding:1rem 2.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:900;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-block;transition:all .3s;box-shadow:0 8px 30px rgba(0,212,255,.25)}
+.btn-cyan:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,212,255,.4)}
+.btn-ghost{border:1px solid rgba(255,255,255,.14);color:white;background:transparent;padding:1rem 2.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.skill-tags{display:flex;gap:.6rem;flex-wrap:wrap}
+.stag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:.35rem .9rem;border-radius:20px;font-size:.75rem;color:#8898aa;transition:all .3s;cursor:default}
+.stag:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.06)}
 
-/* SERVICES */
-.services{padding:6rem 5%;background:#08090c}
-.section-title{text-align:center;margin-bottom:3.5rem}
-.section-title .stag{font-size:.8rem;color:var(--cyan);letter-spacing:.3em;text-transform:uppercase;margin-bottom:.8rem}
-.section-title h2{font-size:2.2rem;font-weight:800;color:white}
+/* Hero right card */
+.hero-right{position:relative}
+.profile-card{background:rgba(14,16,22,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.07);border-radius:24px;padding:2.5rem;text-align:center;position:relative;overflow:hidden}
+.profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--green),var(--purple))}
+.avatar-wrap{position:relative;width:130px;height:130px;margin:0 auto 1.5rem;border-radius:50%;background:linear-gradient(135deg,#0a1a30,#1a2d50);border:3px solid rgba(0,212,255,.25);display:flex;align-items:center;justify-content:center;font-size:4.5rem}
+.exp-badge{position:absolute;top:-12px;left:-12px;background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;padding:.5rem .7rem;border-radius:10px;font-weight:900;font-size:.75rem;line-height:1.2}
+.profile-name{font-size:1.15rem;font-weight:900;color:white;margin-bottom:.2rem}
+.profile-title{font-size:.82rem;color:var(--cyan);margin-bottom:1.5rem}
+.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.5rem}
+.pstat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:.8rem .5rem;text-align:center}
+.pstat-num{font-size:1.2rem;font-weight:900;background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.pstat-lbl{font-size:.68rem;color:#8898aa;margin-top:.2rem}
+.social-row{display:flex;gap:.7rem;justify-content:center}
+.soc-btn{width:38px;height:38px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;transition:all .3s;color:#8898aa}
+.soc-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.07)}
+.available-tag{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.2);border-radius:20px;padding:.5rem 1.2rem;font-size:.75rem;color:var(--green);font-weight:700;white-space:nowrap}
+
+/* ─── ABOUT ─── */
+.about{padding:7rem 6%;background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{aspect-ratio:4/5;background:linear-gradient(160deg,#0a1420,#1a2a40,#0a1420);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:8rem;position:relative;overflow:hidden;border:1px solid rgba(0,212,255,.1)}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,12,.7) 0%,transparent 50%)}
+.cert-badge{position:absolute;bottom:2rem;right:-2rem;background:rgba(14,16,22,.95);border:1px solid rgba(0,212,255,.2);border-radius:16px;padding:1.2rem 1.5rem;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.cert-badge h4{font-size:.9rem;font-weight:800;color:white;margin-bottom:.2rem}
+.cert-badge p{font-size:.75rem;color:#8898aa}
+.sec-tag{font-size:.75rem;color:var(--cyan);letter-spacing:.25em;text-transform:uppercase;font-weight:700;margin-bottom:1rem;display:block}
+.about-text h2{font-size:2.3rem;font-weight:900;color:white;margin-bottom:1rem;line-height:1.3}
+.about-text p{color:#8898aa;line-height:1.9;margin-bottom:1.5rem;font-size:.95rem}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.skill-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:1rem 1.2rem}
+.skill-top{display:flex;justify-content:space-between;font-size:.82rem;color:#aabbd0;margin-bottom:.5rem;font-weight:600}
+.skill-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--green))}
+
+/* ─── SERVICES ─── */
+.services{padding:7rem 6%;background:#06070a}
+.sec-header{text-align:center;margin-bottom:4rem}
+.sec-header h2{font-size:2.3rem;font-weight:900;color:white;margin-bottom:.7rem}
+.sec-header p{color:#8898aa;max-width:500px;margin:0 auto;font-size:.95rem}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.svc-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;transition:all .4s;cursor:pointer;position:relative;overflow:hidden}
-.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,255,.05),transparent);opacity:0;transition:opacity .4s}
-.svc-card:hover{border-color:rgba(0,212,255,.25);transform:translateY(-6px)}
+.svc-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:18px;padding:2.2rem;transition:all .45s;cursor:pointer;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.svc-c1::before{background:linear-gradient(135deg,rgba(0,212,255,.05),transparent)}
+.svc-c2::before{background:linear-gradient(135deg,rgba(0,255,136,.04),transparent)}
+.svc-c3::before{background:linear-gradient(135deg,rgba(155,89,255,.04),transparent)}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.svc-c1:hover{border-color:rgba(0,212,255,.2)}
+.svc-c2:hover{border-color:rgba(0,255,136,.15)}
+.svc-c3:hover{border-color:rgba(155,89,255,.2)}
 .svc-card:hover::before{opacity:1}
-.svc-icon{font-size:2.5rem;margin-bottom:1.2rem}
-.svc-card h3{font-size:1.05rem;font-weight:700;color:white;margin-bottom:.7rem}
-.svc-card p{font-size:.85rem;color:#8898aa;line-height:1.7}
-.svc-price{font-size:.8rem;color:var(--cyan);font-weight:700;margin-top:1rem}
+.svc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem}
+.si1{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2)}
+.si2{background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.15)}
+.si3{background:rgba(155,89,255,.1);border:1px solid rgba(155,89,255,.2)}
+.svc-card h3{font-size:1.05rem;font-weight:800;color:white;margin-bottom:.7rem}
+.svc-card p{font-size:.84rem;color:#8898aa;line-height:1.75;margin-bottom:1.2rem}
+.svc-price{font-size:.82rem;font-weight:800;padding:.3rem .8rem;border-radius:8px;display:inline-block}
+.sp1{color:var(--cyan);background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.15)}
+.sp2{color:var(--green);background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.12)}
+.sp3{color:var(--purple);background:rgba(155,89,255,.08);border:1px solid rgba(155,89,255,.15)}
 
-/* PROJECTS */
-.projects{padding:6rem 5%;background:#06070a}
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
-.project-card{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;transition:all .4s;aspect-ratio:16/9}
-.project-card:hover{transform:scale(1.02);box-shadow:0 25px 60px rgba(0,0,0,.5)}
-.project-card:hover .project-overlay{opacity:1}
-.proj-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
-.pb1{background:linear-gradient(160deg,#0a1a2a,#1a3050,#0a1a2a)}
-.pb2{background:linear-gradient(160deg,#1a0a2a,#301a50,#1a0a2a)}
-.pb3{background:linear-gradient(160deg,#0a2a1a,#1a5030,#0a2a1a)}
-.pb4{background:linear-gradient(160deg,#2a1a0a,#503010,#2a1a0a)}
-.project-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.3) 50%,transparent);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem}
-.proj-name{font-size:1.1rem;font-weight:700;color:white;margin-bottom:.5rem}
-.proj-tags{display:flex;gap:.5rem;flex-wrap:wrap}
-.proj-tag{background:rgba(0,212,255,.2);color:var(--cyan);padding:.2rem .6rem;border-radius:10px;font-size:.7rem;font-weight:700}
-.project-card:first-child{grid-column:1/-1;aspect-ratio:21/9}
+/* ─── PROJECTS ─── */
+.projects{padding:7rem 6%;background:var(--dark)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:4rem}
+.proj-card{border-radius:20px;overflow:hidden;cursor:pointer;transition:all .45s;background:var(--card);border:1px solid rgba(255,255,255,.05);position:relative}
+.proj-card:hover{transform:translateY(-7px);box-shadow:0 35px 70px rgba(0,0,0,.6);border-color:rgba(0,212,255,.2)}
+.proj-card:first-child{grid-column:1/-1}
+.proj-visual{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
+.proj-card:first-child .proj-visual{aspect-ratio:21/9}
+.pv1{background:linear-gradient(160deg,#050d1a,#0a1f40,#0d1a30)}
+.pv2{background:linear-gradient(160deg,#0a0510,#1a0a2a,#15082a)}
+.pv3{background:linear-gradient(160deg,#050a05,#0a1a0a,#081508)}
+.pv4{background:linear-gradient(160deg,#1a0505,#2a0a0a,#200808)}
+.pv5{background:linear-gradient(160deg,#0a0a05,#1a1a0a,#15150a)}
+.proj-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(14,16,22,.95) 0%,rgba(14,16,22,.4) 50%,transparent 100%);opacity:0;transition:opacity .4s}
+.proj-card:hover .proj-visual::after{opacity:1}
+.proj-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;transform:translateY(10px);opacity:0;transition:all .4s;z-index:3}
+.proj-card:hover .proj-overlay{opacity:1;transform:translateY(0)}
+.proj-cat{font-size:.72rem;color:var(--cyan);font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.proj-overlay h3{font-size:1.05rem;font-weight:800;color:white;margin-bottom:.6rem}
+.proj-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.proj-tag{background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);color:var(--cyan);padding:.2rem .6rem;border-radius:8px;font-size:.7rem;font-weight:700}
+.proj-info{padding:1.5rem}
+.proj-info h3{font-size:.98rem;font-weight:800;color:white;margin-bottom:.4rem}
+.proj-info p{font-size:.82rem;color:#8898aa;line-height:1.7}
 
-/* TESTIMONIALS */
-.testimonials{padding:5rem 5%;background:#08090c}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
-.testi-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;transition:all .4s}
-.testi-card:hover{border-color:rgba(0,212,255,.2)}
-.stars{color:#fbbf24;font-size:.9rem;margin-bottom:1rem}
-.testi-text{font-size:.85rem;color:#8898aa;line-height:1.8;margin-bottom:1.2rem;font-style:italic}
-.testi-author{display:flex;align-items:center;gap:.8rem}
-.author-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-.av1{background:linear-gradient(135deg,#0a1a30,#1a3050)}
-.av2{background:linear-gradient(135deg,#1a0a30,#301a50)}
-.av3{background:linear-gradient(135deg,#0a1a0a,#1a501a)}
-.author-name{font-weight:700;color:white;font-size:.85rem}
-.author-title{font-size:.75rem;color:#556677}
+/* ─── TESTIMONIALS ─── */
+.testimonials{padding:7rem 6%;background:#06070a}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:4rem}
+.testi-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:18px;padding:2rem;transition:all .4s;position:relative;overflow:hidden}
+.testi-card::before{content:'"';position:absolute;top:-5px;right:15px;font-size:7rem;color:rgba(0,212,255,.05);font-family:serif;line-height:1}
+.testi-card:hover{border-color:rgba(0,212,255,.15);transform:translateY(-5px)}
+.stars{color:#fbbf24;font-size:.88rem;margin-bottom:1.2rem;letter-spacing:.08em}
+.testi-text{font-size:.85rem;color:#aabbd0;line-height:1.85;margin-bottom:1.5rem;font-style:italic;position:relative;z-index:2}
+.testi-author{display:flex;align-items:center;gap:.9rem;position:relative;z-index:2}
+.t-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:2px solid rgba(0,212,255,.15)}
+.ta1{background:linear-gradient(135deg,#0a1628,#1a3050)}
+.ta2{background:linear-gradient(135deg,#0a1a0a,#1a4030)}
+.ta3{background:linear-gradient(135deg,#1a0a28,#301a50)}
+.t-name{font-weight:800;color:white;font-size:.87rem}
+.t-role{font-size:.74rem;color:#8898aa}
 
-/* CONTACT */
-.contact{padding:6rem 5%;background:linear-gradient(135deg,#08090c,#0d1525,#08090c);position:relative;overflow:hidden;text-align:center}
-.contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,.06),transparent)}
-.contact h2{font-size:2.8rem;font-weight:900;color:white;margin-bottom:1rem}
-.contact p{color:#8898aa;margin-bottom:3rem;font-size:1rem}
-.contact-form{max-width:600px;margin:0 auto;display:grid;gap:1rem}
-.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.c-input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:white;padding:1rem 1.2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.95rem;outline:none;transition:border .3s;width:100%}
-.c-input::placeholder{color:#556677}
-.c-input:focus{border-color:var(--cyan)}
-.c-textarea{min-height:120px;resize:vertical}
-.send-btn{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border:none;padding:1.2rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:all .3s}
-.send-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,212,255,.4)}
+/* ─── PROCESS ─── */
+.process{padding:7rem 6%;background:var(--dark);position:relative;overflow:hidden}
+.process::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,212,255,.04),transparent);border-radius:50%}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem;position:relative;z-index:2}
+.p-step{text-align:center;padding:2rem 1.5rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:18px;transition:all .4s}
+.p-step:hover{background:rgba(0,212,255,.04);border-color:rgba(0,212,255,.15);transform:translateY(-5px)}
+.p-num{width:52px;height:52px;background:linear-gradient(135deg,var(--cyan),#0099cc);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;color:#000;margin:0 auto 1.4rem;box-shadow:0 8px 25px rgba(0,212,255,.25)}
+.p-step h3{font-size:.93rem;font-weight:800;color:white;margin-bottom:.6rem}
+.p-step p{font-size:.8rem;color:#8898aa;line-height:1.7}
 
-footer{background:#05060a;border-top:1px solid rgba(255,255,255,.04);padding:2rem 5%;display:flex;align-items:center;justify-content:space-between}
-.f-logo{font-weight:900;color:white}
-.f-logo span{color:var(--cyan)}
-.f-copy{color:#3a4a5a;font-size:.8rem}
+/* ─── CONTACT ─── */
+.contact{padding:7rem 6%;background:#06070a;position:relative;overflow:hidden;text-align:center}
+.contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(0,212,255,.05),transparent)}
+.contact-inner{position:relative;z-index:2;max-width:750px;margin:0 auto}
+.contact h2{font-size:2.8rem;font-weight:900;color:white;margin-bottom:1rem;line-height:1.2}
+.contact p{color:#8898aa;margin-bottom:3rem;font-size:.97rem}
+.cform{display:grid;gap:1rem;text-align:right}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.c-inp{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:white;padding:1rem 1.2rem;border-radius:12px;font-family:'Cairo',sans-serif;font-size:.9rem;outline:none;transition:all .3s;width:100%}
+.c-inp::placeholder{color:#445566}
+.c-inp:focus{border-color:var(--cyan);background:rgba(0,212,255,.04)}
+.c-txt{min-height:120px;resize:vertical}
+.send-btn{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border:none;padding:1.2rem;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:900;font-size:1rem;cursor:pointer;transition:all .3s;width:100%;letter-spacing:.02em}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(0,212,255,.4)}
+
+/* ─── FOOTER ─── */
+footer{background:#05060a;border-top:1px solid rgba(255,255,255,.04);padding:3rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.f-logo{font-weight:900;font-size:1.1rem;color:white;letter-spacing:.1em}
+.f-logo span{background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.f-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.f-links a{color:#334;text-decoration:none;font-size:.8rem;transition:color .3s}
+.f-links a:hover{color:var(--cyan)}
+.f-copy{color:#334;font-size:.8rem}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hero-inner,.about-grid{grid-template-columns:1fr;gap:3rem;text-align:center}
+  .hero-btns{justify-content:center}
+  .skill-tags{justify-content:center}
+  .hero h1{font-size:3rem}
+  .available-tag{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid,.process-steps{grid-template-columns:repeat(2,1fr)}
+  .cert-badge{display:none}
+}
+@media(max-width:640px){
+  nav{padding:.9rem 4%}
+  .nav-links{display:none}
+  .hero h1{font-size:2.4rem}
+  .hero h1 .role{font-size:1.7rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-cyan,.btn-ghost{width:100%;max-width:280px;text-align:center}
+  .services-grid,.testi-grid,.process-steps{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .cform-row{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <div class="logo">ZAID<span>.DEV</span></div>
   <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">من أنا</a></li>
     <li><a href="#">خدماتي</a></li>
     <li><a href="#">أعمالي</a></li>
     <li><a href="#">آراء العملاء</a></li>
     <li><a href="#">تواصل</a></li>
   </ul>
-  <button class="hire-btn">وظفني الآن 🚀</button>
+  <a href="#" class="hire-btn">وظفني الآن 🚀</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-intro">
-      <div class="status-dot"></div>
-      <span class="status-text">متاح لمشاريع جديدة</span>
+  <div class="hero-inner">
+    <div>
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        متاح لمشاريع جديدة من يوليو ٢٠٢٦
+      </div>
+      <h1>
+        مرحباً، أنا<br>
+        <span class="name">زيد المصمم</span>
+        <span class="role">مصمم ويب & مطوّر</span>
+      </h1>
+      <p class="hero-desc">أصنع تجارب رقمية استثنائية تجمع بين الجمال البصري والأداء العالي. متخصص في تصميم UI/UX وتطوير المواقع والهويات البصرية منذ أكثر من ٦ سنوات.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-cyan">🎨 شاهد أعمالي</a>
+        <a href="#" class="btn-ghost">⬇ تحميل السيرة الذاتية</a>
+      </div>
+      <div class="skill-tags">
+        <span class="stag">UI/UX Design</span>
+        <span class="stag">React.js</span>
+        <span class="stag">Figma</span>
+        <span class="stag">Branding</span>
+        <span class="stag">Motion Design</span>
+        <span class="stag">Next.js</span>
+        <span class="stag">Tailwind CSS</span>
+      </div>
     </div>
-    <h1>
-      مرحباً، أنا<br>
-      <span class="name">زيد المصمم</span>
-      <span class="role">مصمم & مطور ويب</span>
-    </h1>
-    <p>أصنع تجارب رقمية استثنائية تجمع بين الجمال البصري والأداء العالي. متخصص في تصميم UI/UX وتطوير المواقع والهويات البصرية.</p>
-    <div class="hero-btns">
-      <a href="#" class="btn-cyan">شاهد أعمالي</a>
-      <a href="#" class="btn-download">⬇ تحميل CV</a>
-    </div>
-    <div class="skills-tags">
-      <span class="skill-tag">UI/UX Design</span>
-      <span class="skill-tag">React.js</span>
-      <span class="skill-tag">Figma</span>
-      <span class="skill-tag">Branding</span>
-      <span class="skill-tag">Motion Design</span>
-      <span class="skill-tag">Next.js</span>
+    <div class="hero-right">
+      <div class="profile-card">
+        <div class="avatar-wrap">
+          <div class="exp-badge">٦+<br>سنوات</div>
+          🧑‍💻
+        </div>
+        <div class="profile-name">زيد المصمم</div>
+        <div class="profile-title">UI/UX Designer & Web Developer</div>
+        <div class="profile-stats">
+          <div class="pstat"><span class="pstat-num">+٨٠</span><div class="pstat-lbl">مشروع</div></div>
+          <div class="pstat"><span class="pstat-num">٤٠+</span><div class="pstat-lbl">عميل</div></div>
+          <div class="pstat"><span class="pstat-num">٩٨٪</span><div class="pstat-lbl">رضا</div></div>
+        </div>
+        <div class="social-row">
+          <div class="soc-btn">in</div>
+          <div class="soc-btn">𝕏</div>
+          <div class="soc-btn">📸</div>
+          <div class="soc-btn">🐙</div>
+        </div>
+      </div>
+      <div class="available-tag">✅ متاح للعمل الآن</div>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="avatar-card">
-      <div class="exp-badge"><span class="exp-num">٦+</span>سنوات</div>
-      <div class="avatar">🧑‍💻</div>
-      <div style="font-weight:700;color:white;margin-bottom:.2rem">زيد المصمم</div>
-      <div style="font-size:.8rem;color:var(--cyan)">UI/UX Designer & Developer</div>
-      <div class="social-links">
-        <div class="soc-link">🐦</div>
-        <div class="soc-link">💼</div>
-        <div class="soc-link">📸</div>
-        <div class="soc-link">🐙</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img">🧑‍💻</div>
+      <div class="cert-badge">
+        <h4>🏆 مصمم معتمد</h4>
+        <p>Google UX Design Certificate</p>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="sec-tag">من أنا</span>
+      <h2>شغف التصميم<br>+ قوة البرمجة</h2>
+      <p>أنا زيد، مصمم ومطور ويب من المغرب. أجمع بين حس التصميم الجمالي العميق وقدرة البرمجة التقنية لأقدم مواقع وتطبيقات تُبهر المستخدم وتحقق النتائج.</p>
+      <p>بدأت رحلتي قبل ٦ سنوات بشغف بالفن الرقمي، واليوم أعمل مع عملاء من المغرب والخليج وأوروبا لبناء تجارب رقمية تستحق التأمل.</p>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-top"><span>UI/UX Design</span><span style="color:var(--cyan)">٩٥٪</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>React / Next.js</span><span style="color:var(--cyan)">٨٥٪</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Figma & Prototyping</span><span style="color:var(--cyan)">٩٨٪</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:98%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Branding & Identity</span><span style="color:var(--cyan)">٩٠٪</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+      </div>
+      <a href="#" class="btn-cyan" style="font-size:.9rem;padding:.9rem 2rem">تحميل السيرة الذاتية ⬇</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="sec-header">
+    <span class="sec-tag">ماذا أقدم</span>
+    <h2>خدماتي الإبداعية</h2>
+    <p>أقدم خدمات متكاملة تغطي كل جوانب التصميم والتطوير لمشروعك الرقمي</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card svc-c1">
+      <div class="svc-icon si1">🎨</div>
+      <h3>تصميم UI/UX</h3>
+      <p>واجهات مستخدم احترافية تجمع بين الجمال البصري وسهولة الاستخدام. نماذج أولية تفاعلية ومسارات مستخدم مدروسة بعمق.</p>
+      <div class="svc-price sp1">يبدأ من ١,٥٠٠ MAD</div>
+    </div>
+    <div class="svc-card svc-c2">
+      <div class="svc-icon si2">🌐</div>
+      <h3>تطوير المواقع</h3>
+      <p>مواقع سريعة وحديثة بـ React & Next.js بكود نظيف ومُحسَّن لمحركات البحث وقابل للتوسع مع نمو أعمالك.</p>
+      <div class="svc-price sp2">يبدأ من ٢,٥٠٠ MAD</div>
+    </div>
+    <div class="svc-card svc-c3">
+      <div class="svc-icon si3">✨</div>
+      <h3>الهوية البصرية</h3>
+      <p>تصميم هوية بصرية كاملة تعكس شخصية علامتك التجارية: لوغو، ألوان، خطوط، ودليل هوية احترافي كامل.</p>
+      <div class="svc-price sp3">يبدأ من ٢,٠٠٠ MAD</div>
+    </div>
+    <div class="svc-card svc-c1">
+      <div class="svc-icon si1">📱</div>
+      <h3>تصميم التطبيقات</h3>
+      <p>نماذج أولية تفاعلية وتصاميم كاملة لتطبيقات iOS و Android جاهزة للتطوير بمعايير عالمية.</p>
+      <div class="svc-price sp1">يبدأ من ٢,٢٠٠ MAD</div>
+    </div>
+    <div class="svc-card svc-c2">
+      <div class="svc-icon si2">🎬</div>
+      <h3>موشن جرافيك</h3>
+      <p>تحريك ومؤثرات بصرية لمواقعك وتطبيقاتك وعروضك التقديمية تجعل علامتك تبرز وتُبهر الزائر.</p>
+      <div class="svc-price sp2">يبدأ من ١,٢٠٠ MAD</div>
+    </div>
+    <div class="svc-card svc-c3">
+      <div class="svc-icon si3">📊</div>
+      <h3>لوحات التحكم</h3>
+      <p>تصميم وتطوير داشبوردات مخصصة لعرض بياناتك وإدارة أعمالك باحترافية وكفاءة عالية.</p>
+      <div class="svc-price sp3">يبدأ من ٣,٥٠٠ MAD</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects">
+  <div class="sec-header">
+    <span class="sec-tag">أحدث الأعمال</span>
+    <h2>ما أفتخر به</h2>
+    <p>مشاريع حقيقية لعملاء حقيقيين حققت نتائج ملموسة</p>
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div class="proj-visual pv1">🏬
+        <div class="proj-overlay">
+          <div class="proj-cat">E-Commerce · UI/UX</div>
+          <h3>منصة تجارة إلكترونية — LuxeStore</h3>
+          <div class="proj-tags"><span class="proj-tag">Figma</span><span class="proj-tag">React</span><span class="proj-tag">UI/UX</span><span class="proj-tag">E-commerce</span></div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <h3>LuxeStore — منصة أزياء فاخرة</h3>
+        <p>تصميم وتطوير منصة تجارة إلكترونية كاملة لمتجر أزياء فاخر. تحقق زيادة في التحويلات بنسبة ٦٥٪.</p>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-visual pv2">📱
+        <div class="proj-overlay">
+          <div class="proj-cat">Mobile App · UI Design</div>
+          <h3>تطبيق إدارة المهام — TaskFlow</h3>
+          <div class="proj-tags"><span class="proj-tag">Figma</span><span class="proj-tag">iOS/Android</span><span class="proj-tag">UX Research</span></div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <h3>TaskFlow — تطبيق إنتاجية ذكي</h3>
+        <p>تصميم تجربة مستخدم كاملة لتطبيق إدارة المهام. نال جائزة أفضل تطبيق عربي للإنتاجية ٢٠٢٥.</p>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-visual pv3">🌿
+        <div class="proj-overlay">
+          <div class="proj-cat">Branding · Identity</div>
+          <h3>هوية بصرية كاملة — Green Café</h3>
+          <div class="proj-tags"><span class="proj-tag">Branding</span><span class="proj-tag">Logo</span><span class="proj-tag">Guidelines</span></div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <h3>Green Café — هوية بصرية متكاملة</h3>
+        <p>تصميم هوية بصرية شاملة لسلسلة مقاهي ناشئة. شملت اللوغو والألوان والمطبوعات وكل نقاط اللمس.</p>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-visual pv4">📊
+        <div class="proj-overlay">
+          <div class="proj-cat">Dashboard · Data Viz</div>
+          <h3>لوحة تحليلات — Analytics Pro</h3>
+          <div class="proj-tags"><span class="proj-tag">Dashboard</span><span class="proj-tag">React</span><span class="proj-tag">Charts</span></div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <h3>Analytics Pro — داشبورد بيانات</h3>
+        <p>تصميم وتطوير لوحة تحكم متقدمة لتحليل بيانات المبيعات والتسويق في الوقت الفعلي.</p>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-visual pv5">🏨
+        <div class="proj-overlay">
+          <div class="proj-cat">Web Design · Hospitality</div>
+          <h3>موقع فندق — The Riad</h3>
+          <div class="proj-tags"><span class="proj-tag">Web Design</span><span class="proj-tag">Next.js</span><span class="proj-tag">Animation</span></div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <h3>The Riad — موقع فندق فاخر</h3>
+        <p>تصميم وتطوير موقع فندق مراكشي راقٍ مع نظام حجز متكامل ومعرض صور بالصوت والصورة.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="services">
-  <div class="section-title">
-    <div class="stag">ماذا أقدم</div>
-    <h2>خدماتي الإبداعية</h2>
-  </div>
-  <div class="services-grid">
-    <div class="svc-card"><div class="svc-icon">🎨</div><h3>تصميم UI/UX</h3><p>واجهات مستخدم احترافية تجمع بين الجمال والسهولة في الاستخدام لكل الأجهزة.</p><div class="svc-price">يبدأ من ٥٠٠ MAD</div></div>
-    <div class="svc-card"><div class="svc-icon">🌐</div><h3>تطوير الويب</h3><p>مواقع سريعة وحديثة بـ React & Next.js بكود نظيف وأداء عالي يرضي المستخدم ومحركات البحث.</p><div class="svc-price">يبدأ من ٨٠٠ MAD</div></div>
-    <div class="svc-card"><div class="svc-icon">✨</div><h3>الهوية البصرية</h3><p>تصميم هوية كاملة للعلامة التجارية: لوغو، ألوان، خطوط، ودليل الهوية الكامل.</p><div class="svc-price">يبدأ من ٦٠٠ MAD</div></div>
-    <div class="svc-card"><div class="svc-icon">📱</div><h3>تصميم التطبيقات</h3><p>نماذج أولية تفاعلية وتصاميم لتطبيقات iOS و Android جاهزة للتطوير.</p><div class="svc-price">يبدأ من ٧٠٠ MAD</div></div>
-    <div class="svc-card"><div class="svc-icon">🎬</div><h3>موشن جرافيك</h3><p>تحريك ومؤثرات بصرية للمواقع والعروض التقديمية والمحتوى الرقمي.</p><div class="svc-price">يبدأ من ٤٠٠ MAD</div></div>
-    <div class="svc-card"><div class="svc-icon">📊</div><h3>لوحات التحكم</h3><p>تصميم وتطوير داشبوردات مخصصة لعرض البيانات واتخاذ القرارات بشكل ذكي.</p><div class="svc-price">يبدأ من ١,٢٠٠ MAD</div></div>
-  </div>
-</section>
-
-<section class="projects">
-  <div class="section-title">
-    <div class="stag">أحدث الأعمال</div>
-    <h2>ما أفخر به</h2>
-  </div>
-  <div class="projects-grid">
-    <div class="project-card"><div class="proj-bg pb1">🏬<div class="project-overlay"><div class="proj-name">منصة تجارة إلكترونية — LuxeStore</div><div class="proj-tags"><span class="proj-tag">UI/UX</span><span class="proj-tag">React</span><span class="proj-tag">E-commerce</span></div></div></div></div>
-    <div class="project-card"><div class="proj-bg pb2">📱<div class="project-overlay"><div class="proj-name">تطبيق إدارة المهام — TaskFlow</div><div class="proj-tags"><span class="proj-tag">Mobile UI</span><span class="proj-tag">iOS/Android</span></div></div></div></div>
-    <div class="project-card"><div class="proj-bg pb3">🌿<div class="project-overlay"><div class="proj-name">هوية بصرية — Green Café</div><div class="proj-tags"><span class="proj-tag">Branding</span><span class="proj-tag">Logo</span></div></div></div></div>
-    <div class="project-card"><div class="proj-bg pb4">📊<div class="project-overlay"><div class="proj-name">لوحة تحليلات — Analytics Pro</div><div class="proj-tags"><span class="proj-tag">Dashboard</span><span class="proj-tag">Data Viz</span></div></div></div></div>
-  </div>
-</section>
-
+<!-- TESTIMONIALS -->
 <section class="testimonials">
-  <div class="section-title">
-    <div class="stag">آراء العملاء</div>
+  <div class="sec-header">
+    <span class="sec-tag">آراء العملاء</span>
     <h2>ماذا يقولون عني</h2>
+    <p>أكثر من ٤٠ عميل سعيد في المغرب والخليج وأوروبا</p>
   </div>
   <div class="testi-grid">
-    <div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"من أفضل المصممين الذين تعاملت معهم. فهم احتياجاتي بسرعة وقدم تصميماً يفوق التوقعات بوقت قياسي."</div><div class="testi-author"><div class="author-avatar av1">👨</div><div><div class="author-name">محمد الراشدي</div><div class="author-title">مؤسس LuxeStore</div></div></div></div>
-    <div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"هوية بصرية رائعة لمطعمنا. الزبائن يثنون على التصميم دائماً. التواصل كان سهلاً والتسليم في الوقت المحدد."</div><div class="testi-author"><div class="author-avatar av2">👩</div><div><div class="author-name">سارة الأمين</div><div class="author-title">صاحبة Green Café</div></div></div></div>
-    <div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"ببساطة محترف جداً. الموقع الذي صممه يحول الزوار لعملاء بشكل ملحوظ. استثمار ممتاز بكل المقاييس."</div><div class="testi-author"><div class="author-avatar av3">👨</div><div><div class="author-name">يوسف الحسيني</div><div class="author-title">مدير TaskFlow</div></div></div></div>
-  </div>
-</section>
-
-<section class="contact">
-  <h2>لنتعاون معاً ✨</h2>
-  <p>هل لديك مشروع في ذهنك؟ تواصل معي وسأرد خلال ٢٤ ساعة</p>
-  <div class="contact-form">
-    <div class="contact-row">
-      <input type="text" class="c-input" placeholder="اسمك">
-      <input type="email" class="c-input" placeholder="بريدك الإلكتروني">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"من أفضل المصممين الذين تعاملت معهم في مسيرتي المهنية. فهم احتياجاتي بسرعة مذهلة وقدم تصميماً يفوق توقعاتي بكثير."</p>
+      <div class="testi-author">
+        <div class="t-av ta1">👨</div>
+        <div><div class="t-name">محمد الراشدي</div><div class="t-role">مؤسس LuxeStore · الرباط</div></div>
+      </div>
     </div>
-    <input type="text" class="c-input" placeholder="موضوع المشروع">
-    <textarea class="c-input c-textarea" placeholder="اشرح مشروعك باختصار..."></textarea>
-    <button class="send-btn">إرسال الرسالة ←</button>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"هوية بصرية رائعة تعكس روح مقهانا بالضبط. الزبائن يثنون على التصميم باستمرار. التواصل سهل والتسليم في الوقت المحدد دائماً."</p>
+      <div class="testi-author">
+        <div class="t-av ta2">👩</div>
+        <div><div class="t-name">سارة الأمين</div><div class="t-role">صاحبة Green Café · الدار البيضاء</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"الموقع الذي صممه وطوره لفندقنا أصبح مصدر إلهام لمنافسينا. الحجوزات المباشرة ارتفعت ٨٠٪ منذ إطلاقه. استثمار ممتاز بكل المقاييس."</p>
+      <div class="testi-author">
+        <div class="t-av ta3">👨</div>
+        <div><div class="t-name">يوسف الحسيني</div><div class="t-role">مدير The Riad · مراكش</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- PROCESS -->
+<section class="process">
+  <div class="sec-header">
+    <span class="sec-tag">كيف أعمل</span>
+    <h2>من الفكرة إلى الواقع</h2>
+    <p>منهجية واضحة ومجربة تضمن نتيجة استثنائية في كل مرة</p>
+  </div>
+  <div class="process-steps">
+    <div class="p-step">
+      <div class="p-num">١</div>
+      <h3>الاكتشاف</h3>
+      <p>نبدأ بفهم أهدافك وجمهورك المستهدف ومنافسيك لبناء رؤية واضحة للمشروع.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-num">٢</div>
+      <h3>التصميم</h3>
+      <p>أصمم wireframes ونماذج أولية تفاعلية في Figma لنتأكد من المسار قبل التطوير.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-num">٣</div>
+      <h3>التطوير</h3>
+      <p>أحوّل التصاميم إلى كود نظيف ومتجاوب وسريع التحميل بأحدث التقنيات.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-num">٤</div>
+      <h3>التسليم والدعم</h3>
+      <p>أسلّم مشروعاً مختبراً بالكامل مع دعم مستمر وتحسينات بعد الإطلاق.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-inner">
+    <span class="sec-tag">تواصل معي</span>
+    <h2>لنتعاون في مشروعك ✨</h2>
+    <p>هل لديك مشروع في ذهنك؟ أرسل لي التفاصيل وسأرد خلال ٢٤ ساعة باقتراح مبدئي مجاني</p>
+    <div class="cform">
+      <div class="cform-row">
+        <input type="text" class="c-inp" placeholder="اسمك الكامل">
+        <input type="email" class="c-inp" placeholder="بريدك الإلكتروني">
+      </div>
+      <input type="text" class="c-inp" placeholder="موضوع المشروع (تصميم، تطوير، هوية...)">
+      <textarea class="c-inp c-txt" placeholder="اشرح مشروعك باختصار: ما تريده، جمهورك المستهدف، وميزانيتك التقريبية..."></textarea>
+      <button class="send-btn">إرسال رسالتك ← سأرد خلال ٢٤ ساعة</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="f-logo">ZAID<span>.DEV</span></div>
-  <div class="f-copy">© 2026 — تصميم خبراء الويب</div>
+  <div class="f-links">
+    <a href="#">من أنا</a>
+    <a href="#">خدماتي</a>
+    <a href="#">أعمالي</a>
+    <a href="#">آراء العملاء</a>
+    <a href="#">تواصل</a>
+  </div>
+  <div class="f-copy">© 2026 — تصميم خبراء الويب 🇲🇦</div>
 </footer>
 </body>
 </html>
