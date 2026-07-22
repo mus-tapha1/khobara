@@ -315,23 +315,20 @@ nav{
 
 /* Hero Right */
 .hero-right{
-  background:var(--bg2);
+  background:var(--dark2);
   position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.hero-right-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75;
 }
 .hero-product-showcase{
   position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  padding:4rem;
+  padding:4rem;z-index:2;
 }
 .eyewear-art{
-  position:relative;width:320px;height:320px;
+  position:relative;width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
 }
-.glasses-frame{
-  font-size:9rem;position:relative;z-index:2;
-  animation:floatGlasses 5s ease-in-out infinite;
-  filter:drop-shadow(0 20px 40px rgba(200,134,10,.2));
-}
-@keyframes floatGlasses{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
 .eyewear-glow{
   position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
   width:280px;height:60px;border-radius:50%;
@@ -368,6 +365,11 @@ nav{
 /* ══════════ CATEGORIES ══════════ */
 .section{padding:5rem 5%}
 .sec-header{text-align:center;margin-bottom:3.5rem}
+.cat-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.cat-card:hover .cat-img img{transform:scale(1.06)}
+.prod-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prod-card:hover .prod-thumb img{transform:scale(1.06)}
+.brand-img-main img{width:100%;height:100%;object-fit:cover}
 .sec-label{
   display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.25em;
   text-transform:uppercase;color:var(--amber);margin-bottom:.8rem;
@@ -383,10 +385,8 @@ nav{
 .cat-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--border-amber)}
 .cat-img{
   height:220px;display:flex;align-items:center;justify-content:center;
-  font-size:4.5rem;position:relative;overflow:hidden;
-  transition:transform .4s;
+  position:relative;overflow:hidden;background:var(--bg2);
 }
-.cat-card:hover .cat-img{transform:scale(1.05)}
 .cat-overlay{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(26,21,16,.6),transparent 50%);
@@ -424,13 +424,8 @@ nav{
 .prod-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--border-amber)}
 .prod-thumb{
   height:190px;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;background:var(--bg2);
 }
-.prod-thumb-inner{
-  font-size:4rem;transition:transform .4s;
-  filter:drop-shadow(0 8px 20px rgba(200,134,10,.15));
-}
-.prod-card:hover .prod-thumb-inner{transform:scale(1.1) rotate(-3deg)}
 .prod-badges{position:absolute;top:.8rem;right:.8rem;display:flex;flex-direction:column;gap:.35rem}
 .prod-badge{font-size:.62rem;font-weight:700;padding:.22rem .6rem;letter-spacing:.05em}
 .badge-new{background:var(--dark);color:var(--white)}
@@ -874,9 +869,9 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
     </div>
   </div>
   <div class="hero-right">
+    <img class="hero-right-img" src="eyewear-assets/hero-sunglasses.jpg" alt="نظارات فاخرة">
     <div class="hero-product-showcase">
       <div class="eyewear-art">
-        <div class="glasses-frame">🕶️</div>
         <div class="eyewear-glow"></div>
       </div>
       <div class="hero-product-card">
@@ -901,7 +896,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
   </div>
   <div class="cats-grid">
     <div class="cat-card">
-      <div class="cat-img" style="background:linear-gradient(135deg,#1a1510,#2c251c)"><span>🕶️</span><div class="cat-overlay"></div></div>
+      <div class="cat-img"><img src="eyewear-assets/cat-sunglasses.jpg" alt="نظارات شمسية"><div class="cat-overlay"></div></div>
       <div class="cat-info">
         <div class="cat-name">نظارات شمسية</div>
         <div class="cat-count">+840 طراز</div>
@@ -909,7 +904,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       <div class="cat-arrow">→</div>
     </div>
     <div class="cat-card">
-      <div class="cat-img" style="background:linear-gradient(135deg,#f0e8d8,#e0d4c0)"><span>👓</span><div class="cat-overlay"></div></div>
+      <div class="cat-img"><img src="eyewear-assets/cat-prescription.jpg" alt="نظارات طبية"><div class="cat-overlay"></div></div>
       <div class="cat-info">
         <div class="cat-name">نظارات طبية</div>
         <div class="cat-count">+620 إطار</div>
@@ -917,7 +912,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       <div class="cat-arrow">→</div>
     </div>
     <div class="cat-card">
-      <div class="cat-img" style="background:linear-gradient(135deg,#0a1a10,#14302a)"><span>⚡</span><div class="cat-overlay"></div></div>
+      <div class="cat-img"><img src="eyewear-assets/cat-sports.jpg" alt="نظارات رياضية"><div class="cat-overlay"></div></div>
       <div class="cat-info">
         <div class="cat-name">نظارات رياضية</div>
         <div class="cat-count">+280 طراز</div>
@@ -925,7 +920,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       <div class="cat-arrow">→</div>
     </div>
     <div class="cat-card">
-      <div class="cat-img" style="background:linear-gradient(135deg,#1a0a1a,#2c1430)"><span>🧒</span><div class="cat-overlay"></div></div>
+      <div class="cat-img"><img src="eyewear-assets/cat-kids.jpg" alt="نظارات الأطفال"><div class="cat-overlay"></div></div>
       <div class="cat-info">
         <div class="cat-name">نظارات الأطفال</div>
         <div class="cat-count">+190 طراز</div>
@@ -953,8 +948,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
   </div>
   <div class="products-grid">
     <div class="prod-card">
-      <div class="prod-thumb" style="background:linear-gradient(135deg,#f5f0e8,#ede5d5)">
-        <div class="prod-thumb-inner">🕶️</div>
+      <div class="prod-thumb">
+        <img src="eyewear-assets/prod-rayban-aviator.jpg" alt="Ray-Ban Aviator">
         <div class="prod-badges"><span class="prod-badge badge-best">الأكثر مبيعاً</span></div>
         <div class="prod-wishlist">♡</div>
       </div>
@@ -972,8 +967,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       </div>
     </div>
     <div class="prod-card">
-      <div class="prod-thumb" style="background:linear-gradient(135deg,#1a1510,#2c251c)">
-        <div class="prod-thumb-inner">🕶️</div>
+      <div class="prod-thumb">
+        <img src="eyewear-assets/prod-tomford.jpg" alt="Tom Ford Snowdon">
         <div class="prod-badges"><span class="prod-badge badge-new">جديد</span></div>
         <div class="prod-wishlist">♡</div>
       </div>
@@ -991,8 +986,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       </div>
     </div>
     <div class="prod-card">
-      <div class="prod-thumb" style="background:linear-gradient(135deg,#e8f0f5,#d5e5f0)">
-        <div class="prod-thumb-inner">👓</div>
+      <div class="prod-thumb">
+        <img src="eyewear-assets/prod-persol.jpg" alt="Persol Titanium">
         <div class="prod-badges"><span class="prod-badge badge-sale">-25%</span></div>
         <div class="prod-wishlist">♡</div>
       </div>
@@ -1010,8 +1005,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       </div>
     </div>
     <div class="prod-card">
-      <div class="prod-thumb" style="background:linear-gradient(135deg,#f5e8f0,#f0d5e8)">
-        <div class="prod-thumb-inner">🕶️</div>
+      <div class="prod-thumb">
+        <img src="eyewear-assets/prod-gucci.jpg" alt="Gucci GG0061S">
         <div class="prod-badges"><span class="prod-badge badge-new">حصري</span></div>
         <div class="prod-wishlist">♡</div>
       </div>
@@ -1029,8 +1024,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       </div>
     </div>
     <div class="prod-card">
-      <div class="prod-thumb" style="background:linear-gradient(135deg,#f0f5e8,#e2f0d0)">
-        <div class="prod-thumb-inner">⚡</div>
+      <div class="prod-thumb">
+        <img src="eyewear-assets/prod-oakley.jpg" alt="Oakley Holbrook">
         <div class="prod-badges"><span class="prod-badge badge-best">رياضي #1</span></div>
         <div class="prod-wishlist">♡</div>
       </div>
@@ -1048,8 +1043,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
       </div>
     </div>
     <div class="prod-card">
-      <div class="prod-thumb" style="background:linear-gradient(135deg,#e8edf5,#d5def0)">
-        <div class="prod-thumb-inner">👓</div>
+      <div class="prod-thumb">
+        <img src="eyewear-assets/prod-armani.jpg" alt="Armani AR7070">
         <div class="prod-badges"><span class="prod-badge badge-sale">-30%</span></div>
         <div class="prod-wishlist">♡</div>
       </div>
@@ -1102,12 +1097,12 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);paddin
   </div>
   <div class="brand-feature-right">
     <div class="brand-img-main">
-      <span style="font-size:8rem;position:relative;z-index:2">🕶️</span>
+      <img src="eyewear-assets/brand-rayban.jpg" alt="Ray-Ban Collection" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="brand-thumbs">
-      <div class="brand-thumb active">🕶️</div>
-      <div class="brand-thumb">🕶️</div>
-      <div class="brand-thumb">🕶️</div>
+      <div class="brand-thumb active"><img src="eyewear-assets/prod-rayban-aviator.jpg" alt="Aviator" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="brand-thumb"><img src="eyewear-assets/prod-tomford.jpg" alt="Wayfarer" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="brand-thumb"><img src="eyewear-assets/prod-oakley.jpg" alt="Round" style="width:100%;height:100%;object-fit:cover;"></div>
     </div>
   </div>
 </section>
