@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuno — متجر ألعاب الأطفال</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --sky:#e8f4ff;--blue:#2d7dd2;--blue-dark:#1a5fa8;
+    --yellow:#ffd93d;--yellow-dark:#f0c000;
+    --pink:#ff6b9d;--green:#4ecdc4;--orange:#ff8c42;
+    --purple:#9b59b6;--white:#fff;
+    --text:#1a2744;--soft:#5a6a8a;--light:#9aaacb;
+    --border:rgba(45,125,210,0.15);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--sky);color:var(--text);overflow-x:hidden}
+
+  /* Announce */
+  .ann{background:var(--blue-dark);color:#fff;text-align:center;padding:9px;font-size:12px;letter-spacing:1px}
+  .ann strong{color:var(--yellow)}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:2px solid var(--yellow);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:'Baloo 2',cursive;font-size:28px;color:var(--blue-dark);text-decoration:none;font-weight:800}
+  .logo span{color:var(--pink)}
+  .nav-links{display:flex;gap:24px;list-style:none}
+  .nav-links a{color:var(--soft);text-decoration:none;font-size:14px;font-weight:600;transition:color 0.2s}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-acts{display:flex;gap:12px;align-items:center}
+  .ni{background:none;border:none;font-size:18px;cursor:pointer;position:relative;transition:transform 0.2s}
+  .ni:hover{transform:scale(1.15)}
+  .nb{position:absolute;top:-6px;right:-6px;background:var(--pink);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .btn-ln{background:var(--yellow);color:var(--text);border:none;padding:9px 20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;border-radius:25px;cursor:pointer;transition:all 0.2s}
+  .btn-ln:hover{background:var(--yellow-dark);transform:translateY(-1px)}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,#e8f4ff 0%,#d0ebff 50%,#ffe8f0 100%);padding:80px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;min-height:85vh;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,107,157,0.15),transparent);border-radius:50%}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(78,205,196,0.15),transparent);border-radius:50%}
+  .hero-left{position:relative;z-index:2}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--text);padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700;margin-bottom:24px}
+  .hero h1{font-family:'Baloo 2',cursive;font-size:clamp(44px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:20px;color:var(--text)}
+  .hero h1 em{color:var(--blue);font-style:normal}
+  .hero h1 span{color:var(--pink)}
+  .hero-desc{font-size:16px;line-height:1.8;color:var(--soft);margin-bottom:36px;max-width:440px;font-weight:400}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+  .btn-p{background:var(--blue-dark);color:#fff;border:none;padding:15px 36px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;border-radius:30px;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;box-shadow:0 4px 16px rgba(26,95,168,0.35)}
+  .btn-p:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,95,168,0.45)}
+  .btn-g{background:white;color:var(--blue-dark);border:2px solid var(--border);padding:15px 36px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;border-radius:30px;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-g:hover{border-color:var(--blue);transform:translateY(-2px)}
+  .hero-trust{display:flex;gap:20px;flex-wrap:wrap}
+  .trust{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--soft);background:white;padding:8px 14px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+  .hero-right{position:relative;z-index:2}
+  .hero-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(45,125,210,0.2)}
+  .hero-img-wrap img{width:100%;height:520px;object-fit:cover}
+  .h-float-1{position:absolute;top:-20px;left:-20px;background:var(--yellow);border-radius:16px;padding:16px 20px;box-shadow:0 8px 24px rgba(255,217,61,0.4);font-weight:800;font-size:14px;color:var(--text)}
+  .h-float-2{position:absolute;bottom:24px;right:-20px;background:white;border-radius:16px;padding:16px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+  .hf-num{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:var(--blue-dark);line-height:1}
+  .hf-label{font-size:11px;color:var(--soft);font-weight:600}
+
+  /* Ages */
+  .ages{background:white;padding:32px 80px;display:flex;gap:0;border-bottom:2px solid var(--sky)}
+  .age-btn{flex:1;padding:16px;border:none;background:none;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:6px;border-bottom:3px solid transparent;color:var(--soft)}
+  .age-btn.active,.age-btn:hover{color:var(--blue-dark);border-color:var(--blue-dark)}
+  .age-emoji{font-size:24px}
+
+  /* Section */
+  .sec{padding:80px 80px}
+  .sec-head{margin-bottom:48px}
+  .sec-head.center{text-align:center}
+  .sec-eye{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--blue);font-weight:700;display:block;margin-bottom:10px}
+  .sec-title{font-family:'Baloo 2',cursive;font-size:clamp(28px,4vw,48px);font-weight:800;color:var(--text);line-height:1.1}
+  .sec-title em{color:var(--pink);font-style:normal}
+  .sec-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px}
+  .see-all{color:var(--blue);text-decoration:none;font-size:13px;font-weight:700;border-bottom:2px solid var(--blue)}
+
+  /* Categories */
+  .cats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .cc{background:white;border-radius:20px;padding:28px 16px;text-align:center;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+  .cc:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
+  .cc-icon{font-size:40px;margin-bottom:12px;display:block}
+  .cc-name{font-family:'Baloo 2',cursive;font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .cc-cnt{font-size:11px;color:var(--light)}
+
+  /* Products */
+  .prods{background:white}
+  .prods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .pc{background:var(--sky);border-radius:20px;position:relative;overflow:hidden;cursor:pointer;transition:all 0.3s}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(45,125,210,0.15)}
+  .pc-img{position:relative;overflow:hidden;aspect-ratio:1;background:white;border-radius:16px;margin:12px;overflow:hidden}
+  .pc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+  .pc:hover .pc-img img{transform:scale(1.06)}
+  .pc-badge{position:absolute;top:8px;right:8px;background:var(--pink);color:white;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px}
+  .pc-badge.new{background:var(--green);color:white}
+  .pc-badge.sale{background:var(--orange);color:white}
+  .pc-wish{position:absolute;top:8px;left:8px;background:white;border:none;font-size:16px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);opacity:0;transform:scale(0.7);transition:all 0.3s}
+  .pc:hover .pc-wish{opacity:1;transform:scale(1)}
+  .pc-add{position:absolute;bottom:12px;left:12px;right:12px;background:var(--blue-dark);color:white;border:none;padding:10px;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transform:translateY(60px);transition:transform 0.35s ease;width:calc(100% - 24px)}
+  .pc:hover .pc-add{transform:translateY(0)}
+  .pc-add:hover{background:var(--blue)}
+  .pc-info{padding:4px 12px 16px}
+  .pc-age{font-size:10px;color:var(--green);font-weight:700;margin-bottom:4px;letter-spacing:1px}
+  .pc-name{font-family:'Baloo 2',cursive;font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.2}
+  .pc-stars{font-size:11px;color:var(--yellow-dark);margin-bottom:6px}
+  .pc-price{display:flex;gap:8px;align-items:center}
+  .p-new{font-size:17px;font-weight:700;color:var(--blue-dark)}
+  .p-old{font-size:13px;text-decoration:line-through;color:var(--light)}
+
+  /* Safety Banner */
+  .safety{background:linear-gradient(135deg,var(--blue-dark),#0d4a8a);color:white;padding:60px 80px}
+  .safety-inner{display:grid;grid-template-columns:1fr 3fr;gap:60px;align-items:center;max-width:1000px;margin:0 auto}
+  .safety-icon{font-size:80px;text-align:center}
+  .safety h2{font-family:'Baloo 2',cursive;font-size:clamp(28px,3.5vw,44px);font-weight:800;margin-bottom:12px}
+  .safety p{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.75);margin-bottom:28px}
+  .safety-certs{display:flex;gap:16px;flex-wrap:wrap}
+  .cert{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:10px 18px;border-radius:10px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px}
+
+  /* Featured */
+  .featured{background:var(--sky)}
+  .featured-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .feat-img{border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(45,125,210,0.15)}
+  .feat-img img{width:100%;height:480px;object-fit:cover}
+  .feat-badge{display:inline-block;background:var(--yellow);color:var(--text);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:16px}
+  .feat-title{font-family:'Baloo 2',cursive;font-size:clamp(32px,4vw,52px);font-weight:800;color:var(--text);margin-bottom:12px;line-height:1.1}
+  .feat-title em{color:var(--blue);font-style:normal}
+  .feat-desc{font-size:15px;line-height:1.8;color:var(--soft);margin-bottom:28px}
+  .feat-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+  .fs-item{background:white;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px}
+  .fs-icon{font-size:20px}
+  .fs-text{font-size:12px;color:var(--text);font-weight:600}
+  .feat-price{font-size:14px;color:var(--soft);margin-bottom:20px}
+  .feat-price strong{font-size:28px;color:var(--blue-dark);font-weight:800}
+
+  /* Reviews */
+  .reviews{background:white}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rc{background:var(--sky);border-radius:20px;padding:28px;transition:all 0.3s}
+  .rc:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1)}
+  .rc-stars{color:var(--yellow-dark);font-size:16px;letter-spacing:2px;margin-bottom:12px}
+  .rc-text{font-size:14px;line-height:1.8;color:var(--text);margin-bottom:20px}
+  .rc-auth{display:flex;align-items:center;gap:10px}
+  .rc-av{width:44px;height:44px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+  .rc-av img{width:100%;height:100%;object-fit:cover}
+  .rc-name{font-size:14px;font-weight:700;color:var(--text)}
+  .rc-for{font-size:11px;color:var(--light)}
+
+  /* Newsletter */
+  .nl{background:linear-gradient(135deg,var(--pink),var(--orange));padding:80px;text-align:center;position:relative;overflow:hidden}
+  .nl::before{content:'🎈';position:absolute;top:20px;left:60px;font-size:48px;opacity:0.3;animation:float 3s ease-in-out infinite}
+  .nl::after{content:'🌟';position:absolute;bottom:20px;right:60px;font-size:48px;opacity:0.3;animation:float 3s ease-in-out infinite 1.5s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .nl h2{font-family:'Baloo 2',cursive;font-size:clamp(28px,4vw,52px);font-weight:800;color:white;margin-bottom:10px}
+  .nl p{color:rgba(255,255,255,0.8);font-size:15px;margin-bottom:36px;max-width:400px;margin-inline:auto}
+  .nl-form{display:flex;max-width:440px;margin:0 auto;gap:0;background:white;border-radius:30px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+  .nl-in{flex:1;background:none;border:none;padding:14px 20px;font-family:'Tajawal',sans-serif;font-size:14px;color:var(--text);outline:none}
+  .nl-in::placeholder{color:var(--light)}
+  .nl-btn{background:var(--blue-dark);color:white;border:none;padding:14px 24px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:background 0.2s;white-space:nowrap;border-radius:30px}
+  .nl-btn:hover{background:var(--blue)}
+
+  /* Footer */
+  footer{background:var(--blue-dark);color:white;padding:70px 80px 36px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:36px}
+  .fb-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.55);max-width:260px;margin:12px 0 20px}
+  .fb-soc{display:flex;gap:10px}
+  .fso{width:38px;height:38px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;transition:all 0.2s}
+  .fso:hover{border-color:var(--yellow);color:var(--yellow)}
+  .fc h4{font-family:'Baloo 2',cursive;font-size:16px;font-weight:700;color:var(--yellow);margin-bottom:18px}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fl a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;transition:color 0.2s}
+  .fl a:hover{color:white}
+  .fb-bottom{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3)}
+
+  /* Cart */
+  .cart-ov{position:fixed;inset:0;background:rgba(26,39,68,0.6);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+  .cart-ov.open{opacity:1;pointer-events:all}
+  .cart-dr{position:fixed;top:0;left:-440px;height:100vh;width:420px;background:white;z-index:1000;transition:left 0.4s ease;overflow-y:auto;display:flex;flex-direction:column;border-radius:0 24px 24px 0;box-shadow:16px 0 48px rgba(0,0,0,0.15)}
+  .cart-dr.open{left:0}
+  .ch{padding:24px;border-bottom:2px solid var(--sky);display:flex;align-items:center;justify-content:space-between}
+  .ch h3{font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;color:var(--text)}
+  .ch-x{background:var(--sky);border:none;color:var(--text);font-size:16px;width:36px;height:36px;border-radius:50%;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center}
+  .ch-x:hover{background:var(--blue);color:white}
+  .ci{flex:1;padding:20px 24px}
+  .citem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--sky)}
+  .citem img{width:72px;height:72px;object-fit:cover;border-radius:12px;flex-shrink:0}
+  .citem-info{flex:1}
+  .citem-name{font-family:'Baloo 2',cursive;font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+  .citem-age{font-size:11px;color:var(--green);font-weight:700;margin-bottom:6px}
+  .citem-price{font-size:15px;font-weight:700;color:var(--blue-dark)}
+  .cf{padding:20px 24px;border-top:2px solid var(--sky)}
+  .ct{display:flex;justify-content:space-between;margin-bottom:16px;font-size:16px;font-weight:700}
+  .ct-amount{font-size:22px;color:var(--blue-dark)}
+  .btn-co{width:100%;background:var(--blue-dark);color:white;border:none;padding:16px;border-radius:14px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(26,95,168,0.35)}
+  .btn-co:hover{background:var(--blue);transform:translateY(-1px)}
+  .toast{position:fixed;top:88px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--blue-dark);color:white;padding:13px 28px;font-size:13px;font-weight:700;border-radius:25px;opacity:0;pointer-events:none;transition:all 0.35s;z-index:2000;box-shadow:0 8px 24px rgba(26,95,168,0.4)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:1024px){
+    nav,footer,.sec,.safety,.nl{padding-left:24px;padding-right:24px}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr;padding:60px 32px}
+    .hero-right{display:none}
+    .cats-row{grid-template-columns:repeat(3,1fr)}
+    .prods-grid{grid-template-columns:repeat(2,1fr)}
+    .featured-inner{grid-template-columns:1fr}
+    .rev-grid{grid-template-columns:1fr}
+    .ft{grid-template-columns:1fr 1fr;gap:32px}
+    .ages{padding-left:24px;padding-right:24px}
+  }
+</style>
+</head>
+<body>
+<div class="ann">🎁 شحن مجاني لكل الطلبات ✦ <strong>هدية مجانية</strong> مع كل طلب فوق ٣٠٠ درهم</div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#cats">الفئات</a></li>
+    <li><a href="#prods">الألعاب</a></li>
+    <li><a href="#featured">مميز الموسم</a></li>
+    <li><a href="#">العروض</a></li>
+  </ul>
+  <a href="#" class="logo">Nuno <span>🧸</span></a>
+  <div class="nav-acts">
+    <button class="ni">🔍</button>
+    <button class="ni" onclick="openCart()">🛒<span class="nb">٢</span></button>
+    <button class="btn-ln">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">🌟 الموسم الجديد ٢٠٢٦</div>
+    <h1>ألعاب تُطلق <em>الخيال</em><br>وتُنمّي <span>المواهب</span></h1>
+    <p class="hero-desc">ألعاب مختارة بعناية لكل مرحلة عمرية — آمنة، ممتعة، ومصممة لتحفيز الإبداع وتنمية مهارات طفلك.</p>
+    <div class="hero-btns">
+      <a href="#prods" class="btn-p">تسوق الآن 🎮</a>
+      <a href="#cats" class="btn-g">تسوق حسب العمر</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust">✅ آمن ومعتمد CE</div>
+      <div class="trust">🚀 شحن في ٢٤ ساعة</div>
+      <div class="trust">↩ إرجاع ٣٠ يوماً</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="h-float-1">🏆 الأكثر مبيعاً</div>
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="ألعاب أطفال">
+    </div>
+    <div class="h-float-2">
+      <div class="hf-num">+٥٠٠٠</div>
+      <div class="hf-label">لعبة متوفرة</div>
+    </div>
+  </div>
+</section>
+
+<!-- Age Filter -->
+<div class="ages">
+  <button class="age-btn active" onclick="setAge(this)"><span class="age-emoji">👶</span>٠-٢ سنة</button>
+  <button class="age-btn" onclick="setAge(this)"><span class="age-emoji">🧒</span>٣-٥ سنوات</button>
+  <button class="age-btn" onclick="setAge(this)"><span class="age-emoji">👦</span>٦-٨ سنوات</button>
+  <button class="age-btn" onclick="setAge(this)"><span class="age-emoji">🧑</span>٩-١٢ سنة</button>
+  <button class="age-btn" onclick="setAge(this)"><span class="age-emoji">👫</span>+١٢ سنة</button>
+  <button class="age-btn" onclick="setAge(this)"><span class="age-emoji">👨‍👩‍👧</span>العائلة</button>
+</div>
+
+<!-- Categories -->
+<section class="sec" id="cats">
+  <div class="sec-top">
+    <div>
+      <span class="sec-eye">تسوق حسب النوع</span>
+      <div class="sec-title">ابحث عن <em>لعبته المثالية</em></div>
+    </div>
+    <a href="#" class="see-all">عرض الكل →</a>
+  </div>
+  <div class="cats-row">
+    <div class="cc"><span class="cc-icon">🧱</span><div class="cc-name">البناء</div><div class="cc-cnt">٤٨٢ لعبة</div></div>
+    <div class="cc"><span class="cc-icon">🎨</span><div class="cc-name">الفن والإبداع</div><div class="cc-cnt">٣٦٤ لعبة</div></div>
+    <div class="cc"><span class="cc-icon">🚗</span><div class="cc-name">السيارات والمركبات</div><div class="cc-cnt">٥٢٨ لعبة</div></div>
+    <div class="cc"><span class="cc-icon">🎭</span><div class="cc-name">التمثيل وأدوار</div><div class="cc-cnt">٢٩٣ لعبة</div></div>
+    <div class="cc"><span class="cc-icon">🧩</span><div class="cc-name">الألغاز والذكاء</div><div class="cc-cnt">٤١٦ لعبة</div></div>
+    <div class="cc"><span class="cc-icon">⚽</span><div class="cc-name">الرياضة والنشاط</div><div class="cc-cnt">٢٤٧ لعبة</div></div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="sec prods" id="prods">
+  <div class="sec-top">
+    <div>
+      <span class="sec-eye">الأكثر شراءً هذا الأسبوع</span>
+      <div class="sec-title">اختيارات <em>الأطفال</em></div>
+    </div>
+    <a href="#" class="see-all">عرض الكل →</a>
+  </div>
+  <div class="prods-grid">
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="لعبة">
+        <div class="pc-badge new">جديد</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-age">🧒 ٣-٦ سنوات</div>
+        <div class="pc-name">مجموعة بناء Mega Bloks</div>
+        <div class="pc-stars">★★★★★ (٣٤٧)</div>
+        <div class="pc-price"><span class="p-new">١٨٥ درهم</span></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&q=80" alt="دراجة">
+        <div class="pc-badge sale">-٣٠٪</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-age">👦 ٤-٨ سنوات</div>
+        <div class="pc-name">دراجة توازن Kinderbike Pro</div>
+        <div class="pc-stars">★★★★★ (٢٨٦)</div>
+        <div class="pc-price"><span class="p-new">٣٤٥ درهم</span><span class="p-old">٤٩٥ درهم</span></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&q=80" alt="لعبة فنية">
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-age">🧒 ٥-١٠ سنوات</div>
+        <div class="pc-name">مجموعة رسم وفنون إبداعية ٦٠ أداة</div>
+        <div class="pc-stars">★★★★★ (١٩٤)</div>
+        <div class="pc-price"><span class="p-new">٢٢٠ درهم</span></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1583663848850-46af132dc08e?w=600&q=80" alt="لغز">
+        <div class="pc-badge new">جديد</div>
+        <button class="pc-wish" onclick="wish(this)">♡</button>
+        <button class="pc-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="pc-info">
+        <div class="pc-age">🧑 ٧-١٢ سنة</div>
+        <div class="pc-name">لغز الروبوت الذكي — ٥٠٠ قطعة</div>
+        <div class="pc-stars">★★★★☆ (١٦٣)</div>
+        <div class="pc-price"><span class="p-new">٩٥ درهم</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Safety Banner -->
+<div class="safety">
+  <div class="safety-inner">
+    <div class="safety-icon">🛡️</div>
+    <div>
+      <h2>سلامة طفلك — أولويتنا الأولى</h2>
+      <p>كل لعبة في Nuno تمر باختبارات سلامة دولية صارمة. نستخدم فقط المواد غير السامة والمعتمدة لضمان راحة بالك الكاملة.</p>
+      <div class="safety-certs">
+        <div class="cert">✅ شهادة CE الأوروبية</div>
+        <div class="cert">✅ معيار ASTM الأمريكي</div>
+        <div class="cert">✅ بلا BPA وبلا فثالات</div>
+        <div class="cert">✅ اختبارات مستقلة</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured -->
+<section class="sec featured" id="featured">
+  <div class="featured-inner">
+    <div class="feat-img">
+      <img src="https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?w=800&q=80" alt="مجموعة مميزة">
+    </div>
+    <div>
+      <div class="feat-badge">⭐ لعبة الموسم</div>
+      <div class="feat-title">مجموعة الأبطال <em>الخارقين</em> ٢٠٢٦</div>
+      <p class="feat-desc">مجموعة كاملة من ٦ شخصيات تفاعلية مع أزياء قابلة للتبديل، صوت وإضاءة LED، ومقرّ خاص قابل للتجميع. الهدية المثالية لطفلك!</p>
+      <div class="feat-specs">
+        <div class="fs-item"><span class="fs-icon">🧒</span><div class="fs-text">مناسب ٤-١٠ سنوات</div></div>
+        <div class="fs-item"><span class="fs-icon">✅</span><div class="fs-text">معتمد CE وASTM</div></div>
+        <div class="fs-item"><span class="fs-icon">🎁</span><div class="fs-text">تغليف هدية مجاني</div></div>
+        <div class="fs-item"><span class="fs-icon">⭐</span><div class="fs-text">تقييم ٤.٩ نجمة</div></div>
+      </div>
+      <div class="feat-price">السعر: <strong>٣٤٠ درهم</strong></div>
+      <button class="btn-p" onclick="addCart()">أضف للسلة 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="sec reviews">
+  <div class="sec-head center">
+    <span class="sec-eye">ماذا قال الآباء</span>
+    <div class="sec-title">أطفال <em>سعداء</em> = آباء سعداء</div>
+  </div>
+  <div class="rev-grid">
+    <div class="rc">
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"اشتريت مجموعة البناء لابني ذو الـ ٤ سنوات. قضى ساعات يلعب بها وكانت آمنة تماماً. شحن سريع جداً والتغليف رائع."</p>
+      <div class="rc-auth"><div class="rc-av"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b67d?w=100&q=80" alt=""></div><div><div class="rc-name">سمية البوسعيدي</div><div class="rc-for">لأجل: Mega Bloks</div></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"دراجة التوازن ممتازة! ابنتي تعلمت التوازن في أسبوع واحد فقط. الجودة عالية والسلامة مضمونة. سنعود للشراء مجدداً."</p>
+      <div class="rc-auth"><div class="rc-av"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt=""></div><div><div class="rc-name">عبد الرحمن الجعبري</div><div class="rc-for">لأجل: Kinderbike</div></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"مجموعة الفنون والرسم أفضل هدية قدمتها لابنتي. المواد آمنة ١٠٠٪، الألوان جميلة والكميات وافرة. شكراً Nuno!"</p>
+      <div class="rc-auth"><div class="rc-av"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&q=80" alt=""></div><div><div class="rc-name">نور الهدى معاش</div><div class="rc-for">لأجل: مجموعة الرسم</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="nl">
+  <h2>🎁 مفاجآت لطفلك كل أسبوع!</h2>
+  <p>اشترك وكن أول من يعلم بالألعاب الجديدة والعروض الحصرية لأعضاء Nuno.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشترك 🌟</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="#" class="logo" style="color:var(--yellow)">Nuno <span style="color:white">🧸</span></a>
+      <p class="fb-desc">ألعاب تُطلق خيال طفلك وتُنمّي مواهبه — آمنة، ممتعة، ولا تُنسى.</p>
+      <div class="fb-soc"><a href="#" class="fso">𝕏</a><a href="#" class="fso">📷</a><a href="#" class="fso">▶</a><a href="#" class="fso">in</a></div>
+    </div>
+    <div class="fc"><h4>الألعاب</h4><ul class="fl"><li><a href="#">٠-٢ سنة</a></li><li><a href="#">٣-٥ سنوات</a></li><li><a href="#">٦-٨ سنوات</a></li><li><a href="#">+٩ سنوات</a></li></ul></div>
+    <div class="fc"><h4>خدماتنا</h4><ul class="fl"><li><a href="#">شحن مجاني</a></li><li><a href="#">تغليف هدايا</a></li><li><a href="#">ضمان الأمان</a></li><li><a href="#">إرجاع ٣٠ يوم</a></li></ul></div>
+    <div class="fc"><h4>تواصل</h4><ul class="fl"><li><a href="#">الدار البيضاء</a></li><li><a href="#">hello@nuno-toys.ma</a></li><li><a href="#">+212 600-000000</a></li></ul></div>
+  </div>
+  <div class="fb-bottom"><span>© ٢٠٢٦ Nuno Toys — جميع الحقوق محفوظة</span><span>VISA · MC · PayPal</span></div>
+</footer>
+
+<!-- Cart -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch"><h3>🛒 سلتك (٢)</h3><button class="ch-x" onclick="closeCart()">✕</button></div>
+  <div class="ci">
+    <div class="citem"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt=""><div class="citem-info"><div class="citem-name">مجموعة بناء Mega Bloks</div><div class="citem-age">🧒 ٣-٦ سنوات</div><div class="citem-price">١٨٥ درهم</div></div></div>
+    <div class="citem"><img src="https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?w=200&q=80" alt=""><div class="citem-info"><div class="citem-name">مجموعة الأبطال الخارقين</div><div class="citem-age">🧒 ٤-١٠ سنوات</div><div class="citem-price">٣٤٠ درهم</div></div></div>
+  </div>
+  <div class="cf"><div class="ct"><span>المجموع</span><span class="ct-amount">٥٢٥ درهم</span></div><button class="btn-co">إتمام الطلب 🎁</button></div>
+</div>
+<div class="toast" id="tst">🎮 أُضيف للسلة!</div>
+
+<script>
+  function openCart(){document.getElementById('cov').classList.add('open');document.getElementById('cdr').classList.add('open')}
+  function closeCart(){document.getElementById('cov').classList.remove('open');document.getElementById('cdr').classList.remove('open')}
+  function addCart(){const t=document.getElementById('tst');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+  function wish(el){el.textContent=el.textContent==='♡'?'♥':'♡';el.style.color=el.style.color?'':'var(--pink)'}
+  function setAge(btn){document.querySelectorAll('.age-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
+  document.querySelectorAll('.pc,.rc,.cc').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el)});
+</script>
+</body>
+</html>
