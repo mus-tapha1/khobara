@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waraq — المكتبة الإلكترونية</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ivory:#faf8f2;--warm:#f2ede0;--paper:#e8e0cc;
+    --ink:#1a1612;--brown:#7a5c3a;--amber:#c4853a;
+    --text:#3d2f20;--soft:#8a7060;--light:#b09880;
+    --border:rgba(122,92,58,0.18);--green:#3a6b4a;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--ivory);color:var(--text);overflow-x:hidden}
+
+  /* Ticker */
+  .ticker{background:var(--ink);color:var(--paper);padding:9px;overflow:hidden;text-align:center;font-size:12px;letter-spacing:2px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(250,248,242,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:'Amiri',serif;font-size:28px;color:var(--brown);letter-spacing:2px;text-decoration:none}
+  .logo span{color:var(--amber);font-style:italic}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:var(--soft);text-decoration:none;font-size:13px;transition:color 0.3s}
+  .nav-links a:hover{color:var(--brown)}
+  .nav-acts{display:flex;gap:14px;align-items:center}
+  .ni{background:none;border:none;font-size:16px;color:var(--soft);cursor:pointer;transition:color 0.3s;position:relative}
+  .ni:hover{color:var(--brown)}
+  .ni-b{position:absolute;top:-6px;right:-6px;background:var(--amber);color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .btn-ln{border:1px solid var(--border);color:var(--text);background:none;padding:8px 18px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;cursor:pointer;transition:all 0.3s}
+  .btn-ln:hover{background:var(--brown);color:var(--ivory);border-color:var(--brown)}
+
+  /* Hero */
+  .hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;background:var(--warm)}
+  .hero-left{padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+  .hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .hero-eyebrow::before{content:'📖';font-size:16px}
+  .hero h1{font-family:'Amiri',serif;font-size:clamp(44px,5vw,72px);font-weight:700;line-height:1.1;margin-bottom:20px;color:var(--ink)}
+  .hero h1 em{color:var(--amber);font-style:italic}
+  .hero-desc{font-size:15px;line-height:1.9;color:var(--soft);margin-bottom:40px;max-width:440px;font-weight:300}
+  .hero-search{display:flex;background:var(--ivory);border:1px solid var(--border);margin-bottom:32px;max-width:460px}
+  .hero-search input{flex:1;background:none;border:none;padding:14px 18px;font-family:'Tajawal',sans-serif;font-size:14px;color:var(--text);outline:none}
+  .hero-search input::placeholder{color:var(--light)}
+  .hero-search button{background:var(--brown);color:var(--ivory);border:none;padding:14px 24px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .hero-search button:hover{background:var(--amber)}
+  .hero-genres{display:flex;gap:10px;flex-wrap:wrap}
+  .genre-tag{border:1px solid var(--border);color:var(--soft);background:none;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s;border-radius:2px}
+  .genre-tag:hover{border-color:var(--amber);color:var(--amber)}
+  .hero-right{position:relative;overflow:hidden}
+  .hero-right img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85)}
+  .hero-stat-box{position:absolute;bottom:40px;right:40px;background:var(--ivory);padding:20px 24px;border-bottom:3px solid var(--amber)}
+  .hs-num{font-family:'Amiri',serif;font-size:36px;color:var(--brown);line-height:1;font-weight:700}
+  .hs-label{font-size:11px;letter-spacing:2px;color:var(--soft);margin-top:4px}
+
+  /* Section */
+  .sec{padding:80px 80px}
+  .sec-head{margin-bottom:48px}
+  .sec-head.center{text-align:center}
+  .sec-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:12px}
+  .sec-title{font-family:'Amiri',serif;font-size:clamp(28px,3.5vw,48px);color:var(--ink);font-weight:700}
+  .sec-title em{font-style:italic;color:var(--amber)}
+  .sec-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
+  .see-all{color:var(--amber);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--amber)}
+
+  /* Books Grid */
+  .books-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .bk{cursor:pointer;position:relative}
+  .bk-cover{position:relative;overflow:hidden;aspect-ratio:2/3;background:var(--warm);box-shadow:4px 6px 20px rgba(26,22,18,0.15);transition:all 0.4s}
+  .bk:hover .bk-cover{transform:translateY(-6px);box-shadow:8px 16px 32px rgba(26,22,18,0.22)}
+  .bk-cover img{width:100%;height:100%;object-fit:cover}
+  .bk-add{position:absolute;bottom:0;left:0;right:0;background:rgba(26,22,18,0.9);color:var(--ivory);border:none;font-family:'Tajawal',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:12px;cursor:pointer;transform:translateY(100%);transition:transform 0.35s ease;width:100%}
+  .bk:hover .bk-add{transform:translateY(0)}
+  .bk-add:hover{background:var(--amber)}
+  .bk-badge{position:absolute;top:10px;right:10px;background:var(--amber);color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 8px}
+  .bk-info{padding:12px 4px}
+  .bk-genre{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+  .bk-title{font-family:'Amiri',serif;font-size:15px;color:var(--ink);margin-bottom:3px;line-height:1.3}
+  .bk-author{font-size:12px;color:var(--soft);margin-bottom:6px}
+  .bk-stars{font-size:11px;color:var(--amber);margin-bottom:4px}
+  .bk-price{display:flex;gap:8px;align-items:center}
+  .bp-new{font-size:15px;font-weight:700;color:var(--brown)}
+  .bp-old{font-size:12px;text-decoration:line-through;color:var(--light)}
+
+  /* Featured Book */
+  .featured{background:var(--ink);color:var(--paper);padding:80px}
+  .featured-inner{display:grid;grid-template-columns:320px 1fr;gap:80px;align-items:center;max-width:1000px;margin:0 auto}
+  .feat-cover{position:relative}
+  .feat-cover img{width:100%;box-shadow:20px 30px 60px rgba(0,0,0,0.6)}
+  .feat-award{position:absolute;top:-20px;left:-20px;background:var(--amber);color:#fff;width:72px;height:72px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;font-weight:700;letter-spacing:1px;text-align:center}
+  .feat-content{}
+  .feat-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:16px}
+  .feat-title{font-family:'Amiri',serif;font-size:clamp(32px,4vw,52px);color:var(--ivory);font-weight:700;line-height:1.1;margin-bottom:10px}
+  .feat-author{font-size:15px;color:var(--light);margin-bottom:20px}
+  .feat-desc{font-size:15px;line-height:1.8;color:rgba(232,224,204,0.75);margin-bottom:32px;font-weight:300}
+  .feat-meta{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+  .fm-item{text-align:center}
+  .fm-num{font-family:'Amiri',serif;font-size:24px;color:var(--amber);font-weight:700}
+  .fm-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:2px}
+  .feat-price{font-size:14px;color:var(--light);margin-bottom:24px}
+  .feat-price strong{font-size:28px;color:var(--amber);font-weight:700}
+  .feat-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-p{background:var(--amber);color:#fff;border:none;padding:14px 36px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-p:hover{background:var(--brown);transform:translateY(-2px)}
+  .btn-g{background:none;border:1px solid rgba(232,224,204,0.25);color:var(--paper);padding:14px 36px;font-family:'Tajawal',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+  .btn-g:hover{border-color:var(--amber);color:var(--amber)}
+
+  /* Categories */
+  .cats-sec{background:var(--warm)}
+  .cats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+  .cc{background:var(--ivory);padding:36px 24px;text-align:center;cursor:pointer;border-bottom:3px solid transparent;transition:all 0.3s}
+  .cc:hover{border-color:var(--amber);background:var(--warm)}
+  .cc-icon{font-size:32px;margin-bottom:12px}
+  .cc-name{font-family:'Amiri',serif;font-size:16px;color:var(--ink);margin-bottom:4px}
+  .cc-cnt{font-size:11px;letter-spacing:2px;color:var(--light)}
+
+  /* Newsletter */
+  .nl{background:linear-gradient(135deg,var(--brown),var(--ink));padding:80px;text-align:center}
+  .nl h2{font-family:'Amiri',serif;font-size:clamp(28px,4vw,48px);color:var(--ivory);font-weight:700;margin-bottom:10px}
+  .nl h2 em{color:var(--amber);font-style:italic}
+  .nl p{color:rgba(232,224,204,0.6);font-size:14px;margin-bottom:36px;max-width:360px;margin-inline:auto}
+  .nl-form{display:flex;max-width:440px;margin:0 auto}
+  .nl-in{flex:1;background:rgba(250,248,242,0.08);border:1px solid rgba(232,224,204,0.2);border-left:none;color:var(--ivory);font-family:'Tajawal',sans-serif;font-size:14px;padding:14px 18px;outline:none}
+  .nl-in:first-child{border-left:1px solid rgba(232,224,204,0.2)}
+  .nl-in:focus{border-color:var(--amber)}
+  .nl-in::placeholder{color:rgba(232,224,204,0.4)}
+  .nl-btn{background:var(--amber);color:#fff;border:none;padding:14px 26px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .nl-btn:hover{background:#d4923f}
+
+  /* Footer */
+  footer{background:var(--ink);color:var(--paper);padding:70px 80px 36px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(232,224,204,0.1);margin-bottom:36px}
+  .fb-desc{font-size:14px;line-height:1.8;color:rgba(232,224,204,0.45);max-width:260px;margin:12px 0 20px}
+  .fb-soc{display:flex;gap:10px}
+  .fso{width:38px;height:38px;border:1px solid rgba(232,224,204,0.15);display:flex;align-items:center;justify-content:center;color:rgba(232,224,204,0.4);font-size:13px;text-decoration:none;transition:all 0.2s}
+  .fso:hover{border-color:var(--amber);color:var(--amber)}
+  .fc h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fl a{color:rgba(232,224,204,0.45);text-decoration:none;font-size:13px;transition:color 0.2s}
+  .fl a:hover{color:var(--amber)}
+  .fb-bottom{display:flex;justify-content:space-between;font-size:12px;color:rgba(232,224,204,0.3)}
+
+  /* Cart */
+  .cart-ov{position:fixed;inset:0;background:rgba(26,22,18,0.6);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s}
+  .cart-ov.open{opacity:1;pointer-events:all}
+  .cart-dr{position:fixed;top:0;left:-440px;height:100vh;width:420px;background:var(--ivory);border-right:1px solid var(--border);z-index:1000;transition:left 0.4s ease;overflow-y:auto;display:flex;flex-direction:column}
+  .cart-dr.open{left:0}
+  .ch{padding:22px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .ch h3{font-family:'Amiri',serif;font-size:20px;color:var(--ink)}
+  .ch-x{background:none;border:1px solid var(--border);color:var(--soft);font-size:14px;width:34px;height:34px;cursor:pointer;transition:all 0.2s}
+  .ch-x:hover{border-color:var(--brown);color:var(--brown)}
+  .ci{flex:1;padding:20px 24px}
+  .citem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+  .citem img{width:64px;height:96px;object-fit:cover;flex-shrink:0;box-shadow:3px 4px 12px rgba(26,22,18,0.15)}
+  .citem-info{flex:1}
+  .citem-name{font-family:'Amiri',serif;font-size:15px;color:var(--ink);margin-bottom:3px}
+  .citem-auth{font-size:12px;color:var(--light);margin-bottom:8px}
+  .citem-price{font-size:14px;color:var(--brown);font-weight:700}
+  .cf{padding:18px 24px;border-top:1px solid var(--border)}
+  .ct{display:flex;justify-content:space-between;margin-bottom:14px;font-size:15px}
+  .ct-amount{font-size:20px;font-weight:700;color:var(--brown)}
+  .btn-co{width:100%;background:var(--brown);color:var(--ivory);border:none;padding:15px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
+  .btn-co:hover{background:var(--amber)}
+  .toast{position:fixed;top:88px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--brown);color:var(--ivory);padding:13px 26px;font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:0;pointer-events:none;transition:all 0.35s;z-index:2000}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:1024px){
+    nav,footer,.sec,.featured,.nl{padding-left:24px;padding-right:24px}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr}
+    .hero-right{height:50vh}
+    .hero-left{padding:60px 32px}
+    .books-grid{grid-template-columns:repeat(2,1fr)}
+    .featured-inner{grid-template-columns:1fr}
+    .cats-row{grid-template-columns:repeat(3,1fr)}
+    .ft{grid-template-columns:1fr 1fr;gap:32px}
+    .nl-form{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker">📚 شحن مجاني للطلبات فوق ١٥٠ درهم · ٠٪ تأخير · أكثر من ٥٠,٠٠٠ عنوان متاح</div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#books">الكتب</a></li>
+    <li><a href="#featured">الأكثر مبيعاً</a></li>
+    <li><a href="#cats">التصنيفات</a></li>
+    <li><a href="#">العروض</a></li>
+  </ul>
+  <a href="#" class="logo">ورَق <span>Waraq</span></a>
+  <div class="nav-acts">
+    <button class="ni">🔍</button>
+    <button class="ni" onclick="openCart()">🛒<span class="ni-b">٢</span></button>
+    <button class="btn-ln">دخول</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">أكثر من ٥٠,٠٠٠ عنوان</div>
+    <h1>كل <em>كتاب</em><br>عالم جديد</h1>
+    <p class="hero-desc">مكتبتك الإلكترونية الشاملة — كتب ورقية ورقمية وصوتية من أفضل دور النشر العربية والعالمية، بأسعار تنافسية وشحن سريع.</p>
+    <div class="hero-search">
+      <input type="text" placeholder="ابحث عن كتاب، مؤلف، أو تصنيف...">
+      <button>🔍 بحث</button>
+    </div>
+    <div class="hero-genres">
+      <button class="genre-tag">رواية</button>
+      <button class="genre-tag">تنمية ذاتية</button>
+      <button class="genre-tag">تاريخ</button>
+      <button class="genre-tag">علوم</button>
+      <button class="genre-tag">فلسفة</button>
+      <button class="genre-tag">شعر</button>
+      <button class="genre-tag">أطفال</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1000&q=80" alt="مكتبة">
+    <div class="hero-stat-box">
+      <div class="hs-num">٥٠ك+</div>
+      <div class="hs-label">عنوان متوفر</div>
+    </div>
+  </div>
+</section>
+
+<!-- Books -->
+<section class="sec" id="books">
+  <div class="sec-top">
+    <div>
+      <span class="sec-eye">الأكثر شراءً هذا الأسبوع</span>
+      <div class="sec-title">اختيارات <em>القراء</em></div>
+    </div>
+    <a href="#" class="see-all">عرض الكل →</a>
+  </div>
+  <div class="books-grid">
+    <div class="bk">
+      <div class="bk-cover">
+        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80" alt="كتاب">
+        <div class="bk-badge">الأول</div>
+        <button class="bk-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="bk-info">
+        <div class="bk-genre">رواية</div>
+        <div class="bk-title">البيت الذي فقد ذاكرته</div>
+        <div class="bk-author">نجيب محفوظ</div>
+        <div class="bk-stars">★★★★★ (٨٤٢)</div>
+        <div class="bk-price"><span class="bp-new">٨٥ درهم</span></div>
+      </div>
+    </div>
+    <div class="bk">
+      <div class="bk-cover">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80" alt="كتاب">
+        <div class="bk-badge" style="background:#3a6b4a">جديد</div>
+        <button class="bk-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="bk-info">
+        <div class="bk-genre">تنمية ذاتية</div>
+        <div class="bk-title">قوة العادات الصغيرة</div>
+        <div class="bk-author">جيمس كلير</div>
+        <div class="bk-stars">★★★★★ (٢,٣٤١)</div>
+        <div class="bk-price"><span class="bp-new">٩٥ درهم</span><span class="bp-old">١١٠ درهم</span></div>
+      </div>
+    </div>
+    <div class="bk">
+      <div class="bk-cover">
+        <img src="https://images.unsplash.com/photo-1495640388908-05fa85288e61?w=400&q=80" alt="كتاب">
+        <button class="bk-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="bk-info">
+        <div class="bk-genre">تاريخ</div>
+        <div class="bk-title">حضارات الشرق القديم</div>
+        <div class="bk-author">د. علي الوردي</div>
+        <div class="bk-stars">★★★★☆ (٦٧٤)</div>
+        <div class="bk-price"><span class="bp-new">١٢٠ درهم</span></div>
+      </div>
+    </div>
+    <div class="bk">
+      <div class="bk-cover">
+        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&q=80" alt="كتاب">
+        <div class="bk-badge" style="background:var(--amber)">-٢٠٪</div>
+        <button class="bk-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="bk-info">
+        <div class="bk-genre">فلسفة</div>
+        <div class="bk-title">فن الحياة الهادئة</div>
+        <div class="bk-author">إبيكتيتوس</div>
+        <div class="bk-stars">★★★★★ (١,١٢٣)</div>
+        <div class="bk-price"><span class="bp-new">٧٦ درهم</span><span class="bp-old">٩٥ درهم</span></div>
+      </div>
+    </div>
+    <div class="bk">
+      <div class="bk-cover">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="كتاب">
+        <button class="bk-add" onclick="addCart()">+ أضف للسلة</button>
+      </div>
+      <div class="bk-info">
+        <div class="bk-genre">علم النفس</div>
+        <div class="bk-title">عقلك أقوى مما تظن</div>
+        <div class="bk-author">د. إبراهيم الفقي</div>
+        <div class="bk-stars">★★★★★ (٩٨٧)</div>
+        <div class="bk-price"><span class="bp-new">٨٠ درهم</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="featured" id="featured">
+  <div class="featured-inner">
+    <div class="feat-cover">
+      <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=600&q=80" alt="كتاب المميز">
+      <div class="feat-award">📚<br>اختيار<br>الشهر</div>
+    </div>
+    <div class="feat-content">
+      <span class="feat-eye">كتاب الشهر — يوليو ٢٠٢٦</span>
+      <div class="feat-title">مئة عام من العزلة</div>
+      <div class="feat-author">غابرييل غارسيا ماركيز · ترجمة: صالح علماني</div>
+      <p class="feat-desc">ملحمة أدبية لا تُنسى تدور حول عائلة بوينديا وقرية ماكوندو الخيالية — رواية غيّرت مسار الأدب العالمي إلى الأبد. الطبعة العربية الكاملة.</p>
+      <div class="feat-meta">
+        <div class="fm-item"><div class="fm-num">٤١٢</div><div class="fm-label">صفحة</div></div>
+        <div class="fm-item"><div class="fm-num">١٩٦٧</div><div class="fm-label">سنة النشر</div></div>
+        <div class="fm-item"><div class="fm-num">٥٠م</div><div class="fm-label">نسخة مباعة</div></div>
+        <div class="fm-item"><div class="fm-num">★٤.٩</div><div class="fm-label">تقييم القراء</div></div>
+      </div>
+      <div class="feat-price">السعر: <strong>١١٠ درهم</strong></div>
+      <div class="feat-btns">
+        <button class="btn-p" onclick="addCart()">+ أضف للسلة</button>
+        <button class="btn-g">قرأت مقتطفاً</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="sec cats-sec" id="cats">
+  <div class="sec-head center">
+    <span class="sec-eye">استكشف حسب الاهتمام</span>
+    <div class="sec-title">تصنيفات <em>الكتب</em></div>
+  </div>
+  <div class="cats-row">
+    <div class="cc"><div class="cc-icon">📖</div><div class="cc-name">الروايات</div><div class="cc-cnt">١٢,٣٤٠</div></div>
+    <div class="cc"><div class="cc-icon">🧠</div><div class="cc-name">تنمية الذات</div><div class="cc-cnt">٨,٦٢٠</div></div>
+    <div class="cc"><div class="cc-icon">🏛️</div><div class="cc-name">التاريخ</div><div class="cc-cnt">٦,٤٥٠</div></div>
+    <div class="cc"><div class="cc-icon">🔬</div><div class="cc-name">العلوم</div><div class="cc-cnt">٤,٨٠٠</div></div>
+    <div class="cc"><div class="cc-icon">💭</div><div class="cc-name">الفلسفة</div><div class="cc-cnt">٣,٩٢٠</div></div>
+    <div class="cc"><div class="cc-icon">👶</div><div class="cc-name">الأطفال</div><div class="cc-cnt">٥,١٠٠</div></div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="nl">
+  <h2>قراءة <em>جديدة</em> كل أسبوع</h2>
+  <p>اشترك ولك ١٠٪ خصم على أول طلب + توصية كتاب مخصصة لذوقك.</p>
+  <div class="nl-form">
+    <input type="email" class="nl-in" placeholder="بريدك الإلكتروني">
+    <button class="nl-btn">اشترك 📚</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="#" class="logo" style="color:var(--amber)">ورَق <span style="color:var(--paper)">Waraq</span></a>
+      <p class="fb-desc">مكتبتك الإلكترونية الشاملة — لأن القراءة ليست هواية، بل طريقة حياة.</p>
+      <div class="fb-soc">
+        <a href="#" class="fso">𝕏</a><a href="#" class="fso">📷</a><a href="#" class="fso">▶</a><a href="#" class="fso">in</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>الكتب</h4>
+      <ul class="fl">
+        <li><a href="#">الروايات</a></li><li><a href="#">الكتب الأكثر مبيعاً</a></li>
+        <li><a href="#">الإصدارات الجديدة</a></li><li><a href="#">الكتب الصوتية</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>الخدمات</h4>
+      <ul class="fl">
+        <li><a href="#">شحن سريع</a></li><li><a href="#">اشتراك مميز</a></li>
+        <li><a href="#">هدايا الكتب</a></li><li><a href="#">نادي القراء</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>تواصل</h4>
+      <ul class="fl">
+        <li><a href="#">books@waraq.ma</a></li><li><a href="#">+212 600-000000</a></li>
+        <li><a href="#">الدار البيضاء</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bottom">
+    <span>© ٢٠٢٦ ورَق Waraq — جميع الحقوق محفوظة</span>
+    <span>VISA · MC · PayPal</span>
+  </div>
+</footer>
+
+<!-- Cart -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart-dr" id="cdr">
+  <div class="ch"><h3>سلة الكتب (٢)</h3><button class="ch-x" onclick="closeCart()">✕</button></div>
+  <div class="ci">
+    <div class="citem">
+      <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&q=80" alt="">
+      <div class="citem-info"><div class="citem-name">البيت الذي فقد ذاكرته</div><div class="citem-auth">نجيب محفوظ</div><div class="citem-price">٨٥ درهم</div></div>
+    </div>
+    <div class="citem">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=200&q=80" alt="">
+      <div class="citem-info"><div class="citem-name">قوة العادات الصغيرة</div><div class="citem-auth">جيمس كلير</div><div class="citem-price">٩٥ درهم</div></div>
+    </div>
+  </div>
+  <div class="cf"><div class="ct"><span>المجموع</span><span class="ct-amount">١٨٠ درهم</span></div><button class="btn-co">إتمام الطلب ←</button></div>
+</div>
+<div class="toast" id="tst">📚 أُضيف للسلة</div>
+
+<script>
+  function openCart(){document.getElementById('cov').classList.add('open');document.getElementById('cdr').classList.add('open')}
+  function closeCart(){document.getElementById('cov').classList.remove('open');document.getElementById('cdr').classList.remove('open')}
+  function addCart(){const t=document.getElementById('tst');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
+  document.querySelectorAll('.bk,.cc').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el)});
+</script>
+</body>
+</html>
