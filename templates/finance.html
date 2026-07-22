@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="سِدر — منصة الاستثمار الذكي وإدارة الثروات في المملكة العربية السعودية">
+<meta property="og:title" content="سِدر — استثمر بذكاء">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سِدر — منصة الاستثمار الذكي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#08090b;
+  --dark:#0d0f13;
+  --dark2:#131720;
+  --dark3:#1a2030;
+  --panel:#0f1319;
+  --panel2:#141b26;
+  --green:#00d4a8;
+  --green2:#00b892;
+  --green3:#00e8b8;
+  --green-light:rgba(0,212,168,.08);
+  --green-border:rgba(0,212,168,.18);
+  --red:#f03e3e;
+  --red-light:rgba(240,62,62,.08);
+  --blue:#3b7ddd;
+  --white:#ffffff;
+  --off-white:#e8eaf0;
+  --text-mid:rgba(232,234,240,.6);
+  --text-dim:rgba(232,234,240,.35);
+  --text-ghost:rgba(232,234,240,.15);
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(0,212,168,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--black);color:var(--off-white);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;z-index:900;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;
+  background:rgba(8,9,11,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo-mark{
+  width:32px;height:32px;background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;border-radius:8px;font-weight:900;color:var(--dark);
+}
+.logo-text{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--off-white);letter-spacing:.02em}
+.logo-text span{color:var(--green)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:.82rem;font-weight:600;transition:.3s}
+.nav-links a:hover{color:var(--green)}
+.nav-actions{display:flex;gap:.7rem;align-items:center}
+.btn-login{border:1px solid var(--border);color:var(--text-mid);background:transparent;padding:.55rem 1.3rem;font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;border-radius:8px;transition:.3s}
+.btn-login:hover{border-color:var(--green-border);color:var(--green)}
+.btn-signup{background:var(--green);color:var(--dark);border:none;padding:.55rem 1.5rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:.8rem;cursor:pointer;border-radius:8px;transition:.3s}
+.btn-signup:hover{background:var(--green2)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:.3rem}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--off-white)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:9rem 5% 5rem;position:relative;overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;width:100%}
+.hero-bg-grad{
+  position:absolute;top:0;right:0;bottom:0;left:50%;
+  background:radial-gradient(ellipse at 70% 30%,rgba(0,212,168,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,212,168,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,168,.03) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,#000 50%,transparent 100%);
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--green-light);border:1px solid var(--green-border);
+  color:var(--green);font-size:.68rem;font-weight:800;letter-spacing:.1em;
+  padding:.3rem .9rem;border-radius:20px;margin-bottom:1.5rem;text-transform:uppercase;
+}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,212,168,.4)}50%{box-shadow:0 0 0 6px rgba(0,212,168,0)}}
+.hero h1{
+  font-size:clamp(3rem,6vw,5.2rem);font-weight:900;
+  color:var(--white);line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem;
+}
+.hero h1 .green{color:var(--green)}
+.hero-desc{font-size:.95rem;color:var(--text-mid);line-height:2.1;max-width:420px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-hero{background:var(--green);color:var(--dark);border:none;padding:.95rem 2.3rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:.95rem;cursor:pointer;border-radius:10px;transition:.3s}
+.btn-hero:hover{background:var(--green3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,168,.3)}
+.btn-hero-ghost{border:1px solid var(--border);color:var(--text-mid);background:transparent;padding:.95rem 2.3rem;font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;border-radius:10px;transition:.3s}
+.btn-hero-ghost:hover{border-color:var(--green-border);color:var(--green)}
+.hero-trust{display:flex;gap:2rem;align-items:center;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--text-dim)}
+.trust-icon{color:var(--green);font-size:.9rem}
+/* App Mockup */
+.hero-app{
+  background:var(--panel);border:1px solid var(--border);border-radius:20px;
+  padding:1.5rem;max-width:360px;margin:0 auto;
+  box-shadow:0 40px 100px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.04);
+}
+.app-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.app-topbar-left{font-size:.75rem;color:var(--text-dim);font-weight:600}
+.app-topbar-name{font-size:.9rem;font-weight:800;color:var(--off-white)}
+.app-topbar-icon{width:32px;height:32px;border-radius:50%;background:var(--green-light);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.app-balance{text-align:center;padding:1.5rem;background:linear-gradient(160deg,var(--dark2),var(--dark3));border-radius:14px;margin-bottom:1rem;position:relative;overflow:hidden}
+.app-balance::before{content:'';position:absolute;top:-30%;left:-30%;width:160%;height:160%;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,168,.06) 0%,transparent 60%)}
+.app-bal-label{font-size:.65rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.app-bal-amount{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:var(--white);letter-spacing:-.02em;line-height:1;margin-bottom:.5rem;position:relative}
+.app-bal-change{display:inline-flex;align-items:center;gap:.3rem;background:rgba(0,212,168,.12);color:var(--green);font-size:.72rem;font-weight:800;padding:.2rem .6rem;border-radius:8px}
+.app-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.2rem}
+.app-action{background:var(--panel2);border-radius:12px;padding:.7rem .5rem;text-align:center;cursor:pointer;transition:.3s}
+.app-action:hover{background:var(--dark3)}
+.app-action-icon{font-size:1.1rem;margin-bottom:.3rem;display:block}
+.app-action-label{font-size:.6rem;color:var(--text-dim);font-weight:700}
+.app-chart{background:var(--panel2);border-radius:14px;padding:1rem;margin-bottom:1rem}
+.app-chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.app-chart-title{font-size:.75rem;font-weight:800;color:var(--off-white)}
+.app-chart-period{font-size:.65rem;color:var(--green);background:var(--green-light);padding:.15rem .5rem;border-radius:6px;font-weight:700}
+.chart-bars{display:flex;gap:4px;align-items:flex-end;height:60px}
+.chart-bar{flex:1;border-radius:3px 3px 0 0;background:var(--dark3);transition:.3s}
+.chart-bar.green{background:var(--green);opacity:.7}
+.chart-bar.green-hi{background:var(--green);opacity:1}
+.chart-bar.red{background:var(--red);opacity:.5}
+.app-holdings{display:flex;flex-direction:column;gap:.6rem}
+.holding-row{display:flex;align-items:center;gap:.8rem;padding:.7rem;background:var(--panel2);border-radius:10px}
+.holding-sym{font-size:.85rem;font-weight:900;color:var(--off-white);min-width:38px}
+.holding-name{font-size:.68rem;color:var(--text-dim);flex:1}
+.holding-change-pos{font-size:.75rem;font-weight:800;color:var(--green)}
+.holding-change-neg{font-size:.75rem;font-weight:800;color:var(--red)}
+.holding-val{font-size:.78rem;font-weight:700;color:var(--off-white)}
+
+/* ── STATS ── */
+.stats{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 5%}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-val{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:var(--green);letter-spacing:-.02em;line-height:1;margin-bottom:.4rem}
+.stat-label{font-size:.7rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+
+/* ── FEATURES ── */
+.features{padding:6rem 5%;background:var(--black)}
+.section-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-light);border:1px solid var(--green-border);color:var(--green);font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:.28rem .8rem;border-radius:16px;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-.02em;margin-bottom:.8rem}
+.section-title .green{color:var(--green)}
+.section-sub{color:var(--text-mid);font-size:.88rem;line-height:2;max-width:480px}
+.section-header{margin-bottom:4rem}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.feature-card{
+  background:var(--dark);padding:2.5rem 2rem;transition:.4s;position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';position:absolute;top:0;right:0;left:0;height:1px;
+  background:var(--green);transform:scaleX(0);transform-origin:right;transition:.4s;
+}
+.feature-card:hover{background:var(--panel)}
+.feature-card:hover::before{transform:scaleX(1)}
+.feature-icon{font-size:2rem;margin-bottom:1.2rem;display:block}
+.feature-title{font-size:1rem;font-weight:800;color:var(--off-white);margin-bottom:.7rem}
+.feature-desc{font-size:.82rem;color:var(--text-mid);line-height:1.95}
+.feature-badge{
+  display:inline-block;margin-top:1rem;font-size:.65rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-light);
+  border:1px solid var(--green-border);padding:.2rem .6rem;border-radius:8px;
+}
+
+/* ── MARKET TICKER ── */
+.ticker{background:var(--dark);border-top:1px solid var(--border);padding:1.5rem 5%;overflow:hidden}
+.ticker-title{font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:1rem;text-align:center}
+.ticker-row{display:flex;gap:1rem;overflow-x:auto;padding-bottom:.5rem}
+.ticker-row::-webkit-scrollbar{display:none}
+.ticker-item{
+  flex-shrink:0;background:var(--panel);border:1px solid var(--border);border-radius:10px;
+  padding:.8rem 1.2rem;display:flex;align-items:center;gap:1rem;
+}
+.ticker-sym{font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:700;color:var(--off-white);min-width:50px}
+.ticker-price{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:var(--off-white)}
+.ticker-chg-pos{font-size:.75rem;font-weight:800;color:var(--green);background:var(--green-light);padding:.15rem .5rem;border-radius:6px}
+.ticker-chg-neg{font-size:.75rem;font-weight:800;color:var(--red);background:var(--red-light);padding:.15rem .5rem;border-radius:6px}
+
+/* ── HOW ── */
+.how{padding:6rem 5%;background:var(--dark);border-top:1px solid var(--border)}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;position:relative}
+.how-steps::before{content:'';position:absolute;top:2.5rem;right:12%;left:12%;height:1px;background:linear-gradient(to left,transparent,var(--green-border),transparent)}
+.how-step{text-align:center;position:relative;z-index:1}
+.how-num{
+  width:48px;height:48px;border-radius:50%;background:var(--green-light);border:1.5px solid var(--green-border);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;
+  font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:700;color:var(--green);
+}
+.how-title{font-size:.92rem;font-weight:800;color:var(--off-white);margin-bottom:.6rem}
+.how-desc{font-size:.8rem;color:var(--text-mid);line-height:1.9}
+
+/* ── SECURITY ── */
+.security{padding:6rem 5%;background:var(--black)}
+.security-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.security-panel{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+.security-panel h3{font-size:1.1rem;font-weight:800;color:var(--off-white);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.security-items{display:flex;flex-direction:column;gap:1.2rem}
+.security-item{display:flex;gap:1rem;align-items:flex-start}
+.security-icon{
+  width:40px;height:40px;background:var(--green-light);border:1px solid var(--green-border);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+}
+.security-item-title{font-size:.88rem;font-weight:800;color:var(--off-white);margin-bottom:.2rem}
+.security-item-desc{font-size:.78rem;color:var(--text-mid);line-height:1.85}
+.security-content .section-tag{display:inline-flex}
+.security-content .section-title{text-align:right}
+.security-badges{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+.sec-badge{background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:.6rem 1rem;font-size:.7rem;color:var(--text-mid);display:flex;align-items:center;gap:.4rem}
+.sec-badge-icon{color:var(--green);font-size:.8rem}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:6rem 5%;background:var(--dark);border-top:1px solid var(--border)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.testimonial{background:var(--panel);border:1px solid var(--border);padding:2rem;border-radius:16px;transition:.3s}
+.testimonial:hover{border-color:var(--green-border);transform:translateY(-3px)}
+.testimonial-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.testimonial-return{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--green);line-height:1}
+.testimonial-return-label{font-size:.65rem;color:var(--text-dim);margin-top:.1rem}
+.testimonial-text{font-size:.83rem;color:var(--text-mid);line-height:2;margin-bottom:1.5rem}
+.testimonial-author{display:flex;align-items:center;gap:.7rem;border-top:1px solid var(--border);padding-top:1rem}
+.author-av{width:36px;height:36px;background:var(--green-light);border:1px solid var(--green-border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:var(--green);flex-shrink:0}
+.author-name{font-size:.82rem;font-weight:800;color:var(--off-white)}
+.author-sub{font-size:.68rem;color:var(--text-dim)}
+
+/* ── CTA ── */
+.cta{padding:7rem 5%;background:var(--dark2);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,168,.07) 0%,transparent 70%);pointer-events:none}
+.cta-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-light);border:1px solid var(--green-border);color:var(--green);font-size:.68rem;font-weight:800;padding:.3rem .9rem;border-radius:20px;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.1em}
+.cta h2{font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05;margin-bottom:1rem;position:relative}
+.cta h2 .green{color:var(--green)}
+.cta p{font-size:.95rem;color:var(--text-mid);line-height:2;max-width:440px;margin:0 auto 2.5rem;position:relative}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-cta{background:var(--green);color:var(--dark);border:none;padding:1rem 2.8rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:.95rem;cursor:pointer;border-radius:10px;transition:.3s;font-weight:900}
+.btn-cta:hover{background:var(--green3);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,212,168,.3)}
+.btn-cta-ghost{border:1px solid var(--border);color:var(--text-mid);background:transparent;padding:1rem 2.8rem;font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;border-radius:10px;transition:.3s}
+.btn-cta-ghost:hover{border-color:var(--green-border);color:var(--green)}
+.cta-disclaimer{font-size:.68rem;color:var(--text-dim);margin-top:1.5rem;position:relative}
+
+/* ── FOOTER ── */
+footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-logo-wrap{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.footer-logo-mark{width:28px;height:28px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--dark)}
+.footer-logo-text{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--off-white)}
+.footer-desc{font-size:.78rem;color:var(--text-dim);line-height:1.9;max-width:200px}
+.footer-socials{display:flex;gap:.6rem;margin-top:1.2rem}
+.footer-social{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:.65rem;text-decoration:none;transition:.3s}
+.footer-social:hover{border-color:var(--green-border);color:var(--green);background:var(--green-light)}
+.footer-col h4{font-size:.65rem;font-weight:800;color:var(--off-white);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.78rem;color:var(--text-dim);text-decoration:none;transition:.3s}
+.footer-col a:hover{color:var(--green)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.68rem;color:var(--text-dim);flex-wrap:wrap;gap:1rem}
+.footer-regulated{display:flex;align-items:center;gap:.5rem;background:var(--green-light);border:1px solid var(--green-border);border-radius:8px;padding:.3rem .8rem;color:var(--green);font-size:.65rem;font-weight:700}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── MOBILE ── */
+@media(max-width:1100px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-app{display:none}
+  .features-grid{grid-template-columns:1fr}
+  .security-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:repeat(2,1fr)}
+  .how-steps::before{display:none}
+  .testimonials-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links,.btn-login{display:none}
+  .nav-burger{display:flex}
+  .features-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  section{padding:4rem 5%!important}
+  .hero{padding:8rem 5% 4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-mark">س</div>
+    <span class="logo-text">سِ<span>در</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">المنصة</a></li>
+    <li><a href="#market">الأسواق</a></li>
+    <li><a href="#how">كيف تبدأ</a></li>
+    <li><a href="#security">الأمان</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-login">تسجيل الدخول</button>
+    <button class="btn-signup">ابدأ مجاناً →</button>
+  </div>
+  <button class="nav-burger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grad"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag"><span class="hero-dot"></span>مرخص من هيئة السوق المالية</div>
+      <h1>استثمر <span class="green">بذكاء</span><br>وابنِ ثروتك</h1>
+      <p class="hero-desc">منصة الاستثمار الأكثر تقدماً في المملكة — أسهم، صناديق، وأدوات استثمار متنوعة بعمولات لا تُضاهى وأدوات تحليل احترافية.</p>
+      <div class="hero-btns">
+        <button class="btn-hero">📈 ابدأ الاستثمار</button>
+        <button class="btn-hero-ghost">شاهد كيف يعمل</button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">✓</span>بدون حد أدنى للاستثمار</div>
+        <div class="trust-item"><span class="trust-icon">✓</span>عمولة 0% على الأسهم</div>
+        <div class="trust-item"><span class="trust-icon">✓</span>محمي بضمان 500K ريال</div>
+      </div>
+    </div>
+    <div class="hero-app">
+      <div class="app-topbar">
+        <div><div class="app-topbar-left">مرحباً،</div><div class="app-topbar-name">عبدالرحمن</div></div>
+        <div class="app-topbar-icon">👤</div>
+      </div>
+      <div class="app-balance">
+        <div class="app-bal-label">إجمالي المحفظة</div>
+        <div class="app-bal-amount">48,320 <span style="font-size:1.2rem;color:var(--text-dim)">ر.س</span></div>
+        <div class="app-bal-change">▲ +2,845 (6.3%) هذا الشهر</div>
+      </div>
+      <div class="app-actions">
+        <div class="app-action"><span class="app-action-icon">💰</span><div class="app-action-label">إيداع</div></div>
+        <div class="app-action"><span class="app-action-icon">📤</span><div class="app-action-label">سحب</div></div>
+        <div class="app-action"><span class="app-action-icon">🔄</span><div class="app-action-label">تحويل</div></div>
+        <div class="app-action"><span class="app-action-icon">📊</span><div class="app-action-label">تقارير</div></div>
+      </div>
+      <div class="app-chart">
+        <div class="app-chart-head">
+          <span class="app-chart-title">أداء المحفظة</span>
+          <span class="app-chart-period">1 شهر</span>
+        </div>
+        <div class="chart-bars">
+          <div class="chart-bar" style="height:40%"></div>
+          <div class="chart-bar red" style="height:30%"></div>
+          <div class="chart-bar green" style="height:55%"></div>
+          <div class="chart-bar" style="height:45%"></div>
+          <div class="chart-bar green" style="height:65%"></div>
+          <div class="chart-bar" style="height:50%"></div>
+          <div class="chart-bar green" style="height:75%"></div>
+          <div class="chart-bar" style="height:60%"></div>
+          <div class="chart-bar green" style="height:80%"></div>
+          <div class="chart-bar red" style="height:55%"></div>
+          <div class="chart-bar green" style="height:70%"></div>
+          <div class="chart-bar green-hi" style="height:90%"></div>
+        </div>
+      </div>
+      <div class="app-holdings">
+        <div class="holding-row"><div class="holding-sym">2222</div><div class="holding-name">أرامكو السعودية</div><div class="holding-change-pos">+3.4%</div><div class="holding-val">18,400</div></div>
+        <div class="holding-row"><div class="holding-sym">AAPL</div><div class="holding-name">آبل</div><div class="holding-change-pos">+1.8%</div><div class="holding-val">9,200</div></div>
+        <div class="holding-row"><div class="holding-sym">1010</div><div class="holding-name">صندوق الأسهم السعودية</div><div class="holding-change-neg">-0.5%</div><div class="holding-val">7,500</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div><div class="stat-val">350K+</div><div class="stat-label">مستثمر نشط</div></div>
+    <div><div class="stat-val">8 مليار</div><div class="stat-label">ريال محفوظ</div></div>
+    <div><div class="stat-val">0%</div><div class="stat-label">عمولة أسهم</div></div>
+    <div><div class="stat-val">4.9★</div><div class="stat-label">تقييم المستخدمين</div></div>
+  </div>
+</div>
+
+<!-- MARKET TICKER -->
+<div class="ticker" id="market">
+  <div class="ticker-title">الأسواق الآن</div>
+  <div class="ticker-row">
+    <div class="ticker-item"><span class="ticker-sym">تداول</span><span class="ticker-price">12,840</span><span class="ticker-chg-pos">▲ +1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">2222</span><span class="ticker-price">27.30 ر.س</span><span class="ticker-chg-pos">▲ +3.4%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">AAPL</span><span class="ticker-price">$219.40</span><span class="ticker-chg-pos">▲ +0.8%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">BTC</span><span class="ticker-price">$67,200</span><span class="ticker-chg-pos">▲ +2.1%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">ذهب</span><span class="ticker-price">$2,380</span><span class="ticker-chg-neg">▼ -0.3%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">MSFT</span><span class="ticker-price">$455.20</span><span class="ticker-chg-pos">▲ +1.5%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">1180</span><span class="ticker-price">42.80 ر.س</span><span class="ticker-chg-neg">▼ -0.7%</span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-header">
+    <div class="section-tag reveal">منصتنا</div>
+    <h2 class="section-title reveal">كل ما تحتاجه<br>في مكان <span class="green">واحد</span></h2>
+    <p class="section-sub reveal">أدوات احترافية بواجهة مبسطة — سواء كنت مبتدئاً أو مستثمراً متمرساً.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal"><span class="feature-icon">📈</span><div class="feature-title">أسهم السوق السعودي</div><p class="feature-desc">استثمر في جميع أسهم تداول مباشرة — تحليلات لحظية، أوامر متقدمة، وتاريخ شامل للأداء.</p><span class="feature-badge">0% عمولة</span></div>
+    <div class="feature-card reveal d1"><span class="feature-icon">🌍</span><div class="feature-title">الأسواق العالمية</div><p class="feature-desc">وصول لأسواق أمريكا وأوروبا وآسيا — Apple, Tesla, Amazon وأكثر من 5,000 سهم عالمي.</p><span class="feature-badge">24/5</span></div>
+    <div class="feature-card reveal d2"><span class="feature-icon">📊</span><div class="feature-title">صناديق الاستثمار</div><p class="feature-desc">أكثر من 200 صندوق استثماري مدار احترافياً — اختر ما يناسب مستوى مخاطرتك وأهدافك.</p><span class="feature-badge">متنوعة</span></div>
+    <div class="feature-card reveal"><span class="feature-icon">🤖</span><div class="feature-title">المحفظة الذكية</div><p class="feature-desc">دع الذكاء الاصطناعي يبني محفظتك تلقائياً بناءً على أهدافك وأفق استثمارك وتحملك للمخاطر.</p><span class="feature-badge">AI-Powered</span></div>
+    <div class="feature-card reveal d1"><span class="feature-icon">📉</span><div class="feature-title">أدوات التحليل</div><p class="feature-desc">مؤشرات تقنية، رسوم بيانية تفاعلية، وتقارير مالية شاملة لاتخاذ قرارات مستنيرة.</p><span class="feature-badge">Pro Tools</span></div>
+    <div class="feature-card reveal d2"><span class="feature-icon">📱</span><div class="feature-title">تطبيق iOS & Android</div><p class="feature-desc">إدارة محفظتك في أي وقت ومكان — إشعارات فورية، تنفيذ سريع، وأمان على مستوى المصارف.</p><span class="feature-badge">5★ تقييم</span></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how" id="how">
+  <div class="section-header" style="text-align:center">
+    <div class="section-tag reveal" style="display:inline-flex">كيف تبدأ</div>
+    <h2 class="section-title reveal" style="text-align:center">4 خطوات <span class="green">وأنت تستثمر</span></h2>
+    <p class="section-sub reveal" style="margin:0 auto">التسجيل مجاني ويستغرق أقل من 5 دقائق — لا خبرة مسبقة مطلوبة.</p>
+  </div>
+  <div class="how-steps">
+    <div class="how-step reveal"><div class="how-num">01</div><div class="how-title">سجّل حسابك</div><p class="how-desc">أنشئ حسابك بالهوية الوطنية خلال 3 دقائق — عملية إلكترونية بالكامل.</p></div>
+    <div class="how-step reveal d1"><div class="how-num">02</div><div class="how-title">أكمل التحقق</div><p class="how-desc">تحقق من هويتك بلقطة سيلفي وصورة الهوية — سريع وآمن 100%.</p></div>
+    <div class="how-step reveal d2"><div class="how-num">03</div><div class="how-title">أودع المبلغ</div><p class="how-desc">حوّل أي مبلغ تريده من حسابك البنكي — بدون حد أدنى للاستثمار.</p></div>
+    <div class="how-step reveal d3"><div class="how-num">04</div><div class="how-title">ابدأ الاستثمار</div><p class="how-desc">اختر أسهمك أو دع المحفظة الذكية تدير لك — ابدأ مشوارك الاستثماري.</p></div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="security" id="security">
+  <div class="security-grid">
+    <div class="security-panel reveal">
+      <h3>🔒 طبقات الحماية</h3>
+      <div class="security-items">
+        <div class="security-item"><div class="security-icon">🔐</div><div><div class="security-item-title">تشفير 256-bit</div><p class="security-item-desc">جميع بياناتك مشفرة بأعلى معايير التشفير المصرفي العالمي.</p></div></div>
+        <div class="security-item"><div class="security-icon">📱</div><div><div class="security-item-title">المصادقة الثنائية</div><p class="security-item-desc">طبقة حماية إضافية بكود OTP لكل عملية دخول أو معاملة مالية.</div></div></div>
+        <div class="security-item"><div class="security-icon">🛡️</div><div><div class="security-item-title">ضمان الحماية</div><p class="security-item-desc">أموالك محمية بضمان يصل لـ 500,000 ريال بموجب نظام هيئة السوق المالية.</p></div></div>
+        <div class="security-item"><div class="security-icon">👁️</div><div><div class="security-item-title">مراقبة 24/7</div><p class="security-item-desc">فريق أمن يراقب المنصة على مدار الساعة للكشف الفوري عن أي نشاط مشبوه.</p></div></div>
+      </div>
+    </div>
+    <div class="security-content reveal d1">
+      <div class="section-tag">أمان بلا قلق</div>
+      <h2 class="section-title">أموالك <span class="green">في أيدٍ أمينة</span></h2>
+      <p class="section-sub">مرخص ومنظم من هيئة السوق المالية السعودية — نلتزم بأعلى معايير الشفافية والأمان في القطاع.</p>
+      <div class="security-badges">
+        <div class="sec-badge"><span class="sec-badge-icon">✓</span>مرخص CMA</div>
+        <div class="sec-badge"><span class="sec-badge-icon">✓</span>معتمد ISO 27001</div>
+        <div class="sec-badge"><span class="sec-badge-icon">✓</span>PCI DSS</div>
+        <div class="sec-badge"><span class="sec-badge-icon">✓</span>SOC 2 Type II</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header" style="text-align:center;margin-bottom:4rem">
+    <div class="section-tag reveal" style="display:inline-flex">قصص نجاح</div>
+    <h2 class="section-title reveal" style="text-align:center">مستثمرونا <span class="green">يحكون</span></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal">
+      <div class="testimonial-top"><div><div class="testimonial-return">+34%</div><div class="testimonial-return-label">عائد سنوي</div></div><div style="font-size:1.5rem">📈</div></div>
+      <p class="testimonial-text">«ما كنت أعرف شيئاً عن الأسهم. بدأت بالمحفظة الذكية بـ 10,000 ريال وبعد سنة أصبحت 13,400. المنصة بسيطة وسهلة جداً حتى للمبتدئ.»</p>
+      <div class="testimonial-author"><div class="author-av">عم</div><div><div class="author-name">عبدالله المرشدي</div><div class="author-sub">مستثمر منذ 2023</div></div></div>
+    </div>
+    <div class="testimonial reveal d1">
+      <div class="testimonial-top"><div><div class="testimonial-return">+58%</div><div class="testimonial-return-label">عائد سنوي</div></div><div style="font-size:1.5rem">💰</div></div>
+      <p class="testimonial-text">«متداول في تداول من 8 سنوات وسِدر فرق كبير — التحليلات سريعة وأدوات الرسم بيانية احترافية. وفّرت عمولات كثيرة مع نفس الأداء.»</p>
+      <div class="testimonial-author"><div class="author-av" style="background:rgba(59,125,221,.1);border-color:rgba(59,125,221,.2);color:#3b7ddd">فع</div><div><div class="author-name">فهد العصيمي</div><div class="author-sub">مستثمر منذ 2022</div></div></div>
+    </div>
+    <div class="testimonial reveal d2">
+      <div class="testimonial-top"><div><div class="testimonial-return">+22%</div><div class="testimonial-return-label">عائد سنوي</div></div><div style="font-size:1.5rem">🌍</div></div>
+      <p class="testimonial-text">«أخيراً قدرت أستثمر في أسهم أمريكية بسهولة من السعودية. اشتريت Apple و NVIDIA وعوائدهم ممتازة. الدعم الفني سريع جداً كمان.»</p>
+      <div class="testimonial-author"><div class="author-av" style="background:rgba(0,212,168,.05);border-color:rgba(0,212,168,.15);color:var(--green)">سح</div><div><div class="author-name">سارة الحربي</div><div class="author-sub">مستثمرة منذ 2024</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-tag">ابدأ مجاناً</div>
+  <h2>لا تدع أموالك<br>تنام في البنك — <span class="green">استثمرها</span></h2>
+  <p>انضم لـ 350,000+ مستثمر سعودي يبنون ثرواتهم على سِدر — التسجيل مجاني ويستغرق 5 دقائق.</p>
+  <div class="cta-btns">
+    <button class="btn-cta">📈 ابدأ الاستثمار مجاناً</button>
+    <button class="btn-cta-ghost">شاهد تجربة المنصة</button>
+  </div>
+  <div class="cta-disclaimer">الاستثمار ينطوي على مخاطر — قيمة الاستثمار قد ترتفع أو تنخفض. الأداء السابق لا يضمن العوائد المستقبلية.</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-wrap">
+        <div class="footer-logo-mark">س</div>
+        <span class="footer-logo-text">سِدر</span>
+      </div>
+      <p class="footer-desc">منصة الاستثمار المرخصة في المملكة — أسهم محلية وعالمية بعمولة صفر وحماية كاملة.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social">ig</a><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">li</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>المنتجات</h4><ul><li><a href="#">أسهم تداول</a></li><li><a href="#">الأسواق العالمية</a></li><li><a href="#">صناديق الاستثمار</a></li><li><a href="#">المحفظة الذكية</a></li></ul></div>
+    <div class="footer-col"><h4>الشركة</h4><ul><li><a href="#">من نحن</a></li><li><a href="#">أخبار</a></li><li><a href="#">وظائف</a></li><li><a href="#">الترخيص</a></li></ul></div>
+    <div class="footer-col"><h4>المساعدة</h4><ul><li><a href="#">مركز المساعدة</a></li><li><a href="#">شروط الخدمة</a></li><li><a href="#">الخصوصية</a></li><li><a href="#">تواصل معنا</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 سِدر للاستثمار. مرخص ومنظم من هيئة السوق المالية السعودية.</span>
+    <div class="footer-regulated"><span>✓</span>مرخص CMA</div>
+  </div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelector('.nav-burger')?.addEventListener('click',()=>{const links=document.querySelector('.nav-links');if(!links)return;const open=links.style.display==='flex';links.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:64px;right:0;left:0;background:rgba(8,9,11,.98);padding:1.5rem 5%;border-bottom:1px solid rgba(255,255,255,.06);gap:1rem'});
+// Animate chart bars
+setTimeout(()=>{document.querySelectorAll('.chart-bar').forEach((bar,i)=>{setTimeout(()=>bar.style.transition='.4s',i*50)})},500);
+</script>
+</body>
+</html>
