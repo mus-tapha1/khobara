@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بيت الأفراح — تنظيم حفلات الأعراس والمناسبات الفاخرة</title>
+<meta name="description" content="بيت الأفراح — متخصصون في تنظيم حفلات الزفاف والخطوبة والفعاليات الفاخرة بلمسة إبداعية لا تُنسى">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#06040a;
+  --bg2:#080610;
+  --bg3:#0a0812;
+  --rose:#b54a72;
+  --rose2:#d4607e;
+  --rose3:#f08faa;
+  --gold:#c9a550;
+  --gold2:#e2be6e;
+  --gold3:#f5d890;
+  --rose-glow:rgba(181,74,114,.2);
+  --rose-dim:rgba(181,74,114,.08);
+  --rose-border:rgba(181,74,114,.28);
+  --gold-dim:rgba(201,165,80,.08);
+  --gold-border:rgba(201,165,80,.25);
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(255,255,255,.1);
+  --text:#ede4f0;
+  --text-dim:rgba(237,228,240,.52);
+  --text-muted:rgba(237,228,240,.28);
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6%;background:rgba(6,4,10,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:all .3s}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--rose),var(--rose2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 4px 16px var(--rose-glow)}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-name{font-size:1rem;font-weight:900;color:#fff;letter-spacing:.04em}
+.logo-sub{font-size:.52rem;color:var(--rose3);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.82rem;font-weight:600;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:1.5px;background:var(--rose3);transform:scaleX(0);transition:transform .3s;transform-origin:right}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.btn-nav{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.6rem 1.5rem;border-radius:30px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.82rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px var(--rose-glow)}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(181,74,114,.45)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 6% 5rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 40%,rgba(181,74,114,.07),transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(201,165,80,.05),transparent 60%),linear-gradient(160deg,#06040a,#0a0612 50%,#080410)}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:float 8s ease-in-out infinite;opacity:.4}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-30px) rotate(180deg)}}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold2);padding:.4rem 1.3rem;border-radius:30px;font-size:.75rem;font-weight:700;margin-bottom:2rem}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:1.2rem;color:#fff}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--rose2),var(--rose3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.05rem;color:var(--text-dim);max-width:560px;margin:0 auto 2.8rem;line-height:1.8}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.btn-rose{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.9rem 2.3rem;border-radius:30px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.95rem;text-decoration:none;transition:all .3s;box-shadow:0 6px 25px var(--rose-glow)}
+.btn-rose:hover{transform:translateY(-2px);box-shadow:0 14px 35px rgba(181,74,114,.5)}
+.btn-gold{border:1px solid var(--gold-border);color:var(--gold2);padding:.9rem 2.3rem;border-radius:30px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .3s}
+.btn-gold:hover{background:var(--gold-dim);color:var(--gold3)}
+.hero-stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat-n{font-size:2rem;font-weight:900;color:#fff;display:block}
+.hstat-n em{font-style:normal;color:var(--rose3)}
+.hstat-l{font-size:.75rem;color:var(--text-muted);font-weight:600}
+
+/* GALLERY STRIP */
+.gallery-strip{display:grid;grid-template-columns:repeat(5,1fr);height:200px;gap:3px;background:var(--border)}
+.gallery-cell{display:flex;align-items:center;justify-content:center;font-size:4rem;overflow:hidden;position:relative;cursor:pointer;transition:all .4s}
+.gallery-cell:hover{transform:scale(1.02)}
+.gallery-cell:nth-child(1){background:linear-gradient(135deg,#150816,#200a1c)}
+.gallery-cell:nth-child(2){background:linear-gradient(135deg,#100814,#180e1e)}
+.gallery-cell:nth-child(3){background:linear-gradient(135deg,#0e0a12,#160c1a)}
+.gallery-cell:nth-child(4){background:linear-gradient(135deg,#140a0e,#201010)}
+.gallery-cell:nth-child(5){background:linear-gradient(135deg,#0c0a10,#14101a)}
+
+/* SECTIONS */
+.sec{padding:5.5rem 6%}
+.sec-hd{text-align:center;margin-bottom:3.5rem}
+.sec-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--rose-border);background:var(--rose-dim);color:var(--rose3);padding:.3rem 1rem;border-radius:20px;font-size:.7rem;font-weight:700;margin-bottom:.8rem}
+.sec-title{font-size:2rem;font-weight:900;color:#fff;margin-bottom:.7rem}
+.sec-sub{color:var(--text-dim);font-size:.9rem;max-width:480px;margin:0 auto;line-height:1.75}
+.divider-rose{width:50px;height:2px;background:linear-gradient(90deg,var(--rose),var(--rose3));border-radius:2px;margin:.8rem auto 0}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem}
+.svc-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:all .4s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle,var(--rose-dim),transparent);transition:all .4s}
+.svc-card:hover{border-color:var(--rose-border);transform:translateY(-5px)}
+.svc-card:hover::before{width:200px;height:200px}
+.svc-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+.svc-title{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.svc-desc{font-size:.82rem;color:var(--text-dim);line-height:1.7;margin-bottom:1rem}
+.svc-price{font-size:.78rem;color:var(--gold2);font-weight:700;display:flex;align-items:center;gap:.3rem}
+.svc-price::before{content:'✦';font-size:.6rem}
+
+/* PACKAGES */
+.packages-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;max-width:1050px;margin:0 auto}
+.pkg-card{border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;background:var(--bg3);transition:all .4s}
+.pkg-card.featured{border-color:var(--rose-border);background:rgba(181,74,114,.04)}
+.pkg-card.featured::before{content:'الأكثر حجزاً';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.25rem 1.2rem;border-radius:0 0 12px 12px;font-size:.65rem;font-weight:900;letter-spacing:.08em;white-space:nowrap}
+.pkg-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+.pkg-name{font-size:.78rem;color:var(--rose3);font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.pkg-price{font-size:2rem;font-weight:900;color:#fff;margin-bottom:.2rem}
+.pkg-price em{font-style:normal;color:var(--text-muted);font-size:1rem;font-weight:400}
+.pkg-note{font-size:.75rem;color:var(--text-muted);margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border)}
+.pkg-feats{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+.pkg-feat{display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:var(--text-dim)}
+.pkg-feat-icon{color:var(--rose3);font-size:.75rem;min-width:14px}
+.btn-pkg{display:block;text-align:center;padding:.85rem;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.88rem;text-decoration:none;transition:all .3s;cursor:pointer}
+.btn-pkg-primary{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border:none;box-shadow:0 4px 18px var(--rose-glow)}
+.btn-pkg-primary:hover{box-shadow:0 10px 28px rgba(181,74,114,.45)}
+.btn-pkg-secondary{border:1px solid var(--rose-border);color:var(--rose3);background:transparent}
+.btn-pkg-secondary:hover{background:var(--rose-dim)}
+
+/* PROCESS */
+.process-sec{}
+.process-inner{max-width:900px;margin:0 auto}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:30px;right:0;left:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-border),var(--rose-border),transparent);z-index:0}
+.process-step{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem 1.5rem;text-align:center;transition:all .4s;position:relative;z-index:1}
+.process-step:hover{border-color:var(--rose-border);transform:translateY(-4px)}
+.step-circle{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--rose2));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 1rem;box-shadow:0 6px 20px var(--rose-glow)}
+.step-title{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:.4rem}
+.step-desc{font-size:.78rem;color:var(--text-dim);line-height:1.6}
+
+/* GALLERY */
+.portfolio-sec{background:var(--bg2);border-top:1px solid var(--border)}
+.portfolio-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.portfolio-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--bg3);border:1px solid var(--border)}
+.portfolio-item:nth-child(1){grid-row:span 2}
+.portfolio-item:nth-child(4){grid-column:span 2}
+.portfolio-inner{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;transition:all .5s}
+.portfolio-item:nth-child(1) .portfolio-inner{aspect-ratio:auto;height:100%}
+.portfolio-item:nth-child(4) .portfolio-inner{aspect-ratio:2/1}
+.portfolio-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(181,74,114,.08),transparent 70%)}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,4,10,.95) 0%,rgba(6,4,10,.3) 50%,transparent 100%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;z-index:2}
+.portfolio-item:hover .portfolio-overlay{opacity:1}
+.portfolio-item:hover .portfolio-inner{transform:scale(1.05)}
+.port-type{font-size:.65rem;color:var(--rose3);font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+.port-name{font-size:.9rem;font-weight:800;color:#fff}
+.port-date{font-size:.72rem;color:var(--text-muted)}
+
+/* TESTIMONIALS */
+.tests-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.test-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:2rem;transition:all .35s}
+.test-card:hover{border-color:var(--rose-border);transform:translateY(-3px)}
+.test-stars{display:flex;gap:.3rem;margin-bottom:1rem;font-size:.85rem}
+.test-body{font-size:.85rem;color:var(--text-dim);line-height:1.8;margin-bottom:1.4rem;font-style:italic}
+.test-divider{width:35px;height:1.5px;background:linear-gradient(90deg,var(--rose),transparent);margin-bottom:1rem}
+.test-author{display:flex;align-items:center;gap:.8rem}
+.test-ava{width:42px;height:42px;border-radius:50%;border:2px solid var(--rose-border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.test-name{font-size:.88rem;font-weight:800;color:#fff}
+.test-event{font-size:.75rem;color:var(--rose3);font-weight:600}
+
+/* VENUE */
+.venue-sec{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.venues-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.venue-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .4s}
+.venue-card:hover{border-color:var(--rose-border);transform:translateY(-5px);box-shadow:0 25px 50px rgba(0,0,0,.4)}
+.venue-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
+.venue-badge{position:absolute;top:.8rem;right:.8rem;background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.2rem .8rem;border-radius:20px;font-size:.65rem;font-weight:800}
+.venue-body{padding:1.3rem}
+.venue-name{font-size:1rem;font-weight:800;color:#fff;margin-bottom:.3rem}
+.venue-capacity{font-size:.78rem;color:var(--text-muted);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.venue-features{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.venue-feat{font-size:.65rem;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim);padding:.2rem .6rem;border-radius:20px;font-weight:600}
+.venue-price{font-size:.85rem;color:var(--gold2);font-weight:800}
+
+/* TIMELINE */
+.timeline-sec{}
+.timeline-inner{max-width:700px;margin:0 auto}
+.timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.timeline::before{content:'';position:absolute;top:0;bottom:0;right:24px;width:1px;background:linear-gradient(to bottom,transparent,var(--rose-border) 10%,var(--rose-border) 90%,transparent)}
+.timeline-item{display:grid;grid-template-columns:50px 1fr;gap:1.5rem;align-items:flex-start;padding:1.2rem 0}
+.tl-circle{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--rose-border);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;position:relative;z-index:1;transition:all .3s;flex-shrink:0}
+.timeline-item:hover .tl-circle{background:var(--rose-dim);border-color:var(--rose2)}
+.tl-content{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;transition:all .3s}
+.timeline-item:hover .tl-content{border-color:var(--rose-border)}
+.tl-time{font-size:.68rem;color:var(--rose3);font-weight:700;letter-spacing:.1em;margin-bottom:.3rem}
+.tl-title{font-size:.9rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.tl-desc{font-size:.78rem;color:var(--text-dim);line-height:1.55}
+
+/* CONTACT / BOOKING */
+.booking-sec{background:var(--bg2);border-top:1px solid var(--border)}
+.booking-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;margin:0 auto;padding:5.5rem 6%}
+.booking-info .sec-hd{text-align:right}
+.booking-contact{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.bc-item{display:flex;gap:1rem;align-items:center;padding:1rem 1.2rem;background:var(--bg3);border:1px solid var(--border);border-radius:12px;transition:border .3s}
+.bc-item:hover{border-color:var(--rose-border)}
+.bc-icon{font-size:1.3rem;min-width:38px;height:38px;background:var(--rose-dim);border:1px solid var(--rose-border);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.bc-label{font-size:.7rem;color:var(--text-muted);font-weight:700;margin-bottom:.15rem}
+.bc-val{font-size:.88rem;font-weight:700;color:#fff}
+.booking-form{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+.form-title{font-size:1rem;font-weight:900;color:#fff;margin-bottom:2rem;display:flex;align-items:center;gap:.6rem}
+.form-title em{color:var(--rose3);font-style:normal}
+.form-group{margin-bottom:1.2rem}
+.form-label{display:block;font-size:.7rem;color:var(--text-muted);font-weight:700;letter-spacing:.08em;margin-bottom:.45rem}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.88rem;outline:none;transition:border .3s;-webkit-appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--rose-border)}
+.form-textarea{height:90px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-book{width:100%;background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.95rem;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:900;font-size:.92rem;border:none;cursor:pointer;box-shadow:0 4px 18px var(--rose-glow);transition:all .3s;margin-top:.5rem}
+.btn-book:hover{box-shadow:0 12px 30px rgba(181,74,114,.5)}
+
+/* CTA */
+.cta-sec{padding:7rem 6%;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(181,74,114,.07),transparent),radial-gradient(ellipse 50% 40% at 30% 70%,rgba(201,165,80,.04),transparent)}
+.cta-emoji{font-size:3rem;display:block;margin-bottom:1rem;filter:drop-shadow(0 0 25px var(--rose-glow))}
+.cta-title{font-size:2.5rem;font-weight:900;color:#fff;margin-bottom:.8rem;line-height:1.15}
+.cta-title em{font-style:normal;background:linear-gradient(90deg,var(--rose2),var(--rose3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sub{color:var(--text-dim);max-width:460px;margin:0 auto 2.8rem;line-height:1.8}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem 6% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.f-logo{font-size:1.1rem;font-weight:900;color:#fff;text-decoration:none;display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.f-logo-icon{width:28px;height:28px;background:linear-gradient(135deg,var(--rose),var(--rose2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.f-desc{font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.2rem}
+.f-social{display:flex;gap:.6rem}
+.f-soc{width:32px;height:32px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.85rem;cursor:pointer;transition:all .3s;text-decoration:none;color:inherit}
+.f-soc:hover{border-color:var(--rose-border);background:var(--rose-dim)}
+.f-col-title{font-size:.72rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.f-links a{font-size:.8rem;color:var(--text-muted);text-decoration:none;transition:color .3s}
+.f-links a:hover{color:var(--rose3)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.f-cr{font-size:.75rem;color:var(--text-muted)}
+.f-bottom-links{display:flex;gap:1.5rem}
+.f-bottom-links a{font-size:.75rem;color:var(--text-muted);text-decoration:none;transition:color .3s}
+.f-bottom-links a:hover{color:#fff}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+@media(max-width:900px){
+  .booking-inner{grid-template-columns:1fr;gap:3rem;padding:4rem 5%}
+  .portfolio-masonry{grid-template-columns:1fr 1fr}
+  .portfolio-item:nth-child(1){grid-row:span 1}
+  .portfolio-item:nth-child(4){grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+  nav{padding:1rem 5%}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .hero{padding:6rem 5% 4rem}
+  .sec{padding:4rem 5%}
+  .gallery-strip{grid-template-columns:repeat(3,1fr);height:140px}
+  .gallery-cell:nth-child(4),.gallery-cell:nth-child(5){display:none}
+  .process-steps::before{display:none}
+  .portfolio-masonry{grid-template-columns:1fr}
+  .portfolio-item:nth-child(4){grid-column:span 1}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr}
+  .cta-title{font-size:1.9rem}
+  .form-row{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">💍</div>
+    <div class="logo-text">
+      <span class="logo-name">بيت الأفراح</span>
+      <span class="logo-sub">Wedding House</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#venues">القاعات</a></li>
+    <li><a href="#portfolio">معرض الأعمال</a></li>
+    <li><a href="#packages">الباقات</a></li>
+    <li><a href="#booking">احجز الآن</a></li>
+  </ul>
+  <a href="#booking" class="btn-nav">احجز يومك</a>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div style="position:relative;z-index:2">
+    <div class="hero-badge">✦ رقم ١ في تنظيم الأفراح بالمملكة</div>
+    <h1>يومك الأجمل يستحق<br><em>لمسة استثنائية</em> و<span>ذكرى خالدة</span></h1>
+    <p class="hero-sub">نحوّل حلمك إلى واقع ساحر — من أولى الخطوات حتى آخر تفصيلة، فريقنا معك لضمان يوم زفاف ومناسبات لا تُنسى تعكس قصة حبكم بكل جمالها.</p>
+    <div class="hero-cta">
+      <a href="#booking" class="btn-rose">💍 احجز استشارة مجانية</a>
+      <a href="#portfolio" class="btn-gold">🌸 تصفح أعمالنا</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-n">٥٠٠<em>+</em></span>
+        <span class="hstat-l">حفل منظّم</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n">١٢<em>+</em></span>
+        <span class="hstat-l">عاماً من الخبرة</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n">٩٨<em>٪</em></span>
+        <span class="hstat-l">رضا العروسين</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n">٣٠<em>+</em></span>
+        <span class="hstat-l">موردٌ معتمد</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery-strip">
+  <div class="gallery-cell">💐</div>
+  <div class="gallery-cell">🕯️</div>
+  <div class="gallery-cell">🎂</div>
+  <div class="gallery-cell">🌹</div>
+  <div class="gallery-cell">🎊</div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ خدماتنا</span>
+    <h2 class="sec-title">كل ما يحتاجه يومك المثالي</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">نقدم حلاً متكاملاً — لا تشغل بالك بأي تفصيلة، نحن نتكفل بكل شيء</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card reveal">
+      <span class="svc-icon">💍</span>
+      <div class="svc-title">تخطيط وتنظيم الزفاف</div>
+      <p class="svc-desc">نتولى التخطيط الكامل من أول يوم — الموعد، القاعة، المورّدين، الميزانية، الجدول الزمني وكل تفصيلة صغيرة.</p>
+      <div class="svc-price">يبدأ من ١٥,٠٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <span class="svc-icon">💐</span>
+      <div class="svc-title">تنسيق الزهور والديكور</div>
+      <p class="svc-desc">ورود طازجة، تجهيزات الطاولات، قوس العروس وتزيين القاعة — كل قطعة تروي جزءاً من قصتكما.</p>
+      <div class="svc-price">يبدأ من ٨,٠٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <span class="svc-icon">📸</span>
+      <div class="svc-title">تصوير وتصوير فيديو</div>
+      <p class="svc-desc">أفضل المصورين المحترفين لتخليد كل لحظة — صور ثابتة وفيديو سينمائي يستحق الحفظ للأجيال.</p>
+      <div class="svc-price">يبدأ من ٦,٠٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🎂</span>
+      <div class="svc-title">تصميم الكيك والحلوى</div>
+      <p class="svc-desc">كيك زفاف مصمم خصيصاً لكما — متعدد الطوابق، طازج ولذيذ بنكهتكما المفضلة وتصميم يذهل الضيوف.</p>
+      <div class="svc-price">يبدأ من ٢,٠٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <span class="svc-icon">🎭</span>
+      <div class="svc-title">الترفيه والفرق الفنية</div>
+      <p class="svc-desc">فرق موسيقى حية، عروض بهلوانية، DJ ومقدمو حفلات محترفون لإسعاد ضيوفكم طوال الليلة.</p>
+      <div class="svc-price">يبدأ من ٤,٠٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <span class="svc-icon">🍽️</span>
+      <div class="svc-title">الضيافة والكاترينج</div>
+      <p class="svc-desc">قائمة طعام مصممة لذوقكما — مأكولات شرقية وعالمية، بوفيه فاخر وطاقم ضيافة محترف.</p>
+      <div class="svc-price">يبدأ من ١٢,٠٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🎁</span>
+      <div class="svc-title">هدايا الضيوف</div>
+      <p class="svc-desc">توريد وتغليف هدايا الضيوف والأطفال بتصميم يتناسق مع ثيم الحفل ويترك أثراً جميلاً.</p>
+      <div class="svc-price">يبدأ من ١,٥٠٠ ريال</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <span class="svc-icon">🚗</span>
+      <div class="svc-title">نقل وسيارات العروسين</div>
+      <p class="svc-desc">سيارات فاخرة مزينة للعروسين والعائلة — ليموزين، سيارات كلاسيكية وكراسي متحركة حسب الطلب.</p>
+      <div class="svc-price">يبدأ من ٣,٠٠٠ ريال</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--border)">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ رحلتنا معاً</span>
+    <h2 class="sec-title">من الحلم إلى الحقيقة</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">خطوات واضحة تجعلك مطمئناً طوال الرحلة — لا مفاجآت ولا قلق</p>
+  </div>
+  <div class="process-inner">
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-circle">☎️</div>
+        <div class="step-title">الاستشارة المجانية</div>
+        <p class="step-desc">نلتقي بكما نصف ساعة لفهم رؤيتكما وميزانيتكما</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-circle">📋</div>
+        <div class="step-title">خطة مفصلة</div>
+        <p class="step-desc">نضع خطة زمنية وميزانية دقيقة خلال ٤٨ ساعة</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-circle">🎨</div>
+        <div class="step-title">الرؤية التصميمية</div>
+        <p class="step-desc">نقدم تصور كامل للديكور والألوان والثيم المختار</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-circle">🤝</div>
+        <div class="step-title">إدارة الموردين</div>
+        <p class="step-desc">نتفاوض ونتعاقد مع أفضل الموردين بأسعار حصرية</p>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-circle">⭐</div>
+        <div class="step-title">يوم الحفل</div>
+        <p class="step-desc">فريقنا معك طوال اليوم لضمان يوم مثالي بلا أي قلق</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="sec portfolio-sec" id="portfolio">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ معرض الأعمال</span>
+    <h2 class="sec-title">قصص حب حوّلناها إلى ذكريات</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">نظرة على بعض الحفلات التي شرفنا بتنظيمها</p>
+  </div>
+  <div class="portfolio-masonry reveal">
+    <div class="portfolio-item">
+      <div class="portfolio-inner" style="background:linear-gradient(135deg,#160814,#220a1e)"><span>🌹</span></div>
+      <div class="portfolio-overlay">
+        <div class="port-type">زفاف فاخر</div>
+        <div class="port-name">حفل سارة وخالد</div>
+        <div class="port-date">قاعة ريجنسي — ٥٠٠ ضيف</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-inner" style="background:linear-gradient(135deg,#100c08,#1e1810)"><span>💐</span></div>
+      <div class="portfolio-overlay">
+        <div class="port-type">خطوبة</div>
+        <div class="port-name">خطوبة نورا وعبدالله</div>
+        <div class="port-date">حديقة فاخرة — ١٨٠ ضيف</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-inner" style="background:linear-gradient(135deg,#060c14,#0c1820)"><span>🎊</span></div>
+      <div class="portfolio-overlay">
+        <div class="port-type">حفل ذكرى زواج</div>
+        <div class="port-name">السنة الخامسة عشرة</div>
+        <div class="port-date">فندق ريتز كارلتون — ٢٠٠ ضيف</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-inner" style="background:linear-gradient(135deg,#120610,#1e0c1a)"><span>🕯️</span></div>
+      <div class="portfolio-overlay">
+        <div class="port-type">حفل زفاف على الشاطئ</div>
+        <div class="port-name">حفل رنا ومحمد</div>
+        <div class="port-date">كورنيش جدة — ٣٠٠ ضيف</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-inner" style="background:linear-gradient(135deg,#0e0a06,#1c1610)"><span>🎂</span></div>
+      <div class="portfolio-overlay">
+        <div class="port-type">حفل ملكي</div>
+        <div class="port-name">زفاف العائلة الكريمة</div>
+        <div class="port-date">قصر خاص — ١٢٠٠ ضيف</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="#" class="btn-gold">مشاهدة جميع الأعمال (٥٠٠+) ←</a>
+  </div>
+</section>
+
+<!-- VENUES -->
+<section class="sec venue-sec" id="venues">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ القاعات الشريكة</span>
+    <h2 class="sec-title">أرقى القاعات في المملكة</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">نتعاون مع أفخم القاعات والفنادق لضمان المكان المثالي لليلتكم</p>
+  </div>
+  <div class="venues-grid">
+    <div class="venue-card reveal">
+      <div class="venue-img" style="background:linear-gradient(135deg,#130810,#201020)">
+        <span class="venue-badge">⭐ فاخرة</span>
+        <span style="font-size:5rem">🏰</span>
+      </div>
+      <div class="venue-body">
+        <div class="venue-name">قاعة الملكة</div>
+        <div class="venue-capacity">👥 حتى ١,٠٠٠ ضيف · الرياض</div>
+        <div class="venue-features">
+          <span class="venue-feat">بوفيه</span>
+          <span class="venue-feat">صالة VIP</span>
+          <span class="venue-feat">تكييف مركزي</span>
+          <span class="venue-feat">موقف واسع</span>
+        </div>
+        <div class="venue-price">✦ يبدأ من ٤٠,٠٠٠ ريال</div>
+      </div>
+    </div>
+    <div class="venue-card reveal reveal-delay-1">
+      <div class="venue-img" style="background:linear-gradient(135deg,#060c14,#0c1822)">
+        <span class="venue-badge">🌟 5 نجوم</span>
+        <span style="font-size:5rem">🏨</span>
+      </div>
+      <div class="venue-body">
+        <div class="venue-name">فندق هيلتون — قاعة الكريستال</div>
+        <div class="venue-capacity">👥 حتى ٥٠٠ ضيف · جدة</div>
+        <div class="venue-features">
+          <span class="venue-feat">مطعم</span>
+          <span class="venue-feat">سبا</span>
+          <span class="venue-feat">غرف ضيوف</span>
+          <span class="venue-feat">بحيرة</span>
+        </div>
+        <div class="venue-price">✦ يبدأ من ٢٥,٠٠٠ ريال</div>
+      </div>
+    </div>
+    <div class="venue-card reveal reveal-delay-2">
+      <div class="venue-img" style="background:linear-gradient(135deg,#0a1008,#141c10)">
+        <span class="venue-badge">🌿 حديقة</span>
+        <span style="font-size:5rem">🏡</span>
+      </div>
+      <div class="venue-body">
+        <div class="venue-name">منتجع الواحة الخضراء</div>
+        <div class="venue-capacity">👥 حتى ٣٠٠ ضيف · الرياض</div>
+        <div class="venue-features">
+          <span class="venue-feat">حديقة طبيعية</span>
+          <span class="venue-feat">استراحات</span>
+          <span class="venue-feat">خيمة ملكية</span>
+          <span class="venue-feat">ألعاب أطفال</span>
+        </div>
+        <div class="venue-price">✦ يبدأ من ١٨,٠٠٠ ريال</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec" id="timeline">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ جدول يوم الزفاف</span>
+    <h2 class="sec-title">كل لحظة مُخطَّطة بدقة</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">مثال على جدول حفل زفاف منظّم من بيت الأفراح</p>
+  </div>
+  <div class="timeline-inner">
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="tl-circle">☀️</div>
+        <div class="tl-content">
+          <div class="tl-time">٠٢:٠٠ م</div>
+          <div class="tl-title">بدء التجهيزات</div>
+          <div class="tl-desc">فريقنا يبدأ تنسيق القاعة، الزهور والإضاءة قبل ٦ ساعات من الحفل</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="tl-circle">💄</div>
+        <div class="tl-content">
+          <div class="tl-time">٠٤:٠٠ م</div>
+          <div class="tl-title">تجهيز العروس</div>
+          <div class="tl-desc">فريق التجميل والتصفيف يبدأ جلسة العروس في غرفة مخصصة</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="tl-circle">📸</div>
+        <div class="tl-content">
+          <div class="tl-time">٠٦:٠٠ م</div>
+          <div class="tl-title">جلسة التصوير</div>
+          <div class="tl-desc">تصوير العروسين وعائلتيهما في مواقع مختارة بالقاعة قبل وصول الضيوف</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="tl-circle">💐</div>
+        <div class="tl-content">
+          <div class="tl-time">٠٨:٠٠ م</div>
+          <div class="tl-title">استقبال الضيوف</div>
+          <div class="tl-desc">طاقم الاستقبال يُرحب بالضيوف وتوزيع هداياهم ومقاعدهم</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="tl-circle">✨</div>
+        <div class="tl-content">
+          <div class="tl-time">٠٩:٠٠ م</div>
+          <div class="tl-title">دخول العروسين</div>
+          <div class="tl-desc">اللحظة الأسطورية — دخول العروسين بإضاءة مسرحية وموسيقى مختارة</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="tl-circle">🎂</div>
+        <div class="tl-content">
+          <div class="tl-time">١٠:٠٠ م</div>
+          <div class="tl-title">حفل تقطيع الكيك</div>
+          <div class="tl-desc">لحظة لا تُنسى مع الكيك الملكي وابتهاج الضيوف والتصوير</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="tl-circle">🎊</div>
+        <div class="tl-content">
+          <div class="tl-time">١١:٠٠ م</div>
+          <div class="tl-title">ختام الحفل</div>
+          <div class="tl-desc">توديع الضيوف مع أضواء الاحتفال وآخر لحظات التصوير والذكريات</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="sec packages-sec" id="packages">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ باقات الأفراح</span>
+    <h2 class="sec-title">باقة لكل حلم وميزانية</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">اختر ما يناسبك — كل باقة تُلبّى بنفس العناية والشغف</p>
+  </div>
+  <div class="packages-grid">
+    <div class="pkg-card reveal">
+      <span class="pkg-icon">🌸</span>
+      <div class="pkg-name">باقة الربيع</div>
+      <div class="pkg-price">٢٥,٠٠٠ <em>ريال</em></div>
+      <div class="pkg-note">مثالية للمناسبات الصغيرة حتى ١٥٠ ضيف</div>
+      <div class="pkg-feats">
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> تنسيق وتخطيط كامل</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> ديكور زهور أساسي</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> تصوير فوتوغرافي ٤ ساعات</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> ضيافة لـ ١٥٠ شخص</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> هدايا الضيوف</div>
+      </div>
+      <a href="#booking" class="btn-pkg btn-pkg-secondary">اختر هذه الباقة</a>
+    </div>
+    <div class="pkg-card featured reveal reveal-delay-1">
+      <span class="pkg-icon">💍</span>
+      <div class="pkg-name">باقة الأميرة</div>
+      <div class="pkg-price">٦٥,٠٠٠ <em>ريال</em></div>
+      <div class="pkg-note">الأكثر طلباً — حتى ٤٠٠ ضيف بتنظيم كامل</div>
+      <div class="pkg-feats">
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> تخطيط وإدارة يوم كامل</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> ديكور زهور فاخر شامل</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> تصوير فيديو وفوتو ٨ ساعات</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> كيك زفاف مصمم خصيصاً</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> فرقة موسيقية أو DJ</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> كاترينج لـ ٤٠٠ ضيف</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> سيارة فاخرة للعروسين</div>
+      </div>
+      <a href="#booking" class="btn-pkg btn-pkg-primary">احجز الآن</a>
+    </div>
+    <div class="pkg-card reveal reveal-delay-2">
+      <span class="pkg-icon">👑</span>
+      <div class="pkg-name">باقة الملكة</div>
+      <div class="pkg-price">بالتفاوض</div>
+      <div class="pkg-note">حفل ملكي لا حدود له — كل شيء حسب رغبتكما</div>
+      <div class="pkg-feats">
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> كل مزايا باقة الأميرة</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> منسق شخصي مخصص</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> تزيين وزهور لا محدود</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> تصوير + ألبوم فاخر</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> عروض ترفيهية خاصة</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> ضيافة VIP بلا حدود</div>
+        <div class="pkg-feat"><span class="pkg-feat-icon">✦</span> موكب سيارات فاخرة</div>
+      </div>
+      <a href="#booking" class="btn-pkg btn-pkg-secondary">تواصل معنا</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" style="background:var(--bg3);border-top:1px solid var(--border)">
+  <div class="sec-hd reveal">
+    <span class="sec-badge">✦ آراء العملاء</span>
+    <h2 class="sec-title">سعادتهم أجمل مكافأة</h2>
+    <div class="divider-rose"></div>
+    <p class="sec-sub">أكثر من ٥٠٠ عروسين اختارونا ليوم أجمل لحظات حياتهم</p>
+  </div>
+  <div class="tests-grid">
+    <div class="test-card reveal">
+      <div class="test-stars">💖💖💖💖💖</div>
+      <p class="test-body">"كنا قلقين جداً من تنظيم حفل كبير لأكثر من ٥٠٠ ضيف، لكن بيت الأفراح جعل كل شيء يسيراً. الديكور كان أحلى مما تخيلنا والفريق كان دائماً موجوداً لأي طلب."</p>
+      <div class="test-divider"></div>
+      <div class="test-author">
+        <div class="test-ava">👰</div>
+        <div>
+          <div class="test-name">سلمى والأمير</div>
+          <div class="test-event">حفل زفاف ملكي — ٥٠٠ ضيف</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card reveal reveal-delay-1">
+      <div class="test-stars">💖💖💖💖💖</div>
+      <p class="test-body">"أريم أطيب فريق شتغلنا معاهم — حسيناهم بمشاعرنا بالكامل. كل تفصيلة كانت بالضبط كما طلبنا بل وأكثر. حفلنا كان من أجمل الحفلات اللي شوفناها."</p>
+      <div class="test-divider"></div>
+      <div class="test-author">
+        <div class="test-ava">💑</div>
+        <div>
+          <div class="test-name">رنا وبشار</div>
+          <div class="test-event">حفل زفاف — جدة</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card reveal reveal-delay-2">
+      <div class="test-stars">💖💖💖💖💖</div>
+      <p class="test-body">"منذ أول استشارة والفريق كان يفهم ما نريده دون الحاجة لشرح كثير. التصوير كان احترافياً جداً والألبوم يجعلنا نعيش لحظة حفلنا كل مرة نفتحه."</p>
+      <div class="test-divider"></div>
+      <div class="test-author">
+        <div class="test-ava">👰</div>
+        <div>
+          <div class="test-name">هدى وعلي</div>
+          <div class="test-event">خطوبة ثم زفاف — الرياض</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="booking-sec">
+  <div class="booking-inner">
+    <div class="booking-info">
+      <div class="sec-hd" style="text-align:right">
+        <span class="sec-badge">✦ احجز الآن</span>
+        <h2 class="sec-title" style="text-align:right">خطوتك الأولى نحو<br>يومك المثالي</h2>
+        <div class="divider-rose" style="margin-right:0;margin-left:auto"></div>
+        <p class="sec-sub" style="text-align:right;margin:0">احجز استشارتك المجانية اليوم — مواعيد الأفراح تُحجز مبكراً، لا تتأخر!</p>
+      </div>
+      <div class="booking-contact">
+        <div class="bc-item">
+          <div class="bc-icon">📞</div>
+          <div>
+            <div class="bc-label">للتواصل الفوري</div>
+            <div class="bc-val">+966 50 000 0000</div>
+          </div>
+        </div>
+        <div class="bc-item">
+          <div class="bc-icon">📱</div>
+          <div>
+            <div class="bc-label">واتساب</div>
+            <div class="bc-val">متاح ٢٤/٧ للاستفسارات</div>
+          </div>
+        </div>
+        <div class="bc-item">
+          <div class="bc-icon">📍</div>
+          <div>
+            <div class="bc-label">مكتبنا</div>
+            <div class="bc-val">حي الملقا، الرياض (وجدة والدمام)</div>
+          </div>
+        </div>
+        <div class="bc-item">
+          <div class="bc-icon">🕐</div>
+          <div>
+            <div class="bc-label">مواعيد العمل</div>
+            <div class="bc-val">يومياً من ٩ص حتى ١٠م</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-form reveal">
+      <div class="form-title">💍 <em>احجز استشارتك المجانية</em></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">اسمك الكريم</label>
+          <input type="text" class="form-input" placeholder="اسم العريس / العروس">
+        </div>
+        <div class="form-group">
+          <label class="form-label">رقم الجوال</label>
+          <input type="tel" class="form-input" placeholder="05xxxxxxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">نوع المناسبة</label>
+        <select class="form-select">
+          <option>اختر نوع المناسبة</option>
+          <option>حفل زفاف</option>
+          <option>حفل خطوبة</option>
+          <option>ذكرى زواج</option>
+          <option>حفل عيد ميلاد</option>
+          <option>فعالية شركة</option>
+          <option>مناسبة أخرى</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">تاريخ الحفل المتوقع</label>
+          <input type="date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">عدد الضيوف التقريبي</label>
+          <select class="form-select">
+            <option>أقل من ١٠٠</option>
+            <option>١٠٠ – ٢٥٠</option>
+            <option>٢٥٠ – ٥٠٠</option>
+            <option>٥٠٠ – ١٠٠٠</option>
+            <option>أكثر من ١٠٠٠</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">الميزانية التقريبية</label>
+        <select class="form-select">
+          <option>أقل من ٢٠,٠٠٠ ريال</option>
+          <option>٢٠,٠٠٠ – ٥٠,٠٠٠ ريال</option>
+          <option>٥٠,٠٠٠ – ١٠٠,٠٠٠ ريال</option>
+          <option>١٠٠,٠٠٠ – ٢٠٠,٠٠٠ ريال</option>
+          <option>أكثر من ٢٠٠,٠٠٠ ريال</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">رسالتك (اختياري)</label>
+        <textarea class="form-textarea" placeholder="أي تفاصيل تريد مشاركتها معنا..."></textarea>
+      </div>
+      <button class="btn-book" onclick="alert('شكراً! سنتواصل معك خلال ساعات لتأكيد موعد الاستشارة المجانية 💍')">احجز استشارتي المجانية الآن 💍</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <span class="cta-emoji">💍</span>
+  <h2 class="cta-title">ابدأ رحلة <em>حلمك</em> معنا</h2>
+  <p class="cta-sub">المواعيد تُحجز مسبقاً — لا تتأخر في التواصل لضمان تاريخك المفضل</p>
+  <div class="hero-cta">
+    <a href="#booking" class="btn-rose">💍 احجز الآن</a>
+    <a href="tel:+966500000000" class="btn-gold">📞 اتصل بنا</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="f-logo">
+        <div class="f-logo-icon">💍</div>
+        بيت الأفراح
+      </a>
+      <p class="f-desc">منذ ٢٠١٣ نصنع ذكريات لا تُنسى — حفلات أفراح ومناسبات فاخرة بلمسة من القلب.</p>
+      <div class="f-social">
+        <a href="#" class="f-soc">📘</a>
+        <a href="#" class="f-soc">📸</a>
+        <a href="#" class="f-soc">📱</a>
+        <a href="#" class="f-soc">🎬</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">خدماتنا</div>
+      <ul class="f-links">
+        <li><a href="#">تنظيم الزفاف</a></li>
+        <li><a href="#">حفلات الخطوبة</a></li>
+        <li><a href="#">ذكريات الزواج</a></li>
+        <li><a href="#">الفعاليات</a></li>
+        <li><a href="#">الكاترينج</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">الشركة</div>
+      <ul class="f-links">
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">معرض الأعمال</a></li>
+        <li><a href="#">القاعات</a></li>
+        <li><a href="#">الباقات</a></li>
+        <li><a href="#">توظيف</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">فروعنا</div>
+      <ul class="f-links">
+        <li><a href="#">الرياض</a></li>
+        <li><a href="#">جدة</a></li>
+        <li><a href="#">الدمام</a></li>
+        <li><a href="#">الكويت</a></li>
+        <li><a href="#">دبي</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-cr">© 2025 بيت الأفراح — جميع الحقوق محفوظة</span>
+    <div class="f-bottom-links">
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">الشروط والأحكام</a>
+      <a href="#">سياسة الإلغاء</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+reveals.forEach(r => obs.observe(r));
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(6,4,10,.97)' : 'rgba(6,4,10,.9)';
+});
+</script>
+</body>
+</html>
