@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="وصّال — توصيل الطعام الأسرع في المملكة العربية السعودية">
+<meta property="og:title" content="وصّال — الطعام يصلك في 30 دقيقة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>وصّال — توصيل الطعام السريع</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Righteous&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#ff5722;
+  --orange2:#e64a19;
+  --orange3:#ff7043;
+  --yellow:#ffc107;
+  --bg:#faf8f5;
+  --bg2:#f5f0ea;
+  --dark:#1a0f00;
+  --dark2:#2c1a00;
+  --text:#1a0f00;
+  --text-mid:#5c4030;
+  --text-light:#9c7c60;
+  --border:rgba(255,87,34,.15);
+  --border2:rgba(26,15,0,.08);
+  --white:#ffffff;
+  --surface:rgba(255,255,255,.9);
+  --grad:linear-gradient(135deg,var(--orange),var(--orange3));
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;z-index:900;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 5%;
+  background:rgba(250,248,245,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border2);
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+}
+.logo{display:flex;align-items:center;gap:.5rem}
+.logo-icon{
+  width:36px;height:36px;background:var(--grad);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  box-shadow:0 4px 12px rgba(255,87,34,.35);
+}
+.logo-text{font-family:'Righteous',sans-serif;font-size:1.45rem;color:var(--dark);letter-spacing:.02em}
+.logo-text span{color:var(--orange)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:.84rem;font-weight:700;transition:.3s}
+.nav-links a:hover{color:var(--orange)}
+.nav-actions{display:flex;gap:.7rem;align-items:center}
+.nav-location{
+  display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--text-mid);
+  border:1px solid var(--border2);padding:.45rem .9rem;border-radius:8px;cursor:pointer;transition:.3s;
+}
+.nav-location:hover{border-color:var(--orange);color:var(--orange)}
+.btn-download{
+  background:var(--grad);color:#fff;border:none;
+  padding:.55rem 1.4rem;font-family:'Cairo',sans-serif;font-weight:800;
+  font-size:.82rem;cursor:pointer;border-radius:10px;
+  box-shadow:0 4px 12px rgba(255,87,34,.3);transition:.3s;
+}
+.btn-download:hover{box-shadow:0 6px 20px rgba(255,87,34,.5);transform:translateY(-1px)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:.3rem}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:.3s}
+
+/* ── HERO ── */
+.hero{
+  padding:9rem 6% 5rem;
+  background:var(--bg);
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.hero-bg-circle{
+  position:absolute;top:-15%;left:-5%;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,87,34,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.2);
+  color:var(--orange);font-size:.72rem;font-weight:800;letter-spacing:.1em;
+  padding:.35rem 1rem;border-radius:50px;margin-bottom:1.5rem;text-transform:uppercase;
+}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:900;
+  color:var(--dark);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.02em;
+}
+.hero h1 span{
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{font-size:1rem;color:var(--text-mid);line-height:2;max-width:440px;margin-bottom:2.5rem}
+.hero-search{
+  display:flex;gap:.5rem;background:#fff;
+  border:2px solid var(--orange);border-radius:14px;
+  padding:.4rem .4rem .4rem 1rem;
+  box-shadow:0 8px 30px rgba(255,87,34,.15);
+  max-width:460px;margin-bottom:2rem;
+}
+.hero-search input{
+  flex:1;border:none;outline:none;font-family:'Cairo',sans-serif;
+  font-size:.9rem;color:var(--dark);background:transparent;
+}
+.hero-search input::placeholder{color:var(--text-light)}
+.hero-search-btn{
+  background:var(--grad);color:#fff;border:none;
+  padding:.65rem 1.5rem;font-family:'Cairo',sans-serif;font-weight:800;
+  font-size:.88rem;cursor:pointer;border-radius:10px;transition:.3s;white-space:nowrap;
+}
+.hero-search-btn:hover{box-shadow:0 4px 16px rgba(255,87,34,.4)}
+.hero-trust{display:flex;gap:1.5rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text-mid)}
+.trust-icon{font-size:.9rem}
+.hero-visual{position:relative}
+.hero-app-mockup{
+  background:var(--dark);border-radius:30px;padding:1.5rem;
+  box-shadow:0 30px 80px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.05);
+  max-width:320px;margin:0 auto;position:relative;overflow:hidden;
+}
+.app-bar{background:rgba(255,255,255,.06);border-radius:20px;padding:.8rem 1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between}
+.app-bar-title{font-size:.8rem;font-weight:800;color:#fff}
+.app-bar-loc{font-size:.7rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.3rem}
+.app-search{background:rgba(255,255,255,.08);border-radius:12px;padding:.7rem 1rem;font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.app-cats{display:flex;gap:.5rem;overflow:hidden;margin-bottom:1rem}
+.app-cat{background:rgba(255,87,34,.15);border:1px solid rgba(255,87,34,.25);border-radius:8px;padding:.4rem .8rem;font-size:.68rem;font-weight:800;color:var(--orange3);white-space:nowrap}
+.app-cat.active{background:var(--orange);border-color:var(--orange);color:#fff}
+.app-restaurants{display:flex;flex-direction:column;gap:.6rem}
+.app-rest{background:rgba(255,255,255,.06);border-radius:12px;padding:.8rem;display:flex;align-items:center;gap:.8rem}
+.rest-emoji{font-size:1.6rem;min-width:36px;text-align:center}
+.rest-info-name{font-size:.8rem;font-weight:800;color:#fff}
+.rest-info-sub{font-size:.65rem;color:rgba(255,255,255,.4)}
+.rest-badge{margin-right:auto;background:rgba(255,193,7,.15);color:var(--yellow);font-size:.62rem;font-weight:800;padding:.2rem .5rem;border-radius:6px;white-space:nowrap}
+.hero-float-badge{
+  position:absolute;bottom:-1rem;right:-2rem;
+  background:#fff;border-radius:16px;padding:.9rem 1.2rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  display:flex;align-items:center;gap:.7rem;
+}
+.float-icon{font-size:1.4rem}
+.float-num{font-size:1.2rem;font-weight:900;color:var(--dark);line-height:1}
+.float-label{font-size:.68rem;color:var(--text-light)}
+.hero-float-badge2{
+  position:absolute;top:2rem;left:-2rem;
+  background:var(--orange);border-radius:14px;padding:.7rem 1rem;
+  box-shadow:0 8px 24px rgba(255,87,34,.3);
+  display:flex;align-items:center;gap:.5rem;color:#fff;font-size:.8rem;font-weight:800;
+}
+
+/* ── CATEGORIES ── */
+.categories{padding:5rem 6%;background:#fff}
+.cats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:3.5rem}
+.cat-card{
+  background:var(--bg);border:1.5px solid var(--border2);border-radius:16px;
+  padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:.4s;
+}
+.cat-card:hover{border-color:var(--orange);background:rgba(255,87,34,.04);transform:translateY(-4px)}
+.cat-emoji{font-size:2.2rem;margin-bottom:.8rem;display:block}
+.cat-name{font-size:.8rem;font-weight:800;color:var(--text-mid);transition:.3s}
+.cat-card:hover .cat-name{color:var(--orange)}
+.cat-count{font-size:.68rem;color:var(--text-light);margin-top:.2rem}
+
+/* ── HOW IT WORKS ── */
+.how{padding:5rem 6%;background:var(--dark);position:relative;overflow:hidden}
+.how::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,87,34,.07) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.how .section-eyebrow{color:var(--orange)}
+.how .section-title{color:#fff}
+.how .section-sub{color:rgba(255,255,255,.5)}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;position:relative}
+.how-steps::before{content:'';position:absolute;top:3rem;right:12%;left:12%;height:1px;background:linear-gradient(to left,transparent,var(--orange),transparent);opacity:.2}
+.how-step{text-align:center;position:relative;z-index:1}
+.how-num{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--grad);display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin:0 auto 1.2rem;
+  box-shadow:0 0 0 8px rgba(255,87,34,.1),0 8px 24px rgba(255,87,34,.3);
+}
+.how-title{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.6rem}
+.how-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.85}
+
+/* ── FEATURED RESTAURANTS ── */
+.restaurants{padding:5rem 6%;background:var(--bg2)}
+.section-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.2);color:var(--orange);font-size:.72rem;font-weight:800;letter-spacing:.1em;padding:.35rem 1rem;border-radius:50px;margin-bottom:1rem;text-transform:uppercase}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--dark);line-height:1.1;margin-bottom:.8rem;letter-spacing:-.02em}
+.section-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-sub{color:var(--text-light);font-size:.88rem;line-height:1.9;max-width:520px}
+.section-header{margin-bottom:3.5rem}
+.rest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rest-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);transition:.4s;cursor:pointer;
+}
+.rest-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.rest-cover{
+  height:180px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#ffecd2,#fcb69f);
+  display:flex;align-items:center;justify-content:center;font-size:5rem;
+}
+.rest-cover-badge{
+  position:absolute;top:.8rem;right:.8rem;
+  background:var(--orange);color:#fff;font-size:.65rem;font-weight:800;
+  padding:.3rem .7rem;border-radius:6px;
+}
+.rest-cover-time{
+  position:absolute;bottom:.8rem;left:.8rem;
+  background:rgba(0,0,0,.5);color:#fff;font-size:.68rem;font-weight:700;
+  padding:.25rem .6rem;border-radius:6px;backdrop-filter:blur(4px);
+}
+.rest-body{padding:1.2rem}
+.rest-name{font-size:1rem;font-weight:900;color:var(--dark);margin-bottom:.3rem}
+.rest-cuisine{font-size:.75rem;color:var(--text-light)}
+.rest-meta{display:flex;align-items:center;gap:1rem;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border2)}
+.rest-rating{display:flex;align-items:center;gap:.3rem;font-size:.8rem;font-weight:800;color:var(--dark)}
+.rest-rating-star{color:var(--yellow)}
+.rest-reviews{font-size:.7rem;color:var(--text-light)}
+.rest-min{font-size:.75rem;color:var(--text-light)}
+.rest-delivery{
+  margin-right:auto;font-size:.72rem;font-weight:800;
+  color:var(--orange);display:flex;align-items:center;gap:.3rem;
+}
+
+/* ── APP CTA ── */
+.app-cta{
+  padding:5rem 6%;
+  background:var(--grad);
+  position:relative;overflow:hidden;
+}
+.app-cta::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:20px 20px;
+}
+.app-cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative}
+.app-cta h2{font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem}
+.app-cta p{color:rgba(255,255,255,.75);font-size:.95rem;line-height:2;margin-bottom:2rem}
+.app-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.app-store-btn{
+  background:rgba(0,0,0,.2);color:#fff;border:1.5px solid rgba(255,255,255,.3);
+  padding:.75rem 1.5rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.85rem;cursor:pointer;border-radius:12px;transition:.3s;
+  display:flex;align-items:center;gap:.6rem;
+}
+.app-store-btn:hover{background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.5)}
+.app-store-icon{font-size:1.2rem}
+.app-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.app-stat{background:rgba(255,255,255,.1);border-radius:16px;padding:1.5rem;text-align:center;backdrop-filter:blur(8px)}
+.app-stat-num{font-size:2.2rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.4rem}
+.app-stat-label{font-size:.75rem;color:rgba(255,255,255,.7)}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:5rem 6%;background:#fff}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
+.testimonial{background:var(--bg);border-radius:16px;padding:1.8rem;border:1.5px solid var(--border2);transition:.3s}
+.testimonial:hover{border-color:var(--border);transform:translateY(-3px)}
+.testimonial-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.testimonial-stars{display:flex;gap:.2rem}
+.star{color:var(--yellow);font-size:.85rem}
+.testimonial-time{font-size:.68rem;color:var(--text-light)}
+.testimonial-text{font-size:.85rem;color:var(--text-mid);line-height:2;margin-bottom:1.2rem}
+.testimonial-author{display:flex;align-items:center;gap:.7rem}
+.author-av{width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;flex-shrink:0}
+.author-name{font-size:.82rem;font-weight:800;color:var(--dark)}
+.author-sub{font-size:.7rem;color:var(--text-light)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:4rem 6% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-logo{font-family:'Righteous',sans-serif;font-size:1.8rem;color:var(--orange);margin-bottom:.8rem}
+.footer-desc{font-size:.8rem;color:rgba(255,255,255,.3);line-height:1.9;max-width:210px}
+.footer-socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer-social{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.7rem;text-decoration:none;transition:.3s}
+.footer-social:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.footer-col h4{font-size:.7rem;font-weight:800;color:rgba(255,255,255,.6);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.8rem;color:rgba(255,255,255,.3);text-decoration:none;transition:.3s}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:rgba(255,255,255,.2)}
+.footer-badge{background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.2);border-radius:20px;padding:.3rem .9rem;color:var(--orange);font-size:.68rem;font-weight:700}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── HOW section override ── */
+.how .section-eyebrow{margin-bottom:1rem}
+.how .section-header{text-align:center;margin-bottom:0}
+
+/* ── MOBILE ── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;gap:3rem}
+  .hero-visual{display:none}
+  .cats-grid{grid-template-columns:repeat(3,1fr)}
+  .rest-grid{grid-template-columns:repeat(2,1fr)}
+  .app-cta-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-location{display:none}
+  .cats-grid{grid-template-columns:repeat(3,1fr)}
+  .how-steps{grid-template-columns:repeat(2,1fr)}
+  .how-steps::before{display:none}
+  .rest-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  section{padding:4rem 5%!important}
+  .hero{padding:8rem 5% 3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🍔</div>
+    <span class="logo-text">وصّ<span>ال</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#categories">الفئات</a></li>
+    <li><a href="#restaurants">المطاعم</a></li>
+    <li><a href="#how">كيف يعمل</a></li>
+    <li><a href="#app">التطبيق</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-location">📍 الرياض ▾</div>
+    <button class="btn-download">حمّل التطبيق</button>
+  </div>
+  <button class="nav-burger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle"></div>
+  <div>
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>🚀 توصيل في 30 دقيقة مضمون</div>
+    <h1>طعامك<br><span>المفضّل</span><br>على بابك</h1>
+    <p class="hero-desc">أكثر من 800 مطعم وكافيه في المملكة — اطلب في ثوانٍ وتتبّع طلبك حتى يصلك.</p>
+    <div class="hero-search">
+      <input type="text" placeholder="ابحث عن مطعم، أكلة، أو فئة...">
+      <button class="hero-search-btn">🔍 ابحث</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-icon">⚡</span>توصيل في 30 دقيقة</div>
+      <div class="trust-item"><span class="trust-icon">🎁</span>أول طلب مجاناً</div>
+      <div class="trust-item"><span class="trust-icon">📍</span>تتبع فوري</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-app-mockup">
+      <div class="app-bar">
+        <div><div class="app-bar-title">وصّال</div><div class="app-bar-loc">📍 الرياض، العليا</div></div>
+        <div style="font-size:.8rem">🔔</div>
+      </div>
+      <div class="app-search">🔍 ابحث عن مطعم أو أكلة...</div>
+      <div class="app-cats">
+        <div class="app-cat active">الكل</div>
+        <div class="app-cat">🍔 برجر</div>
+        <div class="app-cat">🍕 بيتزا</div>
+        <div class="app-cat">🍣 سوشي</div>
+        <div class="app-cat">☕ كافيه</div>
+      </div>
+      <div class="app-restaurants">
+        <div class="app-rest">
+          <div class="rest-emoji">🍔</div>
+          <div><div class="rest-info-name">بيت البرجر</div><div class="rest-info-sub">20–30 دق • مجاني</div></div>
+          <div class="rest-badge">⭐ 4.9</div>
+        </div>
+        <div class="app-rest">
+          <div class="rest-emoji">🍕</div>
+          <div><div class="rest-info-name">بيتزا الشام</div><div class="rest-info-sub">25–35 دق • 8 ر.س</div></div>
+          <div class="rest-badge">⭐ 4.8</div>
+        </div>
+        <div class="app-rest">
+          <div class="rest-emoji">🍣</div>
+          <div><div class="rest-info-name">ساكورا سوشي</div><div class="rest-info-sub">35–45 دق • مجاني</div></div>
+          <div class="rest-badge">⭐ 4.7</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-float-badge">
+      <span class="float-icon">🚴</span>
+      <div><div class="float-num">2.4 كم</div><div class="float-label">المسافة لموقعك</div></div>
+    </div>
+    <div class="hero-float-badge2">✅ تم تأكيد طلبك!</div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div style="text-align:center;margin-bottom:3.5rem">
+    <div class="section-eyebrow reveal" style="display:inline-flex">اكتشف</div>
+    <h2 class="section-title reveal">تسوّق من <span>فئتك المفضّلة</span></h2>
+  </div>
+  <div class="cats-grid">
+    <div class="cat-card reveal"><span class="cat-emoji">🍔</span><div class="cat-name">برجر</div><div class="cat-count">124 مطعم</div></div>
+    <div class="cat-card reveal d1"><span class="cat-emoji">🍕</span><div class="cat-name">بيتزا</div><div class="cat-count">89 مطعم</div></div>
+    <div class="cat-card reveal d2"><span class="cat-emoji">🍣</span><div class="cat-name">سوشي</div><div class="cat-count">45 مطعم</div></div>
+    <div class="cat-card reveal"><span class="cat-emoji">🍗</span><div class="cat-name">دجاج</div><div class="cat-count">167 مطعم</div></div>
+    <div class="cat-card reveal d1"><span class="cat-emoji">☕</span><div class="cat-name">كافيه</div><div class="cat-count">203 مطعم</div></div>
+    <div class="cat-card reveal d2"><span class="cat-emoji">🥗</span><div class="cat-name">صحي</div><div class="cat-count">78 مطعم</div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow">كيف يعمل</div>
+    <h2 class="section-title" style="color:#fff">بسيط جداً <span>كالأكل نفسه</span></h2>
+    <p class="section-sub" style="max-width:480px;margin:0 auto">أربع خطوات وطعامك على طريقه إليك — بدون تعقيد أو انتظار.</p>
+  </div>
+  <div class="how-steps">
+    <div class="how-step reveal"><div class="how-num">📍</div><div class="how-title">حدّد موقعك</div><p class="how-desc">أدخل عنوانك أو اسمح للتطبيق بتحديد موقعك تلقائياً.</p></div>
+    <div class="how-step reveal d1"><div class="how-num">🍽️</div><div class="how-title">اختر مطعمك</div><p class="how-desc">تصفّح مئات المطاعم والقوائم واختر ما يشتهيه قلبك.</p></div>
+    <div class="how-step reveal d2"><div class="how-num">💳</div><div class="how-title">أتمم الدفع</div><p class="how-desc">ادفع بالبطاقة أو Apple Pay أو نقداً عند الاستلام.</p></div>
+    <div class="how-step reveal d3"><div class="how-num">🚴</div><div class="how-title">تتبّع طلبك</div><p class="how-desc">تابع موقع المندوب على الخريطة حتى يطرق بابك.</p></div>
+  </div>
+</section>
+
+<!-- RESTAURANTS -->
+<section class="restaurants" id="restaurants">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">مطاعم مميزة</div>
+    <h2 class="section-title">الأكثر طلباً <span>هذا الأسبوع</span></h2>
+    <p class="section-sub">مطاعم مختارة بعناية بناءً على تقييمات العملاء وسرعة التوصيل.</p>
+  </div>
+  <div class="rest-grid">
+    <div class="rest-card reveal">
+      <div class="rest-cover" style="background:linear-gradient(135deg,#ffcdd2,#f44336,#b71c1c)">
+        🍔
+        <div class="rest-cover-badge">الأكثر طلباً</div>
+        <div class="rest-cover-time">⏱ 20–30 دق</div>
+      </div>
+      <div class="rest-body">
+        <div class="rest-name">بيت البرجر الأمريكي</div>
+        <div class="rest-cuisine">برجر • أمريكي • سناك</div>
+        <div class="rest-meta">
+          <div class="rest-rating"><span class="rest-rating-star">★</span> 4.9</div>
+          <div class="rest-reviews">(1.2k تقييم)</div>
+          <div class="rest-delivery" style="margin-right:auto">🚴 مجاني</div>
+        </div>
+      </div>
+    </div>
+    <div class="rest-card reveal d1">
+      <div class="rest-cover" style="background:linear-gradient(135deg,#fff9c4,#ffb300,#e65100)">
+        🍕
+        <div class="rest-cover-badge" style="background:var(--yellow);color:var(--dark)">عرض اليوم</div>
+        <div class="rest-cover-time">⏱ 25–35 دق</div>
+      </div>
+      <div class="rest-body">
+        <div class="rest-name">بيتزا ماما</div>
+        <div class="rest-cuisine">بيتزا • إيطالي • عائلي</div>
+        <div class="rest-meta">
+          <div class="rest-rating"><span class="rest-rating-star">★</span> 4.8</div>
+          <div class="rest-reviews">(876 تقييم)</div>
+          <div class="rest-delivery" style="margin-right:auto">🚴 8 ر.س</div>
+        </div>
+      </div>
+    </div>
+    <div class="rest-card reveal d2">
+      <div class="rest-cover" style="background:linear-gradient(135deg,#e0f2f1,#00897b,#004d40)">
+        🍣
+        <div class="rest-cover-badge" style="background:#00897b">جديد</div>
+        <div class="rest-cover-time">⏱ 35–45 دق</div>
+      </div>
+      <div class="rest-body">
+        <div class="rest-name">ساكورا سوشي</div>
+        <div class="rest-cuisine">سوشي • ياباني • مأكولات بحرية</div>
+        <div class="rest-meta">
+          <div class="rest-rating"><span class="rest-rating-star">★</span> 4.7</div>
+          <div class="rest-reviews">(543 تقييم)</div>
+          <div class="rest-delivery" style="margin-right:auto">🚴 مجاني</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP CTA -->
+<section class="app-cta" id="app">
+  <div class="app-cta-grid">
+    <div>
+      <h2>حمّل التطبيق<br>واحصل على<br>أول طلب مجاناً</h2>
+      <p>تطبيق وصّال متاح على iOS وAndroid — تجربة سلسة وسريعة وتتبع لحظي لطلبك.</p>
+      <div class="app-btns">
+        <button class="app-store-btn"><span class="app-store-icon">🍎</span><div><div style="font-size:.65rem;opacity:.7">حمّل من</div>App Store</div></button>
+        <button class="app-store-btn"><span class="app-store-icon">🤖</span><div><div style="font-size:.65rem;opacity:.7">حمّل من</div>Google Play</div></button>
+      </div>
+    </div>
+    <div class="app-stats-grid">
+      <div class="app-stat"><div class="app-stat-num">800+</div><div class="app-stat-label">مطعم شريك</div></div>
+      <div class="app-stat"><div class="app-stat-num">30 د</div><div class="app-stat-label">متوسط التوصيل</div></div>
+      <div class="app-stat"><div class="app-stat-num">500K</div><div class="app-stat-label">مستخدم نشط</div></div>
+      <div class="app-stat"><div class="app-stat-num">4.9★</div><div class="app-stat-label">تقييم التطبيق</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div style="text-align:center;margin-bottom:3.5rem">
+    <div class="section-eyebrow reveal" style="display:inline-flex">آراء العملاء</div>
+    <h2 class="section-title reveal">يقولون عن <span>وصّال</span></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal">
+      <div class="testimonial-top"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><span class="testimonial-time">منذ يومين</span></div>
+      <p class="testimonial-text">«أسرع تطبيق توصيل جربته. الطلب وصل في أقل من 25 دقيقة والأكل كان ساخناً تماماً. خدمة ممتازة وما فيه أي خطأ في الطلب.»</p>
+      <div class="testimonial-author"><div class="author-av">رع</div><div><div class="author-name">ريم العتيبي</div><div class="author-sub">الرياض — 87 طلب</div></div></div>
+    </div>
+    <div class="testimonial reveal d1">
+      <div class="testimonial-top"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><span class="testimonial-time">منذ أسبوع</span></div>
+      <p class="testimonial-text">«التتبع على الخريطة شيء ما كنت أتوقعه — تشوف المندوب يتحرك باتجاهك. العروض والكوبونات كمان ممتازة جداً.»</p>
+      <div class="testimonial-author"><div class="author-av" style="background:linear-gradient(135deg,#ff5722,#ff8f00)">خق</div><div><div class="author-name">خالد القرني</div><div class="author-sub">جدة — 145 طلب</div></div></div>
+    </div>
+    <div class="testimonial reveal d2">
+      <div class="testimonial-top"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><span class="testimonial-time">منذ 3 أيام</span></div>
+      <p class="testimonial-text">«الخيارات الصحية ممتازة وكثيرة. أطلب كل يوم من نفس المطعم وكل مرة تجي دقيقة وما أقل. أنصح به بشدة لمن يعيش لوحده.»</p>
+      <div class="testimonial-author"><div class="author-av" style="background:linear-gradient(135deg,#ff5722,#c62828)">سن</div><div><div class="author-name">سلمى النهاري</div><div class="author-sub">الدمام — 62 طلب</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">وصّال 🍔</div>
+      <p class="footer-desc">منصة توصيل الطعام الأسرع في المملكة — 800+ مطعم، 15 مدينة، 30 دقيقة أو أقل.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social">ig</a><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">sc</a><a href="#" class="footer-social">tk</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>الخدمات</h4><ul><li><a href="#">توصيل الطعام</a></li><li><a href="#">توصيل البقالة</a></li><li><a href="#">اشتراك شهري</a></li><li><a href="#">عروض اليوم</a></li></ul></div>
+    <div class="footer-col"><h4>للمطاعم</h4><ul><li><a href="#">انضم كشريك</a></li><li><a href="#">لوحة التحكم</a></li><li><a href="#">برنامج الشراكة</a></li><li><a href="#">تواصل</a></li></ul></div>
+    <div class="footer-col"><h4>المساعدة</h4><ul><li><a href="#">تتبع طلبك</a></li><li><a href="#">الأسئلة الشائعة</a></li><li><a href="#">الدعم الفني</a></li><li><a href="#">الخصوصية</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 وصّال للتوصيل. جميع الحقوق محفوظة.</span>
+    <div class="footer-badge">🚀 متوفر على iOS & Android</div>
+  </div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelector('.nav-burger')?.addEventListener('click',()=>{const links=document.querySelector('.nav-links');if(!links)return;const open=links.style.display==='flex';links.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:68px;right:0;left:0;background:rgba(250,248,245,.98);padding:1.5rem 5%;border-bottom:1px solid rgba(26,15,0,.08);gap:1rem';});
+document.querySelector('.hero-search-btn')?.addEventListener('click',()=>{const inp=document.querySelector('.hero-search input');if(inp?.value)alert('البحث عن: '+inp.value)});
+</script>
+</body>
+</html>
