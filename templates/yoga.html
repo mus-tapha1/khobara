@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="نَفَس — استوديو يوغا وتأمل فاخر لجسم صحي وعقل هادئ">
+<meta property="og:title" content="نَفَس — استوديو اليوغا والتأمل">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧘</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نَفَس — استوديو اليوغا والتأمل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sage:#7c9b6e;
+  --sage2:#6a8a5c;
+  --sage-light:rgba(124,155,110,.1);
+  --sage-border:rgba(124,155,110,.2);
+  --clay:#c67c52;
+  --clay-light:rgba(198,124,82,.08);
+  --cream:#faf7f2;
+  --cream2:#f5f0e8;
+  --cream3:#ede6d9;
+  --warm:#2c2419;
+  --warm2:#3d3226;
+  --warm-mid:#7a6551;
+  --warm-light:rgba(44,36,25,.5);
+  --warm-ghost:rgba(44,36,25,.25);
+  --border:rgba(44,36,25,.08);
+  --border2:rgba(124,155,110,.15);
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--warm);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--sage);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;z-index:900;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem 6%;
+  background:rgba(250,247,242,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;flex-direction:column;align-items:flex-end;line-height:1}
+.logo-ar{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;color:var(--warm);letter-spacing:.05em}
+.logo-en{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:var(--warm-ghost);font-weight:600;margin-top:1px}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--warm-light);text-decoration:none;font-size:.82rem;font-weight:600;transition:.3s}
+.nav-links a:hover{color:var(--sage)}
+.nav-actions{display:flex;gap:.8rem;align-items:center}
+.btn-try{
+  border:1.5px solid var(--sage-border);color:var(--sage);background:transparent;
+  padding:.6rem 1.5rem;font-family:'Cairo',sans-serif;font-weight:700;
+  font-size:.8rem;cursor:pointer;border-radius:30px;transition:.3s;
+}
+.btn-try:hover{background:var(--sage);color:#fff;border-color:var(--sage)}
+.btn-book{
+  background:var(--sage);color:#fff;border:none;
+  padding:.6rem 1.5rem;font-family:'Cairo',sans-serif;font-weight:800;
+  font-size:.8rem;cursor:pointer;border-radius:30px;transition:.3s;
+}
+.btn-book:hover{background:var(--sage2)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:.3rem}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--warm);border-radius:2px}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:stretch;overflow:hidden;
+}
+.hero-left{
+  background:var(--warm);display:flex;flex-direction:column;justify-content:center;
+  padding:10rem 7% 6rem;position:relative;overflow:hidden;
+}
+.hero-pattern{
+  position:absolute;inset:0;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;
+  color:rgba(255,255,255,.4);letter-spacing:.12em;margin-bottom:2rem;
+  position:relative;z-index:1;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,7vw,6rem);color:#fff;
+  line-height:1.05;letter-spacing:-.01em;margin-bottom:1.8rem;
+  position:relative;z-index:1;font-weight:600;
+}
+.hero h1 em{color:var(--sage);font-style:italic}
+.hero-desc{
+  font-size:.9rem;color:rgba(255,255,255,.5);line-height:2.2;
+  max-width:380px;margin-bottom:2.5rem;position:relative;z-index:1;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:1}
+.btn-hero{
+  background:var(--sage);color:#fff;border:none;
+  padding:.9rem 2rem;font-family:'Cairo',sans-serif;font-weight:800;
+  font-size:.9rem;cursor:pointer;border-radius:30px;transition:.4s;
+}
+.btn-hero:hover{background:var(--sage2);transform:translateY(-2px)}
+.btn-hero-ghost{
+  border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent;
+  padding:.9rem 2rem;font-family:'Cairo',sans-serif;font-weight:600;
+  font-size:.9rem;cursor:pointer;border-radius:30px;transition:.3s;
+}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.hero-badges{display:flex;gap:2rem;margin-top:3rem;position:relative;z-index:1}
+.hero-badge{text-align:center}
+.hero-badge-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--sage);font-weight:600;line-height:1}
+.hero-badge-label{font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+.hero-right{
+  background:var(--cream2);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.hero-visual-main{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:7rem 3rem 2rem;position:relative;
+}
+.hero-circle{
+  width:320px;height:320px;border-radius:50%;
+  background:var(--cream3);border:2px solid var(--sage-border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.hero-circle::before{
+  content:'';position:absolute;inset:-12px;border-radius:50%;
+  border:1px solid var(--sage-border);animation:rotate 30s linear infinite;
+}
+.hero-circle::after{
+  content:'';position:absolute;inset:-28px;border-radius:50%;
+  border:1px dashed rgba(124,155,110,.12);animation:rotate 50s linear infinite reverse;
+}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-emoji{font-size:8rem;line-height:1}
+.hero-float-1{
+  position:absolute;top:8rem;left:1.5rem;
+  background:#fff;border-radius:16px;padding:1rem 1.2rem;
+  box-shadow:0 8px 30px rgba(44,36,25,.1);
+  display:flex;align-items:center;gap:.7rem;
+}
+.float-1-icon{font-size:1.4rem}
+.float-1-text div:first-child{font-size:.82rem;font-weight:800;color:var(--warm)}
+.float-1-text div:last-child{font-size:.68rem;color:var(--warm-ghost)}
+.hero-float-2{
+  position:absolute;bottom:10rem;right:1.5rem;
+  background:var(--sage);border-radius:14px;padding:.8rem 1.1rem;
+  box-shadow:0 8px 24px rgba(124,155,110,.3);
+  color:#fff;font-size:.8rem;font-weight:800;
+  display:flex;align-items:center;gap:.5rem;
+}
+.hero-schedule-strip{
+  background:#fff;border-top:1px solid var(--border);
+  padding:1.5rem 3rem;display:flex;gap:1.5rem;overflow-x:auto;
+}
+.schedule-pill{
+  flex-shrink:0;background:var(--cream);border:1px solid var(--border);
+  border-radius:10px;padding:.6rem 1.2rem;text-align:center;cursor:pointer;transition:.3s;
+}
+.schedule-pill:hover,.schedule-pill.active{background:var(--sage);border-color:var(--sage);color:#fff}
+.schedule-pill-day{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.schedule-pill-class{font-size:.78rem;font-weight:800;margin:.2rem 0}
+.schedule-pill-time{font-size:.65rem;opacity:.6}
+
+/* ── CLASSES ── */
+.classes{padding:6rem 6%;background:#fff}
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--sage-light);border:1px solid var(--sage-border);
+  color:var(--sage);font-size:.68rem;font-weight:800;letter-spacing:.12em;
+  padding:.3rem .9rem;border-radius:20px;margin-bottom:1rem;text-transform:uppercase;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.5vw,3.5rem);color:var(--warm);
+  line-height:1.1;letter-spacing:-.01em;margin-bottom:.8rem;font-weight:600;
+}
+.section-title em{color:var(--sage);font-style:italic}
+.section-sub{color:var(--warm-light);font-size:.88rem;line-height:2;max-width:480px}
+.section-header{margin-bottom:4rem}
+.classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.class-card{
+  border-radius:20px;overflow:hidden;cursor:pointer;
+  transition:.4s;border:1.5px solid var(--border);
+}
+.class-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(44,36,25,.1);border-color:var(--sage-border)}
+.class-cover{
+  height:220px;position:relative;display:flex;align-items:center;justify-content:center;
+  font-size:5.5rem;overflow:hidden;
+}
+.class-cover-1{background:linear-gradient(160deg,#e8f0e3,#c5d9bc,#9dbf91)}
+.class-cover-2{background:linear-gradient(160deg,#f0ebe3,#ddd0bf,#c0a98c)}
+.class-cover-3{background:linear-gradient(160deg,#e3e8f0,#bcc5d9,#91a4bf)}
+.class-cover-4{background:linear-gradient(160deg,#f0e3e8,#d9bcc5,#bf91a4)}
+.class-cover-5{background:linear-gradient(160deg,#f0ebe3,#c9bb9e,#a89070)}
+.class-cover-6{background:linear-gradient(160deg,#e3f0e8,#9dbfa7,#6a9a77)}
+.class-badge{
+  position:absolute;top:.8rem;right:.8rem;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
+  color:var(--warm);font-size:.65rem;font-weight:800;
+  padding:.25rem .7rem;border-radius:10px;
+}
+.class-level{
+  position:absolute;bottom:.8rem;left:.8rem;
+  font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  background:rgba(44,36,25,.5);color:#fff;backdrop-filter:blur(8px);
+  padding:.25rem .7rem;border-radius:8px;
+}
+.class-body{padding:1.4rem}
+.class-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--warm);margin-bottom:.3rem}
+.class-desc{font-size:.8rem;color:var(--warm-light);line-height:1.85;margin-bottom:1rem}
+.class-meta{display:flex;gap:1.2rem;flex-wrap:wrap}
+.class-meta-item{display:flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--warm-ghost)}
+
+/* ── INSTRUCTORS ── */
+.instructors{padding:6rem 6%;background:var(--cream2)}
+.instructors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem}
+.instructor-card{text-align:center;cursor:pointer;transition:.4s}
+.instructor-card:hover{transform:translateY(-4px)}
+.instructor-avatar{
+  width:140px;height:140px;border-radius:50%;margin:0 auto 1.2rem;
+  background:var(--cream3);border:3px solid var(--sage-border);
+  display:flex;align-items:center;justify-content:center;font-size:4.5rem;
+  transition:.4s;position:relative;overflow:hidden;
+}
+.instructor-card:hover .instructor-avatar{border-color:var(--sage);box-shadow:0 0 0 6px var(--sage-light)}
+.instructor-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--warm);margin-bottom:.2rem}
+.instructor-specialty{font-size:.72rem;color:var(--sage);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+.instructor-desc{font-size:.78rem;color:var(--warm-light);line-height:1.85}
+.instructor-rating{display:flex;align-items:center;justify-content:center;gap:.3rem;margin-top:.7rem;font-size:.78rem;color:var(--clay)}
+
+/* ── SCHEDULE ── */
+.schedule{padding:6rem 6%;background:#fff}
+.schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:4rem}
+.schedule-table{border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.schedule-header{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;background:var(--warm);color:#fff;padding:.8rem 1.2rem;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;gap:.5rem}
+.schedule-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:.9rem 1.2rem;border-bottom:1px solid var(--border);gap:.5rem;transition:.3s;cursor:pointer;align-items:center}
+.schedule-row:hover{background:var(--sage-light)}
+.schedule-row:last-child{border-bottom:none}
+.schedule-time{font-size:.8rem;font-weight:800;color:var(--warm)}
+.schedule-class-name{font-size:.8rem;color:var(--warm);font-weight:700}
+.schedule-instructor{font-size:.75rem;color:var(--warm-ghost)}
+.schedule-spot{
+  display:inline-block;font-size:.68rem;font-weight:800;padding:.2rem .6rem;border-radius:8px;
+  background:var(--sage-light);color:var(--sage);white-space:nowrap;
+}
+.schedule-spot.full{background:var(--clay-light);color:var(--clay)}
+.schedule-cta{
+  background:var(--warm);border-radius:20px;padding:2.5rem;color:#fff;position:relative;overflow:hidden;
+}
+.schedule-cta::before{
+  content:'🧘';position:absolute;bottom:-1rem;left:50%;transform:translateX(-50%);
+  font-size:10rem;opacity:.04;line-height:1;
+}
+.schedule-cta h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;margin-bottom:.8rem;color:#fff}
+.schedule-cta p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:2;margin-bottom:1.8rem}
+.btn-schedule-cta{
+  background:var(--sage);color:#fff;border:none;
+  padding:.9rem 2rem;font-family:'Cairo',sans-serif;font-weight:800;
+  font-size:.88rem;cursor:pointer;border-radius:30px;transition:.3s;display:block;width:100%;text-align:center;
+}
+.btn-schedule-cta:hover{background:var(--sage2)}
+
+/* ── PRICING ── */
+.pricing{padding:6rem 6%;background:var(--cream2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.price-card{
+  background:#fff;border-radius:20px;padding:2.5rem;
+  border:1.5px solid var(--border);transition:.4s;
+}
+.price-card:hover,.price-card.featured{border-color:var(--sage-border);box-shadow:0 12px 40px rgba(124,155,110,.12)}
+.price-card.featured{background:var(--warm)}
+.price-tag{
+  display:inline-flex;font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--sage-light);color:var(--sage);padding:.25rem .7rem;border-radius:12px;margin-bottom:1.2rem;
+}
+.price-card.featured .price-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.price-amount{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:600;color:var(--warm);line-height:1;margin-bottom:.2rem}
+.price-card.featured .price-amount{color:#fff}
+.price-per{font-size:.78rem;color:var(--warm-ghost);margin-bottom:1.5rem}
+.price-card.featured .price-per{color:rgba(255,255,255,.4)}
+.price-divider{height:1px;background:var(--border);margin:1.2rem 0}
+.price-card.featured .price-divider{background:rgba(255,255,255,.1)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.price-feature{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--warm-light)}
+.price-card.featured .price-feature{color:rgba(255,255,255,.6)}
+.price-feature-icon{color:var(--sage);font-size:.7rem;flex-shrink:0}
+.price-card.featured .price-feature-icon{color:var(--sage)}
+.price-btn{
+  width:100%;padding:.85rem;font-family:'Cairo',sans-serif;font-weight:800;font-size:.88rem;
+  cursor:pointer;border-radius:30px;transition:.3s;
+  background:transparent;border:1.5px solid var(--sage-border);color:var(--sage);
+}
+.price-btn:hover{background:var(--sage);color:#fff;border-color:var(--sage)}
+.price-card.featured .price-btn{background:var(--sage);border-color:var(--sage);color:#fff}
+.price-card.featured .price-btn:hover{background:var(--sage2)}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:6rem 6%;background:#fff}
+.testimonials-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.testimonial{background:var(--cream);border-radius:20px;padding:2rem;border:1px solid var(--border);transition:.3s}
+.testimonial:hover{border-color:var(--sage-border);transform:translateY(-3px)}
+.testimonial-quote{font-size:2rem;color:var(--sage);margin-bottom:.5rem;font-family:'Cormorant Garamond',serif;line-height:1}
+.testimonial-text{font-size:.85rem;color:var(--warm-light);line-height:2;margin-bottom:1.5rem;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:.8rem}
+.author-av{width:38px;height:38px;border-radius:50%;background:var(--sage-light);border:1.5px solid var(--sage-border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:var(--sage)}
+.author-name{font-size:.85rem;font-weight:800;color:var(--warm)}
+.author-sub{font-size:.7rem;color:var(--warm-ghost)}
+.testimonial-stars{display:flex;gap:.15rem;margin-bottom:.5rem}
+.star{color:var(--clay);font-size:.7rem}
+
+/* ── CTA ── */
+.cta{padding:7rem 6%;background:var(--warm);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'🌿';position:absolute;top:50%;left:5%;transform:translateY(-50%);font-size:12rem;opacity:.04}
+.cta::after{content:'🌿';position:absolute;top:50%;right:5%;transform:translateY(-50%) scaleX(-1);font-size:12rem;opacity:.04}
+.cta-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.35);margin-bottom:1.5rem}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);color:#fff;font-weight:600;line-height:1.1;margin-bottom:1rem;position:relative}
+.cta h2 em{color:var(--sage);font-style:italic}
+.cta p{font-size:1rem;color:rgba(255,255,255,.45);line-height:2;max-width:450px;margin:0 auto 2.5rem;position:relative}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-cta{background:var(--sage);color:#fff;border:none;padding:1rem 2.8rem;font-family:'Cairo',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;border-radius:30px;transition:.4s}
+.btn-cta:hover{background:var(--sage2);transform:translateY(-2px)}
+.btn-cta-ghost{border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent;padding:1rem 2.8rem;font-family:'Cairo',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;border-radius:30px;transition:.3s}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,.4);color:#fff}
+
+/* ── FOOTER ── */
+footer{background:var(--cream2);border-top:1px solid var(--border);padding:4rem 6% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--warm);margin-bottom:.8rem}
+.footer-desc{font-size:.8rem;color:var(--warm-ghost);line-height:1.9;max-width:200px}
+.footer-socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer-social{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--warm-ghost);font-size:.7rem;text-decoration:none;transition:.3s}
+.footer-social:hover{border-color:var(--sage);color:var(--sage);background:var(--sage-light)}
+.footer-col h4{font-size:.68rem;font-weight:800;color:var(--warm);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.8rem;color:var(--warm-ghost);text-decoration:none;transition:.3s}
+.footer-col a:hover{color:var(--sage)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--warm-ghost)}
+.footer-badge{background:var(--sage-light);border:1px solid var(--sage-border);border-radius:20px;padding:.3rem .9rem;color:var(--sage);font-size:.65rem;font-weight:700}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── MOBILE ── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{min-height:100vh}
+  .classes-grid{grid-template-columns:repeat(2,1fr)}
+  .instructors-grid{grid-template-columns:repeat(2,1fr)}
+  .schedule-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .testimonials-masonry{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.btn-try{display:none}
+  .nav-burger{display:flex}
+  .classes-grid{grid-template-columns:1fr}
+  .instructors-grid{grid-template-columns:repeat(2,1fr)}
+  section{padding:4rem 5%!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-ar">نَفَس</span>
+    <span class="logo-en">Nafas Studio</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#classes">الكلاسات</a></li>
+    <li><a href="#instructors">المدربون</a></li>
+    <li><a href="#schedule">الجدول</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-try">جلسة مجانية</button>
+    <button class="btn-book">احجز كلاس</button>
+  </div>
+  <button class="nav-burger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pattern"></div>
+    <div class="hero-eyebrow">استوديو يوغا وتأمل — جدة، المملكة العربية السعودية</div>
+    <h1>اكتشف<br>السكينة<br><em>بداخلك</em></h1>
+    <p class="hero-desc">استوديو يوغا راقٍ يجمع بين الحركة، التنفس، والوعي الكامل — لرحلة تحول حقيقية في جسمك وعقلك.</p>
+    <div class="hero-btns">
+      <button class="btn-hero">🌿 ابدأ رحلتك</button>
+      <button class="btn-hero-ghost">عرض الكلاسات</button>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge"><div class="hero-badge-num">12</div><div class="hero-badge-label">مدرب معتمد</div></div>
+      <div class="hero-badge"><div class="hero-badge-num">50+</div><div class="hero-badge-label">كلاس أسبوعياً</div></div>
+      <div class="hero-badge"><div class="hero-badge-num">2K+</div><div class="hero-badge-label">عضو نشط</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual-main">
+      <div class="hero-circle"><span class="hero-emoji">🧘</span></div>
+      <div class="hero-float-1">
+        <span class="float-1-icon">⭐</span>
+        <div class="float-1-text">
+          <div>تقييم 4.9 / 5</div>
+          <div>من 1,200+ عضو</div>
+        </div>
+      </div>
+      <div class="hero-float-2">🌿 أول كلاس مجاني</div>
+    </div>
+    <div class="hero-schedule-strip">
+      <div class="schedule-pill active">
+        <div class="schedule-pill-day">اليوم</div>
+        <div class="schedule-pill-class">هاثا يوغا</div>
+        <div class="schedule-pill-time">9:00 ص</div>
+      </div>
+      <div class="schedule-pill">
+        <div class="schedule-pill-day">السبت</div>
+        <div class="schedule-pill-class">تأمل صباحي</div>
+        <div class="schedule-pill-time">7:30 ص</div>
+      </div>
+      <div class="schedule-pill">
+        <div class="schedule-pill-day">الأحد</div>
+        <div class="schedule-pill-class">فينياسا فلو</div>
+        <div class="schedule-pill-time">8:00 ص</div>
+      </div>
+      <div class="schedule-pill">
+        <div class="schedule-pill-day">الاثنين</div>
+        <div class="schedule-pill-class">يين يوغا</div>
+        <div class="schedule-pill-time">7:00 م</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSES -->
+<section class="classes" id="classes">
+  <div class="section-header">
+    <div class="section-eyebrow reveal">كلاساتنا</div>
+    <h2 class="section-title reveal">تجارب <em>متنوعة</em><br>لكل مستوى</h2>
+    <p class="section-sub reveal">سواء كنت مبتدئاً أو متمرساً، لدينا الكلاس الذي يلبي احتياجاتك — في مكان هادئ وبيئة داعمة.</p>
+  </div>
+  <div class="classes-grid">
+    <div class="class-card reveal">
+      <div class="class-cover class-cover-1">🌿<div class="class-badge">الأكثر طلباً</div><div class="class-level">مبتدئ</div></div>
+      <div class="class-body">
+        <div class="class-name">هاثا يوغا</div>
+        <p class="class-desc">كلاس تقليدي يجمع بين الوضعيات الأساسية والتنفس العميق — مثالي للمبتدئين.</p>
+        <div class="class-meta">
+          <div class="class-meta-item">⏱ 60 دقيقة</div>
+          <div class="class-meta-item">👥 12 شخص</div>
+          <div class="class-meta-item">📍 القاعة 1</div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal d1">
+      <div class="class-cover class-cover-2">🌊<div class="class-badge">حركي</div><div class="class-level">متوسط</div></div>
+      <div class="class-body">
+        <div class="class-name">فينياسا فلو</div>
+        <p class="class-desc">تسلسل ديناميكي يربط الحركة بالتنفس — يبني القوة ويزيد المرونة بتدرج سلس.</p>
+        <div class="class-meta">
+          <div class="class-meta-item">⏱ 75 دقيقة</div>
+          <div class="class-meta-item">👥 10 أشخاص</div>
+          <div class="class-meta-item">📍 القاعة 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal d2">
+      <div class="class-cover class-cover-6">🧘<div class="class-badge">هادئ</div><div class="class-level">للجميع</div></div>
+      <div class="class-body">
+        <div class="class-name">يين يوغا</div>
+        <p class="class-desc">وضعيات بطيئة طويلة المدة تستهدف الأنسجة العميقة — تفريغ التوتر بالكامل.</p>
+        <div class="class-meta">
+          <div class="class-meta-item">⏱ 90 دقيقة</div>
+          <div class="class-meta-item">👥 8 أشخاص</div>
+          <div class="class-meta-item">📍 القاعة 3</div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal">
+      <div class="class-cover class-cover-3">🌙<div class="class-badge">تأمل</div><div class="class-level">للجميع</div></div>
+      <div class="class-body">
+        <div class="class-name">تأمل صباحي</div>
+        <p class="class-desc">جلسة تأمل هادئة لبدء يومك بوعي كامل وطاقة إيجابية تدوم طول النهار.</p>
+        <div class="class-meta">
+          <div class="class-meta-item">⏱ 45 دقيقة</div>
+          <div class="class-meta-item">👥 15 شخص</div>
+          <div class="class-meta-item">📍 السطح</div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal d1">
+      <div class="class-cover class-cover-5">💪<div class="class-badge">قوة</div><div class="class-level">متقدم</div></div>
+      <div class="class-body">
+        <div class="class-name">Power Yoga</div>
+        <p class="class-desc">كلاس مكثف لبناء العضلات وحرق الدهون مع الحفاظ على مبادئ اليوغا الأساسية.</p>
+        <div class="class-meta">
+          <div class="class-meta-item">⏱ 60 دقيقة</div>
+          <div class="class-meta-item">👥 10 أشخاص</div>
+          <div class="class-meta-item">📍 القاعة 1</div>
+        </div>
+      </div>
+    </div>
+    <div class="class-card reveal d2">
+      <div class="class-cover class-cover-4">🤰<div class="class-badge">خاص</div><div class="class-level">للأمهات</div></div>
+      <div class="class-body">
+        <div class="class-name">يوغا الحمل</div>
+        <p class="class-desc">برنامج آمن مصمم خصيصاً للحوامل لتخفيف الآلام وتقوية الجسم قبل الولادة.</p>
+        <div class="class-meta">
+          <div class="class-meta-item">⏱ 60 دقيقة</div>
+          <div class="class-meta-item">👥 6 أشخاص</div>
+          <div class="class-meta-item">📍 القاعة 2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS -->
+<section class="instructors" id="instructors">
+  <div class="section-header" style="text-align:center">
+    <div class="section-eyebrow reveal" style="display:inline-flex">مدربونا</div>
+    <h2 class="section-title reveal" style="text-align:center">أيدٍ <em>محترفة</em> ترشدك</h2>
+    <p class="section-sub reveal" style="margin:0 auto">مدربون معتمدون دولياً بتجارب ثرية — ملتزمون برحلتك الشخصية نحو التوازن والعافية.</p>
+  </div>
+  <div class="instructors-grid">
+    <div class="instructor-card reveal">
+      <div class="instructor-avatar">🧘‍♀️</div>
+      <div class="instructor-name">سارة الأمين</div>
+      <div class="instructor-specialty">هاثا & تأمل</div>
+      <p class="instructor-desc">10 سنوات خبرة، معتمدة من معهد كريبالو الأمريكي</p>
+      <div class="instructor-rating">★★★★★ (4.9)</div>
+    </div>
+    <div class="instructor-card reveal d1">
+      <div class="instructor-avatar" style="background:var(--clay-light);border-color:rgba(198,124,82,.2)">🧘</div>
+      <div class="instructor-name">ياسمين الحربي</div>
+      <div class="instructor-specialty">فينياسا & Power</div>
+      <p class="instructor-desc">8 سنوات خبرة، درّبت في تايلاند والهند</p>
+      <div class="instructor-rating">★★★★★ (4.8)</div>
+    </div>
+    <div class="instructor-card reveal d2">
+      <div class="instructor-avatar" style="background:#e3e8f0;border-color:rgba(91,132,165,.2)">🧘‍♀️</div>
+      <div class="instructor-name">نورة القحطاني</div>
+      <div class="instructor-specialty">يين & ترميم</div>
+      <p class="instructor-desc">7 سنوات خبرة، متخصصة في يوغا العلاجي</p>
+      <div class="instructor-rating">★★★★★ (4.9)</div>
+    </div>
+    <div class="instructor-card reveal d3">
+      <div class="instructor-avatar" style="background:#f0ebe3;border-color:rgba(160,130,90,.2)">🧘</div>
+      <div class="instructor-name">عبدالله الراشد</div>
+      <div class="instructor-specialty">Power & Ashtanga</div>
+      <p class="instructor-desc">12 سنة خبرة، بطل العروض الإقليمي</p>
+      <div class="instructor-rating">★★★★★ (5.0)</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">الجدول الأسبوعي</div>
+    <h2 class="section-title">احجز <em>مقعدك</em></h2>
+    <p class="section-sub">جدولنا مصمم ليناسب كل الأوقات — صباحاً، ظهراً، أو مساءً.</p>
+  </div>
+  <div class="schedule-grid">
+    <div class="schedule-table">
+      <div class="schedule-header"><span>الوقت</span><span>الكلاس</span><span>المدرب</span><span>الأماكن</span></div>
+      <div class="schedule-row"><div class="schedule-time">7:30 ص</div><div class="schedule-class-name">تأمل صباحي</div><div class="schedule-instructor">سارة</div><div><span class="schedule-spot">6 متبقية</span></div></div>
+      <div class="schedule-row"><div class="schedule-time">9:00 ص</div><div class="schedule-class-name">هاثا يوغا</div><div class="schedule-instructor">ياسمين</div><div><span class="schedule-spot">3 متبقية</span></div></div>
+      <div class="schedule-row"><div class="schedule-time">11:00 ص</div><div class="schedule-class-name">Power Yoga</div><div class="schedule-instructor">عبدالله</div><div><span class="schedule-spot full">مكتمل</span></div></div>
+      <div class="schedule-row"><div class="schedule-time">1:00 م</div><div class="schedule-class-name">فينياسا فلو</div><div class="schedule-instructor">ياسمين</div><div><span class="schedule-spot">8 متبقية</span></div></div>
+      <div class="schedule-row"><div class="schedule-time">5:00 م</div><div class="schedule-class-name">يوغا الحمل</div><div class="schedule-instructor">نورة</div><div><span class="schedule-spot">4 متبقية</span></div></div>
+      <div class="schedule-row"><div class="schedule-time">7:00 م</div><div class="schedule-class-name">يين يوغا</div><div class="schedule-instructor">نورة</div><div><span class="schedule-spot">5 متبقية</span></div></div>
+    </div>
+    <div class="schedule-cta">
+      <h3>ابدأ بكلاس مجاني</h3>
+      <p>جرّب أي كلاس من اختيارك بدون أي التزام — نثق بأنك ستعود مرة أخرى.</p>
+      <button class="btn-schedule-cta">🌿 احجز كلاسك المجاني</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-header" style="text-align:center">
+    <div class="section-eyebrow reveal" style="display:inline-flex">الأسعار</div>
+    <h2 class="section-title reveal" style="text-align:center">استثمر في <em>صحتك</em></h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-tag">أساسي</div>
+      <div class="price-amount">180</div>
+      <div class="price-per">ر.س / شهر</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li class="price-feature"><span class="price-feature-icon">✓</span>4 كلاسات شهرياً</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>وصول للتطبيق</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>مواد تعليمية</li>
+      </ul>
+      <button class="price-btn">ابدأ الآن</button>
+    </div>
+    <div class="price-card featured reveal d1">
+      <div class="price-tag">الأكثر اختياراً</div>
+      <div class="price-amount" style="color:var(--sage)">350</div>
+      <div class="price-per">ر.س / شهر</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li class="price-feature"><span class="price-feature-icon">✓</span>كلاسات غير محدودة</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>أولوية الحجز</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>كلاس خاص شهرياً</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>خصم 20% في المتجر</li>
+      </ul>
+      <button class="price-btn">ابدأ الآن</button>
+    </div>
+    <div class="price-card reveal d2">
+      <div class="price-tag">سنوي</div>
+      <div class="price-amount">2800</div>
+      <div class="price-per">ر.س / سنة — وفّر 400 ر.س</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li class="price-feature"><span class="price-feature-icon">✓</span>كل مزايا Unlimited</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>4 كلاسات خاصة</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>ريتريت نصف سنوي</li>
+        <li class="price-feature"><span class="price-feature-icon">✓</span>منتجات هدية</li>
+      </ul>
+      <button class="price-btn">ابدأ الآن</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header" style="text-align:center;margin-bottom:4rem">
+    <div class="section-eyebrow reveal" style="display:inline-flex">التجارب</div>
+    <h2 class="section-title reveal" style="text-align:center">أعضاؤنا <em>يحكون</em></h2>
+  </div>
+  <div class="testimonials-masonry">
+    <div class="testimonial reveal">
+      <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">بدأت لأول مرة في حياتي بيوغا هنا وكانت تجربة مذهلة. سارة ممتازة في شرح الوضعيات وتصحيح الأخطاء بدون ما تحرجك. تغيرت حياتي فعلاً.</p>
+      <div class="testimonial-author"><div class="author-av">رع</div><div><div class="author-name">رهف العمري</div><div class="author-sub">عضو منذ 2023</div></div></div>
+    </div>
+    <div class="testimonial reveal d1">
+      <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">كنت أعاني من آلام الظهر المزمنة لسنوات. بعد شهرين من يين يوغا مع نورة، تحسّن الأمر بشكل لم أتوقعه. الاستوديو نظيف وهادئ والجو مريح جداً.</p>
+      <div class="testimonial-author"><div class="author-av" style="background:var(--clay-light);color:var(--clay);border-color:rgba(198,124,82,.2)">هخ</div><div><div class="author-name">هدى الخالدي</div><div class="author-sub">عضو منذ 2022</div></div></div>
+    </div>
+    <div class="testimonial reveal d2">
+      <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">كنت متردداً لأني رجل وفكرت إن اليوغا ما تناسبني، بس جربت Power Yoga مع عبدالله وتغيّر تفكيري كلياً. الأقوى من أي رياضة جربتها.</p>
+      <div class="testimonial-author"><div class="author-av" style="background:#e3e8f0;color:#5b84a5;border-color:rgba(91,132,165,.2)">عس</div><div><div class="author-name">عمر السلوم</div><div class="author-sub">عضو منذ 2024</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-eyebrow">ابدأ رحلتك اليوم</div>
+  <h2>الجلسة الأولى<br><em>مجانية</em> دائماً</h2>
+  <p>جرّب أي كلاس في نفَس بدون أي التزام — نثق بأن التجربة ستقنعك.</p>
+  <div class="cta-btns">
+    <button class="btn-cta">🌿 احجز كلاسك المجاني</button>
+    <button class="btn-cta-ghost">اعرف أكثر</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">نَفَس</div>
+      <p class="footer-desc">استوديو يوغا وتأمل فاخر في جدة — بيئة هادئة ومدربون محترفون لرحلة تحول حقيقية.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social">ig</a><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">yt</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>الكلاسات</h4><ul><li><a href="#">هاثا يوغا</a></li><li><a href="#">فينياسا فلو</a></li><li><a href="#">يين يوغا</a></li><li><a href="#">Power Yoga</a></li><li><a href="#">تأمل</a></li></ul></div>
+    <div class="footer-col"><h4>الاستوديو</h4><ul><li><a href="#">من نحن</a></li><li><a href="#">مدربونا</a></li><li><a href="#">ريتريت</a></li><li><a href="#">المتجر</a></li></ul></div>
+    <div class="footer-col"><h4>ساعات العمل</h4><ul><li><a href="#">السبت–الخميس</a></li><li><a href="#">7 ص – 10 م</a></li><li><a href="#">الجمعة: 2 م – 9 م</a></li><li><a href="#">حجز أونلاين 24/7</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 نَفَس استوديو. جميع الحقوق محفوظة.</span>
+    <div class="footer-badge">🌿 جدة، حي التحلية</div>
+  </div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelector('.nav-burger')?.addEventListener('click',()=>{const links=document.querySelector('.nav-links');if(!links)return;const open=links.style.display==='flex';links.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:72px;right:0;left:0;background:rgba(250,247,242,.98);padding:1.5rem 5%;border-bottom:1px solid rgba(44,36,25,.08);gap:1rem'});
+document.querySelectorAll('.schedule-pill').forEach(p=>p.addEventListener('click',()=>{document.querySelectorAll('.schedule-pill').forEach(x=>x.classList.remove('active'));p.classList.add('active')}));
+</script>
+</body>
+</html>
