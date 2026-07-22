@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مَاسون عود — بيت العطور الفاخرة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0c0b08;
+  --bg2:#111009;
+  --bg3:#18160e;
+  --bg4:#1f1c12;
+  --gold:#c8a96e;
+  --gold2:#e8d4a0;
+  --gold3:#f0e4bc;
+  --gold-dark:#8a6f3f;
+  --gold-dim:rgba(200,169,110,.1);
+  --gold-border:rgba(200,169,110,.2);
+  --cream:#f5f0e8;
+  --cream2:#ede4d4;
+  --white:#fffef9;
+  --text:#d4c9b4;
+  --text-mid:#9a8f78;
+  --text-dim:#5a5244;
+  --border:rgba(200,169,110,.12);
+  --border2:rgba(200,169,110,.25);
+  --card:#131107;
+  --card2:#1a1810;
+  --shadow:0 4px 24px rgba(0,0,0,.5);
+  --glow:0 0 40px rgba(200,169,110,.08);
+}
+html{scroll-behavior:smooth;cursor:none}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--gold-dark)}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+
+/* ──── CUSTOM CURSOR ──── */
+#cursor{
+  position:fixed;width:20px;height:20px;
+  border:1px solid var(--gold);border-radius:50%;
+  pointer-events:none;z-index:99999;
+  transition:width .3s,height .3s,opacity .2s;
+  transform:translate(-50%,-50%);mix-blend-mode:difference;
+}
+#cursor-dot{
+  position:fixed;width:4px;height:4px;
+  background:var(--gold);border-radius:50%;
+  pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+}
+body:hover #cursor{opacity:1}
+
+/* ──── LOADER ──── */
+#loader{
+  position:fixed;inset:0;z-index:99998;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
+  transition:opacity 1s,visibility 1s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-name{
+  font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;
+  letter-spacing:.5em;color:var(--gold);
+  animation:fadeInScale 1.2s ease forwards;
+}
+.loader-sub{font-size:.65rem;letter-spacing:.4em;color:var(--text-dim);text-transform:uppercase;animation:fadeInScale 1s .4s ease forwards;opacity:0}
+.loader-line{
+  width:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  animation:lineGrow 1.5s .3s ease forwards;
+}
+@keyframes fadeInScale{from{opacity:0;letter-spacing:.7em}to{opacity:1;letter-spacing:.5em}}
+@keyframes lineGrow{to{width:160px}}
+.loader-progress{
+  width:160px;height:1px;background:rgba(200,169,110,.12);border-radius:1px;overflow:hidden;
+}
+.loader-fill{height:100%;background:var(--gold);animation:fillProgress 2s ease forwards}
+@keyframes fillProgress{to{width:100%}}
+
+/* ──── HEADER ──── */
+header{
+  position:fixed;top:0;inset-x:0;z-index:900;
+  padding:1.2rem 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,backdrop-filter .4s,padding .3s;
+}
+header.scrolled{
+  background:rgba(12,11,8,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:.9rem 5%;
+}
+.logo-wrap{text-align:center}
+.logo-en{
+  font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;
+  letter-spacing:.35em;color:var(--gold);line-height:1;
+}
+.logo-ar{font-size:.58rem;letter-spacing:.25em;color:var(--text-mid);text-transform:uppercase;margin-top:.2rem}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-a{
+  font-size:.78rem;letter-spacing:.12em;color:var(--text-mid);text-transform:uppercase;
+  position:relative;transition:color .3s;
+}
+.nav-a::after{
+  content:'';position:absolute;bottom:-.3rem;right:0;width:0;height:1px;
+  background:var(--gold);transition:width .3s;
+}
+.nav-a:hover{color:var(--gold)}
+.nav-a:hover::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:1rem}
+.hdr-ico{
+  width:38px;height:38px;background:transparent;border:1px solid var(--border);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--text-mid);font-size:.85rem;position:relative;transition:all .25s;
+}
+.hdr-ico:hover{border-color:var(--gold);color:var(--gold)}
+.hdr-badge{
+  position:absolute;top:-.25rem;left:-.25rem;
+  width:16px;height:16px;background:var(--gold);
+  color:var(--bg);font-size:.55rem;font-weight:700;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+}
+
+/* ──── HERO ──── */
+.hero{
+  position:relative;height:100vh;min-height:700px;
+  display:flex;align-items:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1800&q=85') center/cover no-repeat;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(12,11,8,.95) 0%,rgba(12,11,8,.65) 45%,rgba(12,11,8,.4) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;padding:0 8%;max-width:700px;
+}
+.hero-line{
+  width:40px;height:1px;background:var(--gold);margin-bottom:1.8rem;
+}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  letter-spacing:.3em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:.8rem;font-style:italic;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,6vw,5.5rem);font-weight:300;
+  line-height:1.1;color:var(--white);
+  margin-bottom:1.2rem;
+}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-desc{
+  font-size:.92rem;color:var(--text-mid);line-height:1.9;
+  max-width:440px;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;align-items:center;gap:1.5rem}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:transparent;border:1px solid var(--gold);
+  color:var(--gold);padding:.9rem 2.4rem;
+  font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.btn-gold::before{
+  content:'';position:absolute;inset:0;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;z-index:-1;
+}
+.btn-gold:hover{color:var(--bg)}
+.btn-gold:hover::before{transform:scaleX(1)}
+.btn-ghost{
+  font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text-mid);display:flex;align-items:center;gap:.5rem;
+  transition:color .3s;
+}
+.btn-ghost:hover{color:var(--gold)}
+/* Hero side visual */
+.hero-side{
+  position:absolute;left:6%;bottom:0;top:0;
+  width:42%;display:flex;align-items:center;justify-content:center;
+  z-index:1;
+}
+.hero-bottle{
+  width:360px;max-width:90%;
+  filter:drop-shadow(0 30px 60px rgba(200,169,110,.15));
+  animation:floatBottle 4s ease-in-out infinite;
+}
+@keyframes floatBottle{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+/* Scroll cue */
+.scroll-cue{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  z-index:2;opacity:.5;
+}
+.scroll-cue-line{
+  width:1px;height:50px;background:var(--gold);
+  animation:scrollDown 1.5s ease-in-out infinite;
+}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.scroll-cue-txt{font-size:.6rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+
+/* ──── MARQUEE ──── */
+.marquee-bar{
+  background:var(--gold);
+  padding:.6rem 0;overflow:hidden;
+}
+.marquee-inner{
+  display:flex;gap:3rem;width:max-content;
+  animation:marqueeFlow 25s linear infinite;
+}
+@keyframes marqueeFlow{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.85rem;letter-spacing:.25em;color:var(--bg);
+  text-transform:uppercase;white-space:nowrap;font-style:italic;
+}
+.marquee-sep{color:rgba(12,11,8,.35);margin:0 .5rem}
+
+/* ──── SECTION COMMON ──── */
+.section{padding:5rem 6%}
+.sec-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-size:.78rem;
+  letter-spacing:.35em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:.8rem;font-style:italic;
+  display:flex;align-items:center;gap:.8rem;
+}
+.sec-eyebrow::before,.sec-eyebrow::after{
+  content:'';flex:none;width:24px;height:1px;background:var(--gold);
+}
+.sec-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3.5vw,3rem);font-weight:300;
+  color:var(--white);line-height:1.2;margin-bottom:1rem;
+}
+.sec-lead{font-size:.88rem;color:var(--text-mid);line-height:1.9;max-width:500px}
+
+/* ──── COLLECTIONS GRID ──── */
+.collections-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;
+  margin-top:3rem;
+}
+.coll-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  border:1px solid var(--border);
+}
+.coll-card.tall{grid-row:span 2}
+.coll-card img{
+  width:100%;height:100%;object-fit:cover;min-height:300px;
+  transition:transform .7s ease,filter .5s;
+  filter:brightness(.65) saturate(.85);
+}
+.coll-card:hover img{transform:scale(1.04);filter:brightness(.5) saturate(.7)}
+.coll-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2rem;
+  background:linear-gradient(to top,rgba(12,11,8,.9) 0%,transparent 60%);
+}
+.coll-tag{font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem}
+.coll-name{
+  font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;
+  color:var(--white);margin-bottom:.3rem;
+}
+.coll-count{font-size:.72rem;color:var(--text-mid)}
+.coll-explore{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.72rem;letter-spacing:.15em;color:var(--gold);
+  text-transform:uppercase;margin-top:1rem;opacity:0;transform:translateY(6px);
+  transition:all .3s;
+}
+.coll-card:hover .coll-explore{opacity:1;transform:translateY(0)}
+
+/* ──── PRODUCTS ──── */
+.products-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5rem;margin-top:3rem;
+}
+.prod-card{
+  background:var(--card);border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  transition:border-color .4s,box-shadow .4s;
+}
+.prod-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,var(--gold-dim),transparent 70%);
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+.prod-card:hover{border-color:var(--border2);box-shadow:var(--glow)}
+.prod-card:hover::before{opacity:1}
+.prod-badge-wrap{
+  position:absolute;top:1rem;right:1rem;z-index:2;
+  display:flex;flex-direction:column;gap:.3rem;
+}
+.prod-badge{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.25rem .6rem;font-weight:600;
+}
+.badge-bestseller{background:var(--gold);color:var(--bg)}
+.badge-new{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.badge-limited{background:var(--bg2);border:1px solid var(--text-dim);color:var(--text-mid)}
+.prod-wish{
+  position:absolute;top:1rem;left:1rem;z-index:2;
+  width:34px;height:34px;background:rgba(12,11,8,.6);
+  border:1px solid var(--border);
+  color:var(--text-mid);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;transition:all .25s;
+}
+.prod-wish:hover{border-color:var(--gold);color:var(--gold)}
+.prod-img-area{
+  height:280px;background:var(--bg3);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.prod-img-area img{
+  width:65%;height:80%;object-fit:contain;
+  transition:transform .5s ease;
+  filter:drop-shadow(0 16px 40px rgba(200,169,110,.12));
+}
+.prod-card:hover .prod-img-area img{transform:scale(1.05)}
+.prod-quick{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:1.5rem;
+  opacity:0;transition:opacity .3s;
+}
+.prod-card:hover .prod-quick{opacity:1}
+.quick-add{
+  background:var(--gold);color:var(--bg);border:none;
+  padding:.65rem 2rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;transition:opacity .2s;
+}
+.quick-add:hover{opacity:.85}
+.prod-info{padding:1.4rem 1.2rem}
+.prod-house{font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem}
+.prod-name{
+  font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;
+  color:var(--white);margin-bottom:.5rem;line-height:1.3;
+}
+.prod-notes{font-size:.72rem;color:var(--text-dim);margin-bottom:.8rem;font-style:italic}
+.prod-sizes{display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
+.size-btn{
+  font-size:.65rem;border:1px solid var(--border);color:var(--text-mid);
+  padding:.25rem .55rem;background:transparent;transition:all .2s;
+}
+.size-btn:hover,.size-btn.active{border-color:var(--gold);color:var(--gold)}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price{
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;
+  color:var(--gold2);letter-spacing:.02em;
+}
+.prod-price-old{font-size:.8rem;color:var(--text-dim);text-decoration:line-through;margin-left:.4rem}
+.prod-currency{font-size:.8rem;color:var(--text-mid)}
+.add-to-cart{
+  background:transparent;border:1px solid var(--border);
+  color:var(--text-mid);width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+  transition:all .25s;
+}
+.add-to-cart:hover{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+.prod-rating{display:flex;align-items:center;gap:.3rem;margin-bottom:.6rem}
+.stars{font-size:.7rem;color:var(--gold);letter-spacing:.04em}
+.rating-ct{font-size:.65rem;color:var(--text-dim)}
+
+/* ──── STORY SECTION ──── */
+.story{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:600px;overflow:hidden;
+}
+.story-visual{position:relative;overflow:hidden}
+.story-visual img{width:100%;height:100%;object-fit:cover;filter:brightness(.85)}
+.story-visual-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to left,rgba(12,11,8,.7),transparent);
+}
+.story-body{
+  background:var(--bg2);padding:5rem 5rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.story-quote{
+  font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;
+  font-style:italic;color:var(--white);line-height:1.6;
+  border-right:2px solid var(--gold);padding-right:1.5rem;
+  margin-bottom:2rem;
+}
+.story-text{font-size:.85rem;color:var(--text-mid);line-height:1.9;margin-bottom:2rem}
+.story-sig{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+  font-style:italic;color:var(--gold);
+}
+.story-sig-role{font-size:.68rem;color:var(--text-dim);letter-spacing:.15em;text-transform:uppercase;margin-top:.2rem}
+
+/* ──── INGREDIENTS ──── */
+.ingredients{
+  background:var(--bg2);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.ingredients-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:2rem;
+  margin-top:3rem;
+}
+.ingr-card{text-align:center;padding:2rem 1rem}
+.ingr-icon{
+  width:72px;height:72px;border:1px solid var(--border);
+  margin:0 auto 1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;color:var(--gold);
+}
+.ingr-name{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  color:var(--white);margin-bottom:.3rem;
+}
+.ingr-origin{font-size:.7rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem}
+.ingr-desc{font-size:.75rem;color:var(--text-dim);line-height:1.7}
+
+/* ──── TESTIMONIALS ──── */
+.testimonials{background:var(--bg)}
+.test-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;
+  margin-top:3rem;
+}
+.test-card{
+  background:var(--card2);border:1px solid var(--border);
+  padding:2rem;position:relative;
+}
+.test-card::before{
+  content:'\201C';
+  font-family:'Cormorant Garamond',serif;font-size:4rem;
+  color:var(--gold);opacity:.25;position:absolute;top:.5rem;right:1.2rem;
+  line-height:1;
+}
+.test-text{
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;
+  color:var(--text);line-height:1.75;margin-bottom:1.5rem;
+}
+.test-author{display:flex;align-items:center;gap:.8rem}
+.test-avatar{
+  width:42px;height:42px;border:1px solid var(--border);
+  overflow:hidden;flex-shrink:0;
+}
+.test-avatar img{width:100%;height:100%;object-fit:cover;filter:grayscale(30%)}
+.test-name{font-size:.85rem;color:var(--white);font-weight:600}
+.test-loc{font-size:.68rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase}
+.test-stars{color:var(--gold);font-size:.75rem;margin-top:.2rem}
+
+/* ──── NEWSLETTER ──── */
+.nl-section{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  text-align:center;padding:5rem 6%;
+}
+.nl-ornament{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;
+  color:var(--gold);opacity:.3;margin-bottom:1.5rem;letter-spacing:.5em;
+}
+.nl-h2{
+  font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;
+  color:var(--white);margin-bottom:.8rem;
+}
+.nl-sub{font-size:.88rem;color:var(--text-mid);margin-bottom:2.5rem;line-height:1.8}
+.nl-form{
+  display:flex;max-width:480px;margin:0 auto;gap:.5rem;
+}
+.nl-input{
+  flex:1;background:transparent;border:1px solid var(--border);
+  padding:.85rem 1.2rem;font-family:'Cairo',sans-serif;font-size:.85rem;
+  color:var(--white);outline:none;transition:border-color .25s;
+  text-align:right;
+}
+.nl-input::placeholder{color:var(--text-dim)}
+.nl-input:focus{border-color:var(--gold)}
+.nl-submit{
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
+  padding:.85rem 2rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:all .3s;white-space:nowrap;position:relative;overflow:hidden;
+}
+.nl-submit::before{
+  content:'';position:absolute;inset:0;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1;
+}
+.nl-submit:hover{color:var(--bg)}
+.nl-submit:hover::before{transform:scaleX(1)}
+
+/* ──── FOOTER ──── */
+footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:4rem 6% 0;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;
+  letter-spacing:.4em;color:var(--gold);margin-bottom:.5rem;
+}
+.footer-tagline{
+  font-size:.65rem;letter-spacing:.3em;color:var(--text-dim);
+  text-transform:uppercase;margin-bottom:1.5rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;
+}
+.footer-desc{font-size:.8rem;color:var(--text-dim);line-height:1.8;max-width:260px;margin-bottom:1.5rem}
+.socials{display:flex;gap:.6rem}
+.soc-link{
+  width:34px;height:34px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-dim);font-size:.8rem;transition:all .25s;
+}
+.soc-link:hover{border-color:var(--gold);color:var(--gold)}
+.footer-h{
+  font-size:.7rem;letter-spacing:.25em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:1.2rem;
+}
+.footer-links{display:flex;flex-direction:column;gap:.65rem}
+.footer-links a{
+  font-size:.8rem;color:var(--text-dim);transition:color .25s;
+  display:flex;align-items:center;gap:.4rem;
+}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{
+  border-top:1px solid var(--border);
+  padding:1.5rem 0;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.8rem;
+}
+.footer-copy{font-size:.72rem;color:var(--text-dim);letter-spacing:.04em}
+.pay-methods{display:flex;gap:.5rem}
+.pay-m{
+  background:var(--bg2);border:1px solid var(--border);
+  font-size:.6rem;color:var(--text-dim);padding:.25rem .5rem;letter-spacing:.06em;
+}
+
+/* ──── CART ──── */
+#cart-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9000;
+  opacity:0;visibility:hidden;transition:all .4s;backdrop-filter:blur(4px);
+}
+#cart-overlay.open{opacity:1;visibility:visible}
+#cart-drawer{
+  position:fixed;left:0;top:0;bottom:0;width:400px;max-width:95vw;
+  background:var(--bg2);border-right:1px solid var(--border);
+  z-index:9001;transform:translateX(-100%);transition:transform .5s ease;
+  display:flex;flex-direction:column;
+}
+#cart-drawer.open{transform:translateX(0)}
+.cart-hd{
+  padding:1.5rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cart-hd-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;
+  letter-spacing:.1em;color:var(--white);
+}
+.cart-x{
+  width:34px;height:34px;background:transparent;border:1px solid var(--border);
+  color:var(--text-mid);display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;transition:all .2s;
+}
+.cart-x:hover{border-color:var(--gold);color:var(--gold)}
+.cart-body{flex:1;overflow-y:auto;padding:1.2rem}
+.cart-empty-st{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:200px;gap:1rem;color:var(--text-dim);font-size:.85rem;
+}
+.cart-empty-st i{font-size:2.5rem;color:var(--border)}
+.cart-item{
+  display:flex;gap:1rem;padding:1rem 0;
+  border-bottom:1px solid var(--border);
+}
+.cart-item-img{
+  width:70px;height:70px;background:var(--bg3);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.cart-item-img img{width:100%;height:100%;object-fit:contain}
+.cart-item-body{flex:1}
+.cart-item-name{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  color:var(--white);margin-bottom:.2rem;
+}
+.cart-item-size{font-size:.68rem;color:var(--text-dim);letter-spacing:.1em}
+.cart-item-price{color:var(--gold);font-size:.95rem;font-weight:600;margin-top:.3rem}
+.cart-qty-row{display:flex;align-items:center;gap:.5rem;margin-top:.5rem}
+.qty-ctrl{
+  width:26px;height:26px;background:transparent;border:1px solid var(--border);
+  color:var(--text-mid);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;transition:all .2s;
+}
+.qty-ctrl:hover{border-color:var(--gold);color:var(--gold)}
+.qty-val{font-size:.85rem;min-width:18px;text-align:center}
+.cart-foot{
+  border-top:1px solid var(--border);padding:1.2rem 1.5rem;
+}
+.cart-subtotal{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;
+}
+.cart-sub-lbl{font-size:.78rem;color:var(--text-mid);letter-spacing:.08em;text-transform:uppercase}
+.cart-sub-val{
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);
+}
+.checkout-cta{
+  width:100%;background:transparent;border:1px solid var(--gold);
+  color:var(--gold);padding:1rem;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  position:relative;overflow:hidden;transition:color .3s;
+}
+.checkout-cta::before{
+  content:'';position:absolute;inset:0;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:-1;
+}
+.checkout-cta:hover{color:var(--bg)}
+.checkout-cta:hover::before{transform:scaleX(1)}
+
+/* ──── TOAST ──── */
+#toast{
+  position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%) translateY(12px);
+  background:var(--bg2);border:1px solid var(--gold-border);color:var(--text);
+  padding:.75rem 1.5rem;font-size:.8rem;letter-spacing:.05em;z-index:9999;
+  opacity:0;transition:all .35s;display:flex;align-items:center;gap:.6rem;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast i{color:var(--gold)}
+
+@media(max-width:1000px){
+  .story{grid-template-columns:1fr}
+  .story-visual{height:350px}
+  .story-body{padding:3rem}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .collections-grid{grid-template-columns:1fr 1fr}
+  .hero-side{display:none}
+}
+@media(max-width:680px){
+  nav{display:none}
+  .hero-title{font-size:2.8rem}
+  .footer-grid{grid-template-columns:1fr}
+  .collections-grid{grid-template-columns:1fr}
+  .nl-form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name">MAISON OUD</div>
+  <div class="loader-line"></div>
+  <div class="loader-sub">بيت العطور الفاخرة</div>
+  <div class="loader-progress" style="margin-top:.5rem"><div class="loader-fill"></div></div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <nav>
+    <a href="#collections" class="nav-a">المجموعات</a>
+    <a href="#products" class="nav-a">المنتجات</a>
+    <a href="#story" class="nav-a">قصتنا</a>
+    <a href="#" class="nav-a">المحلات</a>
+  </nav>
+  <div class="logo-wrap">
+    <div class="logo-en">MAISON OUD</div>
+    <div class="logo-ar">بيت العطور الفاخرة</div>
+  </div>
+  <div class="header-actions">
+    <button class="hdr-ico"><i class="fas fa-search"></i></button>
+    <button class="hdr-ico"><i class="fas fa-heart"></i></button>
+    <button class="hdr-ico" onclick="toggleCart()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="hdr-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-line"></div>
+    <div class="hero-sub">مجموعة الغروب ٢٠٢٦</div>
+    <h1 class="hero-title">
+      حيث يتحوّل<br>
+      <em>العطر إلى ذاكرة</em>
+    </h1>
+    <p class="hero-desc">
+      تحف شمّية من أندر مكوّنات الأرض — عود كمبودي خام، مسك أبيض، وبخور حضرمي. 
+      صنعة يدوية فريدة تدوم على البشرة أكثر من اثنتي عشرة ساعة.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-spray-can-sparkles"></i> استكشف المجموعة
+      </button>
+      <a href="#story" class="btn-ghost">
+        <i class="fas fa-play-circle"></i> قصة العطر
+      </a>
+    </div>
+  </div>
+  <!-- Floating bottle -->
+  <div class="hero-side">
+    <img class="hero-bottle" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=85&fit=crop&crop=center" alt="عطر فاخر">
+  </div>
+  <div class="scroll-cue">
+    <div class="scroll-cue-line"></div>
+    <div class="scroll-cue-txt">تمرير</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span class="marquee-item">عود كمبودي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">مسك أبيض <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">بخور حضرمي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">ورد طائفي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">زعفران إيراني <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">أمبرغريس أتلانتي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">نيلوفر إيطالي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">خشب الصندل هندي <span class="marquee-sep">✦</span></span>
+    <!-- dup -->
+    <span class="marquee-item">عود كمبودي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">مسك أبيض <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">بخور حضرمي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">ورد طائفي <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">زعفران إيراني <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">أمبرغريس أتلانتي <span class="marquee-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="section" id="collections">
+  <div style="text-align:center">
+    <div class="sec-eyebrow">مجموعاتنا</div>
+    <h2 class="sec-h2">عوالم من العطر</h2>
+    <p class="sec-lead" style="margin:0 auto;text-align:center">كلّ مجموعة قصيدة عطرية مستقلة، مستوحاة من حضارات وبيئات مختلفة تجتمع في إناء واحد.</p>
+  </div>
+  <div class="collections-grid" id="collections">
+    <div class="coll-card tall">
+      <img src="https://images.unsplash.com/photo-1590736969596-701c25dd9d36?w=600&q=80" alt="مجموعة العود">
+      <div class="coll-overlay">
+        <div class="coll-tag">الأكثر مبيعاً</div>
+        <div class="coll-name">مجموعة العود الأسود</div>
+        <div class="coll-count">١٢ عطراً فريداً</div>
+        <div class="coll-explore">استكشف المجموعة <i class="fas fa-long-arrow-alt-left"></i></div>
+      </div>
+    </div>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="مجموعة المسك">
+      <div class="coll-overlay">
+        <div class="coll-tag">الأطول ثباتاً</div>
+        <div class="coll-name">مجموعة المسك الملكي</div>
+        <div class="coll-count">٨ عطور</div>
+        <div class="coll-explore">استكشف المجموعة <i class="fas fa-long-arrow-alt-left"></i></div>
+      </div>
+    </div>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80" alt="مجموعة الورد">
+      <div class="coll-overlay">
+        <div class="coll-tag">ربيعي جديد</div>
+        <div class="coll-name">مجموعة الورد الطائفي</div>
+        <div class="coll-count">١٠ عطور</div>
+        <div class="coll-explore">استكشف المجموعة <i class="fas fa-long-arrow-alt-left"></i></div>
+      </div>
+    </div>
+    <div class="coll-card">
+      <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80" alt="بخور">
+      <div class="coll-overlay">
+        <div class="coll-tag">حصري</div>
+        <div class="coll-name">بخور حضرمي فاخر</div>
+        <div class="coll-count">٦ أنواع</div>
+        <div class="coll-explore">استكشف المجموعة <i class="fas fa-long-arrow-alt-left"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="products" style="padding-top:0">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div class="sec-eyebrow">الأبرز</div>
+      <h2 class="sec-h2">روائح تخلّد ذكريات</h2>
+    </div>
+    <button class="btn-ghost" style="margin-bottom:.5rem">عرض الكل <i class="fas fa-long-arrow-alt-left" style="margin-right:.3rem"></i></button>
+  </div>
+  <div class="products-grid">
+
+    <!-- P1 -->
+    <div class="prod-card">
+      <div class="prod-badge-wrap"><span class="prod-badge badge-bestseller">الأكثر مبيعاً</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-area">
+        <img src="https://images.unsplash.com/photo-1590736969596-701c25dd9d36?w=400&q=80" alt="">
+        <div class="prod-quick"><button class="quick-add" onclick="addCart('لحظة العود الكمبودي','749')">أضف إلى الحقيبة</button></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-house">MAISON OUD — الخاص</div>
+        <div class="prod-name">لحظة العود الكمبودي</div>
+        <div class="prod-notes">العود · صندل · عنبر · مسك أبيض</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(٢٨٦ تقييم)</span></div>
+        <div class="prod-sizes">
+          <button class="size-btn active">٣٠ml</button>
+          <button class="size-btn">٥٠ml</button>
+          <button class="size-btn">١٠٠ml</button>
+        </div>
+        <div class="prod-footer">
+          <div><span class="prod-price">٧٤٩</span><span class="prod-currency"> ريال</span></div>
+          <button class="add-to-cart" onclick="addCart('لحظة العود الكمبودي','749')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="prod-card">
+      <div class="prod-badge-wrap"><span class="prod-badge badge-new">إطلاق جديد</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-area">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80" alt="">
+        <div class="prod-quick"><button class="quick-add" onclick="addCart('مسك المدينة الأبيض','595')">أضف إلى الحقيبة</button></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-house">MAISON OUD — نايت كولكشن</div>
+        <div class="prod-name">مسك المدينة الأبيض</div>
+        <div class="prod-notes">مسك · ياسمين · أرز · بودرة حريرية</div>
+        <div class="prod-rating"><span class="stars">★★★★½</span><span class="rating-ct">(١٥٢ تقييم)</span></div>
+        <div class="prod-sizes">
+          <button class="size-btn active">٣٠ml</button>
+          <button class="size-btn">٥٠ml</button>
+          <button class="size-btn">١٠٠ml</button>
+        </div>
+        <div class="prod-footer">
+          <div><span class="prod-price">٥٩٥</span><span class="prod-currency"> ريال</span></div>
+          <button class="add-to-cart" onclick="addCart('مسك المدينة الأبيض','595')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- P3 -->
+    <div class="prod-card">
+      <div class="prod-badge-wrap"><span class="prod-badge badge-limited">محدود الإصدار</span></div>
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-area">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=400&q=80" alt="">
+        <div class="prod-quick"><button class="quick-add" onclick="addCart('ورد طائف الملكي','899')">أضف إلى الحقيبة</button></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-house">MAISON OUD — باي الشرق</div>
+        <div class="prod-name">ورد طائف الملكي</div>
+        <div class="prod-notes">ورد دمشقي · عود هندي · زعفران · مرّ</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(٣٩٨ تقييم)</span></div>
+        <div class="prod-sizes">
+          <button class="size-btn active">٥٠ml</button>
+          <button class="size-btn">١٠٠ml</button>
+        </div>
+        <div class="prod-footer">
+          <div>
+            <span class="prod-price">٨٩٩</span>
+            <span class="prod-price-old">١٢٩٩</span>
+            <span class="prod-currency"> ريال</span>
+          </div>
+          <button class="add-to-cart" onclick="addCart('ورد طائف الملكي','899')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- P4 -->
+    <div class="prod-card">
+      <button class="prod-wish"><i class="far fa-heart"></i></button>
+      <div class="prod-img-area">
+        <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&q=80" alt="">
+        <div class="prod-quick"><button class="quick-add" onclick="addCart('بخور صلالة الذهبي','329')">أضف إلى الحقيبة</button></div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-house">MAISON OUD — البخور</div>
+        <div class="prod-name">بخور صلالة الذهبي</div>
+        <div class="prod-notes">لبان حضرمي · مرّ إثيوبي · عود لاوسي</div>
+        <div class="prod-rating"><span class="stars">★★★★½</span><span class="rating-ct">(٧٤ تقييم)</span></div>
+        <div class="prod-sizes">
+          <button class="size-btn active">١٠٠g</button>
+          <button class="size-btn">٢٥٠g</button>
+        </div>
+        <div class="prod-footer">
+          <div><span class="prod-price">٣٢٩</span><span class="prod-currency"> ريال</span></div>
+          <button class="add-to-cart" onclick="addCart('بخور صلالة الذهبي','329')"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-visual">
+    <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80" alt="حرفي العطر">
+    <div class="story-visual-overlay"></div>
+  </div>
+  <div class="story-body">
+    <div class="sec-eyebrow" style="margin-bottom:1.5rem;justify-content:flex-start">قصتنا</div>
+    <blockquote class="story-quote">
+      "الحقيقي يُحكى بغير كلام. كذلك العطر الصادق يُعرّف عن صاحبه قبل أن يتكلّم."
+    </blockquote>
+    <p class="story-text">
+      منذ عام ١٩٨٣، تُبحر مَاسون عود عبر أسواق التوابل والعطور في عدن والقاهرة وشيراز وكمبوديا، لانتقاء أندر مكوّنات العطر في العالم بيدٍ خبيرة وقلبٍ عاشق.
+      <br><br>
+      ثلاثة أجيال من العطّارين رسّخوا حرفة قديمة في قالب معاصر، فكانت كل قارورة من مَاسون عود لوحة فنية لها سرد وروح.
+    </p>
+    <div class="story-sig">عبدالعزيز الزهراني</div>
+    <div class="story-sig-role">المؤسس والعطّار الرئيسي</div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="section ingredients">
+  <div style="text-align:center">
+    <div class="sec-eyebrow">المكوّنات النادرة</div>
+    <h2 class="sec-h2">من أصفى مصادر الأرض</h2>
+  </div>
+  <div class="ingredients-grid">
+    <div class="ingr-card">
+      <div class="ingr-icon"><i class="fas fa-tree"></i></div>
+      <div class="ingr-name">عود كمبودي</div>
+      <div class="ingr-origin">كمبوديا · غابات بورنيو</div>
+      <div class="ingr-desc">أندر وأغلى المكوّنات العطرية في العالم، عتيق لأكثر من ١٠٠ عام</div>
+    </div>
+    <div class="ingr-card">
+      <div class="ingr-icon"><i class="fas fa-leaf"></i></div>
+      <div class="ingr-name">ورد دمشقي</div>
+      <div class="ingr-origin">بلغاريا · وادي الورود</div>
+      <div class="ingr-desc">يُقطّر من أزهار الفجر وحدها للحصول على أنقى زيت وردي طبيعي</div>
+    </div>
+    <div class="ingr-card">
+      <div class="ingr-icon"><i class="fas fa-star"></i></div>
+      <div class="ingr-name">زعفران فارسي</div>
+      <div class="ingr-origin">إيران · خراسان</div>
+      <div class="ingr-desc">تحتاج كيلو واحداً من الزعفران لـ ١٥٠ ألف زهرة، يُقطف يدوياً عند الفجر</div>
+    </div>
+    <div class="ingr-card">
+      <div class="ingr-icon"><i class="fas fa-water"></i></div>
+      <div class="ingr-name">أمبرغريس أتلانتي</div>
+      <div class="ingr-origin">المحيط الأطلسي</div>
+      <div class="ingr-desc">جوهرة البحر النادرة، تعطي العطر ثباتاً استثنائياً وعمقاً بحرياً فريداً</div>
+    </div>
+    <div class="ingr-card">
+      <div class="ingr-icon"><i class="fas fa-mountain"></i></div>
+      <div class="ingr-name">لبان حضرمي</div>
+      <div class="ingr-origin">اليمن · حضرموت</div>
+      <div class="ingr-desc">بخور الملوك والأنبياء منذ آلاف السنين، رائحته تُسكّن وتُقدّس</div>
+    </div>
+    <div class="ingr-card">
+      <div class="ingr-icon"><i class="fas fa-spa"></i></div>
+      <div class="ingr-name">خشب الصندل</div>
+      <div class="ingr-origin">الهند · ميسور</div>
+      <div class="ingr-desc">صندل ميسور العتيق يُعبّر عن الدفء والنعومة ويُثبّت جميع المكوّنات</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials">
+  <div style="text-align:center;margin-bottom:0">
+    <div class="sec-eyebrow">آراء عملائنا</div>
+    <h2 class="sec-h2">ما يقوله أحبّتنا</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <p class="test-text">"جرّبت عشرات العطور الفاخرة حول العالم، لكن عود مَاسون كان تجربة مختلفة تماماً. الرائحة تبقى على ملابسي لأكثر من يوم كامل وتجعلني أتلقى مجاملات من الجميع."</p>
+      <div class="test-author">
+        <div class="test-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""></div>
+        <div>
+          <div class="test-name">فيصل العبدالله</div>
+          <div class="test-loc">الرياض · المملكة العربية السعودية</div>
+          <div class="test-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <p class="test-text">"أهدت لي والدتي قارورة 'ورد طائف الملكي' في عيد ميلادي وأصبح عطري اليومي. التغليف فخم جداً ويليق بهديةٍ من أعزّ الناس. شكراً مَاسون عود."</p>
+      <div class="test-author">
+        <div class="test-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt=""></div>
+        <div>
+          <div class="test-name">سارة المنصور</div>
+          <div class="test-loc">الكويت</div>
+          <div class="test-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <p class="test-text">"العود الكمبودي من مَاسون وصفني كثيرٌ بأنني أرتدي عطراً ملكياً. الثبات لا يُصدّق والعمق مختلف. هذا ليس مجرد عطر، هذا هوية."</p>
+      <div class="test-author">
+        <div class="test-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt=""></div>
+        <div>
+          <div class="test-name">محمد الراشدي</div>
+          <div class="test-loc">دبي · الإمارات</div>
+          <div class="test-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="nl-section">
+  <div class="nl-ornament">✦ ✦ ✦</div>
+  <h2 class="nl-h2">كن أول مَن يكتشف</h2>
+  <p class="nl-sub">اشترك في نشرتنا الخاصة لتصلك أولاً إطلاقات المجموعات الجديدة،<br>العروض الحصرية ونصائح خبراء العطر.</p>
+  <form class="nl-form" onsubmit="return false">
+    <input type="email" class="nl-input" placeholder="بريدك الإلكتروني...">
+    <button class="nl-submit">اشترك</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">MAISON OUD</div>
+      <div class="footer-tagline">بيت العطور الفاخرة منذ ١٩٨٣</div>
+      <p class="footer-desc">نحن نؤمن أن العطر الحقيقي يسبق صاحبه ويبقى بعد رحيله. منذ أربعة عقود ونحن نصنع ذكريات شمّية تُورَث جيلاً بعد جيل.</p>
+      <div class="socials">
+        <a href="#" class="soc-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="soc-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="soc-link"><i class="fab fa-snapchat"></i></a>
+        <a href="#" class="soc-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="soc-link"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">المجموعات</div>
+      <div class="footer-links">
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> العود الفاخر</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> المسك الملكي</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> الورد والزهور</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> البخور والدخون</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> إصدارات محدودة</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">خدماتنا</div>
+      <div class="footer-links">
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> تتبع طلبك</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> التغليف الفاخر</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> الشحن والتوصيل</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> الهدايا والإهداء</a>
+        <a href="#"><i class="fas fa-chevron-left" style="font-size:.6rem;color:var(--gold)"></i> الاستشارة العطرية</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">تواصل معنا</div>
+      <div class="footer-links">
+        <a href="#"><i class="fas fa-phone-alt" style="font-size:.7rem;color:var(--gold)"></i> ٩٢٠٠٠٠٠٠٠</a>
+        <a href="#"><i class="fas fa-envelope" style="font-size:.7rem;color:var(--gold)"></i> hello@maisonoud.sa</a>
+        <a href="#"><i class="fas fa-map-marker-alt" style="font-size:.7rem;color:var(--gold)"></i> الرياض، شارع التحلية</a>
+        <a href="#"><i class="fas fa-clock" style="font-size:.7rem;color:var(--gold)"></i> ١٠ص — ١١م يومياً</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© ٢٠٢٦ Maison Oud — جميع الحقوق محفوظة</div>
+    <div class="pay-methods">
+      <span class="pay-m">Visa</span>
+      <span class="pay-m">Mastercard</span>
+      <span class="pay-m">Mada</span>
+      <span class="pay-m">STC Pay</span>
+      <span class="pay-m">Apple Pay</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div id="cart-overlay" onclick="toggleCart()"></div>
+<div id="cart-drawer">
+  <div class="cart-hd">
+    <div class="cart-hd-title">حقيبتك <span style="color:var(--gold);font-size:.8rem;margin-right:.3rem">✦</span></div>
+    <button class="cart-x" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty-st"><i class="fas fa-shopping-bag"></i><span>حقيبتك فارغة حتى الآن</span></div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-subtotal">
+      <span class="cart-sub-lbl">المجموع</span>
+      <span class="cart-sub-val" id="cartTotal">٠ ريال</span>
+    </div>
+    <button class="checkout-cta"><i class="fas fa-lock" style="margin-left:.5rem"></i> إتمام الطلب</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"><i class="fas fa-check"></i><span id="toastMsg"></span></div>
+
+<script>
+// Custom cursor
+const cur = document.getElementById('cursor');
+const dot = document.getElementById('cursor-dot');
+let cx=0,cy=0,dx=0,dy=0;
+document.addEventListener('mousemove',e=>{
+  dx=e.clientX;dy=e.clientY;
+  dot.style.left=dx+'px';dot.style.top=dy+'px';
+});
+(function animCur(){
+  cx += (dx-cx)*.15; cy += (dy-cy)*.15;
+  cur.style.left=cx+'px';cur.style.top=cy+'px';
+  requestAnimationFrame(animCur);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='40px';cur.style.height='40px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='20px';cur.style.height='20px'});
+});
+
+// Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hidden'),2500);
+});
+
+// Header scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainHeader').classList.toggle('scrolled',window.scrollY>80);
+});
+
+// Cart
+let cart=[];
+function toggleCart(){
+  document.getElementById('cart-overlay').classList.toggle('open');
+  document.getElementById('cart-drawer').classList.toggle('open');
+}
+function addCart(name,price){
+  const ex=cart.find(i=>i.name===name);
+  if(ex) ex.qty++;
+  else cart.push({name,price,qty:1});
+  renderCart(); toast('تمت إضافة '+name+' إلى حقيبتك');
+  document.getElementById('cartBadge').textContent=cart.reduce((s,i)=>s+i.qty,0);
+}
+function renderCart(){
+  const b=document.getElementById('cartBody');
+  if(!cart.length){b.innerHTML='<div class="cart-empty-st"><i class="fas fa-shopping-bag"></i><span>حقيبتك فارغة حتى الآن</span></div>';document.getElementById('cartTotal').textContent='٠ ريال';return}
+  b.innerHTML=cart.map((c,i)=>`
+    <div class="cart-item">
+      <div class="cart-item-img"><i class="fas fa-spray-can-sparkles" style="font-size:1.8rem;color:var(--gold-dark)"></i></div>
+      <div class="cart-item-body">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-size">٥٠ml · Eau de Parfum</div>
+        <div class="cart-item-price">${c.price} ريال</div>
+        <div class="cart-qty-row">
+          <button class="qty-ctrl" onclick="chgQty(${i},-1)">−</button>
+          <span class="qty-val">${c.qty}</span>
+          <button class="qty-ctrl" onclick="chgQty(${i},1)">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  const total=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);
+  document.getElementById('cartTotal').textContent=total.toLocaleString('ar-EG')+' ريال';
+}
+function chgQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);renderCart();document.getElementById('cartBadge').textContent=cart.reduce((s,c)=>s+c.qty,0)}
+function toast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// Size buttons
+document.querySelectorAll('.prod-sizes').forEach(wrap=>{
+  wrap.querySelectorAll('.size-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      wrap.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+});
+</script>
+</body>
+</html>
