@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ميزون فيلور | أزياء راقية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --cream: #f7f3ee;
+  --beige: #ede8e0;
+  --gold: #b89060;
+  --gold-light: #d4aa78;
+  --gray: #888888;
+  --light-gray: #e8e4df;
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --arabic: 'Noto Naskh Arabic', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--arabic); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+/* ── LOADER ── */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 20px;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+#loader.out { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: var(--serif); font-weight: 300; font-size: 2.2rem;
+  letter-spacing: .3em; color: var(--white); text-transform: uppercase;
+}
+.loader-line {
+  width: 0; height: 1px; background: var(--gold);
+  animation: load-bar 1.4s ease forwards .3s;
+}
+@keyframes load-bar { to { width: 160px; } }
+.loader-sub {
+  font-size: .7rem; letter-spacing: .25em; color: var(--gray);
+  text-transform: uppercase; opacity: 0;
+  animation: fade-in .8s ease forwards 1.2s;
+}
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar {
+  background: var(--black); color: var(--white);
+  padding: 10px 0; overflow: hidden; font-family: var(--sans);
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+}
+.announce-track { display: flex; width: max-content; animation: scroll-track 30s linear infinite; }
+.announce-item { padding: 0 60px; white-space: nowrap; opacity: .85; }
+.announce-item span { color: var(--gold); margin-inline-start: 8px; }
+@keyframes scroll-track { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0); backdrop-filter: none;
+  transition: background .4s ease, top .4s ease, box-shadow .4s ease;
+  border-bottom: 1px solid transparent;
+}
+header.scrolled {
+  top: 0; background: rgba(255,255,255,.97);
+  backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--light-gray);
+  border-bottom-color: var(--light-gray);
+}
+.nav-inner {
+  max-width: 1440px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; padding: 0 48px; height: 64px;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+.nav-links a {
+  font-family: var(--sans); font-size: .75rem; font-weight: 400;
+  letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  color: var(--white); transition: color .2s, opacity .2s;
+  position: relative;
+}
+header.scrolled .nav-links a { color: var(--black); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: currentColor; transform: scaleX(0);
+  transition: transform .3s ease; transform-origin: right;
+}
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-logo {
+  font-family: var(--serif); font-size: 1.55rem; font-weight: 300;
+  letter-spacing: .25em; text-transform: uppercase; text-decoration: none;
+  color: var(--white); text-align: center; transition: color .3s;
+}
+header.scrolled .nav-logo { color: var(--black); }
+.nav-actions { display: flex; gap: 20px; align-items: center; justify-content: flex-end; }
+.nav-actions button {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: var(--white); transition: color .3s, opacity .2s;
+  display: flex; align-items: center;
+}
+header.scrolled .nav-actions button { color: var(--black); }
+.nav-actions button:hover { opacity: .6; }
+.cart-badge {
+  background: var(--gold); color: var(--white);
+  font-size: .6rem; width: 16px; height: 16px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: -8px; margin-right: -8px;
+}
+
+/* ── HERO SPLIT ── */
+.hero {
+  height: 100svh; min-height: 700px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  cursor: none; position: relative; overflow: hidden;
+}
+.hero-panel {
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.hero-panel img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  transition: transform 6s ease; transform: scale(1.03);
+}
+.hero:hover .hero-panel img { transform: scale(1.0); }
+.hero-panel:hover img { transform: scale(1.05); }
+.hero-panel-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 50%, transparent 100%);
+}
+.hero-panel-content {
+  position: relative; z-index: 2; padding: 60px 48px;
+  color: var(--white); width: 100%;
+}
+.hero-panel-label {
+  font-family: var(--sans); font-size: .65rem; letter-spacing: .25em;
+  text-transform: uppercase; opacity: .8; margin-bottom: 12px;
+}
+.hero-panel-title {
+  font-family: var(--serif); font-weight: 300; font-size: 3.4rem;
+  line-height: 1.1; margin-bottom: 24px;
+}
+.hero-panel-cta {
+  display: inline-block; border: 1px solid rgba(255,255,255,.6);
+  color: var(--white); text-decoration: none; padding: 12px 32px;
+  font-family: var(--sans); font-size: .72rem; letter-spacing: .15em;
+  text-transform: uppercase; transition: background .3s, border-color .3s;
+}
+.hero-panel-cta:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.hero-divider {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+  background: rgba(255,255,255,.3); z-index: 3;
+}
+
+/* ── TICKER STRIP ── */
+.ticker {
+  background: var(--cream); padding: 14px 0;
+  overflow: hidden; border-top: 1px solid var(--beige); border-bottom: 1px solid var(--beige);
+}
+.ticker-track { display: flex; width: max-content; animation: scroll-track 25s linear infinite; gap: 0; }
+.ticker-item {
+  padding: 0 48px; font-family: var(--serif); font-size: 1.15rem;
+  font-style: italic; color: var(--gray); white-space: nowrap;
+}
+.ticker-dot { color: var(--gold); margin: 0 4px; }
+
+/* ── SECTION COMMON ── */
+section { padding: 90px 0; }
+.container { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
+.section-label {
+  font-family: var(--sans); font-size: .65rem; letter-spacing: .25em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--serif); font-weight: 300; font-size: 2.6rem;
+  line-height: 1.2; color: var(--black); margin-bottom: 48px;
+}
+.section-header {
+  display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px;
+}
+.view-all {
+  font-family: var(--sans); font-size: .7rem; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--black); text-decoration: none;
+  border-bottom: 1px solid var(--black); padding-bottom: 2px;
+  transition: color .2s, border-color .2s; white-space: nowrap;
+}
+.view-all:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── CATEGORIES ── */
+.categories { background: var(--white); padding: 70px 0; }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.cat-card {
+  position: relative; overflow: hidden; aspect-ratio: 3/4;
+  cursor: pointer; display: block; text-decoration: none;
+}
+.cat-card img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  transition: transform .7s ease;
+}
+.cat-card:hover img { transform: scale(1.06); }
+.cat-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 50%);
+  transition: background .3s;
+}
+.cat-card:hover .cat-card-overlay { background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.15) 60%); }
+.cat-card-content {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px;
+  color: var(--white); text-align: center;
+}
+.cat-card-name {
+  font-family: var(--serif); font-weight: 300; font-size: 1.5rem; margin-bottom: 8px;
+}
+.cat-card-link {
+  font-family: var(--sans); font-size: .65rem; letter-spacing: .2em;
+  text-transform: uppercase; opacity: 0; transform: translateY(8px);
+  transition: opacity .3s, transform .3s;
+}
+.cat-card:hover .cat-card-link { opacity: 1; transform: translateY(0); }
+
+/* ── PRODUCT GRID ── */
+.new-arrivals { background: var(--white); padding: 80px 0; }
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; }
+.prod-card { position: relative; cursor: pointer; }
+.prod-img-wrap {
+  position: relative; overflow: hidden; aspect-ratio: 3/4;
+  background: var(--cream); margin-bottom: 16px;
+}
+.prod-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  transition: transform .6s ease;
+}
+.prod-card:hover .prod-img-wrap img { transform: scale(1.05); }
+.prod-badge {
+  position: absolute; top: 12px; right: 12px; padding: 4px 10px;
+  font-family: var(--sans); font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.prod-badge.new { background: var(--black); color: var(--white); }
+.prod-badge.sale { background: #b54040; color: var(--white); }
+.prod-wishlist {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(255,255,255,.9); border: none; cursor: pointer;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity .3s, transform .3s;
+}
+.prod-card:hover .prod-wishlist { opacity: 1; transform: translateY(0); }
+.prod-wishlist:hover { background: var(--gold); color: var(--white); }
+.prod-quick {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(10,10,10,.9); color: var(--white);
+  border: none; cursor: pointer; padding: 12px;
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
+  opacity: 0; transform: translateY(100%);
+  transition: opacity .3s, transform .35s ease;
+}
+.prod-card:hover .prod-quick { opacity: 1; transform: translateY(0); }
+.prod-brand { font-family: var(--sans); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+.prod-name { font-family: var(--arabic); font-size: .95rem; color: var(--black); margin-bottom: 8px; line-height: 1.4; }
+.prod-price-row { display: flex; align-items: center; gap: 10px; }
+.prod-price { font-family: var(--sans); font-size: .85rem; font-weight: 500; }
+.prod-price-old { font-family: var(--sans); font-size: .78rem; text-decoration: line-through; color: var(--gray); }
+.prod-stars { display: flex; gap: 2px; margin-top: 4px; }
+.prod-stars svg { fill: var(--gold); width: 11px; height: 11px; }
+
+/* ── EDITORIAL BANNER ── */
+.editorial-banner { position: relative; height: 520px; overflow: hidden; }
+.editorial-banner img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  transform: scale(1.04); transition: transform 6s ease;
+}
+.editorial-banner:hover img { transform: scale(1.0); }
+.editorial-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgba(0,0,0,.65) 0%, transparent 60%);
+}
+.editorial-content {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  right: 80px; color: var(--white); max-width: 520px;
+}
+.editorial-content .section-label { color: var(--gold-light); }
+.editorial-title {
+  font-family: var(--serif); font-weight: 300; font-size: 3.2rem;
+  line-height: 1.15; margin-bottom: 20px; margin-top: 12px;
+}
+.editorial-sub { font-size: .9rem; line-height: 1.7; opacity: .85; margin-bottom: 32px; }
+.btn-outline-white {
+  display: inline-block; border: 1px solid rgba(255,255,255,.7); color: var(--white);
+  text-decoration: none; padding: 14px 36px; font-family: var(--sans);
+  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+  transition: background .3s, border-color .3s;
+}
+.btn-outline-white:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+/* ── LOOKBOOK ── */
+.lookbook { background: var(--cream); padding: 90px 0; }
+.look-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+  grid-template-rows: 340px 220px;
+  gap: 12px;
+}
+.look-item { position: relative; overflow: hidden; cursor: pointer; }
+.look-item:nth-child(1) { grid-row: 1 / 3; }
+.look-item:nth-child(4) { grid-row: 1 / 3; }
+.look-item img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  transition: transform .7s ease;
+}
+.look-item:hover img { transform: scale(1.05); }
+.look-item-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0); transition: background .3s;
+}
+.look-item:hover .look-item-overlay { background: rgba(0,0,0,.25); }
+.look-item-content {
+  position: absolute; bottom: 20px; right: 20px; left: 20px;
+  color: var(--white); opacity: 0; transform: translateY(8px);
+  transition: opacity .3s, transform .3s;
+}
+.look-item:hover .look-item-content { opacity: 1; transform: translateY(0); }
+.look-tag {
+  font-family: var(--sans); font-size: .6rem; letter-spacing: .2em;
+  text-transform: uppercase; background: rgba(184,144,96,.9);
+  display: inline-block; padding: 4px 12px; margin-bottom: 6px;
+}
+.look-name { font-family: var(--serif); font-size: 1.1rem; }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--white); padding: 90px 0; }
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.test-card {
+  padding: 40px 36px; border: 1px solid var(--beige);
+  transition: box-shadow .3s, border-color .3s;
+}
+.test-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,.07); border-color: var(--gold); }
+.test-stars { display: flex; gap: 3px; margin-bottom: 20px; }
+.test-stars svg { fill: var(--gold); width: 14px; height: 14px; }
+.test-quote {
+  font-family: var(--serif); font-style: italic; font-size: 1.08rem;
+  line-height: 1.75; color: #333; margin-bottom: 24px;
+}
+.test-author { display: flex; align-items: center; gap: 14px; }
+.test-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: center top; }
+.test-name { font-family: var(--arabic); font-size: .9rem; font-weight: 600; }
+.test-location { font-family: var(--sans); font-size: .65rem; letter-spacing: .08em; color: var(--gray); }
+
+/* ── INSTAGRAM ── */
+.instagram { background: var(--cream); padding: 80px 0; }
+.insta-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 40px; }
+.insta-item { position: relative; overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+.insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.insta-item:hover img { transform: scale(1.08); }
+.insta-item-hover {
+  position: absolute; inset: 0; background: rgba(0,0,0,.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+}
+.insta-item:hover .insta-item-hover { opacity: 1; }
+.insta-icon { color: var(--white); opacity: .9; }
+
+/* ── NEWSLETTER ── */
+.newsletter {
+  background: var(--black); padding: 90px 0;
+  position: relative; overflow: hidden;
+}
+.newsletter::before {
+  content: 'VELOURS'; position: absolute;
+  font-family: var(--serif); font-size: 18vw; font-weight: 300;
+  color: rgba(255,255,255,.03); letter-spacing: .15em;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  white-space: nowrap; pointer-events: none;
+}
+.newsletter-inner { text-align: center; position: relative; z-index: 1; }
+.newsletter-title {
+  font-family: var(--serif); font-weight: 300; font-size: 2.8rem;
+  color: var(--white); margin-bottom: 16px;
+}
+.newsletter-sub { font-size: .9rem; color: rgba(255,255,255,.55); margin-bottom: 40px; line-height: 1.7; }
+.newsletter-form { display: flex; max-width: 500px; margin: 0 auto; border: 1px solid rgba(255,255,255,.2); }
+.newsletter-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: var(--white); padding: 16px 24px;
+  font-family: var(--arabic); font-size: .9rem;
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,.35); }
+.newsletter-btn {
+  background: var(--gold); color: var(--white); border: none; cursor: pointer;
+  padding: 16px 28px; font-family: var(--sans); font-size: .68rem;
+  letter-spacing: .18em; text-transform: uppercase; transition: background .3s;
+  white-space: nowrap;
+}
+.newsletter-btn:hover { background: var(--gold-light); }
+
+/* ── FOOTER ── */
+footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.08); padding: 64px 0 36px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+.footer-brand-logo {
+  font-family: var(--serif); font-weight: 300; font-size: 1.6rem;
+  letter-spacing: .2em; color: var(--white); margin-bottom: 16px; display: block;
+}
+.footer-brand-desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.8; max-width: 280px; }
+.footer-heading {
+  font-family: var(--sans); font-size: .62rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: .85rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.08); padding-top: 28px;
+}
+.footer-copyright { font-family: var(--sans); font-size: .68rem; color: rgba(255,255,255,.3); letter-spacing: .06em; }
+.payment-icons { display: flex; gap: 10px; align-items: center; }
+.payment-icon {
+  background: rgba(255,255,255,.08); border-radius: 4px;
+  padding: 5px 10px; font-family: var(--sans); font-size: .6rem;
+  letter-spacing: .08em; color: rgba(255,255,255,.5); text-transform: uppercase;
+}
+.social-links { display: flex; gap: 16px; }
+.social-links a { color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+.social-links a:hover { color: var(--white); }
+
+/* ── CART SIDEBAR ── */
+.cart-sidebar {
+  position: fixed; top: 0; left: 0; height: 100%; width: 420px; z-index: 500;
+  background: var(--white); box-shadow: -4px 0 40px rgba(0,0,0,.12);
+  transform: translateX(-100%); transition: transform .4s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+}
+.cart-sidebar.open { transform: translateX(0); }
+.cart-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px; border-bottom: 1px solid var(--beige);
+}
+.cart-title { font-family: var(--serif); font-size: 1.3rem; }
+.cart-close { background: none; border: none; cursor: pointer; padding: 4px; }
+.cart-body { flex: 1; overflow-y: auto; padding: 28px; }
+.cart-empty { text-align: center; padding: 60px 0; color: var(--gray); }
+.cart-empty svg { margin-bottom: 16px; opacity: .3; }
+.cart-footer { padding: 24px 28px; border-top: 1px solid var(--beige); }
+.cart-total { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1rem; }
+.cart-checkout {
+  width: 100%; background: var(--black); color: var(--white); border: none; cursor: pointer;
+  padding: 16px; font-family: var(--sans); font-size: .75rem;
+  letter-spacing: .18em; text-transform: uppercase; transition: background .3s;
+}
+.cart-checkout:hover { background: var(--gold); }
+
+/* ── OVERLAY ── */
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 400;
+  opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+}
+.overlay.show { opacity: 1; visibility: visible; }
+
+/* ── BACK TO TOP ── */
+#back-top {
+  position: fixed; bottom: 32px; left: 32px; width: 44px; height: 44px;
+  background: var(--black); color: var(--white); border: none; cursor: pointer;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s;
+  z-index: 200;
+}
+#back-top.show { opacity: 1; transform: translateY(0); }
+#back-top:hover { background: var(--gold); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ── FADE IN ── */
+@keyframes fade-in { to { opacity: 1; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .nav-inner { padding: 0 24px; }
+  .container { padding: 0 24px; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .prod-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; height: auto; }
+  .hero-panel { height: 60svh; }
+  .hero-panel:last-child { display: none; }
+  .hero-divider { display: none; }
+  .hero-panel-title { font-size: 2.4rem; }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .test-grid { grid-template-columns: 1fr; }
+  .look-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .look-item:nth-child(1), .look-item:nth-child(4) { grid-row: auto; }
+  .look-item:nth-child(3), .look-item:nth-child(4) { display: none; }
+  .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  .insta-item:nth-child(n+4) { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .editorial-content { right: 24px; left: 24px; }
+  .newsletter-form { flex-direction: column; }
+  .nav-links { display: none; }
+  .section-title { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Maison Velours</div>
+  <div class="loader-line"></div>
+  <div class="loader-sub">أزياء راقية</div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <div class="announce-track">
+    <div class="announce-item">شحن مجاني للطلبات فوق <span>500 ريال</span></div>
+    <div class="announce-item">مجموعة صيف 2025 <span>متوفرة الآن</span></div>
+    <div class="announce-item">إرجاع مجاني خلال <span>30 يوماً</span></div>
+    <div class="announce-item">تسوق بثقة مع <span>ضمان الجودة</span></div>
+    <div class="announce-item">شحن مجاني للطلبات فوق <span>500 ريال</span></div>
+    <div class="announce-item">مجموعة صيف 2025 <span>متوفرة الآن</span></div>
+    <div class="announce-item">إرجاع مجاني خلال <span>30 يوماً</span></div>
+    <div class="announce-item">تسوق بثقة مع <span>ضمان الجودة</span></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="#">نساء</a></li>
+      <li><a href="#">رجال</a></li>
+      <li><a href="#">أطفال</a></li>
+      <li><a href="#">المجموعات</a></li>
+    </ul>
+    <a href="#" class="nav-logo">Maison Velours</a>
+    <div class="nav-actions">
+      <button aria-label="بحث" onclick="alert('البحث')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button aria-label="حسابي" onclick="alert('الحساب')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button aria-label="المفضلة" onclick="alert('المفضلة')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button aria-label="السلة" onclick="openCart()" style="position:relative">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO SPLIT -->
+<div class="hero" style="margin-top:36px">
+  <div class="hero-panel">
+    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&auto=format&fit=crop&q=85" alt="مجموعة النساء" loading="eager" />
+    <div class="hero-panel-overlay"></div>
+    <div class="hero-panel-content">
+      <div class="hero-panel-label">مجموعة صيف ٢٠٢٥</div>
+      <div class="hero-panel-title">أناقة<br/>بلا حدود</div>
+      <a href="#" class="hero-panel-cta">تسوق نساء</a>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+  <div class="hero-panel">
+    <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=900&auto=format&fit=crop&q=85" alt="مجموعة الرجال" loading="eager" />
+    <div class="hero-panel-overlay"></div>
+    <div class="hero-panel-content">
+      <div class="hero-panel-label">الرجل العصري</div>
+      <div class="hero-panel-title">أسلوب<br/>يتحدث عنك</div>
+      <a href="#" class="hero-panel-cta">تسوق رجال</a>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">كوتشيل <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">ماكس مارا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">فالنتينو <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">بوتيغا فينيتا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">بالنسياغا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">سيلين <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">لوي فيتون <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">برادا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">كوتشيل <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">ماكس مارا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">فالنتينو <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">بوتيغا فينيتا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">بالنسياغا <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">سيلين <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">لوي فيتون <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">برادا <span class="ticker-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">تصفح حسب الفئة</div>
+        <div class="section-title">اكتشف مجموعاتنا</div>
+      </div>
+    </div>
+    <div class="cat-grid">
+      <a href="#" class="cat-card reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop&q=85" alt="نساء" loading="lazy" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <div class="cat-card-name">نساء</div>
+          <div class="cat-card-link">تسوق الآن ←</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format&fit=crop&q=85" alt="رجال" loading="lazy" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <div class="cat-card-name">رجال</div>
+          <div class="cat-card-link">تسوق الآن ←</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card reveal reveal-delay-3">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=85" alt="إكسسوارات" loading="lazy" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <div class="cat-card-name">إكسسوارات</div>
+          <div class="cat-card-link">تسوق الآن ←</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card reveal reveal-delay-4">
+        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&auto=format&fit=crop&q=85" alt="أحذية" loading="lazy" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <div class="cat-card-name">أحذية</div>
+          <div class="cat-card-link">تسوق الآن ←</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="new-arrivals">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">وصل حديثاً</div>
+        <div class="section-title">أحدث المجموعات</div>
+      </div>
+      <a href="#" class="view-all">عرض الكل</a>
+    </div>
+    <div class="prod-grid">
+
+      <div class="prod-card reveal reveal-delay-1">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=85" alt="فستان أسود" loading="lazy" />
+          <span class="prod-badge new">جديد</span>
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Valentino</div>
+        <div class="prod-name">فستان سهرة أسود فاخر</div>
+        <div class="prod-price-row"><span class="prod-price">٢٬٤٥٠ ريال</span></div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-2">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&auto=format&fit=crop&q=85" alt="معطف بيج" loading="lazy" />
+          <span class="prod-badge new">جديد</span>
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Max Mara</div>
+        <div class="prod-name">معطف كاشمير بيج فاخر</div>
+        <div class="prod-price-row"><span class="prod-price">٣٬٨٠٠ ريال</span></div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-3">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=85" alt="حقيبة جلدية" loading="lazy" />
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Bottega Veneta</div>
+        <div class="prod-name">حقيبة جلدية كريمية</div>
+        <div class="prod-price-row"><span class="prod-price">٥٬٢٠٠ ريال</span></div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-4">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=85" alt="فستان حرير" loading="lazy" />
+          <span class="prod-badge sale">تخفيض</span>
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Celine</div>
+        <div class="prod-name">فستان حريري كريمي</div>
+        <div class="prod-price-row">
+          <span class="prod-price">١٬٩٠٠ ريال</span>
+          <span class="prod-price-old">٢٬٦٠٠ ريال</span>
+        </div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-1">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&auto=format&fit=crop&q=85" alt="أحذية فاخرة" loading="lazy" />
+          <span class="prod-badge new">جديد</span>
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Jimmy Choo</div>
+        <div class="prod-name">كعب عالٍ جلد رملي</div>
+        <div class="prod-price-row"><span class="prod-price">١٬٦٠٠ ريال</span></div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-2">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&auto=format&fit=crop&q=85" alt="سويتر كاشمير" loading="lazy" />
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Loro Piana</div>
+        <div class="prod-name">سويتر كاشمير ناعم</div>
+        <div class="prod-price-row"><span class="prod-price">٢٬١٠٠ ريال</span></div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-3">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&auto=format&fit=crop&q=85" alt="عطر فاخر" loading="lazy" />
+          <span class="prod-badge new">جديد</span>
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Tom Ford</div>
+        <div class="prod-name">عطر نسائي ذهبي</div>
+        <div class="prod-price-row"><span class="prod-price">٨٥٠ ريال</span></div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+      <div class="prod-card reveal reveal-delay-4">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4e8f?w=600&auto=format&fit=crop&q=85" alt="بليزر" loading="lazy" />
+          <span class="prod-badge sale">تخفيض</span>
+          <button class="prod-wishlist" aria-label="إضافة للمفضلة">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick">إضافة للسلة</button>
+        </div>
+        <div class="prod-brand">Saint Laurent</div>
+        <div class="prod-name">بليزر رسمي أنيق</div>
+        <div class="prod-price-row">
+          <span class="prod-price">٢٬٨٠٠ ريال</span>
+          <span class="prod-price-old">٣٬٥٠٠ ريال</span>
+        </div>
+        <div class="prod-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL BANNER -->
+<div class="editorial-banner reveal">
+  <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1600&auto=format&fit=crop&q=85" alt="إديتوريال" loading="lazy" />
+  <div class="editorial-overlay"></div>
+  <div class="editorial-content">
+    <div class="section-label">المجموعة الخاصة</div>
+    <div class="editorial-title">لأن الأناقة<br/>ليست مجرد ملابس</div>
+    <div class="editorial-sub">اكتشفي أسلوبك الخاص مع مجموعتنا المنتقاة بعناية من أرقى العلامات التجارية العالمية</div>
+    <a href="#" class="btn-outline-white">استكشفي المجموعة</a>
+  </div>
+</div>
+
+<!-- LOOKBOOK -->
+<section class="lookbook">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">مستوحى من الموضة</div>
+        <div class="section-title">لوك بوك ٢٠٢٥</div>
+      </div>
+      <a href="#" class="view-all">مشاهدة الكل</a>
+    </div>
+    <div class="look-grid">
+      <div class="look-item reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&auto=format&fit=crop&q=85" alt="لوك ١" loading="lazy" />
+        <div class="look-item-overlay"></div>
+        <div class="look-item-content">
+          <div class="look-tag">لوك المساء</div>
+          <div class="look-name">الفستان الأسود الكلاسيكي</div>
+        </div>
+      </div>
+      <div class="look-item reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&auto=format&fit=crop&q=85" alt="لوك ٢" loading="lazy" />
+        <div class="look-item-overlay"></div>
+        <div class="look-item-content">
+          <div class="look-tag">لوك النهار</div>
+          <div class="look-name">الأناقة العصرية</div>
+        </div>
+      </div>
+      <div class="look-item reveal reveal-delay-3">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop&q=85" alt="لوك ٣" loading="lazy" />
+        <div class="look-item-overlay"></div>
+        <div class="look-item-content">
+          <div class="look-tag">لوك الصيف</div>
+          <div class="look-name">نضارة وأنوثة</div>
+        </div>
+      </div>
+      <div class="look-item reveal reveal-delay-4">
+        <img src="https://images.unsplash.com/photo-1496747086635-4a3dff6a6d99?w=700&auto=format&fit=crop&q=85" alt="لوك ٤" loading="lazy" />
+        <div class="look-item-overlay"></div>
+        <div class="look-item-content">
+          <div class="look-tag">لوك الفعاليات</div>
+          <div class="look-name">تألقي في كل مناسبة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">آراء عملائنا</div>
+        <div class="section-title">ماذا يقولون عنا</div>
+      </div>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <div class="test-quote">"جودة استثنائية تفوق التوقعات. كل قطعة اشتريتها من ميزون فيلور أصبحت جزءاً أساسياً من خزانة ملابسي."</div>
+        <div class="test-author">
+          <img class="test-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="سارة الأحمدي" />
+          <div>
+            <div class="test-name">سارة الأحمدي</div>
+            <div class="test-location">الرياض، السعودية</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <div class="test-quote">"خدمة الشحن سريعة جداً والتغليف راقٍ جداً. شعرت وكأنني افتحت هدية من بوتيك فاخر."</div>
+        <div class="test-author">
+          <img class="test-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80" alt="لمياء الزهراني" />
+          <div>
+            <div class="test-name">لمياء الزهراني</div>
+            <div class="test-location">دبي، الإمارات</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-delay-3">
+        <div class="test-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <div class="test-quote">"أخيراً موقع عربي يجمع بين الراقي والأصيل. التشكيلة مميزة ومتجددة دائماً."</div>
+        <div class="test-author">
+          <img class="test-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80" alt="نورة العمري" />
+          <div>
+            <div class="test-name">نورة العمري</div>
+            <div class="test-location">الكويت</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label" style="justify-content:center;display:flex">تابعونا على إنستغرام</div>
+      <div class="section-title" style="margin-bottom:8px">@maisonvelours</div>
+      <p style="color:var(--gray);font-family:var(--sans);font-size:.8rem;letter-spacing:.05em">#MaisonVelours — شاركي إطلالتك معنا</p>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-item reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&auto=format&fit=crop&q=80" alt="instagram 1" loading="lazy" /><div class="insta-item-hover"><svg class="insta-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></div>
+      <div class="insta-item reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&auto=format&fit=crop&q=80" alt="instagram 2" loading="lazy" /><div class="insta-item-hover"><svg class="insta-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></div>
+      <div class="insta-item reveal reveal-delay-3"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&auto=format&fit=crop&q=80" alt="instagram 3" loading="lazy" /><div class="insta-item-hover"><svg class="insta-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></div>
+      <div class="insta-item reveal reveal-delay-4"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&auto=format&fit=crop&q=80" alt="instagram 4" loading="lazy" /><div class="insta-item-hover"><svg class="insta-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></div>
+      <div class="insta-item reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&auto=format&fit=crop&q=80" alt="instagram 5" loading="lazy" /><div class="insta-item-hover"><svg class="insta-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></div>
+      <div class="insta-item reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&auto=format&fit=crop&q=80" alt="instagram 6" loading="lazy" /><div class="insta-item-hover"><svg class="insta-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <div class="section-label" style="justify-content:center;display:flex;margin-bottom:16px">النشرة الحصرية</div>
+      <div class="newsletter-title">كوني أول من تعلم</div>
+      <div class="newsletter-sub">اشتركي في نشرتنا وكوني أول من يحصل على العروض الحصرية<br/>والمجموعات الجديدة قبل الجميع</div>
+      <form class="newsletter-form" onsubmit="return false">
+        <input class="newsletter-input" type="email" placeholder="بريدك الإلكتروني" />
+        <button class="newsletter-btn" type="submit">اشتراك</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-brand-logo">Maison Velours</span>
+        <p class="footer-brand-desc">بيت الأناقة والرقي — نقدم لكم أرقى العلامات التجارية العالمية مع خدمة لا مثيل لها في العالم العربي.</p>
+        <div class="social-links" style="margin-top:28px">
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.16 1.22-5.16s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .89-.57 2.23-.86 3.47-.25 1.04.51 1.88 1.53 1.88 1.84 0 3.07-2.37 3.07-5.17 0-2.14-1.44-3.64-3.5-3.64-2.38 0-3.78 1.79-3.78 3.64 0 .72.28 1.49.62 1.91.07.08.08.15.06.23l-.23.95c-.04.14-.12.18-.28.11-1.04-.49-1.69-2.01-1.69-3.23 0-2.62 1.9-5.03 5.49-5.03 2.88 0 5.12 2.05 5.12 4.79 0 2.86-1.8 5.16-4.3 5.16-.84 0-1.63-.44-1.9-.95l-.52 1.94c-.19.72-.69 1.63-1.03 2.18.78.24 1.6.37 2.45.37 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="Snapchat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C7 2 4 5.5 4 9.5c0 1.67.33 2.83.33 2.83S3 12.5 3 13.5c0 .67.67 1 1.17 1 .5 0 1-.17 1.33-.5 0 0 .5 2.5 2 3.5 0 0-1.5.5-1.5 1.5s2 1 6 1 6-.5 6-1.5-1.5-1.5-1.5-1.5c1.5-1 2-3.5 2-3.5.33.33.83.5 1.33.5.5 0 1.17-.33 1.17-1 0-1-.33-1.17-.33-1.17S21 11.17 21 9.5C21 5.5 17 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">روابط سريعة</div>
+        <ul class="footer-links">
+          <li><a href="#">نساء</a></li>
+          <li><a href="#">رجال</a></li>
+          <li><a href="#">أطفال</a></li>
+          <li><a href="#">المجموعات الجديدة</a></li>
+          <li><a href="#">التخفيضات</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">خدمة العملاء</div>
+        <ul class="footer-links">
+          <li><a href="#">تتبع الطلب</a></li>
+          <li><a href="#">سياسة الإرجاع</a></li>
+          <li><a href="#">دليل المقاسات</a></li>
+          <li><a href="#">الشحن والتوصيل</a></li>
+          <li><a href="#">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">معلومات</div>
+        <ul class="footer-links">
+          <li><a href="#">من نحن</a></li>
+          <li><a href="#">الاستدامة</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">الشروط والأحكام</a></li>
+          <li><a href="#">المدونة</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© ٢٠٢٥ Maison Velours — جميع الحقوق محفوظة</div>
+      <div class="payment-icons">
+        <span class="payment-icon">Visa</span>
+        <span class="payment-icon">Mastercard</span>
+        <span class="payment-icon">مدى</span>
+        <span class="payment-icon">Apple Pay</span>
+        <span class="payment-icon">STC Pay</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <div class="cart-title">سلة التسوق (٢)</div>
+    <button class="cart-close" onclick="closeCart()" aria-label="إغلاق">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-body">
+    <div style="display:flex;gap:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--beige)">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=120&auto=format&fit=crop" style="width:80px;height:100px;object-fit:cover;object-position:center top;" alt="منتج" />
+      <div style="flex:1">
+        <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);font-family:var(--sans);margin-bottom:4px">Valentino</div>
+        <div style="font-size:.9rem;margin-bottom:8px">فستان سهرة أسود فاخر</div>
+        <div style="font-family:var(--sans);font-size:.8rem;margin-bottom:12px">٢٬٤٥٠ ريال</div>
+        <div style="font-family:var(--sans);font-size:.7rem;color:var(--gray)">المقاس: S</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--beige)">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=120&auto=format&fit=crop" style="width:80px;height:100px;object-fit:cover;" alt="منتج" />
+      <div style="flex:1">
+        <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);font-family:var(--sans);margin-bottom:4px">Bottega Veneta</div>
+        <div style="font-size:.9rem;margin-bottom:8px">حقيبة جلدية كريمية</div>
+        <div style="font-family:var(--sans);font-size:.8rem;margin-bottom:12px">٥٬٢٠٠ ريال</div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span style="font-family:var(--sans);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray)">الإجمالي</span>
+      <span style="font-family:var(--sans);font-weight:500">٧٬٦٥٠ ريال</span>
+    </div>
+    <button class="cart-checkout">إتمام الشراء</button>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="للأعلى">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 1600);
+});
+
+// Header scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('back-top').classList.toggle('show', window.scrollY > 400);
+});
+
+// Cart
+function openCart() {
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Quick add animation
+document.querySelectorAll('.prod-quick').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.textContent = '✓ تمت الإضافة';
+    this.style.background = 'var(--gold)';
+    setTimeout(() => { this.textContent = 'إضافة للسلة'; this.style.background = ''; }, 1800);
+  });
+});
+</script>
+</body>
+</html>
