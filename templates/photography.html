@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لِنز — استوديو التصوير الاحترافي</title>
+<meta name="description" content="لِنز — استوديو تصوير احترافي متخصص في تصوير الأعراس والبورتريه والتجاري بعيون ترى الجمال حيث لا يراه غيرها">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📷</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#05040a;
+  --bg2:#080610;
+  --bg3:#0c0918;
+  --amber:#d97706;
+  --amber2:#f59e0b;
+  --amber3:#fbbf24;
+  --rose:#e11d48;
+  --rose2:#fb7185;
+  --a-glow:rgba(217,119,6,.2);
+  --a-dim:rgba(217,119,6,.08);
+  --a-border:rgba(245,158,11,.22);
+  --border:rgba(255,255,255,.07);
+  --text:#e8edf5;
+  --text-dim:rgba(232,237,245,.58);
+  --text-muted:rgba(232,237,245,.32);
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;background:rgba(5,4,10,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s}
+.logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.logo-cam{font-size:1.5rem;filter:drop-shadow(0 0 8px rgba(245,158,11,.4))}
+.logo-name{font-size:1.3rem;font-weight:900;color:#fff;letter-spacing:.06em}
+.logo-name span{background:linear-gradient(90deg,var(--amber2),var(--amber3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.83rem;font-weight:600;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:1.5px;background:var(--amber2);transform:scaleX(0);transition:transform .3s;transform-origin:right}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.btn-book{background:linear-gradient(135deg,var(--amber),var(--amber2));color:#05040a;padding:.6rem 1.6rem;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.82rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 18px var(--a-glow)}
+.btn-book:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(217,119,6,.4)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#05040a 0%,#0a0816 30%,#100e20 60%,#05040a 100%)}
+.hero-grain{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-glow-a{position:absolute;top:10%;right:5%;width:700px;height:700px;background:radial-gradient(circle,rgba(217,119,6,.09),transparent 65%);pointer-events:none}
+.hero-glow-r{position:absolute;bottom:10%;left:10%;width:500px;height:500px;background:radial-gradient(circle,rgba(225,29,72,.06),transparent 65%);pointer-events:none}
+
+.hero-content{position:relative;z-index:2;width:100%;padding:0 6% 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end}
+.hero-left .eyebrow{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--a-border);background:var(--a-dim);color:var(--amber2);padding:.4rem 1.2rem;border-radius:4px;font-size:.7rem;font-weight:700;margin-bottom:1.8rem;letter-spacing:.12em;text-transform:uppercase}
+.eyebrow-ring{width:6px;height:6px;border-radius:50%;border:2px solid var(--amber2);animation:ring-pulse 2s infinite}
+@keyframes ring-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.4}}
+.hero h1{font-size:clamp(2.8rem,5.5vw,5rem);font-weight:900;line-height:1.05;margin-bottom:1.2rem;color:#fff}
+.hero h1 .amber{background:linear-gradient(90deg,var(--amber2),var(--amber3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{color:var(--text-dim);line-height:2;margin-bottom:2.5rem;font-size:.98rem;max-width:480px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--amber),var(--amber2));color:#05040a;padding:.9rem 2.2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.92rem;text-decoration:none;transition:all .3s;box-shadow:0 6px 24px var(--a-glow)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(217,119,6,.45)}
+.btn-ghost{border:1px solid var(--border);color:var(--text-dim);padding:.9rem 2rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .3s}
+.btn-ghost:hover{border-color:var(--a-border);color:#fff;background:var(--a-dim)}
+
+/* Hero right — portfolio preview */
+.hero-right{display:flex;flex-direction:column;gap:.8rem}
+.hero-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.mosaic-item{border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:3rem;border:1px solid rgba(255,255,255,.06);position:relative;transition:transform .3s}
+.mosaic-item:hover{transform:scale(1.02)}
+.mi-tall{grid-row:span 2;font-size:5rem}
+.mosaic-item .mi-label{position:absolute;bottom:.5rem;right:.5rem;background:rgba(5,4,10,.85);border:1px solid var(--a-border);color:var(--amber2);padding:.2rem .6rem;border-radius:4px;font-size:.6rem;font-weight:700}
+.hero-stats-row{display:flex;gap:1rem}
+.hero-stat{background:rgba(8,6,16,.8);border:1px solid var(--border);border-radius:10px;padding:.8rem 1.2rem;text-align:center;flex:1;backdrop-filter:blur(8px)}
+.hs-num{font-size:1.4rem;font-weight:900;color:var(--amber2);display:block}
+.hs-lbl{font-size:.62rem;color:var(--text-muted)}
+
+/* SECTION */
+.sec{padding:6rem 6%}
+.sec-hd{text-align:center;margin-bottom:4rem}
+.sec-tag{font-size:.7rem;color:var(--amber2);letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:.7rem;display:block}
+.sec-title{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:.8rem;line-height:1.2}
+.sec-sub{color:var(--text-dim);font-size:.92rem;max-width:520px;margin:0 auto;line-height:1.85}
+
+/* SERVICES */
+.services-bg{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.service-card{background:rgba(5,4,10,.6);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .35s;cursor:default;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;right:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber2),transparent);opacity:0;transition:opacity .35s}
+.service-card:hover{border-color:var(--a-border);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.service-card:hover::before{opacity:1}
+.svc-icon{font-size:2.8rem;display:block;margin-bottom:1.2rem;filter:drop-shadow(0 4px 12px rgba(217,119,6,.3))}
+.svc-name{font-size:1.05rem;font-weight:900;color:#fff;margin-bottom:.5rem}
+.svc-desc{font-size:.83rem;color:var(--text-dim);line-height:1.8;margin-bottom:1rem}
+.svc-price{display:flex;align-items:baseline;gap:.3rem}
+.sp-from{font-size:.68rem;color:var(--text-muted)}
+.sp-val{font-size:1.4rem;font-weight:900;color:var(--amber2)}
+.sp-cur{font-size:.72rem;color:var(--text-muted)}
+
+/* GALLERY */
+.gallery-bg{background:var(--bg2)}
+.gallery-filter{display:flex;gap:.6rem;justify-content:center;margin-bottom:2.5rem;flex-wrap:wrap}
+.gf-btn{border:1px solid var(--border);background:transparent;color:var(--text-dim);padding:.45rem 1.2rem;border-radius:20px;font-family:'Cairo',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .3s}
+.gf-btn.active,.gf-btn:hover{border-color:var(--a-border);background:var(--a-dim);color:var(--amber2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,160px);gap:1rem}
+.gi{border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;border:1px solid var(--border);position:relative;overflow:hidden;transition:all .3s;cursor:pointer}
+.gi:hover{transform:scale(.98);border-color:var(--a-border)}
+.gi.span2-c{grid-column:span 2}
+.gi.span2-r{grid-row:span 2}
+.gi.big{grid-column:span 2;grid-row:span 2;font-size:6rem}
+.gi-tag{position:absolute;bottom:.6rem;right:.6rem;background:rgba(5,4,10,.88);border:1px solid var(--a-border);color:var(--amber2);padding:.2rem .6rem;border-radius:4px;font-size:.6rem;font-weight:700}
+
+/* PROCESS */
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;right:10%;left:10%;height:1px;background:linear-gradient(90deg,transparent,var(--a-border),var(--a-border),transparent)}
+.ps{text-align:center;position:relative}
+.ps-num{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber2));margin:0 auto 1.4rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#05040a;box-shadow:0 8px 24px var(--a-glow);position:relative}
+.ps-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--a-border);animation:ps-ring 3s ease-in-out infinite}
+@keyframes ps-ring{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.12)}}
+.ps-title{font-size:1rem;font-weight:900;color:#fff;margin-bottom:.5rem}
+.ps-desc{font-size:.8rem;color:var(--text-dim);line-height:1.8}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:border-color .3s}
+.testi-card:hover{border-color:var(--a-border)}
+.testi-stars{color:var(--amber2);font-size:.9rem;margin-bottom:.8rem}
+.testi-text{font-size:.86rem;color:var(--text-dim);line-height:1.9;margin-bottom:1.3rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.8rem;border-top:1px solid var(--border);padding-top:1rem}
+.testi-av{width:38px;height:38px;border-radius:50%;background:var(--a-dim);border:1px solid var(--a-border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.testi-name{font-weight:700;font-size:.86rem;color:#fff}
+.testi-role{font-size:.7rem;color:var(--text-muted)}
+
+/* BOOKING */
+.booking-bg{background:var(--bg2)}
+.booking-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.booking-info h3{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:1rem}
+.booking-info p{color:var(--text-dim);line-height:1.9;font-size:.9rem;margin-bottom:1.5rem}
+.booking-perks{display:flex;flex-direction:column;gap:.8rem}
+.bp-item{display:flex;align-items:center;gap:.8rem;color:var(--text-dim);font-size:.86rem}
+.bp-icon{width:34px;height:34px;border-radius:8px;background:var(--a-dim);border:1px solid var(--a-border);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.booking-form{background:rgba(5,4,10,.7);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-label{font-size:.74rem;font-weight:700;color:var(--text-dim);letter-spacing:.05em}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);font-family:'Cairo',sans-serif;font-size:.88rem;border-radius:8px;padding:.8rem 1rem;width:100%;transition:border-color .3s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--a-border)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
+.form-select option{background:var(--bg2)}
+.form-textarea{min-height:100px;resize:vertical}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--amber),var(--amber2));color:#05040a;border:none;border-radius:8px;padding:1rem;font-family:'Cairo',sans-serif;font-weight:900;font-size:.95rem;cursor:pointer;transition:all .3s;margin-top:1.2rem;box-shadow:0 6px 24px var(--a-glow)}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(217,119,6,.45)}
+
+/* CTA */
+.cta-sec{padding:5rem 6%;text-align:center;background:linear-gradient(135deg,var(--bg2),var(--bg3));border-top:1px solid var(--border);position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,var(--a-glow),transparent)}
+.cta-sec h2{font-size:2.2rem;font-weight:900;color:#fff;margin-bottom:1rem;position:relative}
+.cta-sec p{color:var(--text-dim);font-size:1rem;position:relative;max-width:500px;margin:0 auto 2.5rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:3.5rem 6% 2rem}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:.8rem;color:var(--text-muted);line-height:1.8;max-width:280px;margin-top:.8rem}
+.footer-col h4{font-size:.78rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul li a{color:var(--text-muted);font-size:.8rem;text-decoration:none;transition:color .3s}
+.footer-col ul li a:hover{color:var(--amber2)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-cr{font-size:.74rem;color:var(--text-muted)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .booking-wrap{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gi.big,.gi.span2-c,.gi.span2-r{grid-column:span 1;grid-row:span 1;font-size:3.5rem}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.btn-book{display:none}
+  .nav-burger{display:flex}
+  .nav-links.nav-open{display:flex;flex-direction:column;position:fixed;top:65px;right:0;left:0;background:rgba(5,4,10,.98);padding:2rem 6%;border-bottom:1px solid var(--border);gap:1.2rem}
+  .process-steps::before{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="logo">
+    <span class="logo-cam">📷</span>
+    <span class="logo-name">لِ<span>نز</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#gallery">معرض الأعمال</a></li>
+    <li><a href="#process">كيف نعمل</a></li>
+    <li><a href="#booking">احجز جلسة</a></li>
+  </ul>
+  <a href="#booking" class="btn-book">احجز جلستك</a>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-glow-a"></div>
+  <div class="hero-glow-r"></div>
+  <div class="hero-content">
+    <div class="hero-left reveal">
+      <div class="eyebrow"><span class="eyebrow-ring"></span>استوديو تصوير احترافي — الرياض</div>
+      <h1>نُجمِّد اللحظة<br>ونحوِّلها إلى<br><span class="amber">فن أبدي</span></h1>
+      <p class="hero-desc">لِنز — عيون ترى الجمال حيث لا يراه غيرها. نتخصص في تصوير الأعراس، البورتريه، التجاري والفاشن بأسلوب بصري فريد يجعل كل صورة قصة لا تُنسى.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-primary">احجز جلسة تصوير</a>
+        <a href="#gallery" class="btn-ghost">شاهد أعمالنا</a>
+      </div>
+    </div>
+    <div class="hero-right reveal rd2">
+      <div class="hero-mosaic">
+        <div class="mosaic-item mi-tall" style="background:linear-gradient(135deg,#1a0c06,#2a1408);height:320px">🤵<span class="mi-label">أعراس</span></div>
+        <div style="display:flex;flex-direction:column;gap:.8rem">
+          <div class="mosaic-item" style="background:linear-gradient(135deg,#0e0814,#180c20);height:152px">👩<span class="mi-label">بورتريه</span></div>
+          <div class="mosaic-item" style="background:linear-gradient(135deg,#060e10,#0a1820);height:152px">📦<span class="mi-label">منتجات</span></div>
+        </div>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat"><span class="hs-num">+800</span><span class="hs-lbl">حفل زفاف</span></div>
+        <div class="hero-stat"><span class="hs-num">+5k</span><span class="hs-lbl">جلسة تصوير</span></div>
+        <div class="hero-stat"><span class="hs-num">9.8</span><span class="hs-lbl">تقييم العملاء</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec services-bg" id="services">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">خدماتنا</span>
+    <h2 class="sec-title">كل لحظة تستحق إطاراً مثالياً</h2>
+    <p class="sec-sub">نقدّم باقات تصوير متكاملة لكل المناسبات والأغراض</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal rd1">
+      <span class="svc-icon">💍</span>
+      <div class="svc-name">تصوير الأعراس والمناسبات</div>
+      <p class="svc-desc">نُخلِّد يوم زفافك بأسلوب سينمائي يجمع بين الحرارة العاطفية والجمال البصري الاستثنائي — من التحضير حتى الزفة.</p>
+      <div class="svc-price"><span class="sp-from">تبدأ من</span><span class="sp-val">3,500</span><span class="sp-cur">ريال</span></div>
+    </div>
+    <div class="service-card reveal rd2">
+      <span class="svc-icon">🧍</span>
+      <div class="svc-name">تصوير البورتريه الشخصي</div>
+      <p class="svc-desc">جلسات بورتريه احترافية تعكس شخصيتك الحقيقية — مناسبة للبروفايل، الوثائق الرسمية أو لمجرد التذكار.</p>
+      <div class="svc-price"><span class="sp-from">تبدأ من</span><span class="sp-val">450</span><span class="sp-cur">ريال</span></div>
+    </div>
+    <div class="service-card reveal rd3">
+      <span class="svc-icon">📦</span>
+      <div class="svc-name">التصوير التجاري والمنتجات</div>
+      <p class="svc-desc">صور منتجات احترافية مُحسَّنة للمتاجر الإلكترونية — تعرض منتجك بأفضل صورة وتزيد من معدلات التحويل.</p>
+      <div class="svc-price"><span class="sp-from">تبدأ من</span><span class="sp-val">800</span><span class="sp-cur">ريال</span></div>
+    </div>
+    <div class="service-card reveal rd1">
+      <span class="svc-icon">👗</span>
+      <div class="svc-name">تصوير الفاشن والأزياء</div>
+      <p class="svc-desc">تصوير أزياء وموضة بمستوى مجلات عالمية — ملاك، إضاءة احترافية وأسلوب بصري يجعل كل قطعة تتكلم.</p>
+      <div class="svc-price"><span class="sp-from">تبدأ من</span><span class="sp-val">1,200</span><span class="sp-cur">ريال</span></div>
+    </div>
+    <div class="service-card reveal rd2">
+      <span class="svc-icon">🍽️</span>
+      <div class="svc-name">تصوير الطعام والمطاعم</div>
+      <p class="svc-desc">تصوير إغرائي للأطباق يجعل المشاهد يشعر بالجوع — مثالي لمنيوهات المطاعم وحملات التواصل الاجتماعي.</p>
+      <div class="svc-price"><span class="sp-from">تبدأ من</span><span class="sp-val">600</span><span class="sp-cur">ريال</span></div>
+    </div>
+    <div class="service-card reveal rd3">
+      <span class="svc-icon">🏢</span>
+      <div class="svc-name">تصوير الشركات والفرق</div>
+      <p class="svc-desc">تصوير مؤسسي لفريق عملك وبيئة شركتك — يعكس احترافيتك ويعزز ثقة العملاء والشركاء.</p>
+      <div class="svc-price"><span class="sp-from">تبدأ من</span><span class="sp-val">1,500</span><span class="sp-cur">ريال</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gallery-bg" id="gallery">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">معرض الأعمال</span>
+    <h2 class="sec-title">لحظات التقطناها بعيون مختلفة</h2>
+  </div>
+  <div class="gallery-filter reveal">
+    <button class="gf-btn active">الكل</button>
+    <button class="gf-btn">أعراس</button>
+    <button class="gf-btn">بورتريه</button>
+    <button class="gf-btn">تجاري</button>
+    <button class="gf-btn">فاشن</button>
+    <button class="gf-btn">طعام</button>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gi big" style="background:linear-gradient(135deg,#1a0c06,#2a1408)">🤵<span class="gi-tag">أعراس</span></div>
+    <div class="gi" style="background:linear-gradient(135deg,#0e0814,#18102a)">👩<span class="gi-tag">بورتريه</span></div>
+    <div class="gi" style="background:linear-gradient(135deg,#06100e,#0a1c18)">📦<span class="gi-tag">منتجات</span></div>
+    <div class="gi" style="background:linear-gradient(135deg,#0f0a04,#1c1408)">👗<span class="gi-tag">فاشن</span></div>
+    <div class="gi span2-c" style="background:linear-gradient(135deg,#0e0608,#1c0c10)">🍽️<span class="gi-tag">طعام</span></div>
+    <div class="gi" style="background:linear-gradient(135deg,#080a10,#101420)">🏢<span class="gi-tag">مؤسسي</span></div>
+    <div class="gi" style="background:linear-gradient(135deg,#100810,#1e101e)">💍<span class="gi-tag">خطوبة</span></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">كيف نعمل</span>
+    <h2 class="sec-title">رحلتك معنا خطوة بخطوة</h2>
+  </div>
+  <div class="process-steps">
+    <div class="ps reveal rd1"><div class="ps-num">١</div><div class="ps-title">الاستشارة المجانية</div><p class="ps-desc">نتحدث عن رؤيتك واحتياجاتك لنضع تصوراً واضحاً للجلسة قبل يوم التصوير.</p></div>
+    <div class="ps reveal rd2"><div class="ps-num">٢</div><div class="ps-title">التحضير والتخطيط</div><p class="ps-desc">نختار الأماكن، الإضاءة، الأزياء والمفاهيم البصرية لضمان أفضل نتيجة ممكنة.</p></div>
+    <div class="ps reveal rd3"><div class="ps-num">٣</div><div class="ps-title">يوم التصوير</div><p class="ps-desc">نخلق جواً مريحاً تشعر فيه بالطبيعية أمام الكاميرا — الصورة الحقيقية من الشعور الحقيقي.</p></div>
+    <div class="ps reveal rd4"><div class="ps-num">٤</div><div class="ps-title">التسليم والمعالجة</div><p class="ps-desc">ريتوش احترافي وتسليم الصور خلال 7-14 يوم عبر معرض إلكتروني خاص بك.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" style="background:var(--bg2)">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">ماذا قالوا</span>
+    <h2 class="sec-title">قصص عملاء وثقوا بعيوننا</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal rd1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">كنت قلقة جداً من التصوير لكن المصور بخيله جعلني أتناسى الكاميرا تماماً. الصور خرجت كأنها من مجلة. كل من رآها سألني عن الاستوديو.</p>
+      <div class="testi-author"><div class="testi-av">👤</div><div><div class="testi-name">لمى الحربي</div><div class="testi-role">جلسة بورتريه</div></div></div>
+    </div>
+    <div class="testi-card reveal rd2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">التقطوا لحظات من يوم زفافنا لم نكن نعلم أنها موجودة. الصور تحكي كل مشاعر اليوم بأدق تفاصيله. أنصح كل عروسين بلِنز بلا تردد.</p>
+      <div class="testi-author"><div class="testi-av">👤</div><div><div class="testi-name">ريم وناصر</div><div class="testi-role">تصوير زفاف</div></div></div>
+    </div>
+    <div class="testi-card reveal rd3">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">صور منتجاتنا قبل لِنز لم تكن تجلب أي مبيعات. بعد الجلسة ارتفعت نسبة النقر والشراء 3 أضعاف في المتجر الإلكتروني. استثمار يستحق.</p>
+      <div class="testi-author"><div class="testi-av">👤</div><div><div class="testi-name">محمد الدوسري</div><div class="testi-role">صاحب متجر إلكتروني</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec booking-bg" id="booking">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">احجز جلستك</span>
+    <h2 class="sec-title">خطوتك الأولى نحو صور استثنائية</h2>
+    <p class="sec-sub">أرسل طلبك والفريق سيتواصل معك خلال ساعات</p>
+  </div>
+  <div class="booking-wrap">
+    <div class="booking-info reveal rd1">
+      <h3>لماذا لِنز؟</h3>
+      <p>أكثر من 5000 جلسة تصوير ناجحة، عملاء من أبرز الشركات والشخصيات، ومصورون حاصلون على جوائز دولية.</p>
+      <div class="booking-perks">
+        <div class="bp-item"><div class="bp-icon">✨</div><span>استشارة مجانية قبل كل جلسة</span></div>
+        <div class="bp-item"><div class="bp-icon">🎨</div><span>ريتوش احترافي شامل لكل الصور</span></div>
+        <div class="bp-item"><div class="bp-icon">📱</div><span>تسليم رقمي عبر معرض إلكتروني خاص</span></div>
+        <div class="bp-item"><div class="bp-icon">🔄</div><span>ضمان الرضا — جلسة مجانية إذا لم تعجبك النتيجة</span></div>
+        <div class="bp-item"><div class="bp-icon">📅</div><span>مرونة في المواعيد بما يناسبك</span></div>
+      </div>
+    </div>
+    <div class="booking-form reveal rd2">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">الاسم</label><input class="form-input" type="text" placeholder="اسمك الكامل"></div>
+        <div class="form-group"><label class="form-label">الجوال</label><input class="form-input" type="tel" placeholder="+966 5X XXX XXXX"></div>
+      </div>
+      <div class="form-group"><label class="form-label">نوع التصوير</label>
+        <select class="form-select">
+          <option value="" disabled selected>اختر نوع الجلسة</option>
+          <option>تصوير زفاف أو خطوبة</option>
+          <option>بورتريه شخصي</option>
+          <option>تصوير منتجات تجاري</option>
+          <option>تصوير فاشن وأزياء</option>
+          <option>تصوير طعام ومطاعم</option>
+          <option>تصوير شركة وفريق</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">التاريخ المفضل</label><input class="form-input" type="date"></div>
+        <div class="form-group"><label class="form-label">الميزانية التقريبية</label>
+          <select class="form-select">
+            <option value="" disabled selected>الميزانية</option>
+            <option>أقل من 1,000 ريال</option>
+            <option>1,000 – 3,000 ريال</option>
+            <option>3,000 – 6,000 ريال</option>
+            <option>أكثر من 6,000 ريال</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">تفاصيل إضافية</label><textarea class="form-textarea" placeholder="أخبرنا عن رؤيتك وما تريد التعبير عنه في الصور..."></textarea></div>
+      <button class="btn-submit" id="submit-btn">احجز جلستي الآن ←</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <h2>كل لحظة جميلة تستحق أن تُخلَّد</h2>
+  <p>لا تدع اللحظات تمر — احجز جلستك اليوم واحصل على استشارة مجانية</p>
+  <div class="cta-btns">
+    <a href="#booking" class="btn-primary">احجز الآن</a>
+    <a href="https://wa.me/966500000000" class="btn-ghost">💬 تواصل عبر واتساب</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="display:inline-flex;margin-bottom:.8rem"><span class="logo-cam">📷</span><span class="logo-name" style="margin-right:.4rem">لِ<span>نز</span></span></a>
+      <p>استوديو تصوير احترافي يؤمن بأن كل لحظة تستحق أن تُروى — بجمال، بصدق، وبأسلوب لا يُنسى.</p>
+    </div>
+    <div class="footer-col">
+      <h4>خدماتنا</h4>
+      <ul>
+        <li><a href="#">تصوير الأعراس</a></li>
+        <li><a href="#">البورتريه الشخصي</a></li>
+        <li><a href="#">التصوير التجاري</a></li>
+        <li><a href="#">تصوير الفاشن</a></li>
+        <li><a href="#">تصوير الطعام</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="#">احجز جلسة</a></li>
+        <li><a href="#">إنستقرام</a></li>
+        <li><a href="#">واتساب</a></li>
+        <li><a href="#">معرض الأعمال</a></li>
+        <li><a href="#">الباقات والأسعار</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-cr">© 2025 استوديو لِنز — جميع الحقوق محفوظة</span>
+    <a href="#" style="color:var(--text-muted);font-size:.75rem;text-decoration:none">سياسة الخصوصية</a>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+window.addEventListener('scroll',()=>{const nav=document.getElementById('main-nav');nav.style.background=window.scrollY>60?'rgba(5,4,10,.98)':'rgba(5,4,10,.88)';});
+(function(){const b=document.getElementById('burger');const l=document.querySelector('nav .nav-links');if(b&&l){b.addEventListener('click',()=>{l.classList.toggle('nav-open');b.classList.toggle('is-open')});l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{l.classList.remove('nav-open');b.classList.remove('is-open')}))}})();
+document.querySelectorAll('.gf-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.gf-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')})});
+document.getElementById('submit-btn')?.addEventListener('click',function(){const n=document.querySelector('.form-input[placeholder="اسمك الكامل"]')?.value;const t=document.querySelector('.form-select')?.value;if(!n||!t){alert('يرجى ملء الاسم واختيار نوع التصوير');return;}this.textContent='✓ تم استلام طلبك — سنتواصل قريباً';this.style.background='linear-gradient(135deg,#059669,#10b981)';this.disabled=true;setTimeout(()=>{this.textContent='احجز جلستي الآن ←';this.style.background='';this.disabled=false;document.querySelectorAll('.form-input,.form-select,.form-textarea').forEach(i=>i.value='')},5000)});
+</script>
+</body>
+</html>
