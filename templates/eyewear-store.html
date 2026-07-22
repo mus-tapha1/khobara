@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بصيرة — متجر النظارات الفاخرة</title>
+<meta name="description" content="متجر نظارات فاخرة — نظارات شمسية، طبية، رياضية وأطفال من أفخم الماركات العالمية">
+<meta property="og:title" content="بصيرة — متجر النظارات الفاخرة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👓</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf8f5;
+  --bg2:#f4f0ea;
+  --bg3:#ede8e0;
+  --dark:#1a1510;
+  --dark2:#2c251c;
+  --dark3:#3d3428;
+  --amber:#c8860a;
+  --amber2:#e0a020;
+  --amber3:#f5c84a;
+  --amber-dim:rgba(200,134,10,.1);
+  --white:#ffffff;
+  --text:#3d3428;
+  --text-mid:#7a6e60;
+  --text-dim:#a89e90;
+  --border:rgba(58,50,40,.1);
+  --border-amber:rgba(200,134,10,.2);
+  --card:#ffffff;
+  --shadow:0 4px 24px rgba(30,20,10,.08);
+  --shadow-hover:0 16px 50px rgba(30,20,10,.15);
+  --gold-gradient:linear-gradient(135deg,#c8860a,#e0a020,#f5c84a,#e0a020);
+  --dark-gradient:linear-gradient(135deg,#1a1510,#2c251c);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:2px}
+a{text-decoration:none;color:inherit}
+button{font-family:'Cairo',sans-serif;cursor:pointer}
+
+/* ══════════ CUSTOM CURSOR ══════════ */
+#cursor{
+  position:fixed;width:22px;height:22px;
+  border:2px solid var(--amber);border-radius:50%;
+  pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:width .25s,height .25s,border-color .25s;
+}
+#cursor-dot{
+  position:fixed;width:5px;height:5px;
+  background:var(--amber);border-radius:50%;
+  pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+}
+body:has(a:hover) #cursor,body:has(button:hover) #cursor{width:40px;height:40px;border-color:var(--dark)}
+
+/* ══════════ LOADER ══════════ */
+#loader{
+  position:fixed;inset:0;z-index:99998;
+  background:var(--dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;
+  transition:opacity .9s,visibility .9s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{
+  font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;letter-spacing:.15em;
+  color:transparent;
+  background:var(--gold-gradient);background-size:200% 200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:goldShimmer 2s ease infinite;
+}
+@keyframes goldShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.loader-eye{
+  font-size:2.5rem;opacity:0;
+  animation:eyeReveal 1.2s .5s ease forwards;
+}
+@keyframes eyeReveal{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+.loader-line{
+  width:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+  animation:lineExpand 1.5s .3s ease forwards;
+}
+@keyframes lineExpand{to{width:180px}}
+.loader-sub{
+  font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.3);
+  opacity:0;animation:fadeUp .8s 1s ease forwards;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════ CART SIDEBAR ══════════ */
+#cart-overlay{
+  position:fixed;inset:0;z-index:9000;background:rgba(26,21,16,.6);
+  backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:all .35s;
+}
+#cart-overlay.open{opacity:1;visibility:visible}
+#cart-sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:400px;max-width:100vw;
+  background:var(--white);border-right:1px solid var(--border);
+  z-index:9001;transform:translateX(-100%);transition:transform .45s ease;
+  display:flex;flex-direction:column;
+}
+#cart-sidebar.open{transform:translateX(0)}
+.cart-head{
+  padding:1.5rem 1.8rem;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--dark);
+}
+.cart-head h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white)}
+.cart-close{
+  width:36px;height:36px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  color:var(--white);border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s;
+}
+.cart-close:hover{background:rgba(200,134,10,.3);border-color:var(--amber)}
+.cart-items{flex:1;overflow-y:auto;padding:1.5rem 1.8rem}
+.cart-item{
+  display:grid;grid-template-columns:70px 1fr auto;gap:1rem;align-items:center;
+  padding:1.2rem 0;border-bottom:1px solid var(--border);
+}
+.cart-thumb{
+  width:70px;height:70px;border-radius:10px;background:var(--bg2);
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+}
+.cart-item-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:.2rem}
+.cart-item-type{font-size:.72rem;color:var(--text-dim)}
+.cart-item-price{font-size:.95rem;font-weight:700;color:var(--amber)}
+.cart-footer{padding:1.5rem 1.8rem;border-top:1px solid var(--border);background:var(--bg)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.cart-total-label{font-size:.82rem;color:var(--text-mid);text-transform:uppercase;letter-spacing:.1em}
+.cart-total-price{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--amber);font-weight:700}
+.btn-checkout{
+  width:100%;padding:1rem;background:var(--dark);color:var(--white);
+  border:none;font-family:'Cairo',sans-serif;font-weight:700;font-size:.92rem;
+  border-radius:0;cursor:pointer;transition:all .3s;letter-spacing:.08em;text-transform:uppercase;
+}
+.btn-checkout:hover{background:var(--amber);color:var(--dark)}
+
+/* ══════════ MOBILE MENU ══════════ */
+#mob-menu{
+  position:fixed;inset:0;z-index:8000;
+  background:var(--dark);
+  clip-path:circle(0% at 95% 4%);
+  transition:clip-path .55s ease;
+  display:flex;flex-direction:column;padding:5rem 2.5rem 3rem;
+}
+#mob-menu.open{clip-path:circle(150% at 95% 4%)}
+.mob-links{list-style:none;flex:1}
+.mob-links li{border-bottom:1px solid rgba(255,255,255,.06)}
+.mob-links a{
+  display:block;padding:1.1rem 0;
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;color:rgba(255,255,255,.6);
+  transition:color .3s;
+}
+.mob-links a:hover{color:var(--amber)}
+.mob-close{
+  position:absolute;top:1.2rem;right:1.5rem;
+  width:42px;height:42px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:var(--white);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+
+/* ══════════ TOP BAR ══════════ */
+.top-bar{
+  background:var(--dark);color:rgba(255,255,255,.65);
+  padding:.55rem 0;overflow:hidden;font-size:.73rem;
+}
+.top-bar-inner{display:flex;width:max-content;animation:scroll 28s linear infinite}
+.top-bar-item{display:inline-flex;align-items:center;gap:.6rem;padding:0 3rem;white-space:nowrap}
+.tb-accent{color:var(--amber3)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════ HEADER ══════════ */
+header{
+  position:sticky;top:0;z-index:900;
+  background:rgba(250,248,245,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);transition:box-shadow .3s;
+}
+header.scrolled{box-shadow:0 4px 30px rgba(30,20,10,.1)}
+.header-main{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 5%;gap:1.5rem;
+}
+.logo{flex-shrink:0;text-align:center}
+.logo-text{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;letter-spacing:.2em;
+  background:var(--dark-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  display:block;
+}
+.logo-sub{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--text-dim);margin-top:-.2rem}
+.search-bar{
+  flex:1;max-width:480px;display:flex;align-items:center;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:0;overflow:hidden;transition:border-color .25s;
+}
+.search-bar:focus-within{border-color:var(--amber)}
+.search-input{
+  flex:1;border:none;background:transparent;outline:none;
+  padding:.65rem 1.1rem;font-family:'Cairo',sans-serif;font-size:.88rem;color:var(--dark);
+}
+.search-input::placeholder{color:var(--text-dim)}
+.search-btn{
+  background:var(--dark);border:none;padding:.65rem 1.2rem;color:var(--white);font-size:.9rem;
+  transition:background .2s;
+}
+.search-btn:hover{background:var(--amber)}
+.header-actions{display:flex;align-items:center;gap:.5rem}
+.hdr-btn{
+  display:flex;flex-direction:column;align-items:center;gap:.15rem;
+  padding:.45rem .65rem;background:transparent;border:1px solid transparent;
+  color:var(--text-mid);font-size:.6rem;letter-spacing:.04em;
+  transition:all .2s;cursor:pointer;border-radius:6px;
+}
+.hdr-btn-icon{font-size:1.1rem;color:var(--dark)}
+.hdr-btn:hover{background:var(--bg2);border-color:var(--border)}
+.cart-btn{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--dark);color:var(--white);border:none;
+  padding:.65rem 1.4rem;font-family:'Cairo',sans-serif;font-weight:700;font-size:.85rem;
+  transition:all .3s;letter-spacing:.04em;
+}
+.cart-btn:hover{background:var(--amber);color:var(--dark)}
+.hdr-badge{
+  background:var(--amber);color:var(--dark);font-size:.6rem;font-weight:900;
+  width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+}
+.hamburger{
+  display:none;width:40px;height:40px;
+  border:1px solid var(--border);background:transparent;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;
+}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--dark);transition:all .3s}
+
+/* ══════════ NAV ══════════ */
+nav{
+  border-top:1px solid var(--border);background:var(--bg);
+}
+.nav-inner{
+  display:flex;align-items:center;padding:0 5%;overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-link{
+  padding:.75rem 1.2rem;font-size:.84rem;font-weight:600;color:var(--text-mid);
+  white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:.4rem;
+}
+.nav-link:hover,.nav-link.active{color:var(--dark);border-bottom-color:var(--amber)}
+.nav-link.sale{color:var(--amber)}
+.nav-link.sale:hover{color:var(--amber);border-bottom-color:var(--amber)}
+
+/* ══════════ HERO ══════════ */
+.hero{
+  min-height:90vh;display:grid;grid-template-columns:1fr 1fr;
+  overflow:hidden;position:relative;
+}
+.hero-left{
+  background:var(--dark);
+  padding:6rem 5%;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-ambient{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 20% 30%,rgba(200,134,10,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 70%,rgba(224,160,32,.05) 0%,transparent 60%);
+}
+.hero-lines{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 1px,transparent 1px,transparent 80px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 1px,transparent 1px,transparent 80px);
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(200,134,10,.12);border:1px solid rgba(200,134,10,.25);
+  color:var(--amber3);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:.45rem 1.1rem;margin-bottom:2rem;width:fit-content;position:relative;z-index:2;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;
+  color:var(--white);line-height:1.15;margin-bottom:1.2rem;position:relative;z-index:2;
+}
+.hero h1 em{
+  font-style:italic;
+  background:var(--gold-gradient);background-size:200% 200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:goldShimmer 3s ease infinite;
+}
+.hero-sub{
+  font-size:.97rem;color:rgba(255,255,255,.55);line-height:1.8;
+  max-width:420px;margin-bottom:2.5rem;position:relative;z-index:2;
+}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:2;align-items:center}
+.btn-light{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--white);color:var(--dark);border:none;
+  padding:.9rem 2rem;font-family:'Cairo',sans-serif;font-weight:800;font-size:.93rem;
+  transition:all .3s;letter-spacing:.05em;
+}
+.btn-light:hover{background:var(--amber);color:var(--dark)}
+.btn-outline-w{
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:1px solid rgba(255,255,255,.25);color:var(--white);
+  padding:.9rem 2rem;font-family:'Cairo',sans-serif;font-weight:600;font-size:.93rem;
+  transition:all .3s;background:transparent;
+}
+.btn-outline-w:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
+.hero-trust{
+  display:flex;gap:1.8rem;margin-top:2.5rem;padding-top:2.5rem;
+  border-top:1px solid rgba(255,255,255,.08);position:relative;z-index:2;
+}
+.trust-item{text-align:center}
+.trust-num{display:block;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--amber3);font-weight:700}
+.trust-lbl{font-size:.67rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+
+/* Hero Right */
+.hero-right{
+  background:var(--bg2);
+  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.hero-product-showcase{
+  position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  padding:4rem;
+}
+.eyewear-art{
+  position:relative;width:320px;height:320px;
+  display:flex;align-items:center;justify-content:center;
+}
+.glasses-frame{
+  font-size:9rem;position:relative;z-index:2;
+  animation:floatGlasses 5s ease-in-out infinite;
+  filter:drop-shadow(0 20px 40px rgba(200,134,10,.2));
+}
+@keyframes floatGlasses{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+.eyewear-glow{
+  position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+  width:280px;height:60px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(200,134,10,.15),transparent 70%);
+  filter:blur(15px);
+}
+.hero-product-card{
+  position:absolute;bottom:2.5rem;right:2.5rem;
+  background:var(--white);border:1px solid var(--border);
+  padding:1.1rem 1.4rem;box-shadow:var(--shadow);min-width:200px;
+}
+.hpc-label{font-size:.65rem;letter-spacing:.15em;color:var(--text-dim);text-transform:uppercase;margin-bottom:.3rem}
+.hpc-name{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.2rem}
+.hpc-price{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--amber);font-weight:700}
+.hero-badge-float{
+  position:absolute;top:2.5rem;left:2.5rem;
+  background:var(--amber);color:var(--dark);
+  width:72px;height:72px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:900;font-size:.7rem;line-height:1.2;text-align:center;
+  animation:badgePulse 2.5s ease-in-out infinite;
+}
+@keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);
+  z-index:2;
+}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,rgba(200,134,10,.5),transparent);
+  animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ══════════ CATEGORIES ══════════ */
+.section{padding:5rem 5%}
+.sec-header{text-align:center;margin-bottom:3.5rem}
+.sec-label{
+  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:.8rem;
+}
+.sec-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--dark);margin-bottom:.7rem}
+.sec-sub{color:var(--text-mid);font-size:.93rem;max-width:460px;margin:0 auto}
+
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.cat-card{
+  position:relative;overflow:hidden;border:1px solid var(--border);
+  background:var(--card);transition:all .35s;cursor:pointer;
+}
+.cat-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--border-amber)}
+.cat-img{
+  height:220px;display:flex;align-items:center;justify-content:center;
+  font-size:4.5rem;position:relative;overflow:hidden;
+  transition:transform .4s;
+}
+.cat-card:hover .cat-img{transform:scale(1.05)}
+.cat-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(26,21,16,.6),transparent 50%);
+  transition:opacity .3s;
+}
+.cat-card:hover .cat-overlay{opacity:.8}
+.cat-info{padding:1.3rem 1.2rem}
+.cat-name{font-size:1rem;font-weight:800;color:var(--dark);margin-bottom:.3rem}
+.cat-count{font-size:.78rem;color:var(--text-mid)}
+.cat-arrow{
+  position:absolute;bottom:1.2rem;left:1.2rem;
+  width:32px;height:32px;background:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(8px);transition:all .3s;font-size:.8rem;
+}
+.cat-card:hover .cat-arrow{opacity:1;transform:translateY(0)}
+
+/* ══════════ PRODUCTS ══════════ */
+.products-section{padding:5rem 5%;background:var(--bg2)}
+.products-filters{
+  display:flex;gap:.6rem;margin-bottom:2.5rem;flex-wrap:wrap;align-items:center;
+}
+.filter-label{font-size:.78rem;font-weight:700;color:var(--text-mid);margin-left:auto}
+.filter-btn{
+  padding:.45rem 1.1rem;border:1px solid var(--border);background:transparent;
+  font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:600;color:var(--text-mid);
+  transition:all .2s;cursor:pointer;
+}
+.filter-btn:hover,.filter-btn.active{background:var(--dark);color:var(--white);border-color:var(--dark)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.prod-card{
+  background:var(--card);border:1px solid var(--border);
+  transition:all .35s;position:relative;overflow:hidden;
+}
+.prod-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--border-amber)}
+.prod-thumb{
+  height:190px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.prod-thumb-inner{
+  font-size:4rem;transition:transform .4s;
+  filter:drop-shadow(0 8px 20px rgba(200,134,10,.15));
+}
+.prod-card:hover .prod-thumb-inner{transform:scale(1.1) rotate(-3deg)}
+.prod-badges{position:absolute;top:.8rem;right:.8rem;display:flex;flex-direction:column;gap:.35rem}
+.prod-badge{font-size:.62rem;font-weight:700;padding:.22rem .6rem;letter-spacing:.05em}
+.badge-new{background:var(--dark);color:var(--white)}
+.badge-sale{background:var(--amber);color:var(--dark)}
+.badge-best{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
+.prod-wishlist{
+  position:absolute;top:.8rem;left:.8rem;
+  width:32px;height:32px;background:var(--white);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;
+  cursor:pointer;transition:all .2s;
+}
+.prod-wishlist:hover{background:var(--dark);color:var(--white)}
+.prod-info{padding:1.2rem}
+.prod-brand{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem}
+.prod-name{font-size:.93rem;font-weight:700;color:var(--dark);margin-bottom:.35rem;line-height:1.3}
+.prod-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem}
+.meta-tag{font-size:.65rem;padding:.15rem .5rem;background:var(--bg2);color:var(--text-mid);border:1px solid var(--border)}
+.prod-rating{display:flex;align-items:center;gap:.4rem;margin-bottom:.85rem}
+.stars{color:var(--amber);font-size:.78rem}
+.rating-num{font-size:.72rem;color:var(--text-dim)}
+.prod-price-row{display:flex;align-items:center;justify-content:space-between}
+.price-wrap{display:flex;align-items:baseline;gap:.5rem}
+.price-current{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);font-weight:700}
+.price-old{font-size:.8rem;color:var(--text-dim);text-decoration:line-through}
+.btn-add{
+  background:var(--dark);color:var(--white);border:none;
+  padding:.5rem .95rem;font-family:'Cairo',sans-serif;font-size:.78rem;font-weight:700;
+  transition:all .25s;letter-spacing:.04em;
+}
+.btn-add:hover{background:var(--amber);color:var(--dark)}
+
+/* ══════════ FEATURED BRAND ══════════ */
+.brand-feature{
+  padding:5rem 5%;background:var(--dark);
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.brand-feature-left{position:relative}
+.brand-tag{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--amber);border-bottom:1px solid rgba(200,134,10,.3);padding-bottom:.4rem;margin-bottom:1.5rem;
+}
+.brand-title{
+  font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;
+  color:var(--white);line-height:1.15;margin-bottom:1.2rem;
+}
+.brand-title em{font-style:italic;color:var(--amber2)}
+.brand-desc{color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2rem;font-size:.95rem;max-width:440px}
+.brand-specs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.spec-item{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  padding:1rem 1.2rem;
+}
+.spec-label{font-size:.65rem;letter-spacing:.15em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:.3rem}
+.spec-val{font-size:.9rem;font-weight:700;color:var(--white)}
+.brand-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-amber{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--amber);color:var(--dark);border:none;
+  padding:.9rem 2rem;font-family:'Cairo',sans-serif;font-weight:800;font-size:.93rem;
+  transition:all .3s;
+}
+.btn-amber:hover{background:var(--amber2)}
+.brand-feature-right{
+  display:flex;flex-direction:column;gap:1rem;
+}
+.brand-img-main{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  height:260px;display:flex;align-items:center;justify-content:center;font-size:8rem;
+  position:relative;overflow:hidden;
+}
+.brand-img-main::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(200,134,10,.06),transparent);
+}
+.brand-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.brand-thumb{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  height:90px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;
+  cursor:pointer;transition:all .2s;
+}
+.brand-thumb:hover,.brand-thumb.active{border-color:rgba(200,134,10,.4);background:rgba(200,134,10,.06)}
+
+/* ══════════ TRY ON ══════════ */
+.tryon-section{
+  padding:5rem 5%;background:var(--bg2);
+}
+.tryon-inner{
+  background:var(--white);border:1px solid var(--border);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;
+}
+.tryon-left{
+  background:var(--dark);padding:4rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.tryon-icon{font-size:3rem;margin-bottom:1.5rem}
+.tryon-title{
+  font-family:'Playfair Display',serif;font-size:2rem;color:var(--white);font-weight:700;margin-bottom:1rem;
+}
+.tryon-title em{font-style:italic;color:var(--amber2)}
+.tryon-desc{color:rgba(255,255,255,.5);line-height:1.8;font-size:.93rem;margin-bottom:2rem}
+.tryon-steps{list-style:none;margin-bottom:2rem}
+.tryon-step{
+  display:flex;align-items:flex-start;gap:.8rem;padding:.8rem 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.step-num{
+  width:26px;height:26px;border:1px solid rgba(200,134,10,.3);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;color:var(--amber);flex-shrink:0;
+}
+.step-text{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.5;padding-top:.15rem}
+.tryon-right{
+  padding:3rem;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--bg2),var(--bg3));
+  position:relative;
+}
+.face-frame{
+  width:180px;height:220px;border:2px dashed var(--border-amber);
+  border-radius:50% 50% 45% 45%;
+  display:flex;align-items:center;justify-content:center;font-size:6rem;
+  margin-bottom:2rem;position:relative;animation:faceFloat 4s ease-in-out infinite;
+}
+@keyframes faceFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.face-glass-overlay{
+  position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);
+  font-size:2.5rem;
+}
+.tryon-models{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+.model-btn{
+  padding:.5rem 1rem;border:1px solid var(--border);background:var(--white);
+  font-family:'Cairo',sans-serif;font-size:.78rem;font-weight:600;color:var(--text);
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem;
+}
+.model-btn:hover,.model-btn.active{background:var(--dark);color:var(--white);border-color:var(--dark)}
+.model-icon{font-size:1rem}
+
+/* ══════════ FACE SHAPE GUIDE ══════════ */
+.faceshape-section{padding:5rem 5%}
+.faceshapes{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.fs-card{
+  border:1px solid var(--border);padding:2rem 1rem 1.5rem;text-align:center;
+  transition:all .3s;cursor:pointer;
+}
+.fs-card:hover,.fs-card.active{border-color:var(--border-amber);background:var(--amber-dim)}
+.fs-icon{font-size:2.8rem;margin-bottom:.8rem;display:block}
+.fs-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:.3rem}
+.fs-desc{font-size:.72rem;color:var(--text-dim);line-height:1.5}
+.fs-result{
+  margin-top:2.5rem;padding:2rem;background:var(--white);border:1px solid var(--border);
+  display:none;
+}
+.fs-result.show{display:block}
+.fs-result h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:.8rem}
+.fs-recs{display:flex;gap:.6rem;flex-wrap:wrap}
+.fs-rec-tag{
+  display:flex;align-items:center;gap:.4rem;
+  background:var(--bg2);border:1px solid var(--border);
+  padding:.4rem .9rem;font-size:.78rem;color:var(--text);
+}
+.fs-rec-icon{font-size:1rem}
+
+/* ══════════ BRANDS CAROUSEL ══════════ */
+.brands-section{
+  padding:3rem 0;background:var(--dark);
+  overflow:hidden;border-top:1px solid rgba(255,255,255,.05);
+}
+.brands-inner{display:flex;width:max-content;animation:brandScroll 35s linear infinite}
+.brand-item{
+  display:flex;align-items:center;gap:.7rem;padding:0 3.5rem;
+  font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);white-space:nowrap;border-left:1px solid rgba(255,255,255,.06);transition:color .3s;cursor:pointer;
+}
+.brand-item:hover{color:var(--amber)}
+.brand-logo{font-size:1.4rem}
+@keyframes brandScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════ REVIEWS ══════════ */
+.reviews-section{padding:5rem 5%;background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.review-card{
+  background:var(--card);border:1px solid var(--border);padding:1.8rem;transition:all .3s;
+}
+.review-card:hover{border-color:var(--border-amber);box-shadow:var(--shadow)}
+.review-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.review-avatar{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;
+  background:var(--bg2);border:2px solid var(--border-amber);
+}
+.review-name{font-size:.9rem;font-weight:700;color:var(--dark)}
+.review-frame{font-size:.73rem;color:var(--text-dim);margin-top:.1rem}
+.review-stars{color:var(--amber);font-size:.85rem;margin-bottom:.9rem}
+.review-text{font-size:.85rem;color:var(--text-mid);line-height:1.75}
+.review-badge{
+  display:inline-flex;align-items:center;gap:.3rem;margin-top:.9rem;
+  font-size:.65rem;font-weight:700;color:var(--text-dim);letter-spacing:.06em;
+}
+.review-badge::before{content:'✓';color:var(--amber)}
+
+/* ══════════ NEWSLETTER ══════════ */
+.newsletter{
+  background:var(--dark);padding:5rem 5%;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.nl-left .nl-tag{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--amber);display:block;margin-bottom:1.2rem}
+.nl-title{font-family:'Playfair Display',serif;font-size:2.3rem;color:var(--white);font-weight:700;line-height:1.2}
+.nl-title em{font-style:italic;color:var(--amber2)}
+.nl-right .nl-desc{color:rgba(255,255,255,.45);font-size:.93rem;line-height:1.7;margin-bottom:1.8rem}
+.nl-form{display:flex;gap:0}
+.nl-input{
+  flex:1;border:none;border-bottom:1px solid rgba(255,255,255,.15);background:transparent;
+  outline:none;padding:.85rem .5rem;font-family:'Cairo',sans-serif;font-size:.9rem;color:var(--white);
+  transition:border-color .25s;
+}
+.nl-input:focus{border-color:var(--amber)}
+.nl-input::placeholder{color:rgba(255,255,255,.3)}
+.btn-nl{
+  background:var(--amber);color:var(--dark);border:none;
+  padding:.85rem 1.8rem;font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;
+  transition:all .3s;white-space:nowrap;
+}
+.btn-nl:hover{background:var(--amber2)}
+.nl-perks{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem}
+.nl-perk{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35)}
+.nl-perk-icon{color:var(--amber)}
+
+/* ══════════ FOOTER ══════════ */
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:4rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo-text{color:var(--white);-webkit-text-fill-color:var(--white);background:none;-webkit-background-clip:unset;
+  font-family:'Playfair Display',serif;font-size:1.8rem}
+.footer-desc{font-size:.84rem;color:rgba(255,255,255,.35);line-height:1.7;max-width:280px;margin-top:.8rem;margin-bottom:1.5rem}
+.footer-social{display:flex;gap:.6rem}
+.social-btn{
+  width:36px;height:36px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;
+  cursor:pointer;transition:all .2s;
+}
+.social-btn:hover{background:rgba(200,134,10,.2);border-color:rgba(200,134,10,.3)}
+.footer-col h4{font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:1.2rem}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:.65rem}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.3);transition:color .2s}
+.footer-links a:hover{color:var(--amber)}
+.footer-bottom{
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.2)}
+.footer-badges{display:flex;gap:.6rem;flex-wrap:wrap}
+.f-badge{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  padding:.28rem .7rem;font-size:.67rem;color:rgba(255,255,255,.25);
+}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{min-height:350px}
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .brand-feature{grid-template-columns:1fr;gap:3rem;padding:3.5rem 5%}
+  .tryon-inner{grid-template-columns:1fr}
+  .faceshapes{grid-template-columns:repeat(3,1fr)}
+  .newsletter{grid-template-columns:1fr;gap:2rem}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hamburger{display:flex}
+  header .search-bar{display:none}
+  .hero-left{padding:4rem 4%}
+  .hero h1{font-size:2rem}
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .section,.products-section,.tryon-section,.faceshape-section,.reviews-section{padding:3.5rem 4%}
+  .brand-feature{padding:3rem 4%}
+  .newsletter{padding:3rem 4%}
+  footer{padding:3rem 4% 2rem}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .faceshapes{grid-template-columns:repeat(2,1fr)}
+  .hero-trust{gap:1rem}
+  .nl-form{flex-direction:column}
+  .btn-nl{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-eye">👁️</div>
+  <div class="loader-logo">بصيرة</div>
+  <div class="loader-line"></div>
+  <div class="loader-sub">النظارات الفاخرة</div>
+</div>
+
+<!-- CART -->
+<div id="cart-overlay" onclick="toggleCart()">
+  <div id="cart-sidebar" onclick="event.stopPropagation()">
+    <div class="cart-head">
+      <h3>سلة التسوق</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items">
+      <div class="cart-item">
+        <div class="cart-thumb">🕶️</div>
+        <div>
+          <div class="cart-item-name">Ray-Ban Aviator Classic</div>
+          <div class="cart-item-type">نظارة شمسية — ذهبي / أخضر</div>
+        </div>
+        <div class="cart-item-price">$189</div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb">👓</div>
+        <div>
+          <div class="cart-item-name">Persol 3019-S Titanium</div>
+          <div class="cart-item-type">نظارة طبية — براون</div>
+        </div>
+        <div class="cart-item-price">$290</div>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">المجموع</span>
+        <span class="cart-total-price">$479</span>
+      </div>
+      <button class="btn-checkout">إتمام الطلب</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <ul class="mob-links">
+    <li><a href="#">نظارات شمسية</a></li>
+    <li><a href="#">نظارات طبية</a></li>
+    <li><a href="#">نظارات رياضية</a></li>
+    <li><a href="#">نظارات أطفال</a></li>
+    <li><a href="#">الماركات</a></li>
+    <li><a href="#">العروض</a></li>
+  </ul>
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-item"><span class="tb-accent">✦</span> شحن مجاني على الطلبات فوق 300 ريال</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> ضمان أصالة 100% على جميع المنتجات</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> تجربة افتراضية — جرّب النظارة قبل الشراء</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> خدمة عملاء 24/7</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> إرجاع مجاني خلال 30 يوماً</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> شحن مجاني على الطلبات فوق 300 ريال</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> ضمان أصالة 100% على جميع المنتجات</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> تجربة افتراضية — جرّب النظارة قبل الشراء</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> خدمة عملاء 24/7</div>
+    <div class="top-bar-item"><span class="tb-accent">✦</span> إرجاع مجاني خلال 30 يوماً</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-main">
+    <div class="logo">
+      <span class="logo-text">بصيرة</span>
+      <span class="logo-sub">Basira Eyewear</span>
+    </div>
+    <div class="search-bar">
+      <input class="search-input" type="text" placeholder="ابحث عن نظارة، ماركة أو شكل...">
+      <button class="search-btn">🔍</button>
+    </div>
+    <div class="header-actions">
+      <button class="hdr-btn">
+        <span class="hdr-btn-icon">❤️</span>
+        <span>المفضلة</span>
+      </button>
+      <button class="hdr-btn">
+        <span class="hdr-btn-icon">👤</span>
+        <span>حسابي</span>
+      </button>
+      <button class="cart-btn" onclick="toggleCart()">
+        🛍️ السلة <span class="hdr-badge">2</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-link active">🏠 الرئيسية</a>
+      <a href="#" class="nav-link">🕶️ نظارات شمسية</a>
+      <a href="#" class="nav-link">👓 نظارات طبية</a>
+      <a href="#" class="nav-link">⚡ رياضية</a>
+      <a href="#" class="nav-link">🧒 أطفال</a>
+      <a href="#" class="nav-link">👑 الماركات</a>
+      <a href="#" class="nav-link">🎁 هدايا</a>
+      <a href="#" class="nav-link sale">🔥 تخفيضات حتى 60%</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-ambient"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-tag">✦ مجموعة 2026 الحصرية</div>
+    <h1>
+      أناقة<br>
+      لا تُضاهى —<br>
+      <em>نظارتك الفاخرة</em>
+    </h1>
+    <p class="hero-sub">نخبة من أرقى نظارات العالم — من Ray-Ban وTom Ford إلى Persol وGiorgio Armani. كل إطار قصة تجعلك لا تُنسى.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-light">تسوق المجموعة</a>
+      <a href="#" class="btn-outline-w">🥽 جرّب افتراضياً</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <span class="trust-num">+300</span>
+        <span class="trust-lbl">ماركة عالمية</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">+50K</span>
+        <span class="trust-lbl">عميل راضٍ</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">100%</span>
+        <span class="trust-lbl">أصالة مضمونة</span>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>اكتشف</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-product-showcase">
+      <div class="eyewear-art">
+        <div class="glasses-frame">🕶️</div>
+        <div class="eyewear-glow"></div>
+      </div>
+      <div class="hero-product-card">
+        <div class="hpc-label">أبرز المجموعة</div>
+        <div class="hpc-name">Tom Ford Snowdon FT0237</div>
+        <div class="hpc-price">1,250 ريال</div>
+      </div>
+      <div class="hero-badge-float">
+        <span>خصم</span>
+        <span>30%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="sec-header">
+    <span class="sec-label">تسوق حسب الفئة</span>
+    <h2 class="sec-title">اختر نوع نظارتك</h2>
+    <p class="sec-sub">كل فئة مختارة بعناية من أفخم ماركات العالم</p>
+  </div>
+  <div class="cats-grid">
+    <div class="cat-card">
+      <div class="cat-img" style="background:linear-gradient(135deg,#1a1510,#2c251c)"><span>🕶️</span><div class="cat-overlay"></div></div>
+      <div class="cat-info">
+        <div class="cat-name">نظارات شمسية</div>
+        <div class="cat-count">+840 طراز</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="background:linear-gradient(135deg,#f0e8d8,#e0d4c0)"><span>👓</span><div class="cat-overlay"></div></div>
+      <div class="cat-info">
+        <div class="cat-name">نظارات طبية</div>
+        <div class="cat-count">+620 إطار</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="background:linear-gradient(135deg,#0a1a10,#14302a)"><span>⚡</span><div class="cat-overlay"></div></div>
+      <div class="cat-info">
+        <div class="cat-name">نظارات رياضية</div>
+        <div class="cat-count">+280 طراز</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="background:linear-gradient(135deg,#1a0a1a,#2c1430)"><span>🧒</span><div class="cat-overlay"></div></div>
+      <div class="cat-info">
+        <div class="cat-name">نظارات الأطفال</div>
+        <div class="cat-count">+190 طراز</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section">
+  <div class="sec-header">
+    <span class="sec-label">الأكثر مبيعاً</span>
+    <h2 class="sec-title">اختيارات المحررين</h2>
+    <p class="sec-sub">نظارات رشّحها خبراؤنا لأناقتها الاستثنائية</p>
+  </div>
+  <div class="products-filters">
+    <button class="filter-btn active">الكل</button>
+    <button class="filter-btn">شمسية</button>
+    <button class="filter-btn">طبية</button>
+    <button class="filter-btn">رياضية</button>
+    <button class="filter-btn">جديد</button>
+    <button class="filter-btn">تخفيضات</button>
+    <span class="filter-label">٢٦ منتج معروض</span>
+  </div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#f5f0e8,#ede5d5)">
+        <div class="prod-thumb-inner">🕶️</div>
+        <div class="prod-badges"><span class="prod-badge badge-best">الأكثر مبيعاً</span></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Ray-Ban</div>
+        <div class="prod-name">Aviator Classic RB3025</div>
+        <div class="prod-meta">
+          <span class="meta-tag">ذهبي</span><span class="meta-tag">زجاج أخضر</span><span class="meta-tag">UV400</span>
+        </div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-num">4.9 (2,341)</span></div>
+        <div class="prod-price-row">
+          <div class="price-wrap"><span class="price-current">689 ر</span></div>
+          <button class="btn-add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#1a1510,#2c251c)">
+        <div class="prod-thumb-inner">🕶️</div>
+        <div class="prod-badges"><span class="prod-badge badge-new">جديد</span></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Tom Ford</div>
+        <div class="prod-name">Snowdon FT0237 — Tortoise</div>
+        <div class="prod-meta">
+          <span class="meta-tag">براون</span><span class="meta-tag">كلاسيك</span>
+        </div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-num">4.8 (912)</span></div>
+        <div class="prod-price-row">
+          <div class="price-wrap"><span class="price-current">1,250 ر</span></div>
+          <button class="btn-add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#e8f0f5,#d5e5f0)">
+        <div class="prod-thumb-inner">👓</div>
+        <div class="prod-badges"><span class="prod-badge badge-sale">-25%</span></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Persol</div>
+        <div class="prod-name">3019-S Polarized Titanium</div>
+        <div class="prod-meta">
+          <span class="meta-tag">تيتانيوم</span><span class="meta-tag">مستقطبة</span>
+        </div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-num">4.9 (1,560)</span></div>
+        <div class="prod-price-row">
+          <div class="price-wrap"><span class="price-current">980 ر</span><span class="price-old">1,300 ر</span></div>
+          <button class="btn-add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#f5e8f0,#f0d5e8)">
+        <div class="prod-thumb-inner">🕶️</div>
+        <div class="prod-badges"><span class="prod-badge badge-new">حصري</span></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Gucci</div>
+        <div class="prod-name">GG0061S Oversize — Black Gold</div>
+        <div class="prod-meta">
+          <span class="meta-tag">أسود / ذهبي</span><span class="meta-tag">أوفرسايز</span>
+        </div>
+        <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.7 (634)</span></div>
+        <div class="prod-price-row">
+          <div class="price-wrap"><span class="price-current">1,850 ر</span></div>
+          <button class="btn-add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#f0f5e8,#e2f0d0)">
+        <div class="prod-thumb-inner">⚡</div>
+        <div class="prod-badges"><span class="prod-badge badge-best">رياضي #1</span></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Oakley</div>
+        <div class="prod-name">Holbrook XL Prizm Road</div>
+        <div class="prod-meta">
+          <span class="meta-tag">Prizm</span><span class="meta-tag">خفيفة</span><span class="meta-tag">رياضي</span>
+        </div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-num">4.9 (3,210)</span></div>
+        <div class="prod-price-row">
+          <div class="price-wrap"><span class="price-current">560 ر</span></div>
+          <button class="btn-add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:linear-gradient(135deg,#e8edf5,#d5def0)">
+        <div class="prod-thumb-inner">👓</div>
+        <div class="prod-badges"><span class="prod-badge badge-sale">-30%</span></div>
+        <div class="prod-wishlist">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Giorgio Armani</div>
+        <div class="prod-name">AR7070 Slim Optical Frame</div>
+        <div class="prod-meta">
+          <span class="meta-tag">نحيف</span><span class="meta-tag">إيطالي</span>
+        </div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-num">4.8 (820)</span></div>
+        <div class="prod-price-row">
+          <div class="price-wrap"><span class="price-current">770 ر</span><span class="price-old">1,100 ر</span></div>
+          <button class="btn-add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED BRAND -->
+<section class="brand-feature">
+  <div class="brand-feature-left">
+    <div class="brand-tag">✦ ماركة الموسم</div>
+    <h2 class="brand-title">
+      Ray-Ban — <em>الأيقونة</em><br>التي لا تشيخ
+    </h2>
+    <p class="brand-desc">منذ 1937، صنعت Ray-Ban أكثر من مجرد نظارة — صنعت أسلوباً حياة. من Aviator إلى Wayfarer، كل إطار يحمل تاريخاً من الأناقة والتمرد.</p>
+    <div class="brand-specs">
+      <div class="spec-item">
+        <div class="spec-label">سنة التأسيس</div>
+        <div class="spec-val">1937</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">بلد الصنع</div>
+        <div class="spec-val">إيطاليا 🇮🇹</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">الموديلات المتاحة</div>
+        <div class="spec-val">+200 طراز</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">أعلى تقييم</div>
+        <div class="spec-val">4.9 ★</div>
+      </div>
+    </div>
+    <div class="brand-cta">
+      <a href="#" class="btn-amber">تسوق Ray-Ban</a>
+      <a href="#" class="btn-outline-w">عرض الكتالوج</a>
+    </div>
+  </div>
+  <div class="brand-feature-right">
+    <div class="brand-img-main">
+      <span style="font-size:8rem;position:relative;z-index:2">🕶️</span>
+    </div>
+    <div class="brand-thumbs">
+      <div class="brand-thumb active">🕶️</div>
+      <div class="brand-thumb">🕶️</div>
+      <div class="brand-thumb">🕶️</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIRTUAL TRY ON -->
+<section class="tryon-section">
+  <div class="tryon-inner">
+    <div class="tryon-left">
+      <div class="tryon-icon">🥽</div>
+      <h2 class="tryon-title">جرّب <em>افتراضياً</em><br>قبل الشراء</h2>
+      <p class="tryon-desc">بتقنية الواقع المعزز، يمكنك تجربة أي نظارة على وجهك مباشرة من الكاميرا — بدون أن تغادر بيتك. التجربة دقيقة ومتعة حقيقية.</p>
+      <ul class="tryon-steps">
+        <li class="tryon-step"><div class="step-num">١</div><div class="step-text">اختر النظارة التي تعجبك من المتجر</div></li>
+        <li class="tryon-step"><div class="step-num">٢</div><div class="step-text">اضغط "جرّب الآن" وأذن بالوصول للكاميرا</div></li>
+        <li class="tryon-step"><div class="step-num">٣</div><div class="step-text">انظر كيف تبدو عليك بشكل حقيقي</div></li>
+        <li class="tryon-step"><div class="step-num">٤</div><div class="step-text">أضفها للسلة وأكمل الشراء بثقة</div></li>
+      </ul>
+      <a href="#" class="btn-amber" style="width:fit-content">🎥 ابدأ التجربة الآن</a>
+    </div>
+    <div class="tryon-right">
+      <div class="face-frame">
+        😐
+        <div class="face-glass-overlay">🕶️</div>
+      </div>
+      <div class="tryon-models">
+        <button class="model-btn active"><span class="model-icon">🕶️</span>شمسية</button>
+        <button class="model-btn"><span class="model-icon">👓</span>طبية</button>
+        <button class="model-btn"><span class="model-icon">⚡</span>رياضية</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACE SHAPE GUIDE -->
+<section class="faceshape-section">
+  <div class="sec-header">
+    <span class="sec-label">دليل الاختيار</span>
+    <h2 class="sec-title">اكتشف النظارة المناسبة لشكل وجهك</h2>
+    <p class="sec-sub">اختر شكل وجهك ونوصي لك بأفضل الإطارات</p>
+  </div>
+  <div class="faceshapes">
+    <div class="fs-card active" onclick="showFaceResult(this,'بيضاوي')">
+      <span class="fs-icon">🥚</span>
+      <div class="fs-name">بيضاوي</div>
+      <div class="fs-desc">أي إطار يناسبك</div>
+    </div>
+    <div class="fs-card" onclick="showFaceResult(this,'مربع')">
+      <span class="fs-icon">🔲</span>
+      <div class="fs-name">مربع</div>
+      <div class="fs-desc">إطارات دائرية ومستديرة</div>
+    </div>
+    <div class="fs-card" onclick="showFaceResult(this,'مستطيل')">
+      <span class="fs-icon">⬜</span>
+      <div class="fs-name">مستطيل</div>
+      <div class="fs-desc">إطارات واسعة وكبيرة</div>
+    </div>
+    <div class="fs-card" onclick="showFaceResult(this,'مثلث')">
+      <span class="fs-icon">🔺</span>
+      <div class="fs-name">مثلث</div>
+      <div class="fs-desc">إطارات تناسب الجزء العلوي</div>
+    </div>
+    <div class="fs-card" onclick="showFaceResult(this,'دائري')">
+      <span class="fs-icon">⭕</span>
+      <div class="fs-name">دائري</div>
+      <div class="fs-desc">إطارات زاوية ومستطيلة</div>
+    </div>
+  </div>
+  <div class="fs-result show" id="face-result">
+    <h3>توصياتنا لشكل الوجه البيضاوي 🥚</h3>
+    <div class="fs-recs">
+      <span class="fs-rec-tag"><span class="fs-rec-icon">🕶️</span>Aviator</span>
+      <span class="fs-rec-tag"><span class="fs-rec-icon">🕶️</span>Wayfarer</span>
+      <span class="fs-rec-tag"><span class="fs-rec-icon">🕶️</span>Round</span>
+      <span class="fs-rec-tag"><span class="fs-rec-icon">🕶️</span>Cat Eye</span>
+      <span class="fs-rec-tag"><span class="fs-rec-icon">🕶️</span>Geometric</span>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="brands-inner">
+    <div class="brand-item"><span class="brand-logo">✦</span>RAY-BAN</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>TOM FORD</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>PERSOL</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>GUCCI</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>OAKLEY</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>PRADA</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>ARMANI</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>DIOR</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>CHANEL</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>VERSACE</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>RAY-BAN</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>TOM FORD</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>PERSOL</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>GUCCI</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>OAKLEY</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>PRADA</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>ARMANI</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>DIOR</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>CHANEL</div>
+    <div class="brand-item"><span class="brand-logo">✦</span>VERSACE</div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="sec-header">
+    <span class="sec-label">آراء عملائنا</span>
+    <h2 class="sec-title">يثقون بـ بصيرة</h2>
+    <p class="sec-sub">أكثر من 50,000 عميل راضٍ يتحدثون</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">🧑</div>
+        <div>
+          <div class="review-name">نورة الغامدي</div>
+          <div class="review-frame">Tom Ford Snowdon — مشترية موثقة</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">النظارة فاقت كل توقعاتي. الجودة رهيبة والتغليف فخم جداً. استخدمت التجربة الافتراضية قبل الشراء وكانت دقيقة 100%. شكراً بصيرة!</div>
+      <div class="review-badge">مشترية موثقة</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">👨</div>
+        <div>
+          <div class="review-name">محمد العسيري</div>
+          <div class="review-frame">Ray-Ban Aviator — مشترٍ موثق</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">اشتريت Aviator Classic وهي بالضبط كما في الموقع. أصلية 100% ووصلت في يومين. دليل شكل الوجه ساعدني كثيراً في الاختيار.</div>
+      <div class="review-badge">مشترٍ موثق</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">👩</div>
+        <div>
+          <div class="review-name">سارة القحطاني</div>
+          <div class="review-frame">Gucci GG0061S — مشترية موثقة</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">المتجر واضح وسهل. وجدت نظارتي بسهولة ودفعت بأمان. الإرجاع مجاني لو احتجت. تجربة تسوق 10 من 10.</div>
+      <div class="review-badge">مشترية موثقة</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="nl-left">
+    <span class="nl-tag">✦ نشرة بصيرة</span>
+    <h2 class="nl-title">كن أول من<br>يعرف <em>الجديد</em></h2>
+  </div>
+  <div class="nl-right">
+    <p class="nl-desc">اشترك في نشرتنا الحصرية واحصل على خصم 15% على طلبك الأول، وكن أول من يعرف عن المجموعات الجديدة والعروض الحصرية.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="بريدك الإلكتروني...">
+      <button class="btn-nl">اشترك</button>
+    </div>
+    <div class="nl-perks">
+      <span class="nl-perk"><span class="nl-perk-icon">✦</span>خصم 15% فوري</span>
+      <span class="nl-perk"><span class="nl-perk-icon">✦</span>إلغاء في أي وقت</span>
+      <span class="nl-perk"><span class="nl-perk-icon">✦</span>لا إزعاج</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">بصيرة</span>
+      <p class="footer-desc">أفخم متجر نظارات في المنطقة العربية — مجموعة نخبة من أرقى الماركات العالمية بضمان الأصالة والجودة.</p>
+      <div class="footer-social">
+        <div class="social-btn">📘</div>
+        <div class="social-btn">📸</div>
+        <div class="social-btn">🐦</div>
+        <div class="social-btn">📌</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>التسوق</h4>
+      <ul class="footer-links">
+        <li><a href="#">نظارات شمسية</a></li>
+        <li><a href="#">نظارات طبية</a></li>
+        <li><a href="#">رياضية</a></li>
+        <li><a href="#">أطفال</a></li>
+        <li><a href="#">الماركات</a></li>
+        <li><a href="#">العروض</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>الخدمات</h4>
+      <ul class="footer-links">
+        <li><a href="#">التجربة الافتراضية</a></li>
+        <li><a href="#">دليل شكل الوجه</a></li>
+        <li><a href="#">تتبع طلبك</a></li>
+        <li><a href="#">سياسة الإرجاع</a></li>
+        <li><a href="#">الضمان</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul class="footer-links">
+        <li><a href="#">اتصل بنا</a></li>
+        <li><a href="#">واتساب</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">التوصيل</a></li>
+        <li><a href="#">المتاجر</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 بصيرة Basira Eyewear — جميع الحقوق محفوظة</div>
+    <div class="footer-badges">
+      <span class="f-badge">🔒 SSL آمن</span>
+      <span class="f-badge">✓ أصالة مضمونة</span>
+      <span class="f-badge">↩️ إرجاع مجاني</span>
+      <span class="f-badge">🚚 شحن سريع</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cursor'),dot=document.getElementById('cursor-dot');
+let cx=0,cy=0,dx=0,dy=0;
+document.addEventListener('mousemove',e=>{dx=e.clientX;dy=e.clientY;dot.style.left=dx+'px';dot.style.top=dy+'px'});
+function animCursor(){cx+=(dx-cx)*.12;cy+=(dy-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(animCursor)}
+animCursor();
+
+// LOADER
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},2000)});
+
+// CART
+function toggleCart(){document.getElementById('cart-overlay').classList.toggle('open');document.getElementById('cart-sidebar').classList.toggle('open')}
+
+// MOBILE MENU
+function toggleMenu(){document.getElementById('mob-menu').classList.toggle('open')}
+
+// SCROLL HEADER
+const hdr=document.getElementById('site-header');
+window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>50)});
+
+// FILTER BUTTONS
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// FACE SHAPE
+function showFaceResult(el,shape){
+  document.querySelectorAll('.fs-card').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  const recs={
+    'بيضاوي':'Aviator | Wayfarer | Round | Cat Eye | Geometric',
+    'مربع':'Round | Oval | Rimless | Browline',
+    'مستطيل':'Aviator | Square | Wayfarer | Butterfly',
+    'مثلث':'Aviator | Cat Eye | Semi-Rimless | Browline',
+    'دائري':'Square | Rectangle | Wayfarer | Angular'
+  };
+  const r=document.getElementById('face-result');
+  r.classList.add('show');
+  r.querySelector('h3').textContent=`توصياتنا لشكل الوجه ${el.querySelector('.fs-name').textContent}`;
+  r.querySelector('.fs-recs').innerHTML=recs[shape].split('|').map(s=>`<span class="fs-rec-tag"><span class="fs-rec-icon">🕶️</span>${s.trim()}</span>`).join('');
+}
+
+// BRAND THUMBS
+document.querySelectorAll('.brand-thumb').forEach(t=>{
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.brand-thumb').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// TRY-ON MODELS
+document.querySelectorAll('.model-btn').forEach(b=>{
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.model-btn').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// ADD TO CART FEEDBACK
+document.querySelectorAll('.btn-add').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const orig=this.textContent;
+    this.textContent='✓ تمت الإضافة';
+    this.style.background='#1a7a40';
+    setTimeout(()=>{this.textContent=orig;this.style.background=''},1500);
+  });
+});
+</script>
+</body>
+</html>
